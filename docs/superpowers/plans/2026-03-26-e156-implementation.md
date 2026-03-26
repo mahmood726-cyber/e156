@@ -214,7 +214,7 @@ body {
 .rules p { margin-top: 16px; }
 
 /* -- Example cards -- */
-.example-title { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: #444; font-family: system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem; }
+.example-title { font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; color: #444; font-family: system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
 .example-card { border-left: 3px solid #1a1a1a; padding: 24px 32px; margin: 40px 0; }
 .micro-paper-body { font-size: 1.1rem; line-height: 1.8; font-style: normal; }
 .sentence-annotations { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1125,7 +1125,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ```javascript
 document.querySelector('.copy-prompt')?.addEventListener('click', async () => {
-  const promptText = document.querySelector('.prompt-shell pre').textContent;
+  const pre = document.querySelector('.prompt-shell pre');
+  const btn = pre.querySelector('.copy-prompt');
+  const promptText = pre.textContent.replace(btn.textContent, '').trim();
   try {
     await navigator.clipboard.writeText(promptText);
     showToast('Prompt copied.');
