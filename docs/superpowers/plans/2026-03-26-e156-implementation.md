@@ -95,7 +95,7 @@ Build the HTML structure for both modes and all the CSS. No JS yet — just the 
 - [ ] **Step 1: Write the HTML skeleton**
 
 Create `index.html` with:
-- `<!DOCTYPE html>`, charset UTF-8, viewport meta
+- `<!DOCTYPE html>`, charset UTF-8, viewport meta, `<title>E156 — The Micro-Paper Standard</title>`
 - Skip link: `<a href="#composer" class="skip-link">Skip to composer</a>`
 - `<div id="magazine-mode">` — all Magazine mode content
 - `<div id="workshop-mode" class="hidden">` — all Workshop mode content
@@ -111,13 +111,19 @@ Magazine mode structure:
   <section class="argument"><!-- ~150 words editorial pitch --></section>
   <section class="examples">
     <div class="example-card" data-example="fragility-atlas">
+      <h3 class="example-title"></h3>
       <blockquote class="micro-paper-body"></blockquote>
       <div class="sentence-annotations"></div>
     </div>
-    <!-- repeat for metarep, clinical-ma -->
+    <!-- repeat for metarep, clinical-ma (each has .example-title, .micro-paper-body, .sentence-annotations) -->
   </section>
   <section class="rules"><!-- sentence schema + house style --></section>
-  <section class="prompt-shell"><!-- collapsible prompt --></section>
+  <section class="prompt-shell">
+    <details>
+      <summary>Prompt shell for LLMs</summary>
+      <pre><!-- prompt text from spec.md --><button class="copy-prompt">Copy</button></pre>
+    </details>
+  </section>
   <div class="cta">
     <button id="btn-write" aria-label="Open the E156 composer">Write one &rarr;</button>
   </div>
@@ -199,7 +205,16 @@ body {
 .masthead h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; }
 .masthead .subtitle { font-size: 1.25rem; color: #666; font-style: italic; margin-top: 8px; }
 
+/* -- Argument section -- */
+.argument p { font-size: 1.1rem; margin-bottom: 16px; }
+
+/* -- Rules section -- */
+.rules ol { padding-left: 24px; margin: 16px 0; }
+.rules li { margin-bottom: 8px; }
+.rules p { margin-top: 16px; }
+
 /* -- Example cards -- */
+.example-title { font-size: 1rem; font-weight: 600; margin-bottom: 12px; color: #444; font-family: system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8rem; }
 .example-card { border-left: 3px solid #1a1a1a; padding: 24px 32px; margin: 40px 0; }
 .micro-paper-body { font-size: 1.1rem; line-height: 1.8; font-style: normal; }
 .sentence-annotations { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -417,6 +432,7 @@ function initExamples() {
     const data = JSON.parse(document.getElementById('example-' + id).textContent);
     const card = document.querySelector('[data-example="' + id + '"]');
     if (!card) return;
+    card.querySelector('.example-title').textContent = data.title;
     card.querySelector('.micro-paper-body').textContent = data.body;
     const annot = card.querySelector('.sentence-annotations');
     data.sentences.forEach((s, i) => {
@@ -466,8 +482,10 @@ Wire up the Magazine ↔ Workshop transitions.
 
 ```javascript
 function showWorkshop() {
-  document.getElementById('magazine-mode').classList.add('hidden');
+  const mag = document.getElementById('magazine-mode');
   const ws = document.getElementById('workshop-mode');
+  mag.classList.add('hidden');
+  mag.classList.remove('fade-in');
   ws.classList.remove('hidden');
   ws.classList.add('fade-in');
   document.getElementById('body-input').focus();
@@ -475,9 +493,10 @@ function showWorkshop() {
 }
 
 function showMagazine() {
-  document.getElementById('workshop-mode').classList.add('hidden');
-  document.getElementById('workshop-mode').classList.remove('fade-in');
+  const ws = document.getElementById('workshop-mode');
   const mag = document.getElementById('magazine-mode');
+  ws.classList.add('hidden');
+  ws.classList.remove('fade-in');
   mag.classList.remove('hidden');
   mag.classList.add('fade-in');
   document.getElementById('btn-write').focus();
@@ -494,7 +513,7 @@ document.getElementById('btn-back').addEventListener('click', (e) => {
   showMagazine();
 });
 
-// URL hash on load
+// URL hash on load (Task 9 will move this into DOMContentLoaded and add hashchange listener)
 if (window.location.hash === '#compose') {
   showWorkshop();
 }
@@ -561,8 +580,15 @@ function splitSentences(text) {
     return placeholder;
   });
 
-  // Step 3: Split on period followed by whitespace, end-of-string, or closing quote/paren
-  const sentences = working.split(/\.(?:\s|$|(?=[")]))/);
+  // Step 3: Match sentences (each ends with a period, preserving the period)
+  // Use match instead of split to keep trailing periods on each sentence
+  const raw = working.match(/[^]*?\.(?=\s|$|[")]))/g);
+  if (!raw) return [working]; // no period found — treat entire text as one sentence
+
+  // Check for trailing text after last period
+  const joined = raw.join('');
+  const remainder = working.slice(joined.length).trim();
+  const sentences = remainder ? [...raw, remainder] : raw;
 
   // Step 4: Restore placeholders
   const restored = sentences.map(s => {
@@ -665,7 +691,17 @@ function checkCausalLanguage(sentences) {
 }
 ```
 
-- [ ] **Step 2: Write the main validate function**
+- [ ] **Step 2: Write the shared validity check and main validate function**
+
+```javascript
+// Shared validity logic — used by both the UI badge and JSON export
+function isFullyValid(wordCount, sentences, styleChecks, notesFilled) {
+  return wordCount === 156
+    && sentences.length === 7
+    && styleChecks.every(c => c.pass)
+    && notesFilled;
+}
+```
 
 ```javascript
 let validateTimer = null;
@@ -725,9 +761,11 @@ function validate() {
   const noteFields = ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'];
   const notesFilled = noteFields.every(id => document.getElementById(id).value.trim() !== '');
 
+  // Shared validity check (also used by JSON export)
+  const allChecksPassed = isFullyValid(words, sentences, checks, notesFilled);
+
   // Status badge
   const badge = document.getElementById('status-badge');
-  const allChecksPassed = words === 156 && sentences.length === 7 && checks.every(c => c.pass) && notesFilled;
   if (isEmpty) {
     badge.className = 'status-badge empty';
     badge.textContent = '';
@@ -928,7 +966,7 @@ function showToast(msg) {
   toast.className = 'toast';
   toast.textContent = msg;
   document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 2000);
+  setTimeout(() => toast.remove(), 2200);
 }
 ```
 
@@ -976,7 +1014,13 @@ function downloadJSON() {
     },
     meta: {
       created: new Date().toISOString(),
-      valid: countWords(body) === 156 && sentences.length === 7,
+      valid: isFullyValid(
+        countWords(body),
+        sentences,
+        checkHouseStyle(body, sentences),
+        ['note-app','note-data','note-code','note-doi','note-version','note-date','note-validation']
+          .every(id => document.getElementById(id).value.trim() !== '')
+      ),
       schemaVersion: '0.1'
     }
   };
@@ -1004,7 +1048,21 @@ function downloadFile(filename, content, mimeType) {
 
 ```javascript
 function printView() {
+  const details = document.getElementById('outside-note-toggle');
+  const wasOpen = details.open;
+  // Force open so print CSS can render the fields
+  details.open = true;
+
+  // Hide outside note block in print if all fields are empty
+  const noteFields = ['note-app','note-data','note-code','note-doi','note-version','note-date','note-validation'];
+  const allEmpty = noteFields.every(id => document.getElementById(id).value.trim() === '');
+  if (allEmpty) details.style.display = 'none';
+
   window.print();
+
+  // Restore original state
+  details.open = wasOpen;
+  details.style.display = '';
 }
 ```
 
