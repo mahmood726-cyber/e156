@@ -228,7 +228,7 @@ body {
     <a href="#" id="btn-back" aria-label="Return to E156 showcase">&larr; Back to E156</a>
   </nav>
   <div class="workshop-layout">
-    <div class="editor-panel">
+    <div class="editor-panel" id="composer">
       <textarea id="body-input" aria-label="Micro-paper body"
         placeholder="S1: State the question...&#10;S2: Describe the evidence base...&#10;S3: State the method...&#10;S4: Report the primary result with interval...&#10;S5: Report robustness or heterogeneity...&#10;S6: Give a restrained interpretation...&#10;S7: State a limitation or boundary..."></textarea>
       <details id="outside-note-toggle">
@@ -356,9 +356,9 @@ body {
       return placeholder;
     });
 
-    // Step 3: Match sentences (preserving trailing periods)
-    var raw = working.match(/[^]*?\.(?=\s|$|["\\)])/g);
-    if (!raw) return [working]; // no period found
+    // Step 3: Match sentences (preserving trailing terminators: . ? !)
+    var raw = working.match(/[^]*?[.!?](?=\s|$|["\\)])/g);
+    if (!raw) return [working]; // no terminator found
 
     // Check for trailing text after last period
     var joined = raw.join('');
@@ -564,6 +564,7 @@ body {
     if (existing) existing.remove();
     var toast = document.createElement('div');
     toast.className = 'toast';
+    toast.setAttribute('role', 'alert');
     toast.textContent = msg;
     document.body.appendChild(toast);
     setTimeout(function() { toast.remove(); }, 2200);
