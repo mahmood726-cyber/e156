@@ -48,6 +48,7 @@ body {
 .cta button:hover { background: #333; }
 .cta button:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 3px; }
 .hidden { display: none; }
+#print-mirror { display: none; }
 .fade-in { animation: fadeIn 0.3s ease-in; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 .workshop-nav { max-width: 1100px; margin: 0 auto; padding: 16px 24px; }
@@ -80,7 +81,7 @@ body {
 .export-bar button {
   font-family: Georgia, serif; font-size: 0.9rem;
   background: #fff; color: #1a1a1a; border: 1px solid #ccc;
-  padding: 8px 16px; cursor: pointer; transition: background 0.15s;
+  padding: 8px 16px; min-height: 44px; cursor: pointer; transition: background 0.15s;
 }
 .export-bar button:hover:not(:disabled) { background: #f0ede8; }
 .export-bar button:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -144,10 +145,12 @@ body {
   #magazine-mode,
   .skip-link,
   .btn-danger { display: none !important; }
-  #body-input {
-    border: none; font-size: 14pt; line-height: 1.8;
+  #body-input { display: none !important; }
+  #print-mirror {
+    display: block !important;
+    font-family: Georgia, serif; font-size: 14pt; line-height: 1.8;
     max-width: 600px; margin: 40px auto; padding: 0;
-    resize: none; overflow: hidden;
+    white-space: pre-wrap;
   }
   .outside-note-fields {
     max-width: 600px; margin: 24px auto;
@@ -231,6 +234,7 @@ body {
     <div class="editor-panel" id="composer">
       <textarea id="body-input" aria-label="Micro-paper body"
         placeholder="S1: State the question...&#10;S2: Describe the evidence base...&#10;S3: State the method...&#10;S4: Report the primary result with interval...&#10;S5: Report robustness or heterogeneity...&#10;S6: Give a restrained interpretation...&#10;S7: State a limitation or boundary..."></textarea>
+      <div id="print-mirror"></div>
       <details id="outside-note-toggle">
         <summary>Add outside note block</summary>
         <div class="outside-note-fields">
@@ -319,7 +323,7 @@ body {
     mag.classList.remove('hidden');
     mag.classList.add('fade-in');
     document.getElementById('btn-write').focus();
-    window.location.hash = '';
+    history.replaceState(null, '', window.location.pathname);
   }
 
   /* --- Validation Engine --- */
@@ -329,7 +333,7 @@ body {
   }
 
   var ABBREVIATIONS = [
-    'vs.', 'e.g.', 'i.e.', 'approx.',
+    'vs.', 'e.g.', 'i.e.', 'approx.', 'cf.', 'Suppl.',
     'et al.', 'Fig.', 'No.', 'Dr.', 'Prof.',
     'U.S.', 'U.K.'
   ];
@@ -341,7 +345,7 @@ body {
     // Step 1: Replace abbreviations with placeholders
     var abbrevMap = [];
     ABBREVIATIONS.forEach(function(abbr, i) {
-      var placeholder = '\x00ABBR' + i + '\x00';
+      var placeholder = '\uE000ABBR' + i + '\uE000';
       while (working.includes(abbr)) {
         working = working.replace(abbr, placeholder);
         abbrevMap.push({ placeholder: placeholder, abbr: abbr });
@@ -351,7 +355,7 @@ body {
     // Step 2: Replace decimal numbers (e.g., 0.85, 2.13)
     var decimalMap = [];
     working = working.replace(/(\d+)\.(\d+)/g, function(match) {
-      var placeholder = '\x00DEC' + decimalMap.length + '\x00';
+      var placeholder = '\uE000DEC' + decimalMap.length + '\uE000';
       decimalMap.push({ placeholder: placeholder, original: match });
       return placeholder;
     });
@@ -396,13 +400,17 @@ body {
     var s4 = sentences[3] || '';
     var hasEstimate = /\d+\.?\d*/.test(s4) && /(CI|confidence interval|IQR|prediction interval|credible interval|\d+[\u2013\u2014-]\d+)/i.test(s4);
     checks.push({ label: 'Result (S4) has estimate + interval', pass: hasEstimate });
-    checks.push({ label: 'Limitation (S7) present', pass: sentences.length >= 7 });
+    checks.push({ label: 'Limitation (S7) present', pass: sentences.length >= 7 && /\b(limit|limited|caution|boundary|harm|scope|cannot|may not|remain|unclear|uncertain|exclude|extend|warrant)\b/i.test(sentences[6] || '') });
     return checks;
   }
 
   function checkCausalLanguage(sentences) {
     var s6 = (sentences[5] || '').toLowerCase();
     return CAUSAL_WORDS.filter(function(w) {
+      if (w === 'causal') {
+        // Exclude "no causal", "non-causal", "non causal" — these are disclaimers, not overclaims
+        return /\bcausal\b/i.test(s6) && !/\b(no|non[-\s]?)causal\b/i.test(s6);
+      }
       var regex = new RegExp('\\b' + w.replace(/\s+/g, '\\s+') + '\\b', 'i');
       return regex.test(s6);
     });
@@ -671,13 +679,19 @@ body {
   function printView() {
     var details = document.getElementById('outside-note-toggle');
     var wasOpen = details.open;
-    details.open = true;
     var noteFields = ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'];
     var allEmpty = noteFields.every(function(id) { return document.getElementById(id).value.trim() === ''; });
-    if (allEmpty) details.style.display = 'none';
+    // Populate print mirror with textarea content (textarea may not print in all browsers)
+    document.getElementById('print-mirror').textContent = document.getElementById('body-input').value;
+    // Hide first if empty, then force open for non-empty (order matters for print rendering)
+    if (allEmpty) {
+      details.style.display = 'none';
+    } else {
+      details.open = true;
+    }
     window.print();
-    details.open = wasOpen;
     details.style.display = '';
+    details.open = wasOpen;
   }
 
   /* --- Wire Export Buttons --- */
@@ -707,6 +721,11 @@ body {
   document.getElementById('btn-back').addEventListener('click', function(e) {
     e.preventDefault();
     showMagazine();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !document.getElementById('workshop-mode').classList.contains('hidden')) {
+      showMagazine();
+    }
   });
 
   /* --- Init --- */
