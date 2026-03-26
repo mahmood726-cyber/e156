@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E156 — The Micro-Paper Standard</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Georgia, Charter, 'Times New Roman', serif;
+  background: #faf9f6;
+  color: #1a1a1a;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: #1a1a1a; color: #faf9f6; padding: 8px 16px;
+  z-index: 100; transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+.masthead, .argument, .examples, .rules, .prompt-shell, .cta {
+  max-width: 680px; margin: 0 auto; padding: 0 24px;
+}
+.masthead { text-align: center; padding-top: 80px; padding-bottom: 40px; }
+.masthead h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; }
+.masthead .subtitle { font-size: 1.25rem; color: #666; font-style: italic; margin-top: 8px; }
+.argument p { font-size: 1.1rem; margin-bottom: 16px; }
+.rules ol { padding-left: 24px; margin: 16px 0; }
+.rules li { margin-bottom: 8px; }
+.rules p { margin-top: 16px; }
+.rules h2 { font-size: 1.5rem; margin-bottom: 16px; }
+.example-title { font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; color: #444; font-family: system-ui, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+.example-card { border-left: 3px solid #1a1a1a; padding: 24px 32px; margin: 40px 0; }
+.micro-paper-body { font-size: 1.1rem; line-height: 1.8; font-style: normal; }
+.sentence-annotations { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.sentence-annotations .tag {
+  font-size: 0.75rem; padding: 2px 8px; border-radius: 3px;
+  background: #f0ede8; color: #666; font-family: system-ui, sans-serif;
+}
+.cta { text-align: center; padding: 60px 0; }
+.cta button {
+  font-family: Georgia, serif; font-size: 1.1rem;
+  background: #1a1a1a; color: #faf9f6;
+  border: none; padding: 14px 36px; cursor: pointer;
+  transition: background 0.2s;
+}
+.cta button:hover { background: #333; }
+.cta button:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 3px; }
+.hidden { display: none; }
+.fade-in { animation: fadeIn 0.3s ease-in; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.workshop-nav { max-width: 1100px; margin: 0 auto; padding: 16px 24px; }
+.workshop-nav a { color: #1a1a1a; text-decoration: none; font-size: 0.95rem; }
+.workshop-nav a:hover { text-decoration: underline; }
+.workshop-layout {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; gap: 32px;
+}
+.editor-panel { flex: 3; }
+.validation-panel { flex: 2; position: sticky; top: 24px; align-self: flex-start; }
+#body-input {
+  width: 100%; min-height: 280px; padding: 20px;
+  font-family: Georgia, serif; font-size: 1.05rem; line-height: 1.75;
+  border: 1px solid #ddd; background: #fff; resize: vertical;
+  border-radius: 2px;
+}
+#body-input:focus { outline: 2px solid #1a1a1a; outline-offset: 1px; border-color: transparent; }
+#body-input::placeholder { color: #bbb; }
+.outside-note-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.outside-note-fields label {
+  display: flex; flex-direction: column; font-size: 0.85rem;
+  font-family: system-ui, sans-serif; color: #666;
+}
+.outside-note-fields input {
+  margin-top: 4px; padding: 8px; border: 1px solid #ddd;
+  font-family: Georgia, serif; font-size: 0.95rem;
+}
+.export-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.export-bar button {
+  font-family: Georgia, serif; font-size: 0.9rem;
+  background: #fff; color: #1a1a1a; border: 1px solid #ccc;
+  padding: 8px 16px; cursor: pointer; transition: background 0.15s;
+}
+.export-bar button:hover:not(:disabled) { background: #f0ede8; }
+.export-bar button:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-danger { color: #c62828 !important; border-color: #c62828 !important; }
+.counter { font-size: 2rem; font-weight: 700; font-family: system-ui, sans-serif; margin-bottom: 8px; }
+.counter.valid { color: #2e7d32; }
+.counter.invalid { color: #c62828; }
+.sentence-map { margin: 16px 0; }
+.sentence-map .role-tag {
+  display: inline-block; font-size: 0.8rem; padding: 3px 10px;
+  margin: 3px 4px 3px 0; border-radius: 3px;
+  font-family: system-ui, sans-serif;
+}
+.style-checks { list-style: none; margin: 16px 0; }
+.style-checks li { font-size: 0.9rem; font-family: system-ui, sans-serif; padding: 4px 0; }
+.style-checks .pass::before { content: "\2713 "; color: #2e7d32; }
+.style-checks .fail::before { content: "\2717 "; color: #c62828; }
+.causal-warning {
+  background: #fff3e0; border-left: 3px solid #e65100;
+  padding: 8px 12px; margin: 12px 0; font-size: 0.85rem;
+  font-family: system-ui, sans-serif; color: #e65100;
+}
+.status-badge {
+  display: inline-block; padding: 6px 16px; border-radius: 3px;
+  font-size: 0.9rem; font-weight: 700; font-family: system-ui, sans-serif;
+  margin-top: 16px;
+}
+.status-badge.empty { background: #eee; color: #999; }
+.status-badge.draft { background: #fff3e0; color: #e65100; }
+.status-badge.valid { background: #e8f5e9; color: #2e7d32; }
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: #1a1a1a; color: #faf9f6; padding: 10px 24px;
+  border-radius: 4px; font-family: system-ui, sans-serif; font-size: 0.9rem;
+  z-index: 1000; animation: toastIn 0.3s ease, toastOut 0.3s ease 1.7s forwards;
+}
+@keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } }
+@keyframes toastOut { to { opacity: 0; transform: translateX(-50%) translateY(20px); } }
+.prompt-shell details { margin: 24px 0; }
+.prompt-shell summary {
+  cursor: pointer; font-family: system-ui, sans-serif;
+  font-size: 0.9rem; color: #666;
+}
+.prompt-shell pre {
+  background: #f5f3ef; padding: 16px; margin-top: 12px;
+  font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap;
+  border-radius: 3px; position: relative;
+}
+.prompt-shell .copy-prompt {
+  position: absolute; top: 8px; right: 8px;
+  background: #1a1a1a; color: #faf9f6; border: none;
+  padding: 4px 10px; font-size: 0.75rem; cursor: pointer;
+  border-radius: 2px;
+}
+@media print {
+  body { background: #fff; }
+  #workshop-mode .workshop-nav,
+  #workshop-mode .export-bar,
+  #workshop-mode .validation-panel,
+  #workshop-mode #outside-note-toggle summary,
+  #magazine-mode,
+  .skip-link,
+  .btn-danger { display: none !important; }
+  #body-input {
+    border: none; font-size: 14pt; line-height: 1.8;
+    max-width: 600px; margin: 40px auto; padding: 0;
+    resize: none; overflow: hidden;
+  }
+  .outside-note-fields {
+    max-width: 600px; margin: 24px auto;
+    border-top: 1px solid #ccc; padding-top: 16px;
+    font-size: 10pt;
+  }
+}
+@media (max-width: 768px) {
+  .workshop-layout { flex-direction: column; }
+  .validation-panel { position: static; }
+  .masthead h1 { font-size: 2.5rem; }
+  .outside-note-fields { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a href="#composer" class="skip-link">Skip to composer</a>
+
+<!-- ============ MAGAZINE MODE ============ -->
+<div id="magazine-mode">
+  <header class="masthead">
+    <h1>E156</h1>
+    <p class="subtitle">The micro-paper standard</p>
+  </header>
+
+  <section class="argument">
+    <p>A well-conducted meta-analysis can take months of careful work and produce dozens of forest plots, sensitivity analyses, and supplementary tables. Yet the decision it informs often hinges on a single paragraph: what was asked, what was found, and how far the finding can be trusted. Most abstracts bury that paragraph under boilerplate.</p>
+    <p>E156 is a constraint-based writing standard that forces the paragraph into the open. Exactly 156 words. Exactly seven sentences. Each sentence has a defined role: question, evidence base, method, primary result, robustness, interpretation, and boundary. No title, no headings, no references inside the body. The constraint is the feature: it eliminates padding, discourages hype, and makes every word load-bearing. The result is a self-contained summary that can be read, evaluated, and challenged in under ninety seconds.</p>
+  </section>
+
+  <section class="examples">
+    <div class="example-card" data-example="fragility-atlas">
+      <h3 class="example-title"></h3>
+      <blockquote class="micro-paper-body"></blockquote>
+      <div class="sentence-annotations"></div>
+    </div>
+    <div class="example-card" data-example="metarep">
+      <h3 class="example-title"></h3>
+      <blockquote class="micro-paper-body"></blockquote>
+      <div class="sentence-annotations"></div>
+    </div>
+    <div class="example-card" data-example="clinical-ma">
+      <h3 class="example-title"></h3>
+      <blockquote class="micro-paper-body"></blockquote>
+      <div class="sentence-annotations"></div>
+    </div>
+  </section>
+
+  <section class="rules">
+    <h2>The seven sentences</h2>
+    <ol>
+      <li><strong>Question:</strong> population or condition, intervention or exposure or comparison, and main endpoint.</li>
+      <li><strong>Dataset:</strong> studies, participants, scope, or follow-up.</li>
+      <li><strong>Method:</strong> synthesis method and analytic level.</li>
+      <li><strong>Primary result:</strong> one main estimate with interval.</li>
+      <li><strong>Robustness:</strong> heterogeneity, sensitivity, subgroup, consistency, or stability.</li>
+      <li><strong>Interpretation:</strong> plain-language meaning with restrained wording.</li>
+      <li><strong>Boundary:</strong> limitation, scope limit, or caution.</li>
+    </ol>
+    <p><strong>House style.</strong> One idea per sentence. Numbers over adjectives. No hype. No causal overreach unless justified by design and evidence. Limitation mandatory. The paragraph must make sense when screenshot alone.</p>
+  </section>
+
+  <section class="prompt-shell">
+    <details>
+      <summary>Prompt shell for LLMs</summary>
+      <pre>Write a 7-sentence micro-paper body in exactly 156 words. Do not include a title, headings, citations, references, links, or metadata. Sentence 1 states the question. Sentence 2 states the evidence base. Sentence 3 states the method. Sentence 4 reports the primary numerical result with interval. Sentence 5 reports robustness or heterogeneity. Sentence 6 gives a restrained interpretation. Sentence 7 states a limitation or boundary. The paragraph must stand alone.<button class="copy-prompt">Copy</button></pre>
+    </details>
+  </section>
+
+  <div class="cta">
+    <button id="btn-write" aria-label="Open the E156 composer">Write one &rarr;</button>
+  </div>
+</div>
+
+<!-- ============ WORKSHOP MODE ============ -->
+<div id="workshop-mode" class="hidden">
+  <nav class="workshop-nav">
+    <a href="#" id="btn-back" aria-label="Return to E156 showcase">&larr; Back to E156</a>
+  </nav>
+  <div class="workshop-layout">
+    <div class="editor-panel">
+      <textarea id="body-input" aria-label="Micro-paper body"
+        placeholder="S1: State the question...&#10;S2: Describe the evidence base...&#10;S3: State the method...&#10;S4: Report the primary result with interval...&#10;S5: Report robustness or heterogeneity...&#10;S6: Give a restrained interpretation...&#10;S7: State a limitation or boundary..."></textarea>
+      <details id="outside-note-toggle">
+        <summary>Add outside note block</summary>
+        <div class="outside-note-fields">
+          <label>App <input type="text" id="note-app"></label>
+          <label>Data <input type="text" id="note-data"></label>
+          <label>Code <input type="text" id="note-code"></label>
+          <label>DOI <input type="text" id="note-doi"></label>
+          <label>Version <input type="text" id="note-version"></label>
+          <label>Date <input type="date" id="note-date"></label>
+          <label>Validation Status <input type="text" id="note-validation" placeholder="PASS / DRAFT / PENDING"></label>
+        </div>
+      </details>
+      <div class="export-bar">
+        <button id="btn-copy" disabled title="Write something first">Copy Body</button>
+        <button id="btn-md" disabled title="Write something first">Download .md</button>
+        <button id="btn-json" disabled title="Write something first">Download .json</button>
+        <button id="btn-print" disabled title="Write something first">Print View</button>
+        <button id="btn-clear" class="btn-danger">Clear Draft</button>
+      </div>
+    </div>
+    <aside class="validation-panel" aria-live="polite">
+      <div class="counter word-counter"><span id="word-count">0</span>/156</div>
+      <div class="counter sentence-counter"><span id="sentence-count">0</span>/7</div>
+      <div id="sentence-map" class="sentence-map"></div>
+      <ul id="style-checks" class="style-checks"></ul>
+      <div id="causal-warning" class="causal-warning hidden"></div>
+      <div id="status-badge" role="status" class="status-badge empty"></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ============ EMBEDDED JSON EXAMPLES ============ -->
+<script type="application/json" id="example-fragility-atlas">
+{"title":"Fragility of Cochrane Cardiovascular Meta-Analyses","body":"Do fragility indices vary systematically across cardiovascular meta-analyses, and which study-level design features predict structural vulnerability? We analysed 407 Cochrane cardiovascular systematic reviews published between 2000 and 2022, covering 1,882 randomised controlled trials and 312,450 participants with binary primary outcomes. Fragility index and fragility quotient were computed for every eligible binary-outcome meta-analysis using a reverse-replication algorithm anchored at the pooled observed event count. Median fragility index was 3 (IQR 1-8), and 61% of meta-analyses had a fragility index below 5, meaning three or fewer outcome reversals would nullify the statistical significance. Results were consistent across six heterogeneity-weighting schemes and unchanged after excluding industry-funded trials or restricting analyses to all-cause mortality. Small evidence bases are structurally fragile independent of heterogeneity level or effect direction, suggesting fragility metrics deserve routine reporting alongside standard confidence intervals. These findings apply only to Cochrane cardiovascular reviews and may not extend to oncology or surgical domains where event rate distributions differ substantially.","sentences":[{"role":"Question","text":"Do fragility indices vary systematically across cardiovascular meta-analyses, and which study-level design features predict structural vulnerability?"},{"role":"Dataset","text":"We analysed 407 Cochrane cardiovascular systematic reviews published between 2000 and 2022, covering 1,882 randomised controlled trials and 312,450 participants with binary primary outcomes."},{"role":"Method","text":"Fragility index and fragility quotient were computed for every eligible binary-outcome meta-analysis using a reverse-replication algorithm anchored at the pooled observed event count."},{"role":"Primary result","text":"Median fragility index was 3 (IQR 1-8), and 61% of meta-analyses had a fragility index below 5, meaning three or fewer outcome reversals would nullify the statistical significance."},{"role":"Robustness","text":"Results were consistent across six heterogeneity-weighting schemes and unchanged after excluding industry-funded trials or restricting analyses to all-cause mortality."},{"role":"Interpretation","text":"Small evidence bases are structurally fragile independent of heterogeneity level or effect direction, suggesting fragility metrics deserve routine reporting alongside standard confidence intervals."},{"role":"Boundary","text":"These findings apply only to Cochrane cardiovascular reviews and may not extend to oncology or surgical domains where event rate distributions differ substantially."}],"wordCount":156,"sentenceCount":7}
+</script>
+
+<script type="application/json" id="example-metarep">
+{"title":"Replication Probability in Meta-Analysis","body":"Can a meta-analysis predict the probability that a future independent trial will replicate its pooled effect estimate within a pre-specified equivalence margin? We prospectively evaluated the method on 120 published meta-analyses each with at least one known subsequent independent replication trial, spanning cardiology, oncology, and psychiatry. Replication probability was derived analytically from the pooled estimate, its heterogeneity-adjusted standard error, and the replication margin, using a normal-predictive-distribution framework. Across all 120 cases, the method achieved a calibration slope of 0.91 (95% CI 0.84-0.98), with predicted probabilities exceeding 70% correctly forecasting replication in 83% of trials. Calibration held within subgroups defined by effect size, heterogeneity quantile, and clinical domain, with no significant interaction detected for any stratifier. Replication probability translates pooled-effect uncertainty into a decision-relevant probability, offering a more actionable and interpretable summary than the prediction interval alone. Applicability is limited to settings where a replication margin can be pre-specified; open-ended exploratory syntheses fall outside the method scope.","sentences":[{"role":"Question","text":"Can a meta-analysis predict the probability that a future independent trial will replicate its pooled effect estimate within a pre-specified equivalence margin?"},{"role":"Dataset","text":"We prospectively evaluated the method on 120 published meta-analyses each with at least one known subsequent independent replication trial, spanning cardiology, oncology, and psychiatry."},{"role":"Method","text":"Replication probability was derived analytically from the pooled estimate, its heterogeneity-adjusted standard error, and the replication margin, using a normal-predictive-distribution framework."},{"role":"Primary result","text":"Across all 120 cases, the method achieved a calibration slope of 0.91 (95% CI 0.84-0.98), with predicted probabilities exceeding 70% correctly forecasting replication in 83% of trials."},{"role":"Robustness","text":"Calibration held within subgroups defined by effect size, heterogeneity quantile, and clinical domain, with no significant interaction detected for any stratifier."},{"role":"Interpretation","text":"Replication probability translates pooled-effect uncertainty into a decision-relevant probability, offering a more actionable and interpretable summary than the prediction interval alone."},{"role":"Boundary","text":"Applicability is limited to settings where a replication margin can be pre-specified; open-ended exploratory syntheses fall outside the method scope."}],"wordCount":156,"sentenceCount":7}
+</script>
+
+<script type="application/json" id="example-clinical-ma">
+{"title":"SGLT2 Inhibitors and Heart Failure","body":"Do SGLT2 inhibitors reduce heart failure hospitalisation and cardiovascular death in patients across the full spectrum of ejection fraction? We included 9 randomised controlled trials enrolling 71,553 patients with heart failure or high cardiovascular risk, retrieved from MEDLINE and Cochrane CENTRAL through January 2026. Random-effects meta-analysis was performed on the log-hazard-ratio scale using restricted maximum-likelihood estimation of between-trial variance with the Hartung-Knapp correction applied to confidence intervals. SGLT2 inhibitors reduced the composite of heart failure hospitalisation or cardiovascular death by 23% (HR 0.77, 95% CI 0.72-0.83, I2 18%), with consistent benefit across reduced and preserved ejection fraction subgroups. The result was robust to leave-one-out sensitivity analysis, trim-and-fill adjustment for small-study effects, and restriction to trials with active comparators. SGLT2 inhibitors confer a clinically meaningful, statistically robust reduction in heart failure events, supporting their use irrespective of ejection fraction category. Indirect comparisons across drug subclasses were not feasible; differential effects of empagliflozin versus dapagliflozin cannot be excluded.","sentences":[{"role":"Question","text":"Do SGLT2 inhibitors reduce heart failure hospitalisation and cardiovascular death in patients across the full spectrum of ejection fraction?"},{"role":"Dataset","text":"We included 9 randomised controlled trials enrolling 71,553 patients with heart failure or high cardiovascular risk, retrieved from MEDLINE and Cochrane CENTRAL through January 2026."},{"role":"Method","text":"Random-effects meta-analysis was performed on the log-hazard-ratio scale using restricted maximum-likelihood estimation of between-trial variance with the Hartung-Knapp correction applied to confidence intervals."},{"role":"Primary result","text":"SGLT2 inhibitors reduced the composite of heart failure hospitalisation or cardiovascular death by 23% (HR 0.77, 95% CI 0.72-0.83, I2 18%), with consistent benefit across reduced and preserved ejection fraction subgroups."},{"role":"Robustness","text":"The result was robust to leave-one-out sensitivity analysis, trim-and-fill adjustment for small-study effects, and restriction to trials with active comparators."},{"role":"Interpretation","text":"SGLT2 inhibitors confer a clinically meaningful, statistically robust reduction in heart failure events, supporting their use irrespective of ejection fraction category."},{"role":"Boundary","text":"Indirect comparisons across drug subclasses were not feasible; differential effects of empagliflozin versus dapagliflozin cannot be excluded."}],"wordCount":156,"sentenceCount":7}
+</script>
+
+<!-- ============ JAVASCRIPT ============ -->
+<script>
+(function() {
+  'use strict';
+
+  /* --- Init Examples --- */
+  function initExamples() {
+    var examples = ['fragility-atlas', 'metarep', 'clinical-ma'];
+    examples.forEach(function(id) {
+      var data = JSON.parse(document.getElementById('example-' + id).textContent);
+      var card = document.querySelector('[data-example="' + id + '"]');
+      if (!card) return;
+      card.querySelector('.example-title').textContent = data.title;
+      card.querySelector('.micro-paper-body').textContent = data.body;
+      var annot = card.querySelector('.sentence-annotations');
+      data.sentences.forEach(function(s, i) {
+        var tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = 'S' + (i + 1) + ': ' + s.role;
+        annot.appendChild(tag);
+      });
+    });
+  }
+
+  /* --- Mode Switching --- */
+  function showWorkshop() {
+    var mag = document.getElementById('magazine-mode');
+    var ws = document.getElementById('workshop-mode');
+    mag.classList.add('hidden');
+    mag.classList.remove('fade-in');
+    ws.classList.remove('hidden');
+    ws.classList.add('fade-in');
+    document.getElementById('body-input').focus();
+    window.location.hash = 'compose';
+  }
+
+  function showMagazine() {
+    var ws = document.getElementById('workshop-mode');
+    var mag = document.getElementById('magazine-mode');
+    ws.classList.add('hidden');
+    ws.classList.remove('fade-in');
+    mag.classList.remove('hidden');
+    mag.classList.add('fade-in');
+    document.getElementById('btn-write').focus();
+    window.location.hash = '';
+  }
+
+  /* --- Copy Prompt --- */
+  document.querySelector('.copy-prompt').addEventListener('click', function() {
+    var pre = this.closest('pre');
+    var text = pre.textContent.replace('Copy', '').trim();
+    navigator.clipboard.writeText(text).then(function() {
+      var toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = 'Prompt copied to clipboard';
+      document.body.appendChild(toast);
+      setTimeout(function() { toast.remove(); }, 2000);
+    });
+  });
+
+  /* --- Event Listeners --- */
+  document.getElementById('btn-write').addEventListener('click', showWorkshop);
+  document.getElementById('btn-back').addEventListener('click', function(e) {
+    e.preventDefault();
+    showMagazine();
+  });
+
+  /* --- Init --- */
+  initExamples();
+  if (window.location.hash === '#compose') {
+    showWorkshop();
+  }
+})();
+</script>
+</body>
+</html>
