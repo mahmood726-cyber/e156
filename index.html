@@ -500,17 +500,190 @@ body {
     });
   }
 
-  // Debounced input handler
-  document.getElementById('body-input').addEventListener('input', function() {
-    clearTimeout(validateTimer);
-    validateTimer = setTimeout(validate, 300);
-  });
-  document.querySelectorAll('.outside-note-fields input').forEach(function(el) {
-    el.addEventListener('input', function() {
-      clearTimeout(validateTimer);
-      validateTimer = setTimeout(validate, 300);
+  /* --- localStorage Persistence --- */
+  var STORAGE_KEY = 'e156_draft';
+
+  function saveDraft() {
+    var draft = {
+      body: document.getElementById('body-input').value,
+      notes: {}
+    };
+    ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'].forEach(function(id) {
+      draft.notes[id] = document.getElementById(id).value;
     });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+    } catch (e) { /* localStorage full or disabled */ }
+  }
+
+  function loadDraft() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var draft = JSON.parse(raw);
+      if (draft.body) document.getElementById('body-input').value = draft.body;
+      if (draft.notes) {
+        Object.entries(draft.notes).forEach(function(entry) {
+          var id = entry[0], val = entry[1];
+          var el = document.getElementById(id);
+          if (el) el.value = val;
+        });
+      }
+      validate();
+    } catch (e) { /* corrupt data */ }
+  }
+
+  /* --- Combined Debounced Update (validate + save) --- */
+  function debouncedUpdate() {
+    clearTimeout(validateTimer);
+    validateTimer = setTimeout(function() {
+      validate();
+      saveDraft();
+    }, 300);
+  }
+
+  document.getElementById('body-input').addEventListener('input', debouncedUpdate);
+  document.querySelectorAll('.outside-note-fields input').forEach(function(el) {
+    el.addEventListener('input', debouncedUpdate);
   });
+
+  /* --- Clear Draft --- */
+  document.getElementById('btn-clear').addEventListener('click', function() {
+    if (!confirm('Clear your draft? This cannot be undone.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    document.getElementById('body-input').value = '';
+    ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'].forEach(function(id) {
+      document.getElementById(id).value = '';
+    });
+    validate();
+  });
+
+  /* --- Export: Clipboard Copy --- */
+  function showToast(msg) {
+    var existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(function() { toast.remove(); }, 2200);
+  }
+
+  function copyBody() {
+    var text = document.getElementById('body-input').value.trim();
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('Copied.');
+      }).catch(function() {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast('Copied.');
+    } catch (e2) {
+      showToast('Select All + Copy manually.');
+    }
+    document.body.removeChild(ta);
+  }
+
+  /* --- Export: Download Helper --- */
+  function downloadFile(filename, content, mimeType) {
+    var blob = new Blob([content], { type: mimeType });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  /* --- Export: Markdown --- */
+  function downloadMarkdown() {
+    var body = document.getElementById('body-input').value.trim();
+    if (!body) return;
+    var md = body + '\n\n---\n\n';
+    var fields = [
+      ['App', 'note-app'], ['Data', 'note-data'], ['Code', 'note-code'],
+      ['DOI', 'note-doi'], ['Version', 'note-version'], ['Date', 'note-date'],
+      ['Validation Status', 'note-validation']
+    ];
+    fields.forEach(function(pair) {
+      var label = pair[0], id = pair[1];
+      var val = document.getElementById(id).value.trim();
+      if (val) md += label + '\n: ' + val + '\n\n';
+    });
+    downloadFile('e156-draft.md', md, 'text/markdown;charset=utf-8');
+  }
+
+  /* --- Export: JSON --- */
+  function downloadJSON() {
+    var body = document.getElementById('body-input').value.trim();
+    if (!body) return;
+    var sentences = splitSentences(body);
+    var roles = ['Question', 'Dataset', 'Method', 'Primary result', 'Robustness', 'Interpretation', 'Boundary'];
+    var noteFields = ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'];
+    var notesFilled = noteFields.every(function(id) { return document.getElementById(id).value.trim() !== ''; });
+    var obj = {
+      body: body,
+      sentences: sentences.map(function(s, i) { return { role: roles[i] || 'Extra', text: s }; }),
+      wordCount: countWords(body),
+      sentenceCount: sentences.length,
+      outsideNote: {
+        app: document.getElementById('note-app').value.trim(),
+        data: document.getElementById('note-data').value.trim(),
+        code: document.getElementById('note-code').value.trim(),
+        doi: document.getElementById('note-doi').value.trim(),
+        version: document.getElementById('note-version').value.trim(),
+        date: document.getElementById('note-date').value.trim(),
+        validationStatus: document.getElementById('note-validation').value.trim()
+      },
+      meta: {
+        created: new Date().toISOString(),
+        valid: isFullyValid(
+          countWords(body),
+          sentences,
+          checkHouseStyle(body, sentences),
+          notesFilled
+        ),
+        schemaVersion: '0.1'
+      }
+    };
+    downloadFile('e156-draft.json', JSON.stringify(obj, null, 2), 'application/json;charset=utf-8');
+  }
+
+  /* --- Export: Print View --- */
+  function printView() {
+    var details = document.getElementById('outside-note-toggle');
+    var wasOpen = details.open;
+    details.open = true;
+    var noteFields = ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'];
+    var allEmpty = noteFields.every(function(id) { return document.getElementById(id).value.trim() === ''; });
+    if (allEmpty) details.style.display = 'none';
+    window.print();
+    details.open = wasOpen;
+    details.style.display = '';
+  }
+
+  /* --- Wire Export Buttons --- */
+  document.getElementById('btn-copy').addEventListener('click', copyBody);
+  document.getElementById('btn-md').addEventListener('click', downloadMarkdown);
+  document.getElementById('btn-json').addEventListener('click', downloadJSON);
+  document.getElementById('btn-print').addEventListener('click', printView);
 
   /* --- Copy Prompt --- */
   document.querySelector('.copy-prompt').addEventListener('click', function() {
@@ -534,6 +707,7 @@ body {
 
   /* --- Init --- */
   initExamples();
+  loadDraft();
   if (window.location.hash === '#compose') {
     showWorkshop();
   }
