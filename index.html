@@ -322,6 +322,196 @@ body {
     window.location.hash = '';
   }
 
+  /* --- Validation Engine --- */
+  function countWords(text) {
+    if (!text || !text.trim()) return 0;
+    return text.trim().split(/\s+/).filter(Boolean).length;
+  }
+
+  var ABBREVIATIONS = [
+    'vs.', 'e.g.', 'i.e.', 'approx.',
+    'et al.', 'Fig.', 'No.', 'Dr.', 'Prof.',
+    'U.S.', 'U.K.'
+  ];
+
+  function splitSentences(text) {
+    if (!text || !text.trim()) return [];
+    var working = text.trim();
+
+    // Step 1: Replace abbreviations with placeholders
+    var abbrevMap = [];
+    ABBREVIATIONS.forEach(function(abbr, i) {
+      var placeholder = '\x00ABBR' + i + '\x00';
+      while (working.includes(abbr)) {
+        working = working.replace(abbr, placeholder);
+        abbrevMap.push({ placeholder: placeholder, abbr: abbr });
+      }
+    });
+
+    // Step 2: Replace decimal numbers (e.g., 0.85, 2.13)
+    var decimalMap = [];
+    working = working.replace(/(\d+)\.(\d+)/g, function(match) {
+      var placeholder = '\x00DEC' + decimalMap.length + '\x00';
+      decimalMap.push({ placeholder: placeholder, original: match });
+      return placeholder;
+    });
+
+    // Step 3: Match sentences (preserving trailing periods)
+    var raw = working.match(/[^]*?\.(?=\s|$|["\\)])/g);
+    if (!raw) return [working]; // no period found
+
+    // Check for trailing text after last period
+    var joined = raw.join('');
+    var remainder = working.slice(joined.length).trim();
+    var sentences = remainder ? raw.concat([remainder]) : raw;
+
+    // Step 4: Restore placeholders
+    var restored = sentences.map(function(s) {
+      var r = s;
+      decimalMap.forEach(function(d) {
+        while (r.includes(d.placeholder)) r = r.replace(d.placeholder, d.original);
+      });
+      abbrevMap.forEach(function(a) {
+        while (r.includes(a.placeholder)) r = r.replace(a.placeholder, a.abbr);
+      });
+      return r;
+    });
+
+    // Step 5: Trim and filter empty
+    return restored.map(function(s) { return s.trim(); }).filter(function(s) { return s.length > 0; });
+  }
+
+  /* --- House Style Checks --- */
+  var CAUSAL_WORDS = [
+    'caused', 'causes', 'prevents', 'leads to', 'due to',
+    'resulted in', 'results in', 'because of', 'protective effect',
+    'causal', 'proven to', 'proves'
+  ];
+
+  function checkHouseStyle(text, sentences) {
+    var checks = [];
+    checks.push({ label: 'No headings', pass: !/^#+\s/m.test(text) });
+    checks.push({ label: 'No links', pass: !/https?:\/\/|\[.*\]\(/.test(text) });
+    checks.push({ label: 'No citations', pass: !/\[\d+\]|\(\w+,?\s*\d{4}\)/.test(text) });
+    var s4 = sentences[3] || '';
+    var hasEstimate = /\d+\.?\d*/.test(s4) && /(CI|confidence interval|interval|\d+[\u2013\u2014-]\d+)/i.test(s4);
+    checks.push({ label: 'Result (S4) has estimate + interval', pass: hasEstimate });
+    checks.push({ label: 'Limitation (S7) present', pass: sentences.length >= 7 });
+    return checks;
+  }
+
+  function checkCausalLanguage(sentences) {
+    var s6 = (sentences[5] || '').toLowerCase();
+    return CAUSAL_WORDS.filter(function(w) {
+      var regex = new RegExp('\\b' + w.replace(/\s+/g, '\\s+') + '\\b', 'i');
+      return regex.test(s6);
+    });
+  }
+
+  /* --- Validate --- */
+  function isFullyValid(wordCount, sentences, styleChecks, notesFilled) {
+    return wordCount === 156
+      && sentences.length === 7
+      && styleChecks.every(function(c) { return c.pass; })
+      && notesFilled;
+  }
+
+  var validateTimer = null;
+
+  function validate() {
+    var text = document.getElementById('body-input').value;
+    var words = countWords(text);
+    var sentences = splitSentences(text);
+    var isEmpty = !text.trim();
+
+    // Word counter
+    var wc = document.getElementById('word-count');
+    wc.textContent = words;
+    wc.parentElement.className = 'counter word-counter ' + (words === 156 ? 'valid' : (isEmpty ? '' : 'invalid'));
+
+    // Sentence counter
+    var sc = document.getElementById('sentence-count');
+    sc.textContent = sentences.length;
+    sc.parentElement.className = 'counter sentence-counter ' + (sentences.length === 7 ? 'valid' : (isEmpty ? '' : 'invalid'));
+
+    // Sentence role map
+    var map = document.getElementById('sentence-map');
+    var roles = ['Question', 'Dataset', 'Method', 'Primary result', 'Robustness', 'Interpretation', 'Boundary'];
+    map.innerHTML = '';
+    sentences.forEach(function(s, i) {
+      var tag = document.createElement('span');
+      tag.className = 'role-tag';
+      tag.style.background = i < 7 ? '#f0ede8' : '#fce4ec';
+      tag.style.color = i < 7 ? '#666' : '#c62828';
+      tag.textContent = 'S' + (i + 1) + ': ' + (roles[i] || 'Extra');
+      tag.title = s.substring(0, 80) + (s.length > 80 ? '...' : '');
+      map.appendChild(tag);
+    });
+
+    // House style checks
+    var checks = checkHouseStyle(text, sentences);
+    var ul = document.getElementById('style-checks');
+    ul.innerHTML = '';
+    checks.forEach(function(c) {
+      var li = document.createElement('li');
+      li.className = c.pass ? 'pass' : 'fail';
+      li.textContent = c.label;
+      ul.appendChild(li);
+    });
+
+    // Causal language warning
+    var causalDiv = document.getElementById('causal-warning');
+    var causalFound = checkCausalLanguage(sentences);
+    if (causalFound.length > 0) {
+      causalDiv.textContent = 'Causal language detected in interpretation: "' + causalFound.join('", "') + '" \u2014 verify this is warranted by study design.';
+      causalDiv.classList.remove('hidden');
+    } else {
+      causalDiv.classList.add('hidden');
+    }
+
+    // Outside note block completeness
+    var noteFields = ['note-app', 'note-data', 'note-code', 'note-doi', 'note-version', 'note-date', 'note-validation'];
+    var notesFilled = noteFields.every(function(id) { return document.getElementById(id).value.trim() !== ''; });
+
+    // Shared validity check
+    var allChecksPassed = isFullyValid(words, sentences, checks, notesFilled);
+
+    // Status badge
+    var badge = document.getElementById('status-badge');
+    if (isEmpty) {
+      badge.className = 'status-badge empty';
+      badge.textContent = '';
+    } else if (allChecksPassed) {
+      badge.className = 'status-badge valid';
+      badge.textContent = 'VALID';
+    } else {
+      badge.className = 'status-badge draft';
+      badge.textContent = 'DRAFT';
+    }
+
+    // Enable/disable export buttons
+    var hasContent = !isEmpty;
+    document.getElementById('btn-copy').disabled = !hasContent;
+    document.getElementById('btn-md').disabled = !hasContent;
+    document.getElementById('btn-json').disabled = !hasContent;
+    document.getElementById('btn-print').disabled = !hasContent;
+    ['btn-copy', 'btn-md', 'btn-json', 'btn-print'].forEach(function(id) {
+      document.getElementById(id).title = hasContent ? '' : 'Write something first';
+    });
+  }
+
+  // Debounced input handler
+  document.getElementById('body-input').addEventListener('input', function() {
+    clearTimeout(validateTimer);
+    validateTimer = setTimeout(validate, 300);
+  });
+  document.querySelectorAll('.outside-note-fields input').forEach(function(el) {
+    el.addEventListener('input', function() {
+      clearTimeout(validateTimer);
+      validateTimer = setTimeout(validate, 300);
+    });
+  });
+
   /* --- Copy Prompt --- */
   document.querySelector('.copy-prompt').addEventListener('click', function() {
     var pre = this.closest('pre');
