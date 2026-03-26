@@ -688,13 +688,12 @@ body {
   /* --- Copy Prompt --- */
   document.querySelector('.copy-prompt').addEventListener('click', function() {
     var pre = this.closest('pre');
-    var text = pre.textContent.replace('Copy', '').trim();
+    var btn = pre.querySelector('.copy-prompt');
+    var text = pre.textContent.replace(btn.textContent, '').trim();
     navigator.clipboard.writeText(text).then(function() {
-      var toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = 'Prompt copied to clipboard';
-      document.body.appendChild(toast);
-      setTimeout(function() { toast.remove(); }, 2000);
+      showToast('Prompt copied.');
+    }).catch(function() {
+      showToast('Could not copy.');
     });
   });
 
@@ -711,6 +710,12 @@ body {
   if (window.location.hash === '#compose') {
     showWorkshop();
   }
+
+  /* --- Hash change listener (browser back/forward) --- */
+  window.addEventListener('hashchange', function() {
+    if (window.location.hash === '#compose') showWorkshop();
+    else showMagazine();
+  });
 })();
 </script>
 </body>
