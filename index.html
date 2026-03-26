@@ -101,14 +101,14 @@ body {
 .causal-warning {
   background: #fff3e0; border-left: 3px solid #e65100;
   padding: 8px 12px; margin: 12px 0; font-size: 0.85rem;
-  font-family: system-ui, sans-serif; color: #e65100;
+  font-family: system-ui, sans-serif; color: #bf360c;
 }
 .status-badge {
   display: inline-block; padding: 6px 16px; border-radius: 3px;
   font-size: 0.9rem; font-weight: 700; font-family: system-ui, sans-serif;
   margin-top: 16px;
 }
-.status-badge.empty { background: #eee; color: #999; }
+.status-badge.empty { background: #eee; color: #666; }
 .status-badge.draft { background: #fff3e0; color: #e65100; }
 .status-badge.valid { background: #e8f5e9; color: #2e7d32; }
 .toast {
@@ -392,9 +392,9 @@ body {
     var checks = [];
     checks.push({ label: 'No headings', pass: !/^#+\s/m.test(text) });
     checks.push({ label: 'No links', pass: !/https?:\/\/|\[.*\]\(/.test(text) });
-    checks.push({ label: 'No citations', pass: !/\[\d+\]|\(\w+,?\s*\d{4}\)/.test(text) });
+    checks.push({ label: 'No citations', pass: !/\[\d+\]|\([A-Z]\w+(?:\s+et\s+al\.?)?,?\s*\d{4}\)/.test(text) });
     var s4 = sentences[3] || '';
-    var hasEstimate = /\d+\.?\d*/.test(s4) && /(CI|confidence interval|interval|\d+[\u2013\u2014-]\d+)/i.test(s4);
+    var hasEstimate = /\d+\.?\d*/.test(s4) && /(CI|confidence interval|IQR|prediction interval|credible interval|\d+[\u2013\u2014-]\d+)/i.test(s4);
     checks.push({ label: 'Result (S4) has estimate + interval', pass: hasEstimate });
     checks.push({ label: 'Limitation (S7) present', pass: sentences.length >= 7 });
     return checks;
@@ -691,11 +691,15 @@ body {
     var pre = this.closest('pre');
     var btn = pre.querySelector('.copy-prompt');
     var text = pre.textContent.replace(btn.textContent, '').trim();
-    navigator.clipboard.writeText(text).then(function() {
-      showToast('Prompt copied.');
-    }).catch(function() {
-      showToast('Could not copy.');
-    });
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToast('Prompt copied.');
+      }).catch(function() {
+        fallbackCopy(text);
+      });
+    } else {
+      fallbackCopy(text);
+    }
   });
 
   /* --- Event Listeners --- */
