@@ -9,7 +9,7 @@ INSTRUCTIONS:
 - Run: python C:/E156/scripts/apply_rewrites.py          (validate)
 - Run: python C:/E156/scripts/apply_rewrites.py --apply (apply)
 
-Total projects: 325 (6 duplicate pairs deduplicated)
+Total projects: 337 (6 duplicate pairs deduplicated)
 
 ======================================================================
 
@@ -4871,4 +4871,195 @@ Can surrogate endpoint validation be embedded within network meta-analysis to pr
 YOUR REWRITE (at most 156 words, 7 sentences):
 
 Can surrogate validation be embedded within NMA to produce rankings adjusted for differential surrogate validity? We developed SurroNMA implementing trial-level validation using Daniels and Hughes bivariate meta-analysis, surrogate threshold estimation, and network ranking adjustment based on validation status. The tool assesses surrogate validity per comparison and adjusts rankings by down-weighting inadequately validated evidence. In oncology networks surrogate adjustment changed the top-ranked treatment in 2 of 5 scenarios, with largest shifts where PFS substituted for OS without adequate validation. Surrogate calibration reduced ranking uncertainty by mean 12 percentage points across validated comparisons as measured by SUCRA CI width. Surrogate-validated NMA could improve ranking reliability where regulatory approvals rely on surrogate endpoints. The approach requires per-comparison validation data not available for all network edges.
+
+======================================================================
+
+[332/337] Reversal-CAST
+TITLE: When Certainty Kills: The CAST Trial and 50,000 Deaths from Surrogate Endpoint Reliance
+TYPE: clinical  |  ESTIMAND: Relative risk of death with anti-arrhythmic drugs vs placebo
+DATA: CAST trial: 1,498 post-MI patients randomised to encainide, flecainide, or placebo (1989)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (155 words):
+How many patients died because anti-arrhythmic drugs were prescribed based on surrogate endpoint logic rather than randomised mortality evidence? The CAST trial randomised 1,498 post-myocardial infarction patients with premature ventricular contractions to encainide, flecainide, or placebo between 1987 and 1989. The trial tested the biological hypothesis that suppressing PVCs on electrocardiogram monitoring would prevent sudden cardiac death. The Data Safety Monitoring Board stopped the trial early when 56 deaths occurred in 755 drug-treated patients versus 22 deaths in 743 placebo patients, yielding a relative risk of death of 2.5 (95% CI 1.6 to 4.5, p less than 0.001). The drugs perfectly suppressed the surrogate endpoint while increasing the patient-important outcome by 150 percent. An estimated 50,000 Americans died from these drugs before the trial revealed that biological plausibility is not proof of clinical benefit. The CAST reversal cannot be detected by observational data alone because confounding by indication masks the true causal effect of treatment.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+How many patients died because anti-arrhythmic drugs were prescribed based on surrogate endpoint logic rather than randomised evidence? The CAST trial randomised 1,498 post-MI patients with premature ventricular contractions to encainide, flecainide, or placebo. The trial tested whether suppressing PVCs on ECG monitoring would prevent sudden cardiac death. The DSMB stopped the trial when 56 deaths occurred in 755 drug patients versus 22 in 743 placebo patients, giving a relative risk of 2.5 (95% CI 1.6 to 4.5). The drugs perfectly suppressed the surrogate while increasing mortality by 150 percent. An estimated 50,000 Americans died from these drugs before the trial revealed that biological plausibility is not proof of benefit. This reversal cannot be detected by observational data alone because confounding by indication masks the true causal effect.
+
+
+======================================================================
+
+[333/337] Reversal-HRT-WHI
+TITLE: The WHI Reversal: How Confounding Created a 40-Year Illusion of Cardiac Protection from Hormone Therapy
+TYPE: clinical  |  ESTIMAND: Hazard ratio for cardiovascular events with HRT vs placebo
+DATA: WHI trial: 16,608 postmenopausal women randomised to HRT or placebo (2002)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (157 words):
+How did four decades of observational evidence showing 50 percent cardiac protection from hormone replacement therapy collapse when a single randomised trial was conducted? The Women Health Initiative randomised 16,608 postmenopausal women to combined estrogen-progesterone or placebo, contradicting 40 years of cohort studies that had observed fewer heart attacks among HRT users. The trial measured cardiovascular events, stroke, breast cancer, and mortality as co-primary endpoints. HRT increased heart attacks by 29 percent, strokes by 41 percent, and breast cancer by 26 percent, reversing the direction of the observational evidence entirely. The explanation was confounding by indication: healthier women self-selected for HRT in observational studies, creating an illusion of cardiovascular protection that persisted across multiple cohorts and decades. Two million American women had been taking HRT specifically for heart protection based on evidence that was entirely confounded. The WHI reversal demonstrates that even consistent observational findings across multiple studies cannot establish causation when unmeasured confounders drive the association.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+How did four decades of observational evidence showing cardiac protection from HRT collapse when a randomised trial was conducted? The WHI randomised 16,608 postmenopausal women to combined estrogen-progesterone or placebo, contradicting cohort studies observing fewer heart attacks among HRT users. The trial measured cardiovascular events, stroke, breast cancer, and mortality as co-primary endpoints. HRT increased heart attacks by 29 percent, strokes by 41 percent, and breast cancer by 26 percent, entirely reversing the observational evidence. Healthier women had self-selected for HRT in cohort studies, creating an illusion of cardiovascular protection that persisted across decades. Two million American women had been taking HRT for heart protection based on entirely confounded evidence. Even consistent observational findings across multiple studies cannot establish causation when unmeasured confounders drive the association.
+
+
+======================================================================
+
+[334/337] Reversal-DECREASE
+TITLE: The DECREASE Fraud: 800,000 Deaths from Fabricated Evidence for Perioperative Beta-Blockers
+TYPE: clinical  |  ESTIMAND: Estimated excess mortality from fraudulent guideline recommendations
+DATA: 15 DECREASE trials by Don Poldermans; ESC/ACC perioperative guidelines (1999-2011)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (168 words):
+How many patients died because international guidelines recommended perioperative beta-blockers based on evidence that was later found to be fabricated by a single researcher? Don Poldermans published 15 DECREASE trials between 1999 and 2011 that formed the primary evidence base for European and American guidelines recommending beta-blockers before non-cardiac surgery. The trials reported consistent benefits of perioperative beta-blockade for preventing myocardial infarction, and guidelines graded the recommendation as strong with high certainty. Investigation in 2011 revealed fabricated patients, forged consent forms, and impossible data patterns across the trial series, leading to retraction and Poldermans dismissal from Erasmus Medical Centre. When the fraudulent studies were removed from meta-analyses, the pooled effect reversed direction, suggesting beta-blockers may have caused rather than prevented perioperative cardiac events. An estimated 800,000 patients died over a decade from following guidelines built on fabricated evidence from a single unreplicated source. Peer review and meta-analytic pooling cannot detect data fabrication, and concentration of evidence from one research group represents a critical vulnerability in the evidence ecosystem.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+How many patients died because guidelines recommended perioperative beta-blockers based on fabricated evidence? Don Poldermans published 15 DECREASE trials forming the primary evidence for European and American guidelines recommending beta-blockers before non-cardiac surgery. Guidelines graded the recommendation as strong with high certainty based on consistent reported benefits. Investigation in 2011 revealed fabricated patients, forged consent, and impossible data, leading to retraction and dismissal from Erasmus Medical Centre. When fraudulent studies were removed from meta-analyses the pooled effect reversed, suggesting beta-blockers may have caused rather than prevented events. An estimated 800,000 patients died over a decade from following guidelines built on a single unreplicated source. Peer review and meta-analytic pooling cannot detect fabrication, and evidence concentration from one group is a critical vulnerability.
+
+
+======================================================================
+
+[335/337] Reversal-Magnesium-ISIS4
+TITLE: Magnesium in Myocardial Infarction: When Seven Consistent Small Trials Were Contradicted by One Mega-Trial
+TYPE: clinical  |  ESTIMAND: Odds ratio for mortality with IV magnesium vs control in MI
+DATA: 7 small trials (1,301 patients) vs ISIS-4 mega-trial (58,050 patients)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (172 words):
+Can a meta-analysis of seven consistent small trials showing 56 percent mortality reduction be trusted when a subsequent mega-trial finds no effect whatsoever? Seven small randomised trials totalling 1,301 patients consistently showed that intravenous magnesium reduced mortality in myocardial infarction, producing a pooled odds ratio of 0.44 (95% CI 0.27 to 0.71). The ISIS-4 mega-trial then randomised 58,050 patients and found an odds ratio of 1.06 (95% CI 0.99 to 1.13), completely contradicting the prior meta-analysis. A Bayesian synthesis combining the prior evidence with the mega-trial likelihood produced a posterior odds ratio of approximately 0.93 (95% CI 0.79 to 1.09), reflecting genuine tension between the two evidence sources. The seven small trials likely shared common biases including publication bias and methodological limitations that inflated the treatment effect consistently across studies. This case demonstrates that consistency among small trials does not guarantee truth when all trials share the same systematic biases. The Bayesian posterior appropriately down-weights the prior when the mega-trial likelihood is strongly informative, but cannot determine which evidence source was biased.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+Can a meta-analysis of seven consistent small trials be trusted when a mega-trial finds no effect? Seven small trials totalling 1,301 patients showed IV magnesium reduced MI mortality with a pooled odds ratio of 0.44 (95% CI 0.27 to 0.71). ISIS-4 then randomised 58,050 patients and found an odds ratio of 1.06 (95% CI 0.99 to 1.13), completely contradicting the meta-analysis. Bayesian synthesis produced a posterior of approximately 0.93 (95% CI 0.79 to 1.09), reflecting genuine tension between sources. The seven small trials likely shared common biases that inflated the effect consistently. Consistency among small trials does not guarantee truth when all share the same systematic biases. The Bayesian approach appropriately weights the evidence but cannot determine which source was biased.
+
+
+======================================================================
+
+[336/337] Reversal-Aprotinin-BART
+TITLE: Aprotinin and the BART Trial: 15,000 Deaths from Ignoring Confounded Observational Evidence
+TYPE: clinical  |  ESTIMAND: Relative risk of mortality with aprotinin in cardiac surgery
+DATA: BART trial (2007) and prior observational and RCT evidence (1993-2007)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (166 words):
+How many patients died because aprotinin was used for 14 years in cardiac surgery based on confounded observational evidence while safety concerns were dismissed? Aprotinin was widely used from 1993 to reduce bleeding in cardiac surgery based on early studies suggesting efficacy, but observational evidence had severe confounding because sicker patients received the drug more often. The BART trial in 2007 demonstrated that aprotinin increased mortality compared to alternative antifibrinolytics, leading to withdrawal of the drug from the market. Prior randomised trials had been individually underpowered to detect the mortality signal because they were designed for bleeding outcomes rather than safety endpoints. An estimated 15,000 to 22,000 excess deaths occurred during the period when aprotinin was used despite accumulating safety concerns that were not adequately addressed. Early methodological scrutiny of the confounded observational evidence and adequately powered safety trials could have prevented a decade of avoidable harm. The case illustrates that trials powered for efficacy endpoints may systematically miss safety signals requiring much larger sample sizes.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+How many patients died because aprotinin was used for 14 years based on confounded evidence while safety concerns were dismissed? Aprotinin was widely used from 1993 to reduce cardiac surgery bleeding, but observational evidence was confounded because sicker patients received the drug more often. The BART trial in 2007 showed aprotinin increased mortality, leading to market withdrawal. Prior RCTs were individually underpowered to detect the mortality signal because they were designed for bleeding outcomes. An estimated 15,000 to 22,000 excess deaths occurred during the period of use despite accumulating concerns. Early methodological scrutiny and adequately powered safety trials could have prevented a decade of avoidable harm. Trials powered for efficacy may systematically miss safety signals requiring much larger samples.
+
+
+======================================================================
+
+[337/337] Reversal-Vioxx-VIGOR
+TITLE: Vioxx and the VIGOR Trial: Selective Reporting, Hidden Heart Attacks, and the Post-Hoc Data Cutoff
+TYPE: clinical  |  ESTIMAND: Relative risk of myocardial infarction with rofecoxib vs naproxen
+DATA: VIGOR trial: 8,076 patients with rheumatoid arthritis (Merck, 2000)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (169 words):
+Can post-hoc changes to analysis timepoints hide safety signals in randomised trial publications, and how many heart attacks resulted from selective reporting of the Vioxx data? The VIGOR trial randomised 8,076 rheumatoid arthritis patients to rofecoxib or naproxen, and the NEJM publication reported a fourfold increase in myocardial infarction with Vioxx. Three additional heart attacks occurred in the Vioxx group after the chosen data cutoff date, and Merck scientists were aware of these events before publication but selected the cutoff that excluded them. Including the post-cutoff events would have shown an even more alarming cardiovascular risk profile than the published fourfold increase. The NEJM later published an expression of concern calling the original paper inaccurate and incomplete, and Vioxx was withdrawn in 2004 after tens of thousands of patients suffered cardiovascular events. Selective reporting through post-hoc analysis timepoint selection represents a form of bias that cannot be detected from the published paper alone. Pre-registration of analysis plans and independent data monitoring could prevent post-hoc cutoff manipulation in future trials.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+Can post-hoc analysis timepoint changes hide safety signals, and how many heart attacks resulted from selective Vioxx reporting? The VIGOR trial randomised 8,076 RA patients to rofecoxib or naproxen, with the NEJM publication reporting a fourfold increase in MI with Vioxx. Three additional heart attacks in the Vioxx group after the data cutoff were known to Merck but excluded by the chosen analysis timepoint. Including post-cutoff events would have shown even more alarming cardiovascular risk than the published fourfold increase. The NEJM published an expression of concern calling the paper inaccurate and incomplete; Vioxx was withdrawn in 2004 after tens of thousands suffered events. Selective reporting through post-hoc timepoint selection cannot be detected from the published paper alone. Pre-registration of analysis plans could prevent cutoff manipulation in future trials.
+
+
+======================================================================
+
+[338/337] Reversal-Rosiglitazone-RECORD
+TITLE: Rosiglitazone and RECORD: When a Safety Study Was Designed to Miss the Safety Signal
+TYPE: clinical  |  ESTIMAND: Odds ratio for myocardial infarction with rosiglitazone vs control
+DATA: RECORD trial (4,447 patients) and Nissen meta-analysis (2007)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (166 words):
+Can a cardiovascular safety trial be designed in a way that systematically underdetects the very events it is supposed to measure? Nissen meta-analysis showed rosiglitazone increased heart attacks with an odds ratio of 1.43 (95% CI 1.03 to 1.98), while the RECORD trial of 4,447 diabetes patients concluded rosiglitazone did not significantly increase cardiovascular risk. FDA re-analysis revealed that 35 percent of potential cardiovascular events in RECORD were not properly evaluated, with some events classified as non-cardiac when medical records suggested otherwise. The FDA estimated 83,000 excess heart attacks occurred between 1999 and 2007 from rosiglitazone prescribing based on incomplete safety evidence. Company adjudication of cardiovascular outcomes systematically underdetected the signal that independent meta-analysis had identified. A safety study designed and adjudicated by the company selling the drug has structural conflicts that can render the study incapable of detecting the harm it claims to measure. Independent outcome adjudication and pre-specified event definitions are essential safeguards when the sponsor has financial interest in a favourable safety profile.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+Can a cardiovascular safety trial be designed to systematically underdetect the events it should measure? Nissen meta-analysis showed rosiglitazone increased heart attacks with odds ratio 1.43 (95% CI 1.03 to 1.98), while RECORD concluded no significant cardiovascular risk increase. FDA re-analysis revealed 35 percent of potential events in RECORD were not properly evaluated, with some classified as non-cardiac despite contradicting records. The FDA estimated 83,000 excess heart attacks between 1999 and 2007 from rosiglitazone prescribing. Company adjudication systematically underdetected the signal that independent meta-analysis had identified. A safety study designed and adjudicated by the sponsor has structural conflicts rendering it incapable of detecting harm. Independent adjudication and pre-specified event definitions are essential when sponsors have financial interest in favourable profiles.
+
+
+======================================================================
+
+[339/337] Reversal-ACCORD
+TITLE: ACCORD: When Tighter Glucose Control Killed More Patients Than It Saved
+TYPE: clinical  |  ESTIMAND: Hazard ratio for mortality with intensive vs standard glucose control
+DATA: ACCORD trial: 10,251 type 2 diabetes patients (2008, stopped early for harm)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (160 words):
+Does tighter blood glucose control prevent cardiovascular death in type 2 diabetes, or can aggressive surrogate endpoint management cause more harm than benefit? The ACCORD trial randomised 10,251 type 2 diabetes patients to intensive glucose control targeting HbA1c below 6.0 percent or standard control targeting 7.0 to 7.9 percent. The trial was designed to test the biologically plausible hypothesis that lower glucose levels would reduce cardiovascular events. The Data Safety Monitoring Board stopped the intensive arm in February 2008 when 257 excess deaths were observed, representing a 22 percent increase in mortality with tighter glucose control. The surrogate endpoint improved as intended while the patient-important outcome worsened, exactly paralleling the CAST trial pattern of surrogate-outcome dissociation. Aggressive treatment of surrogate endpoints based on biological plausibility can cause harm when the surrogate mechanism does not capture the full pharmacological effect on mortality. The trial demonstrates that certainty based on mechanism alone is insufficient and that patient-important outcomes must be measured directly.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+Does tighter glucose control prevent cardiovascular death, or can aggressive surrogate management cause harm? ACCORD randomised 10,251 type 2 diabetes patients to intensive control targeting HbA1c below 6.0 percent or standard control targeting 7.0 to 7.9 percent. The trial tested the biologically plausible hypothesis that lower glucose would reduce cardiovascular events. The DSMB stopped the intensive arm when 257 excess deaths occurred, a 22 percent increase in mortality with tighter control. The surrogate improved while mortality worsened, paralleling the CAST pattern of surrogate-outcome dissociation. Aggressive surrogate treatment based on biological plausibility can cause harm when the mechanism does not capture full pharmacological effects. Certainty based on mechanism alone is insufficient and patient-important outcomes must be measured directly.
+
+
+======================================================================
+
+[340/337] Reversal-Knee-Arthroscopy
+TITLE: Knee Arthroscopy for Osteoarthritis: A $3 Billion Placebo Unmasked by Sham Surgery Trials
+TYPE: clinical  |  ESTIMAND: Mean difference in pain and function scores between real and sham arthroscopy
+DATA: Sham surgery RCTs for knee osteoarthritis arthroscopy (2002-2008)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (169 words):
+Can expert surgical experience distinguish real treatment effects from placebo when 700,000 patients per year undergo a procedure that sham surgery trials proved ineffective? Sham surgery randomised trials compared real knee arthroscopy for osteoarthritis against fake procedures where patients received skin incisions but no intra-articular intervention under the same anaesthetic conditions. The trials measured pain scores, functional outcomes, and patient satisfaction at multiple follow-up timepoints. Patients improved equally whether they received real arthroscopy or the sham procedure, with no statistically significant difference in any outcome measure across multiple independent trials. The findings achieved GRADE high certainty given well-designed RCTs with consistent results measuring direct patient-important outcomes. Prior to the sham trials, 700,000 Americans underwent knee arthroscopy annually at a cost of 3 billion dollars per year, and surgeons consistently reported observing patient improvement after the procedure. Uncontrolled clinical observation cannot detect placebo effects regardless of the observer expertise or consistency of reported improvement. Insurance coverage and guideline recommendations persisted for years after the sham trial evidence reached high certainty.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+Can expert surgical experience distinguish treatment effects from placebo when 700,000 patients annually undergo a procedure sham trials proved ineffective? Sham surgery trials compared real knee arthroscopy against fake procedures with skin incisions but no intra-articular intervention. The trials measured pain, function, and satisfaction at multiple timepoints. Patients improved equally with real or sham arthroscopy, with no significant difference in any outcome across independent trials. Findings achieved GRADE high certainty from well-designed RCTs with consistent direct outcomes. Before the trials, 700,000 Americans underwent arthroscopy annually at 3 billion dollars, and surgeons consistently reported observing improvement. Uncontrolled observation cannot detect placebo effects regardless of expertise, and guidelines persisted years after high-certainty evidence.
+
+
+======================================================================
+
+[341/337] Reversal-Paroxetine-Study329
+TITLE: Study 329 and Paroxetine: How Ghost-Written Publications Manufactured Evidence for an Ineffective Drug
+TYPE: clinical  |  ESTIMAND: Efficacy of paroxetine vs placebo for adolescent depression
+DATA: Study 329 (GSK) and unpublished GSK trials; FDA regulatory data
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (183 words):
+How did a ghost-written publication create the illusion that paroxetine was effective for adolescent depression when the actual trial data showed it was no better than placebo and increased suicidal behaviour? Study 329, published in the Journal of the American Academy of Child and Adolescent Psychiatry, concluded paroxetine was generally well tolerated and effective for adolescent depression based on post-hoc outcome switching and selective reporting. The actual trial data showed paroxetine was not superior to placebo on any pre-specified primary endpoint, and the drug increased suicidal behaviour in treated adolescents. GSK conducted additional negative trials that were never published, creating a publication landscape where 94 percent of visible evidence appeared positive compared with 51 percent in the full FDA dataset. The publication was ghost-written by a medical communications company rather than the named academic authors, representing manufactured rather than passive publication bias. Thousands of adolescents were exposed to an ineffective and harmful drug based on a publication record that deliberately concealed negative findings. Funnel plots and statistical tests for publication bias cannot detect bias that is actively manufactured through ghost-writing and strategic non-publication.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+How did a ghost-written publication create the illusion that paroxetine worked for adolescent depression when trial data showed otherwise? Study 329 concluded paroxetine was effective based on post-hoc outcome switching and selective reporting. Actual trial data showed paroxetine was not superior to placebo on any pre-specified endpoint and increased suicidal behaviour. GSK conducted additional negative trials never published, creating a landscape where 94 percent of visible evidence appeared positive versus 51 percent in full FDA data. The publication was ghost-written by a communications company rather than named academic authors, representing manufactured publication bias. Thousands of adolescents received an ineffective harmful drug based on deliberately concealed findings. Statistical tests for publication bias cannot detect bias actively manufactured through ghost-writing and strategic non-publication.
+
+
+======================================================================
+
+[342/337] Reversal-Reboxetine
+TITLE: Reboxetine: The Antidepressant Where 74 Percent of Patient Data Was Hidden from Publication
+TYPE: clinical  |  ESTIMAND: Treatment effect of reboxetine vs placebo when all trial data included
+DATA: All clinical trials of reboxetine: published (26%) vs unpublished (74%)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (181 words):
+What happens to a drug efficacy conclusion when 74 percent of the patient data from clinical trials was never published and the visible literature represents only a curated subset? Published trials of the antidepressant reboxetine showed the drug was effective, leading to regulatory approval and widespread prescribing based on what appeared to be adequate evidence of benefit. When investigators obtained access to the complete trial database through freedom of information requests, they discovered that 74 percent of all patient data had never been published. Combining published and unpublished data revealed reboxetine was no better than placebo for depression and caused more side effects than other antidepressants, placing it at the bottom of the Cipriani 2018 network meta-analysis ranking. The published literature had created what investigators described as a complete fiction, where the visible evidence consistently supported efficacy because negative results were systematically withheld. Regulatory approval based on selective publication exposes patients to drugs that would not survive scrutiny if all data were available. Freedom of information requests remain the primary mechanism for accessing unpublished trial data that may contradict published conclusions.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+What happens to efficacy conclusions when 74 percent of patient data was never published? Published trials of reboxetine showed the drug was effective, leading to regulatory approval and widespread prescribing. When investigators obtained the complete trial database through freedom of information requests, 74 percent of patient data had never been published. Combining all data revealed reboxetine was no better than placebo and caused more side effects, placing it at the bottom of the Cipriani 2018 network ranking. The published literature had created a complete fiction where visible evidence consistently supported efficacy because negative results were withheld. Regulatory approval based on selective publication exposes patients to drugs that would not survive full data scrutiny. Freedom of information requests remain the primary mechanism for accessing unpublished trial data.
+
+
+======================================================================
+
+[343/337] Reversal-Albumin-SAFE
+TITLE: Albumin in Critical Care: When 28 Consistent Small Trials Showed 68 Percent Harm That a Mega-Trial Disproved
+TYPE: clinical  |  ESTIMAND: Relative risk of mortality with albumin vs saline in critical illness
+DATA: 28 Cochrane trials (1998 meta-analysis) vs SAFE trial (6,997 patients, 2004)
+PATH: C:\Projects\Fatiha-Course
+
+CURRENT BODY (184 words):
+Can a meta-analysis of 28 consistent small trials showing 68 percent increased mortality be entirely wrong, and what does this reveal about the reliability of pooled evidence from underpowered studies? A 1998 Cochrane meta-analysis pooled 28 small trials and found albumin increased mortality in critically ill patients with a relative risk of 1.68, prompting headlines and near-banning by the NHS. The SAFE trial then randomised 6,997 patients and found albumin was equivalent to saline with a relative risk of 1.0, completely contradicting the prior meta-analysis. The 28 small trials shared common methodological limitations including tiny sample sizes, many under 50 patients, spanning different populations and decades, with heterogeneity near zero as an artifact of random variation rather than genuine consistency. Low I-squared in the prior meta-analysis was misleading because consistency among underpowered trials sharing the same biases does not indicate that the pooled effect is correct. A single large high-quality trial overturned the entire body of small-trial evidence because it was powered to detect the true effect. Consistency and low heterogeneity do not guarantee truth when all contributing studies share the same systematic limitations.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+Can a meta-analysis of 28 consistent small trials showing 68 percent harm be entirely wrong? A 1998 Cochrane meta-analysis pooled 28 trials finding albumin increased mortality in critical illness with relative risk 1.68, prompting near-banning by the NHS. The SAFE trial randomised 6,997 patients and found albumin equivalent to saline with relative risk 1.0, completely contradicting the meta-analysis. The 28 trials shared limitations including tiny samples under 50 patients, spanning different populations, with near-zero heterogeneity as an artifact. Low I-squared was misleading because consistency among underpowered trials sharing biases does not indicate correct pooling. A single large trial overturned the entire small-trial evidence base. Consistency and low heterogeneity do not guarantee truth when studies share the same systematic limitations.
 

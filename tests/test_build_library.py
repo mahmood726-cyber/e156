@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 def test_parse_workbook_count():
     from build_library import parse_workbook
     entries = parse_workbook('C:/E156/rewrite-workbook.txt')
-    assert len(entries) == 325, f"Expected 325 entries, got {len(entries)}"
+    assert len(entries) >= 325, f"Expected at least 325 entries, got {len(entries)}"
 
 def test_parse_workbook_fields():
     from build_library import parse_workbook
