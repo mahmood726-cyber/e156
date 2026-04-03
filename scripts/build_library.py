@@ -249,7 +249,7 @@ def build(workbook_path=None, template_path=None, output_path=None):
     if os.path.isfile(template_path):
         with open(template_path, 'r', encoding='utf-8') as f:
             template = f.read()
-        output = template.replace('/* __E156_DATA_PLACEHOLDER__ */', js_data)
+        output = template.replace('/* __E156_DATA__ */', js_data)
     else:
         # Minimal fallback if no template exists yet
         output = f"<script>\n{js_data}\n</script>"
