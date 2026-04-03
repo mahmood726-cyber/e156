@@ -226,7 +226,7 @@ def entries_to_js(entries):
     # CRITICAL: escape </script> inside template literals / JS strings
     # HTML parser closes script block prematurely even inside JS
     json_str = json_str.replace('</script>', "${'<'}/script>")
-    return f"const E156_LIBRARY = {json_str};"
+    return f"const E156_DATA = {json_str};"
 
 
 def build(workbook_path=None, template_path=None, output_path=None):
