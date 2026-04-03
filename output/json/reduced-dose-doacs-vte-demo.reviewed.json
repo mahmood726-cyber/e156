@@ -1,0 +1,223 @@
+{
+  "title": "Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention",
+  "summary": "A sample E156 batch row showing the frozen body plus the richer HTML evidence layer.",
+  "type": "pairwise",
+  "primary_estimand": "Risk ratio for major bleeding",
+  "study_count": 3,
+  "participant_count": 8615,
+  "version": "0.1.0",
+  "date": "2026-03-26",
+  "certainty": "moderate",
+  "app": "Interactive HTML bundle",
+  "data": "Embedded summary rows in this demo JSON",
+  "code": "Local generation via scripts/build_e156_batch.py",
+  "doi": "Pending demo DOI",
+  "protocol": "Not included in this abstract-level demo",
+  "source_article": "https://pubmed.ncbi.nlm.nih.gov/41210567/",
+  "body": "In adults receiving extended anticoagulation after venous thromboembolism, do reduced-dose direct oral anticoagulants preserve efficacy while lowering bleeding versus full-dose therapy? Three randomized trials with 8,615 participants compared reduced-dose and full-dose direct oral anticoagulants for secondary prevention. Investigators systematically searched major databases through March 20, 2025 and pooled trial outcomes as risk ratios with 95% confidence intervals. Reduced-dose therapy lowered major bleeding, with pooled risk ratio 0.49 and 95% confidence interval 0.29 to 0.81. Clinically relevant nonmajor bleeding and all-cause mortality also favored dose reduction, while recurrent venous thromboembolism, pulmonary embolism outcomes, and deep vein thrombosis recurrence remained statistically similar. These findings support reduced-dose regimens as a reasonable long-term option when bleeding avoidance is a clinical priority after initial treatment in routine practice settings. Confidence is limited by only three trials, sparse fatal event counts, and the need for longer follow-up to confirm durability across patient subgroups and to define which patients can safely de-intensify therapy.",
+  "validation": {
+    "status": "pass",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a confidence interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "primary_plot": {
+    "reference": 1,
+    "caption": "Demo forest-style plot based on three illustrative rows and the pooled estimate carried in the micro-paper body.",
+    "pooled": {
+      "label": "Pooled",
+      "effect": 0.49,
+      "lower": 0.29,
+      "upper": 0.81
+    }
+  },
+  "studies": [
+    {
+      "label": "Illustrative trial A",
+      "effect": 0.63,
+      "lower": 0.33,
+      "upper": 1.19,
+      "weight": "33%"
+    },
+    {
+      "label": "Illustrative trial B",
+      "effect": 0.51,
+      "lower": 0.24,
+      "upper": 1.07,
+      "weight": "31%"
+    },
+    {
+      "label": "Illustrative trial C",
+      "effect": 0.34,
+      "lower": 0.12,
+      "upper": 0.94,
+      "weight": "36%"
+    }
+  ],
+  "journal_wrapper": "demo",
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "In adults receiving extended anticoagulation after venous thromboembolism, do reduced-dose direct oral anticoagulants preserve efficacy while lowering bleeding versus full-dose therapy?"
+    },
+    {
+      "role": "Dataset",
+      "text": "Three randomized trials with 8,615 participants compared reduced-dose and full-dose direct oral anticoagulants for secondary prevention."
+    },
+    {
+      "role": "Method",
+      "text": "Investigators systematically searched major databases through March 20, 2025 and pooled trial outcomes as risk ratios with 95% confidence intervals."
+    },
+    {
+      "role": "Primary result",
+      "text": "Reduced-dose therapy lowered major bleeding, with pooled risk ratio 0.49 and 95% confidence interval 0.29 to 0.81."
+    },
+    {
+      "role": "Robustness",
+      "text": "Clinically relevant nonmajor bleeding and all-cause mortality also favored dose reduction, while recurrent venous thromboembolism, pulmonary embolism outcomes, and deep vein thrombosis recurrence remained statistically similar."
+    },
+    {
+      "role": "Interpretation",
+      "text": "These findings support reduced-dose regimens as a reasonable long-term option when bleeding avoidance is a clinical priority after initial treatment in routine practice settings."
+    },
+    {
+      "role": "Boundary",
+      "text": "Confidence is limited by only three trials, sparse fatal event counts, and the need for longer follow-up to confirm durability across patient subgroups and to define which patients can safely de-intensify therapy."
+    }
+  ],
+  "review": {
+    "article_slug": "reduced-dose-doacs-vte-demo",
+    "reviewed_at": "2026-03-26",
+    "article_title": "Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention",
+    "personas": {
+      "clinician": {
+        "focus": "practical clarity",
+        "reviewer_id": "clinical-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass",
+        "notes": "The question, treatment contrast, and practical takeaway are clear at the bedside level.",
+        "required_actions": []
+      },
+      "statistician": {
+        "focus": "numerical honesty",
+        "reviewer_id": "stats-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass",
+        "notes": "The body names the pooled risk ratio and confidence interval directly and keeps the claim within the reported evidence.",
+        "required_actions": []
+      },
+      "methods_editor": {
+        "focus": "structure discipline",
+        "reviewer_id": "methods-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass",
+        "notes": "All seven sentence roles are preserved and the boundary sentence functions as an explicit limitation.",
+        "required_actions": []
+      },
+      "skeptic": {
+        "focus": "overclaim and causality check",
+        "reviewer_id": "skeptic-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass",
+        "notes": "Interpretation is restrained and does not claim superiority beyond the pooled outcomes and follow-up described.",
+        "required_actions": []
+      },
+      "reader": {
+        "focus": "flow and readability",
+        "reviewer_id": "reader-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass",
+        "notes": "The paragraph reads cleanly in sequence, though the illustrative study rows belong outside the frozen body as they do here.",
+        "required_actions": []
+      }
+    }
+  },
+  "review_summary": {
+    "ok": true,
+    "gate": "pass",
+    "missing_personas": [],
+    "invalid_personas": [],
+    "empty_notes": [],
+    "missing_reviewer_ids": [],
+    "missing_signed_at": [],
+    "missing_reviewed_at": false,
+    "reviewed_at": "2026-03-26",
+    "verdict_counts": {
+      "pass": 5,
+      "revise": 0,
+      "block": 0
+    },
+    "required_actions": [],
+    "reviewer_signoffs": [
+      {
+        "persona": "clinician",
+        "reviewer_id": "clinical-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass"
+      },
+      {
+        "persona": "statistician",
+        "reviewer_id": "stats-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass"
+      },
+      {
+        "persona": "methods_editor",
+        "reviewer_id": "methods-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass"
+      },
+      {
+        "persona": "skeptic",
+        "reviewer_id": "skeptic-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass"
+      },
+      {
+        "persona": "reader",
+        "reviewer_id": "reader-desk",
+        "signed_at": "2026-03-26",
+        "verdict": "pass"
+      }
+    ]
+  }
+}

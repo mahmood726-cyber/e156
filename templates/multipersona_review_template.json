@@ -1,0 +1,46 @@
+{
+  "article_slug": "",
+  "reviewed_at": "",
+  "personas": {
+    "clinician": {
+      "focus": "practical clarity",
+      "reviewer_id": "",
+      "signed_at": "",
+      "verdict": "pass",
+      "notes": "",
+      "required_actions": []
+    },
+    "statistician": {
+      "focus": "numerical honesty",
+      "reviewer_id": "",
+      "signed_at": "",
+      "verdict": "pass",
+      "notes": "",
+      "required_actions": []
+    },
+    "methods_editor": {
+      "focus": "structure discipline",
+      "reviewer_id": "",
+      "signed_at": "",
+      "verdict": "pass",
+      "notes": "",
+      "required_actions": []
+    },
+    "skeptic": {
+      "focus": "overclaim and causality check",
+      "reviewer_id": "",
+      "signed_at": "",
+      "verdict": "pass",
+      "notes": "",
+      "required_actions": []
+    },
+    "reader": {
+      "focus": "flow and readability",
+      "reviewer_id": "",
+      "signed_at": "",
+      "verdict": "pass",
+      "notes": "",
+      "required_actions": []
+    }
+  }
+}

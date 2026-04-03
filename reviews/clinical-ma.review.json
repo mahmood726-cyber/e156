@@ -1,0 +1,48 @@
+{
+  "article_slug": "clinical-ma",
+  "reviewed_at": "2026-03-28",
+  "personas": {
+    "clinician": {
+      "focus": "practical clarity",
+      "reviewer_id": "clinical-desk",
+      "signed_at": "2026-03-28",
+      "verdict": "pass",
+      "notes": "The treatment contrast, composite endpoint, and bedside implication are clear enough for a clinician reading the body alone.",
+      "required_actions": []
+    },
+    "statistician": {
+      "focus": "numerical honesty",
+      "reviewer_id": "stats-desk",
+      "signed_at": "2026-03-28",
+      "verdict": "pass",
+      "notes": "The pooled hazard ratio, confidence interval, and heterogeneity term are stated directly, and the interpretation stays within the reported composite outcome.",
+      "required_actions": []
+    },
+    "methods_editor": {
+      "focus": "structure discipline",
+      "reviewer_id": "methods-desk",
+      "signed_at": "2026-03-28",
+      "verdict": "pass",
+      "notes": "All seven sentence roles are preserved, with the subgroup note in sentence four and the subclass caution kept in the boundary sentence.",
+      "required_actions": []
+    },
+    "skeptic": {
+      "focus": "overclaim and causality check",
+      "reviewer_id": "skeptic-desk",
+      "signed_at": "2026-03-28",
+      "verdict": "pass",
+      "notes": "The paragraph argues for benefit but does not claim head-to-head subclass superiority, and it leaves room for residual uncertainty across drug subclasses.",
+      "required_actions": []
+    },
+    "reader": {
+      "focus": "flow and readability",
+      "reviewer_id": "reader-desk",
+      "signed_at": "2026-03-28",
+      "verdict": "pass",
+      "notes": "The sequence reads smoothly and remains screenshot-readable despite the dense method and robustness clauses.",
+      "required_actions": []
+    }
+  },
+  "article_title": "SGLT2 Inhibitors and Heart Failure",
+  "body": "Do SGLT2 inhibitors reduce heart failure hospitalisation and cardiovascular death in patients across the full spectrum of ejection fraction? We included 9 randomised controlled trials enrolling 71,553 patients with heart failure or high cardiovascular risk, retrieved from MEDLINE and Cochrane CENTRAL through January 2026. Random-effects meta-analysis was performed on the log-hazard-ratio scale using restricted maximum-likelihood estimation of between-trial variance with the Hartung-Knapp correction applied to confidence intervals. SGLT2 inhibitors reduced the composite of heart failure hospitalisation or cardiovascular death by 23% (HR 0.77, 95% CI 0.72-0.83, I2 18%), with consistent benefit across reduced and preserved ejection fraction subgroups. The result was robust to leave-one-out sensitivity analysis, trim-and-fill adjustment for small-study effects, and restriction to trials with active comparators. SGLT2 inhibitors confer a clinically meaningful, statistically robust reduction in heart failure events, supporting their use irrespective of ejection fraction category. Indirect comparisons across drug subclasses were not feasible; differential effects of empagliflozin versus dapagliflozin cannot be excluded."
+}

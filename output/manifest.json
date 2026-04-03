@@ -1,0 +1,45 @@
+{
+  "input": "/mnt/c/E156/examples",
+  "records": [
+    {
+      "slug": "reduced-dose-doacs-vte-demo",
+      "title": "Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention",
+      "json": "/mnt/c/E156/output/json/reduced-dose-doacs-vte-demo.json",
+      "html": "/mnt/c/E156/output/html/reduced-dose-doacs-vte-demo.html",
+      "validation": "/mnt/c/E156/output/validation/reduced-dose-doacs-vte-demo.validation.json",
+      "ok": true,
+      "word_count": 156,
+      "sentence_count": 7
+    },
+    {
+      "slug": "clinical-ma",
+      "title": "SGLT2 Inhibitors and Heart Failure",
+      "json": "/mnt/c/E156/output/json/clinical-ma.json",
+      "html": "/mnt/c/E156/output/html/clinical-ma.html",
+      "validation": "/mnt/c/E156/output/validation/clinical-ma.validation.json",
+      "ok": true,
+      "word_count": 156,
+      "sentence_count": 7
+    },
+    {
+      "slug": "fragility-atlas",
+      "title": "Fragility of Cochrane Cardiovascular Meta-Analyses",
+      "json": "/mnt/c/E156/output/json/fragility-atlas.json",
+      "html": "/mnt/c/E156/output/html/fragility-atlas.html",
+      "validation": "/mnt/c/E156/output/validation/fragility-atlas.validation.json",
+      "ok": true,
+      "word_count": 156,
+      "sentence_count": 7
+    },
+    {
+      "slug": "metarep",
+      "title": "Replication Probability in Meta-Analysis",
+      "json": "/mnt/c/E156/output/json/metarep.json",
+      "html": "/mnt/c/E156/output/html/metarep.html",
+      "validation": "/mnt/c/E156/output/validation/metarep.validation.json",
+      "ok": true,
+      "word_count": 156,
+      "sentence_count": 7
+    }
+  ]
+}

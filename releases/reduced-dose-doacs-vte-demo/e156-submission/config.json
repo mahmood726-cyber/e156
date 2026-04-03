@@ -1,0 +1,97 @@
+{
+  "title": "Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention",
+  "slug": "reduced-dose-doacs-vte-demo",
+  "author": "Mahmood Ahmad",
+  "affiliation": "Tahir Heart Institute",
+  "email": "author@example.com",
+  "date": "2026-03-26",
+  "path": "C:\\E156\\releases\\reduced-dose-doacs-vte-demo",
+  "type": "pairwise",
+  "primary_estimand": "Risk ratio for major bleeding",
+  "certainty": "moderate",
+  "summary": "A sample E156 batch row showing the frozen body plus the richer HTML evidence layer.",
+  "body": "In adults receiving extended anticoagulation after venous thromboembolism, do reduced-dose direct oral anticoagulants preserve efficacy while lowering bleeding versus full-dose therapy? Three randomized trials with 8,615 participants compared reduced-dose and full-dose direct oral anticoagulants for secondary prevention. Investigators systematically searched major databases through March 20, 2025 and pooled trial outcomes as risk ratios with 95% confidence intervals. Reduced-dose therapy lowered major bleeding, with pooled risk ratio 0.49 and 95% confidence interval 0.29 to 0.81. Clinically relevant nonmajor bleeding and all-cause mortality also favored dose reduction, while recurrent venous thromboembolism, pulmonary embolism outcomes, and deep vein thrombosis recurrence remained statistically similar. These findings support reduced-dose regimens as a reasonable long-term option when bleeding avoidance is a clinical priority after initial treatment in routine practice settings. Confidence is limited by only three trials, sparse fatal event counts, and the need for longer follow-up to confirm durability across patient subgroups and to define which patients can safely de-intensify therapy.",
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "In adults receiving extended anticoagulation after venous thromboembolism, do reduced-dose direct oral anticoagulants preserve efficacy while lowering bleeding versus full-dose therapy?"
+    },
+    {
+      "role": "Dataset",
+      "text": "Three randomized trials with 8,615 participants compared reduced-dose and full-dose direct oral anticoagulants for secondary prevention."
+    },
+    {
+      "role": "Method",
+      "text": "Investigators systematically searched major databases through March 20, 2025 and pooled trial outcomes as risk ratios with 95% confidence intervals."
+    },
+    {
+      "role": "Primary result",
+      "text": "Reduced-dose therapy lowered major bleeding, with pooled risk ratio 0.49 and 95% confidence interval 0.29 to 0.81."
+    },
+    {
+      "role": "Robustness",
+      "text": "Clinically relevant nonmajor bleeding and all-cause mortality also favored dose reduction, while recurrent venous thromboembolism, pulmonary embolism outcomes, and deep vein thrombosis recurrence remained statistically similar."
+    },
+    {
+      "role": "Interpretation",
+      "text": "These findings support reduced-dose regimens as a reasonable long-term option when bleeding avoidance is a clinical priority after initial treatment in routine practice settings."
+    },
+    {
+      "role": "Boundary",
+      "text": "Confidence is limited by only three trials, sparse fatal event counts, and the need for longer follow-up to confirm durability across patient subgroups and to define which patients can safely de-intensify therapy."
+    }
+  ],
+  "notes": {
+    "app": "Interactive HTML bundle",
+    "data": "Embedded summary rows in this demo JSON",
+    "code": "https://github.com/mahmood726-cyber/e156",
+    "doi": "Pending demo DOI",
+    "version": "0.1.0",
+    "date": "2026-03-26",
+    "certainty": "moderate",
+    "validation": "PASS",
+    "protocol": "Not included in this abstract-level demo",
+    "source_article": "https://pubmed.ncbi.nlm.nih.gov/41210567/"
+  },
+  "study_count": 3,
+  "participant_count": 8615,
+  "studies": [
+    {
+      "label": "Illustrative trial A",
+      "effect": 0.63,
+      "lower": 0.33,
+      "upper": 1.19,
+      "weight": "33%"
+    },
+    {
+      "label": "Illustrative trial B",
+      "effect": 0.51,
+      "lower": 0.24,
+      "upper": 1.07,
+      "weight": "31%"
+    },
+    {
+      "label": "Illustrative trial C",
+      "effect": 0.34,
+      "lower": 0.12,
+      "upper": 0.94,
+      "weight": "36%"
+    }
+  ],
+  "primary_plot": {
+    "reference": 1,
+    "caption": "Demo forest-style plot based on three illustrative rows and the pooled estimate carried in the micro-paper body.",
+    "pooled": {
+      "label": "Pooled",
+      "effect": 0.49,
+      "lower": 0.29,
+      "upper": 0.81
+    }
+  },
+  "references": [
+    "Borenstein M, Hedges LV, Higgins JPT, Rothstein HR. Introduction to Meta-Analysis. 2nd ed. Wiley; 2021.",
+    "Higgins JPT, Thompson SG, Deeks JJ, Altman DG. Measuring inconsistency in meta-analyses. BMJ. 2003;327(7414):557-560.",
+    "Cochrane Handbook for Systematic Reviews of Interventions. Version 6.4. Cochrane; 2023."
+  ],
+  "journal_wrapper": "demo"
+}

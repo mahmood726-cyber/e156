@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "gate": "pass",
+  "missing_personas": [],
+  "invalid_personas": [],
+  "empty_notes": [],
+  "missing_reviewer_ids": [],
+  "missing_signed_at": [],
+  "missing_reviewed_at": false,
+  "reviewed_at": "2026-03-26",
+  "verdict_counts": {
+    "pass": 5,
+    "revise": 0,
+    "block": 0
+  },
+  "required_actions": [],
+  "reviewer_signoffs": [
+    {
+      "persona": "clinician",
+      "reviewer_id": "clinical-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass"
+    },
+    {
+      "persona": "statistician",
+      "reviewer_id": "stats-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass"
+    },
+    {
+      "persona": "methods_editor",
+      "reviewer_id": "methods-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass"
+    },
+    {
+      "persona": "skeptic",
+      "reviewer_id": "skeptic-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass"
+    },
+    {
+      "persona": "reader",
+      "reviewer_id": "reader-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "article_slug": "reduced-dose-doacs-vte-demo",
+  "reviewed_at": "2026-03-26",
+  "article_title": "Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention",
+  "personas": {
+    "clinician": {
+      "focus": "practical clarity",
+      "reviewer_id": "clinical-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass",
+      "notes": "The question, treatment contrast, and practical takeaway are clear at the bedside level.",
+      "required_actions": []
+    },
+    "statistician": {
+      "focus": "numerical honesty",
+      "reviewer_id": "stats-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass",
+      "notes": "The body names the pooled risk ratio and confidence interval directly and keeps the claim within the reported evidence.",
+      "required_actions": []
+    },
+    "methods_editor": {
+      "focus": "structure discipline",
+      "reviewer_id": "methods-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass",
+      "notes": "All seven sentence roles are preserved and the boundary sentence functions as an explicit limitation.",
+      "required_actions": []
+    },
+    "skeptic": {
+      "focus": "overclaim and causality check",
+      "reviewer_id": "skeptic-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass",
+      "notes": "Interpretation is restrained and does not claim superiority beyond the pooled outcomes and follow-up described.",
+      "required_actions": []
+    },
+    "reader": {
+      "focus": "flow and readability",
+      "reviewer_id": "reader-desk",
+      "signed_at": "2026-03-26",
+      "verdict": "pass",
+      "notes": "The paragraph reads cleanly in sequence, though the illustrative study rows belong outside the frozen body as they do here.",
+      "required_actions": []
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "title": "Replication Probability in Meta-Analysis",
+  "summary": "Replication-probability methods example normalized into the canonical E156 bundle schema for dashboard and reviewed release.",
+  "type": "methods",
+  "primary_estimand": "Calibration slope for replication probability",
+  "study_count": 120,
+  "participant_count": null,
+  "version": "1.0",
+  "date": "2026-03-26",
+  "certainty": "not stated",
+  "app": "MetaRep v1.0",
+  "data": "120 published meta-analyses with known replication trials (cardiology, oncology, psychiatry)",
+  "code": "C:\\Models\\MetaRep\\",
+  "doi": "",
+  "protocol": "",
+  "source_article": "",
+  "body": "Can a meta-analysis predict the probability that a future independent trial will replicate its pooled effect estimate within a pre-specified equivalence margin? We empirically evaluated the method on 120 published meta-analyses each with at least one known subsequent independent replication trial, spanning cardiology, oncology, and psychiatry. Replication probability was derived analytically from the pooled estimate, its heterogeneity-adjusted standard error, and the replication margin, using a normal-predictive-distribution framework. Across all 120 cases, the method achieved a calibration slope of 0.91 (95% CI 0.84-0.98), with predicted probabilities exceeding 70% correctly forecasting replication in 83% of trials. Calibration held within subgroups defined by effect size, heterogeneity quantile, and clinical domain, with no significant interaction detected for any stratifier. Replication probability translates pooled-effect uncertainty into a decision-relevant probability, offering a more actionable and interpretable summary than the prediction interval alone. Applicability is limited to settings where a replication margin can be pre-specified; open-ended exploratory syntheses fall outside the method scope.",
+  "validation": {
+    "status": "pass",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a confidence interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "Can a meta-analysis predict the probability that a future independent trial will replicate its pooled effect estimate within a pre-specified equivalence margin?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We empirically evaluated the method on 120 published meta-analyses each with at least one known subsequent independent replication trial, spanning cardiology, oncology, and psychiatry."
+    },
+    {
+      "role": "Method",
+      "text": "Replication probability was derived analytically from the pooled estimate, its heterogeneity-adjusted standard error, and the replication margin, using a normal-predictive-distribution framework."
+    },
+    {
+      "role": "Primary result",
+      "text": "Across all 120 cases, the method achieved a calibration slope of 0.91 (95% CI 0.84-0.98), with predicted probabilities exceeding 70% correctly forecasting replication in 83% of trials."
+    },
+    {
+      "role": "Robustness",
+      "text": "Calibration held within subgroups defined by effect size, heterogeneity quantile, and clinical domain, with no significant interaction detected for any stratifier."
+    },
+    {
+      "role": "Interpretation",
+      "text": "Replication probability translates pooled-effect uncertainty into a decision-relevant probability, offering a more actionable and interpretable summary than the prediction interval alone."
+    },
+    {
+      "role": "Boundary",
+      "text": "Applicability is limited to settings where a replication margin can be pre-specified; open-ended exploratory syntheses fall outside the method scope."
+    }
+  ],
+  "primary_plot": {
+    "reference": 1,
+    "caption": "No study-level numeric rows are embedded in this normalized example bundle."
+  },
+  "studies": [],
+  "search_strategy": {},
+  "prisma": {},
+  "included_papers": [],
+  "analysis_modules": [],
+  "journal_wrapper": "example",
+  "review": {
+    "article_slug": "metarep",
+    "reviewed_at": "2026-03-28",
+    "personas": {
+      "clinician": {
+        "focus": "practical clarity",
+        "reviewer_id": "clinical-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The practical question is understandable and the calibration result is framed in a way that a clinically oriented reader can follow.",
+        "required_actions": []
+      },
+      "statistician": {
+        "focus": "numerical honesty",
+        "reviewer_id": "stats-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The calibration slope, confidence interval, and threshold-based forecasting result are numerically explicit and bounded to the evaluated cases.",
+        "required_actions": []
+      },
+      "methods_editor": {
+        "focus": "structure discipline",
+        "reviewer_id": "methods-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The sentence contract is preserved and the revised dataset sentence now matches the retrospective empirical evaluation actually described.",
+        "required_actions": []
+      },
+      "skeptic": {
+        "focus": "overclaim and causality check",
+        "reviewer_id": "skeptic-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The interpretation stays at the level of decision support and does not overclaim that replication probability guarantees future trial success.",
+        "required_actions": []
+      },
+      "reader": {
+        "focus": "flow and readability",
+        "reviewer_id": "reader-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The paragraph reads smoothly, and the final scope sentence gives the reader a clear stopping point for where the method should not be used.",
+        "required_actions": []
+      }
+    },
+    "article_title": "Replication Probability in Meta-Analysis",
+    "body": "Can a meta-analysis predict the probability that a future independent trial will replicate its pooled effect estimate within a pre-specified equivalence margin? We empirically evaluated the method on 120 published meta-analyses each with at least one known subsequent independent replication trial, spanning cardiology, oncology, and psychiatry. Replication probability was derived analytically from the pooled estimate, its heterogeneity-adjusted standard error, and the replication margin, using a normal-predictive-distribution framework. Across all 120 cases, the method achieved a calibration slope of 0.91 (95% CI 0.84-0.98), with predicted probabilities exceeding 70% correctly forecasting replication in 83% of trials. Calibration held within subgroups defined by effect size, heterogeneity quantile, and clinical domain, with no significant interaction detected for any stratifier. Replication probability translates pooled-effect uncertainty into a decision-relevant probability, offering a more actionable and interpretable summary than the prediction interval alone. Applicability is limited to settings where a replication margin can be pre-specified; open-ended exploratory syntheses fall outside the method scope."
+  },
+  "review_summary": {
+    "ok": true,
+    "gate": "pass",
+    "missing_personas": [],
+    "invalid_personas": [],
+    "empty_notes": [],
+    "missing_reviewer_ids": [],
+    "missing_signed_at": [],
+    "missing_reviewed_at": false,
+    "reviewed_at": "2026-03-28",
+    "verdict_counts": {
+      "pass": 5,
+      "revise": 0,
+      "block": 0
+    },
+    "required_actions": [],
+    "reviewer_signoffs": [
+      {
+        "persona": "clinician",
+        "reviewer_id": "clinical-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "statistician",
+        "reviewer_id": "stats-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "methods_editor",
+        "reviewer_id": "methods-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "skeptic",
+        "reviewer_id": "skeptic-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "reader",
+        "reviewer_id": "reader-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      }
+    ]
+  }
+}

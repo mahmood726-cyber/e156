@@ -1,0 +1,200 @@
+{
+  "title": "Fragility of Cochrane Cardiovascular Meta-Analyses",
+  "summary": "Fragility methods example normalized into the canonical E156 bundle schema for dashboard and reviewed release.",
+  "type": "methods",
+  "primary_estimand": "Fragility index",
+  "study_count": 407,
+  "participant_count": 312450,
+  "version": "1.0",
+  "date": "2026-03-26",
+  "certainty": "not stated",
+  "app": "Fragility Atlas v1.0",
+  "data": "407 Cochrane cardiovascular systematic reviews (2000-2022), 1,882 RCTs, 312,450 participants",
+  "code": "C:\\FragilityAtlas\\",
+  "doi": "",
+  "protocol": "",
+  "source_article": "",
+  "body": "Do fragility indices vary systematically across cardiovascular meta-analyses, and which study-level design features predict structural vulnerability? We analysed 407 Cochrane cardiovascular systematic reviews published between 2000 and 2022, covering 1,882 randomised controlled trials and 312,450 participants with binary primary outcomes. Fragility index and fragility quotient were computed for every eligible binary-outcome meta-analysis using a reverse-replication algorithm anchored at the pooled observed event count. Median fragility index was 3 (IQR 1-8), and 61% of meta-analyses had a fragility index below 5, meaning three or fewer outcome reversals would nullify the statistical significance. Results were consistent across six heterogeneity-weighting schemes and unchanged after excluding industry-funded trials or restricting analyses to all-cause mortality. Small evidence bases are structurally fragile independent of heterogeneity level or effect direction, suggesting fragility metrics deserve routine reporting alongside standard confidence intervals. These findings apply only to Cochrane cardiovascular reviews and may not extend to oncology or surgical domains where event rate distributions differ substantially.",
+  "validation": {
+    "status": "pass",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a confidence interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "Do fragility indices vary systematically across cardiovascular meta-analyses, and which study-level design features predict structural vulnerability?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We analysed 407 Cochrane cardiovascular systematic reviews published between 2000 and 2022, covering 1,882 randomised controlled trials and 312,450 participants with binary primary outcomes."
+    },
+    {
+      "role": "Method",
+      "text": "Fragility index and fragility quotient were computed for every eligible binary-outcome meta-analysis using a reverse-replication algorithm anchored at the pooled observed event count."
+    },
+    {
+      "role": "Primary result",
+      "text": "Median fragility index was 3 (IQR 1-8), and 61% of meta-analyses had a fragility index below 5, meaning three or fewer outcome reversals would nullify the statistical significance."
+    },
+    {
+      "role": "Robustness",
+      "text": "Results were consistent across six heterogeneity-weighting schemes and unchanged after excluding industry-funded trials or restricting analyses to all-cause mortality."
+    },
+    {
+      "role": "Interpretation",
+      "text": "Small evidence bases are structurally fragile independent of heterogeneity level or effect direction, suggesting fragility metrics deserve routine reporting alongside standard confidence intervals."
+    },
+    {
+      "role": "Boundary",
+      "text": "These findings apply only to Cochrane cardiovascular reviews and may not extend to oncology or surgical domains where event rate distributions differ substantially."
+    }
+  ],
+  "primary_plot": {
+    "reference": 1,
+    "caption": "No study-level numeric rows are embedded in this normalized example bundle."
+  },
+  "studies": [],
+  "search_strategy": {},
+  "prisma": {},
+  "included_papers": [],
+  "analysis_modules": [],
+  "journal_wrapper": "example",
+  "review": {
+    "article_slug": "fragility-atlas",
+    "reviewed_at": "2026-03-28",
+    "personas": {
+      "clinician": {
+        "focus": "practical clarity",
+        "reviewer_id": "clinical-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The clinical message is intelligible: many nominally significant cardiovascular meta-analyses are vulnerable to only a few event reversals.",
+        "required_actions": []
+      },
+      "statistician": {
+        "focus": "numerical honesty",
+        "reviewer_id": "stats-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The fragility index, IQR, and percentage threshold are all explicit, and the body avoids overstating what fragility can prove on its own.",
+        "required_actions": []
+      },
+      "methods_editor": {
+        "focus": "structure discipline",
+        "reviewer_id": "methods-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "Sentence roles are cleanly separated, with the main numerical result in sentence four and the domain restriction reserved for sentence seven.",
+        "required_actions": []
+      },
+      "skeptic": {
+        "focus": "overclaim and causality check",
+        "reviewer_id": "skeptic-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The interpretation recommends routine reporting but does not claim fragility supersedes confidence intervals or resolves causal validity questions.",
+        "required_actions": []
+      },
+      "reader": {
+        "focus": "flow and readability",
+        "reviewer_id": "reader-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass",
+        "notes": "The body flows cleanly, and the explanation of what a fragility index below five means is readable without outside gloss.",
+        "required_actions": []
+      }
+    },
+    "article_title": "Fragility of Cochrane Cardiovascular Meta-Analyses",
+    "body": "Do fragility indices vary systematically across cardiovascular meta-analyses, and which study-level design features predict structural vulnerability? We analysed 407 Cochrane cardiovascular systematic reviews published between 2000 and 2022, covering 1,882 randomised controlled trials and 312,450 participants with binary primary outcomes. Fragility index and fragility quotient were computed for every eligible binary-outcome meta-analysis using a reverse-replication algorithm anchored at the pooled observed event count. Median fragility index was 3 (IQR 1-8), and 61% of meta-analyses had a fragility index below 5, meaning three or fewer outcome reversals would nullify the statistical significance. Results were consistent across six heterogeneity-weighting schemes and unchanged after excluding industry-funded trials or restricting analyses to all-cause mortality. Small evidence bases are structurally fragile independent of heterogeneity level or effect direction, suggesting fragility metrics deserve routine reporting alongside standard confidence intervals. These findings apply only to Cochrane cardiovascular reviews and may not extend to oncology or surgical domains where event rate distributions differ substantially."
+  },
+  "review_summary": {
+    "ok": true,
+    "gate": "pass",
+    "missing_personas": [],
+    "invalid_personas": [],
+    "empty_notes": [],
+    "missing_reviewer_ids": [],
+    "missing_signed_at": [],
+    "missing_reviewed_at": false,
+    "reviewed_at": "2026-03-28",
+    "verdict_counts": {
+      "pass": 5,
+      "revise": 0,
+      "block": 0
+    },
+    "required_actions": [],
+    "reviewer_signoffs": [
+      {
+        "persona": "clinician",
+        "reviewer_id": "clinical-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "statistician",
+        "reviewer_id": "stats-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "methods_editor",
+        "reviewer_id": "methods-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "skeptic",
+        "reviewer_id": "skeptic-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      },
+      {
+        "persona": "reader",
+        "reviewer_id": "reader-desk",
+        "signed_at": "2026-03-28",
+        "verdict": "pass"
+      }
+    ]
+  }
+}
