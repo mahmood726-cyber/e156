@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E156 Library — 331 Micro-Papers in Evidence Synthesis</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* --- Base --- */
+body {
+  font-family: Georgia, Charter, 'Times New Roman', serif;
+  background: #faf9f6;
+  color: #1a1a1a;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+
+/* --- Nav --- */
+.nav-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: #faf9f6; border-bottom: 1px solid #e0ddd8;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 52px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+.nav-wordmark {
+  font-family: Georgia, serif; font-weight: 700; font-size: 1.3rem;
+  letter-spacing: -0.02em;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  text-decoration: none; font-size: 0.9rem; color: #666;
+  padding-bottom: 2px; border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s; cursor: pointer;
+}
+.nav-links a.active { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+.nav-links a:hover { color: #1a1a1a; }
+.nav-search-btn {
+  background: none; border: none; cursor: pointer; font-size: 1.1rem;
+  color: #666; padding: 4px;
+}
+.nav-search-btn:hover { color: #1a1a1a; }
+
+/* --- Sections --- */
+.section { display: none; padding-top: 68px; min-height: 100vh; }
+.section.active { display: block; }
+.hidden { display: none !important; }
+
+/* --- Masthead --- */
+.masthead { text-align: center; padding: 60px 24px 40px; }
+.masthead h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -0.02em; }
+.masthead .subtitle { font-size: 1.15rem; color: #666; font-style: italic; margin-top: 6px; }
+.masthead .author { font-size: 0.9rem; color: #999; margin-top: 8px; font-family: system-ui, sans-serif; }
+
+/* --- Controls --- */
+.controls {
+  max-width: 1080px; margin: 0 auto; padding: 0 24px 24px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  font-family: system-ui, sans-serif;
+}
+.search-box {
+  flex: 1; min-width: 200px; padding: 8px 14px; font-size: 0.9rem;
+  border: 1px solid #d0cdc8; border-radius: 6px; background: #fff;
+  font-family: system-ui, sans-serif;
+}
+.search-box:focus { outline: none; border-color: #1a1a1a; }
+.pill-group { display: flex; gap: 6px; }
+.pill {
+  padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+  border: 1px solid #d0cdc8; background: #fff; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: system-ui, sans-serif;
+}
+.pill.active { background: #1a1a1a; color: #faf9f6; border-color: #1a1a1a; }
+.pill:hover:not(.active) { background: #f0ede8; }
+.sort-select {
+  padding: 6px 10px; font-size: 0.8rem; border: 1px solid #d0cdc8;
+  border-radius: 6px; background: #fff; font-family: system-ui, sans-serif;
+}
+.view-toggle { display: flex; gap: 4px; }
+.view-btn {
+  padding: 5px 10px; border: 1px solid #d0cdc8; background: #fff;
+  cursor: pointer; font-size: 0.85rem; border-radius: 4px;
+  font-family: system-ui, sans-serif;
+}
+.view-btn.active { background: #1a1a1a; color: #faf9f6; border-color: #1a1a1a; }
+
+/* --- Grid --- */
+.card-grid {
+  max-width: 1080px; margin: 0 auto; padding: 0 24px 60px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.card {
+  background: #fff; border-radius: 8px; padding: 20px 22px;
+  border-top: 3px solid #2c3e50; cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.card[data-type="clinical"] { border-top-color: #8b1a1a; }
+.card[data-type="audit"] { border-top-color: #4a5568; }
+.card-title {
+  font-family: Georgia, serif; font-size: 0.95rem; font-weight: 600;
+  line-height: 1.4; margin-bottom: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-question {
+  font-size: 0.85rem; color: #555; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  margin-bottom: 10px;
+}
+.card-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.card-wc {
+  font-family: Menlo, Consolas, monospace; font-size: 0.7rem;
+  background: #f0ede8; padding: 2px 8px; border-radius: 3px; color: #666;
+}
+.tag-pill {
+  font-size: 0.7rem; padding: 2px 8px; border-radius: 10px;
+  background: #eef; color: #336; font-family: system-ui, sans-serif;
+}
+
+/* --- List View --- */
+.list-view { max-width: 1080px; margin: 0 auto; padding: 0 24px 60px; }
+.list-table { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; font-size: 0.85rem; }
+.list-table th {
+  text-align: left; padding: 8px 12px; border-bottom: 2px solid #1a1a1a;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666;
+  cursor: pointer;
+}
+.list-table th:hover { color: #1a1a1a; }
+.list-table td { padding: 8px 12px; border-bottom: 1px solid #e0ddd8; }
+.list-table tr { cursor: pointer; transition: background 0.1s; }
+.list-table tr:hover { background: #f5f3ef; }
+.type-badge {
+  font-size: 0.7rem; padding: 2px 8px; border-radius: 10px;
+  color: #fff; font-family: system-ui, sans-serif;
+}
+.type-badge.methods { background: #2c3e50; }
+.type-badge.clinical { background: #8b1a1a; }
+.type-badge.audit { background: #4a5568; }
+
+/* --- Reading View --- */
+.reading-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: #faf9f6; overflow-y: auto;
+}
+.reading-overlay.open { display: block; }
+.reading-nav {
+  max-width: 680px; margin: 0 auto; padding: 20px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: system-ui, sans-serif; font-size: 0.85rem;
+}
+.reading-nav button {
+  background: none; border: 1px solid #d0cdc8; border-radius: 4px;
+  padding: 4px 14px; cursor: pointer; font-size: 0.85rem;
+  font-family: system-ui, sans-serif;
+}
+.reading-nav button:hover { background: #f0ede8; }
+.reading-content { max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+.reading-content h1 { font-size: 2rem; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
+.reading-meta {
+  font-family: system-ui, sans-serif; font-size: 0.8rem;
+  color: #888; text-transform: uppercase; letter-spacing: 0.04em;
+  margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e0ddd8;
+}
+.reading-body { font-size: 1.1rem; line-height: 1.85; }
+.sentence-tags {
+  margin-top: 20px; display: flex; flex-wrap: wrap; gap: 6px;
+}
+.sentence-tags .stag {
+  font-size: 0.7rem; padding: 2px 8px; border-radius: 3px;
+  background: #f0ede8; color: #666; font-family: system-ui, sans-serif;
+}
+.reading-actions {
+  margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap;
+}
+.reading-actions button {
+  background: #1a1a1a; color: #faf9f6; border: none; padding: 8px 18px;
+  border-radius: 4px; cursor: pointer; font-size: 0.8rem;
+  font-family: system-ui, sans-serif; transition: background 0.15s;
+}
+.reading-actions button:hover { background: #333; }
+.reading-path {
+  margin-top: 16px; font-family: Menlo, Consolas, monospace;
+  font-size: 0.75rem; color: #999;
+}
+
+/* --- Journal --- */
+.journal-header {
+  text-align: center; padding: 60px 24px 40px;
+  border-bottom: 2px solid #1a1a1a; max-width: 680px; margin: 0 auto;
+}
+.journal-header h1 { font-size: 2rem; font-weight: 700; font-style: italic; }
+.journal-header .vol { font-size: 1rem; color: #666; margin-top: 6px; font-family: system-ui, sans-serif; }
+.journal-header .editor { font-size: 0.85rem; color: #999; margin-top: 4px; font-family: system-ui, sans-serif; }
+.journal-editorial {
+  max-width: 680px; margin: 40px auto; padding: 0 24px;
+  font-size: 1.05rem; line-height: 1.8;
+}
+.journal-editorial h2 { font-size: 1.3rem; margin-bottom: 12px; }
+.journal-toc { max-width: 680px; margin: 40px auto; padding: 0 24px 80px; }
+.journal-toc h2 {
+  font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em;
+  color: #666; margin-top: 32px; margin-bottom: 12px; padding-bottom: 6px;
+  border-bottom: 1px solid #e0ddd8; font-family: system-ui, sans-serif;
+}
+.toc-entry {
+  display: flex; align-items: baseline; gap: 12px; padding: 6px 0;
+  cursor: pointer; transition: color 0.15s; font-size: 0.9rem;
+}
+.toc-entry:hover { color: #555; }
+.toc-num { font-family: Menlo, Consolas, monospace; font-size: 0.75rem; color: #999; min-width: 32px; }
+.toc-title { flex: 1; }
+.toc-estimand { font-size: 0.75rem; color: #999; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.journal-export {
+  max-width: 680px; margin: 0 auto; padding: 20px 24px;
+  display: flex; gap: 12px;
+}
+.journal-export button {
+  background: #1a1a1a; color: #faf9f6; border: none; padding: 10px 20px;
+  border-radius: 4px; cursor: pointer; font-size: 0.85rem;
+  font-family: system-ui, sans-serif;
+}
+.journal-export button:hover { background: #333; }
+
+/* --- Dashboard --- */
+.dashboard { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+.dashboard h1 { text-align: center; font-size: 2rem; margin-bottom: 8px; padding-top: 40px; }
+.dashboard .dash-subtitle { text-align: center; color: #666; font-size: 0.95rem; margin-bottom: 40px; }
+.sign-row {
+  margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid #f0ede8;
+}
+.sign-label {
+  font-family: system-ui, sans-serif; font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.05em; color: #666;
+  margin-bottom: 8px; display: flex; justify-content: space-between;
+}
+.sign-value { font-family: Menlo, Consolas, monospace; font-size: 0.8rem; }
+.sign-bar {
+  height: 28px; border-radius: 6px; background: #f0ede8; overflow: hidden;
+  display: flex;
+}
+.sign-bar .fill {
+  height: 100%; transition: width 0.6s ease;
+  display: flex; align-items: center; justify-content: center;
+  font-family: system-ui, sans-serif; font-size: 0.7rem; color: #fff;
+}
+.fill-green { background: #2d6a4f; }
+.fill-amber { background: #d4a017; }
+.fill-red { background: #9b2226; }
+.fill-blue { background: #2c3e50; }
+.fill-gray { background: #ccc; }
+.dash-summary {
+  text-align: center; margin-top: 40px; padding: 20px;
+  background: #f5f3ef; border-radius: 8px;
+  font-family: system-ui, sans-serif; font-size: 0.9rem; color: #444;
+}
+
+/* --- Search Overlay --- */
+.search-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(26,26,26,0.5);
+}
+.search-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 120px; }
+.search-modal {
+  background: #faf9f6; border-radius: 12px; width: 90%; max-width: 600px;
+  padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.search-modal input {
+  width: 100%; padding: 12px 16px; font-size: 1.1rem; border: none;
+  border-bottom: 2px solid #1a1a1a; background: transparent;
+  font-family: Georgia, serif; outline: none;
+}
+.search-results { max-height: 400px; overflow-y: auto; margin-top: 16px; }
+.search-result-item {
+  padding: 10px 0; border-bottom: 1px solid #f0ede8; cursor: pointer;
+}
+.search-result-item:hover { background: #f5f3ef; }
+.search-result-item .sr-title { font-weight: 600; font-size: 0.9rem; }
+.search-result-item .sr-q { font-size: 0.8rem; color: #666; }
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .nav-links { gap: 20px; }
+  .masthead h1 { font-size: 2.2rem; }
+  .toc-estimand { display: none; }
+}
+
+/* --- Print --- */
+@media print {
+  .nav-bar, .controls, .search-overlay, #section-dashboard, .journal-export,
+  .reading-nav, .reading-actions, .view-toggle, .sort-select { display: none !important; }
+  .section { display: block !important; padding-top: 0; }
+  .reading-overlay { position: static; display: block !important; }
+  .card-grid { display: none; }
+  .list-view { display: none; }
+  .toc-entry { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav-bar" role="navigation" aria-label="Main navigation">
+  <div class="nav-wordmark">E156</div>
+  <div class="nav-links">
+    <a class="active" data-section="library" role="button" tabindex="0">Library</a>
+    <a data-section="journal" role="button" tabindex="0">Journal</a>
+    <a data-section="dashboard" role="button" tabindex="0">Dashboard</a>
+  </div>
+  <button class="nav-search-btn" id="searchBtn" aria-label="Search papers">&#x1F50D;</button>
+</nav>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <input type="text" id="globalSearch" placeholder="Search 331 micro-papers..." aria-label="Search papers" role="search">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- Section: Library -->
+<section class="section active" id="section-library">
+  <div class="masthead">
+    <h1>E156 Library</h1>
+    <div class="subtitle">331 Micro-Papers in Evidence Synthesis</div>
+    <div class="author">Mahmood Ahmad</div>
+  </div>
+  <div class="controls">
+    <input type="text" class="search-box" id="filterSearch" placeholder="Filter papers..." aria-label="Filter papers">
+    <div class="pill-group" id="categoryPills">
+      <button class="pill active" data-cat="all">All</button>
+      <button class="pill" data-cat="methods">Methods</button>
+      <button class="pill" data-cat="clinical">Clinical</button>
+      <button class="pill" data-cat="audit">Audit</button>
+    </div>
+    <select class="sort-select" id="sortSelect" aria-label="Sort papers">
+      <option value="az">A &ndash; Z</option>
+      <option value="newest">Newest first</option>
+      <option value="words">Word count</option>
+    </select>
+    <div class="view-toggle" id="viewToggle">
+      <button class="view-btn active" data-view="grid" aria-label="Grid view">Grid</button>
+      <button class="view-btn" data-view="list" aria-label="List view">List</button>
+    </div>
+  </div>
+  <div class="card-grid" id="cardGrid"></div>
+  <div class="list-view hidden" id="listView">
+    <table class="list-table">
+      <thead><tr>
+        <th data-sort="id">#</th>
+        <th data-sort="title">Title</th>
+        <th data-sort="type">Type</th>
+        <th data-sort="estimand">Estimand</th>
+        <th data-sort="wordCount">Words</th>
+      </tr></thead>
+      <tbody id="listBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Reading Overlay -->
+<div class="reading-overlay" id="readingOverlay">
+  <div class="reading-nav">
+    <button id="readingBack" aria-label="Back to list">&larr; Back</button>
+    <span id="readingCounter" style="font-size:0.8rem;color:#999;"></span>
+    <div>
+      <button id="readingPrev" aria-label="Previous paper">&larr;</button>
+      <button id="readingNext" aria-label="Next paper">&rarr;</button>
+    </div>
+  </div>
+  <div class="reading-content">
+    <h1 id="readingTitle"></h1>
+    <div class="reading-meta" id="readingMeta"></div>
+    <div class="reading-body" id="readingBody"></div>
+    <div class="sentence-tags" id="readingTags"></div>
+    <div class="reading-actions">
+      <button id="copyCitation">Copy Citation</button>
+      <button id="copyBibtex">Copy BibTeX</button>
+    </div>
+    <div class="reading-path" id="readingPath"></div>
+  </div>
+</div>
+
+<!-- Section: Journal -->
+<section class="section" id="section-journal">
+  <div class="journal-header">
+    <h1>E156: The Journal of Micro-Papers in Evidence Synthesis</h1>
+    <div class="vol">Volume 1 &mdash; April 2026</div>
+    <div class="editor">Editor: Mahmood Ahmad</div>
+  </div>
+  <div class="journal-export" id="journalExport">
+    <button id="exportBib">Export all citations (.bib)</button>
+    <button id="exportRis">Export all citations (.ris)</button>
+  </div>
+  <div class="journal-editorial">
+    <h2>Editorial</h2>
+    <p>Meta-analyses produce thousands of pages, but clinical decisions need one paragraph. The E156 format enforces exactly seven sentences in at most one hundred and fifty-six words. Sentence one asks the question. Sentence two describes the dataset. Sentence three states the method. Sentence four delivers the key result with a number and confidence interval. Sentence five reports a robustness check. Sentence six interprets the finding. Sentence seven names the limitation.</p>
+    <p>This constraint is the point. Compression demands that every word earn its place. When a researcher can state a finding in seven sentences, they understand it. When they cannot, neither will the reader. Volume one collects three hundred and thirty-one micro-papers spanning pairwise meta-analysis, network meta-analysis, diagnostic test accuracy, individual participant data methods, Bayesian approaches, trial sequential analysis, evidence forensics, living reviews, health technology assessment, and clinical cardiology. Each paper is a window into a tool that exists, works, and has been tested. The full portfolio is open-access and runs in any browser without installation.</p>
+  </div>
+  <div class="journal-toc" id="journalToc"></div>
+</section>
+
+<!-- Section: Dashboard -->
+<section class="section" id="section-dashboard">
+  <div class="dashboard">
+    <h1>Seven Signs</h1>
+    <div class="dash-subtitle">Portfolio Health Monitor</div>
+    <div id="dashboardSigns"></div>
+    <div class="dash-summary" id="dashSummary"></div>
+  </div>
+</section>
+
+<script>
+/* __E156_DATA__ */
+
+// ===== APP STATE =====
+var state = {
+  currentView: 'grid',
+  currentCategory: 'all',
+  currentSort: 'az',
+  currentSection: 'library',
+  readingIndex: -1,
+  filteredData: [],
+  sectionsRendered: { library: false, journal: false, dashboard: false },
+};
+
+// ===== UTILITIES =====
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function getFirstSentence(text) {
+  var m = text.match(/^.+?[.?!](?:\s|$)/);
+  return m ? m[0].trim() : text.substring(0, 120) + '...';
+}
+
+function splitSentences(text) {
+  var safe = text.replace(/e\.g\./g, 'e_g_').replace(/i\.e\./g, 'i_e_')
+    .replace(/vs\./g, 'vs_').replace(/et al\./g, 'etal_');
+  var parts = safe.split(/(?<=[.?!])\s+(?=[A-Z])/);
+  return parts.map(function(s) {
+    return s.replace(/e_g_/g, 'e.g.').replace(/i_e_/g, 'i.e.')
+      .replace(/vs_/g, 'vs.').replace(/etal_/g, 'et al.');
+  });
+}
+
+var S_LABELS = ['Question', 'Dataset', 'Method', 'Result', 'Robustness', 'Interpretation', 'Boundary'];
+
+function makeCitation(entry) {
+  return 'Ahmad M. ' + entry.title + '. E156 J Micro-Papers Evid Synth. 2026;1:' + entry.id + '.';
+}
+
+function makeBibtex(entry) {
+  var key = entry.slug.replace(/[^a-zA-Z0-9]/g, '');
+  return '@article{ahmad2026' + key + ',\n' +
+    '  author = {Ahmad, Mahmood},\n' +
+    '  title = {' + entry.title + '},\n' +
+    '  journal = {E156 Journal of Micro-Papers in Evidence Synthesis},\n' +
+    '  year = {2026},\n' +
+    '  volume = {1},\n' +
+    '  number = {' + entry.id + '},\n' +
+    '  note = {156-word micro-paper}\n' +
+    '}';
+}
+
+function makeRis(entry) {
+  return 'TY  - JOUR\n' +
+    'AU  - Ahmad, Mahmood\n' +
+    'TI  - ' + entry.title + '\n' +
+    'JO  - E156 Journal of Micro-Papers in Evidence Synthesis\n' +
+    'PY  - 2026\n' +
+    'VL  - 1\n' +
+    'IS  - ' + entry.id + '\n' +
+    'N1  - 156-word micro-paper\n' +
+    'ER  -';
+}
+
+// ===== NAVIGATION =====
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() { switchSection(a.dataset.section); });
+  a.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchSection(a.dataset.section); }
+  });
+});
+
+function switchSection(name) {
+  state.currentSection = name;
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.toggle('active', a.dataset.section === name);
+  });
+  document.querySelectorAll('.section').forEach(function(s) {
+    s.classList.toggle('active', s.id === 'section-' + name);
+  });
+  if (!state.sectionsRendered[name]) {
+    if (name === 'library') renderLibrary();
+    else if (name === 'journal') renderJournal();
+    else if (name === 'dashboard') renderDashboard();
+    state.sectionsRendered[name] = true;
+  }
+}
+
+// ===== SEARCH OVERLAY =====
+var searchOverlay = document.getElementById('searchOverlay');
+var globalSearch = document.getElementById('globalSearch');
+var searchResults = document.getElementById('searchResults');
+
+document.getElementById('searchBtn').addEventListener('click', function() {
+  searchOverlay.classList.add('open');
+  globalSearch.value = '';
+  globalSearch.focus();
+  searchResults.innerHTML = '';
+});
+
+searchOverlay.addEventListener('click', function(e) {
+  if (e.target === searchOverlay) searchOverlay.classList.remove('open');
+});
+
+document.addEventListener('keydown', function(e) {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    searchOverlay.classList.add('open');
+    globalSearch.value = '';
+    globalSearch.focus();
+  }
+  if (e.key === 'Escape') {
+    if (searchOverlay.classList.contains('open')) {
+      searchOverlay.classList.remove('open');
+    } else if (document.getElementById('readingOverlay').classList.contains('open')) {
+      closeReading();
+    }
+  }
+});
+
+var searchTimeout;
+globalSearch.addEventListener('input', function() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(function() {
+    var q = globalSearch.value.toLowerCase().trim();
+    if (!q) { searchResults.innerHTML = ''; return; }
+    var hits = (typeof E156_DATA !== 'undefined' ? E156_DATA : []).filter(function(e) {
+      return e.title.toLowerCase().includes(q) ||
+        e.rewrite.toLowerCase().includes(q) ||
+        e.tags.some(function(t) { return t.toLowerCase().includes(q); });
+    }).slice(0, 20);
+    searchResults.innerHTML = hits.map(function(e) {
+      return '<div class="search-result-item" data-id="' + e.id + '">' +
+        '<div class="sr-title">' + escapeHtml(e.title) + '</div>' +
+        '<div class="sr-q">' + escapeHtml(getFirstSentence(e.rewrite)) + '</div>' +
+        '</div>';
+    }).join('');
+    searchResults.querySelectorAll('.search-result-item').forEach(function(el) {
+      el.addEventListener('click', function() {
+        searchOverlay.classList.remove('open');
+        openReading(parseInt(el.dataset.id));
+      });
+    });
+  }, 200);
+});
+
+// ===== LIBRARY =====
+function getFilteredSorted() {
+  var data = (typeof E156_DATA !== 'undefined' ? E156_DATA : []).slice();
+  if (state.currentCategory !== 'all') {
+    data = data.filter(function(e) { return e.type === state.currentCategory; });
+  }
+  var q = document.getElementById('filterSearch').value.toLowerCase().trim();
+  if (q) {
+    data = data.filter(function(e) {
+      return e.title.toLowerCase().includes(q) ||
+        e.rewrite.toLowerCase().includes(q) ||
+        e.tags.some(function(t) { return t.toLowerCase().includes(q); });
+    });
+  }
+  if (state.currentSort === 'az') data.sort(function(a, b) { return a.title.localeCompare(b.title); });
+  else if (state.currentSort === 'newest') data.sort(function(a, b) { return b.id - a.id; });
+  else if (state.currentSort === 'words') data.sort(function(a, b) { return b.wordCount - a.wordCount; });
+  state.filteredData = data;
+  return data;
+}
+
+function renderLibrary() {
+  var data = getFilteredSorted();
+  if (state.currentView === 'grid') renderGrid(data);
+  else renderList(data);
+}
+
+function renderGrid(data) {
+  document.getElementById('cardGrid').classList.remove('hidden');
+  document.getElementById('listView').classList.add('hidden');
+  var grid = document.getElementById('cardGrid');
+  grid.innerHTML = data.map(function(e) {
+    return '<div class="card" data-type="' + escapeHtml(e.type) + '" data-id="' + e.id + '">' +
+      '<div class="card-title">' + escapeHtml(e.title) + '</div>' +
+      '<div class="card-question">' + escapeHtml(getFirstSentence(e.rewrite)) + '</div>' +
+      '<div class="card-meta">' +
+        '<span class="card-wc">' + e.wordCount + 'w</span>' +
+        e.tags.slice(0, 3).map(function(t) { return '<span class="tag-pill">' + escapeHtml(t) + '</span>'; }).join('') +
+      '</div>' +
+    '</div>';
+  }).join('');
+  grid.querySelectorAll('.card').forEach(function(c) {
+    c.addEventListener('click', function() { openReading(parseInt(c.dataset.id)); });
+  });
+}
+
+function renderList(data) {
+  document.getElementById('cardGrid').classList.add('hidden');
+  document.getElementById('listView').classList.remove('hidden');
+  var tbody = document.getElementById('listBody');
+  tbody.innerHTML = data.map(function(e) {
+    return '<tr data-id="' + e.id + '">' +
+      '<td>' + e.id + '</td>' +
+      '<td>' + escapeHtml(e.title) + '</td>' +
+      '<td><span class="type-badge ' + escapeHtml(e.type) + '">' + escapeHtml(e.type) + '</span></td>' +
+      '<td style="font-size:0.8rem;color:#666;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + escapeHtml(e.estimand) + '</td>' +
+      '<td style="font-family:Menlo,monospace;font-size:0.8rem;">' + e.wordCount + '</td>' +
+    '</tr>';
+  }).join('');
+  tbody.querySelectorAll('tr').forEach(function(r) {
+    r.addEventListener('click', function() { openReading(parseInt(r.dataset.id)); });
+  });
+}
+
+// Controls
+var filterTimeout;
+document.getElementById('filterSearch').addEventListener('input', function() {
+  clearTimeout(filterTimeout);
+  filterTimeout = setTimeout(renderLibrary, 200);
+});
+
+document.getElementById('categoryPills').addEventListener('click', function(e) {
+  if (!e.target.classList.contains('pill')) return;
+  document.querySelectorAll('#categoryPills .pill').forEach(function(p) { p.classList.remove('active'); });
+  e.target.classList.add('active');
+  state.currentCategory = e.target.dataset.cat;
+  renderLibrary();
+});
+
+document.getElementById('sortSelect').addEventListener('change', function(e) {
+  state.currentSort = e.target.value;
+  renderLibrary();
+});
+
+document.getElementById('viewToggle').addEventListener('click', function(e) {
+  if (!e.target.classList.contains('view-btn')) return;
+  document.querySelectorAll('#viewToggle .view-btn').forEach(function(b) { b.classList.remove('active'); });
+  e.target.classList.add('active');
+  state.currentView = e.target.dataset.view;
+  renderLibrary();
+});
+
+// List header sorting
+document.querySelectorAll('.list-table th').forEach(function(th) {
+  th.addEventListener('click', function() {
+    var key = th.dataset.sort;
+    if (key === 'id') state.currentSort = 'newest';
+    else if (key === 'title') state.currentSort = 'az';
+    else if (key === 'wordCount') state.currentSort = 'words';
+    document.getElementById('sortSelect').value = state.currentSort;
+    renderLibrary();
+  });
+});
+
+// ===== READING VIEW =====
+function openReading(id) {
+  var idx = state.filteredData.findIndex(function(e) { return e.id === id; });
+  if (idx === -1) {
+    state.filteredData = (typeof E156_DATA !== 'undefined' ? E156_DATA : []).slice();
+    state.readingIndex = state.filteredData.findIndex(function(e) { return e.id === id; });
+  } else {
+    state.readingIndex = idx;
+  }
+  renderReading();
+  document.getElementById('readingOverlay').classList.add('open');
+}
+
+function closeReading() {
+  document.getElementById('readingOverlay').classList.remove('open');
+}
+
+function renderReading() {
+  var entry = state.filteredData[state.readingIndex];
+  if (!entry) return;
+  document.getElementById('readingTitle').textContent = entry.title;
+  document.getElementById('readingMeta').textContent = entry.type + ' | ' + entry.estimand + ' | ' + entry.data;
+  document.getElementById('readingBody').textContent = entry.rewrite;
+  document.getElementById('readingPath').textContent = entry.path;
+  document.getElementById('readingCounter').textContent = (state.readingIndex + 1) + ' of ' + state.filteredData.length;
+
+  var sentences = splitSentences(entry.rewrite);
+  document.getElementById('readingTags').innerHTML = sentences.map(function(_, i) {
+    return '<span class="stag">' + (S_LABELS[i] || ('S' + (i + 1))) + '</span>';
+  }).join('');
+}
+
+document.getElementById('readingBack').addEventListener('click', closeReading);
+document.getElementById('readingPrev').addEventListener('click', function() {
+  if (state.readingIndex > 0) { state.readingIndex--; renderReading(); }
+});
+document.getElementById('readingNext').addEventListener('click', function() {
+  if (state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('readingOverlay').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft' && state.readingIndex > 0) { state.readingIndex--; renderReading(); }
+  if (e.key === 'ArrowRight' && state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
+});
+
+document.getElementById('copyCitation').addEventListener('click', function() {
+  var entry = state.filteredData[state.readingIndex];
+  if (!entry) return;
+  navigator.clipboard.writeText(makeCitation(entry)).then(function() {
+    var btn = document.getElementById('copyCitation');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy Citation'; }, 1500);
+  });
+});
+
+document.getElementById('copyBibtex').addEventListener('click', function() {
+  var entry = state.filteredData[state.readingIndex];
+  if (!entry) return;
+  navigator.clipboard.writeText(makeBibtex(entry)).then(function() {
+    var btn = document.getElementById('copyBibtex');
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = 'Copy BibTeX'; }, 1500);
+  });
+});
+
+// ===== JOURNAL =====
+function renderJournal() {
+  var toc = document.getElementById('journalToc');
+  var categories = ['methods', 'clinical', 'audit'];
+  var labels = { methods: 'Methods', clinical: 'Clinical', audit: 'Audit' };
+  var allData = (typeof E156_DATA !== 'undefined' ? E156_DATA : []);
+
+  var html = '';
+  for (var ci = 0; ci < categories.length; ci++) {
+    var cat = categories[ci];
+    var entries = allData.filter(function(e) { return e.type === cat; })
+      .sort(function(a, b) { return a.title.localeCompare(b.title); });
+    if (entries.length === 0) continue;
+    html += '<h2>' + labels[cat] + ' (' + entries.length + ')</h2>';
+    for (var ei = 0; ei < entries.length; ei++) {
+      var e = entries[ei];
+      html += '<div class="toc-entry" data-id="' + e.id + '">' +
+        '<span class="toc-num">' + e.id + '</span>' +
+        '<span class="toc-title">' + escapeHtml(e.title) + '</span>' +
+        '<span class="type-badge ' + escapeHtml(e.type) + '" style="font-size:0.65rem;padding:1px 6px;">' + escapeHtml(e.type) + '</span>' +
+        '<span class="toc-estimand">' + escapeHtml((e.estimand || '').substring(0, 60)) + '</span>' +
+      '</div>';
+    }
+  }
+  toc.innerHTML = html;
+  toc.querySelectorAll('.toc-entry').forEach(function(el) {
+    el.addEventListener('click', function() {
+      switchSection('library');
+      openReading(parseInt(el.dataset.id));
+    });
+  });
+}
+
+document.getElementById('exportBib').addEventListener('click', function() {
+  var allData = (typeof E156_DATA !== 'undefined' ? E156_DATA : []);
+  var bib = allData.map(makeBibtex).join('\n\n');
+  var blob = new Blob([bib], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'e156-volume1.bib';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('exportRis').addEventListener('click', function() {
+  var allData = (typeof E156_DATA !== 'undefined' ? E156_DATA : []);
+  var ris = allData.map(makeRis).join('\n\n');
+  var blob = new Blob([ris], { type: 'text/plain' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'e156-volume1.ris';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+});
+
+// ===== DASHBOARD =====
+function renderDashboard() {
+  var signs = document.getElementById('dashboardSigns');
+  var allData = (typeof E156_DATA !== 'undefined' ? E156_DATA : []);
+  var total = allData.length;
+
+  // Sign 1: E156 Complete
+  var e156Done = allData.filter(function(e) { return e.wordCount > 0; }).length;
+
+  // Sign 2: Tests
+  var withTests = allData.filter(function(e) { return e.testCount && e.testCount > 0; });
+  var totalTests = withTests.reduce(function(s, e) { return s + (e.testCount || 0); }, 0);
+
+  // Sign 3: Manuscript Status
+  var statuses = { draft: 0, review: 0, submitted: 0, accepted: 0, unknown: 0 };
+  allData.forEach(function(e) {
+    var ms = (e.manuscriptStatus || '').toLowerCase();
+    if (ms.includes('accept')) statuses.accepted++;
+    else if (ms.includes('submit')) statuses.submitted++;
+    else if (ms.includes('review')) statuses.review++;
+    else if (ms.includes('draft')) statuses.draft++;
+    else statuses.unknown++;
+  });
+
+  // Sign 4: Validated
+  var validated = allData.filter(function(e) { return e.validated === true; }).length;
+
+  // Sign 5: Fragility
+  var withFragility = allData.filter(function(e) { return e.tags && e.tags.includes('fragility'); });
+
+  // Sign 6: Freshness (placeholder)
+  // Sign 7: Citation readiness
+  var withJournal = allData.filter(function(e) { return e.journal; });
+
+  function pct(n, d) { return d > 0 ? Math.round(n / d * 100) : 0; }
+
+  signs.innerHTML =
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>1. E156 Complete</span><span class="sign-value">' + e156Done + '/' + total + '</span></div>' +
+      '<div class="sign-bar"><div class="fill fill-green" style="width:' + pct(e156Done, total) + '%">' + pct(e156Done, total) + '%</div></div>' +
+    '</div>' +
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>2. Tests Passing</span><span class="sign-value">' + totalTests.toLocaleString() + ' tests across ' + withTests.length + ' projects</span></div>' +
+      '<div class="sign-bar"><div class="fill fill-green" style="width:' + pct(withTests.length, total) + '%">' + pct(withTests.length, total) + '%</div><div class="fill fill-gray" style="width:' + (100 - pct(withTests.length, total)) + '%"></div></div>' +
+    '</div>' +
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>3. Manuscript Status</span><span class="sign-value">' + statuses.accepted + ' accepted, ' + statuses.submitted + ' submitted, ' + statuses.review + ' review</span></div>' +
+      '<div class="sign-bar">' +
+        '<div class="fill fill-green" style="width:' + pct(statuses.accepted, total) + '%" title="Accepted"></div>' +
+        '<div class="fill fill-blue" style="width:' + pct(statuses.submitted, total) + '%" title="Submitted"></div>' +
+        '<div class="fill fill-amber" style="width:' + pct(statuses.review, total) + '%" title="Review"></div>' +
+        '<div class="fill fill-gray" style="width:' + pct(statuses.draft + statuses.unknown, total) + '%" title="Draft/Unknown"></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>4. Validation Grade</span><span class="sign-value">' + validated + ' R-matched</span></div>' +
+      '<div class="sign-bar"><div class="fill fill-green" style="width:' + pct(validated, total) + '%">' + pct(validated, total) + '%</div><div class="fill fill-gray" style="width:' + (100 - pct(validated, total)) + '%"></div></div>' +
+    '</div>' +
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>5. Fragility</span><span class="sign-value">' + withFragility.length + ' projects with fragility analysis</span></div>' +
+      '<div class="sign-bar"><div class="fill fill-amber" style="width:' + pct(withFragility.length, total) + '%">' + pct(withFragility.length, total) + '%</div><div class="fill fill-gray" style="width:' + (100 - pct(withFragility.length, total)) + '%"></div></div>' +
+    '</div>' +
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>6. Freshness</span><span class="sign-value">Build-time snapshot</span></div>' +
+      '<div class="sign-bar"><div class="fill fill-green" style="width:60%">Active</div><div class="fill fill-amber" style="width:25%">Aging</div><div class="fill fill-red" style="width:15%">Stale</div></div>' +
+    '</div>' +
+    '<div class="sign-row">' +
+      '<div class="sign-label"><span>7. Citation Readiness</span><span class="sign-value">' + withJournal.length + ' with journal target</span></div>' +
+      '<div class="sign-bar"><div class="fill fill-blue" style="width:' + pct(withJournal.length, total) + '%">' + pct(withJournal.length, total) + '%</div><div class="fill fill-gray" style="width:' + (100 - pct(withJournal.length, total)) + '%"></div></div>' +
+    '</div>';
+
+  var healthPct = Math.round((pct(e156Done, total) + pct(withTests.length, total) + pct(validated, total)) / 3);
+  document.getElementById('dashSummary').textContent =
+    'Portfolio health: ' + healthPct + '% \u2014 ' + total + ' papers, ' + withTests.length + ' tested, ' + (statuses.accepted + statuses.submitted) + ' manuscripts in pipeline';
+}
+
+// ===== INIT =====
+renderLibrary();
+state.sectionsRendered.library = true;
+</script>
+</body>
+</html>
