@@ -96,6 +96,10 @@ def parse_workbook(path):
     Each dict has keys: id, slug, title, type, estimand, data, path,
     body, rewrite, wordCount, sentenceCount, tags.
     """
+    if not os.path.isfile(path):
+        print(f"Error: workbook not found at {path}")
+        return []
+
     with open(path, 'r', encoding='utf-8') as f:
         text = f.read()
 
@@ -225,7 +229,7 @@ def entries_to_js(entries):
     json_str = json.dumps(entries, indent=2, ensure_ascii=False)
     # CRITICAL: escape </script> inside template literals / JS strings
     # HTML parser closes script block prematurely even inside JS
-    json_str = json_str.replace('</script>', "${'<'}/script>")
+    json_str = json_str.replace('</script>', '<\\/script>')
     return f"const E156_DATA = {json_str};"
 
 

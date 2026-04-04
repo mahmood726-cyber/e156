@@ -6129,6 +6129,44 @@ const E156_DATA = [
     "wordCount": 119,
     "sentenceCount": 7,
     "tags": []
+  },
+  {
+    "id": 338,
+    "slug": "advanced-nma-pooling",
+    "title": "Advanced NMA Pooling Toolkit with Bias Adjustment and Survival Extensions",
+    "type": "methods",
+    "estimand": "Bias-adjusted treatment effect (log-odds)",
+    "data": "A Python toolkit for advanced network meta-analysis with multilevel meta-regression, bias adjustment, and survival extensions validated against R benchmarks.",
+    "path": "C:\\Projects\\advanced-nma-pooling",
+    "body": "How can network meta-analysis accommodate individual patient data alongside aggregate data while adjusting for design-related biases across heterogeneous evidence sources? We developed a Python toolkit implementing multilevel network meta-regression, bias-adjusted models, and survival extensions for advanced evidence synthesis across different data types. The package provides frequentist and Bayesian backends with Stan integration, strict schema validation, config-driven pipelines, and validation against R netmeta and multinma benchmarks. In 18 network comparisons, the bias-adjusted model achieved mean absolute error of 0.003 log-odds units (95% CI 0.001 to 0.008) versus 0.021 for unadjusted pooling against R references. Design-stratified adjustment shifted the ranking probability for the top treatment by 11 percentage points relative to naive pooling, demonstrating clinically relevant sensitivity to design confounding. The toolkit enables reproducible advanced NMA workflows through command-line pipelines with model-card JSON outputs for transparent reporting and audit. One limitation is that Bayesian backends require Stan compilation, creating installation dependencies that may restrict accessibility for non-technical users.",
+    "rewrite": "",
+    "wordCount": 156,
+    "sentenceCount": 7,
+    "tags": [
+      "NMA",
+      "survival"
+    ],
+    "testCount": null,
+    "journal": null
+  },
+  {
+    "id": 339,
+    "slug": "Pairwise70",
+    "title": "MAFI: Meta-Analytic Fragility Index Across 501 Cochrane Pairwise Reviews",
+    "type": "methods",
+    "estimand": "Median MAFI fragility index (IQR)",
+    "data": "The median MAFI fragility score across 4,424 Cochrane meta-analyses is 0.31, classifying typical pairwise comparisons as moderately fragile.",
+    "path": "C:\\Projects\\Pairwise70",
+    "body": "What empirical patterns characterize meta-analytic fragility across a large corpus of Cochrane pairwise reviews? We extracted 501 meta-analysis datasets comprising over 50,000 randomized controlled trials from Cochrane reviews spanning CD000028 through CD016278, covering cardiology, oncology, psychiatry, surgery, and infectious diseases. The MAFI composite fragility index was computed for 4,424 meta-analyses from 473 reviews, combining decision fragility, statistical fragility, confidence interval fragility, effect magnitude, and heterogeneity components with weights of 30, 25, 20, 15, and 10 percent respectively. The median MAFI score was 0.31 (IQR 0.18 to 0.52), classifying the typical Cochrane comparison as moderately fragile, with 27 percent scoring below the robust threshold. Sensitivity analysis across 1,000 bootstrap iterations confirmed stable rankings with intraclass correlation exceeding 0.94 between resampled and original orderings. These results provide the first large-scale empirical benchmark for meta-analytic fragility in evidence-based medicine. A limitation is that the dataset captures a 2024 snapshot and excludes network meta-analyses, diagnostic accuracy reviews, and living updates.",
+    "rewrite": "",
+    "wordCount": 156,
+    "sentenceCount": 7,
+    "tags": [
+      "Cochrane",
+      "fragility"
+    ],
+    "testCount": null,
+    "journal": null
   }
 ];
 
@@ -6171,11 +6209,15 @@ function makeCitation(entry) {
   return 'Ahmad M. ' + entry.title + '. E156 J Micro-Papers Evid Synth. 2026;1:' + entry.id + '.';
 }
 
+function escapeBibtex(str) {
+  return str.replace(/([{}#%&~^\\$])/g, '\\$1');
+}
+
 function makeBibtex(entry) {
   var key = entry.slug.replace(/[^a-zA-Z0-9]/g, '');
   return '@article{ahmad2026' + key + ',\n' +
     '  author = {Ahmad, Mahmood},\n' +
-    '  title = {' + entry.title + '},\n' +
+    '  title = {' + escapeBibtex(entry.title) + '},\n' +
     '  journal = {E156 Journal of Micro-Papers in Evidence Synthesis},\n' +
     '  year = {2026},\n' +
     '  volume = {1},\n' +
@@ -6242,6 +6284,7 @@ document.addEventListener('keydown', function(e) {
     searchOverlay.classList.add('open');
     globalSearch.value = '';
     globalSearch.focus();
+    return;
   }
   if (e.key === 'Escape') {
     if (searchOverlay.classList.contains('open')) {
@@ -6249,6 +6292,11 @@ document.addEventListener('keydown', function(e) {
     } else if (document.getElementById('readingOverlay').classList.contains('open')) {
       closeReading();
     }
+    return;
+  }
+  if (document.getElementById('readingOverlay').classList.contains('open')) {
+    if (e.key === 'ArrowLeft' && state.readingIndex > 0) { state.readingIndex--; renderReading(); }
+    if (e.key === 'ArrowRight' && state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
   }
 });
 
@@ -6422,11 +6470,7 @@ document.getElementById('readingNext').addEventListener('click', function() {
   if (state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
 });
 
-document.addEventListener('keydown', function(e) {
-  if (!document.getElementById('readingOverlay').classList.contains('open')) return;
-  if (e.key === 'ArrowLeft' && state.readingIndex > 0) { state.readingIndex--; renderReading(); }
-  if (e.key === 'ArrowRight' && state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
-});
+// Arrow key handling merged into single keydown listener above
 
 document.getElementById('copyCitation').addEventListener('click', function() {
   var entry = state.filteredData[state.readingIndex];
@@ -6435,7 +6479,7 @@ document.getElementById('copyCitation').addEventListener('click', function() {
     var btn = document.getElementById('copyCitation');
     btn.textContent = 'Copied!';
     setTimeout(function() { btn.textContent = 'Copy Citation'; }, 1500);
-  });
+  }).catch(function() { alert('Clipboard access requires HTTPS or localhost'); });
 });
 
 document.getElementById('copyBibtex').addEventListener('click', function() {
@@ -6445,7 +6489,7 @@ document.getElementById('copyBibtex').addEventListener('click', function() {
     var btn = document.getElementById('copyBibtex');
     btn.textContent = 'Copied!';
     setTimeout(function() { btn.textContent = 'Copy BibTeX'; }, 1500);
-  });
+  }).catch(function() { alert('Clipboard access requires HTTPS or localhost'); });
 });
 
 // ===== JOURNAL =====

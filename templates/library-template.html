@@ -459,11 +459,15 @@ function makeCitation(entry) {
   return 'Ahmad M. ' + entry.title + '. E156 J Micro-Papers Evid Synth. 2026;1:' + entry.id + '.';
 }
 
+function escapeBibtex(str) {
+  return str.replace(/([{}#%&~^\\$])/g, '\\$1');
+}
+
 function makeBibtex(entry) {
   var key = entry.slug.replace(/[^a-zA-Z0-9]/g, '');
   return '@article{ahmad2026' + key + ',\n' +
     '  author = {Ahmad, Mahmood},\n' +
-    '  title = {' + entry.title + '},\n' +
+    '  title = {' + escapeBibtex(entry.title) + '},\n' +
     '  journal = {E156 Journal of Micro-Papers in Evidence Synthesis},\n' +
     '  year = {2026},\n' +
     '  volume = {1},\n' +
@@ -530,6 +534,7 @@ document.addEventListener('keydown', function(e) {
     searchOverlay.classList.add('open');
     globalSearch.value = '';
     globalSearch.focus();
+    return;
   }
   if (e.key === 'Escape') {
     if (searchOverlay.classList.contains('open')) {
@@ -537,6 +542,11 @@ document.addEventListener('keydown', function(e) {
     } else if (document.getElementById('readingOverlay').classList.contains('open')) {
       closeReading();
     }
+    return;
+  }
+  if (document.getElementById('readingOverlay').classList.contains('open')) {
+    if (e.key === 'ArrowLeft' && state.readingIndex > 0) { state.readingIndex--; renderReading(); }
+    if (e.key === 'ArrowRight' && state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
   }
 });
 
@@ -710,11 +720,7 @@ document.getElementById('readingNext').addEventListener('click', function() {
   if (state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
 });
 
-document.addEventListener('keydown', function(e) {
-  if (!document.getElementById('readingOverlay').classList.contains('open')) return;
-  if (e.key === 'ArrowLeft' && state.readingIndex > 0) { state.readingIndex--; renderReading(); }
-  if (e.key === 'ArrowRight' && state.readingIndex < state.filteredData.length - 1) { state.readingIndex++; renderReading(); }
-});
+// Arrow key handling merged into single keydown listener above
 
 document.getElementById('copyCitation').addEventListener('click', function() {
   var entry = state.filteredData[state.readingIndex];
@@ -723,7 +729,7 @@ document.getElementById('copyCitation').addEventListener('click', function() {
     var btn = document.getElementById('copyCitation');
     btn.textContent = 'Copied!';
     setTimeout(function() { btn.textContent = 'Copy Citation'; }, 1500);
-  });
+  }).catch(function() { alert('Clipboard access requires HTTPS or localhost'); });
 });
 
 document.getElementById('copyBibtex').addEventListener('click', function() {
@@ -733,7 +739,7 @@ document.getElementById('copyBibtex').addEventListener('click', function() {
     var btn = document.getElementById('copyBibtex');
     btn.textContent = 'Copied!';
     setTimeout(function() { btn.textContent = 'Copy BibTeX'; }, 1500);
-  });
+  }).catch(function() { alert('Clipboard access requires HTTPS or localhost'); });
 });
 
 // ===== JOURNAL =====
