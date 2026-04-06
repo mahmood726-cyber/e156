@@ -113,6 +113,101 @@
       pointer-events: none;
     }
 
+    .status-banner {
+      position: relative;
+      z-index: 2;
+      padding: 8px 18px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .status-banner.draft {
+      background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+      color: #856404;
+      border-bottom: 2px solid #f0c36d;
+    }
+    .status-banner.final {
+      background: linear-gradient(135deg, #d4edda, #b8e6c8);
+      color: #155724;
+      border-bottom: 2px solid #6dbb86;
+    }
+
+    .author-block {
+      position: relative;
+      z-index: 1;
+      margin: 18px 0 6px;
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .author-block .author-name {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 16px;
+    }
+    .author-block .author-affil {
+      font-style: italic;
+    }
+    .author-block a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .author-block a:hover {
+      text-decoration: underline;
+    }
+
+    .references-section {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .references-section h3 {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    .references-section ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+    .references-section li {
+      margin-bottom: 6px;
+    }
+    .references-section .links {
+      margin-top: 12px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .references-section .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      transition: background 0.15s;
+    }
+    .references-section .links a:hover {
+      background: #d0e4f0;
+    }
+
     .eyebrow {
       position: relative;
       z-index: 1;
@@ -836,9 +931,16 @@
       <div class="masthead-meta" id="masthead-meta">Interactive paper companion</div>
     </header>
 
+    <div id="status-banner" class="status-banner draft">DRAFT — AI-generated version pending author review</div>
+
     <section class="hero">
       <div class="eyebrow">Interactive Paper Companion</div>
       <h1 id="title" class="nyt-headline"></h1>
+      <div class="author-block" id="author-block">
+        <div class="author-name" id="author-name"></div>
+        <div class="author-affil" id="author-affil"></div>
+        <div id="author-email"></div>
+      </div>
       <p class="lede nyt-subhead" id="lede"></p>
       <div class="hero-rail">
         <div id="hero-type">Type</div>
@@ -910,6 +1012,12 @@
         <table class="study-table" id="study-table"></table>
       </div>
     </section>
+
+    <section class="card references-section" id="references-section">
+      <h3>References</h3>
+      <ol id="ref-list"></ol>
+      <div class="links" id="project-links"></div>
+    </section>
   </main>
 
   <script>
@@ -947,6 +1055,58 @@
       document.getElementById("hero-date").textContent = `Date: ${article.date || "-"}`;
       document.getElementById("body-foot").textContent =
         `Primary estimand: ${article.primary_estimand || "-"} | certainty: ${article.certainty || "-"} | search strategy, PRISMA, included papers, analysis options, and study data are embedded below.`;
+
+      // Author block
+      const authorName = article.author || "Mahmood Ahmad";
+      const affiliation = article.affiliation || "Tahir Heart Institute";
+      const email = article.email || "mahmood.ahmad2@nhs.net";
+      document.getElementById("author-name").textContent = authorName;
+      document.getElementById("author-affil").textContent = affiliation;
+      document.getElementById("author-email").innerHTML =
+        `<a href="mailto:${esc(email)}">${esc(email)}</a>`;
+
+      // DRAFT vs FINAL banner
+      const banner = document.getElementById("status-banner");
+      const isSubmitted = article.submitted === true || article.submitted === "true";
+      if (isSubmitted) {
+        banner.className = "status-banner final";
+        banner.textContent = "FINAL — Author-reviewed version";
+      } else {
+        banner.className = "status-banner draft";
+        banner.textContent = "DRAFT — AI-generated version pending author review";
+      }
+
+      // References
+      const refList = document.getElementById("ref-list");
+      refList.innerHTML = "";
+      const refs = article.references || [];
+      refs.forEach(ref => {
+        const li = document.createElement("li");
+        li.textContent = ref;
+        refList.appendChild(li);
+      });
+      if (refs.length === 0) {
+        refList.innerHTML = "<li>No references provided</li>";
+      }
+
+      // Project links (GitHub repo + Pages)
+      const linksDiv = document.getElementById("project-links");
+      linksDiv.innerHTML = "";
+      const slug = article.slug || article.notes?.code?.split("/").pop() || "";
+      if (article.notes?.code) {
+        const a = document.createElement("a");
+        a.href = article.notes.code;
+        a.target = "_blank";
+        a.textContent = "GitHub Repository";
+        linksDiv.appendChild(a);
+      }
+      if (slug) {
+        const a2 = document.createElement("a");
+        a2.href = `https://mahmood726-cyber.github.io/${slug}/`;
+        a2.target = "_blank";
+        a2.textContent = "GitHub Pages Dashboard";
+        linksDiv.appendChild(a2);
+      }
 
       const core = document.getElementById("core-stats");
       core.innerHTML = "";

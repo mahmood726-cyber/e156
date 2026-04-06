@@ -47,9 +47,13 @@ def parse_workbook(path):
         cm = re.search(r"CURRENT BODY \(\d+ words\):\n(.+?)(?=\nYOUR REWRITE)", block, re.DOTALL)
         current = cm.group(1).strip() if cm else ""
 
-        # Find YOUR REWRITE
-        rm = re.search(r"YOUR REWRITE \(at most 156 words, 7 sentences\):\n(.+?)$", block, re.DOTALL)
+        # Find YOUR REWRITE (stop at SUBMITTED line)
+        rm = re.search(r"YOUR REWRITE \(at most 156 words, 7 sentences\):\n(.+?)(?=\nSUBMITTED:|\Z)", block, re.DOTALL)
         rewrite = rm.group(1).strip() if rm else ""
+
+        # Find SUBMITTED status
+        sm = re.search(r"SUBMITTED:\s*\[(x?)\]", block, re.IGNORECASE)
+        submitted = bool(sm and sm.group(1).lower() == "x") if sm else False
 
         entries.append({
             "index": index,
@@ -57,6 +61,7 @@ def parse_workbook(path):
             "path": path_str,
             "current": current,
             "rewrite": rewrite,
+            "submitted": submitted,
         })
 
     return entries
@@ -108,7 +113,7 @@ def validate_rewrite(name, body):
 
 
 def apply_rewrite(entry):
-    """Apply one rewrite to its project."""
+    """Apply one rewrite to its project. Uses YOUR REWRITE if submitted, else CURRENT BODY."""
     project_path = entry["path"]
     cfg_path = Path(project_path) / "e156-submission" / "config.json"
 
@@ -120,7 +125,14 @@ def apply_rewrite(entry):
     except Exception as e:
         return False, f"Bad JSON: {e}"
 
-    body = entry["rewrite"]
+    # Choose body: if submitted and rewrite exists, use rewrite; otherwise current
+    if entry["submitted"] and entry["rewrite"]:
+        body = entry["rewrite"]
+    elif entry["rewrite"]:
+        body = entry["rewrite"]
+    else:
+        body = entry["current"]
+
     sents = split_sentences(body)
     roles = ["Question", "Dataset", "Method", "Primary result", "Robustness", "Interpretation", "Boundary"]
 
@@ -128,6 +140,29 @@ def apply_rewrite(entry):
     config["body"] = body
     if len(sents) == 7:
         config["sentences"] = [{"role": r, "text": s} for r, s in zip(roles, sents)]
+
+    # Author info (always set)
+    config["author"] = "Mahmood Ahmad"
+    config["affiliation"] = "Tahir Heart Institute"
+    config["email"] = "mahmood.ahmad2@nhs.net"
+
+    # Submitted status (controls DRAFT vs FINAL display)
+    config["submitted"] = entry["submitted"]
+
+    # Ensure references exist (at least empty array)
+    if "references" not in config or not config["references"]:
+        config["references"] = []
+
+    # Ensure slug for GitHub Pages links
+    if "slug" not in config:
+        config["slug"] = entry["name"].lower().replace("_", "-").replace(" ", "-")
+
+    # Ensure notes.code has GitHub URL
+    if "notes" not in config:
+        config["notes"] = {}
+    if not config["notes"].get("code"):
+        slug = config["slug"]
+        config["notes"]["code"] = f"https://github.com/mahmood726-cyber/{slug}"
 
     # Save config
     cfg_path.write_text(json.dumps(config, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -137,6 +172,60 @@ def apply_rewrite(entry):
     generate_submission(config)
 
     return True, "Applied"
+
+
+def apply_all_configs(entries):
+    """Update ALL project configs with author info and submitted status,
+    even those without rewrites. This ensures DRAFT/FINAL is always current."""
+    updated = 0
+    for entry in entries:
+        project_path = entry["path"]
+        cfg_path = Path(project_path) / "e156-submission" / "config.json"
+
+        if not cfg_path.exists():
+            continue
+
+        try:
+            config = json.loads(cfg_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+
+        changed = False
+
+        # Always update author info
+        if config.get("author") != "Mahmood Ahmad":
+            config["author"] = "Mahmood Ahmad"
+            changed = True
+        if config.get("affiliation") != "Tahir Heart Institute":
+            config["affiliation"] = "Tahir Heart Institute"
+            changed = True
+        if config.get("email") != "mahmood.ahmad2@nhs.net":
+            config["email"] = "mahmood.ahmad2@nhs.net"
+            changed = True
+
+        # Update submitted status
+        if config.get("submitted") != entry["submitted"]:
+            config["submitted"] = entry["submitted"]
+            changed = True
+
+        # Update body based on submitted status
+        if entry["submitted"] and entry["rewrite"]:
+            if config.get("body") != entry["rewrite"]:
+                config["body"] = entry["rewrite"]
+                sents = split_sentences(entry["rewrite"])
+                roles = ["Question", "Dataset", "Method", "Primary result",
+                         "Robustness", "Interpretation", "Boundary"]
+                if len(sents) == 7:
+                    config["sentences"] = [{"role": r, "text": s} for r, s in zip(roles, sents)]
+                changed = True
+
+        if changed:
+            cfg_path.write_text(json.dumps(config, indent=2, ensure_ascii=False), encoding="utf-8")
+            config["path"] = project_path
+            generate_submission(config)
+            updated += 1
+
+    return updated
 
 
 def main():
@@ -198,6 +287,13 @@ def main():
         print(f"\nDry run complete. To apply valid rewrites, run:")
         print(f"  python apply_rewrites.py --apply")
         return
+
+    # First: update ALL configs with author info and submitted status
+    print(f"\n{'=' * 60}")
+    print(f"UPDATING ALL CONFIGS (author info + DRAFT/FINAL status)")
+    print(f"{'=' * 60}")
+    synced = apply_all_configs(entries)
+    print(f"  Synced {synced} project configs")
 
     # Apply valid rewrites
     print(f"\n{'=' * 60}")
