@@ -125,13 +125,8 @@ def apply_rewrite(entry):
     except Exception as e:
         return False, f"Bad JSON: {e}"
 
-    # Choose body: if submitted and rewrite exists, use rewrite; otherwise current
-    if entry["submitted"] and entry["rewrite"]:
-        body = entry["rewrite"]
-    elif entry["rewrite"]:
-        body = entry["rewrite"]
-    else:
-        body = entry["current"]
+    # Choose body: use rewrite if available, otherwise current
+    body = entry["rewrite"] if entry["rewrite"] else entry["current"]
 
     sents = split_sentences(body)
     roles = ["Question", "Dataset", "Method", "Primary result", "Robustness", "Interpretation", "Boundary"]

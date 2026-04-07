@@ -127,7 +127,7 @@
     }
     .status-banner.draft {
       background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-      color: #856404;
+      color: #5a4300;
       border-bottom: 2px solid #f0c36d;
     }
     .status-banner.final {
@@ -170,7 +170,7 @@
       color: var(--muted);
       line-height: 1.7;
     }
-    .references-section h3 {
+    .references-section .section-title {
       font-family: var(--serif);
       font-size: 16px;
       font-weight: 700;
@@ -1014,7 +1014,7 @@
     </section>
 
     <section class="card references-section" id="references-section">
-      <h3>References</h3>
+      <h2 class="section-title">References</h2>
       <ol id="ref-list"></ol>
       <div class="links" id="project-links"></div>
     </section>
@@ -1093,10 +1093,11 @@
       const linksDiv = document.getElementById("project-links");
       linksDiv.innerHTML = "";
       const slug = article.slug || article.notes?.code?.split("/").pop() || "";
-      if (article.notes?.code) {
+      if (article.notes?.code && /^https?:\/\//i.test(article.notes.code)) {
         const a = document.createElement("a");
         a.href = article.notes.code;
         a.target = "_blank";
+        a.rel = "noopener noreferrer";
         a.textContent = "GitHub Repository";
         linksDiv.appendChild(a);
       }
@@ -1104,6 +1105,7 @@
         const a2 = document.createElement("a");
         a2.href = `https://mahmood726-cyber.github.io/${slug}/`;
         a2.target = "_blank";
+        a2.rel = "noopener noreferrer";
         a2.textContent = "GitHub Pages Dashboard";
         linksDiv.appendChild(a2);
       }

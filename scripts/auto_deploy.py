@@ -42,6 +42,14 @@ def log(msg):
         f.write(line + "\n")
 
 
+def rotate_log(max_lines=5000):
+    """Keep log file from growing unbounded."""
+    if LOG_FILE.exists():
+        lines = LOG_FILE.read_text(encoding="utf-8", errors="replace").splitlines()
+        if len(lines) > max_lines:
+            LOG_FILE.write_text("\n".join(lines[-max_lines:]) + "\n", encoding="utf-8")
+
+
 def run(cmd, cwd=None, timeout=60):
     try:
         r = subprocess.run(cmd, shell=True, cwd=cwd, capture_output=True, text=True, timeout=timeout)
@@ -128,6 +136,7 @@ def push_changed_projects(entries):
 
 
 def main():
+    rotate_log()
     log("=" * 50)
     log("AUTO-DEPLOY START")
 
@@ -154,7 +163,7 @@ def main():
     new_repos = find_new_repos()
     if new_repos:
         log(f"Found {len(new_repos)} new repos without remotes")
-        rc, out, _ = run(f"python {PUSH_SCRIPT} --new-only", timeout=300)
+        rc, out, _ = run(f'"{sys.executable}" {PUSH_SCRIPT} --new-only', timeout=300)
         if rc == 0:
             log("New repos created and pushed")
         else:
@@ -171,7 +180,7 @@ def main():
     e156_dir = "C:/E156"
     rc, out, _ = run("git status --porcelain", cwd=e156_dir)
     if out:
-        run("git add -A", cwd=e156_dir)
+        run("git add scripts/ templates/ rewrite-workbook.txt e156-library.html index.html", cwd=e156_dir)
         run('git commit -m "E156 auto-deploy: library + configs"', cwd=e156_dir)
         run("git push origin master", cwd=e156_dir, timeout=30)
         log("Pushed E156 repo")
@@ -183,7 +192,7 @@ def main():
         if out:
             run("git add -A", cwd=portfolio_dir)
             run('git commit -m "Portfolio auto-update"', cwd=portfolio_dir)
-            run("git push origin master --force", cwd=portfolio_dir, timeout=30)
+            run("git push origin master --force-with-lease", cwd=portfolio_dir, timeout=30)
             log("Pushed portfolio site")
 
     # Save state
