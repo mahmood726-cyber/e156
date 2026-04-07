@@ -1,0 +1,157 @@
+[2026-04-07 02:37:30] ==================================================
+[2026-04-07 02:37:30] AUTO-DEPLOY START
+[2026-04-07 02:37:30] Workbook changed (hash: af921e18)
+[2026-04-07 02:37:30] Entries: 339, FINAL: 0, DRAFT: 339
+[2026-04-07 02:37:44] Found 3 new repos without remotes
+[2026-04-07 02:38:09] New repos created and pushed
+[2026-04-07 02:38:10]   Push failed: 501MLM - remote: Permission to mahmood789/MLM501.git denied to mahmoo
+[2026-04-07 02:38:12]   Pushed: 501MLM_Submission
+[2026-04-07 02:38:14]   Pushed: advanced-nma-pooling
+[2026-04-07 02:38:19]   Pushed: AfricaRCT
+[2026-04-07 02:38:21]   Pushed: AutoGRADE
+[2026-04-07 02:38:22]   Pushed: BenfordMA
+[2026-04-07 02:38:24]   Pushed: BiasForensics
+[2026-04-07 02:38:25]   Pushed: Burhan
+[2026-04-07 02:38:27]   Pushed: CardioTrialAudit
+[2026-04-07 02:38:28]   Pushed: CausalSynth
+[2026-04-07 02:38:29]   Push failed: chat2 - remote: Repository not found.
+fatal: repository 'https://git
+[2026-04-07 02:38:30]   Push failed: chatpaper - remote: Repository not found.
+fatal: repository 'https://git
+[2026-04-07 02:38:31]   Push failed: claude2 - remote: Repository not found.
+fatal: repository 'https://git
+[2026-04-07 02:38:33]   Pushed: clauderepo
+[2026-04-07 02:38:34]   Pushed: clinic-site
+[2026-04-07 02:38:36]   Pushed: CochraneDataExtractor
+[2026-04-07 02:38:37]   Pushed: ComponentNMA
+[2026-04-07 02:38:39]   Pushed: ConformalMA
+[2026-04-07 02:38:41]   Pushed: CRES
+[2026-04-07 02:38:43]   Pushed: cv-rct-analysis
+[2026-04-07 02:38:45]   Pushed: Dataextractor
+[2026-04-07 02:38:47]   Pushed: dosehtml
+[2026-04-07 02:38:48]   Pushed: DPMA
+[2026-04-07 02:38:50]   Pushed: DTA70
+[2026-04-07 02:38:52]   Pushed: DTA_Pro_Review
+[2026-04-07 02:38:54]   Pushed: everything-claude-code
+[2026-04-07 02:38:55]   Pushed: evidence-board
+[2026-04-07 02:38:57]   Pushed: EvidenceHalfLife
+[2026-04-07 02:38:59]   Pushed: EvidenceQuality
+[2026-04-07 02:39:01]   Pushed: EvidenceTribunal
+[2026-04-07 02:39:02]   Pushed: FATIHA_Project
+[2026-04-07 02:39:06]   Pushed: Finrenone
+[2026-04-07 02:39:07]   Pushed: focus-studio
+[2026-04-07 02:39:09]   Pushed: FragilityAtlas
+[2026-04-07 02:39:10]   Pushed: FragilityIndex
+[2026-04-07 02:39:12]   Pushed: GRMA_paper
+[2026-04-07 02:39:13]   Pushed: GWAM
+[2026-04-07 02:39:15]   Pushed: HTA
+[2026-04-07 02:39:17]   Pushed: HTA-oman
+[2026-04-07 02:39:19]   Pushed: HTA_Transportability_Engine
+[2026-04-07 02:39:21]   Pushed: HTA_Unified_Intelligence_System
+[2026-04-07 02:39:24]   Pushed: idea12
+[2026-04-07 02:39:25]   Pushed: IndirectComparison
+[2026-04-07 02:39:35]   Pushed: IPD-Meta-Pro
+[2026-04-07 02:39:37]   Pushed: IPD_QMA
+[2026-04-07 02:39:38]   Pushed: kanban-lab
+[2026-04-07 02:39:40]   Pushed: KMcurve
+[2026-04-07 02:39:41]   Pushed: KMDigitizer
+[2026-04-07 02:39:43]   Pushed: LFA
+[2026-04-07 02:39:45]   Pushed: living-meta-engine
+[2026-04-07 02:39:46]   Pushed: llm-meta-analysis
+[2026-04-07 02:39:48]   Pushed: mahmood726-cyber.github.io
+[2026-04-07 02:39:49]   Pushed: MAPowerCalc
+[2026-04-07 02:39:51]   Pushed: MAPriors
+[2026-04-07 02:39:52]   Pushed: MAWorkbench
+[2026-04-07 02:39:54]   Pushed: maxent-reconstructor
+[2026-04-07 02:39:55]   Pushed: MCIDMapper
+[2026-04-07 02:39:57]   Pushed: MES
+[2026-04-07 02:39:58]   Pushed: meta-epidemiology-bias-correction
+[2026-04-07 02:39:59]   Push failed: Meta_Ecosystem_Model - fatal: unable to access 'https://github.com/mahmood726-cyber
+[2026-04-07 02:40:01]   Pushed: MetaAudit
+[2026-04-07 02:40:02]   Pushed: MetaEntropy
+[2026-04-07 02:40:04]   Pushed: MetaExtract
+[2026-04-07 02:40:06]   Pushed: MetaFolio
+[2026-04-07 02:40:07]   Pushed: MetaFusion-Lab
+[2026-04-07 02:40:09]   Pushed: MetaGenome
+[2026-04-07 02:40:10]   Pushed: MetaGuard
+[2026-04-07 02:40:12]   Pushed: MetaMethods
+[2026-04-07 02:40:13]   Pushed: Metanew
+[2026-04-07 02:40:15]   Pushed: metaoverfit
+[2026-04-07 02:40:16]   Pushed: metaoverfit-paper
+[2026-04-07 02:40:18]   Pushed: MetaRegression
+[2026-04-07 02:40:19]   Pushed: MetaRep
+[2026-04-07 02:40:21]   Pushed: MetaRepair
+[2026-04-07 02:40:22]   Pushed: MetaReproducer
+[2026-04-07 02:40:24]   Pushed: MetaShift
+[2026-04-07 02:40:26]   Pushed: metasprint-cardio-universe
+[2026-04-07 02:40:27]   Pushed: metasprint-dose-response
+[2026-04-07 02:40:29]   Pushed: metasprint-dta
+[2026-04-07 02:40:31]   Pushed: metasprintnma
+[2026-04-07 02:40:32]   Pushed: metaverse-robust-MA
+[2026-04-07 02:40:33]   Pushed: MethodsSuite
+[2026-04-07 02:40:34]   Push failed: MLM501 - remote: Permission to mahmood789/MLM501.git denied to mahmoo
+[2026-04-07 02:40:36]   Pushed: MLMResearch
+[2026-04-07 02:40:38]   Pushed: Multilevelerror
+[2026-04-07 02:40:38]   Push failed: Multipledatameta - remote: Permission to mahmood789/Multipledatameta.git denied
+[2026-04-07 02:40:40]   Pushed: MultiverseMA
+[2026-04-07 02:40:41]   Pushed: my-python-project
+[2026-04-07 02:40:43]   Pushed: New_Heterogeneity_Model
+[2026-04-07 02:40:48]   Pushed: NMAhtml
+[2026-04-07 02:40:50]   Pushed: nmapaper111025
+[2026-04-07 02:40:51]   Pushed: NNTMapper
+[2026-04-07 02:40:53]   Pushed: OutcomeReportingBias
+[2026-04-07 02:40:54]   Pushed: OverlapDetector
+[2026-04-07 02:40:56]   Pushed: OverlapMatrix
+[2026-04-07 02:40:57]   Pushed: Pairwise70
+[2026-04-07 02:41:01]   Pushed: Pairwiseai
+[2026-04-07 02:41:03]   Pushed: Paper1
+[2026-04-07 02:41:05]   Pushed: Paper2.111025
+[2026-04-07 02:41:06]   Pushed: PoolingSuite
+[2026-04-07 02:41:08]   Pushed: portfolio-site
+[2026-04-07 02:41:09]   Pushed: PredictionGap
+[2026-04-07 02:41:11]   Pushed: PRISMAChecker
+[2026-04-07 02:41:13]   Pushed: PRISMAFlow
+[2026-04-07 02:41:14]   Pushed: private-website
+[2026-04-07 02:41:16]   Pushed: prognostic-meta
+[2026-04-07 02:41:18]   Pushed: pub-bias-simulation
+[2026-04-07 02:41:20]   Pushed: PubBiasSuite
+[2026-04-07 02:41:22]   Pushed: repo300-ENMA-SNMA
+[2026-04-07 02:41:23]   Pushed: RMSTmeta
+[2026-04-07 02:41:25]   Pushed: rmstnma
+[2026-04-07 02:41:26]   Pushed: RoBAssessor
+[2026-04-07 02:41:28]   Pushed: ROBMA
+[2026-04-07 02:41:30]   Pushed: shahzaib-icu-landscape
+[2026-04-07 02:41:31]   Pushed: SheafNMA
+[2026-04-07 02:41:33]   Pushed: SoFTable
+[2026-04-07 02:41:34]   Pushed: TDA_MA
+[2026-04-07 02:41:36]   Pushed: TGEP_Development
+[2026-04-07 02:41:37]   Pushed: TransportabilityCalc
+[2026-04-07 02:41:39]   Pushed: TrialRadar
+[2026-04-07 02:41:40]   Pushed: truthcert-denominator-phase1
+[2026-04-07 02:41:42]   Pushed: truthcert-meta2-prototype
+[2026-04-07 02:41:44]   Pushed: Truthcert1_work
+[2026-04-07 02:41:46]   Pushed: UmbrellaReview
+[2026-04-07 02:41:47]   Pushed: Value_Based_HTA_Engine
+[2026-04-07 02:41:49]   Pushed: VOICalculator
+[2026-04-07 02:41:51]   Pushed: wasserstein
+[2026-04-07 02:41:51]   Push failed: WorldIPD - remote: Permission to mahmood789/-WorldIPD.git denied to mah
+[2026-04-07 02:41:52]   Push failed: WorldIPD-private - remote: Repository not found.
+fatal: repository 'https://git
+[2026-04-07 02:41:54]   Pushed: cardio-ctgov-living-meta-portfolio
+[2026-04-07 02:41:56]   Pushed: esc-acs-living-meta
+[2026-04-07 02:41:58]   Pushed: AuthorshipLedger
+[2026-04-07 02:42:00]   Pushed: CitationWorkbench
+[2026-04-07 02:42:02]   Pushed: DrivePulse
+[2026-04-07 02:42:03]   Pushed: EvidenceBridgeFHIR
+[2026-04-07 02:42:04]   Pushed: EvidenceCrate
+[2026-04-07 02:42:06]   Pushed: FAIRPortfolio
+[2026-04-07 02:42:07]   Pushed: PortfolioCatalog
+[2026-04-07 02:42:09]   Pushed: PortfolioOps
+[2026-04-07 02:42:10]   Pushed: ProvenanceAtlas
+[2026-04-07 02:42:11]   Pushed: ResearchConstellation
+[2026-04-07 02:42:13]   Pushed: SubmissionCockpit
+[2026-04-07 02:42:15]   Pushed: TriageWorkbench
+[2026-04-07 02:42:19]   Pushed: MetaVoI
+[2026-04-07 02:42:20]   Pushed: PriorLab
+[2026-04-07 02:42:22]   Pushed: QualSynth
+[2026-04-07 02:42:23] Pushed 137 updated projects

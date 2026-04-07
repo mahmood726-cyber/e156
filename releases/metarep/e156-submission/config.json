@@ -3,7 +3,7 @@
   "slug": "metarep",
   "author": "Mahmood Ahmad",
   "affiliation": "Tahir Heart Institute",
-  "email": "author@example.com",
+  "email": "mahmood.ahmad2@nhs.net",
   "date": "2026-03-26",
   "path": "C:\\E156\\releases\\metarep",
   "type": "methods",
@@ -69,5 +69,6 @@
   "prisma": {},
   "included_papers": [],
   "analysis_modules": [],
-  "journal_wrapper": "example"
+  "journal_wrapper": "example",
+  "submitted": false
 }

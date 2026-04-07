@@ -14,6 +14,10 @@ sys.path.insert(0, str(SCRIPT_DIR))
 from e156_utils import find_all_submissions
 
 GH_USER = os.environ.get("E156_GH_USER", "mahmood726-cyber")
+GIT_NAME = os.environ.get("E156_GIT_NAME", "Mahmood Ahmad")
+GIT_EMAIL = os.environ.get("E156_GIT_EMAIL", f"{GH_USER}@users.noreply.github.com")
+GIT_BIN = os.environ.get("E156_GIT_BIN", "git")
+POWERSHELL_EXE = Path("/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe")
 
 
 def local_windows_path(path_str):
@@ -22,6 +26,33 @@ def local_windows_path(path_str):
     drive = path_str[0].lower()
     suffix = path_str[2:].replace("\\", "/").lstrip("/")
     return Path(f"/mnt/{drive}/{suffix}")
+
+
+def repo_path_for_git(path):
+    resolved = str(path.resolve())
+    if os.name != "nt" and resolved.startswith("/mnt/") and len(resolved) > 6:
+        drive = resolved[5].upper()
+        suffix = resolved[6:].replace("/", "\\").lstrip("\\")
+        return f"{drive}:\\{suffix}"
+    return resolved
+
+
+def powershell_quote(value):
+    return "'" + value.replace("'", "''") + "'"
+
+
+def run_git(path, *args, timeout=30):
+    if os.name != "nt" and POWERSHELL_EXE.exists():
+        repo_dir = powershell_quote(repo_path_for_git(path))
+        git_bin = powershell_quote(GIT_BIN)
+        git_args = " ".join(powershell_quote(arg) for arg in args)
+        command = f"Set-Location -LiteralPath {repo_dir}; & {git_bin}"
+        if git_args:
+            command += f" {git_args}"
+        cmd = [str(POWERSHELL_EXE), "-NoProfile", "-Command", command]
+    else:
+        cmd = [GIT_BIN, "-C", repo_path_for_git(path), *args]
+    return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
 
 
 def repo_name_for(project_dir, config):
@@ -37,14 +68,45 @@ def repo_name_for(project_dir, config):
 def create_push_script(project_dir, repo_name):
     """Create push.sh in each project for easy updating."""
     script = f'''#!/bin/bash
-# Quick push — run after updating paper.md or any files
+# Quick push for publication-managed files
 # Usage: bash push.sh "commit message"
 
 MSG="${{1:-Update E156 submission}}"
+GIT_NAME="${{E156_GIT_NAME:-{GIT_NAME}}}"
+GIT_EMAIL="${{E156_GIT_EMAIL:-{GIT_EMAIL}}}"
+GIT_BIN="${{E156_GIT_BIN:-git.exe}}"
 
-git add -A
-git commit -m "$MSG"
-git push origin master 2>/dev/null || git push origin main 2>/dev/null
+if ! command -v "$GIT_BIN" >/dev/null 2>&1; then
+  GIT_BIN=git
+fi
+
+if ! "$GIT_BIN" diff --cached --quiet --exit-code; then
+  echo "There are already staged changes in this repo. Review and push manually."
+  exit 1
+fi
+
+paths=(
+  "e156-submission"
+  "push.sh"
+  "LICENSE"
+  "LICENSE.md"
+  "LICENSE.txt"
+  "CITATION.cff"
+)
+
+for path in "${{paths[@]}}"; do
+  if [ -e "$path" ] || "$GIT_BIN" ls-files -- "$path" | grep -q .; then
+    "$GIT_BIN" add -A -- "$path"
+  fi
+done
+
+if ! "$GIT_BIN" diff --cached --quiet --exit-code; then
+  "$GIT_BIN" -c user.name="$GIT_NAME" -c user.email="$GIT_EMAIL" commit --no-verify --no-gpg-sign -m "$MSG"
+else
+  echo "No publication-managed changes to commit."
+fi
+
+"$GIT_BIN" push origin master 2>/dev/null || "$GIT_BIN" push origin main 2>/dev/null
 
 echo ""
 echo "Pushed to GitHub. View at:"
@@ -235,17 +297,36 @@ def main():
     print(f"Dashboard saved to {portfolio_dir}/index.html")
 
     # Push portfolio
-    subprocess.run(["git", "-C", str(portfolio_dir), "add", "-A"], capture_output=True, timeout=10)
-    subprocess.run(["git", "-C", str(portfolio_dir), "commit", "-m", "Update live dashboard"],
-                  capture_output=True, timeout=10)
-    r = subprocess.run(["git", "-C", str(portfolio_dir), "push", "origin", "master"],
-                      capture_output=True, text=True, timeout=30)
-    if r.returncode == 0:
-        print(f"Dashboard live at: https://{GH_USER}.github.io/")
+    run_git(portfolio_dir, "add", "-A", timeout=10)
+    run_git(
+        portfolio_dir,
+        "-c", f"user.name={GIT_NAME}",
+        "-c", f"user.email={GIT_EMAIL}",
+        "commit", "--no-verify", "--no-gpg-sign", "-m", "Update live dashboard",
+        timeout=10,
+    )
+    branch_probe = run_git(portfolio_dir, "rev-parse", "--abbrev-ref", "HEAD", timeout=10)
+    branches = []
+    current_branch = branch_probe.stdout.strip()
+    if branch_probe.returncode == 0 and current_branch and current_branch != "HEAD":
+        branches.append(current_branch)
+    for candidate in ("master", "main"):
+        if candidate not in branches:
+            branches.append(candidate)
+
+    errors = []
+    for candidate in branches:
+        result = run_git(portfolio_dir, "push", "origin", candidate, timeout=30)
+        if result.returncode == 0:
+            if candidate == "master":
+                print(f"Dashboard live at: https://{GH_USER}.github.io/")
+            else:
+                print(f"Dashboard pushed ({candidate} branch)")
+            break
+        detail = (result.stderr or result.stdout or "").strip().splitlines()
+        errors.append(detail[0] if detail else f"push failed on {candidate}")
     else:
-        subprocess.run(["git", "-C", str(portfolio_dir), "push", "origin", "main"],
-                      capture_output=True, timeout=30)
-        print(f"Dashboard pushed (main branch)")
+        print(f"Dashboard push failed: {errors[0] if errors else 'unknown git error'}")
 
 
 if __name__ == "__main__":

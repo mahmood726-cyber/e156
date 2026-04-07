@@ -3,7 +3,7 @@
   "slug": "reduced-dose-doacs-vte-demo",
   "author": "Mahmood Ahmad",
   "affiliation": "Tahir Heart Institute",
-  "email": "author@example.com",
+  "email": "mahmood.ahmad2@nhs.net",
   "date": "2026-03-26",
   "path": "C:\\E156\\releases\\reduced-dose-doacs-vte-demo",
   "type": "pairwise",
@@ -93,5 +93,6 @@
     "Higgins JPT, Thompson SG, Deeks JJ, Altman DG. Measuring inconsistency in meta-analyses. BMJ. 2003;327(7414):557-560.",
     "Cochrane Handbook for Systematic Reviews of Interventions. Version 6.4. Cochrane; 2023."
   ],
-  "journal_wrapper": "demo"
+  "journal_wrapper": "demo",
+  "submitted": false
 }
