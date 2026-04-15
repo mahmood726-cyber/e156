@@ -9,7 +9,7 @@ INSTRUCTIONS:
 - Run: python C:/E156/scripts/apply_rewrites.py          (validate)
 - Run: python C:/E156/scripts/apply_rewrites.py --apply (apply)
 
-Total projects: 480 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14) [see --- ENTRY N --- blocks for entries 473-478]
+Total projects: 481 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch]) [see --- ENTRY N --- blocks for entries 473-478]
 
 SUBMITTED: [ ]
 
@@ -8266,3 +8266,18 @@ How can clinicians perform rigorous pairwise meta-analysis entirely within a web
 YOUR REWRITE (at most 156 words, 7 sentences):
 
 
+
+======================================================================
+[481/481] sglt2i-hfpef-demo
+TITLE: SGLT2i in HFpEF: a browser-native benchmark reproduction
+TYPE: methods  |  ESTIMAND: pooled hazard ratio (primary composite, log-HR)
+DATA: ma-workbench in-browser pooling of EMPEROR-Preserved (Anker NEJM 2021) + DELIVER (Solomon NEJM 2022) primary composite HRs (n=12,251); benchmark = Vaduganathan Lancet 2022 fixed-effects 2-trial HFpEF pool (HR 0.80, 95% CI 0.73-0.87)
+PATH: C:\Users\user\ma-workbench
+
+CURRENT BODY (156 words):
+Does a browser-only meta-analysis workbench reproduce the published fixed-effects pooled hazard ratio for SGLT2 inhibitors on the primary composite endpoint in HFpEF? Two trials, n=12,251: EMPEROR-Preserved (empagliflozin, 5988) and DELIVER (dapagliflozin, 6263), primary composite hazard ratios taken from published NEJM tables. Generic inverse-variance pooling on the log-hazard-ratio scale using REML random-effects, with fixed-effect, Paule-Mandel, and HKSJ-with-floor as sensitivity estimators. REML pool: HR 0.81 (95% CI 0.74-0.88), |delta|=0.007 exceeds prespecified tolerance 0.005 versus Vaduganathan 2022 Lancet pool HR 0.80 (0.73-0.87); tau-squared=0.00, I-squared=0%, Q-p=0.68. Across estimators the pooled HR is 0.81 (range 0.00 between FE and PM at tau-squared=0); DerSimonian-Laird is not reported because it is inappropriate at k<10. Divergence exceeds the tight aggregate-branch tolerance, attributable to two-decimal-place rounding of trial-reported HRs against a pool retaining more precision internally. The pool uses two-decimal-place HRs; prediction intervals, funnel plots, and trim-and-fill are undefined at k=2; prespecified FAIL boundary.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+
+SUBMITTED: [ ]
