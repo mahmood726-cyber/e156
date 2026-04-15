@@ -1,0 +1,42 @@
+name: Update claims from issue
+
+on:
+  issues:
+    types: [opened, edited, labeled, closed, reopened]
+
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # Only run on claim / submitted issues
+    if: contains(github.event.issue.labels.*.name, 'claim') || contains(github.event.issue.labels.*.name, 'submitted')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Parse issue and update claims.json
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+          ISSUE_LABELS: ${{ toJson(github.event.issue.labels) }}
+          ISSUE_STATE: ${{ github.event.issue.state }}
+          ISSUE_CREATED_AT: ${{ github.event.issue.created_at }}
+        run: python scripts/update_claims_from_issue.py
+
+      - name: Commit and push claims.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add claims.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "auto: update claims from issue #${{ github.event.issue.number }}"
+          git push

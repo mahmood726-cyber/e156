@@ -1,0 +1,74 @@
+name: Claim an E156 paper
+description: Claim a paper to rewrite and submit to Synthesis Medicine
+title: "[CLAIM #____] "
+labels: [claim]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Claim a paper
+        Rewrite the 156-word body in your own words, then submit to **Synthesis Medicine** (synthesis-medicine.org).
+        You have **42 days** from claim to submission or the claim expires and the paper reopens for another student.
+
+  - type: input
+    id: paper_number
+    attributes:
+      label: Paper number
+      description: The number on the card you clicked (e.g. 123)
+      placeholder: "123"
+    validations:
+      required: true
+
+  - type: input
+    id: paper_title
+    attributes:
+      label: Paper title (short)
+      description: Auto-filled from the card. Leave as-is if correct.
+    validations:
+      required: false
+
+  - type: input
+    id: name
+    attributes:
+      label: Your name
+      placeholder: "e.g. Asha Bint"
+    validations:
+      required: true
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Your affiliation / university
+      placeholder: "e.g. Makerere University, Kampala"
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Your email
+      placeholder: "you@example.com"
+    validations:
+      required: true
+
+  - type: input
+    id: orcid
+    attributes:
+      label: Your ORCID (optional, free to create at orcid.org)
+      placeholder: "0000-0000-0000-0000"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: I understand
+      options:
+        - label: I will rewrite the 156-word body in my own words (7 sentences, 156 words max)
+          required: true
+        - label: Target journal is Synthesis Medicine (synthesis-medicine.org)
+          required: true
+        - label: I have 6 weeks (42 days) to submit before my claim expires and the paper reopens
+          required: true
+        - label: I will be listed as first author on the submission
+          required: true

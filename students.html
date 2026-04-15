@@ -170,11 +170,12 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
     <div class="instructions">
       <h2>How this works</h2>
       <ol>
+        <li><strong>You need a GitHub account</strong> (free, 2-minute signup at <a href="https://github.com/signup" target="_blank">github.com/signup</a>). If you're a researcher you'll want one anyway.</li>
         <li>Browse the list. Search by topic (e.g. "heart failure", "network meta-analysis", "diagnostic").</li>
-        <li>Click <strong>Claim this paper</strong> on the card you want. Your email client opens with a pre-filled message — just add your name and hit Send. I update this page within 24 hours to show your name.</li>
+        <li>Click <strong>▶ Claim this paper</strong> on the card you want. A GitHub form opens pre-filled with the paper number — fill in your name, affiliation, email, tick the agreements, click "Submit new issue". <strong>Within ~60 seconds this board updates automatically</strong> showing your name and a 42-day countdown.</li>
         <li>Copy the <span class="mono">Current body</span> on your card. Rewrite it in your own words: 156 words, 7 sentences (Question · Dataset · Method · Result · Robustness · Interpretation · Boundary).</li>
         <li>Submit your rewrite to <strong>Synthesis Medicine Journal</strong> (synthesis-medicine.org). The journal mints DOIs on acceptance; no Zenodo step needed.</li>
-        <li>Once submitted, click <strong>Confirm submission</strong> on your card. Second email opens — paste your submission confirmation / DOI link, send. I update the page to show SUBMITTED. You are listed as first author.</li>
+        <li>Once submitted, click <strong>✓ Confirm submission</strong> on your card. A second GitHub form opens — paste your submission ID / DOI, submit. Board updates to show SUBMITTED. You are listed as first author.</li>
         <li><strong>You have 6 weeks (42 days) from claim to submission.</strong> If you don't confirm submission within that window, your claim expires and the paper reopens for another student. Pick a paper you can actually finish in 6 weeks.</li>
       </ol>
     </div>
@@ -250,46 +251,27 @@ function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-function claimMailto(entry) {
-  const subject = encodeURIComponent(`[E156 CLAIM #${entry.num}] ${entry.name}`);
-  const bodyText = [
-    `Hi Mahmood,`,
-    ``,
-    `I'd like to claim E156 paper #${entry.num}: ${entry.title || entry.name}.`,
-    ``,
-    `My name: `,
-    `My email: `,
-    `My affiliation / university: `,
-    `My ORCID (optional): `,
-    ``,
-    `I understand:`,
-    `  - I rewrite the 156-word body in my own words`,
-    `  - Target journal: ${TARGET_JOURNAL} (synthesis-medicine.org)`,
-    `  - I have ${CLAIM_WINDOW_DAYS} days (6 weeks) to submit or the claim expires`,
-    `  - I will be listed as first author on the submission`,
-    ``,
-    `Thanks,`,
-  ].join("\n");
-  return `mailto:${AUTHOR_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+const GH_ISSUE_BASE = "https://github.com/mahmood726-cyber/e156/issues/new";
+
+function claimIssueUrl(entry) {
+  // GitHub form-template URL-prefill: match field IDs from claim.yml
+  // `title` is a separate param; form field prefills use their ID names.
+  const params = new URLSearchParams({
+    template: "claim.yml",
+    title: `[CLAIM #${entry.num}] ${(entry.title || entry.name).slice(0, 80)}`,
+    "paper_number": String(entry.num),
+    "paper_title": entry.title || entry.name,
+  });
+  return `${GH_ISSUE_BASE}?${params.toString()}`;
 }
 
-function submitMailto(entry) {
-  const subject = encodeURIComponent(`[E156 SUBMITTED #${entry.num}] ${entry.name} → ${TARGET_JOURNAL}`);
-  const bodyText = [
-    `Hi Mahmood,`,
-    ``,
-    `I've submitted E156 paper #${entry.num}: ${entry.title || entry.name}`,
-    `to ${TARGET_JOURNAL}.`,
-    ``,
-    `My name (confirm): `,
-    `Submission confirmation / DOI / manuscript ID: `,
-    `Date of submission: `,
-    ``,
-    `Please mark this paper SUBMITTED on the student board.`,
-    ``,
-    `Thanks,`,
-  ].join("\n");
-  return `mailto:${AUTHOR_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+function submitIssueUrl(entry) {
+  const params = new URLSearchParams({
+    template: "submitted.yml",
+    title: `[SUBMITTED #${entry.num}] ${(entry.title || entry.name).slice(0, 80)}`,
+    "paper_number": String(entry.num),
+  });
+  return `${GH_ISSUE_BASE}?${params.toString()}`;
 }
 
 function daysLeftLabel(entry) {
@@ -347,9 +329,9 @@ function render() {
           : ""}
         <div class="card-actions">
           ${status === "open"
-            ? `<a class="btn primary" href="${claimMailto(e)}">✉ Claim this paper</a>`
+            ? `<a class="btn primary" href="${claimIssueUrl(e)}" target="_blank" rel="noopener">▶ Claim this paper</a>`
             : status === "claimed"
-              ? `<a class="btn primary" href="${submitMailto(e)}">✓ Confirm submission to ${TARGET_JOURNAL}</a>`
+              ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener">✓ Confirm submission to ${TARGET_JOURNAL}</a>`
               : `<button class="btn" disabled>✓ Submitted</button>`}
           ${e.code_url ? `<a class="btn ghost" href="${escapeHtml(e.code_url)}" target="_blank">code ↗</a>` : ""}
           ${e.pages_url ? `<a class="btn ghost" href="${escapeHtml(e.pages_url)}" target="_blank">dashboard ↗</a>` : ""}

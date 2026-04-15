@@ -1,0 +1,52 @@
+name: Confirm submission to Synthesis Medicine
+description: Report that you've submitted your rewrite to the journal
+title: "[SUBMITTED #____] "
+labels: [submitted]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Confirm submission
+        Use this after you've submitted your rewrite to Synthesis Medicine.
+        This marks the paper as SUBMITTED on the student board and locks in your first-authorship.
+
+  - type: input
+    id: paper_number
+    attributes:
+      label: Paper number
+      description: Same number you used when you claimed the paper
+      placeholder: "123"
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Your name (must match your original claim)
+    validations:
+      required: true
+
+  - type: input
+    id: submission_id
+    attributes:
+      label: Submission confirmation / manuscript ID / DOI
+      description: Whatever the journal gave you when you submitted — ID number, DOI link, or manuscript tracking code
+      placeholder: "e.g. synmed-2026-0456 or https://doi.org/..."
+    validations:
+      required: true
+
+  - type: input
+    id: submit_date
+    attributes:
+      label: Date of submission (YYYY-MM-DD)
+      placeholder: "2026-05-15"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Any notes (optional)
+      placeholder: "e.g. pre-review feedback, questions, comments"
+    validations:
+      required: false
