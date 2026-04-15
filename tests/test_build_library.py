@@ -35,6 +35,26 @@ def test_parse_workbook_word_counts_in_range():
                     if e['wordCount'] < 90 or e['wordCount'] > 170]
     assert len(out_of_range) == 0, f"Out of range: {out_of_range[:5]}"
 
+def test_parse_workbook_blank_rewrite_falls_back_to_current_body():
+    from build_library import parse_workbook
+    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entry = next(
+        e for e in entries
+        if e['slug'] == 'advanced-nma-pooling' and e['path'] == 'C:\\Projects\\advanced-nma-pooling'
+    )
+    assert entry['rewrite'] == ''
+    assert entry['wordCount'] > 90
+
+def test_parse_workbook_blank_rewrite_does_not_capture_divider():
+    from build_library import parse_workbook
+    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entry = next(
+        e for e in entries
+        if e['slug'] == 'AuthorshipLedger' and e['path'] == 'C:\\Projects\\AuthorshipLedger'
+    )
+    assert entry['rewrite'] == ''
+    assert entry['wordCount'] > 90
+
 def test_generate_tags():
     from build_library import generate_tags
     tags = generate_tags("BayesianMA: Browser-Based Bayesian Random-Effects Meta-Analysis with Prior Sensitivity")

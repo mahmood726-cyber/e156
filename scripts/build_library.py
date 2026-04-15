@@ -85,6 +85,16 @@ def classify_type(type_str):
     return 'methods'
 
 
+def is_placeholder_text(text):
+    """Return True for workbook placeholder rows that should not enter the library."""
+    stripped = text.strip()
+    return (
+        not stripped
+        or stripped.startswith('[Pending')
+        or stripped.startswith('[No E156 body generated yet]')
+    )
+
+
 # ---------------------------------------------------------------------------
 # Workbook parser
 # ---------------------------------------------------------------------------
@@ -103,17 +113,15 @@ def parse_workbook(path):
     with open(path, 'r', encoding='utf-8') as f:
         text = f.read()
 
-    sections = re.split(r'={50,}', text)
     entries = []
+    header_matches = list(re.finditer(r'(?m)^\[(\d+)/\d+\]\s+(.+)$', text))
 
-    for sec in sections:
-        # Match entry header: [N/331] slug-name
-        m = re.search(r'\[(\d+)/\d+\]\s+(.+)', sec)
-        if not m:
-            continue
-
-        entry_id = int(m.group(1))
-        slug = m.group(2).strip()
+    for idx, header_match in enumerate(header_matches):
+        sec_start = header_match.start()
+        sec_end = header_matches[idx + 1].start() if idx + 1 < len(header_matches) else len(text)
+        sec = text[sec_start:sec_end]
+        entry_id = int(header_match.group(1))
+        slug = header_match.group(2).strip()
 
         # Extract TITLE
         title_m = re.search(r'TITLE:\s*(.+)', sec)
@@ -136,17 +144,23 @@ def parse_workbook(path):
 
         # Extract CURRENT BODY
         body_m = re.search(
-            r'CURRENT BODY[^\n]*:\s*\n(.*?)(?=YOUR REWRITE)',
+            r'CURRENT BODY[^\n]*:[^\S\n]*\n(.*?)(?=YOUR REWRITE)',
             sec, re.DOTALL
         )
         body = body_m.group(1).strip() if body_m else ''
 
         # Extract YOUR REWRITE
-        rw_m = re.search(r'YOUR REWRITE[^\n]*:\s*\n(.*)', sec, re.DOTALL)
+        rw_m = re.search(
+            r'YOUR REWRITE[^\n]*:[^\S\n]*\n(.*?)(?=\n(?:SUBMITTED:|={10,})|\Z)',
+            sec,
+            re.DOTALL,
+        )
         rewrite = rw_m.group(1).strip() if rw_m else ''
 
         # Use rewrite if available, fallback to body
         display_text = rewrite if len(rewrite) > 10 else body
+        if is_placeholder_text(display_text):
+            continue
 
         wc = count_words(display_text)
         sc = count_sentences(display_text)

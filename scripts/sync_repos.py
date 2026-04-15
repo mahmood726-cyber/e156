@@ -17,6 +17,7 @@ from e156_utils import find_all_submissions
 
 MANAGED_PATHS = (
     "e156-submission",
+    "E156-PROTOCOL.md",
     "push.sh",
     "LICENSE",
     "LICENSE.md",
@@ -310,10 +311,34 @@ def push_repo(path: Path, message: str, stage_all: bool = False) -> SyncResult:
     return SyncResult(path, "failed", last_error if last_error else "push failed")
 
 
+FAILED_QUEUE_FILE = SCRIPT_DIR / ".push_failures.json"
+MAX_RETRIES = 2
+
+
+def load_failed_queue() -> list[dict]:
+    if FAILED_QUEUE_FILE.exists():
+        try:
+            return json.loads(FAILED_QUEUE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return []
+
+
+def save_failed_queue(queue: list[dict]) -> None:
+    FAILED_QUEUE_FILE.write_text(json.dumps(queue, indent=2, default=str), encoding="utf-8")
+
+
 def main() -> None:
     dashboard_repo = local_windows_path(DASHBOARD_WINDOWS_REPO)
     repos = sorted({submission_dir.parent for submission_dir in find_all_submissions()} - {dashboard_repo})
     results: list[SyncResult] = []
+    failed_queue = load_failed_queue()
+    new_failures: list[dict] = []
+
+    # Retry previously failed repos first
+    retry_paths = {item["path"] for item in failed_queue if item.get("retries", 0) < MAX_RETRIES}
+    if retry_paths:
+        print(f"Retrying {len(retry_paths)} previously failed repos...", flush=True)
 
     for repo in repos:
         result = push_repo(repo, "Auto-sync E156 submission")
@@ -322,6 +347,15 @@ def main() -> None:
             print(f"SYNCED {repo} [{result.detail}]", flush=True)
         elif result.state == "failed":
             print(f"FAILED {repo} [{result.detail}]", flush=True)
+            # Track failure for retry
+            prev = next((item for item in failed_queue if item["path"] == str(repo)), None)
+            retries = (prev["retries"] + 1) if prev else 0
+            new_failures.append({
+                "path": str(repo),
+                "error": result.detail,
+                "retries": retries,
+                "last_attempt": str(datetime.now()) if "datetime" in dir() else "",
+            })
 
     dashboard = push_repo(dashboard_repo, "Auto-sync dashboard", stage_all=True)
     results.append(dashboard)
@@ -336,6 +370,15 @@ def main() -> None:
     print(f"Processed {len(repos)} submission repos (+ dashboard).", flush=True)
     print(f"Synced {synced}, skipped {skipped}, failed {failed}.", flush=True)
 
+    # Save failed queue (only repos that still fail after retries)
+    save_failed_queue(new_failures)
+    if new_failures:
+        print(f"\n{len(new_failures)} repos queued for retry (max {MAX_RETRIES} retries):", flush=True)
+        for item in new_failures:
+            exceeded = " [MAX RETRIES - needs manual fix]" if item["retries"] >= MAX_RETRIES else ""
+            print(f"  {item['path']}: {item['error']}{exceeded}", flush=True)
+
 
 if __name__ == "__main__":
+    from datetime import datetime
     main()
