@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# Session output (Sentinel / local state)
+STUCK_FAILURES.md
+STUCK_FAILURES.jsonl
+PROGRESS.md
+audit-report.json
+verification-report.json
+scripts/.push_failures.json
+scripts/_batch_all.json
