@@ -149,11 +149,13 @@ def main() -> int:
         affiliation = find_label_value(parsed, "your_affiliation_university", "affiliation", "your_affiliation")
         email = find_label_value(parsed, "your_email", "email")
         orcid = find_label_value(parsed, "your_orcid", "orcid")
+        senior_author = find_label_value(parsed, "senior_last_author_faculty_supervisor", "senior_author", "senior")
         claims[paper_num] = {
             "name": name,
             "affiliation": affiliation,
             "email": email,
             "orcid": orcid,
+            "senior_author": senior_author,
             "claim_date": claim_date,
             "status": "claimed",
             "submit_date": None,
@@ -161,7 +163,7 @@ def main() -> int:
             "issue_number": int(issue_num) if issue_num else None,
             "github_user": user,
         }
-        print(f"[info] marked #{paper_num} CLAIMED by {name} ({affiliation}) (issue #{issue_num})")
+        print(f"[info] marked #{paper_num} CLAIMED by {name} ({affiliation}), senior author: {senior_author or 'NONE'} (issue #{issue_num})")
 
     else:
         print(f"[info] issue #{issue_num} has neither 'claim' nor 'submitted' label; ignoring")

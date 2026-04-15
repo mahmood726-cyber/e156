@@ -281,11 +281,16 @@ Ethics: Not required. Study uses only publicly available aggregate data; no
 
 Funding: None.
 
-Competing interests: None declared.
+Competing interests: MA serves on the editorial board of Synthesis;
+  this manuscript was handled by an independent editor.
 
-Author contributions (CRediT): {AUTHOR} — Conceptualization, Methodology,
-  Software, Data curation, Formal analysis, Writing – original draft, Writing –
-  review & editing.
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft, Writing –
+    review & editing, Validation, Investigation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  {AUTHOR} (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation, Formal analysis, Resources.
 
 AI disclosure: Computational tooling (including AI-assisted coding via
   Claude Code [Anthropic]) was used to develop analysis scripts and assist

@@ -10,6 +10,12 @@ body:
         Rewrite the 156-word body in your own words, then submit to **Synthesis Medicine** (synthesis-medicine.org).
         You have **42 days** from claim to submission or the claim expires and the paper reopens for another student.
 
+        ### Authorship (mandatory)
+        - **You are first author.**
+        - You must nominate a **senior / last author** — typically your faculty supervisor or a co-investigator from your institution.
+        - **Mahmood Ahmad will appear as a middle author only — never first, never last.** This is a fixed rule across the whole workbook (Conceptualization, Methodology, Software, Data curation; not original drafting).
+        - **Competing interests note (auto-included on submission):** *MA serves on the editorial board of Synthesis; this manuscript was handled by an independent editor.*
+
   - type: input
     id: paper_number
     attributes:
@@ -59,6 +65,15 @@ body:
     validations:
       required: false
 
+  - type: input
+    id: senior_author
+    attributes:
+      label: Senior / last author (faculty supervisor)
+      description: Name + affiliation of the faculty supervisor who will be your senior author. Mahmood Ahmad cannot fill this role — must be someone else.
+      placeholder: "e.g. Dr. Jane Okello, Makerere University"
+    validations:
+      required: true
+
   - type: checkboxes
     id: agreements
     attributes:
@@ -71,4 +86,8 @@ body:
         - label: I have 6 weeks (42 days) to submit before my claim expires and the paper reopens
           required: true
         - label: I will be listed as first author on the submission
+          required: true
+        - label: I have nominated a senior / last author (faculty supervisor) above. Mahmood Ahmad will be a middle author only — never first, never last.
+          required: true
+        - label: I will include the competing-interests statement "MA serves on the editorial board of Synthesis; this manuscript was handled by an independent editor."
           required: true
