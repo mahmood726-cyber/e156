@@ -1,4 +1,4 @@
-# E156 Protocol: E156: A Compact Evidence-Synthesis Micro-Paper Format for Standardized Reporting of Meta-Analytic Results
+# ◆ E156 Protocol: A Compact Evidence-Synthesis Micro-Paper Format for Standardized Reporting of Meta-Analytic Results
 
 **Project**: E156
 **Type**: methods
@@ -6,9 +6,11 @@
 **Data**: 339 meta-analysis projects converted to E156 format
 
 **Date Created**: 2026-04-07
-**Date Last Updated**: 2026-04-07
+**Date Last Updated**: 2026-04-15
 **Status**: DRAFT
 
+**Target journal**: ◆ Synthēsis ([synthesis-medicine.org](https://www.synthesis-medicine.org/index.php/journal)) — section: Methods Note (≤400 words main text)
+**Student board**: [https://mahmood726-cyber.github.io/e156/students.html](https://mahmood726-cyber.github.io/e156/students.html) — claim a paper, rewrite, submit to OJS
 **Dashboard**: [https://mahmood726-cyber.github.io/e156/](https://mahmood726-cyber.github.io/e156/)
 
 ## E156 Abstract (CURRENT BODY)

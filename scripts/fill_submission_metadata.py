@@ -304,6 +304,10 @@ Preprint: Not preprinted.
 
 Reporting checklist: {checklist}.
 
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note (≤400 words main text; expand the 156-word body
+  with brief Background, Methods detail, Limitations, and Implications).
+
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 """

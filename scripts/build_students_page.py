@@ -117,6 +117,7 @@ header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); backgroun
   var(--bg); }
 header h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 0.5rem; letter-spacing: -0.01em; }
 header h1 .accent { color: var(--accent); }
+header h1 .journal-mark { color: var(--text-dim); font-size: 0.55em; font-weight: 500; margin-left: 0.6rem; vertical-align: middle; letter-spacing: 0.02em; white-space: nowrap; }
 header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5rem; max-width: 720px; }
 
 .instructions {
@@ -246,8 +247,8 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 
 <header>
   <div class="container">
-    <h1><span class="accent">E156</span> Student Board</h1>
-    <p class="tagline">Pick a paper, email me, rewrite the 156-word body, submit. Open to Ugandan medical students and anyone else interested in evidence-synthesis co-authorship. — Mahmood Ahmad, Tahir Heart Institute.</p>
+    <h1><span class="accent">E156</span> Student Board <span class="journal-mark" title="Target journal: Synthēsis (synthesis-medicine.org)">◆ Synthēsis</span></h1>
+    <p class="tagline">Pick a paper, rewrite the 156-word body, submit to <strong>◆ Synthēsis</strong> (Methods Note section, ≤400 words). Open to Ugandan medical students and anyone else interested in evidence-synthesis co-authorship. — Mahmood Ahmad, Tahir Heart Institute.</p>
 
     <div class="instructions">
       <h2>How this works</h2>
@@ -268,6 +269,50 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li><strong>Mahmood Ahmad will appear as a middle author only</strong> — never first, never last. This is a fixed workbook-wide rule (his role: Conceptualization, Methodology, Software, Data curation; not original drafting).</li>
         <li>Every submission must include the competing-interests statement: <em>"MA serves on the editorial board of Synthesis; this manuscript was handled by an independent editor."</em> This is auto-included in the SUBMISSION METADATA block of every workbook entry.</li>
       </ul>
+
+      <h2 id="how-to-submit">How to submit to ◆ Synthēsis (OJS, step-by-step)</h2>
+      <p>Synthēsis runs on OJS (Open Journal Systems). The flow is the same for every paper.</p>
+
+      <h3>Step 1 — Prepare the manuscript file</h3>
+      <ul>
+        <li>Microsoft Word <span class="mono">.docx</span>, A4 page, 1.5 line spacing, 2.5&nbsp;cm margins.</li>
+        <li>Font: 11-pt <strong>Calibri</strong> OR 12-pt <strong>Times New Roman</strong> (consistent throughout).</li>
+        <li>Order: Title · Authors + ORCIDs + affiliations · Body · References · Data availability · Ethics · Funding · Competing interests · CRediT · AI disclosure · Copyright line.</li>
+        <li><strong>Body length:</strong> ≤400 words main text. Expand the workbook's 156-word body into Background → Methods detail → Limitations → Implications. References, tables, figures, and captions do <em>not</em> count toward the 400.</li>
+        <li><strong>References:</strong> Vancouver / numeric, NLM journal abbreviations, DOI without URL prefix; up to 6 authors then "et al.". Two starter refs are already in your card's SUBMISSION METADATA — keep them, add more as needed.</li>
+        <li><strong>Copy/paste these blocks unchanged from the SUBMISSION METADATA on your card:</strong> Data availability, Ethics, Funding, Competing interests (the editorial-board statement), CRediT (3-actor template), AI disclosure.</li>
+        <li><strong>Copyright line at the very bottom:</strong> <span class="mono">© The Author(s) 2026. CC BY 4.0.</span></li>
+      </ul>
+
+      <h3>Step 2 — Register / login</h3>
+      <ul>
+        <li>Register: <a href="https://www.synthesis-medicine.org/index.php/journal/user/register" target="_blank" rel="noopener">synthesis-medicine.org/.../register</a> — use your ORCID where possible, tick the <strong>Author</strong> role.</li>
+        <li>Login: <a href="https://www.synthesis-medicine.org/index.php/journal/login" target="_blank" rel="noopener">synthesis-medicine.org/.../login</a></li>
+      </ul>
+
+      <h3>Step 3 — OJS 5-step submission wizard</h3>
+      <ol>
+        <li><strong>Start</strong> — Section: pick <strong>"Methods Note"</strong>. Language: English. Tick all 5 submission-checklist items. Agree to CC-BY-4.0 copyright + privacy.</li>
+        <li><strong>Upload File</strong> — upload your <span class="mono">.docx</span>. Component: <strong>"Article Text"</strong>.</li>
+        <li><strong>Enter Metadata</strong> — paste the title; paste a 100-150 word abstract (a shortened version of your body); add 4-6 keywords; <strong>add ALL contributors with ORCIDs and affiliations IN ORDER</strong>:
+          <ul>
+            <li>1st = <strong>YOU</strong> (first author)</li>
+            <li>middle = <strong>Mahmood Ahmad</strong>, ORCID 0000-0001-9107-3704, Tahir Heart Institute, Rabwah, Pakistan</li>
+            <li>last = your <strong>faculty supervisor</strong> (the senior author you named on the claim form)</li>
+          </ul>
+          Then paste the Vancouver references.</li>
+        <li><strong>Confirmation</strong> — review and click <strong>"Finish Submission"</strong>.</li>
+        <li><strong>Next Steps</strong> — note the submission ID shown on screen. You'll need it for the next step.</li>
+      </ol>
+
+      <h3>Step 4 — Confirm on this board</h3>
+      <ul>
+        <li>Come back to this page, find your card, click <strong>✓ Confirm submission</strong>, and paste your OJS submission ID (or DOI once minted). Your card flips to SUBMITTED. The 42-day countdown stops.</li>
+      </ul>
+
+      <p style="font-size:0.85rem; color:var(--text-dim); margin-top:1rem;">
+        <strong>Fallback:</strong> if the OJS site is down, email <a href="mailto:submissions@synthes.is">submissions@synthes.is</a> with the .docx attached and the subject "RE: E156 Methods Note submission, paper #N", then still confirm here so the board updates.
+      </p>
     </div>
 
     <div class="stats">
