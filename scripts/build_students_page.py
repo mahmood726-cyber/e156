@@ -28,6 +28,8 @@ CLAIMS_JSON = E156 / "claims.json"
 SEP = "=" * 70
 
 AUTHOR_EMAIL = "mahmood.ahmad2@nhs.net"
+TARGET_JOURNAL = "Synthesis Medicine"
+CLAIM_WINDOW_DAYS = 42  # 6 weeks — student loses claim if not submitted by then
 
 ENTRY_HEAD_RE = re.compile(r"^\[(\d+)/\d+\]\s+(.+?)\s*$", re.MULTILINE)
 
@@ -81,8 +83,8 @@ HTML_TEMPLATE = r"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>E156 Student Board — Claim a paper to rewrite & submit</title>
-<meta name="description" content="Public list of 483 E156 micro-papers. Students claim a paper by email, rewrite the 156-word body, and submit. Mahmood Ahmad, Tahir Heart Institute.">
+<title>E156 Student Board — Claim, rewrite, submit to Synthesis Medicine</title>
+<meta name="description" content="483 E156 micro-papers open to student co-authorship. Target journal: Synthesis Medicine. Claim by email, 6 weeks to submit, then claim expires.">
 
 <style>
 :root {
@@ -226,6 +228,11 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
   color: var(--text);
 }
 .claimed-by strong { color: var(--claimed); }
+.days-left { font-family: var(--mono); }
+.days-left.ok { color: var(--accent); }
+.days-left.warn { color: var(--warn); }
+.days-left.urgent { color: #f87171; font-weight: 600; }
+.days-left.expired { color: #ef4444; font-weight: 700; text-transform: uppercase; }
 
 .toggle-body { background: none; border: 0; color: var(--text-faint); font-family: var(--mono); font-size: 0.75rem; cursor: pointer; padding: 0; margin-top: 0.3rem; }
 .toggle-body:hover { color: var(--accent); }
@@ -241,13 +248,14 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
     <p class="tagline">Pick a paper, email me, rewrite the 156-word body, submit. Open to Ugandan medical students and anyone else interested in evidence-synthesis co-authorship. — Mahmood Ahmad, Tahir Heart Institute.</p>
 
     <div class="instructions">
-      <h2>How to claim a paper</h2>
+      <h2>How this works</h2>
       <ol>
-        <li>Browse the list below. Use the search box to find a topic you know (e.g. "heart failure", "network meta-analysis", "diagnostic").</li>
-        <li>Click <strong>Claim this paper</strong> on the card you want. Your email client opens with a pre-filled message — just add your name and hit Send.</li>
-        <li>Once claimed, I'll update this page within 24 hours to show your name. The paper is then yours to rewrite.</li>
-        <li>Copy the <span class="mono">Current body</span>, rewrite it in your own words (keep under 156 words, 7 sentences: Question · Dataset · Method · Result · Robustness · Interpretation · Boundary).</li>
-        <li>Email your rewrite back to me at <a href="mailto:__AUTHOR_EMAIL__">__AUTHOR_EMAIL__</a>. I handle journal submission, authorship gets added properly.</li>
+        <li>Browse the list. Search by topic (e.g. "heart failure", "network meta-analysis", "diagnostic").</li>
+        <li>Click <strong>Claim this paper</strong> on the card you want. Your email client opens with a pre-filled message — just add your name and hit Send. I update this page within 24 hours to show your name.</li>
+        <li>Copy the <span class="mono">Current body</span> on your card. Rewrite it in your own words: 156 words, 7 sentences (Question · Dataset · Method · Result · Robustness · Interpretation · Boundary).</li>
+        <li>Submit your rewrite to <strong>Synthesis Medicine Journal</strong> (synthesis-medicine.org). The journal mints DOIs on acceptance; no Zenodo step needed.</li>
+        <li>Once submitted, click <strong>Confirm submission</strong> on your card. Second email opens — paste your submission confirmation / DOI link, send. I update the page to show SUBMITTED. You are listed as first author.</li>
+        <li><strong>You have 6 weeks (42 days) from claim to submission.</strong> If you don't confirm submission within that window, your claim expires and the paper reopens for another student. Pick a paper you can actually finish in 6 weeks.</li>
       </ol>
     </div>
 
@@ -288,6 +296,9 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 
 <script>
 const AUTHOR_EMAIL = "__AUTHOR_EMAIL__";
+const TARGET_JOURNAL = "__TARGET_JOURNAL__";
+const CLAIM_WINDOW_DAYS = __CLAIM_WINDOW__;
+const MS_PER_DAY = 86400000;
 const ENTRIES = __ENTRIES_JSON__;
 
 let claims = {};  // populated from claims.json
@@ -295,10 +306,24 @@ let filterText = "";
 let filterTopic = "";
 let filterStatus = "";
 
+function daysLeft(claimDate) {
+  // claimDate is "YYYY-MM-DD". Returns integer days remaining (may be negative).
+  if (!claimDate) return null;
+  const claim = new Date(claimDate + "T00:00:00Z").getTime();
+  const now = Date.now();
+  const elapsed = (now - claim) / MS_PER_DAY;
+  return Math.ceil(CLAIM_WINDOW_DAYS - elapsed);
+}
+
 function statusOf(entry) {
   if (entry.submitted_head) return "submitted";
-  if (claims[entry.num]) return "claimed";
-  return "open";
+  const c = claims[entry.num];
+  if (!c) return "open";
+  if (c.status === "submitted") return "submitted";
+  // If expired (past 6 weeks without submission), treat as open
+  const left = daysLeft(c.claim_date);
+  if (left !== null && left < 0) return "open";
+  return "claimed";
 }
 
 function escapeHtml(s) {
@@ -306,7 +331,7 @@ function escapeHtml(s) {
 }
 
 function claimMailto(entry) {
-  const subject = encodeURIComponent(`Claiming E156 paper #${entry.num} — ${entry.name}`);
+  const subject = encodeURIComponent(`[E156 CLAIM #${entry.num}] ${entry.name}`);
   const bodyText = [
     `Hi Mahmood,`,
     ``,
@@ -317,14 +342,47 @@ function claimMailto(entry) {
     `My affiliation / university: `,
     `My ORCID (optional): `,
     ``,
-    `I understand I will:`,
-    `  - Rewrite the 156-word body in my own words`,
-    `  - Send the rewrite back to this email`,
-    `  - Be listed as the first author on the resulting submission`,
+    `I understand:`,
+    `  - I rewrite the 156-word body in my own words`,
+    `  - Target journal: ${TARGET_JOURNAL} (synthesis-medicine.org)`,
+    `  - I have ${CLAIM_WINDOW_DAYS} days (6 weeks) to submit or the claim expires`,
+    `  - I will be listed as first author on the submission`,
     ``,
     `Thanks,`,
   ].join("\n");
   return `mailto:${AUTHOR_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+}
+
+function submitMailto(entry) {
+  const subject = encodeURIComponent(`[E156 SUBMITTED #${entry.num}] ${entry.name} → ${TARGET_JOURNAL}`);
+  const bodyText = [
+    `Hi Mahmood,`,
+    ``,
+    `I've submitted E156 paper #${entry.num}: ${entry.title || entry.name}`,
+    `to ${TARGET_JOURNAL}.`,
+    ``,
+    `My name (confirm): `,
+    `Submission confirmation / DOI / manuscript ID: `,
+    `Date of submission: `,
+    ``,
+    `Please mark this paper SUBMITTED on the student board.`,
+    ``,
+    `Thanks,`,
+  ].join("\n");
+  return `mailto:${AUTHOR_EMAIL}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+}
+
+function daysLeftLabel(entry) {
+  const c = claims[entry.num];
+  if (!c || !c.claim_date) return "";
+  const d = daysLeft(c.claim_date);
+  if (d === null) return "";
+  if (d < 0) return `<span class="days-left expired">expired — claim reopened</span>`;
+  let cls = "ok";
+  if (d <= 2) cls = "urgent";
+  else if (d <= 7) cls = "warn";
+  const plural = d === 1 ? "day" : "days";
+  return `<span class="days-left ${cls}">${d} ${plural} left to submit</span>`;
 }
 
 function render() {
@@ -364,11 +422,15 @@ function render() {
         </div>
         <div class="card-body" id="body-${e.num}">${escapeHtml(e.body || "(no body)")}</div>
         <button class="toggle-body" onclick="document.getElementById('body-${e.num}').classList.toggle('expanded'); this.textContent = this.textContent === 'show full ▼' ? 'hide ▲' : 'show full ▼';">show full ▼</button>
-        ${claim ? `<div class="claimed-by">Claimed by <strong>${escapeHtml(claim.name)}</strong>${claim.affiliation ? ` · ${escapeHtml(claim.affiliation)}` : ""}${claim.date ? ` · ${escapeHtml(claim.date)}` : ""}</div>` : ""}
+        ${claim && status !== "open"
+          ? `<div class="claimed-by">${status === "submitted" ? "Submitted by" : "Claimed by"} <strong>${escapeHtml(claim.name)}</strong>${claim.affiliation ? ` · ${escapeHtml(claim.affiliation)}` : ""}${claim.claim_date ? ` · claimed ${escapeHtml(claim.claim_date)}` : ""}${status === "claimed" ? ` · ${daysLeftLabel(e)}` : ""}${status === "submitted" && claim.submit_date ? ` · submitted ${escapeHtml(claim.submit_date)}` : ""}</div>`
+          : ""}
         <div class="card-actions">
           ${status === "open"
             ? `<a class="btn primary" href="${claimMailto(e)}">✉ Claim this paper</a>`
-            : `<button class="btn" disabled>${status === "claimed" ? "already claimed" : "already submitted"}</button>`}
+            : status === "claimed"
+              ? `<a class="btn primary" href="${submitMailto(e)}">✓ Confirm submission to ${TARGET_JOURNAL}</a>`
+              : `<button class="btn" disabled>✓ Submitted</button>`}
           ${e.code_url ? `<a class="btn ghost" href="${escapeHtml(e.code_url)}" target="_blank">code ↗</a>` : ""}
           ${e.pages_url ? `<a class="btn ghost" href="${escapeHtml(e.pages_url)}" target="_blank">dashboard ↗</a>` : ""}
         </div>
@@ -447,6 +509,8 @@ def main() -> int:
     html_out = (
         HTML_TEMPLATE
         .replace("__AUTHOR_EMAIL__", AUTHOR_EMAIL)
+        .replace("__TARGET_JOURNAL__", TARGET_JOURNAL)
+        .replace("__CLAIM_WINDOW__", str(CLAIM_WINDOW_DAYS))
         .replace("__ENTRIES_JSON__", json.dumps(compact, ensure_ascii=False))
     )
     OUT_HTML.write_text(html_out, encoding="utf-8")
