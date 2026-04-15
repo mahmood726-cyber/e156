@@ -9,7 +9,7 @@ INSTRUCTIONS:
 - Run: python C:/E156/scripts/apply_rewrites.py          (validate)
 - Run: python C:/E156/scripts/apply_rewrites.py --apply (apply)
 
-Total projects: 482 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15) [see --- ENTRY N --- blocks for entries 473-478]
+Total projects: 483 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15) [see --- ENTRY N --- blocks for entries 473-478]
 
 SUBMITTED: [ ]
 
@@ -8273,6 +8273,13 @@ TITLE: SGLT2i in HFpEF: a browser-native benchmark reproduction
 TYPE: methods  |  ESTIMAND: pooled hazard ratio (primary composite, log-HR)
 DATA: ma-workbench in-browser pooling of EMPEROR-Preserved (Anker NEJM 2021) + DELIVER (Solomon NEJM 2022) primary composite HRs (n=12,251); benchmark = Vaduganathan Lancet 2022 fixed-effects 2-trial HFpEF pool (HR 0.80, 95% CI 0.73-0.87)
 PATH: C:\Users\user\ma-workbench
+GITHUB: https://github.com/mahmood726-cyber/ma-workbench
+PROTOCOL: https://github.com/mahmood726-cyber/ma-workbench/blob/main/e156-submission-sglt2i/protocol.md
+DASHBOARD: https://mahmood726-cyber.github.io/ma-workbench/sglt2i-hfpef-demo/
+REFERENCES:
+  1. Anker SD et al. Empagliflozin in Heart Failure with a Preserved Ejection Fraction. NEJM 2021;385:1451-1461. DOI: 10.1056/NEJMoa2107038
+  2. Solomon SD et al. Dapagliflozin in Heart Failure with Mildly Reduced or Preserved Ejection Fraction. NEJM 2022;387:1089-1098. DOI: 10.1056/NEJMoa2206286
+  3. Vaduganathan M et al. SGLT-2 inhibitors in patients with heart failure: a comprehensive meta-analysis of five randomised controlled trials. Lancet 2022;400:757-767. DOI: 10.1016/S0140-6736(22)01429-5
 
 CURRENT BODY (156 words):
 Does a browser-only meta-analysis workbench reproduce the published fixed-effects pooled hazard ratio for SGLT2 inhibitors on the primary composite endpoint in HFpEF? Two trials, n=12,251: EMPEROR-Preserved (empagliflozin, 5988) and DELIVER (dapagliflozin, 6263), primary composite hazard ratios taken from published NEJM tables. Generic inverse-variance pooling on the log-hazard-ratio scale using REML random-effects, with fixed-effect, Paule-Mandel, and HKSJ-with-floor as sensitivity estimators. REML pool: HR 0.81 (95% CI 0.74-0.88), |delta|=0.007 exceeds prespecified tolerance 0.005 versus Vaduganathan 2022 Lancet pool HR 0.80 (0.73-0.87); tau-squared=0.00, I-squared=0%, Q-p=0.68. Across estimators the pooled HR is 0.81 (range 0.00 between FE and PM at tau-squared=0); DerSimonian-Laird is not reported because it is inappropriate at k<10. Divergence exceeds the tight aggregate-branch tolerance, attributable to two-decimal-place rounding of trial-reported HRs against a pool retaining more precision internally. The pool uses two-decimal-place HRs; prediction intervals, funnel plots, and trim-and-fill are undefined at k=2; prespecified FAIL boundary.
@@ -8288,9 +8295,30 @@ TITLE: Precision floor for aggregate-data reproduction of fixed-effects 2-trial 
 TYPE: methods  |  ESTIMAND: median |delta| (pooled-HR reproduction error per dp)
 DATA: 10,000 synthetic Monte Carlo 2-trial pools; xoshiro128** seed 20260415; no clinical data
 PATH: C:\Users\user\ma-workbench
+GITHUB: https://github.com/mahmood726-cyber/ma-workbench
+PROTOCOL: https://github.com/mahmood726-cyber/ma-workbench/blob/main/e156-submission-precision-sweep/protocol.md
+DASHBOARD: https://mahmood726-cyber.github.io/ma-workbench/precision-sweep-demo/
+REFERENCES:
+  1. Predecessor SGLT2i-HFpEF E156 (workbook entry [481/481]). Live demo: https://mahmood726-cyber.github.io/ma-workbench/sglt2i-hfpef-demo/
+  2. Vaduganathan M et al. SGLT-2 inhibitors in patients with heart failure: a comprehensive meta-analysis of five randomised controlled trials. Lancet 2022;400:757-767. DOI: 10.1016/S0140-6736(22)01429-5 (the benchmark whose precision floor this characterises)
 
 CURRENT BODY (156 words):
 At what input-precision level does aggregate-data reproduction of fixed-effects 2-trial pools become tolerance-limited by rounding alone, independent of implementation correctness? Ten thousand Monte Carlo 2-trial pools: true log-HR uniform over [log 0.6, log 1.3], per-trial SE uniform [0.04, 0.08], xoshiro128** seed 20260415. Each pool rounded at dp in {1,2,3,4} decimal places on both HR and CI bounds, re-pooled via fixed-effects inverse-variance on log-HR, compared to the unrounded pool. Median |delta| at dp=1/2/3/4: 0.0179/0.0016/0.0002/0.0000; 95th %ile: 0.0469/0.0044/0.0004/0.0000; at dp=2, 2.4% of pools exceed delta=0.005. Floor scales monotonically with 10^-dp across all four levels; both median and 95th percentile fall by approximately a decade per dp increment. Benchmark-reproduction tolerance must exceed the precision floor at the input dp; delta=0.005 at dp=2 lies above the 0.0044 p95 yet below max 0.0084, explaining the prior SGLT2i FAIL as a tail outcome, not a defect. Scope: k=2, fixed-effects, unimodal true-HR distribution; random-effects, k>2, and IPD precision floors remain open questions.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+
+SUBMITTED: [ ]
+
+======================================================================
+[483/483] dissonance-field-synthesis
+TITLE: Dissonance Field Synthesis: A Non-Pooling Evidence-Synthesis Technique with Pharmacology Conservation Laws (POC in MRA-HFpEF)
+TYPE: methods  |  ESTIMAND: leave-one-out predicted log-hazard-ratio for FINEARTS-HF
+DATA: Six MRA-HFpEF boundary-condition records (TOPCAT-Americas/Russia split, FINEARTS-HF, FIDELIO/FIGARO HF-subgroups, Aldo-DHF) from AACT 2026-04-12 and primary publications
+PATH: C:\Projects\dissonance-field-synthesis
+
+CURRENT BODY (156 words):
+Can a synthesis method that treats pairwise trial disagreements as the primitive, without computing a pooled estimate, predict held-out MRA-HFpEF hazard ratios? Six trial boundary-condition records — TOPCAT-Americas, TOPCAT-Russia/Georgia, FINEARTS-HF, FIDELIO-DKD HF-subgroup, FIGARO-DKD HF-subgroup, Aldo-DHF — sourced from AACT 2026-04-12 plus primary publications. A constrained Gaussian process on a seven-covariate space with six pharmacology conservation laws and an ARD Matérn 5/2 kernel. Leave-one-out on FINEARTS-HF: a GP trained on the other five trials predicted log hazard ratio -0.012, ninety-five percent credible interval -0.990 to +0.967, observed -0.174 lies inside. Intercept-only fit matched inverse-variance pooling to within 1e-3 across three seeds; conservation diagnostics flagged zero mortality-decomposition violations across the six trials. The dominant pairwise dissonance was TOPCAT-Americas versus TOPCAT-Russia/Georgia (d=1.56), entirely attributable to the adherence-proxy covariate delta — a regional-adherence signal meta-analysis pools away. This proof-of-concept excludes individual patient data, publication-bias correction, and indirect comparisons; conservation-law assignments and decision thresholds remain clinician-authored defaults.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
