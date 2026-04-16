@@ -278,7 +278,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li>Microsoft Word <span class="mono">.docx</span>, A4 page, 1.5 line spacing, 2.5&nbsp;cm margins.</li>
         <li>Font: 11-pt <strong>Calibri</strong> OR 12-pt <strong>Times New Roman</strong> (consistent throughout).</li>
         <li>Order: Title · Authors + ORCIDs + affiliations · Body · References · Data availability · Ethics · Funding · Competing interests · CRediT · AI disclosure · Copyright line.</li>
-        <li><strong>Body length:</strong> ≤400 words main text. Expand the workbook's 156-word body into Background → Methods detail → Limitations → Implications. References, tables, figures, and captions do <em>not</em> count toward the 400.</li>
+        <li><strong>Body length:</strong> paste your 156-word, 7-sentence E156 rewrite verbatim — that <em>is</em> the submission. The journal caps main text at ≤400 words, but the E156 format deliberately targets 156 words; do <strong>NOT</strong> pad to 400. References, tables, figures, and captions don't count against the 400 ceiling anyway.</li>
         <li><strong>References:</strong> Vancouver / numeric, NLM journal abbreviations, DOI without URL prefix; up to 6 authors then "et al.". Two starter refs are already in your card's SUBMISSION METADATA — keep them, add more as needed.</li>
         <li><strong>Copy/paste these blocks unchanged from the SUBMISSION METADATA on your card:</strong> Data availability, Ethics, Funding, Competing interests (the editorial-board statement), CRediT (3-actor template), AI disclosure.</li>
         <li><strong>Copyright line at the very bottom:</strong> <span class="mono">© The Author(s) 2026. CC BY 4.0.</span></li>
@@ -294,7 +294,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
       <ol>
         <li><strong>Start</strong> — Section: pick whatever section is listed on YOUR card's <span class="mono">Target journal: ◆ Synthēsis</span> block (one of <strong>Methods Note</strong>, <strong>Short Meta-Analysis</strong>, or <strong>Brief Update</strong>). The section is preassigned per paper — you don't need to reason about which one fits. Language: English. Tick all 5 submission-checklist items. Agree to CC-BY-4.0 copyright + privacy.</li>
         <li><strong>Upload File</strong> — upload your <span class="mono">.docx</span>. Component: <strong>"Article Text"</strong>.</li>
-        <li><strong>Enter Metadata</strong> — paste the title; paste a 100-150 word abstract (a shortened version of your body); add 4-6 keywords; <strong>add ALL contributors with ORCIDs and affiliations IN ORDER</strong>:
+        <li><strong>Enter Metadata</strong> — paste the title; paste YOUR REWRITE (the 156-word body) verbatim as the abstract — the E156 7-sentence structure <em>is</em> the abstract, no shortening needed; add 4-6 keywords; <strong>add ALL contributors with ORCIDs and affiliations IN ORDER</strong>:
           <ul>
             <li>1st = <strong>YOU</strong> (first author)</li>
             <li>middle = <strong>Mahmood Ahmad</strong>, ORCID 0000-0001-9107-3704, Tahir Heart Institute, Rabwah, Pakistan</li>

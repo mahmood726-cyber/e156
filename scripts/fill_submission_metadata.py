@@ -306,8 +306,10 @@ Preprint: Not preprinted.
 Reporting checklist: {checklist}.
 
 Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
-  Section: Methods Note (≤400 words main text; expand the 156-word body
-  with brief Background, Methods detail, Limitations, and Implications).
+  Section: Methods Note — submit the 156-word E156 body verbatim as the
+  main text. The journal caps main text at ≤400 words; E156's 156-word,
+  7-sentence contract sits well inside that ceiling. Do NOT pad to 400 —
+  the micro-paper length is the point of the format.
 
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
