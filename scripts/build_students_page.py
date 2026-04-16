@@ -265,9 +265,9 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
       <h2>Authorship rules (read before claiming)</h2>
       <ul>
         <li><strong>You are first author</strong> on the submission you claim.</li>
-        <li>You must nominate a <strong>senior / last author</strong> — typically your faculty supervisor or a co-investigator from your institution. The claim form has a required field for this.</li>
+        <li>You must nominate a <strong>senior / last author</strong> — typically your faculty supervisor or a co-investigator from your institution. The claim form has a required field for this. <strong>No supervisor available yet?</strong> Type exactly <span class="mono">TBD - request mentor</span> in that field and Mahmood will help nominate a faculty co-investigator from the E156 advisory pool before you submit.</li>
         <li><strong>Mahmood Ahmad will appear as a middle author only</strong> — never first, never last. This is a fixed workbook-wide rule (his role: Conceptualization, Methodology, Software, Data curation; not original drafting).</li>
-        <li>Every submission must include the competing-interests statement: <em>"MA serves on the editorial board of Synthesis; this manuscript was handled by an independent editor."</em> This is auto-included in the SUBMISSION METADATA block of every workbook entry.</li>
+        <li>Every submission must include the competing-interests statement: <em>"MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal."</em> This is auto-included in the SUBMISSION METADATA block of every workbook entry.</li>
       </ul>
 
       <h2 id="how-to-submit">How to submit to ◆ Synthēsis (OJS, step-by-step)</h2>
@@ -292,7 +292,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 
       <h3>Step 3 — OJS 5-step submission wizard</h3>
       <ol>
-        <li><strong>Start</strong> — Section: pick <strong>"Methods Note"</strong>. Language: English. Tick all 5 submission-checklist items. Agree to CC-BY-4.0 copyright + privacy.</li>
+        <li><strong>Start</strong> — Section: pick whatever section is listed on YOUR card's <span class="mono">Target journal: ◆ Synthēsis</span> block (one of <strong>Methods Note</strong>, <strong>Short Meta-Analysis</strong>, or <strong>Brief Update</strong>). The section is preassigned per paper — you don't need to reason about which one fits. Language: English. Tick all 5 submission-checklist items. Agree to CC-BY-4.0 copyright + privacy.</li>
         <li><strong>Upload File</strong> — upload your <span class="mono">.docx</span>. Component: <strong>"Article Text"</strong>.</li>
         <li><strong>Enter Metadata</strong> — paste the title; paste a 100-150 word abstract (a shortened version of your body); add 4-6 keywords; <strong>add ALL contributors with ORCIDs and affiliations IN ORDER</strong>:
           <ul>

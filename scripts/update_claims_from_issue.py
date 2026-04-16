@@ -115,18 +115,48 @@ def main() -> int:
 
     # If issue was closed, treat as cancellation — remove the claim.
     # (Submission confirmation leaves the issue open with 'submitted' label.)
+    #
+    # CLAIM-SPOOFING GUARD (P1-3 from 2026-04-15 system review):
+    # Anyone can open a GitHub issue. Without this check, a third party
+    # could open a new issue for someone else's paper_num, then close it,
+    # and silently delete the original student's claim. The fix: require
+    # the closer to be the same github_user that originally claimed it.
+    # If the user differs, we IGNORE the close and log a warning so the
+    # board owner can investigate.
     if state == "closed" and "submitted" not in labels:
-        if paper_num in claims:
+        existing_claim = claims.get(paper_num)
+        if existing_claim is None:
+            print(f"[info] issue #{issue_num} closed but no claim for #{paper_num}")
+        else:
+            owner = existing_claim.get("github_user", "")
+            if owner and user and owner != user:
+                print(
+                    f"[warn] issue #{issue_num} closed by '{user}' but claim "
+                    f"#{paper_num} is owned by '{owner}'. Ignoring close to "
+                    f"prevent claim-spoofing. The original claimant must close "
+                    f"their own issue."
+                )
+                # Do NOT delete; do NOT write changes; exit with non-zero
+                # so the GitHub Action surfaces the spoof attempt in logs.
+                return 2
             print(f"[info] issue #{issue_num} closed → removing claim #{paper_num}")
             del claims[paper_num]
-        else:
-            print(f"[info] issue #{issue_num} closed but no claim for #{paper_num}")
         CLAIMS.write_text(json.dumps(claims, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         return 0
 
     if "submitted" in labels:
-        # Update existing claim (if any) to submitted status
+        # Update existing claim (if any) to submitted status.
+        # Same spoofing guard: if a different user adds the 'submitted' label
+        # to someone else's claim, refuse the update.
         existing = claims.get(paper_num, {})
+        owner = existing.get("github_user", "")
+        if owner and user and owner != user:
+            print(
+                f"[warn] issue #{issue_num} 'submitted' label set by '{user}' "
+                f"but claim #{paper_num} is owned by '{owner}'. Ignoring "
+                f"submission update to prevent claim-spoofing."
+            )
+            return 2
         submit_date = find_label_value(parsed, "date_of_submission", "submit_date") or today
         submission_id = find_label_value(parsed, "submission_confirmation", "submission_id", "manuscript_id", "doi")
         name = find_label_value(parsed, "your_name") or existing.get("name", "")
@@ -144,7 +174,23 @@ def main() -> int:
         print(f"[info] marked #{paper_num} SUBMITTED by {name} (issue #{issue_num})")
 
     elif "claim" in labels:
-        # New or updated claim
+        # New or updated claim.
+        # Spoofing guard: if this paper is ALREADY claimed by a different
+        # github_user (and the claim hasn't been expired by
+        # expire_stale_claims.py yet), refuse the new claim. Same user
+        # re-opening / editing their own issue is fine and overwrites freely.
+        prior = claims.get(paper_num, {})
+        prior_owner = prior.get("github_user", "")
+        prior_status = prior.get("status", "")
+        if prior_owner and user and prior_owner != user and prior_status == "claimed":
+            print(
+                f"[warn] issue #{issue_num} attempted CLAIM of #{paper_num} by "
+                f"'{user}', but paper is already claimed by '{prior_owner}' "
+                f"(claim_date={prior.get('claim_date', '?')}). Refusing to "
+                f"overwrite. If the prior claim has expired, run "
+                f"expire_stale_claims.py --apply first."
+            )
+            return 2
         name = find_label_value(parsed, "your_name", "name")
         affiliation = find_label_value(parsed, "your_affiliation_university", "affiliation", "your_affiliation")
         email = find_label_value(parsed, "your_email", "email")

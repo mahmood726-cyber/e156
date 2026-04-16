@@ -281,12 +281,13 @@ Ethics: Not required. Study uses only publicly available aggregate data; no
 
 Funding: None.
 
-Competing interests: MA serves on the editorial board of Synthesis;
-  this manuscript was handled by an independent editor.
+Competing interests: MA serves on the editorial board of Synthēsis (the
+  target journal); MA had no role in editorial decisions on this
+  manuscript, which was handled by an independent editor of the journal.
 
 Author contributions (CRediT):
   [STUDENT REWRITER, first author] — Writing – original draft, Writing –
-    review & editing, Validation, Investigation.
+    review & editing, Validation.
   [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
     Writing – review & editing.
   {AUTHOR} (middle author, NOT first or last) — Conceptualization,

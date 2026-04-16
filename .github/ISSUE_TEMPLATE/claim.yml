@@ -16,7 +16,7 @@ body:
         - **You are first author.**
         - You must nominate a **senior / last author** — typically your faculty supervisor or a co-investigator from your institution.
         - **Mahmood Ahmad will appear as a middle author only — never first, never last.** This is a fixed rule across the whole workbook (Conceptualization, Methodology, Software, Data curation; not original drafting).
-        - **Competing interests note (auto-included on submission):** *MA serves on the editorial board of Synthesis; this manuscript was handled by an independent editor.*
+        - **Competing interests note (auto-included on submission):** *MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal.*
 
   - type: input
     id: paper_number
@@ -71,8 +71,11 @@ body:
     id: senior_author
     attributes:
       label: Senior / last author (faculty supervisor)
-      description: Name + affiliation of the faculty supervisor who will be your senior author. Mahmood Ahmad cannot fill this role — must be someone else.
-      placeholder: "e.g. Dr. Jane Okello, Makerere University"
+      description: |
+        Name + affiliation of the faculty supervisor who will be your senior author. Mahmood Ahmad cannot fill this role — must be someone else.
+
+        **No supervisor available yet?** Type exactly `TBD - request mentor` and Mahmood will help nominate a faculty co-investigator from the E156 advisory pool before you submit. You can still claim the paper now; just don't submit to the journal until the senior author is filled in.
+      placeholder: "e.g. Dr. Jane Okello, Makerere University  (or  TBD - request mentor)"
     validations:
       required: true
 
@@ -83,7 +86,7 @@ body:
       options:
         - label: I will rewrite the 156-word body in my own words (7 sentences, 156 words max)
           required: true
-        - label: Target journal is Synthesis Medicine (synthesis-medicine.org)
+        - label: Target journal is Synthēsis (synthesis-medicine.org), section preassigned per paper in the workbook
           required: true
         - label: I have 6 weeks (42 days) to submit before my claim expires and the paper reopens
           required: true
@@ -91,5 +94,5 @@ body:
           required: true
         - label: I have nominated a senior / last author (faculty supervisor) above. Mahmood Ahmad will be a middle author only — never first, never last.
           required: true
-        - label: I will include the competing-interests statement "MA serves on the editorial board of Synthesis; this manuscript was handled by an independent editor."
+        - label: I will include the competing-interests statement "MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal."
           required: true
