@@ -1,0 +1,33 @@
+{
+  "ok": 0,
+  "already_enabled": 0,
+  "branch_not_main": 0,
+  "failed": [
+    {
+      "repo": "mahmood726-cyber/AdaptSim",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/AfricaRCT",
+      "status": 422,
+      "body": "{\n  \"message\": \"The master branch must exist before GitHub Pages can be built.\",\n  \"documentation_url\": \"https://docs.gi"
+    },
+    {
+      "repo": "mahmood726-cyber/Asa",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/AutoGRADE",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/BayesianMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    }
+  ],
+  "rate_limited": 0
+}

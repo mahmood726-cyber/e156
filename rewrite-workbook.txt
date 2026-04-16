@@ -104,7 +104,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/501MLM
   Protocol:  https://github.com/mahmood726-cyber/501MLM/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/501MLM/
+  Dashboard: https://mahmood726-cyber.github.io/501mlm/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -181,7 +181,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/501MLM_Submission
   Protocol:  https://github.com/mahmood726-cyber/501MLM_Submission/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/501MLM_Submission/
+  Dashboard: https://mahmood726-cyber.github.io/501mlm_submission/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -258,7 +258,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AdaptSim
   Protocol:  https://github.com/mahmood726-cyber/AdaptSim/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AdaptSim/
+  Dashboard: https://mahmood726-cyber.github.io/adaptsim/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -412,7 +412,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AfricaRCT
   Protocol:  https://github.com/mahmood726-cyber/AfricaRCT/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AfricaRCT/
+  Dashboard: https://mahmood726-cyber.github.io/africarct/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -566,7 +566,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Asa
   Protocol:  https://github.com/mahmood726-cyber/Asa/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Asa/
+  Dashboard: https://mahmood726-cyber.github.io/asa/
 
 References (topic pack: browser-based meta-analysis tooling):
   1. Schwarzer G, Carpenter JR, Rücker G. 2015. Meta-Analysis with R. Springer. doi:10.1007/978-3-319-21416-0
@@ -643,7 +643,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AutoGRADE
   Protocol:  https://github.com/mahmood726-cyber/AutoGRADE/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AutoGRADE/
+  Dashboard: https://mahmood726-cyber.github.io/autograde/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -720,7 +720,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/BayesianMA
   Protocol:  https://github.com/mahmood726-cyber/BayesianMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/BayesianMA/
+  Dashboard: https://mahmood726-cyber.github.io/bayesianma/
 
 References (topic pack: Bayesian meta-analysis):
   1. Röver C. 2020. Bayesian random-effects meta-analysis using the bayesmeta R package. J Stat Softw. 93(6):1-51. doi:10.18637/jss.v093.i06
@@ -797,7 +797,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/BenfordMA
   Protocol:  https://github.com/mahmood726-cyber/BenfordMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/BenfordMA/
+  Dashboard: https://mahmood726-cyber.github.io/benfordma/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -874,7 +874,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/BiasForensics
   Protocol:  https://github.com/mahmood726-cyber/BiasForensics/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/BiasForensics/
+  Dashboard: https://mahmood726-cyber.github.io/biasforensics/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -951,7 +951,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Burhan
   Protocol:  https://github.com/mahmood726-cyber/Burhan/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Burhan/
+  Dashboard: https://mahmood726-cyber.github.io/burhan/
 
 References (topic pack: automated data extraction / text mining):
   1. Marshall IJ, Wallace BC. 2019. Toward systematic review automation: a practical guide to using machine learning tools in research synthesis. Syst Rev. 8:163. doi:10.1186/s13643-019-1074-9
@@ -1028,7 +1028,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CardioOracle
   Protocol:  https://github.com/mahmood726-cyber/CardioOracle/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CardioOracle/
+  Dashboard: https://mahmood726-cyber.github.io/cardiooracle/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -1105,7 +1105,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CardioTrialAudit
   Protocol:  https://github.com/mahmood726-cyber/CardioTrialAudit/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CardioTrialAudit/
+  Dashboard: https://mahmood726-cyber.github.io/cardiotrialaudit/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -1182,7 +1182,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CausalSynth
   Protocol:  https://github.com/mahmood726-cyber/CausalSynth/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CausalSynth/
+  Dashboard: https://mahmood726-cyber.github.io/causalsynth/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -1958,7 +1958,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CRES
   Protocol:  https://github.com/mahmood726-cyber/CRES/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CRES/
+  Dashboard: https://mahmood726-cyber.github.io/cres/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -3284,7 +3284,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Dataextractor
   Protocol:  https://github.com/mahmood726-cyber/Dataextractor/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Dataextractor/
+  Dashboard: https://mahmood726-cyber.github.io/dataextractor/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -3440,7 +3440,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/DPMA
   Protocol:  https://github.com/mahmood726-cyber/DPMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/DPMA/
+  Dashboard: https://mahmood726-cyber.github.io/dpma/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -3518,7 +3518,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/DTA70
   Protocol:  https://github.com/mahmood726-cyber/DTA70/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/DTA70/
+  Dashboard: https://mahmood726-cyber.github.io/dta70/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -3596,7 +3596,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/DTA_Pro_Review
   Protocol:  https://github.com/mahmood726-cyber/DTA_Pro_Review/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/DTA_Pro_Review/
+  Dashboard: https://mahmood726-cyber.github.io/dta_pro_review/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -3907,7 +3907,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/EvidenceHalfLife
   Protocol:  https://github.com/mahmood726-cyber/EvidenceHalfLife/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/EvidenceHalfLife/
+  Dashboard: https://mahmood726-cyber.github.io/evidencehalflife/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -3985,7 +3985,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/EvidenceQuality
   Protocol:  https://github.com/mahmood726-cyber/EvidenceQuality/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/EvidenceQuality/
+  Dashboard: https://mahmood726-cyber.github.io/evidencequality/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -4141,7 +4141,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-course-github-v2
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-course-github-v2/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-course-github-v2/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course-github-v2/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -4219,7 +4219,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/FATIHA_Project
   Protocol:  https://github.com/mahmood726-cyber/FATIHA_Project/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/FATIHA_Project/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha_project/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -4297,7 +4297,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -4609,7 +4609,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/FragilityIndex
   Protocol:  https://github.com/mahmood726-cyber/FragilityIndex/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/FragilityIndex/
+  Dashboard: https://mahmood726-cyber.github.io/fragilityindex/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -4687,7 +4687,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/GRMA_paper
   Protocol:  https://github.com/mahmood726-cyber/GRMA_paper/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/GRMA_paper/
+  Dashboard: https://mahmood726-cyber.github.io/grma_paper/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -4765,7 +4765,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/GWAM
   Protocol:  https://github.com/mahmood726-cyber/GWAM/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/GWAM/
+  Dashboard: https://mahmood726-cyber.github.io/gwam/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -4921,7 +4921,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HTA
   Protocol:  https://github.com/mahmood726-cyber/HTA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HTA/
+  Dashboard: https://mahmood726-cyber.github.io/hta/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -4999,7 +4999,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HTA-oman
   Protocol:  https://github.com/mahmood726-cyber/HTA-oman/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HTA-oman/
+  Dashboard: https://mahmood726-cyber.github.io/hta-oman/
 
 References (topic pack: browser-based meta-analysis tooling):
   1. Schwarzer G, Carpenter JR, Rücker G. 2015. Meta-Analysis with R. Springer. doi:10.1007/978-3-319-21416-0
@@ -5389,7 +5389,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/IndirectComparison
   Protocol:  https://github.com/mahmood726-cyber/IndirectComparison/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/IndirectComparison/
+  Dashboard: https://mahmood726-cyber.github.io/indirectcomparison/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -5467,7 +5467,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/IPD-Meta-Pro
   Protocol:  https://github.com/mahmood726-cyber/IPD-Meta-Pro/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/IPD-Meta-Pro/
+  Dashboard: https://mahmood726-cyber.github.io/ipd-meta-pro/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -5701,7 +5701,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/KMcurve
   Protocol:  https://github.com/mahmood726-cyber/KMcurve/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/KMcurve/
+  Dashboard: https://mahmood726-cyber.github.io/kmcurve/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -5779,7 +5779,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/KMDigitizer
   Protocol:  https://github.com/mahmood726-cyber/KMDigitizer/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/KMDigitizer/
+  Dashboard: https://mahmood726-cyber.github.io/kmdigitizer/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -5857,7 +5857,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LFA
   Protocol:  https://github.com/mahmood726-cyber/LFA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LFA/
+  Dashboard: https://mahmood726-cyber.github.io/lfa/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -6324,7 +6324,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MAPriors
   Protocol:  https://github.com/mahmood726-cyber/MAPriors/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MAPriors/
+  Dashboard: https://mahmood726-cyber.github.io/mapriors/
 
 References (topic pack: Bayesian meta-analysis):
   1. Röver C. 2020. Bayesian random-effects meta-analysis using the bayesmeta R package. J Stat Softw. 93(6):1-51. doi:10.18637/jss.v093.i06
@@ -6402,7 +6402,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MAWorkbench
   Protocol:  https://github.com/mahmood726-cyber/MAWorkbench/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MAWorkbench/
+  Dashboard: https://mahmood726-cyber.github.io/maworkbench/
 
 References (topic pack: browser-based meta-analysis tooling):
   1. Schwarzer G, Carpenter JR, Rücker G. 2015. Meta-Analysis with R. Springer. doi:10.1007/978-3-319-21416-0
@@ -6558,7 +6558,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MCIDMapper
   Protocol:  https://github.com/mahmood726-cyber/MCIDMapper/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MCIDMapper/
+  Dashboard: https://mahmood726-cyber.github.io/mcidmapper/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -6636,7 +6636,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MES
   Protocol:  https://github.com/mahmood726-cyber/MES/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MES/
+  Dashboard: https://mahmood726-cyber.github.io/mes/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -6869,7 +6869,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaAudit
   Protocol:  https://github.com/mahmood726-cyber/MetaAudit/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaAudit/
+  Dashboard: https://mahmood726-cyber.github.io/metaaudit/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -7025,7 +7025,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaExtract
   Protocol:  https://github.com/mahmood726-cyber/MetaExtract/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaExtract/
+  Dashboard: https://mahmood726-cyber.github.io/metaextract/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -7103,7 +7103,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaFolio
   Protocol:  https://github.com/mahmood726-cyber/MetaFolio/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaFolio/
+  Dashboard: https://mahmood726-cyber.github.io/metafolio/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -7181,7 +7181,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaFusion-Lab
   Protocol:  https://github.com/mahmood726-cyber/MetaFusion-Lab/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaFusion-Lab/
+  Dashboard: https://mahmood726-cyber.github.io/metafusion-lab/
 
 References (topic pack: risk of bias):
   1. Sterne JAC, Savović J, Page MJ, et al. 2019. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 366:l4898. doi:10.1136/bmj.l4898
@@ -7337,7 +7337,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaGuard
   Protocol:  https://github.com/mahmood726-cyber/MetaGuard/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaGuard/
+  Dashboard: https://mahmood726-cyber.github.io/metaguard/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -7415,7 +7415,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaMethods
   Protocol:  https://github.com/mahmood726-cyber/MetaMethods/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaMethods/
+  Dashboard: https://mahmood726-cyber.github.io/metamethods/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -7493,7 +7493,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Metanew
   Protocol:  https://github.com/mahmood726-cyber/Metanew/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Metanew/
+  Dashboard: https://mahmood726-cyber.github.io/metanew/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -7724,7 +7724,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaRegression
   Protocol:  https://github.com/mahmood726-cyber/MetaRegression/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaRegression/
+  Dashboard: https://mahmood726-cyber.github.io/metaregression/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -7878,7 +7878,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaRep
   Protocol:  https://github.com/mahmood726-cyber/MetaRep/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaRep/
+  Dashboard: https://mahmood726-cyber.github.io/metarep/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -8032,7 +8032,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaReproducer
   Protocol:  https://github.com/mahmood726-cyber/MetaReproducer/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaReproducer/
+  Dashboard: https://mahmood726-cyber.github.io/metareproducer/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -8109,7 +8109,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaShift
   Protocol:  https://github.com/mahmood726-cyber/MetaShift/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaShift/
+  Dashboard: https://mahmood726-cyber.github.io/metashift/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -8571,7 +8571,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/metaverse-robust-MA
   Protocol:  https://github.com/mahmood726-cyber/metaverse-robust-MA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/metaverse-robust-MA/
+  Dashboard: https://mahmood726-cyber.github.io/metaverse-robust-ma/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -8648,7 +8648,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MethodsSuite
   Protocol:  https://github.com/mahmood726-cyber/MethodsSuite/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MethodsSuite/
+  Dashboard: https://mahmood726-cyber.github.io/methodssuite/
 
 References (topic pack: Bayesian meta-analysis):
   1. Röver C. 2020. Bayesian random-effects meta-analysis using the bayesmeta R package. J Stat Softw. 93(6):1-51. doi:10.18637/jss.v093.i06
@@ -8725,7 +8725,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MLM501
   Protocol:  https://github.com/mahmood726-cyber/MLM501/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MLM501/
+  Dashboard: https://mahmood726-cyber.github.io/mlm501/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -8802,7 +8802,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MLMResearch
   Protocol:  https://github.com/mahmood726-cyber/MLMResearch/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MLMResearch/
+  Dashboard: https://mahmood726-cyber.github.io/mlmresearch/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -8879,7 +8879,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Multilevelerror
   Protocol:  https://github.com/mahmood726-cyber/Multilevelerror/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Multilevelerror/
+  Dashboard: https://mahmood726-cyber.github.io/multilevelerror/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -8956,7 +8956,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Multipledatameta
   Protocol:  https://github.com/mahmood726-cyber/Multipledatameta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Multipledatameta/
+  Dashboard: https://mahmood726-cyber.github.io/multipledatameta/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -9033,7 +9033,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MultiverseMA
   Protocol:  https://github.com/mahmood726-cyber/MultiverseMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MultiverseMA/
+  Dashboard: https://mahmood726-cyber.github.io/multiversema/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -9187,7 +9187,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/New_Heterogeneity_Model
   Protocol:  https://github.com/mahmood726-cyber/New_Heterogeneity_Model/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/New_Heterogeneity_Model/
+  Dashboard: https://mahmood726-cyber.github.io/new_heterogeneity_model/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -9341,7 +9341,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/NMAhtml
   Protocol:  https://github.com/mahmood726-cyber/NMAhtml/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/NMAhtml/
+  Dashboard: https://mahmood726-cyber.github.io/nmahtml/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -9495,7 +9495,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/NNTMapper
   Protocol:  https://github.com/mahmood726-cyber/NNTMapper/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/NNTMapper/
+  Dashboard: https://mahmood726-cyber.github.io/nntmapper/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -9726,7 +9726,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/OverlapMatrix
   Protocol:  https://github.com/mahmood726-cyber/OverlapMatrix/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/OverlapMatrix/
+  Dashboard: https://mahmood726-cyber.github.io/overlapmatrix/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -9803,7 +9803,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/pairwiseai70
   Protocol:  https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Pairwise70/
+  Dashboard: https://mahmood726-cyber.github.io/pairwise70/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -9880,7 +9880,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/pairwiseaiai
   Protocol:  https://github.com/mahmood726-cyber/pairwiseaiai/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Pairwiseai/
+  Dashboard: https://mahmood726-cyber.github.io/pairwiseai/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -9957,7 +9957,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Paper1
   Protocol:  https://github.com/mahmood726-cyber/Paper1/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Paper1/
+  Dashboard: https://mahmood726-cyber.github.io/paper1/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -10034,7 +10034,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Paper2.111025
   Protocol:  https://github.com/mahmood726-cyber/Paper2.111025/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Paper2.111025/
+  Dashboard: https://mahmood726-cyber.github.io/paper2.111025/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -10111,7 +10111,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PoolingSuite
   Protocol:  https://github.com/mahmood726-cyber/PoolingSuite/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PoolingSuite/
+  Dashboard: https://mahmood726-cyber.github.io/poolingsuite/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -10419,7 +10419,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PRISMAFlow
   Protocol:  https://github.com/mahmood726-cyber/PRISMAFlow/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PRISMAFlow/
+  Dashboard: https://mahmood726-cyber.github.io/prismaflow/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -10728,7 +10728,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PubBiasSuite
   Protocol:  https://github.com/mahmood726-cyber/PubBiasSuite/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PubBiasSuite/
+  Dashboard: https://mahmood726-cyber.github.io/pubbiassuite/
 
 References (topic pack: risk of bias):
   1. Sterne JAC, Savović J, Page MJ, et al. 2019. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 366:l4898. doi:10.1136/bmj.l4898
@@ -11113,7 +11113,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/repo300-ENMA-SNMA
   Protocol:  https://github.com/mahmood726-cyber/repo300-ENMA-SNMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/repo300-ENMA-SNMA/
+  Dashboard: https://mahmood726-cyber.github.io/repo300-enma-snma/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -11421,7 +11421,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/ROBMA
   Protocol:  https://github.com/mahmood726-cyber/ROBMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/ROBMA/
+  Dashboard: https://mahmood726-cyber.github.io/robma/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -11652,7 +11652,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/SoFTable
   Protocol:  https://github.com/mahmood726-cyber/SoFTable/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/SoFTable/
+  Dashboard: https://mahmood726-cyber.github.io/softable/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -11806,7 +11806,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TGEP_Development
   Protocol:  https://github.com/mahmood726-cyber/TGEP_Development/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TGEP_Development/
+  Dashboard: https://mahmood726-cyber.github.io/tgep_development/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -11883,7 +11883,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TransportabilityCalc
   Protocol:  https://github.com/mahmood726-cyber/TransportabilityCalc/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TransportabilityCalc/
+  Dashboard: https://mahmood726-cyber.github.io/transportabilitycalc/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -11960,7 +11960,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TrialRadar
   Protocol:  https://github.com/mahmood726-cyber/TrialRadar/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TrialRadar/
+  Dashboard: https://mahmood726-cyber.github.io/trialradar/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -12191,7 +12191,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Truthcert1
   Protocol:  https://github.com/mahmood726-cyber/Truthcert1/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Truthcert1/
+  Dashboard: https://mahmood726-cyber.github.io/truthcert1/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -12268,7 +12268,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Truthcert1_work
   Protocol:  https://github.com/mahmood726-cyber/Truthcert1_work/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Truthcert1_work/
+  Dashboard: https://mahmood726-cyber.github.io/truthcert1_work/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -12422,7 +12422,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/UmbrellaReview
   Protocol:  https://github.com/mahmood726-cyber/UmbrellaReview/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/UmbrellaReview/
+  Dashboard: https://mahmood726-cyber.github.io/umbrellareview/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -12499,7 +12499,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Value_Based_HTA_Engine
   Protocol:  https://github.com/mahmood726-cyber/Value_Based_HTA_Engine/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Value_Based_HTA_Engine/
+  Dashboard: https://mahmood726-cyber.github.io/value_based_hta_engine/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -12576,7 +12576,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/VOICalculator
   Protocol:  https://github.com/mahmood726-cyber/VOICalculator/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/VOICalculator/
+  Dashboard: https://mahmood726-cyber.github.io/voicalculator/
 
 References (topic pack: browser-based meta-analysis tooling):
   1. Schwarzer G, Carpenter JR, Rücker G. 2015. Meta-Analysis with R. Springer. doi:10.1007/978-3-319-21416-0
@@ -12730,7 +12730,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/WorldIPD
   Protocol:  https://github.com/mahmood726-cyber/WorldIPD/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/WorldIPD/
+  Dashboard: https://mahmood726-cyber.github.io/worldipd/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -12807,7 +12807,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/WorldIPD-private
   Protocol:  https://github.com/mahmood726-cyber/WorldIPD-private/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/WorldIPD-private/
+  Dashboard: https://mahmood726-cyber.github.io/worldipd-private/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -13120,7 +13120,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AsSirat
   Protocol:  https://github.com/mahmood726-cyber/AsSirat/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AsSirat/
+  Dashboard: https://mahmood726-cyber.github.io/assirat/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -13432,7 +13432,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CINeMA
   Protocol:  https://github.com/mahmood726-cyber/CINeMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CINeMA/
+  Dashboard: https://mahmood726-cyber.github.io/cinema/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -18597,7 +18597,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/EvidenceOracle
   Protocol:  https://github.com/mahmood726-cyber/EvidenceOracle/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/EvidenceOracle/
+  Dashboard: https://mahmood726-cyber.github.io/evidenceoracle/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -18753,7 +18753,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -18910,7 +18910,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/GRADEPro
   Protocol:  https://github.com/mahmood726-cyber/GRADEPro/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/GRADEPro/
+  Dashboard: https://mahmood726-cyber.github.io/gradepro/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -18988,7 +18988,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HFN786
   Protocol:  https://github.com/mahmood726-cyber/HFN786/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HFN786/
+  Dashboard: https://mahmood726-cyber.github.io/hfn786/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -19144,7 +19144,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HTML-Misc
   Protocol:  https://github.com/mahmood726-cyber/HTML-Misc/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HTML-Misc/
+  Dashboard: https://mahmood726-cyber.github.io/html-misc/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -19300,7 +19300,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/IPD-Zahid
   Protocol:  https://github.com/mahmood726-cyber/IPD-Zahid/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/IPD-Zahid/
+  Dashboard: https://mahmood726-cyber.github.io/ipd-zahid/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -19612,7 +19612,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/KMextract
   Protocol:  https://github.com/mahmood726-cyber/KMextract/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/KMextract/
+  Dashboard: https://mahmood726-cyber.github.io/kmextract/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -19846,7 +19846,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LFAHFN
   Protocol:  https://github.com/mahmood726-cyber/LFAHFN/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LFAHFN/
+  Dashboard: https://mahmood726-cyber.github.io/lfahfn/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -19924,7 +19924,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Living-metas
   Protocol:  https://github.com/mahmood726-cyber/Living-metas/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Living-metas/
+  Dashboard: https://mahmood726-cyber.github.io/living-metas/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -20003,7 +20003,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMA
   Protocol:  https://github.com/mahmood726-cyber/LivingMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LivingMA/
+  Dashboard: https://mahmood726-cyber.github.io/livingma/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -20082,7 +20082,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet
   Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LivingMeta-Watchman-Amulet/
+  Dashboard: https://mahmood726-cyber.github.io/livingmeta-watchman-amulet/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -20239,7 +20239,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MAFI
   Protocol:  https://github.com/mahmood726-cyber/MAFI/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MAFI/
+  Dashboard: https://mahmood726-cyber.github.io/mafi/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -20317,7 +20317,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MAFI-Continuation
   Protocol:  https://github.com/mahmood726-cyber/MAFI-Continuation/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MAFI-Continuation/
+  Dashboard: https://mahmood726-cyber.github.io/mafi-continuation/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -20786,7 +20786,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/NMA
   Protocol:  https://github.com/mahmood726-cyber/NMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/NMA/
+  Dashboard: https://mahmood726-cyber.github.io/nma/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -20942,7 +20942,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/pairwiseai-humble
   Protocol:  https://github.com/mahmood726-cyber/pairwiseai-humble/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Pairwise-humble/
+  Dashboard: https://mahmood726-cyber.github.io/pairwise-humble/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -21021,7 +21021,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PFA-AF-LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PFA-AF-LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/pfa-af-livingmeta/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -21255,7 +21255,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Scripts
   Protocol:  https://github.com/mahmood726-cyber/Scripts/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Scripts/
+  Dashboard: https://mahmood726-cyber.github.io/scripts/
 
 References (topic pack: automated data extraction / text mining):
   1. Marshall IJ, Wallace BC. 2019. Toward systematic review automation: a practical guide to using machine learning tools in research synthesis. Syst Rev. 8:163. doi:10.1186/s13643-019-1074-9
@@ -21333,7 +21333,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Stories
   Protocol:  https://github.com/mahmood726-cyber/Stories/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Stories/
+  Dashboard: https://mahmood726-cyber.github.io/stories/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -21646,7 +21646,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Tricuspid-TEER-LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/tricuspid-teer-livingmeta/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -21802,7 +21802,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TruthCert-Validation-Papers
   Protocol:  https://github.com/mahmood726-cyber/TruthCert-Validation-Papers/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TruthCert-Validation-Papers/
+  Dashboard: https://mahmood726-cyber.github.io/truthcert-validation-papers/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -21880,7 +21880,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TruthCert_v3.1.0_modeling
   Protocol:  https://github.com/mahmood726-cyber/TruthCert_v3.1.0_modeling/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TruthCert_v3.1.0_modeling/
+  Dashboard: https://mahmood726-cyber.github.io/truthcert_v3.1.0_modeling/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -21959,7 +21959,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TSA
   Protocol:  https://github.com/mahmood726-cyber/TSA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TSA/
+  Dashboard: https://mahmood726-cyber.github.io/tsa/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -24039,7 +24039,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HyperMeta
   Protocol:  https://github.com/mahmood726-cyber/HyperMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HyperMeta/
+  Dashboard: https://mahmood726-cyber.github.io/hypermeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -24193,7 +24193,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Integrity-Guard-Forensics
   Protocol:  https://github.com/mahmood726-cyber/Integrity-Guard-Forensics/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Integrity-Guard-Forensics/
+  Dashboard: https://mahmood726-cyber.github.io/integrity-guard-forensics/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -24270,7 +24270,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaFrontierLab
   Protocol:  https://github.com/mahmood726-cyber/MetaFrontierLab/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaFrontierLab/
+  Dashboard: https://mahmood726-cyber.github.io/metafrontierlab/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -24347,7 +24347,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaVoI
   Protocol:  https://github.com/mahmood726-cyber/MetaVoI/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MetaVoI/
+  Dashboard: https://mahmood726-cyber.github.io/metavoi/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -24424,7 +24424,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MoneyTrail
   Protocol:  https://github.com/mahmood726-cyber/MoneyTrail/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MoneyTrail/
+  Dashboard: https://mahmood726-cyber.github.io/moneytrail/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -24501,7 +24501,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PatientMA
   Protocol:  https://github.com/mahmood726-cyber/PatientMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PatientMA/
+  Dashboard: https://mahmood726-cyber.github.io/patientma/
 
 References (topic pack: Cochrane software / R package / methods platform):
   1. Viechtbauer W. 2010. Conducting meta-analyses in R with the metafor package. J Stat Softw. 36(3):1-48. doi:10.18637/jss.v036.i03
@@ -24578,7 +24578,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PriorLab
   Protocol:  https://github.com/mahmood726-cyber/PriorLab/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PriorLab/
+  Dashboard: https://mahmood726-cyber.github.io/priorlab/
 
 References (topic pack: Bayesian meta-analysis):
   1. Röver C. 2020. Bayesian random-effects meta-analysis using the bayesmeta R package. J Stat Softw. 93(6):1-51. doi:10.18637/jss.v093.i06
@@ -24655,7 +24655,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/QualSynth
   Protocol:  https://github.com/mahmood726-cyber/QualSynth/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/QualSynth/
+  Dashboard: https://mahmood726-cyber.github.io/qualsynth/
 
 References (topic pack: browser-based meta-analysis tooling):
   1. Schwarzer G, Carpenter JR, Rücker G. 2015. Meta-Analysis with R. Springer. doi:10.1007/978-3-319-21416-0
@@ -25040,7 +25040,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TrustGate
   Protocol:  https://github.com/mahmood726-cyber/TrustGate/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TrustGate/
+  Dashboard: https://mahmood726-cyber.github.io/trustgate/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -25194,7 +25194,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/surroNMA
   Protocol:  https://github.com/mahmood726-cyber/surroNMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/surroNMA/
+  Dashboard: https://mahmood726-cyber.github.io/surronma/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -25271,7 +25271,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -25348,7 +25348,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: oncology / cancer trials):
   1. Korn EL, Freidlin B. 2018. Interim futility monitoring assessing immune therapies with a potentially delayed treatment effect. J Clin Oncol. 36(23):2444-2449. doi:10.1200/JCO.2018.77.7144
@@ -25425,7 +25425,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -25502,7 +25502,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -25579,7 +25579,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -25656,7 +25656,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -25733,7 +25733,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: heart failure / cardiology):
   1. McMurray JJV, Solomon SD, Inzucchi SE, et al. 2019. Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction. N Engl J Med. 381(21):1995-2008. doi:10.1056/NEJMoa1911303
@@ -25810,7 +25810,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -25887,7 +25887,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -25964,7 +25964,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -26041,7 +26041,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -26118,7 +26118,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
   Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha-Course/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha-course/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -26266,7 +26266,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/pairwiseai70
   Protocol:  https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Pairwise70/
+  Dashboard: https://mahmood726-cyber.github.io/pairwise70/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -26342,7 +26342,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AlBurhan
   Protocol:  https://github.com/mahmood726-cyber/AlBurhan/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AlBurhan/
+  Dashboard: https://mahmood726-cyber.github.io/alburhan/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -26420,7 +26420,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AfricaForecast
   Protocol:  https://github.com/mahmood726-cyber/AfricaForecast/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AfricaForecast/
+  Dashboard: https://mahmood726-cyber.github.io/africaforecast/
 
 References (topic pack: causal inference / triangulation):
   1. Lawlor DA, Tilling K, Davey Smith G. 2016. Triangulation in aetiological epidemiology. Int J Epidemiol. 45(6):1866-1886. doi:10.1093/ije/dyw314
@@ -26496,7 +26496,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/EnrollmentOracle
   Protocol:  https://github.com/mahmood726-cyber/EnrollmentOracle/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/EnrollmentOracle/
+  Dashboard: https://mahmood726-cyber.github.io/enrollmentoracle/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -26572,7 +26572,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HTNPipeline
   Protocol:  https://github.com/mahmood726-cyber/HTNPipeline/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HTNPipeline/
+  Dashboard: https://mahmood726-cyber.github.io/htnpipeline/
 
 References (topic pack: causal inference / triangulation):
   1. Lawlor DA, Tilling K, Davey Smith G. 2016. Triangulation in aetiological epidemiology. Int J Epidemiol. 45(6):1866-1886. doi:10.1093/ije/dyw314
@@ -26648,7 +26648,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/OutcomeSwitchDetector
   Protocol:  https://github.com/mahmood726-cyber/OutcomeSwitchDetector/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/OutcomeSwitchDetector/
+  Dashboard: https://mahmood726-cyber.github.io/outcomeswitchdetector/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -26724,7 +26724,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/ProtocolEvolution
   Protocol:  https://github.com/mahmood726-cyber/ProtocolEvolution/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/ProtocolEvolution/
+  Dashboard: https://mahmood726-cyber.github.io/protocolevolution/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -26800,7 +26800,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TrialAtlas
   Protocol:  https://github.com/mahmood726-cyber/TrialAtlas/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TrialAtlas/
+  Dashboard: https://mahmood726-cyber.github.io/trialatlas/
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -26876,7 +26876,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/E156
   Protocol:  https://github.com/mahmood726-cyber/E156/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/E156/
+  Dashboard: https://mahmood726-cyber.github.io/e156/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -26954,7 +26954,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/NICECardiology
   Protocol:  https://github.com/mahmood726-cyber/NICECardiology/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/NICECardiology/
+  Dashboard: https://mahmood726-cyber.github.io/nicecardiology/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -27033,7 +27033,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TrialDiversityAtlas
   Protocol:  https://github.com/mahmood726-cyber/TrialDiversityAtlas/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TrialDiversityAtlas/
+  Dashboard: https://mahmood726-cyber.github.io/trialdiversityatlas/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -27413,7 +27413,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/SuperTransportabilityMap
   Protocol:  https://github.com/mahmood726-cyber/SuperTransportabilityMap/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/SuperTransportabilityMap/
+  Dashboard: https://mahmood726-cyber.github.io/supertransportabilitymap/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -27490,7 +27490,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PFA-AF-LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PFA-AF-LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/pfa-af-livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27566,7 +27566,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet
   Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LivingMeta-Watchman-Amulet/
+  Dashboard: https://mahmood726-cyber.github.io/livingmeta-watchman-amulet/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27642,7 +27642,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Tricuspid-TEER-LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/tricuspid-teer-livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27718,7 +27718,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Inclisiran_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Inclisiran_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Inclisiran_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/inclisiran_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27794,7 +27794,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Tirzepatide_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/tirzepatide_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27870,7 +27870,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Semaglutide_HFpEF_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/semaglutide_hfpef_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27946,7 +27946,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Leadless_Pacing_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Leadless_Pacing_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Leadless_Pacing_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/leadless_pacing_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -28022,7 +28022,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CSP_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/CSP_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CSP_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/csp_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -28098,7 +28098,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Coronary_IVL_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Coronary_IVL_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Coronary_IVL_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/coronary_ivl_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -28174,7 +28174,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Omecamtiv_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/omecamtiv_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -28250,7 +28250,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CTFFR_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/CTFFR_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CTFFR_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/ctffr_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -28326,7 +28326,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Vericiguat_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Vericiguat_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Vericiguat_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/vericiguat_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -28402,7 +28402,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Sotagliflozin_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/sotagliflozin_livingmeta/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -28560,7 +28560,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/DCB_PAD_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/dcb_pad_livingmeta/
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -28636,7 +28636,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Orforglipron_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Orforglipron_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Orforglipron_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/orforglipron_livingmeta/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -28715,7 +28715,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MendelianMR
   Protocol:  https://github.com/mahmood726-cyber/MendelianMR/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MendelianMR/
+  Dashboard: https://mahmood726-cyber.github.io/mendelianmr/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629
@@ -28792,7 +28792,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/SafetyMA
   Protocol:  https://github.com/mahmood726-cyber/SafetyMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/SafetyMA/
+  Dashboard: https://mahmood726-cyber.github.io/safetyma/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -28869,7 +28869,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PredModelMA
   Protocol:  https://github.com/mahmood726-cyber/PredModelMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PredModelMA/
+  Dashboard: https://mahmood726-cyber.github.io/predmodelma/
 
 References (topic pack: risk of bias):
   1. Sterne JAC, Savović J, Page MJ, et al. 2019. RoB 2: a revised tool for assessing risk of bias in randomised trials. BMJ. 366:l4898. doi:10.1136/bmj.l4898
@@ -28946,7 +28946,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/RetractionImpact
   Protocol:  https://github.com/mahmood726-cyber/RetractionImpact/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/RetractionImpact/
+  Dashboard: https://mahmood726-cyber.github.io/retractionimpact/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -29023,7 +29023,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingNMA
   Protocol:  https://github.com/mahmood726-cyber/LivingNMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LivingNMA/
+  Dashboard: https://mahmood726-cyber.github.io/livingnma/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -30076,7 +30076,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/ProportionMA
   Protocol:  https://github.com/mahmood726-cyber/ProportionMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/ProportionMA/
+  Dashboard: https://mahmood726-cyber.github.io/proportionma/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -30152,7 +30152,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-mapPro
   Protocol:  https://github.com/mahmood726-cyber/evidence-mapPro/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/EvidenceMapPro/
+  Dashboard: https://mahmood726-cyber.github.io/evidencemappro/
 
 References (topic pack: GRADE / certainty rating):
   1. Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD
@@ -30228,7 +30228,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/MultivarMA
   Protocol:  https://github.com/mahmood726-cyber/MultivarMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/MultivarMA/
+  Dashboard: https://mahmood726-cyber.github.io/multivarma/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
   1. Riley RD, Lambert PC, Abo-Zaid G. 2010. Meta-analysis of individual participant data: rationale, conduct, and reporting. BMJ. 340:c221. doi:10.1136/bmj.c221
@@ -30304,7 +30304,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/CostEffMA
   Protocol:  https://github.com/mahmood726-cyber/CostEffMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/CostEffMA/
+  Dashboard: https://mahmood726-cyber.github.io/costeffma/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -30380,7 +30380,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/EcoBiasMA
   Protocol:  https://github.com/mahmood726-cyber/EcoBiasMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/EcoBiasMA/
+  Dashboard: https://mahmood726-cyber.github.io/ecobiasma/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -30456,7 +30456,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TargetTrialMA
   Protocol:  https://github.com/mahmood726-cyber/TargetTrialMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TargetTrialMA/
+  Dashboard: https://mahmood726-cyber.github.io/targettrialma/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -30532,7 +30532,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PlatformTrialMA
   Protocol:  https://github.com/mahmood726-cyber/PlatformTrialMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PlatformTrialMA/
+  Dashboard: https://mahmood726-cyber.github.io/platformtrialma/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -30608,7 +30608,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/SeqNMA
   Protocol:  https://github.com/mahmood726-cyber/SeqNMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/SeqNMA/
+  Dashboard: https://mahmood726-cyber.github.io/seqnma/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -30684,7 +30684,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/IPDNMA
   Protocol:  https://github.com/mahmood726-cyber/IPDNMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/IPDNMA/
+  Dashboard: https://mahmood726-cyber.github.io/ipdnma/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -30760,7 +30760,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/FederatedMA
   Protocol:  https://github.com/mahmood726-cyber/FederatedMA/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/FederatedMA/
+  Dashboard: https://mahmood726-cyber.github.io/federatedma/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -30836,7 +30836,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/FigureEngine
   Protocol:  https://github.com/mahmood726-cyber/FigureEngine/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/FigureEngine/
+  Dashboard: https://mahmood726-cyber.github.io/figureengine/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -30912,7 +30912,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/ZenodoPipeline
   Protocol:  https://github.com/mahmood726-cyber/ZenodoPipeline/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/ZenodoPipeline/
+  Dashboard: https://mahmood726-cyber.github.io/zenodopipeline/
 
 References (topic pack: automated data extraction / text mining):
   1. Marshall IJ, Wallace BC. 2019. Toward systematic review automation: a practical guide to using machine learning tools in research synthesis. Syst Rev. 8:163. doi:10.1186/s13643-019-1074-9
@@ -31064,7 +31064,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Omecamtiv_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/omecamtiv_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31140,7 +31140,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Sotagliflozin_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/sotagliflozin_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31216,7 +31216,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Tezepelumab_Asthma_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/tezepelumab_asthma_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -31292,7 +31292,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Osimertinib_NSCLC_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Osimertinib_NSCLC_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Osimertinib_NSCLC_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/osimertinib_nsclc_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31368,7 +31368,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Enfortumab_UC_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Enfortumab_UC_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Enfortumab_UC_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/enfortumab_uc_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31444,7 +31444,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/KRAS_G12C_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/kras_g12c_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31520,7 +31520,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Pembro_Adj_Mel_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Pembro_Adj_Mel_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Pembro_Adj_Mel_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/pembro_adj_mel_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31596,7 +31596,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Inclisiran_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Inclisiran_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Inclisiran_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/inclisiran_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31672,7 +31672,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Antiplatelet_NMA_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Antiplatelet_NMA_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Antiplatelet_NMA_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/antiplatelet_nma_livingmeta/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -31748,7 +31748,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Dupilumab_COPD_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/dupilumab_copd_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -31824,7 +31824,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Semaglutide_CKD_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Semaglutide_CKD_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Semaglutide_CKD_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/semaglutide_ckd_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31900,7 +31900,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/ARNI_HF_REVIEW.html
   Protocol:  https://github.com/mahmood726-cyber/ARNI_HF_REVIEW.html/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/ARNI_HF_REVIEW.html/
+  Dashboard: https://mahmood726-cyber.github.io/arni_hf_review.html/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -31976,7 +31976,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMA_Portfolio
   Protocol:  https://github.com/mahmood726-cyber/LivingMA_Portfolio/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LivingMA_Portfolio/
+  Dashboard: https://mahmood726-cyber.github.io/livingma_portfolio/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -32286,7 +32286,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32362,7 +32362,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32438,7 +32438,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32514,7 +32514,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32590,7 +32590,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32666,7 +32666,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32742,7 +32742,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -32818,7 +32818,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32894,7 +32894,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32970,7 +32970,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -33046,7 +33046,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -33122,7 +33122,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/TDXd_Breast_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/tdxd_breast_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -33198,7 +33198,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Obesity_NMA_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/obesity_nma_livingmeta/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -33274,7 +33274,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AntiAmyloid_AD_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/AntiAmyloid_AD_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AntiAmyloid_AD_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/antiamyloid_ad_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33350,7 +33350,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Bimekizumab_Pso_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Bimekizumab_Pso_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Bimekizumab_Pso_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/bimekizumab_pso_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33426,7 +33426,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -33502,7 +33502,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/DCB_PAD_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/dcb_pad_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33578,7 +33578,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PAH_NMA_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/PAH_NMA_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PAH_NMA_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/pah_nma_livingmeta/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -33654,7 +33654,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Resmetirom_MASH_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Resmetirom_MASH_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Resmetirom_MASH_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/resmetirom_mash_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33730,7 +33730,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/K_Binders_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/K_Binders_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/K_Binders_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/k_binders_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33806,7 +33806,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Tirzepatide_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/tirzepatide_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33882,7 +33882,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Semaglutide_HFpEF_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/semaglutide_hfpef_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33958,7 +33958,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Ticagrelor_Mono_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/ticagrelor_mono_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34034,7 +34034,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Icosapent_Ethyl_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/icosapent_ethyl_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34110,7 +34110,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -34186,7 +34186,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/AttrCM_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/AttrCM_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/AttrCM_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/attrcm_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34262,7 +34262,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34338,7 +34338,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34414,7 +34414,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Finrenone
   Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Finrenone/
+  Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34490,7 +34490,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/HFrEF_NMA_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/HFrEF_NMA_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/HFrEF_NMA_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/hfref_nma_livingmeta/
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -34566,7 +34566,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Empa_MI_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Empa_MI_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Empa_MI_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/empa_mi_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34642,7 +34642,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/PFA-AF-LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/PFA-AF-LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/pfa-af-livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -34718,7 +34718,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet
   Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/LivingMeta-Watchman-Amulet/
+  Dashboard: https://mahmood726-cyber.github.io/livingmeta-watchman-amulet/
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -34794,7 +34794,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Sacituzumab_TNBC_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Sacituzumab_TNBC_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Sacituzumab_TNBC_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/sacituzumab_tnbc_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -34870,7 +34870,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Iptacopan_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Iptacopan_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Iptacopan_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/iptacopan_livingmeta/
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -35425,7 +35425,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Metadta
   Protocol:  https://github.com/mahmood726-cyber/Metadta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Metadta/
+  Dashboard: https://mahmood726-cyber.github.io/metadta/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -36281,7 +36281,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Dapa_AcuteHF_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Dapa_AcuteHF_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Dapa_AcuteHF_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/dapa_acutehf_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -36357,7 +36357,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Sotatercept_PAH_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Sotatercept_PAH_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Sotatercept_PAH_LivingMeta/
+  Dashboard: https://mahmood726-cyber.github.io/sotatercept_pah_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -36433,7 +36433,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/GuidelineLag
   Protocol:  https://github.com/mahmood726-cyber/GuidelineLag/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/GuidelineLag/
+  Dashboard: https://mahmood726-cyber.github.io/guidelinelag/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -36653,7 +36653,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha
   Protocol:  https://github.com/mahmood726-cyber/Fatiha/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/Fatiha/
+  Dashboard: https://mahmood726-cyber.github.io/fatiha/
 
 References (topic pack: publication bias / selection):
   1. Egger M, Davey Smith G, Schneider M, Minder C. 1997. Bias in meta-analysis detected by a simple, graphical test. BMJ. 315(7109):629-634. doi:10.1136/bmj.315.7109.629

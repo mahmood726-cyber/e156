@@ -65,17 +65,76 @@ def parse_entries(text: str) -> list[dict]:
                     body_lines.append(lines[k])
                     k += 1
                 data["body"] = " ".join(body_lines).strip()
-        # Extract GitHub URLs from the embedded metadata block
+        # Links block — all three URLs.
         code_m = re.search(r"Code:\s+(\S+)", block)
+        protocol_m = re.search(r"Protocol:\s+(\S+)", block)
         pages_m = re.search(r"Dashboard:\s+(\S+)", block)
         data["code_url"] = code_m.group(1) if code_m else ""
+        data["protocol_url"] = protocol_m.group(1) if protocol_m else ""
         data["pages_url"] = pages_m.group(1) if pages_m else ""
-        # Extract topic pack
+
+        # Topic pack label (used for the chip).
         pack_m = re.search(r"References \(topic pack: (.+?)\):", block)
         data["topic"] = pack_m.group(1) if pack_m else "unknown"
+
+        # Full references list — capture the numbered entries after
+        # "References (topic pack: ...):" up to the next blank-line
+        # boundary. Each ref becomes one string.
+        ref_block_m = re.search(
+            r"References \(topic pack: [^)]+\):\s*\n((?:\s*\d+\..+(?:\n|$))+)",
+            block,
+        )
+        refs: list[str] = []
+        if ref_block_m:
+            for ln in ref_block_m.group(1).splitlines():
+                s = ln.strip()
+                if re.match(r"^\d+\.\s", s):
+                    refs.append(s)
+        data["references"] = refs
+
+        # Target journal + section line.
+        journal_m = re.search(
+            r"Target journal:\s*([^\n]+?)\s*\n\s*Section:\s*([^\n—(]+?)(?:\s*[—(]|\s*\n)",
+            block,
+        )
+        data["target_journal"] = journal_m.group(1).strip() if journal_m else ""
+        data["section"] = journal_m.group(2).strip() if journal_m else ""
+
+        # Standard statement blocks — each is a paragraph after its
+        # label and before the next blank line / next label.
+        def _grab(label: str) -> str:
+            m = re.search(
+                rf"{re.escape(label)}\s*(.+?)(?:\n\s*\n|\nCorresponding author:|\nORCID:|\nAffiliation:|\nLinks:|\nReferences|\nData availability:|\nEthics:|\nFunding:|\nCompeting interests:|\nAuthor contributions|\nAI disclosure:|\nPreprint:|\nReporting checklist:|\nTarget journal:|\nManuscript license:|\nCode license:|\nSUBMITTED:)",
+                block,
+                re.DOTALL,
+            )
+            if not m:
+                return ""
+            # Collapse inline wrapping: join the lines of this paragraph
+            # into a single string while preserving the bullet structure.
+            return " ".join(ln.strip() for ln in m.group(1).splitlines() if ln.strip())
+
+        data["data_availability"] = _grab("Data availability:")
+        data["ethics"] = _grab("Ethics:")
+        data["funding"] = _grab("Funding:")
+        data["competing_interests"] = _grab("Competing interests:")
+        data["ai_disclosure"] = _grab("AI disclosure:")
+        data["reporting_checklist"] = _grab("Reporting checklist:")
+        data["credit"] = _grab("Author contributions (CRediT):")
+        data["preprint"] = _grab("Preprint:")
+
+        # Corresponding-author block + ORCID + affiliation.
+        corresp_m = re.search(r"Corresponding author:\s*([^\n]+)", block)
+        orcid_m = re.search(r"ORCID:\s*([\d\-]+)", block)
+        affil_m = re.search(r"Affiliation:\s*([^\n]+)", block)
+        data["corresponding_author"] = corresp_m.group(1).strip() if corresp_m else ""
+        data["orcid"] = orcid_m.group(1).strip() if orcid_m else ""
+        data["affiliation"] = affil_m.group(1).strip() if affil_m else ""
+
         # Submitted status (the per-entry marker)
         sub_m = re.search(r"^SUBMITTED:\s*\[(\s|x|X)\]", block, re.MULTILINE)
         data["submitted_head"] = bool(sub_m and sub_m.group(1).lower() == "x")
+
         out.append(data)
     return out
 
@@ -409,6 +468,74 @@ function submitIssueUrl(entry) {
   return `${GH_ISSUE_BASE}?${params.toString()}`;
 }
 
+function toggleCard(num) {
+  const body = document.getElementById('body-' + num);
+  const details = document.getElementById('details-' + num);
+  const btn = event.target;
+  const isOpen = details.style.display !== 'none';
+  if (isOpen) {
+    body.classList.remove('expanded');
+    details.style.display = 'none';
+    btn.textContent = 'show full details ▼';
+  } else {
+    body.classList.add('expanded');
+    details.style.display = 'block';
+    btn.textContent = 'hide details ▲';
+  }
+}
+
+function linkIfUrl(val, fallback) {
+  if (!val) return escapeHtml(fallback || '');
+  const url = String(val).trim();
+  if (url.startsWith('http')) {
+    return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a>`;
+  }
+  return escapeHtml(val);
+}
+
+function renderRefs(refs) {
+  if (!Array.isArray(refs) || !refs.length) return '<em style="color:var(--text-faint)">(no references in workbook)</em>';
+  return '<ol style="margin:0.3rem 0 0.3rem 1.2rem; padding:0;">' +
+    refs.map(r => {
+      // Linkify trailing "doi:X" tokens
+      const linked = escapeHtml(r).replace(/doi:(\S+)/g, 'doi:<a href="https://doi.org/$1" target="_blank">$1</a>');
+      return `<li style="margin-bottom:0.3rem;">${linked}</li>`;
+    }).join('') + '</ol>';
+}
+
+function renderDetails(e) {
+  const row = (label, value) => {
+    if (!value) return '';
+    return `<div style="margin-bottom:0.5rem;"><strong style="color:var(--text-dim); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.15rem;">${label}</strong><span>${value}</span></div>`;
+  };
+
+  const linkRow = (label, url) => {
+    if (!url) return '';
+    return row(label, `<a href="${escapeHtml(url)}" target="_blank" rel="noopener" style="word-break:break-all;">${escapeHtml(url)}</a>`);
+  };
+
+  return [
+    // Repo / paper infrastructure links
+    linkRow('Source code (GitHub)', e.code_url),
+    linkRow('E156 protocol', e.protocol_url),
+    linkRow('Dashboard (GitHub Pages)', e.pages_url),
+    row('Target journal / section', e.target_journal ? `${escapeHtml(e.target_journal)}<br><span style="color:var(--text-dim);">Section: ${escapeHtml(e.section)}</span>` : ''),
+    // Author info
+    row('Corresponding author', e.corresponding_author ? `${escapeHtml(e.corresponding_author)}${e.orcid ? ` · ORCID ${escapeHtml(e.orcid)}` : ''}${e.affiliation ? `<br><span style="color:var(--text-dim);">${escapeHtml(e.affiliation)}</span>` : ''}` : ''),
+    // References (the 2+ topic-pack refs)
+    row('References', renderRefs(e.references)),
+    // Standard submission statements
+    row('Data availability', e.data_availability ? escapeHtml(e.data_availability) : ''),
+    row('Ethics', e.ethics ? escapeHtml(e.ethics) : ''),
+    row('Funding', e.funding ? escapeHtml(e.funding) : ''),
+    row('Competing interests', e.competing_interests ? escapeHtml(e.competing_interests) : ''),
+    row('Author contributions (CRediT)', e.credit ? escapeHtml(e.credit) : ''),
+    row('AI disclosure', e.ai_disclosure ? escapeHtml(e.ai_disclosure) : ''),
+    row('Reporting checklist', e.reporting_checklist ? escapeHtml(e.reporting_checklist) : ''),
+    row('Preprint', e.preprint ? escapeHtml(e.preprint) : ''),
+  ].filter(Boolean).join('');
+}
+
 function daysLeftLabel(entry) {
   const c = claims[entry.num];
   if (!c || !c.claim_date) return "";
@@ -458,7 +585,10 @@ function render() {
           <span class="topic">${escapeHtml(e.topic)}</span>
         </div>
         <div class="card-body" id="body-${e.num}">${escapeHtml(e.body || "(no body)")}</div>
-        <button class="toggle-body" onclick="document.getElementById('body-${e.num}').classList.toggle('expanded'); this.textContent = this.textContent === 'show full ▼' ? 'hide ▲' : 'show full ▼';">show full ▼</button>
+        <button class="toggle-body" onclick="toggleCard(${e.num})">show full details ▼</button>
+        <div class="card-details" id="details-${e.num}" style="display:none; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid var(--border); font-size:0.86rem; line-height:1.5;">
+          ${renderDetails(e)}
+        </div>
         ${claim && status !== "open"
           ? `<div class="claimed-by">${status === "submitted" ? "Submitted by" : "Claimed by"} <strong>${escapeHtml(claim.name)}</strong>${claim.affiliation ? ` · ${escapeHtml(claim.affiliation)}` : ""}${claim.claim_date ? ` · claimed ${escapeHtml(claim.claim_date)}` : ""}${status === "claimed" ? ` · ${daysLeftLabel(e)}` : ""}${status === "submitted" && claim.submit_date ? ` · submitted ${escapeHtml(claim.submit_date)}` : ""}</div>`
           : ""}
@@ -526,9 +656,13 @@ def main() -> int:
     entries = parse_entries(text)
     entries.sort(key=lambda e: e["num"])
 
-    # Build a compact version of each entry (drop verbose fields not needed for browsing)
+    # Build each entry for the browser. All fields parsed from the
+    # SUBMISSION METADATA block are preserved so renderDetails() can
+    # show the full paper context on expand (GitHub links, refs, ethics,
+    # CRediT, COI, AI disclosure, target journal, etc.).
     compact = [
         {
+            # Card head / filter
             "num": e["num"],
             "name": e.get("name", ""),
             "title": e.get("title", ""),
@@ -536,9 +670,26 @@ def main() -> int:
             "data": e.get("data", ""),
             "body": e.get("body", ""),
             "topic": e.get("topic", "unknown"),
-            "code_url": e.get("code_url", ""),
-            "pages_url": e.get("pages_url", ""),
             "submitted_head": e.get("submitted_head", False),
+            # Links
+            "code_url": e.get("code_url", ""),
+            "protocol_url": e.get("protocol_url", ""),
+            "pages_url": e.get("pages_url", ""),
+            # Expanded-details block
+            "target_journal": e.get("target_journal", ""),
+            "section": e.get("section", ""),
+            "corresponding_author": e.get("corresponding_author", ""),
+            "orcid": e.get("orcid", ""),
+            "affiliation": e.get("affiliation", ""),
+            "references": e.get("references", []),
+            "data_availability": e.get("data_availability", ""),
+            "ethics": e.get("ethics", ""),
+            "funding": e.get("funding", ""),
+            "competing_interests": e.get("competing_interests", ""),
+            "credit": e.get("credit", ""),
+            "ai_disclosure": e.get("ai_disclosure", ""),
+            "reporting_checklist": e.get("reporting_checklist", ""),
+            "preprint": e.get("preprint", ""),
         }
         for e in entries
     ]
