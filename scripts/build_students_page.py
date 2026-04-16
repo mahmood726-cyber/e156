@@ -56,12 +56,19 @@ def parse_entries(text: str) -> list[dict]:
                 data["data"] = line[5:].strip()
             elif line.startswith("PATH:"):
                 data["path"] = line[5:].strip()
-            elif line.startswith("CURRENT BODY"):
+            elif line.startswith("CURRENT BODY") and "body" not in data:
+                # Only extract the FIRST CURRENT BODY per entry. A handful
+                # of workbook entries (371, 468) have stray "=== NEW
+                # PROJECT: xxx ===" + second CURRENT BODY lines appended
+                # from an old merge; the `"body" not in data` guard keeps
+                # the legitimate first body from being overwritten.
                 body_lines: list[str] = []
                 k = j + 1
                 while k < len(lines) and not lines[k].strip():
                     k += 1
-                while k < len(lines) and lines[k].strip() and not lines[k].startswith("YOUR REWRITE"):
+                while (k < len(lines) and lines[k].strip()
+                       and not lines[k].startswith("YOUR REWRITE")
+                       and not lines[k].startswith("=== NEW PROJECT")):
                     body_lines.append(lines[k])
                     k += 1
                 data["body"] = " ".join(body_lines).strip()
@@ -73,15 +80,20 @@ def parse_entries(text: str) -> list[dict]:
         data["protocol_url"] = protocol_m.group(1) if protocol_m else ""
         data["pages_url"] = pages_m.group(1) if pages_m else ""
 
-        # Topic pack label (used for the chip).
-        pack_m = re.search(r"References \(topic pack: (.+?)\):", block)
-        data["topic"] = pack_m.group(1) if pack_m else "unknown"
+        # Topic pack label is extracted below after the refs block
+        # using a version that handles nested parens. Default to
+        # "unknown" if the refs block is missing entirely.
+        data["topic"] = "unknown"
 
         # Full references list — capture the numbered entries after
         # "References (topic pack: ...):" up to the next blank-line
-        # boundary. Each ref becomes one string.
+        # boundary. The topic-pack label can contain nested parens
+        # (e.g. "trial sequential analysis (TSA)" or "individual
+        # participant data (IPD) meta-analysis"), so we match non-greedy
+        # up to `):` rather than using a character-class negation that
+        # stops at the first `)`.
         ref_block_m = re.search(
-            r"References \(topic pack: [^)]+\):\s*\n((?:\s*\d+\..+(?:\n|$))+)",
+            r"References \(topic pack:.+?\):\s*\n((?:\s*\d+\..+(?:\n|$))+)",
             block,
         )
         refs: list[str] = []
@@ -91,6 +103,12 @@ def parse_entries(text: str) -> list[dict]:
                 if re.match(r"^\d+\.\s", s):
                     refs.append(s)
         data["references"] = refs
+
+        # Same fix for the topic label extraction (used to label the
+        # card's topic chip).
+        pack_m = re.search(r"References \(topic pack:\s*(.+?)\):", block)
+        if pack_m:
+            data["topic"] = pack_m.group(1).strip()
 
         # Target journal + section line.
         journal_m = re.search(
