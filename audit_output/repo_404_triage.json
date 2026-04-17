@@ -1,0 +1,726 @@
+{
+  "push_worthy": 116,
+  "empty": 1,
+  "path_missing": 4,
+  "no_path": 0,
+  "push_list": [
+    {
+      "num": 1,
+      "name": "501MLM",
+      "local_path": "C:\\Projects\\501MLM",
+      "code_files": 22
+    },
+    {
+      "num": 2,
+      "name": "501MLM_Submission",
+      "local_path": "C:\\Projects\\501MLM_Submission",
+      "code_files": 22
+    },
+    {
+      "num": 12,
+      "name": "BiasForensics",
+      "local_path": "C:\\BiasForensics",
+      "code_files": 13
+    },
+    {
+      "num": 18,
+      "name": "chat2",
+      "local_path": "C:\\Projects\\chat2",
+      "code_files": 9
+    },
+    {
+      "num": 19,
+      "name": "chatpaper",
+      "local_path": "C:\\Projects\\chatpaper",
+      "code_files": 8
+    },
+    {
+      "num": 20,
+      "name": "claude2",
+      "local_path": "C:\\Projects\\claude2",
+      "code_files": 8
+    },
+    {
+      "num": 23,
+      "name": "clinical-ma",
+      "local_path": "C:\\E156\\releases\\clinical-ma",
+      "code_files": 3
+    },
+    {
+      "num": 51,
+      "name": "evidence-inference",
+      "local_path": "C:\\Projects\\evidence-inference",
+      "code_files": 448
+    },
+    {
+      "num": 53,
+      "name": "EvidenceQuality",
+      "local_path": "C:\\EvidenceQuality",
+      "code_files": 12
+    },
+    {
+      "num": 56,
+      "name": "FATIHA_Project",
+      "local_path": "C:\\Models\\FATIHA_Project",
+      "code_files": 23
+    },
+    {
+      "num": 57,
+      "name": "Finrenone",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 62,
+      "name": "GRMA_paper",
+      "local_path": "C:\\Models\\GRMA_paper",
+      "code_files": 15
+    },
+    {
+      "num": 65,
+      "name": "HTA",
+      "local_path": "C:\\HTML apps\\HTA",
+      "code_files": 6391
+    },
+    {
+      "num": 121,
+      "name": "New_Heterogeneity_Model",
+      "local_path": "C:\\Models\\New_Heterogeneity_Model",
+      "code_files": 15
+    },
+    {
+      "num": 124,
+      "name": "nmapaper111025",
+      "local_path": "C:\\Projects\\nmapaper111025",
+      "code_files": 8
+    },
+    {
+      "num": 131,
+      "name": "Pairwiseai",
+      "local_path": "C:\\HTML apps\\Pairwiseai",
+      "code_files": 62
+    },
+    {
+      "num": 132,
+      "name": "Paper1",
+      "local_path": "C:\\Projects\\Paper1",
+      "code_files": 4
+    },
+    {
+      "num": 133,
+      "name": "Paper2.111025",
+      "local_path": "C:\\Projects\\Paper2.111025",
+      "code_files": 37
+    },
+    {
+      "num": 144,
+      "name": "reduced-dose-doacs-vte-demo",
+      "local_path": "C:\\E156\\releases\\reduced-dose-doacs-vte-demo",
+      "code_files": 3
+    },
+    {
+      "num": 146,
+      "name": "repo100",
+      "local_path": "C:\\Projects\\repo100",
+      "code_files": 176
+    },
+    {
+      "num": 147,
+      "name": "repo300-ENMA-SNMA",
+      "local_path": "C:\\Projects\\repo300-ENMA-SNMA",
+      "code_files": 116
+    },
+    {
+      "num": 156,
+      "name": "TGEP_Development",
+      "local_path": "C:\\Models\\TGEP_Development",
+      "code_files": 10
+    },
+    {
+      "num": 160,
+      "name": "truthcert-meta2-prototype",
+      "local_path": "C:\\Models\\truthcert-meta2-prototype",
+      "code_files": 34
+    },
+    {
+      "num": 165,
+      "name": "Value_Based_HTA_Engine",
+      "local_path": "C:\\Models\\Value_Based_HTA_Engine",
+      "code_files": 8
+    },
+    {
+      "num": 170,
+      "name": "3dvitreous-grapher",
+      "local_path": "C:\\Projects\\3dvitreous-grapher",
+      "code_files": 7
+    },
+    {
+      "num": 172,
+      "name": "area1_small_sample_analysis",
+      "local_path": "C:\\Projects\\area1_small_sample_analysis",
+      "code_files": 7
+    },
+    {
+      "num": 173,
+      "name": "asreview_5star",
+      "local_path": "C:\\Projects\\asreview_5star",
+      "code_files": 23
+    },
+    {
+      "num": 176,
+      "name": "cbamm-project2",
+      "local_path": "C:\\Projects\\cbamm-project2",
+      "code_files": 228
+    },
+    {
+      "num": 177,
+      "name": "childnajia",
+      "local_path": "C:\\Projects\\childnajia",
+      "code_files": 7
+    },
+    {
+      "num": 179,
+      "name": "claude-rct-work",
+      "local_path": "C:\\Projects\\claude-rct-work",
+      "code_files": 10
+    },
+    {
+      "num": 247,
+      "name": "experimental-meta-analysis",
+      "local_path": "C:\\Projects\\experimental-meta-analysis",
+      "code_files": 32
+    },
+    {
+      "num": 249,
+      "name": "finalpaper",
+      "local_path": "C:\\Projects\\finalpaper",
+      "code_files": 3
+    },
+    {
+      "num": 252,
+      "name": "hfpef_registry_calibration",
+      "local_path": "C:\\Projects\\hfpef_registry_calibration",
+      "code_files": 513
+    },
+    {
+      "num": 253,
+      "name": "HTML-Misc",
+      "local_path": "C:\\Projects\\HTML-Misc",
+      "code_files": 27
+    },
+    {
+      "num": 254,
+      "name": "hub",
+      "local_path": "C:\\HTML apps\\hub",
+      "code_files": 4
+    },
+    {
+      "num": 255,
+      "name": "IPD",
+      "local_path": "C:\\Projects\\IPD Zahid",
+      "code_files": 7
+    },
+    {
+      "num": 257,
+      "name": "ipd_qma_project",
+      "local_path": "C:\\Projects\\ipd_qma_project",
+      "code_files": 23
+    },
+    {
+      "num": 259,
+      "name": "KMextract",
+      "local_path": "C:\\KMextract",
+      "code_files": 1
+    },
+    {
+      "num": 260,
+      "name": "lec_phase0_bundle",
+      "local_path": "C:\\Projects\\lec_phase0_bundle",
+      "code_files": 96
+    },
+    {
+      "num": 261,
+      "name": "lec_phase0_project",
+      "local_path": "C:\\Projects\\lec_phase0_project",
+      "code_files": 54
+    },
+    {
+      "num": 262,
+      "name": "LFAHFN",
+      "local_path": "C:\\Projects\\LFAHFN",
+      "code_files": 22
+    },
+    {
+      "num": 263,
+      "name": "Living",
+      "local_path": "C:\\Living metas",
+      "code_files": 95
+    },
+    {
+      "num": 267,
+      "name": "MAFI",
+      "local_path": "C:\\Projects\\MAFI",
+      "code_files": 6
+    },
+    {
+      "num": 268,
+      "name": "MAFI-Continuation",
+      "local_path": "C:\\Projects\\MAFI-Continuation",
+      "code_files": 18
+    },
+    {
+      "num": 270,
+      "name": "meta-frontier-bibliography",
+      "local_path": "C:\\Projects\\meta-frontier-bibliography",
+      "code_files": 3
+    },
+    {
+      "num": 271,
+      "name": "meta-frontier-readiness-atlas",
+      "local_path": "C:\\Projects\\meta-frontier-readiness-atlas",
+      "code_files": 3
+    },
+    {
+      "num": 272,
+      "name": "minireview",
+      "local_path": "C:\\Projects\\minireview",
+      "code_files": 4
+    },
+    {
+      "num": 273,
+      "name": "new-app",
+      "local_path": "C:\\Projects\\new-app",
+      "code_files": 4265
+    },
+    {
+      "num": 274,
+      "name": "NMA",
+      "local_path": "C:\\Projects\\NMA",
+      "code_files": 27
+    },
+    {
+      "num": 275,
+      "name": "oman",
+      "local_path": "C:\\Projects\\oman",
+      "code_files": 2
+    },
+    {
+      "num": 276,
+      "name": "Pairwise",
+      "local_path": "C:\\Projects\\Pairwise humble",
+      "code_files": 6
+    },
+    {
+      "num": 278,
+      "name": "rayyanreplacement",
+      "local_path": "C:\\Projects\\rayyanreplacement",
+      "code_files": 4
+    },
+    {
+      "num": 279,
+      "name": "research-orbit-control",
+      "local_path": "C:\\Projects\\research-orbit-control",
+      "code_files": 4
+    },
+    {
+      "num": 280,
+      "name": "Scripts",
+      "local_path": "C:\\Projects\\Scripts",
+      "code_files": 43
+    },
+    {
+      "num": 281,
+      "name": "Stories",
+      "local_path": "C:\\Projects\\Stories",
+      "code_files": 6
+    },
+    {
+      "num": 282,
+      "name": "superapp",
+      "local_path": "C:\\Projects\\superapp",
+      "code_files": 3519
+    },
+    {
+      "num": 286,
+      "name": "truthcert-openclaw-supermemory-stack",
+      "local_path": "C:\\Projects\\truthcert-openclaw-supermemory-stack",
+      "code_files": 74
+    },
+    {
+      "num": 287,
+      "name": "TruthCert-Validation-Papers",
+      "local_path": "C:\\Projects\\TruthCert-Validation-Papers",
+      "code_files": 77
+    },
+    {
+      "num": 288,
+      "name": "TruthCert_v3.1.0_modeling",
+      "local_path": "C:\\Projects\\TruthCert_v3.1.0_modeling",
+      "code_files": 19
+    },
+    {
+      "num": 289,
+      "name": "TSA",
+      "local_path": "C:\\Models\\TSA",
+      "code_files": 4
+    },
+    {
+      "num": 290,
+      "name": "waternajia",
+      "local_path": "C:\\Projects\\waternajia",
+      "code_files": 6
+    },
+    {
+      "num": 318,
+      "name": "Integrity-Guard-Forensics",
+      "local_path": "C:\\Integrity-Guard-Forensics",
+      "code_files": 30
+    },
+    {
+      "num": 319,
+      "name": "MetaFrontierLab",
+      "local_path": "C:\\MetaFrontierLab",
+      "code_files": 29
+    },
+    {
+      "num": 339,
+      "name": "Pairwise70",
+      "local_path": "C:\\Projects\\Fatiha-Course",
+      "code_files": 333
+    },
+    {
+      "num": 352,
+      "name": "NICECardiology",
+      "local_path": "C:\\NICECardiology",
+      "code_files": 13
+    },
+    {
+      "num": 358,
+      "name": "SuperTransportabilityMap",
+      "local_path": "C:\\Projects\\SuperTransportabilityMap",
+      "code_files": 3
+    },
+    {
+      "num": 362,
+      "name": "LivingMA-Inclisiran",
+      "local_path": "C:\\Projects\\Inclisiran_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 363,
+      "name": "LivingMA-Tirzepatide",
+      "local_path": "C:\\Projects\\Tirzepatide_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 364,
+      "name": "LivingMA-Semaglutide-HFpEF",
+      "local_path": "C:\\Projects\\Semaglutide_HFpEF_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 365,
+      "name": "LivingMA-Leadless-Pacing",
+      "local_path": "C:\\Projects\\Leadless_Pacing_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 366,
+      "name": "LivingMA-CSP",
+      "local_path": "C:\\Projects\\CSP_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 367,
+      "name": "LivingMA-Coronary-IVL",
+      "local_path": "C:\\Projects\\Coronary_IVL_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 368,
+      "name": "LivingMA-Omecamtiv",
+      "local_path": "C:\\Projects\\Omecamtiv_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 369,
+      "name": "LivingMA-CTFFR",
+      "local_path": "C:\\Projects\\CTFFR_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 370,
+      "name": "LivingMA-Vericiguat",
+      "local_path": "C:\\Projects\\Vericiguat_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 371,
+      "name": "LivingMA-Sotagliflozin",
+      "local_path": "C:\\Projects\\Sotagliflozin_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 390,
+      "name": "EvidenceMapPro",
+      "local_path": "C:\\Models\\EvidenceMapPro",
+      "code_files": 2
+    },
+    {
+      "num": 402,
+      "name": "OmecamtivLivingMA",
+      "local_path": "C:\\Projects\\Omecamtiv_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 403,
+      "name": "SotagliflozinLivingMA",
+      "local_path": "C:\\Projects\\Sotagliflozin_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 409,
+      "name": "InclisiranLivingMA",
+      "local_path": "C:\\Projects\\Inclisiran_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 414,
+      "name": "LivingMAPortfolio",
+      "local_path": "C:\\Projects\\LivingMA_Portfolio",
+      "code_files": 2
+    },
+    {
+      "num": 415,
+      "name": "FinerenoneLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 416,
+      "name": "GLP1CVOTLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 417,
+      "name": "SGLT2HFLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 418,
+      "name": "SGLT2CKDLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 419,
+      "name": "BempedoicAcidLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 420,
+      "name": "PCSK9LivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 421,
+      "name": "IVIronHFLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 422,
+      "name": "AblationAFLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 423,
+      "name": "RivaroxabanVascLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 424,
+      "name": "ColchicineCVDLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 425,
+      "name": "SotaterceptPAHLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 428,
+      "name": "AntiAmyloidADLivingMA",
+      "local_path": "C:\\Projects\\AntiAmyloid_AD_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 430,
+      "name": "LipidHubLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 433,
+      "name": "ResmetiromMASHLivingMA",
+      "local_path": "C:\\Projects\\Resmetirom_MASH_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 435,
+      "name": "TirzepatideCVLivingMA",
+      "local_path": "C:\\Projects\\Tirzepatide_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 436,
+      "name": "SemaglutideHFpEFLivingMA",
+      "local_path": "C:\\Projects\\Semaglutide_HFpEF_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 439,
+      "name": "MavacamtenHCMLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 440,
+      "name": "ATTRCMLivingMA",
+      "local_path": "C:\\Projects\\AttrCM_LivingMeta",
+      "code_files": 2
+    },
+    {
+      "num": 441,
+      "name": "IntensiveBPLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 442,
+      "name": "IncretinHFpEFLivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 443,
+      "name": "DOACCancerVTELivingMA",
+      "local_path": "C:\\Projects\\Finrenone",
+      "code_files": 110
+    },
+    {
+      "num": 451,
+      "name": "archaic-dta",
+      "local_path": "C:\\Projects\\archaic-dta",
+      "code_files": 3
+    },
+    {
+      "num": 452,
+      "name": "ems-dta",
+      "local_path": "C:\\Projects\\ems-dta",
+      "code_files": 3
+    },
+    {
+      "num": 453,
+      "name": "gds-dta",
+      "local_path": "C:\\Projects\\gds-dta",
+      "code_files": 3
+    },
+    {
+      "num": 454,
+      "name": "paradigm-battle-dta",
+      "local_path": "C:\\Projects\\paradigm-battle-dta",
+      "code_files": 2
+    },
+    {
+      "num": 456,
+      "name": "eh-dta",
+      "local_path": "C:\\Projects\\eh-dta",
+      "code_files": 2
+    },
+    {
+      "num": 457,
+      "name": "sl12-dta",
+      "local_path": "C:\\Projects\\sl12-dta",
+      "code_files": 2
+    },
+    {
+      "num": 458,
+      "name": "aleph-point-synthesis",
+      "local_path": "C:\\Projects\\aleph-point-synthesis",
+      "code_files": 2
+    },
+    {
+      "num": 459,
+      "name": "aps-methodologist-review",
+      "local_path": "C:\\Projects\\aps-methodologist-review",
+      "code_files": 2
+    },
+    {
+      "num": 460,
+      "name": "gma-dta",
+      "local_path": "C:\\Projects\\global-manifold-audit",
+      "code_files": 2
+    },
+    {
+      "num": 461,
+      "name": "pem-dta",
+      "local_path": "C:\\Projects\\petabyte-evidence-manifold",
+      "code_files": 2
+    },
+    {
+      "num": 462,
+      "name": "pem-methodologist-review",
+      "local_path": "C:\\Projects\\pem-methodologist-review",
+      "code_files": 2
+    },
+    {
+      "num": 463,
+      "name": "ees-dta",
+      "local_path": "C:\\Projects\\exascale-evidence-singularity",
+      "code_files": 2
+    },
+    {
+      "num": 464,
+      "name": "ees-methodologist-review",
+      "local_path": "C:\\Projects\\ees-methodologist-review",
+      "code_files": 2
+    },
+    {
+      "num": 465,
+      "name": "aleph-point-synthesis-final",
+      "local_path": "C:\\Projects\\aleph-point-synthesis-shipped",
+      "code_files": 2
+    }
+  ],
+  "hide_list": [
+    {
+      "num": 48,
+      "name": "DTA_Pro_Review"
+    },
+    {
+      "num": 123,
+      "name": "NMAhtml"
+    },
+    {
+      "num": 129,
+      "name": "Pairwise70"
+    },
+    {
+      "num": 353,
+      "name": "TrialDiversityAtlas"
+    },
+    {
+      "num": 413,
+      "name": "ARNIHFLivingMA"
+    }
+  ]
+}
