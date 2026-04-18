@@ -1,0 +1,159 @@
+{
+  "generated_by": "apply_alias_fixes.py",
+  "cross_owner_aliases": [
+    {
+      "target": "501MLM",
+      "entry_nums": [
+        1
+      ],
+      "reason": "remote_owner_is_mahmood789",
+      "remotes": [
+        "origin\thttps://github.com/mahmood789/MLM501.git (fetch)",
+        "origin\thttps://github.com/mahmood789/MLM501.git (push)"
+      ]
+    },
+    {
+      "target": "chat2",
+      "entry_nums": [
+        18
+      ],
+      "reason": "remote_owner_is_cbamm-dev",
+      "remotes": [
+        "origin\thttps://github.com/cbamm-dev/cbamm.git (fetch)",
+        "origin\thttps://github.com/cbamm-dev/cbamm.git (push)"
+      ]
+    },
+    {
+      "target": "chatpaper",
+      "entry_nums": [
+        19
+      ],
+      "reason": "remote_owner_is_cbamm-dev",
+      "remotes": [
+        "origin\thttps://github.com/cbamm-dev/chatpaper.git (fetch)",
+        "origin\thttps://github.com/cbamm-dev/chatpaper.git (push)"
+      ]
+    },
+    {
+      "target": "claude2",
+      "entry_nums": [
+        20
+      ],
+      "reason": "remote_owner_is_cbamm-dev",
+      "remotes": [
+        "origin\thttps://github.com/cbamm-dev/claude2.git (fetch)",
+        "origin\thttps://github.com/cbamm-dev/claude2.git (push)"
+      ]
+    },
+    {
+      "target": "evidence-inference",
+      "entry_nums": [
+        51
+      ],
+      "reason": "remote_owner_is_jayded",
+      "remotes": [
+        "origin\thttps://github.com/jayded/evidence-inference.git (fetch)",
+        "origin\thttps://github.com/jayded/evidence-inference.git (push)"
+      ]
+    },
+    {
+      "target": "repo100",
+      "entry_nums": [
+        146
+      ],
+      "reason": "remote_owner_is_mahmood789",
+      "remotes": [
+        "origin\thttps://github.com/mahmood789/repo100.git (fetch)",
+        "origin\thttps://github.com/mahmood789/repo100.git (push)"
+      ]
+    }
+  ],
+  "local_missing": [
+    {
+      "target_repo": "ARNI_HF_REVIEW.html",
+      "target_url": "https://github.com/mahmood726-cyber/ARNI_HF_REVIEW.html",
+      "entry_nums": [
+        413
+      ],
+      "entry_names": [
+        "ARNIHFLivingMA"
+      ],
+      "local_paths": [
+        "C:\\Projects\\Finrenone\\ARNI_HF_REVIEW.html"
+      ],
+      "action": "local_missing",
+      "checked_paths": [
+        "C:\\Projects\\Finrenone\\ARNI_HF_REVIEW.html"
+      ]
+    },
+    {
+      "target_repo": "DTA_Pro_Review",
+      "target_url": "https://github.com/mahmood726-cyber/DTA_Pro_Review",
+      "entry_nums": [
+        48
+      ],
+      "entry_names": [
+        "DTA_Pro_Review"
+      ],
+      "local_paths": [
+        "C:\\HTML apps\\DTA_Pro_Review"
+      ],
+      "action": "local_missing",
+      "checked_paths": [
+        "C:\\HTML apps\\DTA_Pro_Review"
+      ]
+    },
+    {
+      "target_repo": "NMAhtml",
+      "target_url": "https://github.com/mahmood726-cyber/NMAhtml",
+      "entry_nums": [
+        123
+      ],
+      "entry_names": [
+        "NMAhtml"
+      ],
+      "local_paths": [
+        "C:\\HTML apps\\NMAhtml"
+      ],
+      "action": "local_missing",
+      "checked_paths": [
+        "C:\\HTML apps\\NMAhtml"
+      ]
+    },
+    {
+      "target_repo": "TrialDiversityAtlas",
+      "target_url": "https://github.com/mahmood726-cyber/TrialDiversityAtlas",
+      "entry_nums": [
+        353
+      ],
+      "entry_names": [
+        "TrialDiversityAtlas"
+      ],
+      "local_paths": [
+        "C:\\Users\\user\\projects\\TrialDiversityAtlas"
+      ],
+      "action": "local_missing",
+      "checked_paths": [
+        "C:\\Users\\user\\projects\\TrialDiversityAtlas"
+      ]
+    },
+    {
+      "target_repo": "pairwiseai70",
+      "target_url": "https://github.com/mahmood726-cyber/pairwiseai70",
+      "entry_nums": [
+        129
+      ],
+      "entry_names": [
+        "Pairwise70"
+      ],
+      "local_paths": [
+        "C:\\Models\\Pairwise70"
+      ],
+      "action": "local_missing",
+      "checked_paths": [
+        "C:\\Models\\Pairwise70"
+      ]
+    }
+  ],
+  "heavy_dirs_deferred_for_size_review": []
+}

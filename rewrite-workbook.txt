@@ -179,8 +179,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/501MLM_Submission
-  Protocol:  https://github.com/mahmood726-cyber/501MLM_Submission/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/MLM501
+  Protocol:  https://github.com/mahmood726-cyber/MLM501/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/501mlm_submission/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -872,8 +872,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/BiasForensics
-  Protocol:  https://github.com/mahmood726-cyber/BiasForensics/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/bias-forensics
+  Protocol:  https://github.com/mahmood726-cyber/bias-forensics/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/biasforensics/
 
 References (topic pack: publication bias / selection):
@@ -3983,8 +3983,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/EvidenceQuality
-  Protocol:  https://github.com/mahmood726-cyber/EvidenceQuality/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/evidence-quality-concordance
+  Protocol:  https://github.com/mahmood726-cyber/evidence-quality-concordance/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidencequality/
 
 References (topic pack: fragility index):
@@ -4295,8 +4295,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -4685,8 +4685,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/GRMA_paper
-  Protocol:  https://github.com/mahmood726-cyber/GRMA_paper/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/GRMA
+  Protocol:  https://github.com/mahmood726-cyber/GRMA/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/grma_paper/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -4919,8 +4919,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/HTA
-  Protocol:  https://github.com/mahmood726-cyber/HTA/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/hta-artifact-standard
+  Protocol:  https://github.com/mahmood726-cyber/hta-artifact-standard/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hta/
 
 References (topic pack: network meta-analysis):
@@ -9185,8 +9185,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/New_Heterogeneity_Model
-  Protocol:  https://github.com/mahmood726-cyber/New_Heterogeneity_Model/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/heterogeneity-ase
+  Protocol:  https://github.com/mahmood726-cyber/heterogeneity-ase/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/new_heterogeneity_model/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -9416,8 +9416,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/nmapaper111025
-  Protocol:  https://github.com/mahmood726-cyber/nmapaper111025/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/nmatransport
+  Protocol:  https://github.com/mahmood726-cyber/nmatransport/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/nmapaper111025/
 
 References (topic pack: network meta-analysis):
@@ -9878,8 +9878,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/pairwiseaiai
-  Protocol:  https://github.com/mahmood726-cyber/pairwiseaiai/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Pairwiseai
+  Protocol:  https://github.com/mahmood726-cyber/Pairwiseai/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/pairwiseai/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -9955,8 +9955,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Paper1
-  Protocol:  https://github.com/mahmood726-cyber/Paper1/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/bapmr
+  Protocol:  https://github.com/mahmood726-cyber/bapmr/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/paper1/
 
 References (topic pack: GRADE / certainty rating):
@@ -10032,8 +10032,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Paper2.111025
-  Protocol:  https://github.com/mahmood726-cyber/Paper2.111025/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/pwcvR2
+  Protocol:  https://github.com/mahmood726-cyber/pwcvR2/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/paper2.111025/
 
 References (topic pack: fallback (any MA paper)):
@@ -11111,8 +11111,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/repo300-ENMA-SNMA
-  Protocol:  https://github.com/mahmood726-cyber/repo300-ENMA-SNMA/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/enma-snma
+  Protocol:  https://github.com/mahmood726-cyber/enma-snma/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/repo300-enma-snma/
 
 References (topic pack: network meta-analysis):
@@ -11804,8 +11804,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/TGEP_Development
-  Protocol:  https://github.com/mahmood726-cyber/TGEP_Development/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/tgep
+  Protocol:  https://github.com/mahmood726-cyber/tgep/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/tgep_development/
 
 References (topic pack: publication bias / selection):
@@ -12112,8 +12112,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/truthcert-meta2-prototype
-  Protocol:  https://github.com/mahmood726-cyber/truthcert-meta2-prototype/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/truthcert-meta2
+  Protocol:  https://github.com/mahmood726-cyber/truthcert-meta2/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/truthcert-meta2-prototype/
 
 References (topic pack: fallback (any MA paper)):
@@ -12497,8 +12497,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Value_Based_HTA_Engine
-  Protocol:  https://github.com/mahmood726-cyber/Value_Based_HTA_Engine/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Value-Based-HTA
+  Protocol:  https://github.com/mahmood726-cyber/Value-Based-HTA/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/value_based_hta_engine/
 
 References (topic pack: fragility index):
@@ -21957,8 +21957,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/TSA
-  Protocol:  https://github.com/mahmood726-cyber/TSA/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/tsa-pro
+  Protocol:  https://github.com/mahmood726-cyber/tsa-pro/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/tsa/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -26952,8 +26952,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/NICECardiology
-  Protocol:  https://github.com/mahmood726-cyber/NICECardiology/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/nice-cardiology-guidance
+  Protocol:  https://github.com/mahmood726-cyber/nice-cardiology-guidance/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/nicecardiology/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -27716,8 +27716,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Inclisiran_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Inclisiran_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Inclisiran-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/inclisiran_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27792,8 +27792,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/tirzepatide_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27868,8 +27868,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/semaglutide_hfpef_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27944,8 +27944,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Leadless_Pacing_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Leadless_Pacing_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/leadless_pacing_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -28020,8 +28020,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/CSP_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/CSP_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/CSP-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/CSP-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/csp_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -28096,8 +28096,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Coronary_IVL_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Coronary_IVL_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/coronary_ivl_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -28172,8 +28172,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/omecamtiv_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -28248,8 +28248,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/CTFFR_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/CTFFR_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/CTFFR-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/CTFFR-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ctffr_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -28324,8 +28324,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Vericiguat_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Vericiguat_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Vericiguat-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Vericiguat-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/vericiguat_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -28400,8 +28400,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/sotagliflozin_livingmeta/
 
 References (topic pack: fallback (any MA paper)):
@@ -30150,8 +30150,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/evidence-mapPro
-  Protocol:  https://github.com/mahmood726-cyber/evidence-mapPro/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/evidencemappro
+  Protocol:  https://github.com/mahmood726-cyber/evidencemappro/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidencemappro/
 
 References (topic pack: GRADE / certainty rating):
@@ -31062,8 +31062,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/omecamtiv_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -31138,8 +31138,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/sotagliflozin_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -31594,8 +31594,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Inclisiran_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Inclisiran_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Inclisiran-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/inclisiran_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -31974,8 +31974,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/LivingMA_Portfolio
-  Protocol:  https://github.com/mahmood726-cyber/LivingMA_Portfolio/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/LivingMA-Portfolio
+  Protocol:  https://github.com/mahmood726-cyber/LivingMA-Portfolio/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/livingma_portfolio/
 
 References (topic pack: network meta-analysis):
@@ -32284,8 +32284,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32360,8 +32360,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32436,8 +32436,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32512,8 +32512,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32588,8 +32588,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32664,8 +32664,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32740,8 +32740,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: network meta-analysis):
@@ -32816,8 +32816,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32892,8 +32892,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32968,8 +32968,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33044,8 +33044,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33272,8 +33272,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/AntiAmyloid_AD_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/AntiAmyloid_AD_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/antiamyloid_ad_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33424,8 +33424,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33652,8 +33652,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Resmetirom_MASH_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Resmetirom_MASH_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/resmetirom_mash_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33804,8 +33804,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/tirzepatide_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33880,8 +33880,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/semaglutide_hfpef_livingmeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -34108,8 +34108,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -34184,8 +34184,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/AttrCM_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/AttrCM_LivingMeta/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/AttrCM-LivingMeta
+  Protocol:  https://github.com/mahmood726-cyber/AttrCM-LivingMeta/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/attrcm_livingmeta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -34260,8 +34260,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -34336,8 +34336,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -34412,8 +34412,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Finrenone
-  Protocol:  https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/finrenone/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -37254,6 +37254,8 @@ At what input-precision level does aggregate-data reproduction of fixed-effects 
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
+At what input-precision level does aggregate-data reproduction of fixed-effects 2-trial pools become tolerance-limited by rounding alone, independent of implementation correctness? Ten thousand Monte Carlo 2-trial pools: true log-HR uniform over [log 0.6, log 1.3], per-trial SE uniform [0.04, 0.08], xoshiro128** seed 20260415. Each pool rounded at dp in {1,2,3,4} decimal places on both HR and CI bounds, re-pooled via fixed-effects inverse-variance on log-HR, compared to the unrounded pool. Median |delta| at dp=1/2/3/4: 0.0179/0.0016/0.0002/0.0000; 95th %ile: 0.0469/0.0044/0.0004/0.0000; at dp=2, 2.4% of pools exceed delta=0.005. Floor scales monotonically with 10^-dp across all four levels; both median and 95th percentile fall by approximately a decade per dp increment. Benchmark-reproduction tolerance must exceed the precision floor at the input dp; delta=0.005 at dp=2 lies above the 0.0044 p95 yet below max 0.0084, explaining the prior SGLT2i FAIL as a tail outcome, not a defect. Scope: k=2, fixed-effects, unimodal true-HR distribution; random-effects, k>2, and IPD precision floors remain open questions.
+
 
 SUBMISSION METADATA:
 
@@ -37329,6 +37331,8 @@ Can a synthesis method that treats pairwise trial disagreements as the primitive
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
+
+Can a synthesis method that treats pairwise trial disagreements as the primitive, without computing a pooled estimate, predict held-out MRA-HFpEF hazard ratios? We assembled six boundary-condition records - TOPCAT-Americas, TOPCAT-Russia/Georgia, FINEARTS-HF, FIDELIO-DKD HF-subgroup, FIGARO-DKD HF-subgroup, and Aldo-DHF - from AACT 2026-04-12 plus publications. We fit a constrained Gaussian process on a seven-covariate space with six pharmacology conservation laws and an ARD Matern 5/2 kernel. In leave-one-out validation on FINEARTS-HF, a GP trained on the other five trials predicted log hazard ratio -0.012 with a 95% credible interval from -0.990 to +0.967, and the observed -0.174 lay inside. Intercept-only fit matched inverse-variance pooling to within 1e-3 across three seeds, and conservation diagnostics flagged zero mortality-decomposition violations across six trials. The dominant pairwise dissonance was TOPCAT-Americas versus TOPCAT-Russia/Georgia (d=1.56), entirely attributable to the adherence-proxy covariate delta, a signal meta-analysis pools away. This proof-of-concept excludes individual patient data, publication-bias correction, and indirect comparisons; conservation-law assignments and decision thresholds remain clinician-authored defaults.
 
 SUBMISSION METADATA:
 
@@ -37474,14 +37478,15 @@ SUBMITTED: [ ]
 TITLE: Reproduction-Floor Atlas: The Precision Floor of Cochrane Meta-Analysis Reproduction Under Forest-Plot Extraction
 TYPE: methods  |  ESTIMAND: Proportion of Cochrane MAs for which |Δ| > 0.005 under Scenario-B adaptive rounding
 DATA: Pairwise70 corpus (595 Cochrane reviews; 7,545 meta-analyses spanning binary, continuous, and generic-inverse-variance outcomes).
-PATH: C:\Projects
-epro-floor-atlas
+PATH: C:\Projects\repro-floor-atlas
 
 CURRENT BODY (156 words):
 Can a Cochrane meta-analysis be reproduced to its published precision using only the per-trial numerics a reader extracts from the paper? We used the Pairwise70 corpus: 595 Cochrane reviews comprising 7,545 meta-analyses spanning binary, continuous, and generic-inverse-variance outcomes, with trial-level inputs at machine precision. We re-pooled each MA at machine precision and after rounding per-trial inputs to Cochrane's adaptive precision plus fixed 1-3 dp. Across 7,545 Cochrane MAs, 14.3% had reproduction error |Δ| > 0.005 under forest-plot extraction; the failure rate was 12.9% for binary outcomes but 25-27% for continuous and GIV outcomes. The scaling relation |Δ| ~ 10^(-dp) held across binary, continuous, and GIV strata, and was stable under both raw-extraction and forest-plot framings. Published two-decimal-place precision in pooled effects exceeds the information content extractable per-trial; this is a structural limit, not a method flaw. Claim scope: aggregate-data reproduction with fixed-effect pooling; does not apply to individual-patient-data re-analysis or to random-effects estimators outside this simulation.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
+
+Can a Cochrane meta-analysis be reproduced to its published precision using only the per-trial numerics a reader extracts from the paper? We used the Pairwise70 corpus: 595 Cochrane reviews comprising 7,545 meta-analyses spanning binary, continuous, and generic-inverse-variance outcomes, with trial-level inputs at machine precision. We re-pooled each MA at machine precision and after rounding per-trial inputs to Cochrane's adaptive precision plus fixed 1-3 dp. Across 7,545 Cochrane MAs, 14.3% had reproduction error |Δ| > 0.005 under forest-plot extraction; the failure rate was 12.9% for binary outcomes but 25-27% for continuous and GIV outcomes. The scaling relation |Δ| ~ 10^(-dp) held across binary, continuous, and GIV strata, and was stable under both raw-extraction and forest-plot framings. Published two-decimal-place precision in pooled effects exceeds the information content extractable per-trial; this is a structural limit, not a method flaw. Claim scope: aggregate-data reproduction with fixed-effect pooling; does not apply to individual-patient-data re-analysis or to random-effects estimators outside this simulation.
 
 
 

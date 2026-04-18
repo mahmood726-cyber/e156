@@ -1,0 +1,754 @@
+{
+  "alias_apply": [
+    {
+      "workbook_name": "501MLM_Submission",
+      "actual_name": "MLM501",
+      "entry_nums": [
+        2
+      ]
+    },
+    {
+      "workbook_name": "AntiAmyloid_AD_LivingMeta",
+      "actual_name": "AntiAmyloid-AD-LivingMeta",
+      "entry_nums": [
+        428
+      ]
+    },
+    {
+      "workbook_name": "AttrCM_LivingMeta",
+      "actual_name": "AttrCM-LivingMeta",
+      "entry_nums": [
+        440
+      ]
+    },
+    {
+      "workbook_name": "BiasForensics",
+      "actual_name": "bias-forensics",
+      "entry_nums": [
+        12
+      ]
+    },
+    {
+      "workbook_name": "CSP_LivingMeta",
+      "actual_name": "CSP-LivingMeta",
+      "entry_nums": [
+        366
+      ]
+    },
+    {
+      "workbook_name": "CTFFR_LivingMeta",
+      "actual_name": "CTFFR-LivingMeta",
+      "entry_nums": [
+        369
+      ]
+    },
+    {
+      "workbook_name": "Coronary_IVL_LivingMeta",
+      "actual_name": "Coronary-IVL-LivingMeta",
+      "entry_nums": [
+        367
+      ]
+    },
+    {
+      "workbook_name": "EvidenceQuality",
+      "actual_name": "evidence-quality-concordance",
+      "entry_nums": [
+        53
+      ]
+    },
+    {
+      "workbook_name": "Finrenone",
+      "actual_name": "rapidmeta-finerenone",
+      "entry_nums": [
+        57,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        430,
+        439,
+        441,
+        442,
+        443
+      ]
+    },
+    {
+      "workbook_name": "GRMA_paper",
+      "actual_name": "GRMA",
+      "entry_nums": [
+        62
+      ]
+    },
+    {
+      "workbook_name": "HTA",
+      "actual_name": "hta-artifact-standard",
+      "entry_nums": [
+        65
+      ]
+    },
+    {
+      "workbook_name": "Inclisiran_LivingMeta",
+      "actual_name": "Inclisiran-LivingMeta",
+      "entry_nums": [
+        362,
+        409
+      ]
+    },
+    {
+      "workbook_name": "Leadless_Pacing_LivingMeta",
+      "actual_name": "Leadless-Pacing-LivingMeta",
+      "entry_nums": [
+        365
+      ]
+    },
+    {
+      "workbook_name": "LivingMA_Portfolio",
+      "actual_name": "LivingMA-Portfolio",
+      "entry_nums": [
+        414
+      ]
+    },
+    {
+      "workbook_name": "NICECardiology",
+      "actual_name": "nice-cardiology-guidance",
+      "entry_nums": [
+        352
+      ]
+    },
+    {
+      "workbook_name": "New_Heterogeneity_Model",
+      "actual_name": "heterogeneity-ase",
+      "entry_nums": [
+        121
+      ]
+    },
+    {
+      "workbook_name": "Omecamtiv_LivingMeta",
+      "actual_name": "Omecamtiv-LivingMeta",
+      "entry_nums": [
+        368,
+        402
+      ]
+    },
+    {
+      "workbook_name": "Paper1",
+      "actual_name": "bapmr",
+      "entry_nums": [
+        132
+      ]
+    },
+    {
+      "workbook_name": "Paper2.111025",
+      "actual_name": "pwcvR2",
+      "entry_nums": [
+        133
+      ]
+    },
+    {
+      "workbook_name": "Resmetirom_MASH_LivingMeta",
+      "actual_name": "Resmetirom-MASH-LivingMeta",
+      "entry_nums": [
+        433
+      ]
+    },
+    {
+      "workbook_name": "Semaglutide_HFpEF_LivingMeta",
+      "actual_name": "Semaglutide-HFpEF-LivingMeta",
+      "entry_nums": [
+        364,
+        436
+      ]
+    },
+    {
+      "workbook_name": "Sotagliflozin_LivingMeta",
+      "actual_name": "Sotagliflozin-LivingMeta",
+      "entry_nums": [
+        371,
+        403
+      ]
+    },
+    {
+      "workbook_name": "TGEP_Development",
+      "actual_name": "tgep",
+      "entry_nums": [
+        156
+      ]
+    },
+    {
+      "workbook_name": "TSA",
+      "actual_name": "tsa-pro",
+      "entry_nums": [
+        289
+      ]
+    },
+    {
+      "workbook_name": "Tirzepatide_LivingMeta",
+      "actual_name": "Tirzepatide-LivingMeta",
+      "entry_nums": [
+        363,
+        435
+      ]
+    },
+    {
+      "workbook_name": "Value_Based_HTA_Engine",
+      "actual_name": "Value-Based-HTA",
+      "entry_nums": [
+        165
+      ]
+    },
+    {
+      "workbook_name": "Vericiguat_LivingMeta",
+      "actual_name": "Vericiguat-LivingMeta",
+      "entry_nums": [
+        370
+      ]
+    },
+    {
+      "workbook_name": "evidence-mapPro",
+      "actual_name": "evidencemappro",
+      "entry_nums": [
+        390
+      ]
+    },
+    {
+      "workbook_name": "nmapaper111025",
+      "actual_name": "nmatransport",
+      "entry_nums": [
+        124
+      ]
+    },
+    {
+      "workbook_name": "pairwiseaiai",
+      "actual_name": "Pairwiseai",
+      "entry_nums": [
+        131
+      ]
+    },
+    {
+      "workbook_name": "repo300-ENMA-SNMA",
+      "actual_name": "enma-snma",
+      "entry_nums": [
+        147
+      ]
+    },
+    {
+      "workbook_name": "truthcert-meta2-prototype",
+      "actual_name": "truthcert-meta2",
+      "entry_nums": [
+        160
+      ]
+    }
+  ],
+  "cross_owner_defer": [
+    {
+      "target": "501MLM",
+      "entry_nums": [
+        1
+      ],
+      "reason": "remote_owner_is_mahmood789",
+      "remotes": [
+        "origin\thttps://github.com/mahmood789/MLM501.git (fetch)",
+        "origin\thttps://github.com/mahmood789/MLM501.git (push)"
+      ]
+    },
+    {
+      "target": "chat2",
+      "entry_nums": [
+        18
+      ],
+      "reason": "remote_owner_is_cbamm-dev",
+      "remotes": [
+        "origin\thttps://github.com/cbamm-dev/cbamm.git (fetch)",
+        "origin\thttps://github.com/cbamm-dev/cbamm.git (push)"
+      ]
+    },
+    {
+      "target": "chatpaper",
+      "entry_nums": [
+        19
+      ],
+      "reason": "remote_owner_is_cbamm-dev",
+      "remotes": [
+        "origin\thttps://github.com/cbamm-dev/chatpaper.git (fetch)",
+        "origin\thttps://github.com/cbamm-dev/chatpaper.git (push)"
+      ]
+    },
+    {
+      "target": "claude2",
+      "entry_nums": [
+        20
+      ],
+      "reason": "remote_owner_is_cbamm-dev",
+      "remotes": [
+        "origin\thttps://github.com/cbamm-dev/claude2.git (fetch)",
+        "origin\thttps://github.com/cbamm-dev/claude2.git (push)"
+      ]
+    },
+    {
+      "target": "evidence-inference",
+      "entry_nums": [
+        51
+      ],
+      "reason": "remote_owner_is_jayded",
+      "remotes": [
+        "origin\thttps://github.com/jayded/evidence-inference.git (fetch)",
+        "origin\thttps://github.com/jayded/evidence-inference.git (push)"
+      ]
+    },
+    {
+      "target": "repo100",
+      "entry_nums": [
+        146
+      ],
+      "reason": "remote_owner_is_mahmood789",
+      "remotes": [
+        "origin\thttps://github.com/mahmood789/repo100.git (fetch)",
+        "origin\thttps://github.com/mahmood789/repo100.git (push)"
+      ]
+    }
+  ],
+  "entries_patched": 53,
+  "alias_entries_unhidden": 53,
+  "exists_entries_unhidden": 1,
+  "hidden_before": 121,
+  "hidden_after": 67,
+  "per_entry_log": [
+    {
+      "num": 2,
+      "status": "patched",
+      "from": "501MLM_Submission",
+      "to": "MLM501",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 428,
+      "status": "patched",
+      "from": "AntiAmyloid_AD_LivingMeta",
+      "to": "AntiAmyloid-AD-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 440,
+      "status": "patched",
+      "from": "AttrCM_LivingMeta",
+      "to": "AttrCM-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 12,
+      "status": "patched",
+      "from": "BiasForensics",
+      "to": "bias-forensics",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 366,
+      "status": "patched",
+      "from": "CSP_LivingMeta",
+      "to": "CSP-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 369,
+      "status": "patched",
+      "from": "CTFFR_LivingMeta",
+      "to": "CTFFR-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 367,
+      "status": "patched",
+      "from": "Coronary_IVL_LivingMeta",
+      "to": "Coronary-IVL-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 53,
+      "status": "patched",
+      "from": "EvidenceQuality",
+      "to": "evidence-quality-concordance",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 57,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 415,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 416,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 417,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 418,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 419,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 420,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 421,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 422,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 423,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 424,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 425,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 430,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 439,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 441,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 442,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 443,
+      "status": "patched",
+      "from": "Finrenone",
+      "to": "rapidmeta-finerenone",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 62,
+      "status": "patched",
+      "from": "GRMA_paper",
+      "to": "GRMA",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 65,
+      "status": "patched",
+      "from": "HTA",
+      "to": "hta-artifact-standard",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 362,
+      "status": "patched",
+      "from": "Inclisiran_LivingMeta",
+      "to": "Inclisiran-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 409,
+      "status": "patched",
+      "from": "Inclisiran_LivingMeta",
+      "to": "Inclisiran-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 365,
+      "status": "patched",
+      "from": "Leadless_Pacing_LivingMeta",
+      "to": "Leadless-Pacing-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 414,
+      "status": "patched",
+      "from": "LivingMA_Portfolio",
+      "to": "LivingMA-Portfolio",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 352,
+      "status": "patched",
+      "from": "NICECardiology",
+      "to": "nice-cardiology-guidance",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 121,
+      "status": "patched",
+      "from": "New_Heterogeneity_Model",
+      "to": "heterogeneity-ase",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 368,
+      "status": "patched",
+      "from": "Omecamtiv_LivingMeta",
+      "to": "Omecamtiv-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 402,
+      "status": "patched",
+      "from": "Omecamtiv_LivingMeta",
+      "to": "Omecamtiv-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 132,
+      "status": "patched",
+      "from": "Paper1",
+      "to": "bapmr",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 133,
+      "status": "patched",
+      "from": "Paper2.111025",
+      "to": "pwcvR2",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 433,
+      "status": "patched",
+      "from": "Resmetirom_MASH_LivingMeta",
+      "to": "Resmetirom-MASH-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 364,
+      "status": "patched",
+      "from": "Semaglutide_HFpEF_LivingMeta",
+      "to": "Semaglutide-HFpEF-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 436,
+      "status": "patched",
+      "from": "Semaglutide_HFpEF_LivingMeta",
+      "to": "Semaglutide-HFpEF-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 371,
+      "status": "patched",
+      "from": "Sotagliflozin_LivingMeta",
+      "to": "Sotagliflozin-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 403,
+      "status": "patched",
+      "from": "Sotagliflozin_LivingMeta",
+      "to": "Sotagliflozin-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 156,
+      "status": "patched",
+      "from": "TGEP_Development",
+      "to": "tgep",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 289,
+      "status": "patched",
+      "from": "TSA",
+      "to": "tsa-pro",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 363,
+      "status": "patched",
+      "from": "Tirzepatide_LivingMeta",
+      "to": "Tirzepatide-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 435,
+      "status": "patched",
+      "from": "Tirzepatide_LivingMeta",
+      "to": "Tirzepatide-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 165,
+      "status": "patched",
+      "from": "Value_Based_HTA_Engine",
+      "to": "Value-Based-HTA",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 370,
+      "status": "patched",
+      "from": "Vericiguat_LivingMeta",
+      "to": "Vericiguat-LivingMeta",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 390,
+      "status": "patched",
+      "from": "evidence-mapPro",
+      "to": "evidencemappro",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 124,
+      "status": "patched",
+      "from": "nmapaper111025",
+      "to": "nmatransport",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 131,
+      "status": "patched",
+      "from": "pairwiseaiai",
+      "to": "Pairwiseai",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 147,
+      "status": "patched",
+      "from": "repo300-ENMA-SNMA",
+      "to": "enma-snma",
+      "code_hits": 1,
+      "proto_hits": 1
+    },
+    {
+      "num": 160,
+      "status": "patched",
+      "from": "truthcert-meta2-prototype",
+      "to": "truthcert-meta2",
+      "code_hits": 1,
+      "proto_hits": 1
+    }
+  ],
+  "exists_unhidden": [
+    {
+      "num": 339,
+      "target": "Fatiha-Course"
+    }
+  ]
+}

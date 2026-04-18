@@ -1,0 +1,2243 @@
+{
+  "summary": {
+    "total": 94,
+    "ok": 27,
+    "review": 67,
+    "fail": 0
+  },
+  "targets": [
+    {
+      "target_repo": "3dvitreous-grapher",
+      "entry_nums": [
+        170
+      ],
+      "source_path": "C:\\Projects\\3dvitreous-grapher",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 14,
+        "bytes": 493034,
+        "mb": 0.5,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "501MLM",
+      "entry_nums": [
+        1
+      ],
+      "source_path": "C:\\Projects\\501MLM",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood789/MLM501.git (fetch)",
+          "origin\thttps://github.com/mahmood789/MLM501.git (push)"
+        ],
+        "branch": "main",
+        "has_commits": true,
+        "last_commit": "06a236b Add man pages (roxygen2)"
+      },
+      "stats": {
+        "files": 57,
+        "bytes": 14117690,
+        "mb": 13.5,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "501MLM_Submission",
+      "entry_nums": [
+        2
+      ],
+      "source_path": "C:\\Projects\\501MLM_Submission",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/MLM501.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/MLM501.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "2ce2c5a fix(docgen): replace hardcoded OneDrive save paths with script-relative output"
+      },
+      "stats": {
+        "files": 95,
+        "bytes": 16132039,
+        "mb": 15.4,
+        "noise_dirs": {
+          "__pycache__": 7
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "AntiAmyloid_AD_LivingMeta",
+      "entry_nums": [
+        428
+      ],
+      "source_path": "C:\\Projects\\AntiAmyloid_AD_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "f4a79a0 feat: activate dose-response (Emax curve)"
+      },
+      "stats": {
+        "files": 2,
+        "bytes": 2202800,
+        "mb": 2.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "AttrCM_LivingMeta",
+      "entry_nums": [
+        440
+      ],
+      "source_path": "C:\\Projects\\AttrCM_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/AttrCM-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/AttrCM-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "6502b71 docs: add MIT LICENSE matching sibling pattern"
+      },
+      "stats": {
+        "files": 4,
+        "bytes": 1055775,
+        "mb": 1.0,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "BiasForensics",
+      "entry_nums": [
+        12
+      ],
+      "source_path": "C:\\BiasForensics",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/bias-forensics.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/bias-forensics.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "68b8280 fix: remove cargo-culted .copy() calls on non-copyable types"
+      },
+      "stats": {
+        "files": 55,
+        "bytes": 3033892,
+        "mb": 2.9,
+        "noise_dirs": {
+          "__pycache__": 11
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "CSP_LivingMeta",
+      "entry_nums": [
+        366
+      ],
+      "source_path": "C:\\Projects\\CSP_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/CSP-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/CSP-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "a9bf540 feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1136882,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "CTFFR_LivingMeta",
+      "entry_nums": [
+        369
+      ],
+      "source_path": "C:\\Projects\\CTFFR_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/CTFFR-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/CTFFR-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "4e4100e feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1135211,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Coronary_IVL_LivingMeta",
+      "entry_nums": [
+        367
+      ],
+      "source_path": "C:\\Projects\\Coronary_IVL_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "c4da588 feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1137345,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "EvidenceQuality",
+      "entry_nums": [
+        53
+      ],
+      "source_path": "C:\\EvidenceQuality",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/evidence-quality-concordance.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/evidence-quality-concordance.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "4699359 E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 43,
+        "bytes": 2709862,
+        "mb": 2.6,
+        "noise_dirs": {
+          "__pycache__": 7
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "FATIHA_Project",
+      "entry_nums": [
+        56
+      ],
+      "source_path": "C:\\Models\\FATIHA_Project",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 109,
+        "bytes": 560093,
+        "mb": 0.5,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "Finrenone",
+      "entry_nums": [
+        57,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        430,
+        439,
+        441,
+        442,
+        443
+      ],
+      "source_path": "C:\\Projects\\Finrenone",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/rapidmeta-finerenone.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/rapidmeta-finerenone.git (push)"
+        ],
+        "branch": "main",
+        "has_commits": true,
+        "last_commit": "74b11ee Auto-sync E156 submission"
+      },
+      "stats": {
+        "files": 307,
+        "bytes": 88574468,
+        "mb": 84.5,
+        "noise_dirs": {
+          "__pycache__": 36
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "GRMA_paper",
+      "entry_nums": [
+        62
+      ],
+      "source_path": "C:\\Models\\GRMA_paper",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/GRMA.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/GRMA.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "822648e E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 78,
+        "bytes": 10681452,
+        "mb": 10.2,
+        "noise_dirs": {
+          "__pycache__": 6
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "HTA",
+      "entry_nums": [
+        65
+      ],
+      "source_path": "C:\\HTML apps\\HTA",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/hta-artifact-standard.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/hta-artifact-standard.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "6a5c408 chore: untrack legacy review-findings.* (renamed to sentinel-findings.* 2026-04-15)"
+      },
+      "stats": {
+        "files": 8774,
+        "bytes": 314382697,
+        "mb": 299.8,
+        "noise_dirs": {
+          "node_modules": 9567,
+          "__pycache__": 23,
+          "dist": 74
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "many_files_8774",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "HTML-Misc",
+      "entry_nums": [
+        253
+      ],
+      "source_path": "C:\\Projects\\HTML-Misc",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 40,
+        "bytes": 3986364,
+        "mb": 3.8,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "IPD-Zahid",
+      "entry_nums": [
+        255
+      ],
+      "source_path": "C:\\Projects\\IPD Zahid",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 33,
+        "bytes": 3755949,
+        "mb": 3.6,
+        "noise_dirs": {
+          "__pycache__": 4
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Inclisiran_LivingMeta",
+      "entry_nums": [
+        362,
+        409
+      ],
+      "source_path": "C:\\Projects\\Inclisiran_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Inclisiran-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Inclisiran-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "74fd7ed feat: add ORION-8 (n=3,275) and V-INCEPTION (n=400) â€” pending HR extraction"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1138320,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Integrity-Guard-Forensics",
+      "entry_nums": [
+        318
+      ],
+      "source_path": "C:\\Integrity-Guard-Forensics",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 104,
+        "bytes": 3731739,
+        "mb": 3.6,
+        "noise_dirs": {
+          "__pycache__": 47
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "KMextract",
+      "entry_nums": [
+        259
+      ],
+      "source_path": "C:\\KMextract",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 114,
+        "bytes": 29599608,
+        "mb": 28.2,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "LFAHFN",
+      "entry_nums": [
+        262
+      ],
+      "source_path": "C:\\Projects\\LFAHFN",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 112,
+        "bytes": 148107,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "Leadless_Pacing_LivingMeta",
+      "entry_nums": [
+        365
+      ],
+      "source_path": "C:\\Projects\\Leadless_Pacing_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "d31f447 feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1140985,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Living-metas",
+      "entry_nums": [
+        263
+      ],
+      "source_path": "C:\\Living metas",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 195,
+        "bytes": 51802045,
+        "mb": 49.4,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "LivingMA_Portfolio",
+      "entry_nums": [
+        414
+      ],
+      "source_path": "C:\\Projects\\LivingMA_Portfolio",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/LivingMA-Portfolio.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/LivingMA-Portfolio.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "3e9f343 feat: rebuild portfolio â€” 57 apps, 12 specialties, 766 trials, 7 DR, 4 NMA"
+      },
+      "stats": {
+        "files": 4,
+        "bytes": 68601,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "MAFI",
+      "entry_nums": [
+        267
+      ],
+      "source_path": "C:\\Projects\\MAFI",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 18,
+        "bytes": 97912,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "MAFI-Continuation",
+      "entry_nums": [
+        268
+      ],
+      "source_path": "C:\\Projects\\MAFI-Continuation",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 31,
+        "bytes": 384028,
+        "mb": 0.4,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "MetaFrontierLab",
+      "entry_nums": [
+        319
+      ],
+      "source_path": "C:\\MetaFrontierLab",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "error": "[WinError 1920] The file cannot be accessed by the system: 'C:\\\\MetaFrontierLab\\\\.venv_pdf\\\\lib64'",
+        "files": 13,
+        "bytes": 34436,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 1
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "NICECardiology",
+      "entry_nums": [
+        352
+      ],
+      "source_path": "C:\\NICECardiology",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/nice-cardiology-guidance.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/nice-cardiology-guidance.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "37a45e2 docs: add E156 micro-paper (155 words, 7 sentences)"
+      },
+      "stats": {
+        "files": 21,
+        "bytes": 577367,
+        "mb": 0.6,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "NMA",
+      "entry_nums": [
+        274
+      ],
+      "source_path": "C:\\Projects\\NMA",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 80,
+        "bytes": 1355027,
+        "mb": 1.3,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "New_Heterogeneity_Model",
+      "entry_nums": [
+        121
+      ],
+      "source_path": "C:\\Models\\New_Heterogeneity_Model",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/heterogeneity-ase.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/heterogeneity-ase.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "6d88506 docs: fill author metadata in DESCRIPTION"
+      },
+      "stats": {
+        "files": 1588,
+        "bytes": 112095876,
+        "mb": 106.9,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Omecamtiv_LivingMeta",
+      "entry_nums": [
+        368,
+        402
+      ],
+      "source_path": "C:\\Projects\\Omecamtiv_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Omecamtiv-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Omecamtiv-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "5605cca feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1137175,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Paper1",
+      "entry_nums": [
+        132
+      ],
+      "source_path": "C:\\Projects\\Paper1",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/bapmr.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/bapmr.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "6120d94 R CMD check PASS (Status: OK) â€” fix importFrom and add metadat to Suggests"
+      },
+      "stats": {
+        "files": 53,
+        "bytes": 154454,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Paper2.111025",
+      "entry_nums": [
+        133
+      ],
+      "source_path": "C:\\Projects\\Paper2.111025",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/pwcvR2.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/pwcvR2.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "ad2ec64 Remove .Rcheck artifacts, add to .gitignore"
+      },
+      "stats": {
+        "files": 220,
+        "bytes": 21440371,
+        "mb": 20.4,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Resmetirom_MASH_LivingMeta",
+      "entry_nums": [
+        433
+      ],
+      "source_path": "C:\\Projects\\Resmetirom_MASH_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "23d1f54 feat: activate dose-response (Emax curve)"
+      },
+      "stats": {
+        "files": 2,
+        "bytes": 2194765,
+        "mb": 2.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Scripts",
+      "entry_nums": [
+        280
+      ],
+      "source_path": "C:\\Projects\\Scripts",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 50,
+        "bytes": 1636842,
+        "mb": 1.6,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "Semaglutide_HFpEF_LivingMeta",
+      "entry_nums": [
+        364,
+        436
+      ],
+      "source_path": "C:\\Projects\\Semaglutide_HFpEF_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "424a724 feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1135304,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Sotagliflozin_LivingMeta",
+      "entry_nums": [
+        371,
+        403
+      ],
+      "source_path": "C:\\Projects\\Sotagliflozin_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "86bca59 feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1136786,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Stories",
+      "entry_nums": [
+        281
+      ],
+      "source_path": "C:\\Projects\\Stories",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 14,
+        "bytes": 4114758,
+        "mb": 3.9,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "SuperTransportabilityMap",
+      "entry_nums": [
+        358
+      ],
+      "source_path": "C:\\Projects\\SuperTransportabilityMap",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 6,
+        "bytes": 37015,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 2
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "TGEP_Development",
+      "entry_nums": [
+        156
+      ],
+      "source_path": "C:\\Models\\TGEP_Development",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/tgep.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/tgep.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "ba6d5b5 E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 54,
+        "bytes": 298567,
+        "mb": 0.3,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "TSA",
+      "entry_nums": [
+        289
+      ],
+      "source_path": "C:\\Models\\TSA",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/tsa-pro.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/tsa-pro.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "56c1695 chore: add MIT LICENSE"
+      },
+      "stats": {
+        "files": 25,
+        "bytes": 556436,
+        "mb": 0.5,
+        "noise_dirs": {
+          "__pycache__": 2
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Tirzepatide_LivingMeta",
+      "entry_nums": [
+        363,
+        435
+      ],
+      "source_path": "C:\\Projects\\Tirzepatide_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Tirzepatide-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Tirzepatide-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "4077b7d feat: regenerate app with v16 template â€” all engines included"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1139119,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "TruthCert-Validation-Papers",
+      "entry_nums": [
+        287
+      ],
+      "source_path": "C:\\Projects\\TruthCert-Validation-Papers",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 332,
+        "bytes": 268604512,
+        "mb": 256.2,
+        "noise_dirs": {
+          "__pycache__": 16
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "TruthCert_v3.1.0_modeling",
+      "entry_nums": [
+        288
+      ],
+      "source_path": "C:\\Projects\\TruthCert_v3.1.0_modeling",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 4082,
+        "bytes": 2618623,
+        "mb": 2.5,
+        "noise_dirs": {
+          "__pycache__": 16
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Value_Based_HTA_Engine",
+      "entry_nums": [
+        165
+      ],
+      "source_path": "C:\\Models\\Value_Based_HTA_Engine",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Value-Based-HTA.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Value-Based-HTA.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "062e65c Auto-sync E156 submission"
+      },
+      "stats": {
+        "files": 41,
+        "bytes": 7234080,
+        "mb": 6.9,
+        "noise_dirs": {
+          "__pycache__": 3
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "Vericiguat_LivingMeta",
+      "entry_nums": [
+        370
+      ],
+      "source_path": "C:\\Projects\\Vericiguat_LivingMeta",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Vericiguat-LivingMeta.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Vericiguat-LivingMeta.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "10820a0 feat: VICTOR HR 0.93 (0.83-1.04) auto-extracted from CT.gov, k=1->k=2"
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 1136679,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "aleph-point-synthesis",
+      "entry_nums": [
+        458
+      ],
+      "source_path": "C:\\Projects\\aleph-point-synthesis",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 17,
+        "bytes": 23244,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "aleph-point-synthesis-shipped",
+      "entry_nums": [
+        465
+      ],
+      "source_path": "C:\\Projects\\aleph-point-synthesis-shipped",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 3,
+        "bytes": 9318,
+        "mb": 0.0,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "aps-methodologist-review",
+      "entry_nums": [
+        459
+      ],
+      "source_path": "C:\\Projects\\aps-methodologist-review",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 16912,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "archaic-dta",
+      "entry_nums": [
+        451
+      ],
+      "source_path": "C:\\Projects\\archaic-dta",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 14,
+        "bytes": 24622,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "area1_small_sample_analysis",
+      "entry_nums": [
+        172
+      ],
+      "source_path": "C:\\Projects\\area1_small_sample_analysis",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 34,
+        "bytes": 803893,
+        "mb": 0.8,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "asreview_5star",
+      "entry_nums": [
+        173
+      ],
+      "source_path": "C:\\Projects\\asreview_5star",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 58,
+        "bytes": 548300,
+        "mb": 0.5,
+        "noise_dirs": {
+          "__pycache__": 21
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "cbamm-project2",
+      "entry_nums": [
+        176
+      ],
+      "source_path": "C:\\Projects\\cbamm-project2",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 618,
+        "bytes": 4713796,
+        "mb": 4.5,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "chat2",
+      "entry_nums": [
+        18
+      ],
+      "source_path": "C:\\Projects\\chat2",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/cbamm-dev/cbamm.git (fetch)",
+          "origin\thttps://github.com/cbamm-dev/cbamm.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "6925ed2 E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 73,
+        "bytes": 871873,
+        "mb": 0.8,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "chatpaper",
+      "entry_nums": [
+        19
+      ],
+      "source_path": "C:\\Projects\\chatpaper",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/cbamm-dev/chatpaper.git (fetch)",
+          "origin\thttps://github.com/cbamm-dev/chatpaper.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "9b52c53 Auto-sync E156 submission"
+      },
+      "stats": {
+        "files": 125,
+        "bytes": 1701430,
+        "mb": 1.6,
+        "noise_dirs": {
+          "__pycache__": 2
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "childnajia",
+      "entry_nums": [
+        177
+      ],
+      "source_path": "C:\\Projects\\childnajia",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 18,
+        "bytes": 709671,
+        "mb": 0.7,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "claude-rct-work",
+      "entry_nums": [
+        179
+      ],
+      "source_path": "C:\\Projects\\claude-rct-work",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 29,
+        "bytes": 162891,
+        "mb": 0.2,
+        "noise_dirs": {
+          "__pycache__": 6
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "claude2",
+      "entry_nums": [
+        20
+      ],
+      "source_path": "C:\\Projects\\claude2",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/cbamm-dev/claude2.git (fetch)",
+          "origin\thttps://github.com/cbamm-dev/claude2.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "6aa14d8 Auto-sync E156 submission"
+      },
+      "stats": {
+        "files": 117,
+        "bytes": 24608395,
+        "mb": 23.5,
+        "noise_dirs": {
+          "__pycache__": 2
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "clinical-ma",
+      "entry_nums": [
+        23
+      ],
+      "source_path": "C:\\E156\\releases\\clinical-ma",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 10,
+        "bytes": 53911,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "ees-methodologist-review",
+      "entry_nums": [
+        464
+      ],
+      "source_path": "C:\\Projects\\ees-methodologist-review",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 18642,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "eh-dta",
+      "entry_nums": [
+        456
+      ],
+      "source_path": "C:\\Projects\\eh-dta",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 13,
+        "bytes": 18861,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "ems-dta",
+      "entry_nums": [
+        452
+      ],
+      "source_path": "C:\\Projects\\ems-dta",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 14,
+        "bytes": 20232,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "evidence-inference",
+      "entry_nums": [
+        51
+      ],
+      "source_path": "C:\\Projects\\evidence-inference",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/jayded/evidence-inference.git (fetch)",
+          "origin\thttps://github.com/jayded/evidence-inference.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "3cd2b725 test: drop quoted absolute path from pyproject.toml comment"
+      },
+      "stats": {
+        "files": 12908,
+        "bytes": 636799452,
+        "mb": 607.3,
+        "noise_dirs": {
+          "__pycache__": 124
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "big_dir_607.3MB",
+        "many_files_12908",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "evidence-mapPro",
+      "entry_nums": [
+        390
+      ],
+      "source_path": "C:\\Models\\EvidenceMapPro",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/evidencemappro.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/evidencemappro.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "efa9d46 fix: CSV formula injection sanitization"
+      },
+      "stats": {
+        "files": 10,
+        "bytes": 96971,
+        "mb": 0.1,
+        "noise_dirs": {
+          "__pycache__": 2
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "exascale-evidence-singularity",
+      "entry_nums": [
+        463
+      ],
+      "source_path": "C:\\Projects\\exascale-evidence-singularity",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 23482,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 4
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "experimental-meta-analysis",
+      "entry_nums": [
+        247
+      ],
+      "source_path": "C:\\Projects\\experimental-meta-analysis",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 111,
+        "bytes": 3833624,
+        "mb": 3.7,
+        "noise_dirs": {
+          "__pycache__": 40
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "finalpaper",
+      "entry_nums": [
+        249
+      ],
+      "source_path": "C:\\Projects\\finalpaper",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 24,
+        "bytes": 777124,
+        "mb": 0.7,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "gds-dta",
+      "entry_nums": [
+        453
+      ],
+      "source_path": "C:\\Projects\\gds-dta",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 14,
+        "bytes": 24861,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "global-manifold-audit",
+      "entry_nums": [
+        460
+      ],
+      "source_path": "C:\\Projects\\global-manifold-audit",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 24211,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 4
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "hfpef_registry_calibration",
+      "entry_nums": [
+        252
+      ],
+      "source_path": "C:\\Projects\\hfpef_registry_calibration",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "error": "[WinError 1920] The file cannot be accessed by the system: 'C:\\\\Projects\\\\hfpef_registry_calibration\\\\.venv\\\\bin\\\\python'",
+        "files": 2260,
+        "bytes": 2442806370,
+        "mb": 2329.6,
+        "noise_dirs": {
+          "__pycache__": 75,
+          ".venv": 8,
+          "build": 9
+        }
+      },
+      "flags": [
+        "big_dir_2329.6MB",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "hub",
+      "entry_nums": [
+        254
+      ],
+      "source_path": "C:\\HTML apps\\hub",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 13,
+        "bytes": 74883,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "ipd_qma_project",
+      "entry_nums": [
+        257
+      ],
+      "source_path": "C:\\Projects\\ipd_qma_project",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 79,
+        "bytes": 1731361,
+        "mb": 1.7,
+        "noise_dirs": {
+          "__pycache__": 27
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "lec_phase0_bundle",
+      "entry_nums": [
+        260
+      ],
+      "source_path": "C:\\Projects\\lec_phase0_bundle",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 527,
+        "bytes": 13691982,
+        "mb": 13.1,
+        "noise_dirs": {
+          "__pycache__": 120
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "lec_phase0_project",
+      "entry_nums": [
+        261
+      ],
+      "source_path": "C:\\Projects\\lec_phase0_project",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 271,
+        "bytes": 2560163,
+        "mb": 2.4,
+        "noise_dirs": {
+          "__pycache__": 66
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "meta-frontier-bibliography",
+      "entry_nums": [
+        270
+      ],
+      "source_path": "C:\\Projects\\meta-frontier-bibliography",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 10,
+        "bytes": 188488,
+        "mb": 0.2,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "meta-frontier-readiness-atlas",
+      "entry_nums": [
+        271
+      ],
+      "source_path": "C:\\Projects\\meta-frontier-readiness-atlas",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 10,
+        "bytes": 229734,
+        "mb": 0.2,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "minireview",
+      "entry_nums": [
+        272
+      ],
+      "source_path": "C:\\Projects\\minireview",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 14,
+        "bytes": 6549684,
+        "mb": 6.2,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "new-app",
+      "entry_nums": [
+        273
+      ],
+      "source_path": "C:\\Projects\\new-app",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 6262,
+        "bytes": 108398726,
+        "mb": 103.4,
+        "noise_dirs": {
+          "node_modules": 7147,
+          "__pycache__": 3,
+          "dist": 6
+        }
+      },
+      "flags": [
+        "many_files_6262",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "nmapaper111025",
+      "entry_nums": [
+        124
+      ],
+      "source_path": "C:\\Projects\\nmapaper111025",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/nmatransport.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/nmatransport.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "7dd7f9e E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 49,
+        "bytes": 127138,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "oman",
+      "entry_nums": [
+        275
+      ],
+      "source_path": "C:\\Projects\\oman",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 9,
+        "bytes": 103337,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "pairwiseai-humble",
+      "entry_nums": [
+        276
+      ],
+      "source_path": "C:\\Projects\\Pairwise humble",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 26,
+        "bytes": 1126781,
+        "mb": 1.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "pairwiseaiai",
+      "entry_nums": [
+        131
+      ],
+      "source_path": "C:\\HTML apps\\Pairwiseai",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/Pairwiseai.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/Pairwiseai.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "0fbc4bf E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 164,
+        "bytes": 32893944,
+        "mb": 31.4,
+        "noise_dirs": {
+          "__pycache__": 11
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "paradigm-battle-dta",
+      "entry_nums": [
+        454
+      ],
+      "source_path": "C:\\Projects\\paradigm-battle-dta",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 17730,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "pem-methodologist-review",
+      "entry_nums": [
+        462
+      ],
+      "source_path": "C:\\Projects\\pem-methodologist-review",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 17297,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "petabyte-evidence-manifold",
+      "entry_nums": [
+        461
+      ],
+      "source_path": "C:\\Projects\\petabyte-evidence-manifold",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 12,
+        "bytes": 22723,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 4
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "rayyanreplacement",
+      "entry_nums": [
+        278
+      ],
+      "source_path": "C:\\Projects\\rayyanreplacement",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 45,
+        "bytes": 1846968,
+        "mb": 1.8,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "reduced-dose-doacs-vte-demo",
+      "entry_nums": [
+        144
+      ],
+      "source_path": "C:\\E156\\releases\\reduced-dose-doacs-vte-demo",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 10,
+        "bytes": 55223,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "repo100",
+      "entry_nums": [
+        146
+      ],
+      "source_path": "C:\\Projects\\repo100",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood789/repo100.git (fetch)",
+          "origin\thttps://github.com/mahmood789/repo100.git (push)"
+        ],
+        "branch": "datasets-camr",
+        "has_commits": true,
+        "last_commit": "79bc812 Sync e156 for Pages"
+      },
+      "stats": {
+        "files": 1069,
+        "bytes": 3480788816,
+        "mb": 3319.5,
+        "noise_dirs": {}
+      },
+      "flags": [
+        "has_remote_already",
+        "big_dir_3319.5MB"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "repo300-ENMA-SNMA",
+      "entry_nums": [
+        147
+      ],
+      "source_path": "C:\\Projects\\repo300-ENMA-SNMA",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/enma-snma.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/enma-snma.git (push)"
+        ],
+        "branch": "master",
+        "has_commits": true,
+        "last_commit": "312c7b8 E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 826,
+        "bytes": 4705282,
+        "mb": 4.5,
+        "noise_dirs": {
+          "__pycache__": 7,
+          "build": 2
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "research-orbit-control",
+      "entry_nums": [
+        279
+      ],
+      "source_path": "C:\\Projects\\research-orbit-control",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 13,
+        "bytes": 119870,
+        "mb": 0.1,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    },
+    {
+      "target_repo": "sl12-dta",
+      "entry_nums": [
+        457
+      ],
+      "source_path": "C:\\Projects\\sl12-dta",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 13,
+        "bytes": 20643,
+        "mb": 0.0,
+        "noise_dirs": {
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "superapp",
+      "entry_nums": [
+        282
+      ],
+      "source_path": "C:\\Projects\\superapp",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 5429,
+        "bytes": 29640205,
+        "mb": 28.3,
+        "noise_dirs": {
+          "node_modules": 6243,
+          "__pycache__": 5
+        }
+      },
+      "flags": [
+        "many_files_5429",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "truthcert-meta2-prototype",
+      "entry_nums": [
+        160
+      ],
+      "source_path": "C:\\Models\\truthcert-meta2-prototype",
+      "git": {
+        "has_git": true,
+        "remotes": [
+          "origin\thttps://github.com/mahmood726-cyber/truthcert-meta2.git (fetch)",
+          "origin\thttps://github.com/mahmood726-cyber/truthcert-meta2.git (push)"
+        ],
+        "branch": "main",
+        "has_commits": true,
+        "last_commit": "cfa9e47 E156 auto-deploy: sync status"
+      },
+      "stats": {
+        "files": 123,
+        "bytes": 2763896,
+        "mb": 2.6,
+        "noise_dirs": {
+          "__pycache__": 34
+        }
+      },
+      "flags": [
+        "has_remote_already",
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "truthcert-openclaw-supermemory-stack",
+      "entry_nums": [
+        286
+      ],
+      "source_path": "C:\\Projects\\truthcert-openclaw-supermemory-stack",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 231,
+        "bytes": 2639037,
+        "mb": 2.5,
+        "noise_dirs": {
+          "__pycache__": 92
+        }
+      },
+      "flags": [
+        "noise_dirs_present"
+      ],
+      "preflight": "REVIEW"
+    },
+    {
+      "target_repo": "waternajia",
+      "entry_nums": [
+        290
+      ],
+      "source_path": "C:\\Projects\\waternajia",
+      "git": {
+        "has_git": false
+      },
+      "stats": {
+        "files": 16,
+        "bytes": 198606,
+        "mb": 0.2,
+        "noise_dirs": {}
+      },
+      "flags": [],
+      "preflight": "OK"
+    }
+  ]
+}
