@@ -155,5 +155,42 @@
       ]
     }
   ],
-  "heavy_dirs_deferred_for_size_review": []
+  "heavy_dirs_deferred_for_size_review": [
+    {
+      "target_repo": "hfpef_registry_calibration",
+      "entry_nums": [
+        252
+      ],
+      "source_path": "C:\\Projects\\hfpef_registry_calibration",
+      "total_mb": 2329.6,
+      "total_files": 2260,
+      "reason": "Total 2.3 GB; one or more files > 100 MB GitHub hard limit. Needs git-lfs setup or data/code split before push."
+    }
+  ],
+  "phase_b_outcome": {
+    "unique_targets_attempted": 55,
+    "successfully_pushed": 55,
+    "still_deferred_for_size": [
+      "hfpef_registry_calibration"
+    ],
+    "nul_file_cleanup_applied": [
+      "3dvitreous-grapher",
+      "ipd_qma_project",
+      "lec_phase0_bundle",
+      "new-app",
+      "superapp",
+      "truthcert-openclaw-supermemory-stack"
+    ],
+    "broken_venv_cleanup_applied": [
+      "MetaFrontierLab"
+    ],
+    "gh_create_race_retried_manually": [
+      "NMA",
+      "paradigm-battle-dta",
+      "ipd_qma_project"
+    ],
+    "push_sequence_bug_recovered": [
+      "area1_small_sample_analysis"
+    ]
+  }
 }
