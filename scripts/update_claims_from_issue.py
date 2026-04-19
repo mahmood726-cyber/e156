@@ -123,6 +123,9 @@ def main() -> int:
     # the closer to be the same github_user that originally claimed it.
     # If the user differs, we IGNORE the close and log a warning so the
     # board owner can investigate.
+    # P1-14 — single write path: branches below only mutate `claims` (or
+    # return early on spoof detection). The file is written once at the
+    # end of main().
     if state == "closed" and "submitted" not in labels:
         existing_claim = claims.get(paper_num)
         if existing_claim is None:
@@ -136,13 +139,9 @@ def main() -> int:
                     f"prevent claim-spoofing. The original claimant must close "
                     f"their own issue."
                 )
-                # Do NOT delete; do NOT write changes; exit with non-zero
-                # so the GitHub Action surfaces the spoof attempt in logs.
                 return 2
             print(f"[info] issue #{issue_num} closed → removing claim #{paper_num}")
             del claims[paper_num]
-        CLAIMS.write_text(json.dumps(claims, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        return 0
 
     if "submitted" in labels:
         # Update existing claim (if any) to submitted status.
@@ -202,21 +201,41 @@ def main() -> int:
     elif "claim" in labels:
         # New or updated claim.
         # Spoofing guard: if this paper is ALREADY claimed by a different
-        # github_user (and the claim hasn't been expired by
-        # expire_stale_claims.py yet), refuse the new claim. Same user
-        # re-opening / editing their own issue is fine and overwrites freely.
+        # github_user, refuse the new claim. Same user re-opening / editing
+        # their own issue is fine and overwrites freely.
+        #
+        # P1-4 — GRACE PERIOD. After a claim expires, don't immediately let
+        # a different user overwrite it on day 31. Keep ownership sticky for
+        # an additional 48 hours so the original claimant has a small window
+        # to request an extension (or notice they missed the deadline and
+        # submit). After the grace period, the paper truly reopens.
         prior = claims.get(paper_num, {})
         prior_owner = prior.get("github_user", "")
         prior_status = prior.get("status", "")
-        if prior_owner and user and prior_owner != user and prior_status == "claimed":
-            print(
-                f"[warn] issue #{issue_num} attempted CLAIM of #{paper_num} by "
-                f"'{user}', but paper is already claimed by '{prior_owner}' "
-                f"(claim_date={prior.get('claim_date', '?')}). Refusing to "
-                f"overwrite. If the prior claim has expired, run "
-                f"expire_stale_claims.py --apply first."
-            )
-            return 2
+        EXPIRY_GRACE_DAYS = 2
+
+        def _claim_is_within_grace(claim: dict) -> bool:
+            """True if expired but still within grace window."""
+            if claim.get("status") != "claimed":
+                return False
+            cd_str = claim.get("claim_date", "")
+            try:
+                cd = dt.date.fromisoformat(cd_str)
+            except ValueError:
+                return False
+            win = 40 if claim.get("extended") else 30
+            age = (dt.date.today() - cd).days
+            return win < age <= win + EXPIRY_GRACE_DAYS
+
+        if prior_owner and user and prior_owner != user:
+            if prior_status == "claimed" or _claim_is_within_grace(prior):
+                print(
+                    f"[warn] issue #{issue_num} attempted CLAIM of #{paper_num} by "
+                    f"'{user}', but paper is still owned by '{prior_owner}' "
+                    f"(claim_date={prior.get('claim_date', '?')}; "
+                    f"grace={EXPIRY_GRACE_DAYS}d). Refusing to overwrite."
+                )
+                return 2
 
         # One-paper-at-a-time rule: a given user may hold AT MOST one active
         # (non-submitted, non-expired) claim at a time. Editing one's own

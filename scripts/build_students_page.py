@@ -47,11 +47,12 @@ def parse_entries(text: str) -> list[dict]:
             continue
         num = int(m.group(1))
         if num in seen:
-            # Workbook has some duplicate [N/T] headers (e.g. #339 and #351
-            # both appear twice with different titles). Keep the first
-            # occurrence only — matches build_paper_pages.py behavior and
-            # prevents rendering one paper num as two cards with different
-            # Dashboard URLs.
+            # P1-19 — workbook has occasional duplicate [N/T] headers.
+            # Keep the first occurrence and LOG the collision so future edits
+            # surface it immediately; silent drop is load-bearing but should
+            # never be invisible.
+            name = m.group(2).strip() if m.lastindex and m.lastindex >= 2 else "?"
+            print(f"[WARN] duplicate paper_num {num} — dropping second block titled {name!r}")
             continue
         seen.add(num)
         name = m.group(2)
@@ -477,7 +478,18 @@ function statusOf(entry) {
 }
 
 function escapeHtml(s) {
-  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  // P2-1 — include single-quote for attribute-safety in single-quoted contexts
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+// P0-8 — URL-scheme allowlist. Reject anything that isn't http(s). Prevents
+// `javascript:alert()` or `data:` URLs from sneaking in via a rogue workbook
+// edit. Returns empty string if the URL fails validation.
+function safeHref(url) {
+  if (!url) return "";
+  const s = String(url).trim();
+  if (s.startsWith("https://") || s.startsWith("http://")) return s;
+  return "";
 }
 
 const GH_ISSUE_BASE = "__GH_ISSUE_BASE__";
@@ -520,19 +532,24 @@ function toggleCard(num, btn) {
 
 function linkIfUrl(val, fallback) {
   if (!val) return escapeHtml(fallback || '');
-  const url = String(val).trim();
-  if (url.startsWith('http')) {
-    return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a>`;
+  const safe = safeHref(val);
+  if (safe) {
+    return `<a href="${escapeHtml(safe)}" target="_blank" rel="noopener">${escapeHtml(safe)}</a>`;
   }
   return escapeHtml(val);
 }
+
+// P0-9 — only linkify DOI captures that match the DOI syntax from
+// Crossref's registration agency spec. Anything that includes URL-encoded
+// characters, quotes, or non-DOI syntax is rendered as plain escaped text.
+const DOI_RE = /doi:(10\.\d{4,9}\/[-._;()/:A-Z0-9]+)/gi;
 
 function renderRefs(refs) {
   if (!Array.isArray(refs) || !refs.length) return '<em style="color:var(--text-faint)">(no references in workbook)</em>';
   return '<ol style="margin:0.3rem 0 0.3rem 1.2rem; padding:0;">' +
     refs.map(r => {
-      // Linkify trailing "doi:X" tokens
-      const linked = escapeHtml(r).replace(/doi:(\S+)/g, 'doi:<a href="https://doi.org/$1" target="_blank">$1</a>');
+      const linked = escapeHtml(r).replace(DOI_RE, (match, doi) =>
+        `doi:<a href="https://doi.org/${encodeURIComponent(doi)}" target="_blank" rel="noopener">${escapeHtml(doi)}</a>`);
       return `<li style="margin-bottom:0.3rem;">${linked}</li>`;
     }).join('') + '</ol>';
 }
@@ -645,8 +662,8 @@ function render() {
               ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener">✓ Confirm submission to ${TARGET_JOURNAL}</a>
                  ${claim && !claim.extended ? `<a class="btn" href="${extensionIssueUrl(e)}" target="_blank" rel="noopener" title="Adds 10 days to your window — auto-approved">+10-day extension</a>` : ""}`
               : `<button class="btn" disabled>✓ Submitted</button>`}
-          ${e.code_url ? `<a class="btn ghost" href="${escapeHtml(e.code_url)}" target="_blank">code ↗</a>` : ""}
-          ${e.pages_url ? `<a class="btn ghost" href="${escapeHtml(e.pages_url)}" target="_blank">dashboard ↗</a>` : ""}
+          ${safeHref(e.code_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.code_url))}" target="_blank" rel="noopener">code ↗</a>` : ""}
+          ${safeHref(e.pages_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.pages_url))}" target="_blank" rel="noopener">dashboard ↗</a>` : ""}
         </div>
       </div>`;
   }).join("");
@@ -703,8 +720,21 @@ HIDE_LIST = Path(__file__).resolve().parents[1] / "audit_output" / "hide_repo_40
 
 def main() -> int:
     text = WORKBOOK.read_text(encoding="utf-8")
+    # P0-4 — strip a leading UTF-8 BOM if present. Some editors silently add
+    # one on save; without this `ENTRY_HEAD_RE.search` would fail on the first
+    # block and we'd silently ship an empty board.
+    text = text.lstrip("\ufeff")
     entries = parse_entries(text)
     entries.sort(key=lambda e: e["num"])
+
+    # P0-4 — fail-closed floor: if parsing produced fewer entries than the
+    # workbook must contain, abort rather than ship a tiny or empty board.
+    if len(entries) < 400:
+        raise SystemExit(
+            f"ERROR: parse_entries returned only {len(entries)} entries — "
+            f"expected ≥ 400. Workbook may be corrupted (BOM, encoding, "
+            f"or header format drift). Aborting build."
+        )
 
     # Filter out entries whose repos don't exist on GitHub.
     # The hide list is generated by audit_links.py + repo_404_triage.py;

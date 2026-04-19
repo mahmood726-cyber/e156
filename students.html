@@ -308,7 +308,18 @@ function statusOf(entry) {
 }
 
 function escapeHtml(s) {
-  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  // P2-1 — include single-quote for attribute-safety in single-quoted contexts
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+// P0-8 — URL-scheme allowlist. Reject anything that isn't http(s). Prevents
+// `javascript:alert()` or `data:` URLs from sneaking in via a rogue workbook
+// edit. Returns empty string if the URL fails validation.
+function safeHref(url) {
+  if (!url) return "";
+  const s = String(url).trim();
+  if (s.startsWith("https://") || s.startsWith("http://")) return s;
+  return "";
 }
 
 const GH_ISSUE_BASE = "https://github.com/mahmood726-cyber/e156/issues/new";
@@ -351,19 +362,24 @@ function toggleCard(num, btn) {
 
 function linkIfUrl(val, fallback) {
   if (!val) return escapeHtml(fallback || '');
-  const url = String(val).trim();
-  if (url.startsWith('http')) {
-    return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a>`;
+  const safe = safeHref(val);
+  if (safe) {
+    return `<a href="${escapeHtml(safe)}" target="_blank" rel="noopener">${escapeHtml(safe)}</a>`;
   }
   return escapeHtml(val);
 }
+
+// P0-9 — only linkify DOI captures that match the DOI syntax from
+// Crossref's registration agency spec. Anything that includes URL-encoded
+// characters, quotes, or non-DOI syntax is rendered as plain escaped text.
+const DOI_RE = /doi:(10\.\d{4,9}\/[-._;()/:A-Z0-9]+)/gi;
 
 function renderRefs(refs) {
   if (!Array.isArray(refs) || !refs.length) return '<em style="color:var(--text-faint)">(no references in workbook)</em>';
   return '<ol style="margin:0.3rem 0 0.3rem 1.2rem; padding:0;">' +
     refs.map(r => {
-      // Linkify trailing "doi:X" tokens
-      const linked = escapeHtml(r).replace(/doi:(\S+)/g, 'doi:<a href="https://doi.org/$1" target="_blank">$1</a>');
+      const linked = escapeHtml(r).replace(DOI_RE, (match, doi) =>
+        `doi:<a href="https://doi.org/${encodeURIComponent(doi)}" target="_blank" rel="noopener">${escapeHtml(doi)}</a>`);
       return `<li style="margin-bottom:0.3rem;">${linked}</li>`;
     }).join('') + '</ol>';
 }
@@ -476,8 +492,8 @@ function render() {
               ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener">✓ Confirm submission to ${TARGET_JOURNAL}</a>
                  ${claim && !claim.extended ? `<a class="btn" href="${extensionIssueUrl(e)}" target="_blank" rel="noopener" title="Adds 10 days to your window — auto-approved">+10-day extension</a>` : ""}`
               : `<button class="btn" disabled>✓ Submitted</button>`}
-          ${e.code_url ? `<a class="btn ghost" href="${escapeHtml(e.code_url)}" target="_blank">code ↗</a>` : ""}
-          ${e.pages_url ? `<a class="btn ghost" href="${escapeHtml(e.pages_url)}" target="_blank">dashboard ↗</a>` : ""}
+          ${safeHref(e.code_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.code_url))}" target="_blank" rel="noopener">code ↗</a>` : ""}
+          ${safeHref(e.pages_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.pages_url))}" target="_blank" rel="noopener">dashboard ↗</a>` : ""}
         </div>
       </div>`;
   }).join("");

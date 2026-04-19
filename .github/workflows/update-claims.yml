@@ -8,16 +8,26 @@ permissions:
   contents: write
   issues: read
 
+# P0-3 — Serialize all claims.json mutations. Two concurrent issue events
+# cannot both write the file; the second is queued behind the first.
+# Shared with expire.yml so the weekly cleanup can't race a live claim.
+concurrency:
+  group: claims-json
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    # Only run on claim / submitted issues
+    # Only run on claim / submitted / extension issues
     if: contains(github.event.issue.labels.*.name, 'claim') || contains(github.event.issue.labels.*.name, 'submitted') || contains(github.event.issue.labels.*.name, 'extension')
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # P1-5 — NEVER interpolate ${{ github.event.issue.title | .body | .user.login }}
+      # into a `run:` script — those are user-controlled and become shell
+      # injection. Always route through env: vars (below).
       - name: Parse issue and update claims.json
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
@@ -30,6 +40,8 @@ jobs:
         run: python scripts/update_claims_from_issue.py
 
       - name: Commit and push claims.json
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -38,5 +50,16 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "auto: update claims from issue #${{ github.event.issue.number }}"
-          git push
+          git commit -m "auto: update claims from issue #${ISSUE_NUMBER}"
+          # Defensive retry: if a just-committed remote change beats us to it,
+          # rebase and retry up to 3 times (concurrency key should prevent this
+          # but a belt-and-braces retry loop is cheap insurance).
+          for i in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "push rejected; rebasing and retrying (attempt $i/3)"
+            git pull --rebase origin "$(git branch --show-current)"
+          done
+          echo "failed to push after 3 rebases" >&2
+          exit 1

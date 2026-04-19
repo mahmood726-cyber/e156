@@ -36,6 +36,8 @@ def esc(s: str) -> str:
 
 def parse_entries() -> list[dict]:
     text = WORKBOOK.read_text(encoding="utf-8")
+    # P0-4 — strip BOM if present (mirrors build_students_page.py)
+    text = text.lstrip("\ufeff")
     blocks = text.split(SEP)
     out: list[dict] = []
     seen: set[int] = set()
@@ -308,9 +310,18 @@ def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
 
     entries = parse_entries()
-    # Drop hidden entries
-    hide = set(json.loads(HIDE_LIST.read_text(encoding="utf-8")))
+    # P1-18 — mirror build_students_page.py's existence check; a fresh
+    # clone without audit_output/ would otherwise crash here.
+    hide = set()
+    if HIDE_LIST.is_file():
+        hide = set(json.loads(HIDE_LIST.read_text(encoding="utf-8")))
     visible = [e for e in entries if e["num"] not in hide]
+    # P0-4 — fail-closed floor
+    if len(visible) < 400:
+        raise SystemExit(
+            f"ERROR: only {len(visible)} visible entries — expected ≥ 400. "
+            f"Check workbook integrity / hide_repo_404.json."
+        )
     print(f"Rendering {len(visible)} per-paper pages to {OUT_DIR}")
 
     for e in visible:
