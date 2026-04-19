@@ -29,7 +29,8 @@ SEP = "=" * 70
 
 AUTHOR_EMAIL = "mahmood.ahmad2@nhs.net"
 TARGET_JOURNAL = "Synthesis Medicine"
-CLAIM_WINDOW_DAYS = 42  # 6 weeks — student loses claim if not submitted by then
+CLAIM_WINDOW_DAYS = 30  # base window; students may request a 10-day auto-extension
+EXTENSION_DAYS = 10     # added to window if claim carries `"extended": true`
 GH_REPO = "mahmood726-cyber/e156"
 GH_ISSUE_BASE = f"https://github.com/{GH_REPO}/issues/new"
 
@@ -172,7 +173,7 @@ HTML_TEMPLATE = r"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>E156 Student Board — Claim, rewrite, submit to Synthesis Medicine</title>
-<meta name="description" content="__N_VISIBLE__ E156 micro-papers open to student co-authorship. Target journal: Synthesis Medicine. Claim via GitHub Issues, 6 weeks to submit, then claim expires.">
+<meta name="description" content="__N_VISIBLE__ E156 micro-papers open to student co-authorship. Target journal: Synthesis Medicine. Claim via GitHub Issues; one paper at a time; 30-day window, +10-day extension available; then claim expires.">
 
 <style>
 :root {
@@ -322,6 +323,7 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
 .days-left.warn { color: var(--warn); }
 .days-left.urgent { color: #f87171; font-weight: 600; }
 .days-left.expired { color: #ef4444; font-weight: 700; text-transform: uppercase; }
+.ext-badge { font-family: var(--mono); font-size: 0.75em; background: rgba(59, 130, 246, 0.2); color: var(--claimed); border: 1px solid rgba(59, 130, 246, 0.4); padding: 0.05em 0.4em; border-radius: 3px; margin-left: 0.3em; }
 
 .toggle-body { background: none; border: 0; color: var(--text-faint); font-family: var(--mono); font-size: 0.75rem; cursor: pointer; padding: 0; margin-top: 0.3rem; }
 .toggle-body:hover { color: var(--accent); }
@@ -345,7 +347,8 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li>Copy the <span class="mono">Current body</span> on your card. Rewrite it in your own words: 156 words, 7 sentences (Question · Dataset · Method · Result · Robustness · Interpretation · Boundary).</li>
         <li>Submit your rewrite to <strong>Synthesis Medicine Journal</strong> (synthesis-medicine.org). The journal mints DOIs on acceptance; no Zenodo step needed.</li>
         <li>Once submitted, click <strong>✓ Confirm submission</strong> on your card. A second GitHub form opens — paste your submission ID / DOI, submit. Board updates to show SUBMITTED. You are listed as first author.</li>
-        <li><strong>You have 6 weeks (42 days) from claim to submission.</strong> If you don't confirm submission within that window, your claim expires and the paper reopens for another student. Pick a paper you can actually finish in 6 weeks.</li>
+        <li><strong>One paper at a time.</strong> You may hold AT MOST one active claim until you either submit or let it expire.</li>
+        <li><strong>You have 30 days from claim to submission.</strong> Need more time? Click <strong>+10-day extension</strong> on your card and a GitHub form opens — just submit it. Auto-approved, gives you 40 days total. If you don't confirm submission within the window (30 days, or 40 if extended), your claim expires and the paper reopens for another student.</li>
       </ol>
 
       <h2>Authorship rules (read before claiming)</h2>
@@ -440,6 +443,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 const AUTHOR_EMAIL = "__AUTHOR_EMAIL__";
 const TARGET_JOURNAL = "__TARGET_JOURNAL__";
 const CLAIM_WINDOW_DAYS = __CLAIM_WINDOW__;
+const EXTENSION_DAYS = __EXTENSION_DAYS__;
 const MS_PER_DAY = 86400000;
 const ENTRIES = __ENTRIES_JSON__;
 
@@ -448,13 +452,17 @@ let filterText = "";
 let filterTopic = "";
 let filterStatus = "";
 
-function daysLeft(claimDate) {
-  // claimDate is "YYYY-MM-DD". Returns integer days remaining (may be negative).
-  if (!claimDate) return null;
-  const claim = new Date(claimDate + "T00:00:00Z").getTime();
-  const now = Date.now();
-  const elapsed = (now - claim) / MS_PER_DAY;
-  return Math.ceil(CLAIM_WINDOW_DAYS - elapsed);
+function windowDaysFor(claim) {
+  // 10-day auto-extension adds to the base window iff claim has the flag.
+  return CLAIM_WINDOW_DAYS + (claim && claim.extended ? EXTENSION_DAYS : 0);
+}
+
+function daysLeft(claim) {
+  // claim is the claims.json record. Returns integer days remaining (may be negative).
+  if (!claim || !claim.claim_date) return null;
+  const claimMs = new Date(claim.claim_date + "T00:00:00Z").getTime();
+  const elapsed = (Date.now() - claimMs) / MS_PER_DAY;
+  return Math.ceil(windowDaysFor(claim) - elapsed);
 }
 
 function statusOf(entry) {
@@ -462,8 +470,8 @@ function statusOf(entry) {
   const c = claims[entry.num];
   if (!c) return "open";
   if (c.status === "submitted") return "submitted";
-  // If expired (past 6 weeks without submission), treat as open
-  const left = daysLeft(c.claim_date);
+  // If expired (past the window + any extension), treat as reopened
+  const left = daysLeft(c);
   if (left !== null && left < 0) return "open";
   return "claimed";
 }
@@ -565,14 +573,26 @@ function renderDetails(e) {
 function daysLeftLabel(entry) {
   const c = claims[entry.num];
   if (!c || !c.claim_date) return "";
-  const d = daysLeft(c.claim_date);
+  const d = daysLeft(c);
   if (d === null) return "";
   if (d < 0) return `<span class="days-left expired">expired — claim reopened</span>`;
   let cls = "ok";
   if (d <= 2) cls = "urgent";
   else if (d <= 7) cls = "warn";
   const plural = d === 1 ? "day" : "days";
-  return `<span class="days-left ${cls}">${d} ${plural} left to submit</span>`;
+  const extBadge = c.extended
+    ? ` <span class="ext-badge" title="10-day extension granted">+10</span>`
+    : "";
+  return `<span class="days-left ${cls}">${d} ${plural} left to submit${extBadge}</span>`;
+}
+
+function extensionIssueUrl(entry) {
+  const params = new URLSearchParams({
+    template: "extension.yml",
+    title: `[EXTENSION #${entry.num}] ${(entry.title || entry.name).slice(0, 80)}`,
+    "paper_number": String(entry.num),
+  });
+  return `${GH_ISSUE_BASE}?${params.toString()}`;
 }
 
 function render() {
@@ -622,7 +642,8 @@ function render() {
           ${status === "open"
             ? `<a class="btn primary" href="${claimIssueUrl(e)}" target="_blank" rel="noopener">▶ Claim this paper</a>`
             : status === "claimed"
-              ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener">✓ Confirm submission to ${TARGET_JOURNAL}</a>`
+              ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener">✓ Confirm submission to ${TARGET_JOURNAL}</a>
+                 ${claim && !claim.extended ? `<a class="btn" href="${extensionIssueUrl(e)}" target="_blank" rel="noopener" title="Adds 10 days to your window — auto-approved">+10-day extension</a>` : ""}`
               : `<button class="btn" disabled>✓ Submitted</button>`}
           ${e.code_url ? `<a class="btn ghost" href="${escapeHtml(e.code_url)}" target="_blank">code ↗</a>` : ""}
           ${e.pages_url ? `<a class="btn ghost" href="${escapeHtml(e.pages_url)}" target="_blank">dashboard ↗</a>` : ""}
@@ -741,6 +762,7 @@ def main() -> int:
         .replace("__AUTHOR_EMAIL__", AUTHOR_EMAIL)
         .replace("__TARGET_JOURNAL__", TARGET_JOURNAL)
         .replace("__CLAIM_WINDOW__", str(CLAIM_WINDOW_DAYS))
+        .replace("__EXTENSION_DAYS__", str(EXTENSION_DAYS))
         .replace("__GH_ISSUE_BASE__", GH_ISSUE_BASE)
         .replace("__N_VISIBLE__", str(len(entries)))
         .replace("__ENTRIES_JSON__", json.dumps(compact, ensure_ascii=False))

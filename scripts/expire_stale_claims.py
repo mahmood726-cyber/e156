@@ -23,13 +23,14 @@ import sys
 from pathlib import Path
 
 CLAIMS = Path(__file__).resolve().parents[1] / "claims.json"
-DEFAULT_WINDOW_DAYS = 42
+DEFAULT_WINDOW_DAYS = 30
+EXTENSION_DAYS = 10
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--apply", action="store_true", help="actually remove stale entries (default is dry-run)")
-    ap.add_argument("--window", type=int, default=DEFAULT_WINDOW_DAYS, help=f"days until claim expires (default {DEFAULT_WINDOW_DAYS})")
+    ap.add_argument("--window", type=int, default=DEFAULT_WINDOW_DAYS, help=f"days until claim expires (default {DEFAULT_WINDOW_DAYS}; +{EXTENSION_DAYS} if extended)")
     args = ap.parse_args()
 
     if not CLAIMS.is_file():
@@ -42,7 +43,6 @@ def main() -> int:
         return 0
 
     today = dt.date.today()
-    cutoff = today - dt.timedelta(days=args.window)
 
     to_expire: list[tuple[str, dict, int]] = []
     kept: dict[str, dict] = {}
@@ -59,8 +59,10 @@ def main() -> int:
             print(f"  [warn] paper #{num}: invalid claim_date {claim_date_str!r} — keeping as-is")
             kept[num] = entry
             continue
+        # Per-claim window: base + extension if granted
+        window = args.window + (EXTENSION_DAYS if entry.get("extended") else 0)
         age = (today - claim_date).days
-        if claim_date < cutoff:
+        if age > window:
             to_expire.append((num, entry, age))
         else:
             kept[num] = entry

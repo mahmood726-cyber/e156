@@ -12,7 +12,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     # Only run on claim / submitted issues
-    if: contains(github.event.issue.labels.*.name, 'claim') || contains(github.event.issue.labels.*.name, 'submitted')
+    if: contains(github.event.issue.labels.*.name, 'claim') || contains(github.event.issue.labels.*.name, 'submitted') || contains(github.event.issue.labels.*.name, 'extension')
     steps:
       - uses: actions/checkout@v4
         with:

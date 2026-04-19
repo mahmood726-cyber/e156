@@ -1,0 +1,36 @@
+name: Request a 10-day extension
+description: Extend your 30-day claim window by 10 days (auto-approved).
+title: "[EXTENSION #____] "
+labels: [extension]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 10-day extension
+        This extends your 30-day claim window to **40 days total**.
+        Auto-approved — submitting this form is the approval.
+
+        Only valid on a paper you're currently claiming. If the paper is
+        already submitted or your claim has expired, this has no effect.
+
+        **One extension per claim.** If you need more time after the
+        extended window ends, let the claim expire and someone else can
+        take over; you can then claim a different paper.
+
+  - type: input
+    id: paper_number
+    attributes:
+      label: Paper number
+      description: The paper you currently have claimed
+      placeholder: "123"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason (optional)
+      description: Not required — just for your own records if you want to note why.
+      placeholder: "e.g. exam period, waiting for supervisor feedback, etc."
+    validations:
+      required: false

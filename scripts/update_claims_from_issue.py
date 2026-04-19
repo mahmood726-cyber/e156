@@ -173,6 +173,32 @@ def main() -> int:
             claims[paper_num]["claim_date"] = claim_date
         print(f"[info] marked #{paper_num} SUBMITTED by {name} (issue #{issue_num})")
 
+    elif "extension" in labels:
+        # 10-day auto-approved extension.
+        # Must reference an existing claim owned by this user.
+        existing = claims.get(paper_num, {})
+        owner = existing.get("github_user", "")
+        if not owner:
+            print(
+                f"[warn] issue #{issue_num} requested EXTENSION for #{paper_num} "
+                f"by '{user}', but there is no active claim. Ignoring."
+            )
+            return 2
+        if owner and user and owner != user:
+            print(
+                f"[warn] issue #{issue_num} requested EXTENSION for #{paper_num} "
+                f"by '{user}', but claim is owned by '{owner}'. Refusing."
+            )
+            return 2
+        if existing.get("status") != "claimed":
+            print(
+                f"[info] claim #{paper_num} is status={existing.get('status','?')}; "
+                f"extension has no effect. Skipping."
+            )
+            return 0
+        claims[paper_num] = {**existing, "extended": True}
+        print(f"[info] granted 10-day auto-extension for #{paper_num} (now 40-day window)")
+
     elif "claim" in labels:
         # New or updated claim.
         # Spoofing guard: if this paper is ALREADY claimed by a different
@@ -189,6 +215,37 @@ def main() -> int:
                 f"(claim_date={prior.get('claim_date', '?')}). Refusing to "
                 f"overwrite. If the prior claim has expired, run "
                 f"expire_stale_claims.py --apply first."
+            )
+            return 2
+
+        # One-paper-at-a-time rule: a given user may hold AT MOST one active
+        # (non-submitted, non-expired) claim at a time. Editing one's own
+        # existing claim on the same paper_num is fine (prior_owner == user
+        # branch above handles that). Anything else is refused until the
+        # student either submits or lets the current claim expire.
+        for other_num, other in claims.items():
+            if other_num == paper_num:
+                continue
+            if other.get("status") != "claimed":
+                continue  # submitted claims don't block new claims
+            if other.get("github_user") != user or not user:
+                continue
+            # Check expiry: treat expired claims as inactive (page-side
+            # JS already treats them as reopened).
+            cd = other.get("claim_date", "")
+            window = 40 if other.get("extended") else 30
+            try:
+                cd_date = dt.date.fromisoformat(cd)
+                age = (dt.date.today() - cd_date).days
+                if age > window:
+                    continue  # expired, doesn't block
+            except ValueError:
+                continue
+            print(
+                f"[warn] issue #{issue_num}: '{user}' already holds an active "
+                f"claim on paper #{other_num} (claim_date={cd}). The one-paper-"
+                f"at-a-time rule refuses a new claim on #{paper_num}. Submit "
+                f"or wait for #{other_num} to expire first."
             )
             return 2
         name = find_label_value(parsed, "your_name", "name")
