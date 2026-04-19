@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[#9] AutoGRADE: Browser-Based Automated GRADE Certainty Assessment — E156</title>
+<meta name="description" content="E156 paper #9: AutoGRADE: Browser-Based Automated GRADE Certainty Assessment. Target journal: Synthēsis. Open to student co-authorship.">
+<style>
+:root {
+  --bg:#0b1120; --bg-elev:#111827; --bg-card:#1a2236; --border:#2a3244;
+  --text:#e5e7eb; --text-dim:#9ca3af; --text-faint:#6b7280;
+  --accent:#22c55e; --claimed:#3b82f6; --warn:#eab308;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:var(--mono)}
+.container{max-width:840px;margin:0 auto;padding:0 1.5rem}
+header{padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--border)}
+header .breadcrumb{color:var(--text-faint);font-size:0.85rem;font-family:var(--mono);margin-bottom:0.6rem}
+header .breadcrumb a{color:var(--text-dim)}
+header h1{margin:0.2rem 0 0.6rem;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;letter-spacing:-0.01em}
+header .num{color:var(--accent);font-family:var(--mono);font-size:0.85em;margin-right:0.4rem}
+.badges{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem}
+.badge{background:var(--bg-card);border:1px solid var(--border);padding:0.2em 0.65em;border-radius:4px;font-size:0.78rem;color:var(--text-dim)}
+.badge.topic{color:var(--accent);border-color:rgba(34,197,94,0.3)}
+section{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:0}
+section h2{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);font-weight:600}
+.body-text{font-size:1rem;line-height:1.7;color:var(--text);background:var(--bg-card);padding:1.2rem 1.4rem;border-left:3px solid var(--accent);border-radius:6px}
+.meta-grid{display:grid;grid-template-columns:max-content 1fr;gap:0.3rem 1rem;font-size:0.9rem;align-items:baseline}
+.meta-grid dt{color:var(--text-dim);font-family:var(--mono);font-size:0.8rem;white-space:nowrap}
+.meta-grid dd{margin:0;color:var(--text)}
+.refs ol{margin:0;padding-left:1.4rem}
+.refs li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--text)}
+.action-bar{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1.2rem 0}
+.btn{padding:0.55rem 1rem;border-radius:5px;font-size:0.9rem;font-weight:500;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem}
+.btn:hover{background:var(--border);text-decoration:none}
+.btn.primary{background:var(--accent);color:#052e16;border-color:var(--accent);font-weight:600}
+.btn.primary:hover{background:#16a34a}
+footer{padding:1.5rem 0 3rem;color:var(--text-dim);font-size:0.82rem;text-align:center;border-top:1px solid var(--border);margin-top:1rem}
+footer a{color:var(--text-dim);text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="breadcrumb"><a href="../students.html">← E156 Student Board</a></div>
+  <h1><span class="num">#9</span>AutoGRADE: Browser-Based Automated GRADE Certainty Assessment</h1>
+  <div class="badges"><span class="badge topic">methods</span><span class="badge">estimand: Risk ratio</span></div>
+</header>
+
+<section><h2>156-word body (current version)</h2><div class="body-text">Can a fully offline, single-file browser application produce transparent and reproducible GRADE certainty assessments from meta-analysis results? We built AutoGRADE as a zero-dependency HTML tool accepting input from metafor, RevMan, or manual entry for up to seven clinical outcomes. The tool auto-computes inconsistency and imprecision using heterogeneity statistics and optimal information size, with guided assessments for risk of bias, indirectness, and publication bias. Across 15 published meta-analyses the tool produced risk ratio assessments matching expert GRADE ratings in 93 percent of domain judgments (95% CI 87-97), generating tables in under two minutes. Automated scores agreed with Cochrane GRADEpro ratings across all five domains, with discrepancies only in borderline indirectness where expert judgment inherently varies. Instant transparent GRADE tables without installation or internet lower the barrier for systematic reviewers adopting rigorous certainty assessment in practice. The tool cannot replace expert clinical judgment for indirectness and remains limited to pairwise outcomes without support for network or diagnostic evidence.</div><p style="font-size:0.82rem;color:var(--text-faint);margin-top:0.8rem;">Your rewrite should preserve all numbers, CIs, and percentages exactly — rephrase the surrounding prose in 7 sentences, ≤156 words.</p></section>
+
+<section>
+  <h2>At a glance</h2>
+  <dl class="meta-grid"><dt>Dataset</dt><dd>15 published meta-analyses for validation</dd><dt>Mahmood (middle author)</dt><dd>Mahmood Ahmad &lt;mahmood.ahmad2@nhs.net&gt;<br><span style='color:var(--text-dim)'>Tahir Heart Institute, Rabwah, Pakistan</span></dd><dt>Target journal</dt><dd>◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)</dd></dl>
+</section>
+
+<section class="refs"><h2>References</h2><ol><li>Guyatt GH, Oxman AD, Vist GE, et al. 2008. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. BMJ. 336(7650):924-926. doi:10.1136/bmj.39489.470347.AD</li><li>Schünemann HJ, Cuello C, Akl EA, et al. 2019. GRADE guidelines: 18. How ROBINS-I and other tools to assess risk of bias in nonrandomized studies should be used to rate the certainty of a body of evidence. J Clin Epidemiol. 111:105-114. doi:10.1016/j.jclinepi.2018.01.012</li></ol></section>
+
+<div class="action-bar">
+  <a class="btn primary" href="https://github.com/mahmood726-cyber/e156/issues/new?template=claim.yml&title=[CLAIM #9] AutoGRADE: Browser-Based Automated GRADE Certainty Assessment&paper_number=9&paper_title=AutoGRADE: Browser-Based Automated GRADE Certainty Assessment" target="_blank" rel="noopener">▶ Claim this paper</a>
+  <a class="btn" href="https://github.com/mahmood726-cyber/AutoGRADE" target="_blank" rel="noopener">Source code ↗</a>
+  <a class="btn" href="https://github.com/mahmood726-cyber/AutoGRADE/blob/main/E156-PROTOCOL.md" target="_blank" rel="noopener">E156 protocol ↗</a>
+  <a class="btn" href="../students.html">All papers</a>
+</div>
+
+<footer>
+  Auto-generated by <code>scripts/build_paper_pages.py</code> from
+  <code>rewrite-workbook.txt</code>. Target journal:
+  <a href="https://www.synthesis-medicine.org/" target="_blank">Synthēsis</a>
+  (Methods Note, ≤400 words).
+  First author: the student who claims this paper. Middle author: Mahmood Ahmad.
+  Senior author: the student's faculty supervisor.
+</footer>
+</div>
+</body>
+</html>
