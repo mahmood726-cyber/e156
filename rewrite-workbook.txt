@@ -9801,9 +9801,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/pairwiseai70
+  Code:      https://github.com/mahmood726-cyber/Pairwise70
   Protocol:  https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/pairwise70/
+  Dashboard: https://mahmood726-cyber.github.io/Pairwise70/
 
 References (topic pack: fragility index):
   1. Walsh M, Srinathan SK, McAuley DF, et al. 2014. The statistical significance of randomized controlled trial results is frequently fragile: a case for a Fragility Index. J Clin Epidemiol. 67(6):622-628. doi:10.1016/j.jclinepi.2013.10.019
@@ -26172,7 +26172,7 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
-[338/485] advanced-nma-pooling
+[486/485] advanced-nma-pooling
 TITLE: Advanced NMA Pooling Toolkit with Bias Adjustment and Survival Extensions
 TYPE: methods  |  ESTIMAND: Bias-adjusted treatment effect (log-odds)
 DATA: A Python toolkit for advanced network meta-analysis with multilevel meta-regression, bias adjustment, and survival extensions validated against R benchmarks.
@@ -26192,7 +26192,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/advanced-nma-pooling
   Protocol:  https://github.com/mahmood726-cyber/advanced-nma-pooling/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/advanced-nma-pooling/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/486.html
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -26246,7 +26246,7 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
-[339/485] Pairwise70
+[487/485] Pairwise70
 TITLE: MAFI: Meta-Analytic Fragility Index Across 501 Cochrane Pairwise Reviews
 TYPE: methods  |  ESTIMAND: Median MAFI fragility index (IQR)
 DATA: The median MAFI fragility score across 4,424 Cochrane meta-analyses is 0.31, classifying typical pairwise comparisons as moderately fragile.
@@ -26266,7 +26266,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/pairwiseai70
   Protocol:  https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/pairwise70/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/487.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -28539,7 +28539,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 
-[351/485] DCB_PAD_LivingMeta
+[488/485] DCB_PAD_LivingMeta
 TITLE: Drug-Coated Balloons for Femoropopliteal PAD: A Living Systematic Review
 TYPE: clinical  |  ESTIMAND: RR of primary patency at 12 months
 DATA: ClinicalTrials.gov (IN.PACT SFA, ILLUMENATE, RANGER, PACCOCATH, LEVANT 2)
@@ -28560,7 +28560,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/dcb_pad_livingmeta/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/488.html
 
 References (topic pack: trial sequential analysis (TSA)):
   1. Wetterslev J, Thorlund K, Brok J, Gluud C. 2008. Trial sequential analysis may establish when firm evidence is reached in cumulative meta-analysis. J Clin Epidemiol. 61(1):64-75. doi:10.1016/j.jclinepi.2007.03.013
@@ -28615,7 +28615,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 
-[352/485] Orforglipron_LivingMeta
+[489/485] Orforglipron_LivingMeta
 TITLE: Orforglipron for Cardiometabolic Disease: A Living Systematic Review
 TYPE: clinical  |  ESTIMAND: HbA1c change and percent body weight change
 DATA: ClinicalTrials.gov (Phase 2 T2DM, Phase 2 Obesity, ACHIEVE-1/3/4/5, ATTAIN-1/2)
@@ -28636,7 +28636,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/Orforglipron_LivingMeta
   Protocol:  https://github.com/mahmood726-cyber/Orforglipron_LivingMeta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/orforglipron_livingmeta/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/489.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -29078,7 +29078,7 @@ SUBMITTED: [ ]
 `r`n======================================================================`r`n`r`n[353/480] GLP1_Suicide_SafetyMA`r`nTITLE: Safety of GLP-1 Receptor Agonists and Suicidal Ideation: A ClinicalTrials.gov Meta-Analysis`r`nTYPE: clinical  |  ESTIMAND: Peto OR for suicidal ideation/self-harm`r`nDATA: ClinicalTrials.gov (STEP, SURPASS, SUSTAIN, SELECT, SURMOUNT programs)`r`nPATH: C:\Projects\GLP1_Suicide_SafetyMA`r`n`r`nCURRENT BODY (154 words):`r`nAre GLP-1 receptor agonists associated with an increased risk of suicidal ideation and self-harm in patients with diabetes or obesity? We conducted a systematic review and meta-analysis of randomized controlled trials from ClinicalTrials.gov (STEP, SURPASS, and SUSTAIN programs) comprising over 50,000 participants. Due to the rarity of psychiatric events, we utilized the Peto odds ratio and exact conditional logistic regression to handle zero-event and double-zero studies without arbitrary continuity corrections. Cumulative meta-analysis with O'Brien-Fleming spending boundaries was applied to evaluate the stability of safety signals as trials were sequentially added to the evidence base. Meta-regression explored the influence of baseline BMI and psychiatric history on safety outcomes across trial populations. Sequential monitoring confirmed the absence of a statistically significant signal for suicidal ideation, with Peto OR 1.05 (95% CI 0.78 to 1.42). These results suggest that concerns over GLP-1 related psychiatric safety are not currently supported by pooled trial evidence, though long-term observational data are required. The study is limited by the short duration of safety follow-up and the exclusion of individuals with pre-existing severe depression in most trials.`r`n`r`nYOUR REWRITE (at most 156 words, 7 sentences):`r`n`r`n`r`nSUBMITTED: [ ]`r`n`r`n======================================================================
 
 ======================================================================
-[376/485] AuthorshipLedger
+[490/485] AuthorshipLedger
 TITLE: AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio
 TYPE: methods  |  ESTIMAND: proportion of indexed projects reaching full DOI-registrable state
 DATA: Governance and deposit queue over 134 indexed projects, generating ORCID, CRediT, and license scaffolds with 68 institutional drafts ready but 0 fully registrable deposits.
@@ -29101,7 +29101,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/authorship-ledger
   Protocol:  https://github.com/mahmood726-cyber/authorship-ledger/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/authorship-ledger/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/490.html
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -29153,7 +29153,7 @@ Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
 ======================================================================
-[377/485] CitationWorkbench
+[491/485] CitationWorkbench
 TITLE: CitationWorkbench: Citation Packet Generation for the C Drive Portfolio
 TYPE: methods  |  ESTIMAND: proportion of indexed projects reaching high citation readiness
 DATA: Citation packet generator over 134 indexed projects, producing CFF, DataCite draft JSON, CiteProc JSON, and BibTeX with 86 high-readiness packets and 68 release-ready packets.
@@ -29176,7 +29176,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/citation-workbench
   Protocol:  https://github.com/mahmood726-cyber/citation-workbench/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/citation-workbench/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/491.html
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -29228,7 +29228,7 @@ Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
 ======================================================================
-[378/485] DrivePulse
+[492/485] DrivePulse
 TITLE: DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio
 TYPE: methods  |  ESTIMAND: proportion of specific indexed paths exposing git repositories
 DATA: Live folder telemetry over 107 indexed paths, showing 105 specific paths present, 90 git-backed, 83 Pages-ready, and only two still too generic to scan precisely.
@@ -29251,7 +29251,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/drive-pulse
   Protocol:  https://github.com/mahmood726-cyber/drive-pulse/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/drive-pulse/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/492.html
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -31898,9 +31898,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/ARNI_HF_REVIEW.html
-  Protocol:  https://github.com/mahmood726-cyber/ARNI_HF_REVIEW.html/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/arni_hf_review.html/
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/ARNI_HF_REVIEW.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32033,7 +32033,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 
-[389/485] EvidenceCollapsar
+[493/485] EvidenceCollapsar
 TITLE: The Evidence Collapsar: A Quantum Meta-Analysis Engine
 TYPE: methods  |  ESTIMAND: Quantum-Collapsed Hazard Ratio and Von Neumann Entropy
 DATA: Simulated 501 MLM Systematic Reviews
@@ -32054,7 +32054,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-collapsar
   Protocol:  https://github.com/mahmood726-cyber/evidence-collapsar/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/evidence-collapsar/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/493.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32111,7 +32111,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 
-[390/485] TDA-Meta
+[494/485] TDA-Meta
 TITLE: Topological Evidence Gaps: Identifying Structural Voids in Global Medical Research
 TYPE: methods  |  ESTIMAND: Topological Isolation Score (0-100) via Persistent Homology
 DATA: Simulated 3D Clinical Domains (Socioeconomic, Prevalence, Infrastructure)
@@ -32132,7 +32132,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/tda-meta
   Protocol:  https://github.com/mahmood726-cyber/tda-meta/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/tda-meta/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/494.html
 
 References (topic pack: machine learning / prediction models):
   1. Steyerberg EW, Vickers AJ, Cook NR, et al. 2010. Assessing the performance of prediction models: a framework for traditional and novel measures. Epidemiology. 21(1):128-138. doi:10.1097/EDE.0b013e3181c30fb7
@@ -32189,7 +32189,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 
-[391/485] RetractionGravity
+[495/485] RetractionGravity
 TITLE: Retraction Gravity: Portfolio Impact Mapping of Clinical Evidence Failures
 TYPE: methods  |  ESTIMAND: Attenuated Reliability Score via DAG Propagation
 DATA: Simulated Clinical Research Dependency Graph (Nodes/Edges)
@@ -32210,7 +32210,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/retraction-gravity
   Protocol:  https://github.com/mahmood726-cyber/retraction-gravity/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/retraction-gravity/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/495.html
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -34928,7 +34928,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 
-[392/485] TheAlephEngine
+[496/485] TheAlephEngine
 TITLE: The Aleph Engine: A Grand Unified Meta-Analysis Equation (GUME)
 TYPE: methods  |  ESTIMAND: Aleph Score (Universal Truth Index, 0-100)
 DATA: Synthesized GBD 2023 Covariates, Simulated Clinical Transport Networks
@@ -34949,7 +34949,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/aleph-engine
   Protocol:  https://github.com/mahmood726-cyber/aleph-engine/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/aleph-engine/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/496.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152

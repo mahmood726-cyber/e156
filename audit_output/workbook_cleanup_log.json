@@ -1,0 +1,81 @@
+{
+  "url_fixes": [
+    {
+      "num": 129,
+      "applied": 2,
+      "total": 2
+    },
+    {
+      "num": 413,
+      "applied": 3,
+      "total": 3
+    }
+  ],
+  "renumbered": [
+    {
+      "old_num": 338,
+      "new_num": 486,
+      "name": "advanced-nma-pooling"
+    },
+    {
+      "old_num": 339,
+      "new_num": 487,
+      "name": "Pairwise70"
+    },
+    {
+      "old_num": 351,
+      "new_num": 488,
+      "name": "DCB_PAD_LivingMeta"
+    },
+    {
+      "old_num": 352,
+      "new_num": 489,
+      "name": "Orforglipron_LivingMeta"
+    },
+    {
+      "old_num": 376,
+      "new_num": 490,
+      "name": "AuthorshipLedger"
+    },
+    {
+      "old_num": 377,
+      "new_num": 491,
+      "name": "CitationWorkbench"
+    },
+    {
+      "old_num": 378,
+      "new_num": 492,
+      "name": "DrivePulse"
+    },
+    {
+      "old_num": 389,
+      "new_num": 493,
+      "name": "EvidenceCollapsar"
+    },
+    {
+      "old_num": 390,
+      "new_num": 494,
+      "name": "TDA-Meta"
+    },
+    {
+      "old_num": 391,
+      "new_num": 495,
+      "name": "RetractionGravity"
+    },
+    {
+      "old_num": 392,
+      "new_num": 496,
+      "name": "TheAlephEngine"
+    }
+  ],
+  "hide_list_changes": [
+    {
+      "before": 12,
+      "after": 10,
+      "unhidden": [
+        129,
+        413
+      ]
+    }
+  ]
+}
