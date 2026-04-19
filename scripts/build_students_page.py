@@ -369,7 +369,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 
       <h2>Authorship rules (read before claiming)</h2>
       <ul>
-        <li><strong>You are first author</strong> on the submission you claim.</li>
+        <li><strong>You are first author AND corresponding author</strong> on the submission you claim. You fill in the corresponding-author fields (name, email, affiliation) on the OJS submission form yourself — Mahmood is a middle author only, not the contact for the journal.</li>
         <li>You must nominate a <strong>senior / last author</strong> — typically your faculty supervisor or a co-investigator from your institution. The claim form has a required field for this. <strong>No supervisor available yet?</strong> Type exactly <span class="mono">TBD - request mentor</span> in that field and Mahmood will help nominate a faculty co-investigator from the E156 advisory pool before you submit.</li>
         <li><strong>Mahmood Ahmad will appear as a middle author only</strong> — never first, never last. This is a fixed workbook-wide rule (his role: Conceptualization, Methodology, Software, Data curation; not original drafting).</li>
         <li>Every submission must include the competing-interests statement: <em>"MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal."</em> This is auto-included in the SUBMISSION METADATA block of every workbook entry.</li>
@@ -401,8 +401,8 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li><strong>Upload File</strong> — upload your <span class="mono">.docx</span>. Component: <strong>"Article Text"</strong>.</li>
         <li><strong>Enter Metadata</strong> — paste the title; paste YOUR REWRITE (the 156-word body) verbatim as the abstract — the E156 7-sentence structure <em>is</em> the abstract, no shortening needed; add 4-6 keywords; <strong>add ALL contributors with ORCIDs and affiliations IN ORDER</strong>:
           <ul>
-            <li>1st = <strong>YOU</strong> (first author)</li>
-            <li>middle = <strong>Mahmood Ahmad</strong>, ORCID 0000-0001-9107-3704, Tahir Heart Institute, Rabwah, Pakistan</li>
+            <li>1st = <strong>YOU</strong> (first author + <strong>corresponding author</strong> — enter your email as the contact address)</li>
+            <li>middle = <strong>Mahmood Ahmad</strong> · ORCID 0000-0001-9107-3704 · <a href="mailto:mahmood.ahmad2@nhs.net">mahmood.ahmad2@nhs.net</a> · Tahir Heart Institute, Rabwah, Pakistan. <em>Do NOT tick "corresponding author" on this row.</em></li>
             <li>last = your <strong>faculty supervisor</strong> (the senior author you named on the claim form)</li>
           </ul>
           Then paste the Vancouver references.</li>

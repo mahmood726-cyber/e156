@@ -97,7 +97,7 @@ Can a R package unify effect-size data from Cochrane reviews from 2023 onwards i
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -174,7 +174,7 @@ Can we efficiently construct large-scale multilevel meta-analysis datasets from 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -251,7 +251,7 @@ Can we create a browser-based tool for reproducing adaptive group-sequential tri
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -328,7 +328,7 @@ Can network meta-analysis also accommodate individual patient data alongside agg
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -405,7 +405,7 @@ How inequitably are clinical trials distributed across Africa relative to its di
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -482,7 +482,7 @@ When has accumulating trial evidence already answered a clinical question, and h
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -559,7 +559,7 @@ Our question was can statistical forensic methods reliably detect data fabricati
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -636,7 +636,7 @@ Can a single-file browser application produce transparent and reproducible GRADE
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -713,7 +713,7 @@ Can Bayesian random-effects meta-analysis with prior sensitivity analysis be don
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -790,7 +790,7 @@ Do the numerical outputs of large-scale meta-analytic workflows follow digit pat
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -867,7 +867,7 @@ When eight publication-bias methods are applied to the same meta-analysis, do th
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -944,7 +944,7 @@ Can a fail-closed certification protocol stop silently incorrect LLM outputs fro
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1021,7 +1021,7 @@ Can we surmise the probability of a cardiovascular clinical trial meeting its pr
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1098,7 +1098,7 @@ Using 52,765 cardiology trials on ClinicalTrials.gov from 2005 to 2026, what was
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1175,7 +1175,7 @@ Should cross-design evidence triangulation be quantified computationally to stre
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1252,7 +1252,7 @@ Can automated diagnostics detect meta-overfitting where pooled estimates are dri
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1329,7 +1329,7 @@ Are the MA4 R-index measuring analytic stability and the Hartung-Knapp-Sidik-Jon
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1406,7 +1406,7 @@ Does precision-weighted cross-validation provide less biased R-squared estimates
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1483,7 +1483,7 @@ Can Bayesian hierarchical models, network meta-analysis, and overfitting diagnos
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1561,7 +1561,7 @@ Can a static website deliver accessible private cardiology information while mai
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1639,7 +1639,7 @@ Do SGLT2 inhibitors reduce heart failure hospitalisation and cardiovascular deat
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1717,7 +1717,7 @@ Can automated extraction from Cochrane systematic reviews produce research-ready
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1795,7 +1795,7 @@ Can researchers decompose multi-component interventions into individual active i
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1873,7 +1873,7 @@ Can distribution-free prediction intervals provide guaranteed coverage for the n
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -1951,7 +1951,7 @@ Can a browser-based file deliver transparent, reproducible cardiorenal evidence 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2029,7 +2029,7 @@ How quiet is the older cardiovascular trial record in ClinicalTrials.gov once he
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2107,7 +2107,7 @@ Do newer ClinicalTrials.gov completion cohorts look more transparent once every 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2185,7 +2185,7 @@ Which therapeutic areas look quietest in ClinicalTrials.gov once older closed in
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2263,7 +2263,7 @@ How visible is older interventional trial evidence in ClinicalTrials.gov when po
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2341,7 +2341,7 @@ Which sponsor groups account for the largest registry-visible non-disclosure bur
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2419,7 +2419,7 @@ How large is the industry-specific disclosure gap inside the live ClinicalTrials
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2497,7 +2497,7 @@ How much older metabolic trial evidence on ClinicalTrials.gov remains quiet once
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2575,7 +2575,7 @@ How much registered oncology evidence still goes quiet on ClinicalTrials.gov onc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2653,7 +2653,7 @@ Does reporting failure in ClinicalTrials.gov differ systematically by trial phas
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2731,7 +2731,7 @@ How often do ClinicalTrials.gov records with no linked publication hide an exter
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2809,7 +2809,7 @@ Did ClinicalTrials.gov completion cohorts become more transparent after FDAAA 80
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2887,7 +2887,7 @@ Can automated search strategies for ClinicalTrials.gov achieve high recall again
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -2965,7 +2965,7 @@ Is the ClinicalTrials.gov missing-results backlog spread evenly across sponsors,
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3043,7 +3043,7 @@ Which sponsor classes account for the biggest and worst ClinicalTrials.gov discl
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3121,7 +3121,7 @@ What information disappears from ClinicalTrials.gov even before one asks whether
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3199,7 +3199,7 @@ Can an integrated pipeline map the cardiovascular Phase III trial landscape by r
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3277,7 +3277,7 @@ Can a fully offline tool extract structured clinical trial data from publication
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3355,7 +3355,7 @@ Can browser-based dose-response meta-analysis match the numerical accuracy of es
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3433,7 +3433,7 @@ Does the standard random-effects assumption of a single normal effect distributi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3511,7 +3511,7 @@ Is there a comprehensive ready-to-use R package of diagnostic test accuracy data
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3589,7 +3589,7 @@ Can systematic reviewers synthesize diagnostic accuracy data using hierarchical 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3666,7 +3666,7 @@ Can a modular plugin framework systematize AI-assisted evidence synthesis workfl
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3744,7 +3744,7 @@ Can a structured digital note board with confidence tagging and filtering improv
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3822,7 +3822,7 @@ Can machine learning models reliably infer comparative treatment effects from cl
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3900,7 +3900,7 @@ When does a cumulative meta-analysis conclusion become stable across reasonable 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -3978,7 +3978,7 @@ Are six dimensions of evidence quality in systematic reviews correlated or ortho
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4056,7 +4056,7 @@ Can adversarial specification search quantify how much a meta-analytic conclusio
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4134,7 +4134,7 @@ Can an open-access browser-based platform deliver comprehensive evidence synthes
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4212,7 +4212,7 @@ Can a multi-layered verification framework detect fragile meta-analytic estimate
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4290,7 +4290,7 @@ Can a standalone browser application reproduce R metafor results for finerenone 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4368,7 +4368,7 @@ Does a browser-based focus timer with integrated task management and session log
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4446,7 +4446,7 @@ Do fragility indices vary systematically across cardiovascular meta-analyses, an
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4524,7 +4524,7 @@ How robust are Cochrane meta-analysis conclusions when analysts make different b
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4602,7 +4602,7 @@ Can a browser-based tool compute the Fragility Index and Fragility Quotient for 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4680,7 +4680,7 @@ Can grey relational analysis provide a transparent and robust alternative to inv
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4758,7 +4758,7 @@ Can trial registry data provide a quantitative sensitivity framework for publica
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4836,7 +4836,7 @@ Can a registry-first synthesis engine quantify reporting gaps in heart failure w
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4914,7 +4914,7 @@ Can health technology assessment analysts unify economic modeling, evidence synt
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -4992,7 +4992,7 @@ Can an open-source browser-based tool replace proprietary software for transpare
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5070,7 +5070,7 @@ Can automated information adequacy, fragility, and publication bias assessment i
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5148,7 +5148,7 @@ Can population drift between historical trial cohorts and contemporary populatio
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5226,7 +5226,7 @@ Can a unified framework synthesize multiple evidence dimensions into a single He
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5304,7 +5304,7 @@ Can a quantitative forensic framework detect design-based bias in network meta-a
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5382,7 +5382,7 @@ Can a browser tool perform adjusted indirect treatment comparisons using the Buc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5460,7 +5460,7 @@ Can researchers conduct individual participant data meta-analysis reproducibly w
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5538,7 +5538,7 @@ Can quantile meta-analysis of individual participant data detect treatment effec
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5616,7 +5616,7 @@ Can a persistent browser-based kanban board with drag-and-drop provide adequate 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5694,7 +5694,7 @@ Can fully automated extraction of Kaplan-Meier survival curves from published PD
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5772,7 +5772,7 @@ Can published Kaplan-Meier curves be accurately reconstructed into individual pa
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5850,7 +5850,7 @@ Can a R package unify population transportability, sequential monitoring, and Ba
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -5928,7 +5928,7 @@ Can a browser application automate the surveillance and analytic refresh cycles 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6006,7 +6006,7 @@ Can a HTML file serve as a living meta-analysis dashboard across multiple therap
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6084,7 +6084,7 @@ Can large language models automate the extraction and synthesis of numerical res
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6161,7 +6161,7 @@ Can a static single-page site serve as a living portfolio communicating validati
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6239,7 +6239,7 @@ How many studies does a planned random-effects meta-analysis need to achieve ade
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6317,7 +6317,7 @@ Can meta-analytic predictive priors and dynamic borrowing be made accessible thr
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6395,7 +6395,7 @@ Can a browser-based landing page organize over 40 meta-analysis tools spanning e
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6473,7 +6473,7 @@ Can maximum entropy reconstruction recover individual patient data from summary 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6551,7 +6551,7 @@ Can meta-analytic estimates be evaluated against minimal clinically important di
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6629,7 +6629,7 @@ Do meta-analysis conclusions change when all defensible analytical specification
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6707,7 +6707,7 @@ Do standard random-effects meta-analyses mask systematic publication bias in met
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6785,7 +6785,7 @@ Does the magnitude of early meta-analytic effects systematically decay as new ev
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6862,7 +6862,7 @@ How prevalent are computationally detectable methodological flaws across Cochran
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -6940,7 +6940,7 @@ Can information-theoretic metrics detect heterogeneity features that I-squared i
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7018,7 +7018,7 @@ Can a browser-based tool reliably extract structured effect estimates from clini
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7096,7 +7096,7 @@ Can subset enumeration identify which studies in a meta-analysis are most respon
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7174,7 +7174,7 @@ Can certainty-aware weighting improve random-effects meta-analysis when study-le
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7252,7 +7252,7 @@ Can unsupervised clustering of multi-dimensional quality metrics from eight inde
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7330,7 +7330,7 @@ Does a browser tool integrating density-power-divergence robust pooling, right-t
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7408,7 +7408,7 @@ Can six advanced meta-analytic methods missing from standard software be impleme
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7486,7 +7486,7 @@ Can an integrated platform combining meta-analysis, network meta-analysis, and h
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7563,7 +7563,7 @@ Will overfitting inflate the apparent proportion of heterogeneity explained in p
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7640,7 +7640,7 @@ How frequently do published meta-regressions operate in statistical regimes wher
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7717,7 +7717,7 @@ Can mixed-effects meta-regression with permutation-based inference be fully impl
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7794,7 +7794,7 @@ Will a meta-analysis predict the probability that a future independent trial wil
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7871,7 +7871,7 @@ Can a new clinical trial replicate a significant Cochrane meta-analysis conclusi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -7948,7 +7948,7 @@ Can automated diagnosis and correction of meta-analytic pathologies create bette
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8025,7 +8025,7 @@ Can Cochrane meta-analyses be computationally reproduced when an automated pipel
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8102,7 +8102,7 @@ During the accumulation of primary studies does a cumulative meta-analysis poole
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8179,7 +8179,7 @@ Will a zero-install browser application match the statistical accuracy of valida
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8256,7 +8256,7 @@ Will a provenance-first discovery platform map the cardiovascular trial universe
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8333,7 +8333,7 @@ Will a browser-based application implement dose-response meta-analysis with nonl
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8410,7 +8410,7 @@ Will automated extraction from open-access abstracts produce pooled diagnostic a
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8487,7 +8487,7 @@ Will a zero-install browser application provide clinician-accessible network met
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8564,7 +8564,7 @@ Will robust estimation methods protect meta-analytic conclusions from outlier co
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8641,7 +8641,7 @@ Can eight interoperable browser-based meta-analysis tools connected through a co
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8718,7 +8718,7 @@ What would be dependent effect sizes across a comprehensive corpus of Cochrane p
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8795,7 +8795,7 @@ Do standard multilevel meta-analysis methods fail on real-world Cochrane data ra
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8872,7 +8872,7 @@ How reliably do pooled estimates from three-level meta-analytic models show stab
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -8949,7 +8949,7 @@ Can meta-analysts pool studies when primary reports present results in different
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9026,7 +9026,7 @@ Can a browser-based multiverse engine enumerate all defensible analytic specific
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9103,7 +9103,7 @@ Can a Python package provide a unified interface for individual patient data met
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9180,7 +9180,7 @@ Will outcome-specific empirical priors from the Cochrane evidence base stabilize
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9257,7 +9257,7 @@ Can network meta-analysis with dose-response modeling be done in a single browse
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9334,7 +9334,7 @@ Will a single browser file replace the multi-tool workflow of network meta-analy
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9411,7 +9411,7 @@ How do treatment rankings in network meta-analysis change when transported to a 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9488,7 +9488,7 @@ Does the Number Needed to Treat from a meta-analysis vary across patient populat
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9565,7 +9565,7 @@ Is the prevalence of statistical patterns consistent with outcome reporting bias
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9642,7 +9642,7 @@ Is there primary study overlap across large collections of Cochrane systematic r
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9719,7 +9719,7 @@ Can reviewers conducting umbrella reviews systematically quantify primary-study 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9796,7 +9796,7 @@ Can a standardized open dataset of Cochrane meta-analyses allow meta-research wi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9873,7 +9873,7 @@ Will a unified browser application deliver production-grade pairwise meta-analys
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -9950,7 +9950,7 @@ Can bootstrap aggregation resolve the regularization paradox - whereby LASSO inc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10027,7 +10027,7 @@ Does precision-weighted leave-one-out cross-validation provide unbiased R-square
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10104,7 +10104,7 @@ When do methodological choices among heterogeneity estimators and confidence int
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10181,7 +10181,7 @@ Will a single-page portfolio effectively communicate the scope and validation st
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10258,7 +10258,7 @@ Will the pooled effect from a significant meta-analysis be expected to apply in 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10335,7 +10335,7 @@ Will an interactive browser-based tool improve structured compliance evaluation 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10412,7 +10412,7 @@ Can systematic reviewers produce publication-ready PRISMA 2020 flow diagrams wit
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10489,7 +10489,7 @@ Will a structured palpitations programme delivered via a clinical website reduce
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10567,7 +10567,7 @@ Will a browser-based application implement publication-quality prognostic meta-a
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10644,7 +10644,7 @@ Do Trim and Fill, PET-PEESE, and the Copas selection model perform for correctin
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10721,7 +10721,7 @@ Can meta-analysts assess publication bias using multiple complementary methods w
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10798,7 +10798,7 @@ Will a deterministic regex pipeline extract effect estimates from randomized con
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10875,7 +10875,7 @@ In adults receiving extended anticoagulation after venous thromboembolism: do re
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -10952,7 +10952,7 @@ What number of completed cardiovascular trial evidence registered on ClinicalTri
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11029,7 +11029,7 @@ What characteristics can define available meta-regression datasets across medica
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11106,7 +11106,7 @@ Will ensemble and spectral approaches improve inconsistency detection and robust
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11183,7 +11183,7 @@ Can we used restricted mean survival time differences pooled across trials in a 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11260,7 +11260,7 @@ Will restricted mean survival time replace hazard ratios in network meta-analysi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11337,7 +11337,7 @@ Can systematic reviewers perform structured risk of bias assessment following Co
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11414,7 +11414,7 @@ With a reproducibility capsule is it possible to make robust Bayesian model-aver
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11491,7 +11491,7 @@ Will a browser-based living evidence map provide reviewer-auditable trial landsc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11568,7 +11568,7 @@ Can we detect and localize inconsistency in network meta-analysis using algebrai
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11645,7 +11645,7 @@ Can systematic reviewers generate GRADE-compliant Summary of Findings tables wit
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11722,7 +11722,7 @@ Will topological data analysis reveal hidden clustering among meta-analytic stud
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11799,7 +11799,7 @@ Can bias-sensitive ensemble estimators outperform individual methods for robust 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11876,7 +11876,7 @@ Can meta-analysis effect estimates transport to contemporary clinical population
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -11953,7 +11953,7 @@ Can a browser-based surveillance dashboard also detect unreported clinical trial
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12030,7 +12030,7 @@ Will incorporating registry denominators and modeling a silent-shift delta reduc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12107,7 +12107,7 @@ Will a governance overlay on denominator-first meta-analysis reduce false reassu
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12184,7 +12184,7 @@ Can a JavaScript library provide a complete meta-analysis engine validated for b
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12261,7 +12261,7 @@ How can clinicians perform rigorous pairwise meta-analysis entirely within a web
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12338,7 +12338,7 @@ Is a unified model jointly correct for heterogeneity, publication selection, and
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12415,7 +12415,7 @@ Can researchers conducting umbrella reviews classify evidence strength across mu
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12492,7 +12492,7 @@ Will automated benefit-harm linkage within systematic reviews produce a reproduc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12569,7 +12569,7 @@ Is conducting another trial justified given existing meta-analytic evidence, and
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12646,7 +12646,7 @@ Can automated Kaplan-Meier digitization from published PDF figures produce hazar
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12723,7 +12723,7 @@ Can a R package provide standardized access to open individual participant data 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12800,7 +12800,7 @@ Should a private repository extend an open IPD framework to handle non-redistrib
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12878,7 +12878,7 @@ Can interactive three-dimensional visualization of vitreous chamber anatomy impr
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -12956,7 +12956,7 @@ How do standard random-effects meta-analysis methods perform when the number of 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13034,7 +13034,7 @@ Can machine-learning-assisted screening be extended with stopping rules, inter-r
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13113,7 +13113,7 @@ Can a structured evidence passport distil meta-analytic uncertainty into an acti
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13190,7 +13190,7 @@ Can a portfolio generator automatically produce validated topic-specific living 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13268,7 +13268,7 @@ Can bias-adjusted meta-models correct pooled estimates when individual studies c
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13346,7 +13346,7 @@ Can an automated clinical danger detection engine provide reliable emergency tri
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13425,7 +13425,7 @@ Can the CINeMA framework for rating confidence in network meta-analysis be imple
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13503,7 +13503,7 @@ Can large language model workflows extract structured data from randomised contr
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13580,7 +13580,7 @@ Which named sponsors fail the CT.gov actual-field discipline test on missing act
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13657,7 +13657,7 @@ How much hiddenness is concentrated in closed CT.gov studies that still fail to 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13734,7 +13734,7 @@ Which named sponsors dominate the CT.gov black-box subset where older studies ha
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13811,7 +13811,7 @@ What appears when hiddenness is narrowed to black-box trials with no results, no
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13888,7 +13888,7 @@ Does ClinicalTrials.gov hiddenness fall as trials take longer from first submiss
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -13965,7 +13965,7 @@ Which named sponsors most often leave older CT.gov study pages without actual pr
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14042,7 +14042,7 @@ Which condition families still hold the largest stock of CT.gov studies unresolv
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14119,7 +14119,7 @@ Which condition families carry the most older CT.gov studies that are overdue, u
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14196,7 +14196,7 @@ Which condition families most often leave older CT.gov study pages without detai
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14273,7 +14273,7 @@ Which condition families most often leave older CT.gov study pages without actua
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14350,7 +14350,7 @@ Which condition families remain worst once excess hiddenness is measured inside 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14427,7 +14427,7 @@ Which condition families remain most ghosted once the series stops centering mis
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14504,7 +14504,7 @@ Which condition families most often leave older CT.gov study pages without both 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14581,7 +14581,7 @@ Which condition families hold the deepest overdue debt once unresolved years bey
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14658,7 +14658,7 @@ Which condition families most often leave older CT.gov study pages without the p
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14735,7 +14735,7 @@ Which condition families most often leave older CT.gov study pages without prima
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14812,7 +14812,7 @@ Which sponsors carry the largest missing-results backlogs inside disease familie
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14889,7 +14889,7 @@ Which condition families show the biggest imbalance between missing detailed des
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -14966,7 +14966,7 @@ Which country-linked CT.gov portfolios still hold the largest stock of studies u
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15043,7 +15043,7 @@ Which disease-country cells look quietest on ClinicalTrials.gov once older close
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15120,7 +15120,7 @@ Which country-linked CT.gov portfolios carry the most older studies that are ove
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15197,7 +15197,7 @@ Which country-linked CT.gov portfolios most often leave older study pages withou
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15274,7 +15274,7 @@ Which country-linked CT.gov portfolios most often leave older study pages withou
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15351,7 +15351,7 @@ Which country-linked CT.gov portfolios remain most opaque after visible study mi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15428,7 +15428,7 @@ Which country-linked CT.gov portfolios remain most ghosted above expectation onc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15505,7 +15505,7 @@ Which country-linked CT.gov portfolios most often leave older closed study pages
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15582,7 +15582,7 @@ Which country-linked CT.gov portfolios carry the deepest unresolved overdue year
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15659,7 +15659,7 @@ Which country-linked CT.gov portfolios most often leave older study pages withou
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15736,7 +15736,7 @@ Which country-linked CT.gov portfolios most often leave older study pages withou
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15813,7 +15813,7 @@ Which named countries are attached to the quietest older CT.gov studies once cou
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15890,7 +15890,7 @@ Which sponsors hold the largest missing-results stock inside country-linked CT.g
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -15967,7 +15967,7 @@ Which country-linked CT.gov portfolios show the biggest imbalance between missin
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16044,7 +16044,7 @@ Which named sponsors accumulate the most CT.gov pages that are overdue, unlinked
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16121,7 +16121,7 @@ Which primary purposes look quietest on ClinicalTrials.gov once older closed int
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16198,7 +16198,7 @@ How does geography reshape the hiddenness of major disease families once older C
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16275,7 +16275,7 @@ How much of ClinicalTrials.gov hiddenness tracks trial enrollment size once olde
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16352,7 +16352,7 @@ How much more visible are larger multi-site and multinational trials on Clinical
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16429,7 +16429,7 @@ Which industry sponsors keep reappearing once older CT.gov studies are split by 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16506,7 +16506,7 @@ Which intervention types look quietest on ClinicalTrials.gov once older closed i
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16583,7 +16583,7 @@ Which sponsors carry the biggest missing-results backlogs once older CT.gov stud
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16660,7 +16660,7 @@ Which named sponsors accumulate the most CT.gov narrative-gap pages where detail
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16737,7 +16737,7 @@ Does richer outcome specification correspond to a more visible CT.gov record onc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16814,7 +16814,7 @@ What does reporting debt look like once missing results are converted into time 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16891,7 +16891,7 @@ How large is the likely U.S.-nexus reporting debt once older CT.gov studies are 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -16968,7 +16968,7 @@ How much of CT.gov publication-link missingness survives when no-link studies ar
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17045,7 +17045,7 @@ Which CT.gov portfolios remain quieter than expected after adjusting for study m
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17122,7 +17122,7 @@ Which named CT.gov sponsors still hold the largest stock of studies unresolved a
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17199,7 +17199,7 @@ Which sponsor classes most often leave older CT.gov study pages without the prim
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17276,7 +17276,7 @@ Which named sponsors most often leave older CT.gov study pages without detailed 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17353,7 +17353,7 @@ Which named sponsors most often leave older CT.gov study pages without actual en
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17430,7 +17430,7 @@ Which named CT.gov sponsors remain worst once hiddenness is read as adjusted exc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17507,7 +17507,7 @@ Which named CT.gov sponsors remain most ghosted once silence is narrowed from mi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17584,7 +17584,7 @@ Which named CT.gov sponsors accumulate the deepest unresolved overdue years once
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17661,7 +17661,7 @@ Which named sponsors most often leave older CT.gov study pages without the prima
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17738,7 +17738,7 @@ Which named sponsors most often leave older CT.gov study pages without primary o
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17815,7 +17815,7 @@ Which named sponsors show the biggest imbalance between missing detailed descrip
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17892,7 +17892,7 @@ How much worse do stopped trials look on ClinicalTrials.gov than completed trial
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -17969,7 +17969,7 @@ Where does the black-box problem remain inside the strict U.S.-nexus CT.gov core
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18046,7 +18046,7 @@ Which sponsors still dominate the strict U.S.-nexus CT.gov core once attention s
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18123,7 +18123,7 @@ How much does trial architecture shape ClinicalTrials.gov hiddenness once older 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18200,7 +18200,7 @@ How different do sponsor-class reporting gaps look once older CT.gov studies are
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18277,7 +18277,7 @@ How different are ClinicalTrials.gov reporting gaps when older closed interventi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18356,7 +18356,7 @@ Can network meta-analysis rankings be calibrated against registry-reported enrol
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18433,7 +18433,7 @@ Can a shared analysis engine support living meta-analysis across multiple cardio
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18511,7 +18511,7 @@ Can interactive gap map visualisation identify under-researched intervention-out
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18590,7 +18590,7 @@ Can machine learning predict which meta-analytic conclusions are likely to chang
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18668,7 +18668,7 @@ Can a unified simulation framework systematically compare over 300 meta-analysis
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18746,7 +18746,7 @@ Can an interactive browser-based course teach advanced meta-analysis methods fro
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18824,7 +18824,7 @@ Can an automated pipeline enforce reporting compliance while compiling meta-anal
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18903,7 +18903,7 @@ Can a browser-based tool generate GRADE evidence profiles and Summary of Finding
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -18981,7 +18981,7 @@ Can an R package decompose multi-component interventions in network meta-analysi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19059,7 +19059,7 @@ When should a registry-first heart failure synthesis be preferred over literatur
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19137,7 +19137,7 @@ Can a browser-based collection of utility tools provide accurate mathematical vi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19215,7 +19215,7 @@ Can a central portal improve discoverability across a large portfolio of browser
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19293,7 +19293,7 @@ Can individual participant data reconstructed from published Kaplan-Meier curves
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19370,7 +19370,7 @@ Can researchers conduct individual participant data meta-analysis reproducibly w
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19448,7 +19448,7 @@ Can quantile-based meta-analysis detect heterogeneous treatment effects across p
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19527,7 +19527,7 @@ Can individual participant data be reconstructed from published summaries in a b
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19605,7 +19605,7 @@ Can automated digitisation of Kaplan-Meier curves produce coordinates accurate e
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19683,7 +19683,7 @@ Can a reproducibility bundle package evidence synthesis outputs into a self-cont
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19761,7 +19761,7 @@ Can modular evidence synthesis infrastructure be validated to clinical-grade sta
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19839,7 +19839,7 @@ What is the comparative effectiveness of left atrial appendage closure strategie
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19917,7 +19917,7 @@ Can a living meta-analysis platform provide continuously updated pooled estimate
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -19996,7 +19996,7 @@ Can a living meta-analysis dashboard combine temporal tracking, what-if analysis
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20075,7 +20075,7 @@ Is the Amulet LAA closure device non-inferior to Watchman FLX for stroke prevent
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20154,7 +20154,7 @@ Can a universal translator accurately convert between all common meta-analytic e
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20232,7 +20232,7 @@ Can combining eight independent statistical signals into a calibrated probabilit
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20310,7 +20310,7 @@ Can fragility index calculation be enhanced with GRADE certainty integration for
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20389,7 +20389,7 @@ How many studies and what total sample size does a prospective meta-analysis nee
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20467,7 +20467,7 @@ Can an annotated bibliography organised by methodological frontier map the lands
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20545,7 +20545,7 @@ How ready are frontier evidence synthesis methods for practical implementation, 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20623,7 +20623,7 @@ Can a unified platform simultaneously track cardiovascular and renal outcomes ac
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20701,7 +20701,7 @@ Can a browser-based meta-analysis platform provide methods comparable to R packa
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20779,7 +20779,7 @@ Can surrogate endpoint data be incorporated into network meta-analysis to improv
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20857,7 +20857,7 @@ Can a localised HTA platform produce recommendations calibrated to the healthcar
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -20935,7 +20935,7 @@ Can a browser-based pairwise meta-analysis platform match R metafor analytical d
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21014,7 +21014,7 @@ Can a living meta-analysis platform provide continuously updated efficacy and sa
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21092,7 +21092,7 @@ Can an offline-first browser application provide a complete systematic review wo
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21170,7 +21170,7 @@ Can a portfolio dashboard provide real-time visibility into dozens of evidence s
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21248,7 +21248,7 @@ Can a curated utility script collection automate repetitive evidence synthesis p
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21326,7 +21326,7 @@ Can narrative storytelling communicate consequences of acting on biological plau
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21404,7 +21404,7 @@ Can a lightweight template reduce deployment time for a new living meta-analysis
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21482,7 +21482,7 @@ Can a unified build system manage heterogeneous infrastructure requirements acro
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21560,7 +21560,7 @@ Can a JavaScript pipeline orchestrator coordinate evidence synthesis workflows i
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21639,7 +21639,7 @@ Can a living meta-analysis track emerging evidence for transcatheter edge-to-edg
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21717,7 +21717,7 @@ Can a three-layer architecture combining fail-closed certification, structured c
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21795,7 +21795,7 @@ Can TruthCert v3.1.0 be validated through systematic testing covering all twelve
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21873,7 +21873,7 @@ Can statistical modelling identify optimal threshold parameters maximising sensi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -21952,7 +21952,7 @@ Can trial sequential analysis with alpha-spending and futility boundaries be per
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22030,7 +22030,7 @@ Can a browser-based Bayesian risk engine provide probabilistic water safety asse
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22107,7 +22107,7 @@ Can public citation packets safely reach real DOI registration without resolving
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22184,7 +22184,7 @@ Can an internal research portfolio be converted into citation packets and DOI-fa
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22261,7 +22261,7 @@ Can the portfolio atlas be linked back to live folder evidence rather than relyi
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22338,7 +22338,7 @@ Can a heterogeneous C-drive methods portfolio be exported into a standards-facin
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22415,7 +22415,7 @@ Can a portfolio atlas become a research package rather than a browser view of sc
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22492,7 +22492,7 @@ Can a C-drive portfolio be prioritised with FAIR-style signals even when the sna
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22569,7 +22569,7 @@ Can a fragmented C-drive research portfolio be converted into a public discovery
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22646,7 +22646,7 @@ Can portfolio layers be fused into one operational view rather than read one too
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22723,7 +22723,7 @@ Can a portfolio inventory also show how its evidence was transformed, not just w
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22800,7 +22800,7 @@ Can a portfolio layer expose where an evidence-synthesis estate is organized wel
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22877,7 +22877,7 @@ Can one tracker govern rewriting and publication of a multi-project E156 portfol
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -22954,7 +22954,7 @@ Can the portfolio's unresolved queue be reduced before more dashboards inherit t
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23031,7 +23031,7 @@ What fraction of Cochrane meta-analyses produce evidence actionable enough for a
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23108,7 +23108,7 @@ Can automated text analysis of systematic review manuscripts produce AMSTAR-2 as
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23185,7 +23185,7 @@ How often do Cochrane meta-analyses sharing primary studies reach contradictory 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23262,7 +23262,7 @@ Can equity-stratified meta-analysis quantify differential treatment effects acro
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23339,7 +23339,7 @@ Can a network of shared primary studies across Cochrane reviews reveal structura
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23416,7 +23416,7 @@ Can copula-based dependence modelling capture joint distributions of correlated 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23493,7 +23493,7 @@ Can information-theoretic measures provide more interpretable heterogeneity char
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23570,7 +23570,7 @@ Can extreme value theory provide a principled framework for identifying outlier 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23647,7 +23647,7 @@ How long does statistical significance persist in Cochrane meta-analyses once in
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23724,7 +23724,7 @@ Can rapid gap map generation from structured classification data identify priori
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23801,7 +23801,7 @@ Can a composite score combining statistical robustness, methodological quality, 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23878,7 +23878,7 @@ Can spectral decomposition reveal periodic or structured patterns in meta-analyt
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -23955,7 +23955,7 @@ Can topological data analysis reveal hidden clustering that forest plots and het
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24032,7 +24032,7 @@ Can projecting meta-analytic evidence into non-Euclidean spaces reveal propertie
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24109,7 +24109,7 @@ Can information geometry provide a natural distance metric between studies respe
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24186,7 +24186,7 @@ Can automated forensic screening of ClinicalTrials.gov records detect reporting 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24263,7 +24263,7 @@ Can a modular prototype framework accelerate development of frontier meta-analys
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24340,7 +24340,7 @@ Can Value of Information analysis from meta-analysis output quantify whether fun
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24417,7 +24417,7 @@ Does industry funding systematically modify treatment effect estimates, and can 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24494,7 +24494,7 @@ How well do current meta-analyses address outcomes patients value most? We devel
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24571,7 +24571,7 @@ Can interactive prior elicitation using SHELF make Bayesian meta-analysis priors
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24648,7 +24648,7 @@ Can qualitative evidence synthesis be implemented in a browser to make meta-ethn
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24725,7 +24725,7 @@ Can a lightweight browser tool generate publication-quality SROC curves with biv
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24802,7 +24802,7 @@ Can e-value-based sequential testing provide anytime-valid meta-analytic inferen
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24879,7 +24879,7 @@ What is the historical attrition rate for cardiovascular drugs and techniques, a
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -24956,7 +24956,7 @@ Can causal transportability methods adjust pooled effects for differences betwee
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25033,7 +25033,7 @@ Can trust-weighted meta-meta-analysis quantify evidence erosion when quality, fr
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25110,7 +25110,7 @@ What is the survival curve for clinical trials from registration through complet
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25187,7 +25187,7 @@ Can surrogate validation be embedded within NMA to produce rankings adjusted for
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25264,7 +25264,7 @@ How many patients died because anti-arrhythmic drugs were prescribed based on su
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25341,7 +25341,7 @@ How did four decades of observational evidence showing cardiac protection from H
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25418,7 +25418,7 @@ How many patients died because guidelines recommended perioperative beta-blocker
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25495,7 +25495,7 @@ Can a meta-analysis of seven consistent small trials be trusted when a mega-tria
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25572,7 +25572,7 @@ How many patients died because aprotinin was used for 14 years based on confound
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25649,7 +25649,7 @@ Can post-hoc analysis timepoint changes hide safety signals, and how many heart 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25726,7 +25726,7 @@ Can a cardiovascular safety trial be designed to systematically underdetect the 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25803,7 +25803,7 @@ Does tighter glucose control prevent cardiovascular death, or can aggressive sur
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25880,7 +25880,7 @@ Can expert surgical experience distinguish treatment effects from placebo when 7
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -25957,7 +25957,7 @@ How did a ghost-written publication create the illusion that paroxetine worked f
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26034,7 +26034,7 @@ What happens to efficacy conclusions when 74 percent of patient data was never p
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26111,7 +26111,7 @@ Can a meta-analysis of 28 consistent small trials showing 68 percent harm be ent
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26185,7 +26185,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26259,7 +26259,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26335,7 +26335,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26413,7 +26413,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26489,7 +26489,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26565,7 +26565,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26641,7 +26641,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26717,7 +26717,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26793,7 +26793,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26869,7 +26869,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -26947,7 +26947,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27026,7 +27026,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27102,7 +27102,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27178,7 +27178,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27254,7 +27254,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27330,7 +27330,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27406,7 +27406,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27483,7 +27483,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27559,7 +27559,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27635,7 +27635,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27711,7 +27711,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27787,7 +27787,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27863,7 +27863,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -27939,7 +27939,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28015,7 +28015,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28091,7 +28091,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28167,7 +28167,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28243,7 +28243,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28319,7 +28319,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28395,7 +28395,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28477,7 +28477,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28553,7 +28553,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28629,7 +28629,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28708,7 +28708,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28785,7 +28785,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28862,7 +28862,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -28939,7 +28939,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29016,7 +29016,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29094,7 +29094,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29169,7 +29169,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29244,7 +29244,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29319,7 +29319,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29394,7 +29394,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29469,7 +29469,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29544,7 +29544,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29619,7 +29619,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29694,7 +29694,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29769,7 +29769,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29844,7 +29844,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29919,7 +29919,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -29993,7 +29993,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30069,7 +30069,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30145,7 +30145,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30221,7 +30221,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30297,7 +30297,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30373,7 +30373,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30449,7 +30449,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30525,7 +30525,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30601,7 +30601,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30677,7 +30677,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30753,7 +30753,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30829,7 +30829,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30905,7 +30905,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -30981,7 +30981,7 @@ Can WHO Global Health Observatory data be systematically extracted, standardized
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31057,7 +31057,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31133,7 +31133,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31209,7 +31209,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31285,7 +31285,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31361,7 +31361,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31437,7 +31437,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31513,7 +31513,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31589,7 +31589,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31665,7 +31665,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31741,7 +31741,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31817,7 +31817,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31893,7 +31893,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -31969,7 +31969,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32047,7 +32047,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32125,7 +32125,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32203,7 +32203,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32279,7 +32279,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32355,7 +32355,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32431,7 +32431,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32507,7 +32507,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32583,7 +32583,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32659,7 +32659,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32735,7 +32735,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32811,7 +32811,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32887,7 +32887,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -32963,7 +32963,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33039,7 +33039,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33115,7 +33115,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33191,7 +33191,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33267,7 +33267,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33343,7 +33343,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33419,7 +33419,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33495,7 +33495,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33571,7 +33571,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33647,7 +33647,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33723,7 +33723,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33799,7 +33799,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33875,7 +33875,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -33951,7 +33951,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34027,7 +34027,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34103,7 +34103,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34179,7 +34179,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34255,7 +34255,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34331,7 +34331,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34407,7 +34407,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34483,7 +34483,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34559,7 +34559,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34635,7 +34635,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34711,7 +34711,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34787,7 +34787,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34863,7 +34863,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -34942,7 +34942,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35026,7 +35026,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35106,7 +35106,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35184,7 +35184,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35262,7 +35262,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35340,7 +35340,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35418,7 +35418,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35496,7 +35496,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35574,7 +35574,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35652,7 +35652,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35730,7 +35730,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35808,7 +35808,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35886,7 +35886,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -35964,7 +35964,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36042,7 +36042,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36120,7 +36120,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36198,7 +36198,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36274,7 +36274,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36350,7 +36350,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36426,7 +36426,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36571,7 +36571,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36646,7 +36646,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36721,7 +36721,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36796,7 +36796,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36871,7 +36871,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -36946,7 +36946,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37021,7 +37021,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37096,7 +37096,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37176,7 +37176,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37259,7 +37259,7 @@ At what input-precision level does aggregate-data reproduction of fixed-effects 
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37336,7 +37336,7 @@ Can a synthesis method that treats pairwise trial disagreements as the primitive
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37413,7 +37413,7 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
@@ -37492,7 +37492,7 @@ Can a Cochrane meta-analysis be reproduced to its published precision using only
 
 SUBMISSION METADATA:
 
-Corresponding author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
 ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 

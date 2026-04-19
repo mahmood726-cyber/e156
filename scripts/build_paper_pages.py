@@ -88,8 +88,14 @@ def parse_entries() -> list[dict]:
         # Submission metadata parsing — needed for refs + target journal
         sub_m = re.search(r"SUBMISSION METADATA:\s*\n(.+)", block, re.DOTALL)
         sub_text = sub_m.group(1) if sub_m else ""
-        ca_m = re.search(r"Corresponding author:\s*(.+)", sub_text)
-        entry["corresponding_author"] = ca_m.group(1).strip() if ca_m else ""
+        # Middle author = Mahmood's fixed role. Old workbook entries used
+        # "Corresponding author:" for the same line — accept either as
+        # backwards-compat in case an entry hasn't been migrated yet.
+        mid_m = (re.search(r"Middle author:\s*(.+)", sub_text)
+                 or re.search(r"Corresponding author:\s*(.+)", sub_text))
+        entry["middle_author"] = mid_m.group(1).strip() if mid_m else ""
+        orcid_m = re.search(r"^ORCID:\s*(\S.+)", sub_text, re.MULTILINE)
+        entry["orcid"] = orcid_m.group(1).strip() if orcid_m else ""
         aff_m = re.search(r"Affiliation:\s*(.+)", sub_text)
         entry["affiliation"] = aff_m.group(1).strip() if aff_m else ""
         tj_m = re.search(r"Target journal:\s*(.+)", sub_text)
@@ -231,11 +237,25 @@ def render_page(entry: dict) -> str:
     rows = []
     if entry.get("data"):
         rows.append(("Dataset", esc(entry["data"])))
-    if entry.get("corresponding_author"):
-        ca_line = esc(entry["corresponding_author"])
+    rows.append((
+        "Corresponding author",
+        "<em style='color:var(--text-dim)'>the student who claims this paper — they fill this in on the OJS submission form</em>"
+    ))
+    rows.append((
+        "First author",
+        "<em style='color:var(--text-dim)'>the student who claims this paper</em>"
+    ))
+    if entry.get("middle_author"):
+        ma_line = esc(entry["middle_author"])
+        if entry.get("orcid"):
+            ma_line += " · ORCID " + esc(entry["orcid"])
         if entry.get("affiliation"):
-            ca_line += "<br><span style='color:var(--text-dim)'>" + esc(entry["affiliation"]) + "</span>"
-        rows.append(("Mahmood (middle author)", ca_line))
+            ma_line += "<br><span style='color:var(--text-dim)'>" + esc(entry["affiliation"]) + "</span>"
+        rows.append(("Middle author (fixed)", ma_line))
+    rows.append((
+        "Senior / last author",
+        "<em style='color:var(--text-dim)'>the student's faculty supervisor — named on their claim form</em>"
+    ))
     if entry.get("target_journal"):
         rows.append(("Target journal", esc(entry["target_journal"])))
     meta_rows = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows)
