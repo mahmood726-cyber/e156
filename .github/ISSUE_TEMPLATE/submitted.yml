@@ -30,8 +30,8 @@ body:
     id: submission_id
     attributes:
       label: Submission confirmation / manuscript ID / DOI
-      description: Whatever the journal gave you when you submitted — ID number, DOI link, or manuscript tracking code
-      placeholder: "e.g. synmed-2026-0456 or https://doi.org/..."
+      description: Whatever the journal gave you when you submitted — ID number, DOI link, or manuscript tracking code.
+      placeholder: "e.g. 12345 or https://doi.org/10.xxxx/..."
     validations:
       required: true
 
@@ -40,6 +40,27 @@ body:
     attributes:
       label: Date of submission (YYYY-MM-DD)
       placeholder: "2026-05-15"
+    validations:
+      required: true
+
+  - type: input
+    id: senior_author_final
+    attributes:
+      label: Senior / last author on the submitted manuscript (MUST NOT be "TBD")
+      description: |
+        The faculty supervisor who is listed as last author on the version you just submitted to Synthēsis.
+        If your claim had "TBD - request mentor" and no faculty was assigned, STOP — do not submit yet. Contact Mahmood so a senior author from the E156 advisory pool can be nominated first.
+      placeholder: "e.g. Dr. Jane Okello, Makerere University"
+    validations:
+      required: true
+
+  - type: textarea
+    id: final_body
+    attributes:
+      label: Final 156-word body as submitted
+      description: |
+        Paste the 156-word / 7-sentence main body exactly as it appears in your OJS submission. This is checked by a validator to confirm you did not pad to 400 words — a "format-violation" label will block the auto-update until you fix it.
+      render: markdown
     validations:
       required: true
 

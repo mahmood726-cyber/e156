@@ -56,6 +56,19 @@ def parse_form_body(body: str) -> dict[str, str]:
     return out
 
 
+def _count_sentences(text: str) -> int:
+    """Count sentence terminators (., !, ?) followed by whitespace or EOL.
+
+    Matches the E156 contract counter in generate_rewrites.py. Strips trailing
+    whitespace first so "body ends." = 1 sentence.
+    """
+    stripped = text.strip()
+    if not stripped:
+        return 0
+    parts = re.split(r"(?<=[.!?])\s+", stripped)
+    return len([p for p in parts if p.strip()])
+
+
 def find_label_value(parsed: dict, *keys: str) -> str:
     """Look up any of the given slug keys, prefix-match tolerant."""
     for k in keys:
@@ -159,18 +172,61 @@ def main() -> int:
         submit_date = find_label_value(parsed, "date_of_submission", "submit_date") or today
         submission_id = find_label_value(parsed, "submission_confirmation", "submission_id", "manuscript_id", "doi")
         name = find_label_value(parsed, "your_name") or existing.get("name", "")
+
+        # P0-7 — reject "TBD - request mentor" sentinel on submission. Claim
+        # allows TBD as a placeholder; submission must have a real senior
+        # author or the "never first/last" rule can't hold on the OJS manuscript.
+        senior_final = find_label_value(
+            parsed, "senior_last_author_on_the_submitted_manuscript",
+            "senior_author_final", "senior_last_author", "senior_author", "senior"
+        )
+        if not senior_final or "tbd" in senior_final.lower():
+            print(
+                f"[warn] issue #{issue_num} SUBMITTED for #{paper_num} by '{user}' "
+                f"but senior_author_final is {senior_final!r}. The 'TBD - request "
+                f"mentor' sentinel may not carry into submission. Refusing update."
+            )
+            return 2
+
+        # P0-6 — validate the pasted final body against the E156 contract:
+        # ≤ 156 words AND exactly 7 sentences. If either fails, return 2 so
+        # the GH Action surfaces the violation in its logs and labels the
+        # issue 'format-violation' (see workflow). Student must edit the
+        # issue body to pass the contract before the auto-update runs.
+        final_body = find_label_value(parsed, "final_156_word_body_as_submitted",
+                                      "final_body", "final_156_word_body")
+        if final_body:
+            wc = len(final_body.split())
+            sc = _count_sentences(final_body)
+            if wc > 156 or sc != 7:
+                print(
+                    f"[warn] issue #{issue_num} SUBMITTED for #{paper_num} — "
+                    f"format check failed: words={wc} (≤156), sentences={sc} (=7). "
+                    f"Refusing auto-update; add label 'format-violation' and ask "
+                    f"student to revise."
+                )
+                return 2
+        else:
+            print(
+                f"[warn] issue #{issue_num} SUBMITTED for #{paper_num} but no "
+                f"`final_body` field found in issue. Refusing update — ensure "
+                f"the current submitted.yml template is used."
+            )
+            return 2
+
         claims[paper_num] = {
             **existing,
             "name": name,
             "status": "submitted",
             "submit_date": submit_date,
             "submission_id": submission_id,
+            "senior_author_final": senior_final,
             "issue_number": int(issue_num) if issue_num else None,
             "github_user": user,
         }
         if "claim_date" not in claims[paper_num]:
             claims[paper_num]["claim_date"] = claim_date
-        print(f"[info] marked #{paper_num} SUBMITTED by {name} (issue #{issue_num})")
+        print(f"[info] marked #{paper_num} SUBMITTED by {name}, senior: {senior_final!r} (issue #{issue_num})")
 
     elif "extension" in labels:
         # 10-day auto-approved extension.
