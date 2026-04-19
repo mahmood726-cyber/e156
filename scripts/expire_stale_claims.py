@@ -28,7 +28,9 @@ EXTENSION_DAYS = 10
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    # P2-7 — guard docstring-based description against a stripped __doc__.
+    desc = (__doc__ or "Expire stale E156 claims.").splitlines()[0]
+    ap = argparse.ArgumentParser(description=desc)
     ap.add_argument("--apply", action="store_true", help="actually remove stale entries (default is dry-run)")
     ap.add_argument("--window", type=int, default=DEFAULT_WINDOW_DAYS, help=f"days until claim expires (default {DEFAULT_WINDOW_DAYS}; +{EXTENSION_DAYS} if extended)")
     args = ap.parse_args()

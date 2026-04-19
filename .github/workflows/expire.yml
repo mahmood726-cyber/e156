@@ -1,0 +1,45 @@
+name: Expire stale claims
+
+on:
+  schedule:
+    # Weekly, Monday 04:00 UTC — quiet period in UK & East Africa
+    - cron: '0 4 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Shared with update-claims.yml so a live claim update can't race this
+# cleanup. Both workflows write claims.json.
+concurrency:
+  group: claims-json
+  cancel-in-progress: false
+
+jobs:
+  expire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Expire any claim older than its window (30d or 40d if extended)
+        run: python scripts/expire_stale_claims.py --apply
+
+      - name: Commit and push claims.json (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add claims.json
+          if git diff --cached --quiet; then
+            echo "No expired claims this run."
+            exit 0
+          fi
+          git commit -m "auto: expire stale claims ($(date -u +%F))"
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push rejected; rebasing (attempt $i/3)"
+            git pull --rebase origin "$(git branch --show-current)"
+          done
+          echo "failed to push after 3 rebases" >&2
+          exit 1

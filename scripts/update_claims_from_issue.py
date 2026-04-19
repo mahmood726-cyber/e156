@@ -110,6 +110,19 @@ def main() -> int:
         print(f"[warn] no paper_number parseable from issue #{issue_num}; skipping")
         return 0
 
+    # P2-6 — bound paper_num to the real workbook range. Rejects spoofed
+    # giant/negative numbers from a weaponised title. 500 is ample headroom
+    # over the current workbook max (496).
+    try:
+        n = int(paper_num)
+    except ValueError:
+        print(f"[warn] paper_num {paper_num!r} is not an integer; skipping")
+        return 0
+    if n < 1 or n > 600:
+        print(f"[warn] paper_num {n} out of expected range [1, 600]; skipping")
+        return 0
+    paper_num = str(n)
+
     # Load existing claims
     if CLAIMS.is_file():
         claims = json.loads(CLAIMS.read_text(encoding="utf-8") or "{}")
