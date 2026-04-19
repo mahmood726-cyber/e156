@@ -3594,9 +3594,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/DTA_Pro_Review
-  Protocol:  https://github.com/mahmood726-cyber/DTA_Pro_Review/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/dta_pro_review/
+  Code:      https://mahmood726-cyber.github.io/e156/paper/48.html
+  Protocol:  https://mahmood726-cyber.github.io/e156/paper/48.html
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/48.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
   1. Reitsma JB et al. 2005. Bivariate analysis of sensitivity and specificity produces informative summary measures in diagnostic reviews. J Clin Epidemiol. 58(10):982-990. doi:10.1016/j.jclinepi.2005.02.022
@@ -9339,9 +9339,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/NMAhtml
-  Protocol:  https://github.com/mahmood726-cyber/NMAhtml/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/nmahtml/
+  Code:      https://mahmood726-cyber.github.io/e156/paper/123.html
+  Protocol:  https://mahmood726-cyber.github.io/e156/paper/123.html
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/123.html
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -19064,9 +19064,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/hfpef_registry_calibration
-  Protocol:  https://github.com/mahmood726-cyber/hfpef_registry_calibration/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/hfpef_registry_calibration/
+  Code:      https://mahmood726-cyber.github.io/e156/paper/252.html
+  Protocol:  https://mahmood726-cyber.github.io/e156/paper/252.html
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/252.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
@@ -27031,9 +27031,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/TrialDiversityAtlas
-  Protocol:  https://github.com/mahmood726-cyber/TrialDiversityAtlas/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/trialdiversityatlas/
+  Code:      https://mahmood726-cyber.github.io/e156/paper/353.html
+  Protocol:  https://mahmood726-cyber.github.io/e156/paper/353.html
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/353.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
   1. Zarin DA, Tse T, Williams RJ, Rajakannan T. 2017. Update on trial registration 11 years after the ICMJE policy was established. N Engl J Med. 376(4):383-391. doi:10.1056/NEJMsr1601330
