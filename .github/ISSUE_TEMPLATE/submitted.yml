@@ -1,4 +1,4 @@
-name: Confirm submission to Synthesis Medicine
+name: Confirm submission to Synthēsis
 description: Report that you've submitted your rewrite to the journal
 title: "[SUBMITTED #____] "
 labels: [submitted]
@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         ## Confirm submission
-        Use this after you've submitted your rewrite to Synthesis Medicine.
+        Use this after you've submitted your rewrite to Synthēsis.
         This marks the paper as SUBMITTED on the student board and locks in your first-authorship.
 
   - type: input

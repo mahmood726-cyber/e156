@@ -92,6 +92,10 @@ def parse_entries() -> list[dict]:
         entry["affiliation"] = aff_m.group(1).strip() if aff_m else ""
         tj_m = re.search(r"Target journal:\s*(.+)", sub_text)
         entry["target_journal"] = tj_m.group(1).strip() if tj_m else ""
+        # Competing-interests block: multi-line, terminated by next 'Author' or 'AI' header
+        ci_m = re.search(r"Competing interests:\s*(.+?)(?=\n\s*\n\S|\nAuthor contributions|\nAI disclosure|\Z)",
+                         sub_text, re.DOTALL)
+        entry["competing_interests"] = re.sub(r"\s+", " ", ci_m.group(1)).strip() if ci_m else ""
         refs = []
         ref_match = re.search(r"References\s*\([^)]*\):\s*\n((?:\s*\d+\.\s.+\n?)+)", sub_text)
         if ref_match:
@@ -169,6 +173,8 @@ footer a{{color:var(--text-dim);text-decoration:underline}}
 
 {refs_section}
 
+{coi_section}
+
 <div class="action-bar">
   <a class="btn primary" href="{claim_url}" target="_blank" rel="noopener">▶ Claim this paper</a>
   {code_btn}
@@ -239,6 +245,18 @@ def render_page(entry: dict) -> str:
         )
         refs_section = f'<section class="refs"><h2>References</h2><ol>{refs_html}</ol></section>'
 
+    # Competing interests (P0-5): render the editorial-board COI on the public
+    # landing page. Required because Mahmood serves on the Synthēsis editorial
+    # board; public disclosure at the canonical per-paper URL is part of the
+    # feedback_e156_authorship.md contract.
+    coi_section = ""
+    if entry.get("competing_interests"):
+        coi_section = (
+            '<section><h2>Competing interests</h2>'
+            f'<p style="margin:0;color:var(--text);font-size:0.9rem;line-height:1.6;">'
+            f'{esc(entry["competing_interests"])}</p></section>'
+        )
+
     # Button HTML
     code_btn = (f'<a class="btn" href="{esc(entry["code_url"])}" target="_blank" rel="noopener">'
                 f'Source code ↗</a>') if entry.get("code_url") else ""
@@ -252,6 +270,7 @@ def render_page(entry: dict) -> str:
         body_section=body_section,
         meta_rows=meta_rows,
         refs_section=refs_section,
+        coi_section=coi_section,
         claim_url=claim_url,
         code_btn=code_btn,
         protocol_btn=protocol_btn,
