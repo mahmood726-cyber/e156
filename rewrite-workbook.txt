@@ -32286,7 +32286,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
   Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/FINERENONE_REVIEW.html
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/415.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
