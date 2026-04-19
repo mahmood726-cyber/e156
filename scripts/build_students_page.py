@@ -432,9 +432,9 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 <div class="toolbar">
   <div class="container">
     <div class="toolbar-row">
-      <input type="search" id="search" placeholder="Search title, body, data, topic...">
-      <select id="filter-topic"><option value="">All topics</option></select>
-      <select id="filter-status">
+      <input type="search" id="search" aria-label="Search papers by title, body, data, or topic" placeholder='Search e.g. "heart failure" or "diagnostic"'>
+      <select id="filter-topic" aria-label="Filter by topic"><option value="">All topics</option></select>
+      <select id="filter-status" aria-label="Filter by claim status">
         <option value="">All statuses</option>
         <option value="open">Open to claim</option>
         <option value="claimed">Claimed</option>

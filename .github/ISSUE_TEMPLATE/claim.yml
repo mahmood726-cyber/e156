@@ -98,5 +98,5 @@ body:
           required: true
         - label: I have nominated a senior / last author (faculty supervisor) above. Mahmood Ahmad will be a middle author only — never first, never last.
           required: true
-        - label: I will include the competing-interests statement "MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal."
+        - label: "I will include the editorial-board competing-interests statement shown under 'Authorship (mandatory)' above"
           required: true

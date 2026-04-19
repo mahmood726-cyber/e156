@@ -21,8 +21,9 @@ a:hover{text-decoration:underline}
 code,.mono{font-family:var(--mono)}
 .container{max-width:840px;margin:0 auto;padding:0 1.5rem}
 header{padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--border)}
-header .breadcrumb{color:var(--text-faint);font-size:0.85rem;font-family:var(--mono);margin-bottom:0.6rem}
-header .breadcrumb a{color:var(--text-dim)}
+header .breadcrumb{color:var(--text-dim);font-size:0.95rem;margin-bottom:0.6rem}
+header .breadcrumb a{color:var(--accent);min-height:44px;display:inline-flex;align-items:center}
+header .breadcrumb a:hover{text-decoration:underline}
 header h1{margin:0.2rem 0 0.6rem;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;letter-spacing:-0.01em}
 header .num{color:var(--accent);font-family:var(--mono);font-size:0.85em;margin-right:0.4rem}
 .badges{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.5rem}
@@ -50,7 +51,7 @@ footer a{color:var(--text-dim);text-decoration:underline}
 <div class="container">
 
 <header>
-  <div class="breadcrumb"><a href="../students.html">← E156 Student Board</a></div>
+  <div class="breadcrumb"><a href="../students.html" aria-label="Back to the E156 student board listing all papers">← E156 Student Board</a></div>
   <h1><span class="num">#276</span>Pairwise Pro v2.2: Decision-Driven Meta-Analysis Platform with 19,584 Lines of Interactive Evidence Synthesis</h1>
   <div class="badges"><span class="badge topic">methods</span><span class="badge">estimand: Pooled effect estimate with 15+ heterogeneity estimators</span></div>
 </header>
