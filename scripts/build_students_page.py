@@ -246,6 +246,8 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
   outline: none;
 }
 .toolbar input:focus, .toolbar select:focus { border-color: var(--accent); }
+/* P1-8 — visible focus ring for keyboard users (replaces the `outline:none`). */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .toolbar input[type="search"] { flex: 1 1 240px; min-width: 180px; }
 .toolbar select { min-width: 140px; }
 .toolbar .count-chip { color: var(--text-dim); font-family: var(--mono); font-size: 0.88rem; margin-left: auto; }
@@ -290,9 +292,11 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
 .card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-top: 0.6rem; }
 .btn {
   font-family: inherit;
-  padding: 0.45rem 0.9rem;
+  /* P1-9 — 44x44 touch target (WCAG 2.5.5). */
+  padding: 0.6rem 1rem;
+  min-height: 44px;
   border-radius: 5px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 500;
   border: 1px solid var(--border);
   background: var(--bg-elev);
@@ -303,6 +307,7 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
   align-items: center;
   gap: 0.3rem;
 }
+.btn[aria-disabled="true"], .btn.greyed { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
 .btn:hover { background: var(--border); text-decoration: none; }
 .btn.primary { background: var(--accent); color: #052e16; border-color: var(--accent); font-weight: 600; }
 .btn.primary:hover { background: #16a34a; }
@@ -326,8 +331,17 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
 .days-left.expired { color: #ef4444; font-weight: 700; text-transform: uppercase; }
 .ext-badge { font-family: var(--mono); font-size: 0.75em; background: rgba(59, 130, 246, 0.2); color: var(--claimed); border: 1px solid rgba(59, 130, 246, 0.4); padding: 0.05em 0.4em; border-radius: 3px; margin-left: 0.3em; }
 
-.toggle-body { background: none; border: 0; color: var(--text-faint); font-family: var(--mono); font-size: 0.75rem; cursor: pointer; padding: 0; margin-top: 0.3rem; }
+.toggle-body { background: none; border: 0; color: var(--text-faint); font-family: var(--mono); font-size: 0.8rem; cursor: pointer; padding: 0.5rem 0.2rem; min-height: 36px; margin-top: 0.3rem; }
 .toggle-body:hover { color: var(--accent); }
+/* P1-10 — claims fetch-failure banner */
+.claims-error { background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #fecaca; padding: 0.7rem 1rem; border-radius: 6px; margin: 1rem 0; font-size: 0.9rem; }
+.claims-error button { margin-left: 0.8rem; background: #ef4444; color: white; border: 0; padding: 0.35rem 0.8rem; border-radius: 4px; cursor: pointer; font-weight: 600; }
+/* P1-13 — collapsible instructions details/summary */
+.instructions-wrap { margin-bottom: 1.5rem; }
+.instructions-wrap summary { cursor: pointer; color: var(--accent); font-weight: 600; padding: 0.6rem 0; font-size: 0.95rem; list-style: none; }
+.instructions-wrap summary::-webkit-details-marker { display: none; }
+.instructions-wrap summary::before { content: "▸ "; display: inline-block; transition: transform 0.15s; }
+.instructions-wrap[open] summary::before { transform: rotate(90deg); }
 
 footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; text-align: center; }
 </style>
@@ -339,10 +353,11 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
     <h1><span class="accent">E156</span> Student Board <span class="journal-mark" title="Target journal: Synthēsis (synthesis-medicine.org)">◆ Synthēsis</span></h1>
     <p class="tagline">Pick a paper, rewrite the 156-word body, submit to <strong>◆ Synthēsis</strong> (Methods Note section, ≤400 words). Open to Ugandan medical students and anyone else interested in evidence-synthesis co-authorship. — Mahmood Ahmad, Tahir Heart Institute.</p>
 
-    <div class="instructions">
+    <details class="instructions-wrap instructions" open>
+      <summary>How this works (click to collapse)</summary>
       <h2>How this works</h2>
       <ol>
-        <li><strong>You need a GitHub account</strong> (free, 2-minute signup at <a href="https://github.com/signup" target="_blank">github.com/signup</a>). If you're a researcher you'll want one anyway.</li>
+        <li><strong>You need a GitHub account</strong> (free, 2-minute signup at <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>). If you're a researcher you'll want one anyway.</li>
         <li>Browse the list. Search by topic (e.g. "heart failure", "network meta-analysis", "diagnostic").</li>
         <li>Click <strong>▶ Claim this paper</strong> on the card you want. A GitHub form opens pre-filled with the paper number — fill in your name, affiliation, email, <strong>nominate a senior / last author (your faculty supervisor)</strong>, tick the agreements, click "Submit new issue". <strong>Within ~60 seconds this board updates automatically</strong> showing your name and a 30-day countdown (extendable to 40).</li>
         <li>Copy the <span class="mono">Current body</span> on your card. Rewrite it in your own words: 156 words, 7 sentences (Question · Dataset · Method · Result · Robustness · Interpretation · Boundary).</li>
@@ -403,7 +418,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
       <p style="font-size:0.85rem; color:var(--text-dim); margin-top:1rem;">
         <strong>Fallback:</strong> if the OJS site is down, try again after a few hours — do NOT email a .docx to a personal address. The canonical submission channel is the Synthēsis OJS submission wizard. Still confirm here once you complete the submission so the board updates.
       </p>
-    </div>
+    </details>
 
     <div class="stats">
       <div class="stat"><span class="n" id="stat-total">0</span><span class="l">total papers</span></div>
@@ -425,14 +440,21 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <option value="claimed">Claimed</option>
         <option value="submitted">Submitted</option>
       </select>
-      <span class="count-chip" id="count-chip">showing 0 of 0</span>
+      <span class="count-chip" id="count-chip" role="status" aria-live="polite">showing 0 of 0</span>
     </div>
   </div>
 </div>
 
-<div class="container">
+<main class="container" id="main">
+  <div id="claims-error" class="claims-error" hidden role="alert">
+    <!-- P1-10 — shown if claims.json fetch fails so students don't claim
+         papers that are actually already taken. -->
+    Could not load live claim data. Cards may show "Open to claim" for
+    papers that have already been claimed. Refresh to retry.
+    <button type="button" onclick="location.reload()">Refresh</button>
+  </div>
   <div class="grid" id="grid"></div>
-</div>
+</main>
 
 <footer>
   <div class="container">
@@ -449,6 +471,8 @@ const MS_PER_DAY = 86400000;
 const ENTRIES = __ENTRIES_JSON__;
 
 let claims = {};  // populated from claims.json
+let claimsLoaded = false;  // P1-10 — false if fetch failed
+let currentUser = null;    // P1-12 — set by URL `?user=` hint or localStorage
 let filterText = "";
 let filterTopic = "";
 let filterStatus = "";
@@ -460,10 +484,17 @@ function windowDaysFor(claim) {
 
 function daysLeft(claim) {
   // claim is the claims.json record. Returns integer days remaining (may be negative).
+  // P1-1 / P1-3 — use date-only difference (ignore sub-day UTC/local phase).
+  // P1-2 — NaN guard on malformed claim_date.
   if (!claim || !claim.claim_date) return null;
-  const claimMs = new Date(claim.claim_date + "T00:00:00Z").getTime();
-  const elapsed = (Date.now() - claimMs) / MS_PER_DAY;
-  return Math.ceil(windowDaysFor(claim) - elapsed);
+  const claimMs = Date.parse(claim.claim_date + "T00:00:00Z");
+  if (isNaN(claimMs)) return null;
+  const now = new Date();
+  const todayUtcMs = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const age = Math.floor((todayUtcMs - claimMs) / MS_PER_DAY);
+  // Align with Python expire_stale_claims: expired iff age > window.
+  // Returns days remaining. 0 means "expires today at midnight UTC"; < 0 is expired.
+  return windowDaysFor(claim) - age;
 }
 
 function statusOf(entry) {
@@ -471,10 +502,27 @@ function statusOf(entry) {
   const c = claims[entry.num];
   if (!c) return "open";
   if (c.status === "submitted") return "submitted";
-  // If expired (past the window + any extension), treat as reopened
+  // Expired iff days-remaining < 0.
   const left = daysLeft(c);
   if (left !== null && left < 0) return "open";
   return "claimed";
+}
+
+// P1-12 — returns the current user's active claim (if any) to grey out
+// other Claim buttons. Identity is cookie-free: we infer it from
+// `localStorage.e156_github_user` (set after the first successful claim)
+// or the URL parameter ?user=<login> (useful for testing and deep links).
+function currentUsersActiveClaim() {
+  if (!currentUser) return null;
+  for (const n in claims) {
+    const c = claims[n];
+    if (c.status !== "claimed") continue;
+    if (c.github_user !== currentUser) continue;
+    const left = daysLeft(c);
+    if (left !== null && left < 0) continue;  // expired
+    return {num: Number(n), claim: c};
+  }
+  return null;
 }
 
 function escapeHtml(s) {
@@ -518,15 +566,26 @@ function submitIssueUrl(entry) {
 function toggleCard(num, btn) {
   const body = document.getElementById('body-' + num);
   const details = document.getElementById('details-' + num);
-  const isOpen = details.style.display !== 'none';
+  const isOpen = !details.hidden;
   if (isOpen) {
     body.classList.remove('expanded');
-    details.style.display = 'none';
-    btn.textContent = 'show full details ▼';
+    details.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML = 'show full details <span aria-hidden="true">▼</span>';
   } else {
+    // P0-2 / P2-14 — render the details panel on first expand only.
+    if (!details.dataset.rendered) {
+      const entry = ENTRIES.find(e => e.num === num);
+      if (entry) {
+        details.innerHTML = renderDetails(entry);
+        details.style.cssText = 'margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid var(--border); font-size:0.86rem; line-height:1.5;';
+        details.dataset.rendered = '1';
+      }
+    }
     body.classList.add('expanded');
-    details.style.display = 'block';
-    btn.textContent = 'hide details ▲';
+    details.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    btn.innerHTML = 'hide details <span aria-hidden="true">▲</span>';
   }
 }
 
@@ -630,17 +689,22 @@ function render() {
     return;
   }
 
+  // P1-12 — if current user already holds an active claim on a DIFFERENT
+  // paper, grey out the Claim button on every other open card.
+  const mine = currentUsersActiveClaim();
+
   grid.innerHTML = matches.map(e => {
     const status = statusOf(e);
     const claim = claims[e.num];
     const statusLabel = status === "open" ? "OPEN" : status === "claimed" ? "CLAIMED" : "SUBMITTED";
-    const btnDisabled = status !== "open";
+    const blockedByMineRule = mine && status === "open" && mine.num !== e.num;
+    // P0-2 / P2-14 — lazy-render the details panel on first expand.
     return `
       <div class="card ${status}">
         <div class="card-head">
-          <span class="card-num">[${e.num}]</span>
+          <span class="card-num" aria-hidden="true">[${e.num}]</span>
           <div class="card-title">${escapeHtml(e.title || e.name)}</div>
-          <span class="card-badge ${status}">${statusLabel}</span>
+          <span class="card-badge ${status}" aria-label="status: ${statusLabel}">${statusLabel}</span>
         </div>
         <div class="card-meta">
           <span>${escapeHtml(e.type || "")}</span>
@@ -648,22 +712,22 @@ function render() {
           <span class="topic">${escapeHtml(e.topic)}</span>
         </div>
         <div class="card-body" id="body-${e.num}">${escapeHtml(e.body || "(no body)")}</div>
-        <button class="toggle-body" onclick="toggleCard(${e.num}, this)">show full details ▼</button>
-        <div class="card-details" id="details-${e.num}" style="display:none; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid var(--border); font-size:0.86rem; line-height:1.5;">
-          ${renderDetails(e)}
-        </div>
+        <button class="toggle-body" aria-expanded="false" aria-controls="details-${e.num}" data-num="${e.num}">show full details <span aria-hidden="true">▼</span></button>
+        <div class="card-details" id="details-${e.num}" hidden data-num="${e.num}"></div>
         ${claim && status !== "open"
           ? `<div class="claimed-by">${status === "submitted" ? "Submitted by" : "Claimed by"} <strong>${escapeHtml(claim.name)}</strong>${claim.affiliation ? ` · ${escapeHtml(claim.affiliation)}` : ""}${claim.claim_date ? ` · claimed ${escapeHtml(claim.claim_date)}` : ""}${status === "claimed" ? ` · ${daysLeftLabel(e)}` : ""}${status === "submitted" && claim.submit_date ? ` · submitted ${escapeHtml(claim.submit_date)}` : ""}</div>`
           : ""}
         <div class="card-actions">
           ${status === "open"
-            ? `<a class="btn primary" href="${claimIssueUrl(e)}" target="_blank" rel="noopener">▶ Claim this paper</a>`
+            ? (blockedByMineRule
+                ? `<span class="btn greyed" aria-disabled="true" title="You already hold claim #${mine.num} — submit or let it expire first.">▶ One claim at a time</span>`
+                : `<a class="btn primary" href="${claimIssueUrl(e)}" target="_blank" rel="noopener" aria-label="Claim paper ${e.num}"><span aria-hidden="true">▶ </span>Claim this paper</a>`)
             : status === "claimed"
-              ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener">✓ Confirm submission to ${TARGET_JOURNAL}</a>
+              ? `<a class="btn primary" href="${submitIssueUrl(e)}" target="_blank" rel="noopener"><span aria-hidden="true">✓ </span>Confirm submission to ${TARGET_JOURNAL}</a>
                  ${claim && !claim.extended ? `<a class="btn" href="${extensionIssueUrl(e)}" target="_blank" rel="noopener" title="Adds 10 days to your window — auto-approved">+10-day extension</a>` : ""}`
-              : `<button class="btn" disabled>✓ Submitted</button>`}
-          ${safeHref(e.code_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.code_url))}" target="_blank" rel="noopener">code ↗</a>` : ""}
-          ${safeHref(e.pages_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.pages_url))}" target="_blank" rel="noopener">dashboard ↗</a>` : ""}
+              : `<button class="btn" disabled><span aria-hidden="true">✓ </span>Submitted</button>`}
+          ${safeHref(e.code_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.code_url))}" target="_blank" rel="noopener" aria-label="Source code for paper ${e.num}">code <span aria-hidden="true">↗</span></a>` : ""}
+          ${safeHref(e.pages_url) ? `<a class="btn ghost" href="${escapeHtml(safeHref(e.pages_url))}" target="_blank" rel="noopener" aria-label="Dashboard for paper ${e.num}">dashboard <span aria-hidden="true">↗</span></a>` : ""}
         </div>
       </div>`;
   }).join("");
@@ -695,15 +759,56 @@ function populateTopicFilter() {
   });
 }
 
-// Load claims.json (fire-and-forget; if missing, start with empty)
+// P1-10 — if claims.json fetch fails, show the error banner so students
+// don't mistakenly claim papers that are actually already taken.
 fetch("claims.json", { cache: "no-cache" })
-  .then(r => r.ok ? r.json() : {})
-  .then(data => { claims = data || {}; updateStats(); render(); })
-  .catch(() => { claims = {}; updateStats(); render(); });
+  .then(r => {
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  })
+  .then(data => {
+    claims = data || {};
+    claimsLoaded = true;
+    updateStats();
+    render();
+  })
+  .catch(() => {
+    claims = {};
+    claimsLoaded = false;
+    document.getElementById("claims-error").hidden = false;
+    updateStats();
+    render();
+  });
 
-document.getElementById("search").addEventListener("input", e => { filterText = e.target.value; render(); });
+// P1-12 — remember the user's GitHub login once they've claimed once
+// (best-effort; no auth). Read from URL (?user=login) or localStorage.
+try {
+  const urlUser = new URLSearchParams(location.search).get("user");
+  if (urlUser) {
+    currentUser = urlUser;
+    localStorage.setItem("e156_github_user", urlUser);
+  } else {
+    currentUser = localStorage.getItem("e156_github_user");
+  }
+} catch (_) { /* private-mode; ignore */ }
+
+// P0-2 — debounce search so every keystroke doesn't rebuild 485 cards.
+function debounce(fn, ms) {
+  let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+}
+const searchEl = document.getElementById("search");
+const onSearch = debounce(() => { filterText = searchEl.value; render(); }, 200);
+searchEl.addEventListener("input", onSearch);
 document.getElementById("filter-topic").addEventListener("change", e => { filterTopic = e.target.value; render(); });
 document.getElementById("filter-status").addEventListener("change", e => { filterStatus = e.target.value; render(); });
+
+// P2-2 — event delegation for toggle buttons (avoids 485 inline onclicks).
+document.getElementById("grid").addEventListener("click", ev => {
+  const btn = ev.target.closest(".toggle-body");
+  if (!btn) return;
+  const num = Number(btn.dataset.num);
+  if (Number.isFinite(num)) toggleCard(num, btn);
+});
 
 populateTopicFilter();
 updateStats();
