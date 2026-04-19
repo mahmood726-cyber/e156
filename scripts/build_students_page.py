@@ -39,11 +39,20 @@ ENTRY_HEAD_RE = re.compile(r"^\[(\d+)/\d+\]\s+(.+?)\s*$", re.MULTILINE)
 def parse_entries(text: str) -> list[dict]:
     blocks = text.split(SEP)
     out: list[dict] = []
+    seen: set[int] = set()
     for block in blocks:
         m = ENTRY_HEAD_RE.search(block)
         if not m:
             continue
         num = int(m.group(1))
+        if num in seen:
+            # Workbook has some duplicate [N/T] headers (e.g. #339 and #351
+            # both appear twice with different titles). Keep the first
+            # occurrence only — matches build_paper_pages.py behavior and
+            # prevents rendering one paper num as two cards with different
+            # Dashboard URLs.
+            continue
+        seen.add(num)
         name = m.group(2)
         data = {"num": num, "name": name}
         lines = block.splitlines()
