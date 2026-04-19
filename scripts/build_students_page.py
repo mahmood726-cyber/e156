@@ -163,7 +163,7 @@ HTML_TEMPLATE = r"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>E156 Student Board — Claim, rewrite, submit to Synthesis Medicine</title>
-<meta name="description" content="483 E156 micro-papers open to student co-authorship. Target journal: Synthesis Medicine. Claim by email, 6 weeks to submit, then claim expires.">
+<meta name="description" content="__N_VISIBLE__ E156 micro-papers open to student co-authorship. Target journal: Synthesis Medicine. Claim via GitHub Issues, 6 weeks to submit, then claim expires.">
 
 <style>
 :root {
@@ -486,10 +486,9 @@ function submitIssueUrl(entry) {
   return `${GH_ISSUE_BASE}?${params.toString()}`;
 }
 
-function toggleCard(num) {
+function toggleCard(num, btn) {
   const body = document.getElementById('body-' + num);
   const details = document.getElementById('details-' + num);
-  const btn = event.target;
   const isOpen = details.style.display !== 'none';
   if (isOpen) {
     body.classList.remove('expanded');
@@ -603,7 +602,7 @@ function render() {
           <span class="topic">${escapeHtml(e.topic)}</span>
         </div>
         <div class="card-body" id="body-${e.num}">${escapeHtml(e.body || "(no body)")}</div>
-        <button class="toggle-body" onclick="toggleCard(${e.num})">show full details ▼</button>
+        <button class="toggle-body" onclick="toggleCard(${e.num}, this)">show full details ▼</button>
         <div class="card-details" id="details-${e.num}" style="display:none; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid var(--border); font-size:0.86rem; line-height:1.5;">
           ${renderDetails(e)}
         </div>
@@ -734,6 +733,7 @@ def main() -> int:
         .replace("__TARGET_JOURNAL__", TARGET_JOURNAL)
         .replace("__CLAIM_WINDOW__", str(CLAIM_WINDOW_DAYS))
         .replace("__GH_ISSUE_BASE__", GH_ISSUE_BASE)
+        .replace("__N_VISIBLE__", str(len(entries)))
         .replace("__ENTRIES_JSON__", json.dumps(compact, ensure_ascii=False))
     )
     OUT_HTML.write_text(html_out, encoding="utf-8")
