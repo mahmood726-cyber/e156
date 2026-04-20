@@ -165,15 +165,27 @@ def ref_years(refs: list[str]) -> list[int]:
 
 
 def detect_kind(entry: dict) -> str:
+    # Meta-analysis check runs FIRST so methods-papers-about-MA land here
+    # (matches build_students_page.py kindOf).
     typ = (entry.get("type") or "").lower().split("|")[0].strip()
+    full_type = (entry.get("type") or "").lower()
+    title = (entry.get("title") or "").lower()
     body = (entry.get("body") or "").lower()
+    is_ma = (
+        any(k in typ for k in ("living-ma", "meta-analysis", "pairwise", "network"))
+        or typ.startswith("meta-") or typ == "meta"
+        or "meta-analysis" in title or "meta analysis" in title
+        or "living meta" in title or "network meta" in title
+        or " nma " in full_type
+        or "meta-analysis" in body
+    )
+    if is_ma:
+        return "livingma"
     if "methods" in typ or "methodological" in typ or "tool" in typ:
         return "methods"
-    if any(k in typ for k in ("living-ma", "meta-analysis", "pairwise", "meta-", "network")) or "meta-analysis" in body:
-        return "livingma"
     if "clinical" in typ:
-        # clinical application papers: treat as living-MA if body has effect, else other
-        if extract_effect(body): return "livingma"
+        if extract_effect(body):
+            return "livingma"
     return "other"
 
 

@@ -492,11 +492,25 @@ let filterStatus = "";
 let filterKind = "";
 let filterSeries = "";
 
-// Coarse kind-classification — mirrors scripts/paper_charts.py detect_kind().
+// Coarse kind-classification. Order matters: check meta-analysis FIRST so
+// that "methods | ESTIMAND: pooled SMD" papers (130+ of them — Bayesian-MA,
+// DTA-MA, NMA, IPD-MA, dose-response-MA, etc.) land under Living MA rather
+// than being hidden behind the generic "methods" bucket. Mirrors
+// scripts/paper_charts.py detect_kind().
 function kindOf(entry) {
   const typ = (entry.type || "").toLowerCase().split("|")[0].trim();
+  const title = (entry.title || "").toLowerCase();
+  const fullType = (entry.type || "").toLowerCase();
+  const isMA = (
+    typ.includes("living-ma") || typ.includes("meta-analysis") ||
+    typ.includes("pairwise") || typ.includes("network") ||
+    typ.startsWith("meta-") || typ.startsWith("meta ") || typ === "meta" ||
+    title.includes("meta-analysis") || title.includes("meta analysis") ||
+    title.includes("living meta") || title.includes("network meta") ||
+    fullType.includes("ma ") || fullType.includes("nma ")
+  );
+  if (isMA) return "living-ma";
   if (typ.includes("methods") || typ.includes("methodological") || typ.includes("tool")) return "methods";
-  if (typ.includes("living-ma") || typ.includes("meta-analysis") || typ.includes("pairwise") || typ.includes("network") || typ.startsWith("meta")) return "living-ma";
   if (typ.includes("clinical")) return "clinical";
   return "other";
 }
