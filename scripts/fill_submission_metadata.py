@@ -281,9 +281,7 @@ Ethics: Not required. Study uses only publicly available aggregate data; no
 
 Funding: None.
 
-Competing interests: MA serves on the editorial board of Synthēsis (the
-  target journal); MA had no role in editorial decisions on this
-  manuscript, which was handled by an independent editor of the journal.
+Competing interests: None declared.
 
 Author contributions (CRediT):
   [STUDENT REWRITER, first author] — Writing – original draft, Writing –

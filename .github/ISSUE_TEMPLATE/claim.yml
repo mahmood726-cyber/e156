@@ -15,10 +15,10 @@ body:
         > Full step-by-step OJS submission instructions are on the [student board](https://mahmood726-cyber.github.io/e156/students.html#how-to-submit) and in the SUBMISSION METADATA block of your paper's workbook entry.
 
         ### Authorship (mandatory)
-        - **You are first author.**
+        - **You are first author AND corresponding author** on your submission.
         - You must nominate a **senior / last author** — typically your faculty supervisor or a co-investigator from your institution.
-        - **Mahmood Ahmad will appear as a middle author only — never first, never last.** This is a fixed rule across the whole workbook (Conceptualization, Methodology, Software, Data curation; not original drafting).
-        - **Competing interests note (auto-included on submission):** *MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal.*
+        - **Mahmood Ahmad will appear as a middle author only — never first, never last.** This is a fixed workbook-wide rule (his CRediT contribution is Conceptualization, Methodology, Software, Data curation; not original drafting).
+        - **Competing interests:** None declared. (The workbook previously carried an editorial-board statement for Synthēsis; Mahmood is no longer on the board, so no COI disclosure is required.)
 
   - type: input
     id: paper_number
@@ -97,6 +97,4 @@ body:
         - label: I will be listed as first author on the submission
           required: true
         - label: I have nominated a senior / last author (faculty supervisor) above. Mahmood Ahmad will be a middle author only — never first, never last.
-          required: true
-        - label: "I will include the editorial-board competing-interests statement shown under 'Authorship (mandatory)' above"
           required: true

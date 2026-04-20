@@ -268,10 +268,10 @@ def render_page(entry: dict) -> str:
         )
         refs_section = f'<section class="refs"><h2>References</h2><ol>{refs_html}</ol></section>'
 
-    # Competing interests (P0-5): render the editorial-board COI on the public
-    # landing page. Required because Mahmood serves on the Synthēsis editorial
-    # board; public disclosure at the canonical per-paper URL is part of the
-    # feedback_e156_authorship.md contract.
+    # Competing interests: renders the workbook's `Competing interests:`
+    # field on the public landing page. Now that Mahmood is off the Synthēsis
+    # editorial board, the field reads "None declared." — kept in the DOM
+    # for audit-trail clarity rather than omitted silently.
     coi_section = ""
     if entry.get("competing_interests"):
         coi_section = (

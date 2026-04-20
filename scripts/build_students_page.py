@@ -372,7 +372,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li><strong>You are first author AND corresponding author</strong> on the submission you claim. You fill in the corresponding-author fields (name, email, affiliation) on the OJS submission form yourself — Mahmood is a middle author only, not the contact for the journal.</li>
         <li>You must nominate a <strong>senior / last author</strong> — typically your faculty supervisor or a co-investigator from your institution. The claim form has a required field for this. <strong>No supervisor available yet?</strong> Type exactly <span class="mono">TBD - request mentor</span> in that field and Mahmood will help nominate a faculty co-investigator from the E156 advisory pool before you submit.</li>
         <li><strong>Mahmood Ahmad will appear as a middle author only</strong> — never first, never last. This is a fixed workbook-wide rule (his role: Conceptualization, Methodology, Software, Data curation; not original drafting).</li>
-        <li>Every submission must include the competing-interests statement: <em>"MA serves on the editorial board of Synthēsis (the target journal); MA had no role in editorial decisions on this manuscript, which was handled by an independent editor of the journal."</em> This is auto-included in the SUBMISSION METADATA block of every workbook entry.</li>
+        <li><strong>Competing interests:</strong> none declared. (Mahmood is not on the Synthēsis editorial board; there's no COI to disclose.)</li>
       </ul>
 
       <h2 id="how-to-submit">How to submit to ◆ Synthēsis (OJS, step-by-step)</h2>
@@ -385,7 +385,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li>Order: Title · Authors + ORCIDs + affiliations · Body · References · Data availability · Ethics · Funding · Competing interests · CRediT · AI disclosure · Copyright line.</li>
         <li><strong>Body length:</strong> paste your 156-word, 7-sentence E156 rewrite verbatim — that <em>is</em> the submission. The journal caps main text at ≤400 words, but the E156 format deliberately targets 156 words; do <strong>NOT</strong> pad to 400. References, tables, figures, and captions don't count against the 400 ceiling anyway.</li>
         <li><strong>References:</strong> Vancouver / numeric, NLM journal abbreviations, DOI without URL prefix; up to 6 authors then "et al.". Two starter refs are already in your card's SUBMISSION METADATA — keep them, add more as needed.</li>
-        <li><strong>Copy/paste these blocks unchanged from the SUBMISSION METADATA on your card:</strong> Data availability, Ethics, Funding, Competing interests (the editorial-board statement), CRediT (3-actor template), AI disclosure.</li>
+        <li><strong>Copy/paste these blocks unchanged from the SUBMISSION METADATA on your card:</strong> Data availability, Ethics, Funding, Competing interests ("None declared."), CRediT (3-actor template), AI disclosure.</li>
         <li><strong>Copyright line at the very bottom:</strong> <span class="mono">© The Author(s) 2026. CC BY 4.0.</span></li>
       </ul>
 
