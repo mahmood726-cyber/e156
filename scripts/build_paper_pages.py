@@ -20,6 +20,9 @@ from pathlib import Path
 if sys.platform == "win32":
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from paper_charts import render_all_charts  # noqa: E402
+
 E156 = Path(__file__).resolve().parents[1]
 WORKBOOK = E156 / "rewrite-workbook.txt"
 HIDE_LIST = E156 / "audit_output" / "hide_repo_404.json"
@@ -155,6 +158,10 @@ section h2{{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-
 .meta-grid dd{{margin:0;color:var(--text)}}
 .refs ol{{margin:0;padding-left:1.4rem}}
 .refs li{{margin-bottom:0.4rem;font-size:0.88rem;color:var(--text)}}
+.charts{{padding:1.5rem 0;border-bottom:1px solid var(--border)}}
+.chart-grid{{display:grid;gap:0.8rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}}
+.chart-tile{{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:0.3rem;overflow:hidden}}
+.chart-tile svg{{width:100%;height:auto;display:block}}
 .action-bar{{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1.2rem 0}}
 .btn{{padding:0.55rem 1rem;border-radius:5px;font-size:0.9rem;font-weight:500;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem}}
 .btn:hover{{background:var(--border);text-decoration:none}}
@@ -174,6 +181,8 @@ footer a{{color:var(--text-dim);text-decoration:underline}}
 </header>
 
 {body_section}
+
+{charts_section}
 
 <section>
   <h2>At a glance</h2>
@@ -286,11 +295,14 @@ def render_page(entry: dict) -> str:
     protocol_btn = (f'<a class="btn" href="{esc(entry["protocol_url"])}" target="_blank" rel="noopener">'
                     f'E156 protocol ↗</a>') if entry.get("protocol_url") else ""
 
+    charts_section = render_all_charts(entry)
+
     return PAGE_TEMPLATE.format(
         num=num,
         title_esc=esc(title),
         badges=badges,
         body_section=body_section,
+        charts_section=charts_section,
         meta_rows=meta_rows,
         refs_section=refs_section,
         coi_section=coi_section,

@@ -38,6 +38,10 @@ section h2{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-s
 .meta-grid dd{margin:0;color:var(--text)}
 .refs ol{margin:0;padding-left:1.4rem}
 .refs li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--text)}
+.charts{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.chart-grid{display:grid;gap:0.8rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.chart-tile{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:0.3rem;overflow:hidden}
+.chart-tile svg{width:100%;height:auto;display:block}
 .action-bar{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1.2rem 0}
 .btn{padding:0.55rem 1rem;border-radius:5px;font-size:0.9rem;font-weight:500;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem}
 .btn:hover{background:var(--border);text-decoration:none}
@@ -57,6 +61,48 @@ footer a{color:var(--text-dim);text-decoration:underline}
 </header>
 
 <section><h2>156-word body (current version)</h2><div class="body-text">Do standard random-effects meta-analyses mask systematic publication bias in meta-epidemiological comparisons of randomized and observational studies? We assembled 57 ratio-of-ratios comparisons from the IMPACT-HTA database and a BMC Medicine 2022 review covering cardiovascular, oncology, and infectious disease domains. Seven correction methods including REML, Hartung-Knapp, PET-PEESE, trim-and-fill, limit meta-analysis, selection models, and Bayesian MCMC were applied to each comparison against the standard uncorrected estimate. The standard estimate showed no significant bias, but after correction all convergent methods indicated 9 to 13 percent underestimation by observational studies, with median corrected RR 0.887 (95% CI 0.764 to 0.989). Selection models failed for all three specifications due to insufficient sample size, while extreme heterogeneity at I-squared 91.2 percent was driven by 35 percent discordant comparisons. Stratification by a novel discordance index revealed that 64.9 percent of comparisons show agreement below the two-fold divergence threshold. However, a limitation is that the 57-comparison sample restricts statistical power for subgroup-specific bias correction estimates.</div><p style="font-size:0.82rem;color:var(--text-faint);margin-top:0.8rem;">Your rewrite should preserve all numbers, CIs, and percentages exactly — rephrase the surrounding prose in 7 sentences, ≤156 words.</p></section>
+
+<section class="charts"><h2>Paper dashboard — 5 views</h2><div class="chart-grid"><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Paper anatomy — words per sentence (S1–S7)">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Paper anatomy — words per sentence (S1–S7)</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">156 words total · 7 sentences ✓ · target ≤156w, 7 sentences</text>
+  <rect x="57.6" y="120.0" width="44.8" height="84.0" fill="#22c55e" opacity="0.85"><title>S1: 16 words</title></rect><text x="80.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S1</text><text x="80.0" y="116.0" fill="#e5e7eb" font-size="10" text-anchor="middle">16</text>
+<rect x="121.6" y="88.5" width="44.8" height="115.5" fill="#22c55e" opacity="0.85"><title>S2: 22 words</title></rect><text x="144.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S2</text><text x="144.0" y="84.5" fill="#e5e7eb" font-size="10" text-anchor="middle">22</text>
+<rect x="185.6" y="72.8" width="44.8" height="131.2" fill="#22c55e" opacity="0.85"><title>S3: 25 words</title></rect><text x="208.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S3</text><text x="208.0" y="68.8" fill="#e5e7eb" font-size="10" text-anchor="middle">25</text>
+<rect x="249.6" y="36.0" width="44.8" height="168.0" fill="#22c55e" opacity="0.85"><title>S4: 32 words</title></rect><text x="272.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S4</text><text x="272.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">32</text>
+<rect x="313.6" y="67.5" width="44.8" height="136.5" fill="#22c55e" opacity="0.85"><title>S5: 26 words</title></rect><text x="336.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S5</text><text x="336.0" y="63.5" fill="#e5e7eb" font-size="10" text-anchor="middle">26</text>
+<rect x="377.6" y="104.2" width="44.8" height="99.8" fill="#22c55e" opacity="0.85"><title>S6: 19 words</title></rect><text x="400.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S6</text><text x="400.0" y="100.2" fill="#e5e7eb" font-size="10" text-anchor="middle">19</text>
+<rect x="441.6" y="120.0" width="44.8" height="84.0" fill="#22c55e" opacity="0.85"><title>S7: 16 words</title></rect><text x="464.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S7</text><text x="464.0" y="116.0" fill="#e5e7eb" font-size="10" text-anchor="middle">16</text>
+<line x1="48" y1="87.0" x2="496" y2="87.0" stroke="#9ca3af" stroke-dasharray="3,3" opacity="0.5"/><text x="492" y="83.0" fill="#9ca3af" font-size="10" text-anchor="end">mean 22.3w</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Primary effect (Ratio of ratios)">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Primary effect (Ratio of ratios)</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">RR: 0.887 (95% CI 0.764 to 0.989) · non-null</text>
+  <line x1="85.7" y1="44" x2="85.7" y2="204" stroke="#9ca3af" stroke-dasharray="4,4" opacity="0.7"/>
+<text x="85.7" y="40" fill="#9ca3af" font-size="10" text-anchor="middle">null = 0</text>
+<line x1="373.5" y1="120.0" x2="458.3" y2="120.0" stroke="#22c55e" stroke-width="2.5"/>
+<rect x="410.9" y="111.0" width="18" height="18" fill="#22c55e" transform="rotate(45 419.9 120.0)"/>
+<text x="373.5" y="148.0" fill="#9ca3af" font-size="10" text-anchor="middle">0.764</text>
+<text x="458.3" y="148.0" fill="#9ca3af" font-size="10" text-anchor="middle">0.989</text>
+<text x="419.9" y="102.0" fill="#22c55e" font-size="14" font-weight="700" text-anchor="middle">0.887</text>
+<text x="52" y="222.0" fill="#6b7280" font-size="10">← negative</text><text x="492" y="222.0" fill="#6b7280" font-size="10" text-anchor="end">positive →</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="References by publication year">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="13" font-weight="600">References by publication year</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">2 dated refs · range 1997–2000 · 1-year buckets</text>
+  <rect x="68.2" y="36.0" width="183.7" height="168.0" fill="#3b82f6" opacity="0.85"><title>1997: 1 refs</title></rect><text x="160.0" y="218.0" fill="#6b7280" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">1997</text><text x="160.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">1</text>
+<rect x="292.2" y="36.0" width="183.7" height="168.0" fill="#3b82f6" opacity="0.85"><title>2000: 1 refs</title></rect><text x="384.0" y="218.0" fill="#6b7280" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">2000</text><text x="384.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">1</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Evidence base — scale">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Evidence base — scale</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">Descriptive only (no numeric counts in body)</text>
+  <text x="260.0" y="110.0" fill="#e5e7eb" font-size="12" text-anchor="middle" font-weight="600">Dataset</text><text x="260.0" y="136.0" fill="#9ca3af" font-size="11" text-anchor="middle">57 RoR comparisons from IMPACT-HTA and BMC Medicine 2022</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Topic fingerprint">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Topic fingerprint</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">meta-epidemiology</text>
+  <text x="260.0" y="58" fill="#e5e7eb" font-size="13" text-anchor="middle" font-weight="600">Review scope</text><text x="260.0" y="80" fill="#9ca3af" font-size="11" text-anchor="middle">meta-epidemiology</text><text x="260.0" y="116" fill="#22c55e" font-size="32" font-weight="700" text-anchor="middle">2</text><text x="260.0" y="136" fill="#9ca3af" font-size="11" text-anchor="middle">references in workbook</text>
+</svg></div></div></section>
 
 <section>
   <h2>At a glance</h2>

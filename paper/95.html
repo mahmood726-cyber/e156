@@ -38,6 +38,10 @@ section h2{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-s
 .meta-grid dd{margin:0;color:var(--text)}
 .refs ol{margin:0;padding-left:1.4rem}
 .refs li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--text)}
+.charts{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.chart-grid{display:grid;gap:0.8rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.chart-tile{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:0.3rem;overflow:hidden}
+.chart-tile svg{width:100%;height:auto;display:block}
 .action-bar{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1.2rem 0}
 .btn{padding:0.55rem 1rem;border-radius:5px;font-size:0.9rem;font-weight:500;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem}
 .btn:hover{background:var(--border);text-decoration:none}
@@ -57,6 +61,42 @@ footer a{color:var(--text-dim);text-decoration:underline}
 </header>
 
 <section><h2>156-word body (current version)</h2><div class="body-text">Can unsupervised clustering of multi-dimensional quality metrics from eight independent projects reveal natural archetypes among Cochrane systematic reviews? We assembled a 26-feature matrix for 307 reviews common across Fragility Atlas, PredictionGap, outcome reporting bias, entropy, evidence half-life, MetaRepair, EvidenceTribunal, and conformal meta-analysis projects, standardized with z-score normalization. Principal component analysis provided dimensionality reduction, followed by K-means clustering into four groups matching quality archetypes with ANOVA F-tests identifying the most discriminating features. Four clusters emerged with median prevalence of pathological reviews at 24 percent with 95% CI 19 to 30: Healthy, Moderate, Pathological requiring over 60 percent correction, and Mixed. Robustness score and adversarial gap were the two most discriminating features with F-statistics exceeding 50 across all four identified clusters. This genome approach provides a data-driven taxonomy beyond single-metric quality assessment toward multidimensional evidence phenotyping. The limitation is that the taxonomy depends on specific input projects, and adding or removing a data source would alter cluster boundaries.</div><p style="font-size:0.82rem;color:var(--text-faint);margin-top:0.8rem;">Your rewrite should preserve all numbers, CIs, and percentages exactly — rephrase the surrounding prose in 7 sentences, ≤156 words.</p></section>
+
+<section class="charts"><h2>Paper dashboard — 5 views</h2><div class="chart-grid"><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Paper anatomy — words per sentence (S1–S7)">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Paper anatomy — words per sentence (S1–S7)</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">156 words total · 7 sentences ✓ · target ≤156w, 7 sentences</text>
+  <rect x="57.6" y="99.7" width="44.8" height="104.3" fill="#22c55e" opacity="0.85"><title>S1: 18 words</title></rect><text x="80.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S1</text><text x="80.0" y="95.7" fill="#e5e7eb" font-size="10" text-anchor="middle">18</text>
+<rect x="121.6" y="36.0" width="44.8" height="168.0" fill="#22c55e" opacity="0.85"><title>S2: 29 words</title></rect><text x="144.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S2</text><text x="144.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">29</text>
+<rect x="185.6" y="65.0" width="44.8" height="139.0" fill="#22c55e" opacity="0.85"><title>S3: 24 words</title></rect><text x="208.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S3</text><text x="208.0" y="61.0" fill="#e5e7eb" font-size="10" text-anchor="middle">24</text>
+<rect x="249.6" y="41.8" width="44.8" height="162.2" fill="#22c55e" opacity="0.85"><title>S4: 28 words</title></rect><text x="272.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S4</text><text x="272.0" y="37.8" fill="#e5e7eb" font-size="10" text-anchor="middle">28</text>
+<rect x="313.6" y="88.1" width="44.8" height="115.9" fill="#22c55e" opacity="0.85"><title>S5: 20 words</title></rect><text x="336.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S5</text><text x="336.0" y="84.1" fill="#e5e7eb" font-size="10" text-anchor="middle">20</text>
+<rect x="377.6" y="117.1" width="44.8" height="86.9" fill="#22c55e" opacity="0.85"><title>S6: 15 words</title></rect><text x="400.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S6</text><text x="400.0" y="113.1" fill="#e5e7eb" font-size="10" text-anchor="middle">15</text>
+<rect x="441.6" y="76.6" width="44.8" height="127.4" fill="#22c55e" opacity="0.85"><title>S7: 22 words</title></rect><text x="464.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S7</text><text x="464.0" y="72.6" fill="#e5e7eb" font-size="10" text-anchor="middle">22</text>
+<line x1="48" y1="74.9" x2="496" y2="74.9" stroke="#9ca3af" stroke-dasharray="3,3" opacity="0.5"/><text x="492" y="70.9" fill="#9ca3af" font-size="10" text-anchor="end">mean 22.3w</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Primary effect — Cluster archetype (4 types)">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#6b7280" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Primary effect — Cluster archetype (4 types)</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">(no data extractable from workbook)</text>
+  <text x="260.0" y="120.0" fill="#9ca3af" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">No parseable effect size in the 156-word body</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="References by publication year">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="13" font-weight="600">References by publication year</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">2 dated refs · range 2013–2014 · 1-year buckets</text>
+  <rect x="68.2" y="36.0" width="183.7" height="168.0" fill="#3b82f6" opacity="0.85"><title>2013: 1 refs</title></rect><text x="160.0" y="218.0" fill="#6b7280" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">2013</text><text x="160.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">1</text>
+<rect x="292.2" y="36.0" width="183.7" height="168.0" fill="#3b82f6" opacity="0.85"><title>2014: 1 refs</title></rect><text x="384.0" y="218.0" fill="#6b7280" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">2014</text><text x="384.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">1</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Evidence base — scale">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Evidence base — scale</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">307 Cochrane reviews from 8 cross-project datasets</text>
+  <rect x="48" y="74.7" width="388.0" height="26.0" fill="#a855f7" opacity="0.85"/><text x="444.0" y="91.7" fill="#e5e7eb" font-size="11">307 studies / trials</text>
+<rect x="48" y="139.3" width="388.0" height="26.0" fill="#a855f7" opacity="0.85"/><text x="444.0" y="156.3" fill="#e5e7eb" font-size="11">307 reviews</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Topic fingerprint">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Topic fingerprint</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">empirical</text>
+  <text x="260.0" y="58" fill="#e5e7eb" font-size="13" text-anchor="middle" font-weight="600">Review scope</text><text x="260.0" y="80" fill="#9ca3af" font-size="11" text-anchor="middle">empirical</text><text x="260.0" y="116" fill="#22c55e" font-size="32" font-weight="700" text-anchor="middle">2</text><text x="260.0" y="136" fill="#9ca3af" font-size="11" text-anchor="middle">references in workbook</text>
+</svg></div></div></section>
 
 <section>
   <h2>At a glance</h2>

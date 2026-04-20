@@ -38,6 +38,10 @@ section h2{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-s
 .meta-grid dd{margin:0;color:var(--text)}
 .refs ol{margin:0;padding-left:1.4rem}
 .refs li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--text)}
+.charts{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.chart-grid{display:grid;gap:0.8rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.chart-tile{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:0.3rem;overflow:hidden}
+.chart-tile svg{width:100%;height:auto;display:block}
 .action-bar{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1.2rem 0}
 .btn{padding:0.55rem 1rem;border-radius:5px;font-size:0.9rem;font-weight:500;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem}
 .btn:hover{background:var(--border);text-decoration:none}
@@ -57,6 +61,42 @@ footer a{color:var(--text-dim);text-decoration:underline}
 </header>
 
 <section><h2>156-word body (current version)</h2><div class="body-text">Can a browser-based transparent living meta-analysis reproduce published pooled estimates for pulsed-field ablation versus thermal ablation for atrial fibrillation? The v13 app ingested 3 RCTs from ClinicalTrials.gov cross-checked against PubMed and OpenAlex. DerSimonian-Laird random-effects pooling with HKSJ correction ran in-browser on the logged risk ratio, with cumulative, provenance, QA, and cross-validation engines logging every step. The pooled risk ratio was concordant with the ADVENT/CHAMPION/PULSED-AF pivotal cohort within lockdown tolerance, and estimates update live as trials are ingested. Cross-validation against R metafor and Python scipy scripts reproduced the pooled point estimate, and leave-one-out plus REML-versus-HKSJ sensitivity preserved direction. A transparent browser-native pipeline matches benchmark pooled effects for pulsed-field ablation versus thermal ablation for atrial fibrillation without server-side computation while surfacing every provenance decision. The app inherits CT.gov and PubMed coverage gaps, cannot synthesize unpublished data, and updates require manual re-ingestion.</div><p style="font-size:0.82rem;color:var(--text-faint);margin-top:0.8rem;">Your rewrite should preserve all numbers, CIs, and percentages exactly — rephrase the surrounding prose in 7 sentences, ≤156 words.</p></section>
+
+<section class="charts"><h2>Paper dashboard — 5 views</h2><div class="chart-grid"><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Paper anatomy — words per sentence (S1–S7)">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Paper anatomy — words per sentence (S1–S7)</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">139 words total · 7 sentences ✓ · target ≤156w, 7 sentences</text>
+  <rect x="57.6" y="76.3" width="44.8" height="127.7" fill="#22c55e" opacity="0.85"><title>S1: 19 words</title></rect><text x="80.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S1</text><text x="80.0" y="72.3" fill="#e5e7eb" font-size="10" text-anchor="middle">19</text>
+<rect x="121.6" y="116.6" width="44.8" height="87.4" fill="#22c55e" opacity="0.85"><title>S2: 13 words</title></rect><text x="144.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S2</text><text x="144.0" y="112.6" fill="#e5e7eb" font-size="10" text-anchor="middle">13</text>
+<rect x="185.6" y="49.4" width="44.8" height="154.6" fill="#22c55e" opacity="0.85"><title>S3: 23 words</title></rect><text x="208.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S3</text><text x="208.0" y="45.4" fill="#e5e7eb" font-size="10" text-anchor="middle">23</text>
+<rect x="249.6" y="56.2" width="44.8" height="147.8" fill="#22c55e" opacity="0.85"><title>S4: 22 words</title></rect><text x="272.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S4</text><text x="272.0" y="52.2" fill="#e5e7eb" font-size="10" text-anchor="middle">22</text>
+<rect x="313.6" y="69.6" width="44.8" height="134.4" fill="#22c55e" opacity="0.85"><title>S5: 20 words</title></rect><text x="336.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S5</text><text x="336.0" y="65.6" fill="#e5e7eb" font-size="10" text-anchor="middle">20</text>
+<rect x="377.6" y="36.0" width="44.8" height="168.0" fill="#22c55e" opacity="0.85"><title>S6: 25 words</title></rect><text x="400.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S6</text><text x="400.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">25</text>
+<rect x="441.6" y="89.8" width="44.8" height="114.2" fill="#22c55e" opacity="0.85"><title>S7: 17 words</title></rect><text x="464.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S7</text><text x="464.0" y="85.8" fill="#e5e7eb" font-size="10" text-anchor="middle">17</text>
+<line x1="48" y1="70.6" x2="496" y2="70.6" stroke="#9ca3af" stroke-dasharray="3,3" opacity="0.5"/><text x="492" y="66.6" fill="#9ca3af" font-size="10" text-anchor="end">mean 19.9w</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Primary effect — RR">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#6b7280" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Primary effect — RR</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">(no data extractable from workbook)</text>
+  <text x="260.0" y="120.0" fill="#9ca3af" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">No parseable effect size in the 156-word body</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="References by publication year">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="13" font-weight="600">References by publication year</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">2 dated refs · range 2002–2016 · 1-year buckets</text>
+  <rect x="68.2" y="36.0" width="183.7" height="168.0" fill="#3b82f6" opacity="0.85"><title>2002: 1 refs</title></rect><text x="160.0" y="218.0" fill="#6b7280" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">2002</text><text x="160.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">1</text>
+<rect x="292.2" y="36.0" width="183.7" height="168.0" fill="#3b82f6" opacity="0.85"><title>2016: 1 refs</title></rect><text x="384.0" y="218.0" fill="#6b7280" font-size="9" text-anchor="middle" font-family="ui-monospace,monospace">2016</text><text x="384.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">1</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Evidence base — scale">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Evidence base — scale</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">ClinicalTrials.gov, PubMed, OpenAlex</text>
+  <rect x="48" y="74.7" width="388.0" height="26.0" fill="#a855f7" opacity="0.85"/><text x="444.0" y="91.7" fill="#e5e7eb" font-size="11">3 studies / trials</text>
+<rect x="48" y="139.3" width="388.0" height="26.0" fill="#a855f7" opacity="0.85"/><text x="444.0" y="156.3" fill="#e5e7eb" font-size="11">3 rcts</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Method schematic">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Method schematic</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">methods</text>
+  <rect x="30" y="80" width="130" height="80" fill="#111827" stroke="#22c55e" rx="6"/><text x="95" y="110" fill="#e5e7eb" font-size="11" text-anchor="middle" font-weight="600">INPUT</text><text x="95" y="130" fill="#9ca3af" font-size="10" text-anchor="middle">data + metadata</text><text x="95" y="148" fill="#9ca3af" font-size="10" text-anchor="middle">ClinicalTrials.gov</text><rect x="195" y="70" width="130" height="100" fill="#111827" stroke="#3b82f6" rx="6"/><text x="260" y="100" fill="#e5e7eb" font-size="11" text-anchor="middle" font-weight="600">METHOD</text><text x="260" y="120" fill="#9ca3af" font-size="10" text-anchor="middle">LivingMA-PFA-AF</text><text x="260" y="138" fill="#9ca3af" font-size="9" text-anchor="middle">methods</text><rect x="360" y="80" width="130" height="80" fill="#111827" stroke="#eab308" rx="6"/><text x="425" y="110" fill="#e5e7eb" font-size="11" text-anchor="middle" font-weight="600">OUTPUT</text><text x="425" y="130" fill="#9ca3af" font-size="10" text-anchor="middle">RR</text><text x="425" y="148" fill="#9ca3af" font-size="10" text-anchor="middle">+ audit trail</text><path d="M160 120 L195 120" stroke="#e5e7eb" stroke-width="1.5" marker-end="url(#a)"/><path d="M325 120 L360 120" stroke="#e5e7eb" stroke-width="1.5" marker-end="url(#a)"/><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#e5e7eb"/></marker></defs>
+</svg></div></div></section>
 
 <section>
   <h2>At a glance</h2>

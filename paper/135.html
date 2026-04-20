@@ -38,6 +38,10 @@ section h2{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-s
 .meta-grid dd{margin:0;color:var(--text)}
 .refs ol{margin:0;padding-left:1.4rem}
 .refs li{margin-bottom:0.4rem;font-size:0.88rem;color:var(--text)}
+.charts{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.chart-grid{display:grid;gap:0.8rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.chart-tile{background:var(--bg-elev);border:1px solid var(--border);border-radius:6px;padding:0.3rem;overflow:hidden}
+.chart-tile svg{width:100%;height:auto;display:block}
 .action-bar{display:flex;gap:0.6rem;flex-wrap:wrap;padding:1.2rem 0}
 .btn{padding:0.55rem 1rem;border-radius:5px;font-size:0.9rem;font-weight:500;border:1px solid var(--border);background:var(--bg-elev);color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem}
 .btn:hover{background:var(--border);text-decoration:none}
@@ -57,6 +61,40 @@ footer a{color:var(--text-dim);text-decoration:underline}
 </header>
 
 <section><h2>156-word body (current version)</h2><div class="body-text">Can a single-page portfolio effectively communicate the scope and validation status of a meta-analysis methods program spanning over one hundred projects? We designed a 794-line static HTML page organized into nine sections covering flagship tools, browser applications, cutting-edge methods, meta-theory, discovery platforms, R packages, health technology assessment suites, and data pipelines. The site renders each project card with lines of code, test counts, target journal, and deployment status through a responsive grid layout with dark-light theming. The catalog includes 101 projects with a median of 25 tests each (95% CI 15 to 42) and 35 browser tools across 17 manuscript targets from BMJ to PLOS ONE. Accessibility audit confirmed WCAG AA contrast compliance for all text and background combinations across both visual theme modes. The architecture requires zero build tools, loading entirely from a single file with no external dependencies. A limitation is that static deployment cannot automatically synchronize project status when underlying repositories are updated.</div><p style="font-size:0.82rem;color:var(--text-faint);margin-top:0.8rem;">Your rewrite should preserve all numbers, CIs, and percentages exactly — rephrase the surrounding prose in 7 sentences, ≤156 words.</p></section>
+
+<section class="charts"><h2>Paper dashboard — 5 views</h2><div class="chart-grid"><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Paper anatomy — words per sentence (S1–S7)">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#22c55e" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Paper anatomy — words per sentence (S1–S7)</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">156 words total · 7 sentences ✓ · target ≤156w, 7 sentences</text>
+  <rect x="57.6" y="86.4" width="44.8" height="117.6" fill="#22c55e" opacity="0.85"><title>S1: 21 words</title></rect><text x="80.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S1</text><text x="80.0" y="82.4" fill="#e5e7eb" font-size="10" text-anchor="middle">21</text>
+<rect x="121.6" y="36.0" width="44.8" height="168.0" fill="#22c55e" opacity="0.85"><title>S2: 30 words</title></rect><text x="144.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S2</text><text x="144.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">30</text>
+<rect x="185.6" y="64.0" width="44.8" height="140.0" fill="#22c55e" opacity="0.85"><title>S3: 25 words</title></rect><text x="208.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S3</text><text x="208.0" y="60.0" fill="#e5e7eb" font-size="10" text-anchor="middle">25</text>
+<rect x="249.6" y="36.0" width="44.8" height="168.0" fill="#22c55e" opacity="0.85"><title>S4: 30 words</title></rect><text x="272.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S4</text><text x="272.0" y="32.0" fill="#e5e7eb" font-size="10" text-anchor="middle">30</text>
+<rect x="313.6" y="103.2" width="44.8" height="100.8" fill="#22c55e" opacity="0.85"><title>S5: 18 words</title></rect><text x="336.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S5</text><text x="336.0" y="99.2" fill="#e5e7eb" font-size="10" text-anchor="middle">18</text>
+<rect x="377.6" y="114.4" width="44.8" height="89.6" fill="#22c55e" opacity="0.85"><title>S6: 16 words</title></rect><text x="400.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S6</text><text x="400.0" y="110.4" fill="#e5e7eb" font-size="10" text-anchor="middle">16</text>
+<rect x="441.6" y="114.4" width="44.8" height="89.6" fill="#22c55e" opacity="0.85"><title>S7: 16 words</title></rect><text x="464.0" y="218.0" fill="#6b7280" font-size="10" text-anchor="middle" font-family="ui-monospace,monospace">S7</text><text x="464.0" y="110.4" fill="#e5e7eb" font-size="10" text-anchor="middle">16</text>
+<line x1="48" y1="79.2" x2="496" y2="79.2" stroke="#9ca3af" stroke-dasharray="3,3" opacity="0.5"/><text x="492" y="75.2" fill="#9ca3af" font-size="10" text-anchor="end">mean 22.3w</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Primary effect — Project catalog completeness">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#6b7280" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Primary effect — Project catalog completeness</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">(no data extractable from workbook)</text>
+  <text x="260.0" y="120.0" fill="#9ca3af" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">No parseable effect size in the 156-word body</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="References by year">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#6b7280" font-family="system-ui,sans-serif" font-size="13" font-weight="600">References by year</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">(no data extractable from workbook)</text>
+  <text x="260.0" y="120.0" fill="#9ca3af" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">0 references in workbook, no parseable years</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Evidence base — scale">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Evidence base — scale</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">Descriptive only (no numeric counts in body)</text>
+  <text x="260.0" y="110.0" fill="#e5e7eb" font-size="12" text-anchor="middle" font-weight="600">Dataset</text><text x="260.0" y="136.0" fill="#9ca3af" font-size="11" text-anchor="middle">101 project entries, 35 browser tools</text>
+</svg></div><div class="chart-tile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" role="img" aria-label="Topic fingerprint">
+  <rect x="0" y="0" width="520" height="240" fill="#1a2236" rx="6"/>
+  <text x="14" y="22" fill="#a855f7" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Topic fingerprint</text>
+  <text x="14" y="230" fill="#6b7280" font-family="system-ui,sans-serif" font-size="10.5">showcase</text>
+  <text x="260.0" y="58" fill="#e5e7eb" font-size="13" text-anchor="middle" font-weight="600">Review scope</text><text x="260.0" y="80" fill="#9ca3af" font-size="11" text-anchor="middle">showcase</text><text x="260.0" y="116" fill="#22c55e" font-size="32" font-weight="700" text-anchor="middle">0</text><text x="260.0" y="136" fill="#9ca3af" font-size="11" text-anchor="middle">references in workbook</text>
+</svg></div></div></section>
 
 <section>
   <h2>At a glance</h2>
