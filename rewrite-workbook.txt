@@ -178,7 +178,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MLM501
-  Protocol:  https://github.com/mahmood726-cyber/MLM501/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MLM501/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/2.html
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -253,7 +253,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AdaptSim
-  Protocol:  https://github.com/mahmood726-cyber/AdaptSim/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AdaptSim/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/adaptsim/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -478,7 +478,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/al-mizan
-  Protocol:  https://github.com/mahmood726-cyber/al-mizan/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/al-mizan/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/al-mizan/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -553,7 +553,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Asa
-  Protocol:  https://github.com/mahmood726-cyber/Asa/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Asa/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/asa/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -628,7 +628,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AutoGRADE
-  Protocol:  https://github.com/mahmood726-cyber/AutoGRADE/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AutoGRADE/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/autograde/
 
 References (topic pack: GRADE / certainty rating):
@@ -703,7 +703,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/BayesianMA
-  Protocol:  https://github.com/mahmood726-cyber/BayesianMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/BayesianMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/bayesianma/
 
 References (topic pack: Bayesian meta-analysis):
@@ -778,7 +778,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/BenfordMA
-  Protocol:  https://github.com/mahmood726-cyber/BenfordMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/BenfordMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/benfordma/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -853,7 +853,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/bias-forensics
-  Protocol:  https://github.com/mahmood726-cyber/bias-forensics/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/bias-forensics/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/12.html
 
 References (topic pack: publication bias / selection):
@@ -1003,7 +1003,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CardioOracle
-  Protocol:  https://github.com/mahmood726-cyber/CardioOracle/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CardioOracle/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/cardiooracle/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -1078,7 +1078,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CardioTrialAudit
-  Protocol:  https://github.com/mahmood726-cyber/CardioTrialAudit/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CardioTrialAudit/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/cardiotrialaudit/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -1153,7 +1153,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CausalSynth
-  Protocol:  https://github.com/mahmood726-cyber/CausalSynth/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CausalSynth/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/17.html
 
 References (topic pack: GRADE / certainty rating):
@@ -1228,7 +1228,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/chat2
-  Protocol:  https://github.com/mahmood726-cyber/chat2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/chat2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/18.html
 
 References (topic pack: Cochrane software / R package / methods platform):
@@ -1303,7 +1303,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/chatpaper
-  Protocol:  https://github.com/mahmood726-cyber/chatpaper/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/chatpaper/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/19.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -1378,7 +1378,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/claude2
-  Protocol:  https://github.com/mahmood726-cyber/claude2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/claude2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/20.html
 
 References (topic pack: fallback (any MA paper)):
@@ -1453,7 +1453,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/clauderepo
-  Protocol:  https://github.com/mahmood726-cyber/clauderepo/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/clauderepo/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/clauderepo/
 
 References (topic pack: fallback (any MA paper)):
@@ -1529,7 +1529,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/clinic-site
-  Protocol:  https://github.com/mahmood726-cyber/clinic-site/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/clinic-site/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/22.html
 
 References (topic pack: fallback (any MA paper)):
@@ -1681,7 +1681,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/cochrane-data-extractor
-  Protocol:  https://github.com/mahmood726-cyber/cochrane-data-extractor/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/cochrane-data-extractor/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/cochrane-data-extractor/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -1757,7 +1757,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/component-nma
-  Protocol:  https://github.com/mahmood726-cyber/component-nma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/component-nma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/component-nma/
 
 References (topic pack: network meta-analysis):
@@ -1833,7 +1833,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/conformal-ma
-  Protocol:  https://github.com/mahmood726-cyber/conformal-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/conformal-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/conformal-ma/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -1909,7 +1909,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CRES
-  Protocol:  https://github.com/mahmood726-cyber/CRES/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CRES/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/cres/
 
 References (topic pack: GRADE / certainty rating):
@@ -2821,7 +2821,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ctgov-search-strategies
-  Protocol:  https://github.com/mahmood726-cyber/ctgov-search-strategies/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ctgov-search-strategies/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ctgov-search-strategies/
 
 References (topic pack: risk of bias):
@@ -3125,7 +3125,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/cv-rct-analysis
-  Protocol:  https://github.com/mahmood726-cyber/cv-rct-analysis/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/cv-rct-analysis/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/43.html
 
 References (topic pack: publication bias / selection):
@@ -3201,7 +3201,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Dataextractor
-  Protocol:  https://github.com/mahmood726-cyber/Dataextractor/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Dataextractor/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/dataextractor/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -3277,7 +3277,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/dosehtml
-  Protocol:  https://github.com/mahmood726-cyber/dosehtml/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/dosehtml/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/dosehtml/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -3353,7 +3353,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/DPMA
-  Protocol:  https://github.com/mahmood726-cyber/DPMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/DPMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/dpma/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -3429,7 +3429,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/DTA70
-  Protocol:  https://github.com/mahmood726-cyber/DTA70/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/DTA70/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/47.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -3656,7 +3656,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-board
-  Protocol:  https://github.com/mahmood726-cyber/evidence-board/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-board/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-board/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -3732,7 +3732,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-inference
-  Protocol:  https://github.com/mahmood726-cyber/evidence-inference/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-inference/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/51.html
 
 References (topic pack: automated data extraction / text mining):
@@ -3808,7 +3808,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/EvidenceHalfLife
-  Protocol:  https://github.com/mahmood726-cyber/EvidenceHalfLife/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/EvidenceHalfLife/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidencehalflife/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -3884,7 +3884,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-quality-concordance
-  Protocol:  https://github.com/mahmood726-cyber/evidence-quality-concordance/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-quality-concordance/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/53.html
 
 References (topic pack: fragility index):
@@ -3960,7 +3960,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-tribunal
-  Protocol:  https://github.com/mahmood726-cyber/evidence-tribunal/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-tribunal/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-tribunal/
 
 References (topic pack: fragility index):
@@ -4264,7 +4264,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/focus-studio
-  Protocol:  https://github.com/mahmood726-cyber/focus-studio/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/focus-studio/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/focus-studio/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -4340,7 +4340,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/fragility-atlas
-  Protocol:  https://github.com/mahmood726-cyber/fragility-atlas/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/fragility-atlas/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/59.html
 
 References (topic pack: fragility index):
@@ -4416,7 +4416,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/fragility-atlas
-  Protocol:  https://github.com/mahmood726-cyber/fragility-atlas/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/fragility-atlas/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/60.html
 
 References (topic pack: fragility index):
@@ -4492,7 +4492,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/FragilityIndex
-  Protocol:  https://github.com/mahmood726-cyber/FragilityIndex/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/FragilityIndex/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/fragilityindex/
 
 References (topic pack: fragility index):
@@ -4568,7 +4568,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/GRMA
-  Protocol:  https://github.com/mahmood726-cyber/GRMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/GRMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/62.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -4644,7 +4644,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/GWAM
-  Protocol:  https://github.com/mahmood726-cyber/GWAM/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/GWAM/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/gwam/
 
 References (topic pack: publication bias / selection):
@@ -4796,7 +4796,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/hta-artifact-standard
-  Protocol:  https://github.com/mahmood726-cyber/hta-artifact-standard/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/hta-artifact-standard/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/65.html
 
 References (topic pack: network meta-analysis):
@@ -4872,7 +4872,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/HTA-oman
-  Protocol:  https://github.com/mahmood726-cyber/HTA-oman/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/HTA-oman/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hta-oman/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -4948,7 +4948,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/hta-evidence-integrity
-  Protocol:  https://github.com/mahmood726-cyber/hta-evidence-integrity/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/hta-evidence-integrity/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hta-evidence-integrity/
 
 References (topic pack: fragility index):
@@ -5024,7 +5024,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/hta-transportability
-  Protocol:  https://github.com/mahmood726-cyber/hta-transportability/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/hta-transportability/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hta-transportability/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -5100,7 +5100,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/hta-unified-intelligence
-  Protocol:  https://github.com/mahmood726-cyber/hta-unified-intelligence/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/hta-unified-intelligence/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hta-unified-intelligence/
 
 References (topic pack: fragility index):
@@ -5176,7 +5176,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/idea12
-  Protocol:  https://github.com/mahmood726-cyber/idea12/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/idea12/blob/claude/advanced-python-modeling-01SweUUs28bV1CEW49ZHTpk2/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/idea12/
 
 References (topic pack: network meta-analysis):
@@ -5252,7 +5252,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/IndirectComparison
-  Protocol:  https://github.com/mahmood726-cyber/IndirectComparison/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/IndirectComparison/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/indirectcomparison/
 
 References (topic pack: network meta-analysis):
@@ -5328,7 +5328,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/IPD-Meta-Pro
-  Protocol:  https://github.com/mahmood726-cyber/IPD-Meta-Pro/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/IPD-Meta-Pro/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/72.html
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -5404,7 +5404,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ipd-qma
-  Protocol:  https://github.com/mahmood726-cyber/ipd-qma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ipd-qma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ipd-qma/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -5480,7 +5480,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/kanban-lab
-  Protocol:  https://github.com/mahmood726-cyber/kanban-lab/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/kanban-lab/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/kanban-lab/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -5556,7 +5556,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/KMcurve
-  Protocol:  https://github.com/mahmood726-cyber/KMcurve/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/KMcurve/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/kmcurve/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -5632,7 +5632,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/KMDigitizer
-  Protocol:  https://github.com/mahmood726-cyber/KMDigitizer/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/KMDigitizer/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/kmdigitizer/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -5784,7 +5784,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/living-meta
-  Protocol:  https://github.com/mahmood726-cyber/living-meta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/living-meta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/living-meta/
 
 References (topic pack: network meta-analysis):
@@ -5860,7 +5860,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/living-meta-engine
-  Protocol:  https://github.com/mahmood726-cyber/living-meta-engine/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/living-meta-engine/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/living-meta-engine/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -6011,7 +6011,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/mahmood726-cyber.github.io
-  Protocol:  https://github.com/mahmood726-cyber/mahmood726-cyber.github.io/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/mahmood726-cyber.github.io/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/mahmood726-cyber.github.io/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -6087,7 +6087,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ma-power-calc
-  Protocol:  https://github.com/mahmood726-cyber/ma-power-calc/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ma-power-calc/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ma-power-calc/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -6163,7 +6163,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MAPriors
-  Protocol:  https://github.com/mahmood726-cyber/MAPriors/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MAPriors/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/83.html
 
 References (topic pack: Bayesian meta-analysis):
@@ -6239,7 +6239,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MAWorkbench
-  Protocol:  https://github.com/mahmood726-cyber/MAWorkbench/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MAWorkbench/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/maworkbench/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -6315,7 +6315,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/maxent-reconstructor
-  Protocol:  https://github.com/mahmood726-cyber/maxent-reconstructor/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/maxent-reconstructor/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/maxent-reconstructor/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -6391,7 +6391,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MCIDMapper
-  Protocol:  https://github.com/mahmood726-cyber/MCIDMapper/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MCIDMapper/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/mcidmapper/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -6467,7 +6467,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MES
-  Protocol:  https://github.com/mahmood726-cyber/MES/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MES/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/mes/
 
 References (topic pack: network meta-analysis):
@@ -6543,7 +6543,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/meta-epidemiology-bias-correction
-  Protocol:  https://github.com/mahmood726-cyber/meta-epidemiology-bias-correction/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/meta-epidemiology-bias-correction/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/88.html
 
 References (topic pack: publication bias / selection):
@@ -6619,7 +6619,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/mem-ecosystem-model
-  Protocol:  https://github.com/mahmood726-cyber/mem-ecosystem-model/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/mem-ecosystem-model/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/89.html
 
 References (topic pack: publication bias / selection):
@@ -6694,7 +6694,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaAudit
-  Protocol:  https://github.com/mahmood726-cyber/MetaAudit/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaAudit/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/90.html
 
 References (topic pack: fallback (any MA paper)):
@@ -6770,7 +6770,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/meta-entropy
-  Protocol:  https://github.com/mahmood726-cyber/meta-entropy/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/meta-entropy/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/meta-entropy/
 
 References (topic pack: publication bias / selection):
@@ -6846,7 +6846,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaExtract
-  Protocol:  https://github.com/mahmood726-cyber/MetaExtract/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaExtract/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metaextract/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -6922,7 +6922,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaFolio
-  Protocol:  https://github.com/mahmood726-cyber/MetaFolio/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaFolio/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metafolio/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -6998,7 +6998,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaFusion-Lab
-  Protocol:  https://github.com/mahmood726-cyber/MetaFusion-Lab/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaFusion-Lab/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metafusion-lab/
 
 References (topic pack: risk of bias):
@@ -7074,7 +7074,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/meta-genome
-  Protocol:  https://github.com/mahmood726-cyber/meta-genome/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/meta-genome/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/meta-genome/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -7150,7 +7150,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaGuard
-  Protocol:  https://github.com/mahmood726-cyber/MetaGuard/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaGuard/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metaguard/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -7226,7 +7226,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaMethods
-  Protocol:  https://github.com/mahmood726-cyber/MetaMethods/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaMethods/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metamethods/
 
 References (topic pack: publication bias / selection):
@@ -7302,7 +7302,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Metanew
-  Protocol:  https://github.com/mahmood726-cyber/Metanew/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Metanew/blob/claude/create-metanew-repo-code-011CUjgi8bCbcbTeg2qCyLk3/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/98.html
 
 References (topic pack: network meta-analysis):
@@ -7452,7 +7452,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metaoverfit-paper
-  Protocol:  https://github.com/mahmood726-cyber/metaoverfit-paper/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metaoverfit-paper/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metaoverfit-paper/
 
 References (topic pack: machine learning / prediction models):
@@ -7527,7 +7527,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaRegression
-  Protocol:  https://github.com/mahmood726-cyber/MetaRegression/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaRegression/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metaregression/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -7602,7 +7602,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metarep
-  Protocol:  https://github.com/mahmood726-cyber/metarep/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metarep/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/102.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -7677,7 +7677,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaRep
-  Protocol:  https://github.com/mahmood726-cyber/MetaRep/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaRep/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/103.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -7752,7 +7752,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/meta-repair
-  Protocol:  https://github.com/mahmood726-cyber/meta-repair/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/meta-repair/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/meta-repair/
 
 References (topic pack: GRADE / certainty rating):
@@ -7827,7 +7827,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaReproducer
-  Protocol:  https://github.com/mahmood726-cyber/MetaReproducer/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaReproducer/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metareproducer/
 
 References (topic pack: fallback (any MA paper)):
@@ -7902,7 +7902,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaShift
-  Protocol:  https://github.com/mahmood726-cyber/MetaShift/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaShift/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metashift/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -7977,7 +7977,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metasprint-autopilot
-  Protocol:  https://github.com/mahmood726-cyber/metasprint-autopilot/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metasprint-autopilot/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/108.html
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -8052,7 +8052,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metasprint-cardio-universe
-  Protocol:  https://github.com/mahmood726-cyber/metasprint-cardio-universe/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metasprint-cardio-universe/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metasprint-cardio-universe/
 
 References (topic pack: network meta-analysis):
@@ -8127,7 +8127,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metasprint-dose-response
-  Protocol:  https://github.com/mahmood726-cyber/metasprint-dose-response/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metasprint-dose-response/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metasprint-dose-response/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -8202,7 +8202,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metasprint-dta
-  Protocol:  https://github.com/mahmood726-cyber/metasprint-dta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metasprint-dta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metasprint-dta/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -8352,7 +8352,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/metaverse-robust-MA
-  Protocol:  https://github.com/mahmood726-cyber/metaverse-robust-MA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/metaverse-robust-MA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metaverse-robust-ma/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -8427,7 +8427,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MethodsSuite
-  Protocol:  https://github.com/mahmood726-cyber/MethodsSuite/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MethodsSuite/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/methodssuite/
 
 References (topic pack: Bayesian meta-analysis):
@@ -8502,7 +8502,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MLM501
-  Protocol:  https://github.com/mahmood726-cyber/MLM501/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MLM501/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/115.html
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -8577,7 +8577,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MLMResearch
-  Protocol:  https://github.com/mahmood726-cyber/MLMResearch/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MLMResearch/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/116.html
 
 References (topic pack: network meta-analysis):
@@ -8652,7 +8652,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Multilevelerror
-  Protocol:  https://github.com/mahmood726-cyber/Multilevelerror/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Multilevelerror/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/multilevelerror/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -8802,7 +8802,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MultiverseMA
-  Protocol:  https://github.com/mahmood726-cyber/MultiverseMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MultiverseMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/119.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -8952,7 +8952,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/heterogeneity-ase
-  Protocol:  https://github.com/mahmood726-cyber/heterogeneity-ase/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/heterogeneity-ase/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/121.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -9027,7 +9027,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/nma-dose-response-app
-  Protocol:  https://github.com/mahmood726-cyber/nma-dose-response-app/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/nma-dose-response-app/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/nma-dose-response-app/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -9177,7 +9177,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/nmatransport
-  Protocol:  https://github.com/mahmood726-cyber/nmatransport/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/nmatransport/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/124.html
 
 References (topic pack: network meta-analysis):
@@ -9252,7 +9252,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/NNTMapper
-  Protocol:  https://github.com/mahmood726-cyber/NNTMapper/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/NNTMapper/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/nntmapper/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -9327,7 +9327,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/outcome-reporting-bias
-  Protocol:  https://github.com/mahmood726-cyber/outcome-reporting-bias/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/outcome-reporting-bias/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/outcome-reporting-bias/
 
 References (topic pack: publication bias / selection):
@@ -9402,7 +9402,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/overlap-detector
-  Protocol:  https://github.com/mahmood726-cyber/overlap-detector/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/overlap-detector/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/overlap-detector/
 
 References (topic pack: Cochrane software / R package / methods platform):
@@ -9477,7 +9477,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/OverlapMatrix
-  Protocol:  https://github.com/mahmood726-cyber/OverlapMatrix/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/OverlapMatrix/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/overlapmatrix/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -9627,7 +9627,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Pairwiseai
-  Protocol:  https://github.com/mahmood726-cyber/Pairwiseai/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Pairwiseai/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/pairwiseai/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -9702,7 +9702,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/bapmr
-  Protocol:  https://github.com/mahmood726-cyber/bapmr/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/bapmr/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/132.html
 
 References (topic pack: GRADE / certainty rating):
@@ -9777,7 +9777,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/pwcvR2
-  Protocol:  https://github.com/mahmood726-cyber/pwcvR2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/pwcvR2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/133.html
 
 References (topic pack: fallback (any MA paper)):
@@ -9852,7 +9852,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PoolingSuite
-  Protocol:  https://github.com/mahmood726-cyber/PoolingSuite/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PoolingSuite/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/poolingsuite/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -9927,7 +9927,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/portfolio-site
-  Protocol:  https://github.com/mahmood726-cyber/portfolio-site/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/portfolio-site/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/portfolio-site/
 
 References (topic pack: fallback (any MA paper)):
@@ -10002,7 +10002,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/prediction-gap
-  Protocol:  https://github.com/mahmood726-cyber/prediction-gap/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/prediction-gap/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/prediction-gap/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -10077,7 +10077,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/prisma-checker
-  Protocol:  https://github.com/mahmood726-cyber/prisma-checker/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/prisma-checker/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/prisma-checker/
 
 References (topic pack: GRADE / certainty rating):
@@ -10152,7 +10152,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PRISMAFlow
-  Protocol:  https://github.com/mahmood726-cyber/PRISMAFlow/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PRISMAFlow/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/prismaflow/
 
 References (topic pack: fallback (any MA paper)):
@@ -10227,7 +10227,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/private-website
-  Protocol:  https://github.com/mahmood726-cyber/private-website/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/private-website/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/private-website/
 
 References (topic pack: fallback (any MA paper)):
@@ -10303,7 +10303,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/prognostic-meta
-  Protocol:  https://github.com/mahmood726-cyber/prognostic-meta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/prognostic-meta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/prognostic-meta/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -10378,7 +10378,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/pub-bias-simulation
-  Protocol:  https://github.com/mahmood726-cyber/pub-bias-simulation/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/pub-bias-simulation/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/pub-bias-simulation/
 
 References (topic pack: publication bias / selection):
@@ -10453,7 +10453,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PubBiasSuite
-  Protocol:  https://github.com/mahmood726-cyber/PubBiasSuite/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PubBiasSuite/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/pubbiassuite/
 
 References (topic pack: risk of bias):
@@ -10528,7 +10528,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/rct-extractor-v2
-  Protocol:  https://github.com/mahmood726-cyber/rct-extractor-v2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/rct-extractor-v2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/143.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -10678,7 +10678,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/registry-first-rct-meta
-  Protocol:  https://github.com/mahmood726-cyber/registry-first-rct-meta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/registry-first-rct-meta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/registry-first-rct-meta/
 
 References (topic pack: publication bias / selection):
@@ -10828,7 +10828,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/enma-snma
-  Protocol:  https://github.com/mahmood726-cyber/enma-snma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/enma-snma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/147.html
 
 References (topic pack: network meta-analysis):
@@ -10903,7 +10903,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/rmst-meta
-  Protocol:  https://github.com/mahmood726-cyber/rmst-meta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/rmst-meta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/rmst-meta/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -11053,7 +11053,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/rob-assessor
-  Protocol:  https://github.com/mahmood726-cyber/rob-assessor/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/rob-assessor/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/rob-assessor/
 
 References (topic pack: risk of bias):
@@ -11128,7 +11128,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ROBMA
-  Protocol:  https://github.com/mahmood726-cyber/ROBMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ROBMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/robma/
 
 References (topic pack: fallback (any MA paper)):
@@ -11203,7 +11203,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/shahzaib-icu-landscape
-  Protocol:  https://github.com/mahmood726-cyber/shahzaib-icu-landscape/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/shahzaib-icu-landscape/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/152.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -11278,7 +11278,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/sheaf-nma
-  Protocol:  https://github.com/mahmood726-cyber/sheaf-nma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/sheaf-nma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/sheaf-nma/
 
 References (topic pack: network meta-analysis):
@@ -11353,7 +11353,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/SoFTable
-  Protocol:  https://github.com/mahmood726-cyber/SoFTable/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/SoFTable/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/softable/
 
 References (topic pack: GRADE / certainty rating):
@@ -11428,7 +11428,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/tda-ma
-  Protocol:  https://github.com/mahmood726-cyber/tda-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/tda-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/tda-ma/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -11503,7 +11503,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/tgep
-  Protocol:  https://github.com/mahmood726-cyber/tgep/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/tgep/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/156.html
 
 References (topic pack: publication bias / selection):
@@ -11578,7 +11578,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/TransportabilityCalc
-  Protocol:  https://github.com/mahmood726-cyber/TransportabilityCalc/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/TransportabilityCalc/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/transportabilitycalc/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -11653,7 +11653,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/TrialRadar
-  Protocol:  https://github.com/mahmood726-cyber/TrialRadar/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/TrialRadar/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/trialradar/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -11878,7 +11878,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Truthcert1
-  Protocol:  https://github.com/mahmood726-cyber/Truthcert1/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Truthcert1/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/161.html
 
 References (topic pack: publication bias / selection):
@@ -11953,7 +11953,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Truthcert1_work
-  Protocol:  https://github.com/mahmood726-cyber/Truthcert1_work/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Truthcert1_work/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/162.html
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -12028,7 +12028,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ubcma
-  Protocol:  https://github.com/mahmood726-cyber/ubcma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ubcma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ubcma/
 
 References (topic pack: publication bias / selection):
@@ -12103,7 +12103,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/UmbrellaReview
-  Protocol:  https://github.com/mahmood726-cyber/UmbrellaReview/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/UmbrellaReview/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/umbrellareview/
 
 References (topic pack: GRADE / certainty rating):
@@ -12178,7 +12178,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Value-Based-HTA
-  Protocol:  https://github.com/mahmood726-cyber/Value-Based-HTA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Value-Based-HTA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/165.html
 
 References (topic pack: fragility index):
@@ -12253,7 +12253,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/VOICalculator
-  Protocol:  https://github.com/mahmood726-cyber/VOICalculator/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/VOICalculator/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/voicalculator/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -12328,7 +12328,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/wasserstein
-  Protocol:  https://github.com/mahmood726-cyber/wasserstein/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/wasserstein/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/wasserstein/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -12783,7 +12783,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AsSirat
-  Protocol:  https://github.com/mahmood726-cyber/AsSirat/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AsSirat/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/assirat/
 
 References (topic pack: fragility index):
@@ -13087,7 +13087,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CINeMA
-  Protocol:  https://github.com/mahmood726-cyber/CINeMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CINeMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/cinema/
 
 References (topic pack: network meta-analysis):
@@ -17890,7 +17890,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/denominator-calibrated-living-nma
-  Protocol:  https://github.com/mahmood726-cyber/denominator-calibrated-living-nma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/denominator-calibrated-living-nma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/denominator-calibrated-living-nma/
 
 References (topic pack: network meta-analysis):
@@ -18041,7 +18041,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-map
-  Protocol:  https://github.com/mahmood726-cyber/evidence-map/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-map/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/244.html
 
 References (topic pack: GRADE / certainty rating):
@@ -18118,7 +18118,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/EvidenceOracle
-  Protocol:  https://github.com/mahmood726-cyber/EvidenceOracle/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/EvidenceOracle/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidenceoracle/
 
 References (topic pack: fragility index):
@@ -18270,7 +18270,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/248.html
 
 References (topic pack: network meta-analysis):
@@ -18423,7 +18423,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/GRADEPro
-  Protocol:  https://github.com/mahmood726-cyber/GRADEPro/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/GRADEPro/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/gradepro/
 
 References (topic pack: GRADE / certainty rating):
@@ -18878,7 +18878,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ipd-meta-pro
-  Protocol:  https://github.com/mahmood726-cyber/ipd-meta-pro/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ipd-meta-pro/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/256.html
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -19031,7 +19031,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ipd-simulator
-  Protocol:  https://github.com/mahmood726-cyber/ipd-simulator/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ipd-simulator/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ipd-simulator/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -19488,7 +19488,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMA
-  Protocol:  https://github.com/mahmood726-cyber/LivingMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/LivingMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/livingma/
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -19565,7 +19565,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet
-  Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/265.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -19642,7 +19642,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ma-converter
-  Protocol:  https://github.com/mahmood726-cyber/ma-converter/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ma-converter/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ma-converter/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -19871,7 +19871,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ma-sample-size
-  Protocol:  https://github.com/mahmood726-cyber/ma-sample-size/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ma-sample-size/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ma-sample-size/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -20480,7 +20480,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PFA-AF-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/277.html
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -20936,7 +20936,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/tower
-  Protocol:  https://github.com/mahmood726-cyber/tower/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/tower/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/283.html
 
 References (topic pack: fallback (any MA paper)):
@@ -21012,7 +21012,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/tower
-  Protocol:  https://github.com/mahmood726-cyber/tower/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/tower/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/284.html
 
 References (topic pack: automated data extraction / text mining):
@@ -21089,7 +21089,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/285.html
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -21394,7 +21394,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/tsa-pro
-  Protocol:  https://github.com/mahmood726-cyber/tsa-pro/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/tsa-pro/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/289.html
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -22445,7 +22445,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/actionable-evidence
-  Protocol:  https://github.com/mahmood726-cyber/actionable-evidence/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/actionable-evidence/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/actionable-evidence/
 
 References (topic pack: fragility index):
@@ -22520,7 +22520,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/auto-review
-  Protocol:  https://github.com/mahmood726-cyber/auto-review/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/auto-review/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/auto-review/
 
 References (topic pack: risk of bias):
@@ -22595,7 +22595,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/contradiction-map
-  Protocol:  https://github.com/mahmood726-cyber/contradiction-map/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/contradiction-map/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/contradiction-map/
 
 References (topic pack: network meta-analysis):
@@ -22670,7 +22670,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/equity-ma
-  Protocol:  https://github.com/mahmood726-cyber/equity-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/equity-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/equity-ma/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -22745,7 +22745,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-atlas
-  Protocol:  https://github.com/mahmood726-cyber/evidence-atlas/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-atlas/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-atlas/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -22820,7 +22820,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-copula
-  Protocol:  https://github.com/mahmood726-cyber/evidence-copula/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-copula/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-copula/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -22895,7 +22895,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-entropy
-  Protocol:  https://github.com/mahmood726-cyber/evidence-entropy/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-entropy/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-entropy/
 
 References (topic pack: publication bias / selection):
@@ -22970,7 +22970,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-extremes
-  Protocol:  https://github.com/mahmood726-cyber/evidence-extremes/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-extremes/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-extremes/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -23045,7 +23045,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-km
-  Protocol:  https://github.com/mahmood726-cyber/evidence-km/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-km/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-km/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -23120,7 +23120,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-map
-  Protocol:  https://github.com/mahmood726-cyber/evidence-map/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-map/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/312.html
 
 References (topic pack: fallback (any MA paper)):
@@ -23195,7 +23195,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-score
-  Protocol:  https://github.com/mahmood726-cyber/evidence-score/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-score/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-score/
 
 References (topic pack: fragility index):
@@ -23270,7 +23270,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-spectral
-  Protocol:  https://github.com/mahmood726-cyber/evidence-spectral/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-spectral/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-spectral/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -23345,7 +23345,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-topology
-  Protocol:  https://github.com/mahmood726-cyber/evidence-topology/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-topology/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidence-topology/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -23420,7 +23420,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/HyperMeta
-  Protocol:  https://github.com/mahmood726-cyber/HyperMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/HyperMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hypermeta/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -23495,7 +23495,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/infogeo-ma
-  Protocol:  https://github.com/mahmood726-cyber/infogeo-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/infogeo-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/infogeo-ma/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -23720,7 +23720,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MetaVoI
-  Protocol:  https://github.com/mahmood726-cyber/MetaVoI/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MetaVoI/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/metavoi/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -23795,7 +23795,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MoneyTrail
-  Protocol:  https://github.com/mahmood726-cyber/MoneyTrail/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MoneyTrail/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/321.html
 
 References (topic pack: fallback (any MA paper)):
@@ -23870,7 +23870,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PatientMA
-  Protocol:  https://github.com/mahmood726-cyber/PatientMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PatientMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/patientma/
 
 References (topic pack: Cochrane software / R package / methods platform):
@@ -23945,7 +23945,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PriorLab
-  Protocol:  https://github.com/mahmood726-cyber/PriorLab/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PriorLab/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/priorlab/
 
 References (topic pack: Bayesian meta-analysis):
@@ -24020,7 +24020,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/QualSynth
-  Protocol:  https://github.com/mahmood726-cyber/QualSynth/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/QualSynth/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/qualsynth/
 
 References (topic pack: browser-based meta-analysis tooling):
@@ -24095,7 +24095,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/sroc-plotter
-  Protocol:  https://github.com/mahmood726-cyber/sroc-plotter/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/sroc-plotter/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/sroc-plotter/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -24170,7 +24170,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/safe-ma
-  Protocol:  https://github.com/mahmood726-cyber/safe-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/safe-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/safe-ma/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -24245,7 +24245,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/therapy-graveyard
-  Protocol:  https://github.com/mahmood726-cyber/therapy-graveyard/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/therapy-graveyard/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/therapy-graveyard/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -24320,7 +24320,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/transport-ma
-  Protocol:  https://github.com/mahmood726-cyber/transport-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/transport-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/transport-ma/
 
 References (topic pack: machine learning / prediction models):
@@ -24395,7 +24395,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/TrustGate
-  Protocol:  https://github.com/mahmood726-cyber/TrustGate/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/TrustGate/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/trustgate/
 
 References (topic pack: fragility index):
@@ -24470,7 +24470,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ctgov-registry-survival
-  Protocol:  https://github.com/mahmood726-cyber/ctgov-registry-survival/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ctgov-registry-survival/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ctgov-registry-survival/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -24620,7 +24620,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/332.html
 
 References (topic pack: fallback (any MA paper)):
@@ -24695,7 +24695,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/333.html
 
 References (topic pack: oncology / cancer trials):
@@ -24770,7 +24770,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/334.html
 
 References (topic pack: GRADE / certainty rating):
@@ -24845,7 +24845,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/335.html
 
 References (topic pack: publication bias / selection):
@@ -24920,7 +24920,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/336.html
 
 References (topic pack: fallback (any MA paper)):
@@ -24995,7 +24995,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/337.html
 
 References (topic pack: fallback (any MA paper)):
@@ -25070,7 +25070,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/338.html
 
 References (topic pack: heart failure / cardiology):
@@ -25145,7 +25145,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/339.html
 
 References (topic pack: fallback (any MA paper)):
@@ -25220,7 +25220,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/340.html
 
 References (topic pack: network meta-analysis):
@@ -25295,7 +25295,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/341.html
 
 References (topic pack: publication bias / selection):
@@ -25370,7 +25370,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/342.html
 
 References (topic pack: network meta-analysis):
@@ -25445,7 +25445,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha-Course
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha-Course/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/343.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -25663,7 +25663,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AlBurhan
-  Protocol:  https://github.com/mahmood726-cyber/AlBurhan/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AlBurhan/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/344.html
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -25739,7 +25739,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AfricaForecast
-  Protocol:  https://github.com/mahmood726-cyber/AfricaForecast/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AfricaForecast/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/africaforecast/
 
 References (topic pack: causal inference / triangulation):
@@ -25813,7 +25813,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/EnrollmentOracle
-  Protocol:  https://github.com/mahmood726-cyber/EnrollmentOracle/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/EnrollmentOracle/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/enrollmentoracle/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -25887,7 +25887,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/HTNPipeline
-  Protocol:  https://github.com/mahmood726-cyber/HTNPipeline/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/HTNPipeline/blob/feat/hyperatlas-v4/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/347.html
 
 References (topic pack: causal inference / triangulation):
@@ -25961,7 +25961,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/OutcomeSwitchDetector
-  Protocol:  https://github.com/mahmood726-cyber/OutcomeSwitchDetector/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/OutcomeSwitchDetector/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/outcomeswitchdetector/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -26035,7 +26035,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ProtocolEvolution
-  Protocol:  https://github.com/mahmood726-cyber/ProtocolEvolution/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ProtocolEvolution/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/protocolevolution/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -26109,7 +26109,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/TrialAtlas
-  Protocol:  https://github.com/mahmood726-cyber/TrialAtlas/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/TrialAtlas/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/trialatlas/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -26183,7 +26183,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/E156
-  Protocol:  https://github.com/mahmood726-cyber/E156/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/E156/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/351.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -26259,7 +26259,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/nice-cardiology-guidance
-  Protocol:  https://github.com/mahmood726-cyber/nice-cardiology-guidance/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/nice-cardiology-guidance/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/352.html
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -26410,7 +26410,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ctgov-protocol-evolution
-  Protocol:  https://github.com/mahmood726-cyber/ctgov-protocol-evolution/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ctgov-protocol-evolution/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ctgov-protocol-evolution/
 
 References (topic pack: multilevel / three-level meta-analysis):
@@ -26484,7 +26484,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/saarc-e156-students
-  Protocol:  https://github.com/mahmood726-cyber/saarc-e156-students/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/saarc-e156-students/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/saarc-e156-students/
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -26558,7 +26558,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ihme-data-lakehouse
-  Protocol:  https://github.com/mahmood726-cyber/ihme-data-lakehouse/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ihme-data-lakehouse/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ihme-data-lakehouse/
 
 References (topic pack: fallback (any MA paper)):
@@ -26781,7 +26781,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PFA-AF-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/359.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -26855,7 +26855,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet
-  Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/360.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -26929,7 +26929,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/361.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27003,7 +27003,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Inclisiran-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/362.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27077,7 +27077,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/363.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27151,7 +27151,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/364.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27225,7 +27225,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Leadless-Pacing-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/365.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -27299,7 +27299,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CSP-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/CSP-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CSP-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/366.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27373,7 +27373,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Coronary-IVL-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/367.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27447,7 +27447,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/368.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -27521,7 +27521,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CTFFR-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/CTFFR-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CTFFR-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/369.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -27595,7 +27595,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Vericiguat-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Vericiguat-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Vericiguat-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/370.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -27669,7 +27669,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/371.html
 
 References (topic pack: fallback (any MA paper)):
@@ -27823,7 +27823,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/488.html
 
 References (topic pack: trial sequential analysis (TSA)):
@@ -27897,7 +27897,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Orforglipron_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Orforglipron_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Orforglipron_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/489.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -27974,7 +27974,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MendelianMR
-  Protocol:  https://github.com/mahmood726-cyber/MendelianMR/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MendelianMR/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/374.html
 
 References (topic pack: publication bias / selection):
@@ -28049,7 +28049,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/SafetyMA
-  Protocol:  https://github.com/mahmood726-cyber/SafetyMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/SafetyMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/375.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -28124,7 +28124,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PredModelMA
-  Protocol:  https://github.com/mahmood726-cyber/PredModelMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PredModelMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/376.html
 
 References (topic pack: risk of bias):
@@ -28199,7 +28199,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/RetractionImpact
-  Protocol:  https://github.com/mahmood726-cyber/RetractionImpact/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/RetractionImpact/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/377.html
 
 References (topic pack: fragility index):
@@ -28274,7 +28274,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingNMA
-  Protocol:  https://github.com/mahmood726-cyber/LivingNMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/LivingNMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/378.html
 
 References (topic pack: network meta-analysis):
@@ -29225,7 +29225,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/global-transportability-atlas
-  Protocol:  https://github.com/mahmood726-cyber/global-transportability-atlas/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/global-transportability-atlas/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/global-transportability-atlas/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -29299,7 +29299,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ProportionMA
-  Protocol:  https://github.com/mahmood726-cyber/ProportionMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ProportionMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/proportionma/
 
 References (topic pack: network meta-analysis):
@@ -29373,7 +29373,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidencemappro
-  Protocol:  https://github.com/mahmood726-cyber/evidencemappro/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidencemappro/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/evidencemappro/
 
 References (topic pack: GRADE / certainty rating):
@@ -29447,7 +29447,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/MultivarMA
-  Protocol:  https://github.com/mahmood726-cyber/MultivarMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/MultivarMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/multivarma/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -29521,7 +29521,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/CostEffMA
-  Protocol:  https://github.com/mahmood726-cyber/CostEffMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/CostEffMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/costeffma/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -29595,7 +29595,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/EcoBiasMA
-  Protocol:  https://github.com/mahmood726-cyber/EcoBiasMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/EcoBiasMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/ecobiasma/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -29669,7 +29669,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/TargetTrialMA
-  Protocol:  https://github.com/mahmood726-cyber/TargetTrialMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/TargetTrialMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/targettrialma/
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -29743,7 +29743,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PlatformTrialMA
-  Protocol:  https://github.com/mahmood726-cyber/PlatformTrialMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PlatformTrialMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/platformtrialma/
 
 References (topic pack: heterogeneity / prediction interval):
@@ -29817,7 +29817,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/SeqNMA
-  Protocol:  https://github.com/mahmood726-cyber/SeqNMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/SeqNMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/seqnma/
 
 References (topic pack: network meta-analysis):
@@ -29891,7 +29891,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/IPDNMA
-  Protocol:  https://github.com/mahmood726-cyber/IPDNMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/IPDNMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/397.html
 
 References (topic pack: network meta-analysis):
@@ -29965,7 +29965,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/FederatedMA
-  Protocol:  https://github.com/mahmood726-cyber/FederatedMA/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/FederatedMA/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/398.html
 
 References (topic pack: fallback (any MA paper)):
@@ -30039,7 +30039,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/FigureEngine
-  Protocol:  https://github.com/mahmood726-cyber/FigureEngine/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/FigureEngine/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/399.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -30113,7 +30113,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/ZenodoPipeline
-  Protocol:  https://github.com/mahmood726-cyber/ZenodoPipeline/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/ZenodoPipeline/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/400.html
 
 References (topic pack: automated data extraction / text mining):
@@ -30187,7 +30187,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/who-data-lakehouse
-  Protocol:  https://github.com/mahmood726-cyber/who-data-lakehouse/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/who-data-lakehouse/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/who-data-lakehouse/
 
 References (topic pack: fallback (any MA paper)):
@@ -30261,7 +30261,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Omecamtiv-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/402.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -30335,7 +30335,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Sotagliflozin-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/403.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -30409,7 +30409,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/404.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -30483,7 +30483,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Osimertinib_NSCLC_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Osimertinib_NSCLC_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Osimertinib_NSCLC_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/405.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -30631,7 +30631,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/407.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -30779,7 +30779,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Inclisiran-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/409.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -30927,7 +30927,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/411.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -31001,7 +31001,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Semaglutide_CKD_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Semaglutide_CKD_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Semaglutide_CKD_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/412.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -31149,7 +31149,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMA-Portfolio
-  Protocol:  https://github.com/mahmood726-cyber/LivingMA-Portfolio/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/LivingMA-Portfolio/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/414.html
 
 References (topic pack: network meta-analysis):
@@ -31225,7 +31225,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-collapsar
-  Protocol:  https://github.com/mahmood726-cyber/evidence-collapsar/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/evidence-collapsar/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/493.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -31301,7 +31301,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/tda-meta
-  Protocol:  https://github.com/mahmood726-cyber/tda-meta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/tda-meta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/494.html
 
 References (topic pack: machine learning / prediction models):
@@ -31377,7 +31377,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/retraction-gravity
-  Protocol:  https://github.com/mahmood726-cyber/retraction-gravity/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/retraction-gravity/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/495.html
 
 References (topic pack: fallback (any MA paper)):
@@ -32265,7 +32265,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/426.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -32339,7 +32339,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/427.html
 
 References (topic pack: network meta-analysis):
@@ -32413,7 +32413,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/428.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -32635,7 +32635,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/431.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -32783,7 +32783,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Resmetirom-MASH-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/433.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -32857,7 +32857,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/K_Binders_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/K_Binders_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/K_Binders_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/434.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -32931,7 +32931,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/435.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33005,7 +33005,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Semaglutide-HFpEF-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/436.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33079,7 +33079,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/437.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33153,7 +33153,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/438.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33301,7 +33301,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/AttrCM-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/AttrCM-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/AttrCM-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/440.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33671,7 +33671,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Empa_MI_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Empa_MI_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Empa_MI_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/445.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -33745,7 +33745,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/PFA-AF-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/446.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33819,7 +33819,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet
-  Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/447.html
 
 References (topic pack: heterogeneity / prediction interval):
@@ -33893,7 +33893,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Sacituzumab_TNBC_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Sacituzumab_TNBC_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Sacituzumab_TNBC_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/448.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -34044,7 +34044,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/aleph-engine
-  Protocol:  https://github.com/mahmood726-cyber/aleph-engine/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/aleph-engine/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/496.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -34126,7 +34126,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/meta-paradigm-shift
-  Protocol:  https://github.com/mahmood726-cyber/meta-paradigm-shift/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/meta-paradigm-shift/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/450.html
 
 References (topic pack: Cochrane software / R package / methods platform):
@@ -35342,7 +35342,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Dapa_AcuteHF_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Dapa_AcuteHF_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Dapa_AcuteHF_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/466.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -35416,7 +35416,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Sotatercept_PAH_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Sotatercept_PAH_LivingMeta/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Sotatercept_PAH_LivingMeta/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/467.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
@@ -35490,7 +35490,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/GuidelineLag
-  Protocol:  https://github.com/mahmood726-cyber/GuidelineLag/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/GuidelineLag/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/468.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -35633,7 +35633,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/dta-pro-v2
-  Protocol:  https://github.com/mahmood726-cyber/dta-pro-v2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/dta-pro-v2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/dta-pro-v2/
 
 References (topic pack: diagnostic meta-analysis (DTA)):
@@ -35706,7 +35706,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/Fatiha
-  Protocol:  https://github.com/mahmood726-cyber/Fatiha/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/Fatiha/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/fatiha/
 
 References (topic pack: publication bias / selection):
@@ -35779,7 +35779,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/hta-artifact-standard-v2
-  Protocol:  https://github.com/mahmood726-cyber/hta-artifact-standard-v2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/hta-artifact-standard-v2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/hta-artifact-standard-v2/
 
 References (topic pack: network meta-analysis):
@@ -35925,7 +35925,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/mem-ecosystem-model
-  Protocol:  https://github.com/mahmood726-cyber/mem-ecosystem-model/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/mem-ecosystem-model/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/477.html
 
 References (topic pack: publication bias / selection):
@@ -35998,7 +35998,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/nma-pro-v2
-  Protocol:  https://github.com/mahmood726-cyber/nma-pro-v2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/nma-pro-v2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/nma-pro-v2/
 
 References (topic pack: network meta-analysis):
@@ -36071,7 +36071,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/shahzaib-icu-landscape
-  Protocol:  https://github.com/mahmood726-cyber/shahzaib-icu-landscape/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/shahzaib-icu-landscape/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/479.html
 
 References (topic pack: CT.gov / ClinicalTrials.gov audit):
@@ -36144,7 +36144,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/truthcert-pairwisepro-v2
-  Protocol:  https://github.com/mahmood726-cyber/truthcert-pairwisepro-v2/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/truthcert-pairwisepro-v2/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/truthcert-pairwisepro-v2/
 
 References (topic pack: individual participant data (IPD) meta-analysis):
@@ -36378,7 +36378,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/dissonance-field-synthesis
-  Protocol:  https://github.com/mahmood726-cyber/dissonance-field-synthesis/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/dissonance-field-synthesis/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/483.html
 
 References (topic pack: network meta-analysis):
@@ -36453,7 +36453,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
   Code:      https://github.com/mahmood726-cyber/impossible-ma
-  Protocol:  https://github.com/mahmood726-cyber/impossible-ma/blob/main/E156-PROTOCOL.md
+  Protocol:  https://github.com/mahmood726-cyber/impossible-ma/blob/master/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/impossible-ma/
 
 References (topic pack: meta-analytic priors / robust pooling):
