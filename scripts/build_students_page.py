@@ -440,6 +440,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
       <input type="search" id="search" aria-label="Search papers by title, body, data, or topic" placeholder='Search e.g. "heart failure" or "diagnostic"'>
       <select id="filter-kind" aria-label="Filter by paper kind">
         <option value="">All kinds</option>
+        <option value="rapidmeta">RapidMeta (living MA engine)</option>
         <option value="living-ma">Living meta-analysis</option>
         <option value="methods">Methods / software</option>
         <option value="clinical">Clinical</option>
@@ -492,12 +493,17 @@ let filterStatus = "";
 let filterKind = "";
 let filterSeries = "";
 
-// Coarse kind-classification. Order matters: check meta-analysis FIRST so
-// that "methods | ESTIMAND: pooled SMD" papers (130+ of them — Bayesian-MA,
-// DTA-MA, NMA, IPD-MA, dose-response-MA, etc.) land under Living MA rather
-// than being hidden behind the generic "methods" bucket. Mirrors
-// scripts/paper_charts.py detect_kind().
+// Coarse kind-classification. Order:
+//   1. RapidMeta — papers backed by the rapidmeta-finerenone multi-therapy
+//      engine get their own bucket (currently ~58 papers). Promoted out
+//      of "Living meta-analysis" so the two categories are exclusive on
+//      the Kind dropdown.
+//   2. Living meta-analysis — any paper with an MA-ish TYPE or title.
+//      Catches methods-about-MA (Bayesian-MA, DTA-MA, IPD-MA, etc.).
+//   3. Methods — software / methodological / tool papers that aren't MA.
+//   4. Clinical / other — fallbacks.
 function kindOf(entry) {
+  if (entry.code_url && entry.code_url.includes("rapidmeta-finerenone")) return "rapidmeta";
   const typ = (entry.type || "").toLowerCase().split("|")[0].trim();
   const title = (entry.title || "").toLowerCase();
   const fullType = (entry.type || "").toLowerCase();
