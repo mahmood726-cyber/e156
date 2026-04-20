@@ -1,4 +1,4 @@
-"""Generate 28 E156 workbook entries for the orphan REVIEW.html files in
+"""Generate E156 workbook entries for orphan REVIEW.html files in
 rapidmeta-finerenone — so every dashboard in that multi-therapy engine
 has a matching student-claimable paper on the board.
 
@@ -9,14 +9,20 @@ For each orphan review:
   4. Append a full SUBMISSION METADATA block matching the workbook's
      current post-COI-retirement template
 
-Writes 28 new entries at the end of rewrite-workbook.txt with numbers
-497-524.
+Idempotent: inspects the existing workbook for entries whose short
+`[N/T] <name>` slug matches a review file's stem. Those are treated as
+already-present and skipped. Safe to re-run after adding new REVIEW.html
+files to the upstream repo — only genuinely new orphans get appended.
 
-Data extraction is best-effort (not every HTML exposes every field);
-missing numbers become "see live dashboard" phrases that the student
-can fill in when they rewrite.
+Usage:
+  python generate_rapidmeta_entries.py               # process all orphans
+  python generate_rapidmeta_entries.py --limit 10    # take first 10 only
+  python generate_rapidmeta_entries.py --start-at 600  # force next num to 600
+  python generate_rapidmeta_entries.py --dry-run     # preview without writing
+  python generate_rapidmeta_entries.py --reviews TAVR_LOWRISK_REVIEW.html,...
 """
 from __future__ import annotations
+import argparse
 import html as htmlmod
 import io
 import json
@@ -279,25 +285,96 @@ def build_entry(num: int, total: int, fname: str) -> str:
     )
 
 
+def list_live_reviews() -> list[str]:
+    """Query the live repo for every current REVIEW.html file."""
+    try:
+        out = subprocess.check_output(
+            ["gh", "api", f"repos/{REPO}/contents",
+             "--jq", '.[] | select(.name | endswith("_REVIEW.html")) | .name'],
+            text=True,
+        )
+    except subprocess.CalledProcessError:
+        return list(ORPHAN_REVIEWS)  # fall back to cached list
+    return [ln.strip() for ln in out.splitlines() if ln.strip()]
+
+
+def slugs_already_in_workbook(existing_text: str) -> set[str]:
+    """Return the set of REVIEW-stem slugs (e.g. 'ANIFROLUMAB_SLE') that
+    already have a workbook entry — detected either by the `[N/T] slug`
+    heading OR by a Dashboard URL pointing at that REVIEW file.
+    """
+    slugs: set[str] = set()
+    for m in re.finditer(r"^\[\d+/\d+\]\s+(\S+)", existing_text, re.MULTILINE):
+        slugs.add(m.group(1).upper())
+    # Case-insensitive: some review filenames contain mixed case like
+    # INCRETIN_HFpEF_REVIEW.html — compare everything uppercased.
+    for m in re.finditer(
+        r"rapidmeta-finerenone/([A-Za-z0-9_]+)_REVIEW\.html", existing_text
+    ):
+        slugs.add(m.group(1).upper())
+    return slugs
+
+
 def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0] if __doc__ else "")
+    ap.add_argument("--start-at", type=int, default=None,
+                    help="Override the starting workbook number (default: highest in workbook + 1)")
+    ap.add_argument("--limit", type=int, default=None,
+                    help="Cap the number of new entries this run")
+    ap.add_argument("--reviews", default="",
+                    help="Comma-separated REVIEW.html filenames to process (default: auto-discover orphans)")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="Print what would be appended; don't touch the workbook")
+    ap.add_argument("--force", action="store_true",
+                    help="Skip the idempotency check (re-emit entries even if the slug already exists)")
+    args = ap.parse_args()
+
     existing_text = WORKBOOK.read_text(encoding="utf-8")
-    # Find highest existing [N/T]
+    have = slugs_already_in_workbook(existing_text)
+
+    if args.reviews:
+        candidates = [r.strip() for r in args.reviews.split(",") if r.strip()]
+    else:
+        # Discover orphans live; fall back to the cached list
+        live = list_live_reviews() or list(ORPHAN_REVIEWS)
+        candidates = sorted(live)
+
+    # Filter to orphans (unless --force)
+    orphans = []
+    for fname in candidates:
+        slug = fname.replace("_REVIEW.html", "").upper()
+        if (not args.force) and slug in have:
+            continue
+        orphans.append(fname)
+
+    if args.limit is not None:
+        orphans = orphans[:args.limit]
+
+    if not orphans:
+        print("Nothing to do — every orphan already has a workbook entry.")
+        return 0
+
+    # Determine starting number
     nums = [int(m.group(1)) for m in re.finditer(r"^\[(\d+)/", existing_text, re.MULTILINE)]
     highest = max(nums) if nums else 0
-    # Keep only first 28 orphans per user ask
-    todo = ORPHAN_REVIEWS[:28]
-    new_total = highest + len(todo)
-    print(f"Starting num: {highest+1}, new total: {new_total}")
+    start_at = args.start_at if args.start_at is not None else highest + 1
+    new_total = max(highest, start_at + len(orphans) - 1)
+
+    print(f"Planned: {len(orphans)} new entries, starting at #{start_at}")
     parts = []
-    for i, fname in enumerate(todo):
-        num = highest + 1 + i
+    for i, fname in enumerate(orphans):
+        num = start_at + i
         entry = build_entry(num, new_total, fname)
         parts.append(entry)
         print(f"  #{num}: {fname}")
-    # Append separator + new entries
+
+    if args.dry_run:
+        print(f"\n--dry-run: {len(parts)} entries NOT written to workbook.")
+        return 0
+
     appended = existing_text.rstrip() + "\n\n" + SEP + "".join(f"{e}{SEP}" for e in parts) + "\n"
     WORKBOOK.write_text(appended, encoding="utf-8")
-    print(f"Appended {len(todo)} entries. Workbook now ends with #{highest+len(todo)}.")
+    print(f"Appended {len(parts)} entries. Workbook now has {highest + len(parts)} entries (last #{start_at + len(parts) - 1}).")
     return 0
 
 
