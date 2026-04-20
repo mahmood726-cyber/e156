@@ -1,0 +1,57 @@
+name: Sync rapidmeta orphan reviews into workbook
+
+on:
+  schedule:
+    # Weekly, Monday 05:00 UTC — after expire.yml at 04:00 so they don't collide
+    - cron: '0 5 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Serialises workbook-writing runs. Distinct from `claims-json` so this
+# can run in parallel with claim-update events, but not with itself.
+concurrency:
+  group: workbook-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate entries for any new REVIEW.html orphans
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/generate_rapidmeta_entries.py
+
+      - name: Rebuild per-paper pages
+        run: python scripts/build_paper_pages.py
+
+      - name: Rebuild students.html
+        run: python scripts/build_students_page.py
+
+      - name: Commit and push (no-op if no new orphans)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add rewrite-workbook.txt students.html paper/
+          if git diff --cached --quiet; then
+            echo "No new orphans this run — workbook and board unchanged."
+            exit 0
+          fi
+          N_NEW=$(grep -c '^\[' rewrite-workbook.txt) || true
+          git commit -m "auto: sync new rapidmeta review(s) into workbook ($(date -u +%F))"
+          for i in 1 2 3; do
+            if git push; then
+              echo "Pushed on attempt $i."
+              exit 0
+            fi
+            echo "push rejected; rebasing (attempt $i/3)"
+            git pull --rebase origin "$(git branch --show-current)"
+          done
+          echo "Failed to push after 3 rebases." >&2
+          exit 1
