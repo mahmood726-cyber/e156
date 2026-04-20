@@ -160,6 +160,8 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
 .days-left.urgent { color: #f87171; font-weight: 600; }
 .days-left.expired { color: #ef4444; font-weight: 700; text-transform: uppercase; }
 .ext-badge { font-family: var(--mono); font-size: 0.75em; background: rgba(59, 130, 246, 0.2); color: var(--claimed); border: 1px solid rgba(59, 130, 246, 0.4); padding: 0.05em 0.4em; border-radius: 3px; margin-left: 0.3em; }
+.series-badge { font-family: var(--mono); font-size: 0.75em; background: rgba(168, 85, 247, 0.18); color: #c4b5fd; border: 1px solid rgba(168, 85, 247, 0.4); padding: 0.1em 0.55em; border-radius: 3px; cursor: pointer; margin-left: 0.4em; }
+.series-badge:hover { background: rgba(168, 85, 247, 0.3); }
 
 .toggle-body { background: none; border: 0; color: var(--text-faint); font-family: var(--mono); font-size: 0.8rem; cursor: pointer; padding: 0.5rem 0.2rem; min-height: 36px; margin-top: 0.3rem; }
 .toggle-body:hover { color: var(--accent); }
@@ -263,6 +265,14 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
   <div class="container">
     <div class="toolbar-row">
       <input type="search" id="search" aria-label="Search papers by title, body, data, or topic" placeholder='Search e.g. "heart failure" or "diagnostic"'>
+      <select id="filter-kind" aria-label="Filter by paper kind">
+        <option value="">All kinds</option>
+        <option value="living-ma">Living meta-analysis</option>
+        <option value="methods">Methods / software</option>
+        <option value="clinical">Clinical</option>
+        <option value="other">Other</option>
+      </select>
+      <select id="filter-series" aria-label="Filter by shared code repository (series)"><option value="">All series</option></select>
       <select id="filter-topic" aria-label="Filter by topic"><option value="">All topics</option></select>
       <select id="filter-status" aria-label="Filter by claim status">
         <option value="">All statuses</option>
@@ -306,6 +316,36 @@ let currentUser = null;    // P1-12 — set by URL `?user=` hint or localStorage
 let filterText = "";
 let filterTopic = "";
 let filterStatus = "";
+let filterKind = "";
+let filterSeries = "";
+
+// Coarse kind-classification — mirrors scripts/paper_charts.py detect_kind().
+function kindOf(entry) {
+  const typ = (entry.type || "").toLowerCase().split("|")[0].trim();
+  if (typ.includes("methods") || typ.includes("methodological") || typ.includes("tool")) return "methods";
+  if (typ.includes("living-ma") || typ.includes("meta-analysis") || typ.includes("pairwise") || typ.includes("network") || typ.startsWith("meta")) return "living-ma";
+  if (typ.includes("clinical")) return "clinical";
+  return "other";
+}
+
+// Series = shared code_url, shown as a badge + a filter dropdown. Useful
+// for clusters like rapidmeta-finerenone (17 papers share one repo).
+const SERIES_INDEX = (() => {
+  const counts = {};
+  ENTRIES.forEach(e => {
+    if (!e.code_url) return;
+    counts[e.code_url] = (counts[e.code_url] || 0) + 1;
+  });
+  return counts;
+})();
+function seriesOf(entry) {
+  if (!entry.code_url) return "";
+  return (SERIES_INDEX[entry.code_url] || 0) >= 2 ? entry.code_url : "";
+}
+function seriesLabel(url) {
+  try { return new URL(url).pathname.replace(/^\/[^/]+\//, ""); }
+  catch (_) { return url; }
+}
 
 function windowDaysFor(claim) {
   // 10-day auto-extension adds to the base window iff claim has the flag.
@@ -505,6 +545,8 @@ function render() {
   const grid = document.getElementById("grid");
   const q = filterText.toLowerCase().trim();
   const matches = ENTRIES.filter(e => {
+    if (filterKind && kindOf(e) !== filterKind) return false;
+    if (filterSeries && e.code_url !== filterSeries) return false;
     if (filterTopic && e.topic !== filterTopic) return false;
     if (filterStatus && statusOf(e) !== filterStatus) return false;
     if (!q) return true;
@@ -540,6 +582,7 @@ function render() {
           <span>${escapeHtml(e.type || "")}</span>
           <span>${escapeHtml(e.data || "")}</span>
           <span class="topic">${escapeHtml(e.topic)}</span>
+          ${seriesOf(e) ? `<span class="series-badge" title="Shared repo with ${SERIES_INDEX[e.code_url]-1} other paper(s) — click to filter">📚 ${escapeHtml(seriesLabel(seriesOf(e)))}</span>` : ""}
         </div>
         <div class="card-body" id="body-${e.num}">${escapeHtml(e.body || "(no body)")}</div>
         <button class="toggle-body" aria-expanded="false" aria-controls="details-${e.num}" data-num="${e.num}">show full details <span aria-hidden="true">▼</span></button>
@@ -589,6 +632,21 @@ function populateTopicFilter() {
   });
 }
 
+function populateSeriesFilter() {
+  // Series = code repos that back 2+ papers. Sorted by paper count desc
+  // so the biggest clusters (rapidmeta-finerenone with 17, Fatiha-Course
+  // with 13) sit at the top of the dropdown.
+  const shared = Object.entries(SERIES_INDEX).filter(([_, n]) => n >= 2);
+  shared.sort((a, b) => b[1] - a[1]);
+  const sel = document.getElementById("filter-series");
+  shared.forEach(([url, n]) => {
+    const opt = document.createElement("option");
+    opt.value = url;
+    opt.textContent = `${seriesLabel(url)} (${n} papers)`;
+    sel.appendChild(opt);
+  });
+}
+
 // P1-10 — if claims.json fetch fails, show the error banner so students
 // don't mistakenly claim papers that are actually already taken.
 fetch("claims.json", { cache: "no-cache" })
@@ -631,9 +689,25 @@ const onSearch = debounce(() => { filterText = searchEl.value; render(); }, 200)
 searchEl.addEventListener("input", onSearch);
 document.getElementById("filter-topic").addEventListener("change", e => { filterTopic = e.target.value; render(); });
 document.getElementById("filter-status").addEventListener("change", e => { filterStatus = e.target.value; render(); });
+document.getElementById("filter-kind").addEventListener("change", e => { filterKind = e.target.value; render(); });
+document.getElementById("filter-series").addEventListener("change", e => { filterSeries = e.target.value; render(); });
 
 // P2-2 — event delegation for toggle buttons (avoids 485 inline onclicks).
 document.getElementById("grid").addEventListener("click", ev => {
+  const badge = ev.target.closest(".series-badge");
+  if (badge) {
+    // Click a series badge to filter the board to just that series
+    const card = badge.closest(".card");
+    const entry = ENTRIES.find(e => card && card.querySelector(`[data-num="${e.num}"]`));
+    if (entry && entry.code_url) {
+      filterSeries = entry.code_url;
+      const sel = document.getElementById("filter-series");
+      sel.value = entry.code_url;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    return;
+  }
   const btn = ev.target.closest(".toggle-body");
   if (!btn) return;
   const num = Number(btn.dataset.num);
@@ -641,6 +715,7 @@ document.getElementById("grid").addEventListener("click", ev => {
 });
 
 populateTopicFilter();
+populateSeriesFilter();
 updateStats();
 render();
 </script>
