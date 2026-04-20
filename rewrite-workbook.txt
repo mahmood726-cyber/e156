@@ -104,7 +104,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/501MLM
   Protocol:  https://github.com/mahmood726-cyber/501MLM/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/501mlm/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/1.html
 
 References (topic pack: multilevel / three-level meta-analysis):
   1. Cheung MW-L. 2014. Modeling dependent effect sizes with three-level meta-analyses: a structural equation modeling approach. Psychol Methods. 19(2):211-229. doi:10.1037/a0032968
@@ -1229,7 +1229,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/chat2
   Protocol:  https://github.com/mahmood726-cyber/chat2/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/chat2/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/18.html
 
 References (topic pack: Cochrane software / R package / methods platform):
   1. Viechtbauer W. 2010. Conducting meta-analyses in R with the metafor package. J Stat Softw. 36(3):1-48. doi:10.18637/jss.v036.i03
@@ -1304,7 +1304,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/chatpaper
   Protocol:  https://github.com/mahmood726-cyber/chatpaper/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/chatpaper/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/19.html
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -1379,7 +1379,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/claude2
   Protocol:  https://github.com/mahmood726-cyber/claude2/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/claude2/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/20.html
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71
@@ -3733,7 +3733,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/evidence-inference
   Protocol:  https://github.com/mahmood726-cyber/evidence-inference/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/evidence-inference/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/51.html
 
 References (topic pack: automated data extraction / text mining):
   1. Marshall IJ, Wallace BC. 2019. Toward systematic review automation: a practical guide to using machine learning tools in research synthesis. Syst Rev. 8:163. doi:10.1186/s13643-019-1074-9
@@ -10754,7 +10754,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/repo100
   Protocol:  https://github.com/mahmood726-cyber/repo100/blob/main/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/repo100/
+  Dashboard: https://mahmood726-cyber.github.io/e156/paper/146.html
 
 References (topic pack: fallback (any MA paper)):
   1. Page MJ, McKenzie JE, Bossuyt PM, et al. 2021. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ. 372:n71. doi:10.1136/bmj.n71

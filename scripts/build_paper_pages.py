@@ -80,10 +80,12 @@ def parse_entries() -> list[dict]:
         )
         entry["body"] = body_m.group(1).strip() if body_m else ""
 
-        # Links block
-        code_m = re.search(r"Code:\s+(\S+)", block)
-        protocol_m = re.search(r"Protocol:\s+(\S+)", block)
-        pages_m = re.search(r"Dashboard:\s+(\S+)", block)
+        # Links block — require line-start + http(s) prefix to avoid
+        # matching colon-terminated words inside titles (e.g. "Everything
+        # Claude Code: Modular..." in #49).
+        code_m = re.search(r"^\s+Code:\s+(https?://\S+)", block, re.MULTILINE)
+        protocol_m = re.search(r"^\s+Protocol:\s+(https?://\S+)", block, re.MULTILINE)
+        pages_m = re.search(r"^\s+Dashboard:\s+(https?://\S+)", block, re.MULTILINE)
         entry["code_url"] = code_m.group(1) if code_m else ""
         entry["protocol_url"] = protocol_m.group(1) if protocol_m else ""
         entry["pages_url"] = pages_m.group(1) if pages_m else ""
