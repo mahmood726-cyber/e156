@@ -27002,9 +27002,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Inclisiran-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/362.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/INCLISIRAN_REVIEW.html
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -27076,9 +27076,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/363.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/TIRZEPATIDE_T2D_REVIEW.html
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -30408,9 +30408,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/404.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/BIOLOGIC_ASTHMA_REVIEW.html
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -30778,9 +30778,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Inclisiran-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Inclisiran-LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/409.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/INCLISIRAN_REVIEW.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
@@ -32338,9 +32338,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/427.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/GLP1_CVOT_REVIEW.html
 
 References (topic pack: network meta-analysis):
   1. Rücker G. 2012. Network meta-analysis, electrical networks and graph theory. Res Synth Methods. 3(4):312-324. doi:10.1002/jrsm.1058
@@ -32412,9 +32412,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/AntiAmyloid-AD-LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/428.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/ANTIAMYLOID_AD_REVIEW.html
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -32930,9 +32930,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/Tirzepatide-LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/435.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/TIRZEPATIDE_T2D_REVIEW.html
 
 References (topic pack: heterogeneity / prediction interval):
   1. Higgins JPT, Thompson SG. 2002. Quantifying heterogeneity in a meta-analysis. Stat Med. 21(11):1539-1558. doi:10.1002/sim.1186
@@ -33300,9 +33300,9 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/AttrCM-LivingMeta
-  Protocol:  https://github.com/mahmood726-cyber/AttrCM-LivingMeta/blob/master/E156-PROTOCOL.md
-  Dashboard: https://mahmood726-cyber.github.io/e156/paper/440.html
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/ATTR_CM_REVIEW.html
 
 References (topic pack: restricted mean survival time / survival meta-analysis):
   1. Royston P, Parmar MK. 2013. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 13:152. doi:10.1186/1471-2288-13-152
