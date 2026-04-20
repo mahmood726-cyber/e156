@@ -25588,8 +25588,8 @@ ORCID: 0000-0001-9107-3704
 Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 
 Links:
-  Code:      https://github.com/mahmood726-cyber/pairwiseai70
-  Protocol:  https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md
+  Code:      https://github.com/mahmood726-cyber/Pairwise70
+  Protocol:  https://github.com/mahmood726-cyber/Pairwise70/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/e156/paper/487.html
 
 References (topic pack: diagnostic meta-analysis (DTA)):
