@@ -10662,6 +10662,7 @@ TITLE: Registry-First Meta-Analysis: Quantifying Missing Cardiovascular Trial Ev
 TYPE: methods  |  ESTIMAND: Evidence Coverage Ratio (trial-level)
 DATA: 40 Cochrane cardiovascular review topics linked to ClinicalTrials.gov via API v2, PubMed, and OpenAl
 PATH: C:\Projects\registry_first_rct_meta
+STATUS NOTE (2026-04-21): OA PDF augmentation is now live for bounded topic runs. A 21-trial empagliflozin sample recovered one publication-verified trial (`NCT04509674`) with direct `RR 0.79 (95% CI 0.63-0.98)` and `HR 0.75 (95% CI 0.57-0.99)`, and the downstream population layer flipped to `effect_available=1.0`; the manuscript body below was not changed.
 
 CURRENT BODY (156 words):
 How much completed cardiovascular trial evidence registered on ClinicalTrials.gov is missing from published systematic reviews and what are the consequences for pooled estimates? We applied a registry-first framework to 40 Cochrane cardiovascular review topics, building trial universes from registrations and linking publications through identifier and title matching. Evidence Coverage Ratios were computed at trial and participant levels, with missing-not-at-random sensitivity analyses modelling unreported trials under null, attenuated, and adverse assumptions. The median trial-level coverage was 68% (IQR 52-81%) and participant-weighted coverage was 78%, meaning approximately one-third of completed registered trials lacked retrievable published results. Sensitivity analyses shifted pooled estimates by a median of 12% toward the null when assuming missing trials showed no benefit, with worst-case shifts reaching 22%. Registry-first denominator analysis quantifies evidence completeness directly, providing a structural complement to statistical funnel plot asymmetry tests. A limitation is that registry metadata quality varies across periods and areas, and coverage depends on completeness of identifier linking.
@@ -38684,6 +38685,1118 @@ Links:
   Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
   Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
   Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/VENETOCLAX_AML_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+
+[529/529]
+Topic: Predicting Global Trial Success: The Transportability Index and Evidence Yield Metric
+Type: methods
+Estimand: Transportability Index (0.0 to 1.0)
+Data: AACT (n=3,600+), IHME GBD 2023, WHO GHO/GHED, WB WDI
+Path: D:\Projects\trial-transportability-atlas
+
+CURRENT BODY:
+This study introduces the Transportability Index (TI), a mathematical framework for quantifying the "clinical distance" between trial origins and target regions. Using a multi-source synthesis of AACT (n=3,600+), IHME, WHO, and World Bank datasets, we analyzed regional readiness across three cardiovascular classes (HFrEF, SGLT2i, GLP-1a). We find that physician density is the primary rate-limiting step for evidence transport in Africa (TI ~0.43), where doubling workforce capacity provides 3x more transportability lift than equivalent GDP growth. Conversely, Asia shows a "middle-income convergence" pattern (TI ~0.66), where economic uplift is now the dominant lever for reaching North American parity. We further introduce the Predicted Evidence Yield (PEY) metric, which discounts local disease burden by system readiness. Despite lower TI scores than South America, Asia's massive burden (>100M DALYs) makes it the global priority for evidence transport (PEY ~79k). These metrics enable deterministic, data-driven planning for global clinical translation and health system hardening.
+
+YOUR REWRITE:
+[ ]
+
+Source ID: GBD-2023-WDI-2024-AACT-2026
+Source URL: https://github.com/mahmood726-cyber/trial-transportability-atlas-d-drive
+
+Ethics: Not required. Study uses only publicly available aggregate data; no
+  human participants; no patient-identifiable information; no individual-
+  participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  Mahmood Ahmad â€” Conceptualization, Methodology, Software, Formal analysis,
+    Writing â€“ original draft, Visualization.
+
+Target journal: â—† SynthÄ“sis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note â€” submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+
+======================================================================
+[530/545] ACALABRUTINIB_CLL
+TITLE: Acalabrutinib — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Acalabrutinib trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/ACALABRUTINIB_CLL_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[531/545] AFLIBERCEPT_HD
+TITLE: Aflibercept 8 mg High-Dose for nAMD and DME — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: HR for stroke or systemic embolism
+DATA: RapidMeta cardiology / electrophysiology review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Aflibercept 8 mg High-Dose trials support a clinically meaningful effect on the registered HR for stroke or systemic embolism? The RapidMeta cardiology / electrophysiology living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/AFLIBERCEPT_HD_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[532/545] DUPILUMAB_COPD
+TITLE: Dupilumab for COPD with Type 2 Inflammation — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: HR for moderate/severe exacerbations
+DATA: RapidMeta respiratory medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Dupilumab trials support a clinically meaningful effect on the registered HR for moderate/severe exacerbations? The RapidMeta respiratory medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/DUPILUMAB_COPD_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[533/545] ESKETAMINE_TRD
+TITLE: Intranasal Esketamine for Treatment-Resistant Depression — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Intranasal Esketamine trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/ESKETAMINE_TRD_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[534/545] EVT_EXTENDED_WINDOW
+TITLE: Endovascular Thrombectomy in Extended — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Endovascular Thrombectomy in Extended trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/EVT_EXTENDED_WINDOW_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[535/545] IO_CHEMO_NSCLC_1L
+TITLE: Immunotherapy + Chemotherapy in 1L NSCLC — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Immunotherapy + Chemotherapy in 1L NSCLC trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/IO_CHEMO_NSCLC_1L_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[536/545] KARXT_SCZ
+TITLE: KarXT — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do KarXT trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/KARXT_SCZ_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[537/545] LENACAPAVIR_PREP
+TITLE: Lenacapavir Twice-Yearly Injection for HIV Pre-Exposure Prophylaxis — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · None trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Lenacapavir Twice-Yearly Injection trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates all eligible phase 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/LENACAPAVIR_PREP_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[538/545] LU_PSMA_MCRPC
+TITLE: 177Lu-PSMA-617 Radioligand Therapy for mCRPC — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do 177Lu-PSMA-617 Radioligand Therapy trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/LU_PSMA_MCRPC_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[539/545] MIRIKIZUMAB_UC
+TITLE: Mirikizumab for Moderate-to-Severe Ulcerative Colitis — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: OR for clinical remission
+DATA: RapidMeta gastroenterology review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Mirikizumab trials support a clinically meaningful effect on the registered OR for clinical remission? The RapidMeta gastroenterology living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/MIRIKIZUMAB_UC_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[540/545] PATISIRAN_POLYNEUROPATHY
+TITLE: Patisiran and Vutrisiran — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: OR for ACR20 response
+DATA: RapidMeta rheumatology review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Patisiran and Vutrisiran trials support a clinically meaningful effect on the registered OR for ACR20 response? The RapidMeta rheumatology living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/PATISIRAN_POLYNEUROPATHY_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[541/545] PBC_PPAR
+TITLE: PPAR Modulators — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do PPAR Modulators trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/PBC_PPAR_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[542/545] PEGCETACOPLAN_GA
+TITLE: Pegcetacoplan for Geographic Atrophy Secondary to AMD — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: HR for vertebral fracture
+DATA: RapidMeta endocrinology review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Pegcetacoplan trials support a clinically meaningful effect on the registered HR for vertebral fracture? The RapidMeta endocrinology living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/PEGCETACOPLAN_GA_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[543/545] SGLT2_MACE_CVOT
+TITLE: SGLT2 Inhibitor CVOT Class Pool for 3P-MACE — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · None trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do SGLT2 Inhibitor CVOT Class Pool trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates all eligible phase 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/SGLT2_MACE_CVOT_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[544/545] SOTAGLIFLOZIN_HF
+TITLE: Sotagliflozin — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Sotagliflozin trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/SOTAGLIFLOZIN_HF_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
+[545/545] TNK_VS_TPA_STROKE
+TITLE: Tenecteplase vs Alteplase in Acute Ischaemic Stroke — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · 3 trials · None participants
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Do Tenecteplase vs Alteplase in Acute Ischaemic Stroke trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates 3 randomized trials with n participants in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/TNK_VS_TPA_STROKE_REVIEW.html
 
 References (topic pack: living meta-analysis / random-effects):
   1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
