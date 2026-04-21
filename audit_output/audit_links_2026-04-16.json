@@ -116,8 +116,8 @@
       "code": "https://github.com/mahmood726-cyber/BiasForensics",
       "protocol": "https://github.com/mahmood726-cyber/BiasForensics/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/biasforensics/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -149,10 +149,10 @@
       "code": "https://github.com/mahmood726-cyber/CardioTrialAudit",
       "protocol": "https://github.com/mahmood726-cyber/CardioTrialAudit/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/cardiotrialaudit/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 17,
@@ -171,8 +171,8 @@
       "code": "https://github.com/mahmood726-cyber/chat2",
       "protocol": "https://github.com/mahmood726-cyber/chat2/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/chat2/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -182,8 +182,8 @@
       "code": "https://github.com/mahmood726-cyber/chatpaper",
       "protocol": "https://github.com/mahmood726-cyber/chatpaper/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/chatpaper/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -193,8 +193,8 @@
       "code": "https://github.com/mahmood726-cyber/claude2",
       "protocol": "https://github.com/mahmood726-cyber/claude2/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/claude2/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -204,8 +204,8 @@
       "code": "https://github.com/mahmood726-cyber/clauderepo",
       "protocol": "https://github.com/mahmood726-cyber/clauderepo/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/clauderepo/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -226,8 +226,8 @@
       "code": "https://github.com/mahmood726-cyber/clinical-ma",
       "protocol": "https://github.com/mahmood726-cyber/clinical-ma/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/clinical-ma/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -325,8 +325,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-hiddenness-atlas",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-hiddenness-atlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-hiddenness-atlas/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -336,8 +336,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-industry-disclosure-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-industry-disclosure-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-industry-disclosure-gap/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -402,8 +402,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-search-strategies",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-search-strategies/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-search-strategies/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -490,8 +490,8 @@
       "code": "https://github.com/mahmood726-cyber/DTA70",
       "protocol": "https://github.com/mahmood726-cyber/DTA70/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dta70/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -501,8 +501,8 @@
       "code": "https://github.com/mahmood726-cyber/DTA_Pro_Review",
       "protocol": "https://github.com/mahmood726-cyber/DTA_Pro_Review/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dta_pro_review/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -523,8 +523,8 @@
       "code": "https://github.com/mahmood726-cyber/evidence-board",
       "protocol": "https://github.com/mahmood726-cyber/evidence-board/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-board/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -534,8 +534,8 @@
       "code": "https://github.com/mahmood726-cyber/evidence-inference",
       "protocol": "https://github.com/mahmood726-cyber/evidence-inference/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-inference/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -600,8 +600,8 @@
       "code": "https://github.com/mahmood726-cyber/Finrenone",
       "protocol": "https://github.com/mahmood726-cyber/Finrenone/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/finrenone/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -611,8 +611,8 @@
       "code": "https://github.com/mahmood726-cyber/focus-studio",
       "protocol": "https://github.com/mahmood726-cyber/focus-studio/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/focus-studio/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -622,8 +622,8 @@
       "code": "https://github.com/mahmood726-cyber/fragility-atlas",
       "protocol": "https://github.com/mahmood726-cyber/fragility-atlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fragility-atlas/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -633,8 +633,8 @@
       "code": "https://github.com/mahmood726-cyber/fragility-atlas",
       "protocol": "https://github.com/mahmood726-cyber/fragility-atlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fragility-atlas/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -677,10 +677,10 @@
       "code": "https://github.com/mahmood726-cyber/hfpef-registry-synth",
       "protocol": "https://github.com/mahmood726-cyber/hfpef-registry-synth/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hfpef-registry-synth/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 65,
@@ -688,8 +688,8 @@
       "code": "https://github.com/mahmood726-cyber/HTA",
       "protocol": "https://github.com/mahmood726-cyber/HTA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -710,8 +710,8 @@
       "code": "https://github.com/mahmood726-cyber/hta-evidence-integrity",
       "protocol": "https://github.com/mahmood726-cyber/hta-evidence-integrity/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hta-evidence-integrity/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -721,8 +721,8 @@
       "code": "https://github.com/mahmood726-cyber/hta-transportability",
       "protocol": "https://github.com/mahmood726-cyber/hta-transportability/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hta-transportability/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -842,8 +842,8 @@
       "code": "https://github.com/mahmood726-cyber/living-meta-engine",
       "protocol": "https://github.com/mahmood726-cyber/living-meta-engine/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/living-meta-engine/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -886,8 +886,8 @@
       "code": "https://github.com/mahmood726-cyber/MAPriors",
       "protocol": "https://github.com/mahmood726-cyber/MAPriors/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/mapriors/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -941,8 +941,8 @@
       "code": "https://github.com/mahmood726-cyber/meta-epidemiology-bias-correction",
       "protocol": "https://github.com/mahmood726-cyber/meta-epidemiology-bias-correction/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/meta-epidemiology-bias-correction/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -963,8 +963,8 @@
       "code": "https://github.com/mahmood726-cyber/MetaAudit",
       "protocol": "https://github.com/mahmood726-cyber/MetaAudit/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metaaudit/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -974,8 +974,8 @@
       "code": "https://github.com/mahmood726-cyber/meta-entropy",
       "protocol": "https://github.com/mahmood726-cyber/meta-entropy/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/meta-entropy/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -996,8 +996,8 @@
       "code": "https://github.com/mahmood726-cyber/MetaFolio",
       "protocol": "https://github.com/mahmood726-cyber/MetaFolio/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metafolio/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1095,8 +1095,8 @@
       "code": "https://github.com/mahmood726-cyber/metarep",
       "protocol": "https://github.com/mahmood726-cyber/metarep/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metarep/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1128,10 +1128,10 @@
       "code": "https://github.com/mahmood726-cyber/MetaReproducer",
       "protocol": "https://github.com/mahmood726-cyber/MetaReproducer/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metareproducer/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 107,
@@ -1139,8 +1139,8 @@
       "code": "https://github.com/mahmood726-cyber/MetaShift",
       "protocol": "https://github.com/mahmood726-cyber/MetaShift/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metashift/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1205,8 +1205,8 @@
       "code": "https://github.com/mahmood726-cyber/metaverse-robust-MA",
       "protocol": "https://github.com/mahmood726-cyber/metaverse-robust-MA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metaverse-robust-ma/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1249,8 +1249,8 @@
       "code": "https://github.com/mahmood726-cyber/Multilevelerror",
       "protocol": "https://github.com/mahmood726-cyber/Multilevelerror/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/multilevelerror/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1260,10 +1260,10 @@
       "code": "https://github.com/mahmood726-cyber/Multipledatameta",
       "protocol": "https://github.com/mahmood726-cyber/Multipledatameta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/multipledatameta/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 119,
@@ -1304,8 +1304,8 @@
       "code": "https://github.com/mahmood726-cyber/nma-dose-response-app",
       "protocol": "https://github.com/mahmood726-cyber/nma-dose-response-app/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/nma-dose-response-app/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1326,8 +1326,8 @@
       "code": "https://github.com/mahmood726-cyber/nmapaper111025",
       "protocol": "https://github.com/mahmood726-cyber/nmapaper111025/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/nmapaper111025/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1381,8 +1381,8 @@
       "code": "https://github.com/mahmood726-cyber/pairwiseai70",
       "protocol": "https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/pairwise70/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1392,8 +1392,8 @@
       "code": "https://github.com/mahmood726-cyber/pairwiseaiai",
       "protocol": "https://github.com/mahmood726-cyber/pairwiseaiai/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/pairwiseai/",
-      "dashboard_status": 206,
       "code_status": 404,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1491,8 +1491,8 @@
       "code": "https://github.com/mahmood726-cyber/prognostic-meta",
       "protocol": "https://github.com/mahmood726-cyber/prognostic-meta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/prognostic-meta/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1535,8 +1535,8 @@
       "code": "https://github.com/mahmood726-cyber/reduced-dose-doacs-vte-demo",
       "protocol": "https://github.com/mahmood726-cyber/reduced-dose-doacs-vte-demo/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/reduced-dose-doacs-vte-demo/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1568,8 +1568,8 @@
       "code": "https://github.com/mahmood726-cyber/repo300-ENMA-SNMA",
       "protocol": "https://github.com/mahmood726-cyber/repo300-ENMA-SNMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/repo300-enma-snma/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1645,8 +1645,8 @@
       "code": "https://github.com/mahmood726-cyber/SoFTable",
       "protocol": "https://github.com/mahmood726-cyber/SoFTable/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/softable/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1667,8 +1667,8 @@
       "code": "https://github.com/mahmood726-cyber/TGEP_Development",
       "protocol": "https://github.com/mahmood726-cyber/TGEP_Development/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tgep_development/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1678,8 +1678,8 @@
       "code": "https://github.com/mahmood726-cyber/TransportabilityCalc",
       "protocol": "https://github.com/mahmood726-cyber/TransportabilityCalc/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/transportabilitycalc/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1733,8 +1733,8 @@
       "code": "https://github.com/mahmood726-cyber/Truthcert1_work",
       "protocol": "https://github.com/mahmood726-cyber/Truthcert1_work/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/truthcert1_work/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -1766,8 +1766,8 @@
       "code": "https://github.com/mahmood726-cyber/Value_Based_HTA_Engine",
       "protocol": "https://github.com/mahmood726-cyber/Value_Based_HTA_Engine/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/value_based_hta_engine/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1777,8 +1777,8 @@
       "code": "https://github.com/mahmood726-cyber/VOICalculator",
       "protocol": "https://github.com/mahmood726-cyber/VOICalculator/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/voicalculator/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1788,8 +1788,8 @@
       "code": "https://github.com/mahmood726-cyber/wasserstein",
       "protocol": "https://github.com/mahmood726-cyber/wasserstein/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/wasserstein/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1799,10 +1799,10 @@
       "code": "https://github.com/mahmood726-cyber/WorldIPD",
       "protocol": "https://github.com/mahmood726-cyber/WorldIPD/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/worldipd/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 169,
@@ -1810,10 +1810,10 @@
       "code": "https://github.com/mahmood726-cyber/WorldIPD-private",
       "protocol": "https://github.com/mahmood726-cyber/WorldIPD-private/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/worldipd-private/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 170,
@@ -1821,8 +1821,8 @@
       "code": "https://github.com/mahmood726-cyber/3dvitreous-grapher",
       "protocol": "https://github.com/mahmood726-cyber/3dvitreous-grapher/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/3dvitreous-grapher/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1832,8 +1832,8 @@
       "code": "https://github.com/mahmood726-cyber/area1_small_sample_analysis",
       "protocol": "https://github.com/mahmood726-cyber/area1_small_sample_analysis/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/area1_small_sample_analysis/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1843,8 +1843,8 @@
       "code": "https://github.com/mahmood726-cyber/asreview_5star",
       "protocol": "https://github.com/mahmood726-cyber/asreview_5star/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/asreview_5star/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -1854,10 +1854,10 @@
       "code": "https://github.com/mahmood726-cyber/AsSirat",
       "protocol": "https://github.com/mahmood726-cyber/AsSirat/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/assirat/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 175,
@@ -1865,10 +1865,10 @@
       "code": "https://github.com/mahmood726-cyber/cardio-ctgov-living-meta-portfolio",
       "protocol": "https://github.com/mahmood726-cyber/cardio-ctgov-living-meta-portfolio/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/cardio-ctgov-living-meta-portfolio/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 176,
@@ -1899,7 +1899,7 @@
       "protocol": "https://github.com/mahmood726-cyber/CINeMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/cinema/",
       "dashboard_status": 206,
-      "code_status": 0,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1909,10 +1909,10 @@
       "code": "https://github.com/mahmood726-cyber/claude-rct-work",
       "protocol": "https://github.com/mahmood726-cyber/claude-rct-work/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/claude-rct-work/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
-      "tag": "ok"
+      "tag": "repo_404"
     },
     {
       "num": 180,
@@ -1920,8 +1920,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-actual-discipline-repeaters",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-actual-discipline-repeaters/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-actual-discipline-repeaters/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1931,8 +1931,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-actual-field-discipline",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-actual-field-discipline/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-actual-field-discipline/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1942,8 +1942,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-black-box-sponsor-repeaters",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-black-box-sponsor-repeaters/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-black-box-sponsor-repeaters/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1953,8 +1953,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-black-box-trials",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-black-box-trials/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-black-box-trials/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1964,8 +1964,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-completion-delay-debt",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-completion-delay-debt/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-completion-delay-debt/",
-      "dashboard_status": 0,
-      "code_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1975,8 +1975,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-completion-timing-repeaters",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-completion-timing-repeaters/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-completion-timing-repeaters/",
-      "dashboard_status": 0,
-      "code_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1986,8 +1986,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-ancient-backlog",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-ancient-backlog/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-ancient-backlog/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -1997,8 +1997,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-description-black-box",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-description-black-box/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-description-black-box/",
-      "dashboard_status": 0,
-      "code_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2008,8 +2008,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-detailed-description-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-detailed-description-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-detailed-description-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2019,8 +2019,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-enrollment-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-enrollment-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-enrollment-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2030,8 +2030,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-excess-watchlist",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-excess-watchlist/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-excess-watchlist/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2041,8 +2041,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-ghost-watchlist",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-ghost-watchlist/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-ghost-watchlist/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2052,8 +2052,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-narrative-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-narrative-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-narrative-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2063,8 +2063,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-overdue-debt",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-overdue-debt/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-overdue-debt/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2074,8 +2074,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-primary-only-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-primary-only-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-primary-only-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2085,8 +2085,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-primary-outcome-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-primary-outcome-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-primary-outcome-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2096,8 +2096,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-sponsor-repeaters",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-sponsor-repeaters/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-sponsor-repeaters/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2107,8 +2107,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-condition-text-asymmetry",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-condition-text-asymmetry/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-condition-text-asymmetry/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2118,8 +2118,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-ancient-backlog",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-ancient-backlog/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-ancient-backlog/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2129,8 +2129,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-condition-hiddenness",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-condition-hiddenness/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-condition-hiddenness/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2140,8 +2140,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-description-black-box",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-description-black-box/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-description-black-box/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2151,8 +2151,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-detailed-description-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-detailed-description-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-detailed-description-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2162,8 +2162,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-enrollment-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-enrollment-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-enrollment-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2173,8 +2173,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-excess-watchlist",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-excess-watchlist/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-excess-watchlist/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2184,8 +2184,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-ghost-watchlist",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-ghost-watchlist/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-ghost-watchlist/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2195,8 +2195,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-narrative-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-narrative-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-narrative-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2206,8 +2206,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-overdue-debt",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-overdue-debt/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-overdue-debt/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2217,8 +2217,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-primary-only-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-primary-only-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-primary-only-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2228,8 +2228,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-primary-outcome-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-primary-outcome-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-primary-outcome-gap/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2239,8 +2239,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-reporting-map",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-reporting-map/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-reporting-map/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2250,8 +2250,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-sponsor-repeaters",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-sponsor-repeaters/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-sponsor-repeaters/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2261,8 +2261,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-country-text-asymmetry",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-country-text-asymmetry/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-country-text-asymmetry/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2294,8 +2294,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-disease-geography-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-disease-geography-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-disease-geography-gap/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2338,8 +2338,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-intervention-type-gap",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-intervention-type-gap/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-intervention-type-gap/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2360,8 +2360,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-narrative-gap-repeaters",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-narrative-gap-repeaters/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-narrative-gap-repeaters/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2382,8 +2382,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-overdue-results-clock",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-overdue-results-clock/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-overdue-results-clock/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2415,8 +2415,8 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-risk-adjusted-hiddenness",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-risk-adjusted-hiddenness/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-risk-adjusted-hiddenness/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2602,10 +2602,10 @@
       "code": "https://github.com/mahmood726-cyber/denominator-calibrated-living-nma",
       "protocol": "https://github.com/mahmood726-cyber/denominator-calibrated-living-nma/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/denominator-calibrated-living-nma/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 243,
@@ -2613,10 +2613,10 @@
       "code": "https://github.com/mahmood726-cyber/esc-acs-living-meta",
       "protocol": "https://github.com/mahmood726-cyber/esc-acs-living-meta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/esc-acs-living-meta/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 244,
@@ -2624,8 +2624,8 @@
       "code": "https://github.com/mahmood726-cyber/evidence-map",
       "protocol": "https://github.com/mahmood726-cyber/evidence-map/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-map/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2635,8 +2635,8 @@
       "code": "https://github.com/mahmood726-cyber/EvidenceOracle",
       "protocol": "https://github.com/mahmood726-cyber/EvidenceOracle/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidenceoracle/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -2646,8 +2646,8 @@
       "code": "https://github.com/mahmood726-cyber/experimental-meta-analysis",
       "protocol": "https://github.com/mahmood726-cyber/experimental-meta-analysis/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/experimental-meta-analysis/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2668,8 +2668,8 @@
       "code": "https://github.com/mahmood726-cyber/finalpaper",
       "protocol": "https://github.com/mahmood726-cyber/finalpaper/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/finalpaper/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2701,8 +2701,8 @@
       "code": "https://github.com/mahmood726-cyber/hfpef_registry_calibration",
       "protocol": "https://github.com/mahmood726-cyber/hfpef_registry_calibration/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hfpef_registry_calibration/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2712,8 +2712,8 @@
       "code": "https://github.com/mahmood726-cyber/HTML-Misc",
       "protocol": "https://github.com/mahmood726-cyber/HTML-Misc/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/html-misc/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2767,10 +2767,10 @@
       "code": "https://github.com/mahmood726-cyber/ipd-simulator",
       "protocol": "https://github.com/mahmood726-cyber/ipd-simulator/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ipd-simulator/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 259,
@@ -2778,8 +2778,8 @@
       "code": "https://github.com/mahmood726-cyber/KMextract",
       "protocol": "https://github.com/mahmood726-cyber/KMextract/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/kmextract/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2789,8 +2789,8 @@
       "code": "https://github.com/mahmood726-cyber/lec_phase0_bundle",
       "protocol": "https://github.com/mahmood726-cyber/lec_phase0_bundle/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/lec_phase0_bundle/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2811,8 +2811,8 @@
       "code": "https://github.com/mahmood726-cyber/LFAHFN",
       "protocol": "https://github.com/mahmood726-cyber/LFAHFN/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/lfahfn/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2822,8 +2822,8 @@
       "code": "https://github.com/mahmood726-cyber/Living-metas",
       "protocol": "https://github.com/mahmood726-cyber/Living-metas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/living-metas/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2899,8 +2899,8 @@
       "code": "https://github.com/mahmood726-cyber/meta-frontier-bibliography",
       "protocol": "https://github.com/mahmood726-cyber/meta-frontier-bibliography/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/meta-frontier-bibliography/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2965,8 +2965,8 @@
       "code": "https://github.com/mahmood726-cyber/pairwiseai-humble",
       "protocol": "https://github.com/mahmood726-cyber/pairwiseai-humble/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/pairwise-humble/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -2987,8 +2987,8 @@
       "code": "https://github.com/mahmood726-cyber/rayyanreplacement",
       "protocol": "https://github.com/mahmood726-cyber/rayyanreplacement/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/rayyanreplacement/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3020,8 +3020,8 @@
       "code": "https://github.com/mahmood726-cyber/Stories",
       "protocol": "https://github.com/mahmood726-cyber/Stories/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/stories/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3031,8 +3031,8 @@
       "code": "https://github.com/mahmood726-cyber/superapp",
       "protocol": "https://github.com/mahmood726-cyber/superapp/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/superapp/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3042,10 +3042,10 @@
       "code": "https://github.com/mahmood726-cyber/tower",
       "protocol": "https://github.com/mahmood726-cyber/tower/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tower/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 284,
@@ -3053,10 +3053,10 @@
       "code": "https://github.com/mahmood726-cyber/tower",
       "protocol": "https://github.com/mahmood726-cyber/tower/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tower/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 285,
@@ -3075,8 +3075,8 @@
       "code": "https://github.com/mahmood726-cyber/truthcert-openclaw-supermemory-stack",
       "protocol": "https://github.com/mahmood726-cyber/truthcert-openclaw-supermemory-stack/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/truthcert-openclaw-supermemory-stack/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3097,8 +3097,8 @@
       "code": "https://github.com/mahmood726-cyber/TruthCert_v3.1.0_modeling",
       "protocol": "https://github.com/mahmood726-cyber/TruthCert_v3.1.0_modeling/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/truthcert_v3.1.0_modeling/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3196,8 +3196,8 @@
       "code": "https://github.com/mahmood726-cyber/portfolio-catalog",
       "protocol": "https://github.com/mahmood726-cyber/portfolio-catalog/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/portfolio-catalog/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -3251,8 +3251,8 @@
       "code": "https://github.com/mahmood726-cyber/triage-workbench",
       "protocol": "https://github.com/mahmood726-cyber/triage-workbench/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/triage-workbench/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -3262,10 +3262,10 @@
       "code": "https://github.com/mahmood726-cyber/actionable-evidence",
       "protocol": "https://github.com/mahmood726-cyber/actionable-evidence/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/actionable-evidence/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 304,
@@ -3273,10 +3273,10 @@
       "code": "https://github.com/mahmood726-cyber/auto-review",
       "protocol": "https://github.com/mahmood726-cyber/auto-review/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/auto-review/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 305,
@@ -3284,10 +3284,10 @@
       "code": "https://github.com/mahmood726-cyber/contradiction-map",
       "protocol": "https://github.com/mahmood726-cyber/contradiction-map/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/contradiction-map/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 306,
@@ -3295,8 +3295,8 @@
       "code": "https://github.com/mahmood726-cyber/equity-ma",
       "protocol": "https://github.com/mahmood726-cyber/equity-ma/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/equity-ma/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -3306,10 +3306,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-atlas",
       "protocol": "https://github.com/mahmood726-cyber/evidence-atlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-atlas/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 308,
@@ -3317,10 +3317,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-copula",
       "protocol": "https://github.com/mahmood726-cyber/evidence-copula/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-copula/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 309,
@@ -3328,10 +3328,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-entropy",
       "protocol": "https://github.com/mahmood726-cyber/evidence-entropy/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-entropy/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 310,
@@ -3339,10 +3339,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-extremes",
       "protocol": "https://github.com/mahmood726-cyber/evidence-extremes/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-extremes/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 311,
@@ -3350,10 +3350,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-km",
       "protocol": "https://github.com/mahmood726-cyber/evidence-km/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-km/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 312,
@@ -3361,8 +3361,8 @@
       "code": "https://github.com/mahmood726-cyber/evidence-map",
       "protocol": "https://github.com/mahmood726-cyber/evidence-map/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-map/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -3372,10 +3372,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-score",
       "protocol": "https://github.com/mahmood726-cyber/evidence-score/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-score/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 314,
@@ -3383,10 +3383,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-spectral",
       "protocol": "https://github.com/mahmood726-cyber/evidence-spectral/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-spectral/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 315,
@@ -3394,10 +3394,10 @@
       "code": "https://github.com/mahmood726-cyber/evidence-topology",
       "protocol": "https://github.com/mahmood726-cyber/evidence-topology/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-topology/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 316,
@@ -3405,10 +3405,10 @@
       "code": "https://github.com/mahmood726-cyber/HyperMeta",
       "protocol": "https://github.com/mahmood726-cyber/HyperMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hypermeta/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 317,
@@ -3416,10 +3416,10 @@
       "code": "https://github.com/mahmood726-cyber/infogeo-ma",
       "protocol": "https://github.com/mahmood726-cyber/infogeo-ma/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/infogeo-ma/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 318,
@@ -3427,8 +3427,8 @@
       "code": "https://github.com/mahmood726-cyber/Integrity-Guard-Forensics",
       "protocol": "https://github.com/mahmood726-cyber/Integrity-Guard-Forensics/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/integrity-guard-forensics/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3449,8 +3449,8 @@
       "code": "https://github.com/mahmood726-cyber/MetaVoI",
       "protocol": "https://github.com/mahmood726-cyber/MetaVoI/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metavoi/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -3471,10 +3471,10 @@
       "code": "https://github.com/mahmood726-cyber/PatientMA",
       "protocol": "https://github.com/mahmood726-cyber/PatientMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/patientma/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 323,
@@ -3504,10 +3504,10 @@
       "code": "https://github.com/mahmood726-cyber/sroc-plotter",
       "protocol": "https://github.com/mahmood726-cyber/sroc-plotter/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/sroc-plotter/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 326,
@@ -3515,10 +3515,10 @@
       "code": "https://github.com/mahmood726-cyber/safe-ma",
       "protocol": "https://github.com/mahmood726-cyber/safe-ma/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/safe-ma/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 327,
@@ -3526,10 +3526,10 @@
       "code": "https://github.com/mahmood726-cyber/therapy-graveyard",
       "protocol": "https://github.com/mahmood726-cyber/therapy-graveyard/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/therapy-graveyard/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 328,
@@ -3537,10 +3537,10 @@
       "code": "https://github.com/mahmood726-cyber/transport-ma",
       "protocol": "https://github.com/mahmood726-cyber/transport-ma/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/transport-ma/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 329,
@@ -3548,10 +3548,10 @@
       "code": "https://github.com/mahmood726-cyber/TrustGate",
       "protocol": "https://github.com/mahmood726-cyber/TrustGate/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/trustgate/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 330,
@@ -3560,9 +3560,9 @@
       "protocol": "https://github.com/mahmood726-cyber/ctgov-registry-survival/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-registry-survival/",
       "code_status": 206,
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 331,
@@ -3581,8 +3581,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3592,8 +3592,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3603,8 +3603,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3647,8 +3647,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3658,8 +3658,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3669,8 +3669,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3680,8 +3680,8 @@
       "code": "https://github.com/mahmood726-cyber/Fatiha-Course",
       "protocol": "https://github.com/mahmood726-cyber/Fatiha-Course/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fatiha-course/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3724,8 +3724,8 @@
       "code": "https://github.com/mahmood726-cyber/pairwiseai70",
       "protocol": "https://github.com/mahmood726-cyber/pairwiseai70/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/pairwise70/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3746,10 +3746,10 @@
       "code": "https://github.com/mahmood726-cyber/AfricaForecast",
       "protocol": "https://github.com/mahmood726-cyber/AfricaForecast/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/africaforecast/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 346,
@@ -3757,10 +3757,10 @@
       "code": "https://github.com/mahmood726-cyber/EnrollmentOracle",
       "protocol": "https://github.com/mahmood726-cyber/EnrollmentOracle/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/enrollmentoracle/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 347,
@@ -3768,8 +3768,8 @@
       "code": "https://github.com/mahmood726-cyber/HTNPipeline",
       "protocol": "https://github.com/mahmood726-cyber/HTNPipeline/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/htnpipeline/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3779,10 +3779,10 @@
       "code": "https://github.com/mahmood726-cyber/OutcomeSwitchDetector",
       "protocol": "https://github.com/mahmood726-cyber/OutcomeSwitchDetector/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/outcomeswitchdetector/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 349,
@@ -3790,10 +3790,10 @@
       "code": "https://github.com/mahmood726-cyber/ProtocolEvolution",
       "protocol": "https://github.com/mahmood726-cyber/ProtocolEvolution/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/protocolevolution/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 350,
@@ -3801,10 +3801,10 @@
       "code": "https://github.com/mahmood726-cyber/TrialAtlas",
       "protocol": "https://github.com/mahmood726-cyber/TrialAtlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/trialatlas/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 351,
@@ -3823,8 +3823,8 @@
       "code": "https://github.com/mahmood726-cyber/NICECardiology",
       "protocol": "https://github.com/mahmood726-cyber/NICECardiology/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/nicecardiology/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3834,8 +3834,8 @@
       "code": "https://github.com/mahmood726-cyber/TrialDiversityAtlas",
       "protocol": "https://github.com/mahmood726-cyber/TrialDiversityAtlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/trialdiversityatlas/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3845,10 +3845,10 @@
       "code": "https://github.com/mahmood726-cyber/ctgov-protocol-evolution",
       "protocol": "https://github.com/mahmood726-cyber/ctgov-protocol-evolution/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctgov-protocol-evolution/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 355,
@@ -3867,10 +3867,10 @@
       "code": "https://github.com/mahmood726-cyber/ihme-data-lakehouse",
       "protocol": "https://github.com/mahmood726-cyber/ihme-data-lakehouse/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ihme-data-lakehouse/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 357,
@@ -3878,8 +3878,8 @@
       "code": "https://github.com/mahmood726-cyber/cardiosynth",
       "protocol": "https://github.com/mahmood726-cyber/cardiosynth/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/cardiosynth/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -3900,8 +3900,8 @@
       "code": "https://github.com/mahmood726-cyber/PFA-AF-LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/pfa-af-livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3911,8 +3911,8 @@
       "code": "https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet",
       "protocol": "https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/livingmeta-watchman-amulet/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3922,8 +3922,8 @@
       "code": "https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tricuspid-teer-livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -3933,8 +3933,8 @@
       "code": "https://github.com/mahmood726-cyber/Inclisiran_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Inclisiran_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/inclisiran_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3955,8 +3955,8 @@
       "code": "https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Semaglutide_HFpEF_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/semaglutide_hfpef_livingmeta/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3966,8 +3966,8 @@
       "code": "https://github.com/mahmood726-cyber/Leadless_Pacing_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Leadless_Pacing_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/leadless_pacing_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3977,8 +3977,8 @@
       "code": "https://github.com/mahmood726-cyber/CSP_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/CSP_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/csp_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3988,8 +3988,8 @@
       "code": "https://github.com/mahmood726-cyber/Coronary_IVL_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Coronary_IVL_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/coronary_ivl_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -3999,8 +3999,8 @@
       "code": "https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Omecamtiv_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/omecamtiv_livingmeta/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -4010,8 +4010,8 @@
       "code": "https://github.com/mahmood726-cyber/CTFFR_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/CTFFR_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ctffr_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -4032,8 +4032,8 @@
       "code": "https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/sotagliflozin_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -4043,10 +4043,10 @@
       "code": "https://github.com/mahmood726-cyber/modern-stats-global-health",
       "protocol": "https://github.com/mahmood726-cyber/modern-stats-global-health/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/modern-stats-global-health/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 351,
@@ -4054,8 +4054,8 @@
       "code": "https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dcb_pad_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4065,8 +4065,8 @@
       "code": "https://github.com/mahmood726-cyber/Orforglipron_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Orforglipron_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/orforglipron_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4098,8 +4098,8 @@
       "code": "https://github.com/mahmood726-cyber/PredModelMA",
       "protocol": "https://github.com/mahmood726-cyber/PredModelMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/predmodelma/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4142,8 +4142,8 @@
       "code": "https://github.com/mahmood726-cyber/citation-workbench",
       "protocol": "https://github.com/mahmood726-cyber/citation-workbench/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/citation-workbench/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4164,8 +4164,8 @@
       "code": "https://github.com/mahmood726-cyber/evidence-bridge-fhir",
       "protocol": "https://github.com/mahmood726-cyber/evidence-bridge-fhir/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidence-bridge-fhir/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4186,8 +4186,8 @@
       "code": "https://github.com/mahmood726-cyber/fair-portfolio",
       "protocol": "https://github.com/mahmood726-cyber/fair-portfolio/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/fair-portfolio/",
+      "code_status": 206,
       "dashboard_status": 206,
-      "code_status": 0,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4197,8 +4197,8 @@
       "code": "https://github.com/mahmood726-cyber/portfolio-catalog",
       "protocol": "https://github.com/mahmood726-cyber/portfolio-catalog/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/portfolio-catalog/",
+      "code_status": 206,
       "dashboard_status": 206,
-      "code_status": 0,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4208,8 +4208,8 @@
       "code": "https://github.com/mahmood726-cyber/portfolio-ops",
       "protocol": "https://github.com/mahmood726-cyber/portfolio-ops/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/portfolio-ops/",
+      "code_status": 206,
       "dashboard_status": 206,
-      "code_status": 0,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4219,8 +4219,8 @@
       "code": "https://github.com/mahmood726-cyber/provenance-atlas",
       "protocol": "https://github.com/mahmood726-cyber/provenance-atlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/provenance-atlas/",
-      "dashboard_status": 0,
-      "code_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4230,8 +4230,8 @@
       "code": "https://github.com/mahmood726-cyber/research-constellation",
       "protocol": "https://github.com/mahmood726-cyber/research-constellation/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/research-constellation/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4241,8 +4241,8 @@
       "code": "https://github.com/mahmood726-cyber/submission-cockpit",
       "protocol": "https://github.com/mahmood726-cyber/submission-cockpit/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/submission-cockpit/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4252,8 +4252,8 @@
       "code": "https://github.com/mahmood726-cyber/triage-workbench",
       "protocol": "https://github.com/mahmood726-cyber/triage-workbench/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/triage-workbench/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4263,8 +4263,8 @@
       "code": "https://github.com/mahmood726-cyber/global-transportability-atlas",
       "protocol": "https://github.com/mahmood726-cyber/global-transportability-atlas/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/global-transportability-atlas/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4274,8 +4274,8 @@
       "code": "https://github.com/mahmood726-cyber/ProportionMA",
       "protocol": "https://github.com/mahmood726-cyber/ProportionMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/proportionma/",
-      "dashboard_status": 0,
-      "code_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4285,8 +4285,8 @@
       "code": "https://github.com/mahmood726-cyber/evidence-mapPro",
       "protocol": "https://github.com/mahmood726-cyber/evidence-mapPro/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/evidencemappro/",
-      "dashboard_status": 206,
       "code_status": 404,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -4296,8 +4296,8 @@
       "code": "https://github.com/mahmood726-cyber/MultivarMA",
       "protocol": "https://github.com/mahmood726-cyber/MultivarMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/multivarma/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4307,8 +4307,8 @@
       "code": "https://github.com/mahmood726-cyber/CostEffMA",
       "protocol": "https://github.com/mahmood726-cyber/CostEffMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/costeffma/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4340,8 +4340,8 @@
       "code": "https://github.com/mahmood726-cyber/PlatformTrialMA",
       "protocol": "https://github.com/mahmood726-cyber/PlatformTrialMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/platformtrialma/",
-      "dashboard_status": 0,
-      "code_status": 0,
+      "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4351,8 +4351,8 @@
       "code": "https://github.com/mahmood726-cyber/SeqNMA",
       "protocol": "https://github.com/mahmood726-cyber/SeqNMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/seqnma/",
-      "code_status": 0,
-      "dashboard_status": 0,
+      "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4362,7 +4362,7 @@
       "code": "https://github.com/mahmood726-cyber/IPDNMA",
       "protocol": "https://github.com/mahmood726-cyber/IPDNMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ipdnma/",
-      "code_status": 0,
+      "code_status": 206,
       "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
@@ -4373,8 +4373,8 @@
       "code": "https://github.com/mahmood726-cyber/FederatedMA",
       "protocol": "https://github.com/mahmood726-cyber/FederatedMA/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/federatedma/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4384,8 +4384,8 @@
       "code": "https://github.com/mahmood726-cyber/FigureEngine",
       "protocol": "https://github.com/mahmood726-cyber/FigureEngine/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/figureengine/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4406,10 +4406,10 @@
       "code": "https://github.com/mahmood726-cyber/who-data-lakehouse",
       "protocol": "https://github.com/mahmood726-cyber/who-data-lakehouse/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/who-data-lakehouse/",
-      "dashboard_status": 404,
+      "dashboard_status": 206,
       "code_status": 206,
       "protocol_status": 200,
-      "tag": "repo_ok_pages_missing"
+      "tag": "ok"
     },
     {
       "num": 402,
@@ -4428,8 +4428,8 @@
       "code": "https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Sotagliflozin_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/sotagliflozin_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -4439,8 +4439,8 @@
       "code": "https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tezepelumab_asthma_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4461,8 +4461,8 @@
       "code": "https://github.com/mahmood726-cyber/Enfortumab_UC_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Enfortumab_UC_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/enfortumab_uc_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4472,8 +4472,8 @@
       "code": "https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/kras_g12c_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4505,8 +4505,8 @@
       "code": "https://github.com/mahmood726-cyber/Antiplatelet_NMA_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Antiplatelet_NMA_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/antiplatelet_nma_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4516,8 +4516,8 @@
       "code": "https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dupilumab_copd_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4571,8 +4571,8 @@
       "code": "https://github.com/mahmood726-cyber/tda-meta",
       "protocol": "https://github.com/mahmood726-cyber/tda-meta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tda-meta/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4582,8 +4582,8 @@
       "code": "https://github.com/mahmood726-cyber/retraction-gravity",
       "protocol": "https://github.com/mahmood726-cyber/retraction-gravity/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/retraction-gravity/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -4714,8 +4714,8 @@
       "code": "https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/tdxd_breast_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4769,8 +4769,8 @@
       "code": "https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dcb_pad_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4835,8 +4835,8 @@
       "code": "https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ticagrelor_mono_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4846,8 +4846,8 @@
       "code": "https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/icosapent_ethyl_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4923,8 +4923,8 @@
       "code": "https://github.com/mahmood726-cyber/Empa_MI_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Empa_MI_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/empa_mi_livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4934,8 +4934,8 @@
       "code": "https://github.com/mahmood726-cyber/PFA-AF-LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/PFA-AF-LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/pfa-af-livingmeta/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4945,8 +4945,8 @@
       "code": "https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet",
       "protocol": "https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/livingmeta-watchman-amulet/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4967,8 +4967,8 @@
       "code": "https://github.com/mahmood726-cyber/Iptacopan_LivingMeta",
       "protocol": "https://github.com/mahmood726-cyber/Iptacopan_LivingMeta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/iptacopan_livingmeta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -4989,8 +4989,8 @@
       "code": "https://github.com/mahmood726-cyber/meta-paradigm-shift",
       "protocol": "https://github.com/mahmood726-cyber/meta-paradigm-shift/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/meta-paradigm-shift/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -5000,8 +5000,8 @@
       "code": "https://github.com/mahmood726-cyber/archaic-dta",
       "protocol": "https://github.com/mahmood726-cyber/archaic-dta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/archaic-dta/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5011,8 +5011,8 @@
       "code": "https://github.com/mahmood726-cyber/ems-dta",
       "protocol": "https://github.com/mahmood726-cyber/ems-dta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ems-dta/",
-      "dashboard_status": 404,
       "code_status": 404,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5033,8 +5033,8 @@
       "code": "https://github.com/mahmood726-cyber/paradigm-battle-dta",
       "protocol": "https://github.com/mahmood726-cyber/paradigm-battle-dta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/paradigm-battle-dta/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5044,8 +5044,8 @@
       "code": "https://github.com/mahmood726-cyber/Metadta",
       "protocol": "https://github.com/mahmood726-cyber/Metadta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/metadta/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -5066,8 +5066,8 @@
       "code": "https://github.com/mahmood726-cyber/sl12-dta",
       "protocol": "https://github.com/mahmood726-cyber/sl12-dta/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/sl12-dta/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5099,8 +5099,8 @@
       "code": "https://github.com/mahmood726-cyber/global-manifold-audit",
       "protocol": "https://github.com/mahmood726-cyber/global-manifold-audit/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/global-manifold-audit/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5110,8 +5110,8 @@
       "code": "https://github.com/mahmood726-cyber/petabyte-evidence-manifold",
       "protocol": "https://github.com/mahmood726-cyber/petabyte-evidence-manifold/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/petabyte-evidence-manifold/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5132,8 +5132,8 @@
       "code": "https://github.com/mahmood726-cyber/exascale-evidence-singularity",
       "protocol": "https://github.com/mahmood726-cyber/exascale-evidence-singularity/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/exascale-evidence-singularity/",
-      "code_status": 404,
       "dashboard_status": 404,
+      "code_status": 404,
       "protocol_status": 200,
       "tag": "repo_404"
     },
@@ -5187,8 +5187,8 @@
       "code": "https://github.com/mahmood726-cyber/GuidelineLag",
       "protocol": "https://github.com/mahmood726-cyber/GuidelineLag/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/guidelinelag/",
-      "dashboard_status": 404,
       "code_status": 206,
+      "dashboard_status": 404,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -5198,8 +5198,8 @@
       "code": "https://github.com/mahmood726-cyber/dta-pro-v2",
       "protocol": "https://github.com/mahmood726-cyber/dta-pro-v2/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dta-pro-v2/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -5220,8 +5220,8 @@
       "code": "https://github.com/mahmood726-cyber/hta-artifact-standard-v2",
       "protocol": "https://github.com/mahmood726-cyber/hta-artifact-standard-v2/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/hta-artifact-standard-v2/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -5231,8 +5231,8 @@
       "code": "https://github.com/mahmood726-cyber/ma-workbench",
       "protocol": "https://github.com/mahmood726-cyber/ma-workbench/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/ma-workbench/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -5242,8 +5242,8 @@
       "code": "https://github.com/mahmood726-cyber/mem-ecosystem-model",
       "protocol": "https://github.com/mahmood726-cyber/mem-ecosystem-model/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/mem-ecosystem-model/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -5253,8 +5253,8 @@
       "code": "https://github.com/mahmood726-cyber/nma-pro-v2",
       "protocol": "https://github.com/mahmood726-cyber/nma-pro-v2/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/nma-pro-v2/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -5264,8 +5264,8 @@
       "code": "https://github.com/mahmood726-cyber/shahzaib-icu-landscape",
       "protocol": "https://github.com/mahmood726-cyber/shahzaib-icu-landscape/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/shahzaib-icu-landscape/",
-      "dashboard_status": 206,
       "code_status": 206,
+      "dashboard_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     },
@@ -5308,8 +5308,8 @@
       "code": "https://github.com/mahmood726-cyber/dissonance-field-synthesis",
       "protocol": "https://github.com/mahmood726-cyber/dissonance-field-synthesis/blob/main/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/dissonance-field-synthesis/",
-      "code_status": 206,
       "dashboard_status": 404,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "repo_ok_pages_missing"
     },
@@ -5330,15 +5330,15 @@
       "code": "https://github.com/mahmood726-cyber/repro-floor-atlas",
       "protocol": "https://github.com/mahmood726-cyber/repro-floor-atlas/blob/master/E156-PROTOCOL.md",
       "dashboard": "https://mahmood726-cyber.github.io/repro-floor-atlas/",
-      "code_status": 206,
       "dashboard_status": 206,
+      "code_status": 206,
       "protocol_status": 200,
       "tag": "ok"
     }
   ],
   "tally": {
-    "repo_404": 120,
-    "ok": 243,
-    "repo_ok_pages_missing": 122
+    "repo_404": 121,
+    "ok": 284,
+    "repo_ok_pages_missing": 80
   }
 }

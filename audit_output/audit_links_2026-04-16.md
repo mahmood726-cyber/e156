@@ -3,70 +3,37 @@
 485 entries, 970 URL checks
 
 ## Tally
-- **ok**: 243
-- **repo_ok_pages_missing**: 122
-- **repo_404**: 120
+- **ok**: 284
+- **repo_404**: 121
+- **repo_ok_pages_missing**: 80
 
-## Needs dashboard (122)
+## Needs dashboard (80)
 
 | # | Project | Repo |
 |---|---------|------|
 | 13 | Burhan | https://github.com/mahmood726-cyber/Burhan |
-| 15 | CardioTrialAudit | https://github.com/mahmood726-cyber/CardioTrialAudit |
 | 17 | CausalSynth | https://github.com/mahmood726-cyber/CausalSynth |
 | 22 | clinic-site | https://github.com/mahmood726-cyber/clinic-site |
 | 43 | cv-rct-analysis | https://github.com/mahmood726-cyber/cv-rct-analysis |
 | 47 | DTA70 | https://github.com/mahmood726-cyber/DTA70 |
-| 64 | hfpef_registry_synth | https://github.com/mahmood726-cyber/hfpef-registry-synth |
 | 77 | LFA | https://github.com/mahmood726-cyber/LFA |
 | 83 | MAPriors | https://github.com/mahmood726-cyber/MAPriors |
 | 88 | meta-epidemiology-bias-correction | https://github.com/mahmood726-cyber/meta-epidemiology-bias-correction |
 | 90 | MetaAudit | https://github.com/mahmood726-cyber/MetaAudit |
 | 98 | Metanew | https://github.com/mahmood726-cyber/Metanew |
-| 106 | MetaReproducer | https://github.com/mahmood726-cyber/MetaReproducer |
 | 108 | metasprint-autopilot | https://github.com/mahmood726-cyber/metasprint-autopilot |
 | 115 | MLM501 | https://github.com/mahmood726-cyber/MLM501 |
 | 116 | MLMResearch | https://github.com/mahmood726-cyber/MLMResearch |
-| 118 | Multipledatameta | https://github.com/mahmood726-cyber/Multipledatameta |
 | 119 | MultiverseMA | https://github.com/mahmood726-cyber/MultiverseMA |
 | 143 | rct-extractor-v2 | https://github.com/mahmood726-cyber/rct-extractor-v2 |
 | 161 | Truthcert1 | https://github.com/mahmood726-cyber/Truthcert1 |
 | 162 | Truthcert1_work | https://github.com/mahmood726-cyber/Truthcert1_work |
-| 168 | WorldIPD | https://github.com/mahmood726-cyber/WorldIPD |
-| 169 | WorldIPD-private | https://github.com/mahmood726-cyber/WorldIPD-private |
-| 174 | AsSirat | https://github.com/mahmood726-cyber/AsSirat |
-| 175 | cardio-ctgov-living-meta-portfolio | https://github.com/mahmood726-cyber/cardio-ctgov-living-meta-portfolio |
-| 242 | Denominator_Calibrated_Living_NMA | https://github.com/mahmood726-cyber/denominator-calibrated-living-nma |
-| 243 | esc-acs-living-meta | https://github.com/mahmood726-cyber/esc-acs-living-meta |
 | 248 | Fatiha-Course | https://github.com/mahmood726-cyber/Fatiha-Course |
 | 251 | HFN786 | https://github.com/mahmood726-cyber/HFN786 |
-| 258 | IPDSimulator | https://github.com/mahmood726-cyber/ipd-simulator |
 | 265 | LivingMeta_Watchman_Amulet | https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet |
 | 277 | PFA_AF_LivingMeta | https://github.com/mahmood726-cyber/PFA-AF-LivingMeta |
-| 283 | tower | https://github.com/mahmood726-cyber/tower |
-| 284 | tower_js | https://github.com/mahmood726-cyber/tower |
 | 285 | Tricuspid_TEER_LivingMeta | https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta |
-| 303 | ActionableEvidence | https://github.com/mahmood726-cyber/actionable-evidence |
-| 304 | AutoReview | https://github.com/mahmood726-cyber/auto-review |
-| 305 | ContradictionMap | https://github.com/mahmood726-cyber/contradiction-map |
-| 307 | EvidenceAtlas | https://github.com/mahmood726-cyber/evidence-atlas |
-| 308 | EvidenceCopula | https://github.com/mahmood726-cyber/evidence-copula |
-| 309 | EvidenceEntropy | https://github.com/mahmood726-cyber/evidence-entropy |
-| 310 | EvidenceExtremes | https://github.com/mahmood726-cyber/evidence-extremes |
-| 311 | EvidenceKM | https://github.com/mahmood726-cyber/evidence-km |
-| 313 | EvidenceScore | https://github.com/mahmood726-cyber/evidence-score |
-| 314 | EvidenceSpectral | https://github.com/mahmood726-cyber/evidence-spectral |
-| 315 | EvidenceTopology | https://github.com/mahmood726-cyber/evidence-topology |
-| 316 | HyperMeta | https://github.com/mahmood726-cyber/HyperMeta |
-| 317 | InfoGeoMA | https://github.com/mahmood726-cyber/infogeo-ma |
 | 321 | MoneyTrail | https://github.com/mahmood726-cyber/MoneyTrail |
-| 322 | PatientMA | https://github.com/mahmood726-cyber/PatientMA |
-| 325 | SROCPlotter | https://github.com/mahmood726-cyber/sroc-plotter |
-| 326 | SafeMA | https://github.com/mahmood726-cyber/safe-ma |
-| 327 | TherapyGraveyard | https://github.com/mahmood726-cyber/therapy-graveyard |
-| 328 | TransportMA | https://github.com/mahmood726-cyber/transport-ma |
-| 329 | TrustGate | https://github.com/mahmood726-cyber/TrustGate |
-| 330 | ctgov-registry-survival | https://github.com/mahmood726-cyber/ctgov-registry-survival |
 | 331 | surroNMA | https://github.com/mahmood726-cyber/surroNMA |
 | 332 | Reversal-CAST | https://github.com/mahmood726-cyber/Fatiha-Course |
 | 333 | Reversal-HRT-WHI | https://github.com/mahmood726-cyber/Fatiha-Course |
@@ -81,18 +48,10 @@
 | 342 | Reversal-Reboxetine | https://github.com/mahmood726-cyber/Fatiha-Course |
 | 343 | Reversal-Albumin-SAFE | https://github.com/mahmood726-cyber/Fatiha-Course |
 | 344 | AlBurhan | https://github.com/mahmood726-cyber/AlBurhan |
-| 345 | AfricaForecast | https://github.com/mahmood726-cyber/AfricaForecast |
-| 346 | EnrollmentOracle | https://github.com/mahmood726-cyber/EnrollmentOracle |
 | 347 | HTNPipeline | https://github.com/mahmood726-cyber/HTNPipeline |
-| 348 | OutcomeSwitchDetector | https://github.com/mahmood726-cyber/OutcomeSwitchDetector |
-| 349 | ProtocolEvolution | https://github.com/mahmood726-cyber/ProtocolEvolution |
-| 350 | TrialAtlas | https://github.com/mahmood726-cyber/TrialAtlas |
-| 354 | ProtocolEvolutionDynamics | https://github.com/mahmood726-cyber/ctgov-protocol-evolution |
-| 356 | IHMEDataLakehouse | https://github.com/mahmood726-cyber/ihme-data-lakehouse |
 | 359 | LivingMA-PFA-AF | https://github.com/mahmood726-cyber/PFA-AF-LivingMeta |
 | 360 | LivingMA-Watchman-Amulet | https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet |
 | 361 | LivingMA-Tricuspid-TEER | https://github.com/mahmood726-cyber/Tricuspid-TEER-LivingMeta |
-| 373 | modern-stats-global-health | https://github.com/mahmood726-cyber/modern-stats-global-health |
 | 351 | DCB_PAD_LivingMeta | https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta |
 | 352 | Orforglipron_LivingMeta | https://github.com/mahmood726-cyber/Orforglipron_LivingMeta |
 | 374 | MendelianMR | https://github.com/mahmood726-cyber/MendelianMR |
@@ -104,15 +63,36 @@
 | 398 | FederatedMA | https://github.com/mahmood726-cyber/FederatedMA |
 | 399 | FigureEngine | https://github.com/mahmood726-cyber/FigureEngine |
 | 400 | ZenodoPipeline | https://github.com/mahmood726-cyber/ZenodoPipeline |
-| 401 | WHODataLakehouse | https://github.com/mahmood726-cyber/who-data-lakehouse |
 | 404 | TezepelumabLivingMA | https://github.com/mahmood726-cyber/Tezepelumab_Asthma_LivingMeta |
 | 405 | OsimertinibLivingMA | https://github.com/mahmood726-cyber/Osimertinib_NSCLC_LivingMeta |
 | 406 | EnfortumabUCLivingMA | https://github.com/mahmood726-cyber/Enfortumab_UC_LivingMeta |
 | 407 | KRASG12CLivingMA | https://github.com/mahmood726-cyber/KRAS_G12C_LivingMeta |
 | 408 | PembrolizumabAdjuvantMelanomaLivingMA | https://github.com/mahmood726-cyber/Pembro_Adj_Mel_LivingMeta |
 | 410 | AntiplatelietNMALivingMA | https://github.com/mahmood726-cyber/Antiplatelet_NMA_LivingMeta |
+| 411 | DupilumabCOPDLivingMA | https://github.com/mahmood726-cyber/Dupilumab_COPD_LivingMeta |
+| 412 | SemaglutideCKDLivingMA | https://github.com/mahmood726-cyber/Semaglutide_CKD_LivingMeta |
+| 426 | TDXdBreastLivingMA | https://github.com/mahmood726-cyber/TDXd_Breast_LivingMeta |
+| 427 | ObesityNMALivingMA | https://github.com/mahmood726-cyber/Obesity_NMA_LivingMeta |
+| 429 | BimekizumabPsoriasisLivingMA | https://github.com/mahmood726-cyber/Bimekizumab_Pso_LivingMeta |
+| 431 | DCBPADLivingMA | https://github.com/mahmood726-cyber/DCB_PAD_LivingMeta |
+| 432 | PAHNMALivingMA | https://github.com/mahmood726-cyber/PAH_NMA_LivingMeta |
+| 434 | KBindersLivingMA | https://github.com/mahmood726-cyber/K_Binders_LivingMeta |
+| 437 | TicagrelorMonoLivingMA | https://github.com/mahmood726-cyber/Ticagrelor_Mono_LivingMeta |
+| 438 | IcosapentEthylLivingMA | https://github.com/mahmood726-cyber/Icosapent_Ethyl_LivingMeta |
+| 444 | HFrEFNMALivingMA | https://github.com/mahmood726-cyber/HFrEF_NMA_LivingMeta |
+| 445 | EmpaMILivingMA | https://github.com/mahmood726-cyber/Empa_MI_LivingMeta |
+| 446 | PFAAFLivingMA | https://github.com/mahmood726-cyber/PFA-AF-LivingMeta |
+| 447 | WatchmanAmuletLivingMA | https://github.com/mahmood726-cyber/LivingMeta-Watchman-Amulet |
+| 448 | SacituzumabTNBCLivingMA | https://github.com/mahmood726-cyber/Sacituzumab_TNBC_LivingMeta |
+| 449 | IptacopanPNHLivingMA | https://github.com/mahmood726-cyber/Iptacopan_LivingMeta |
+| 450 | meta-paradigm-shift | https://github.com/mahmood726-cyber/meta-paradigm-shift |
+| 455 | mpet-dta | https://github.com/mahmood726-cyber/Metadta |
+| 466 | DapaAcuteHFLivingMA | https://github.com/mahmood726-cyber/Dapa_AcuteHF_LivingMeta |
+| 467 | SotaterceptPAHLivingMA | https://github.com/mahmood726-cyber/Sotatercept_PAH_LivingMeta |
+| 468 | SparsentanIgANLivingMA | https://github.com/mahmood726-cyber/GuidelineLag |
+| 483 | dissonance-field-synthesis | https://github.com/mahmood726-cyber/dissonance-field-synthesis |
 
-## Repo 404 (unfixable — remove from student board) (120)
+## Repo 404 (unfixable — remove from student board) (121)
 
 - [1] 501MLM — https://github.com/mahmood726-cyber/501MLM
 - [2] 501MLM_Submission — https://github.com/mahmood726-cyber/501MLM_Submission
