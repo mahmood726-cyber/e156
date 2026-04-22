@@ -40448,3 +40448,174 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
+
+======================================================================
+[555/555] cochrane-modern-re
+TITLE: Modern Random-Effects Methods Change the Significance Judgement of Cochrane Pairwise Meta-Analyses in 8.2% of Cases
+TYPE: methods  |  ESTIMAND: Tier-1 significance-flip rate (DL → REML+HKSJ+PI) across Cochrane pairwise MAs
+DATA: Pairwise70 corpus (582 Cochrane reviews; 6,386 loadable pairwise meta-analyses; reproducibility status merged from repro-floor-atlas atlas.csv)
+PATH: C:\Projects\cochrane-modern-re
+
+CURRENT BODY (156 words):
+Does modernising RevMan's random-effects defaults from DL to REML+HKSJ with a prediction interval change the significance judgement of Cochrane pairwise meta-analyses? We re-analysed 6,386 loadable pairwise meta-analyses from 582 Cochrane reviews in the Pairwise70 corpus via the MetaAudit loader. For each meta-analysis we compared DL against REML+HKSJ+PI with a Q/(k-1) floor and classified three flip tiers (significance, direction, clinically-important). Across the full corpus 8.2% of comparable meta-analyses flipped significance, 0.6% flipped direction, and 3.9% of the MID-available subset exceeded the clinically-important threshold. The effect concentrated in small-k and non-reproducible reviews; non-reproducible meta-analyses were approximately twice as method-sensitive as reproducible ones at every stratum examined. Method choice alone changes the significance judgement in roughly one in twelve Cochrane pairwise reviews, with the largest effect in continuous small-k analyses. Findings apply to aggregate pairwise data only; network meta-analyses, IPD reanalysis, and publication-bias methods are out of scope for v0.1.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/cochrane-modern-re
+  Protocol:  https://github.com/mahmood726-cyber/cochrane-modern-re/blob/master/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/cochrane-modern-re/
+
+References (topic pack: random-effects methodology / HKSJ / prediction intervals / Bayesian meta-analysis):
+  1. Viechtbauer W. 2010. Conducting meta-analyses in R with the metafor
+     package. J Stat Softw. 36(3):1-48. doi:10.18637/jss.v036.i03
+  2. IntHout J, Ioannidis JPA, Borm GF. 2014. The Hartung-Knapp-Sidik-Jonkman
+     method for random effects meta-analysis is straightforward and
+     considerably outperforms the standard DerSimonian-Laird method.
+     BMC Med Res Methodol. 14:25. doi:10.1186/1471-2288-14-25
+  3. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+  4. Röver C. 2020. Bayesian random-effects meta-analysis using the
+     bayesmeta R package. J Stat Softw. 93(6):1-51.
+     doi:10.18637/jss.v093.i06
+
+Data availability: No patient-level data used. Analysis derived exclusively
+  from publicly available aggregate records (Cochrane Database of Systematic
+  Reviews, via the Pairwise70 corpus extracted by the MetaAudit pipeline).
+  All source identifiers and analysis code are released at the Code URL
+  above.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation, Formal analysis, Resources.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop analysis scripts and
+  assist with data extraction. The final manuscript was human-written,
+  reviewed, and approved by the author; the submitted text is not
+  AI-generated. All quantitative claims were verified against source data;
+  an independent numerical validation harness at 1e-6 tolerance confirms
+  the deterministic-method outputs against raw metafor. The author retains
+  full responsibility for the final content.
+
+Preprint: Not preprinted.
+
+Reporting checklist: Not applicable — methodological/software paper;
+  CRediT + data-availability statements in this block cover reporting.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the
+  main text. (Parallel full-length manuscript targets Research Synthesis
+  Methods; the two papers have non-overlapping scope.)
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+[556/556] CFTR_MODULATORS_NMA
+TITLE: CFTR Modulator Ladder in F508del Cystic Fibrosis — Placebo-Star NMA with External Consistency Witness (RapidMeta)
+TYPE: living-nma  |  ESTIMAND: between-drug mean-difference on ppFEV1 at week 24 (percentage points) via placebo-star NMA
+DATA: Three post-2015 Phase-3 placebo-controlled F508del RCTs · TRAFFIC + EVOLVE + VX18-445-102 · n=1,455
+PATH: (browser-native — see Code URL; no local path)
+
+CURRENT BODY (156 words):
+Does a 3-trial placebo-star NMA of post-2015 CFTR modulator combinations support the generational ladder (Trikafta > Symdeko > Orkambi) on ppFEV1? We pooled three Phase-3 placebo-controlled F508del cystic-fibrosis RCTs with week-24 ppFEV1 as primary outcome: TRAFFIC, EVOLVE, VX18-445-102 (n=1,455). Frequentist NMA with netmeta v3.2.0 on the mean-difference scale; placebo-star topology with k=1 per direct comparison precluded internal consistency testing. Mean-difference versus placebo on ppFEV1 (pp) was +13.80 (95% CI 12.15 to 15.45) for elexacaftor/tezacaftor/ivacaftor, +4.00 (3.15 to 4.85) for tezacaftor/ivacaftor, and +2.70 (1.40 to 4.00) for lumacaftor/ivacaftor. The indirect Trikafta-minus-Symdeko contrast (+9.80 pp) converged within 0.2 pp of VX17-445-103's direct F/F head-to-head estimate (~10 pp), mitigating the F/F-versus-F/MF transitivity concern. Elexacaftor/tezacaftor/ivacaftor is first-line for essentially any F508del patient, with a three-fold lung-function gain over earlier dual-corrector generations. A k=3 placebo-star cannot internally consistency-test or estimate tau-squared, and the 2015-2019 window precludes genotype-stratified post-2019 eligibility expansions.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/protocols/cftr_modulators_nma_protocol_v1.0_2026-04-22.md
+  Bundle:    https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/nma/validation/cftr_modulators_peer_review_bundle.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/CFTR_MODULATORS_NMA_REVIEW.html
+
+References (topic pack: frequentist NMA / CFTR modulators / F508del CF):
+  1. Rücker G, Schwarzer G. 2015. Ranking treatments in frequentist network
+     meta-analysis works without resampling methods. BMC Med Res Methodol.
+     15:58. doi:10.1186/s12874-015-0060-8
+  2. Wainwright CE, Elborn JS, Ramsey BW, et al. 2015. Lumacaftor-Ivacaftor
+     in Patients with Cystic Fibrosis Homozygous for Phe508del CFTR.
+     N Engl J Med. 373(3):220-231. doi:10.1056/NEJMoa1409547
+  3. Taylor-Cousar JL, Munck A, McKone EF, et al. 2017. Tezacaftor-Ivacaftor
+     in Patients with Cystic Fibrosis Homozygous for Phe508del.
+     N Engl J Med. 377(21):2013-2023. doi:10.1056/NEJMoa1709846
+  4. Middleton PG, Mall MA, Dřevínek P, et al. 2019. Elexacaftor-Tezacaftor-
+     Ivacaftor for Cystic Fibrosis with a Single Phe508del Allele.
+     N Engl J Med. 381(19):1809-1819. doi:10.1056/NEJMoa1908639
+  5. Heijerman HGM, McKone EF, Downey DG, et al. 2019. Efficacy and safety
+     of the elexacaftor plus tezacaftor plus ivacaftor combination regimen
+     in people with cystic fibrosis homozygous for the F508del mutation:
+     a double-blind, randomised, phase 3 trial. Lancet. 394(10212):1940-1948.
+     doi:10.1016/S0140-6736(19)32597-8
+
+Data availability: No patient-level data used. Analysis derived exclusively
+  from published aggregate trial-level data (treatment arm means and 95% CIs)
+  in the 3 pivotal trials listed in the References block; VX17-445-103 is
+  cited as an external consistency witness but was not pooled. All source
+  identifiers, the netmeta R script, and the peer-review defence bundle are
+  released at the Code URL above.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate trial data; no human participants recruited by this
+  review; no patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation, Formal analysis, Resources.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the netmeta validation
+  harness and assist with dashboard generation. The final manuscript was
+  human-written, reviewed, and approved by the author; the submitted text
+  is not AI-generated. All quantitative claims were verified against source
+  trial publications; the netmeta v3.2.0 output is archived in the Code
+  repository at 1e-6 tolerance against the dashboard's in-browser pool.
+  The author retains full responsibility for the final content.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA-NMA 2020 + CINeMA certainty assessment; see
+  peer-review defence bundle at the Bundle URL above.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the
+  main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
