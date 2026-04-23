@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """
 deploy_all.py — Master E156 deployment pipeline.
 

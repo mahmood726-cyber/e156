@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Scan the 29 missing projects and extract key info for E156 bodies."""
 import os, json, re
 

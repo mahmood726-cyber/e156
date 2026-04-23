@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Final un-hide: push the 6 cross-owner repos to mahmood726-cyber.
 
 Each local dir already has a .git with a non-mahmood726-cyber remote

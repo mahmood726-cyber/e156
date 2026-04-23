@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Shared utilities for E156 scripts — scanning, path validation, constants."""
 
 from pathlib import Path

@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """
 auto_deploy.py — Automatic E156 deployment (runs on schedule).
 

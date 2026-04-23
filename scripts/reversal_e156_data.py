@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """
 E156 micro-papers for 13 documented evidence reversals from the Fatiha course.
 Each follows the S1-S7 structure: Question, Dataset, Method, Result, Robustness, Interpretation, Boundary.

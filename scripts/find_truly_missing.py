@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Find projects that are truly missing from the workbook (not just different names)."""
 import re
 

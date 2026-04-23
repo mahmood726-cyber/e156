@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """
 fix_remotes.py — Fix repos pointing to wrong GitHub accounts.
 

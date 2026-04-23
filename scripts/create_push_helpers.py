@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P1-unpopulated-placeholder: Python f-string {{ }} = literal { } in generated output)
 """
 Create push.sh helper scripts in each project directory for easy updates.
 Also creates a live status dashboard at mahmood726-cyber.github.io.

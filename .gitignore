@@ -3,7 +3,12 @@ __pycache__/
 .pytest_cache/
 .venv/
 
-# Session output (Sentinel / local state)
+# Session output (Sentinel/Overmind auto-gen audit outputs / local state)
+review-findings.md
+review-findings-r*.md
+review-findings.jsonl
+sentinel-findings.md
+sentinel-findings.jsonl
 STUCK_FAILURES.md
 STUCK_FAILURES.jsonl
 PROGRESS.md

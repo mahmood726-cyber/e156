@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """E156 data for the 29 missing projects to add to the workbook."""
 
 MISSING_PROJECTS = {

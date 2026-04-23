@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P1-unpopulated-placeholder: Python f-string {{ }} = literal { } in generated output)
 """
 v3: NYT editorial portfolio with Research / Course / About sections.
 Quranic storytelling. Tiered projects. Course integration. No clinical noise.

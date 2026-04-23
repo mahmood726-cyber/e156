@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P1-unpopulated-placeholder: Python f-string {{ }} = literal { } in generated output)
 """
 World-class NYT-style evidence synthesis portfolio.
 Tiered: Flagship (6) > Published (30) > Tools (50+) > Archive.

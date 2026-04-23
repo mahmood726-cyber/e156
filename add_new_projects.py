@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Append new complete E156 projects to the rewrite workbook."""
 
 from __future__ import annotations

@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Fix ctgov paths in rewrite-workbook.txt after consolidation."""
 import re
 

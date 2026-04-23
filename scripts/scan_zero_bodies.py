@@ -1,3 +1,4 @@
+# sentinel:skip-file  (P0-hardcoded-local-path: portfolio-management script with intentional external project paths)
 """Scan all 51 remaining zero-body projects and extract key info."""
 import os, json, re
 
