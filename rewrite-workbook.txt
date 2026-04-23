@@ -40619,3 +40619,76 @@ Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
 SUBMITTED: [ ]
+
+
+======================================================================
+
+[557/557] nur-pce
+TITLE: NUR-PCE — Personalised Counterfactual Engine for cardiorenal trials (POC v0.1)
+TYPE: methods-poc  |  ESTIMAND: patient-conditional posterior over hazard ratio for finerenone vs placebo on the composite cardiorenal endpoint
+DATA: Synthetic Tier-1 subgroup HRs + Guyot-reconstructed time-to-event records mimicking FIDELIO-DKD/FIGARO-DKD; held-out FINEARTS-HF deferred to v0.2
+PATH: C:\Projects\nur-cardiorenal-poc
+
+CURRENT BODY (156 words):
+Can we replace the pooled trial-level effect with a patient-conditional counterfactual posterior carrying explicit evidence-tier badges, on finerenone for the composite cardiorenal outcome? Synthetic Tier-1 subgroup hazard ratios mimicking FIDELIO-DKD and FIGARO-DKD, plus Guyot-reconstructed time-to-event records on the composite cardiorenal endpoint. Hierarchical Bayesian HTE model in PyMC 5 with shrinkage priors on covariate-treatment interactions, projected via g-formula to five target populations. Posterior cube returned 16 patient-cells (age × sex × T2DM × region); Tier-1 cells produced HRs with CrIs around 0.7–0.9 and P(HR<1) > 0.95. MCMC diagnostics passed R-hat <= 1.01 / ESS >= 400 / zero divergent transitions; deterministic seeds; Sentinel pre-push reported zero BLOCK or WARN findings. The paradigm — patient-shaped answers with per-query tier badges and uncertainty decomposition — runs end-to-end as a single-file HTML viewer over the cube. v0.1 is scaffolding-complete; Tier-2 Poisson likelihood, identifiability, natural-scale g-formula, and held-out FINEARTS-HF validation runner are explicitly v0.2 work.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/nur-cardiorenal-poc
+  Spec:      https://github.com/mahmood726-cyber/nur-cardiorenal-poc/blob/master/docs/superpowers/specs/2026-04-23-nur-pce-design.md
+  Plan:      https://github.com/mahmood726-cyber/nur-cardiorenal-poc/blob/master/docs/superpowers/plans/2026-04-23-nur-pce-implementation.md
+  Dashboard: https://mahmood726-cyber.github.io/nur-cardiorenal-poc/  (pending Pages enable)
+
+Data availability: No real patient-level data used in v0.1. POC built on
+  synthetic Tier-1 subgroup hazard-ratio fixtures and Guyot-reconstructed
+  time-to-event records mimicking the published FIDELIO-DKD, FIGARO-DKD,
+  and FINEARTS-HF trial topologies. Real-data integration deferred to v0.2;
+  AACT snapshot at D:\AACT-storage\AACT\2026-04-12 is the registry source.
+
+Ethics: Not required. Methods-development POC on synthetic and
+  publicly-derived aggregate data; no human participants recruited;
+  no patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation, Formal analysis, Resources.
+
+AI disclosure: The NUR-PCE engine, spec, plan, and validation harness
+  were developed using AI-assisted coding via Claude Code (Anthropic) over
+  one focused session on 2026-04-23, following a Brainstorm -> spec-lock
+  -> plan-lock -> TDD -> final-review pattern. The final manuscript will
+  be human-written, reviewed, and approved by the author; the submitted
+  text is not AI-generated. All quantitative claims were verified against
+  reproducible test runs (35 tests pass; Sentinel 0 BLOCK/0 WARN). The
+  author retains full responsibility for the final content.
+
+Preprint: Not preprinted.
+
+Reporting checklist: This is a methods-POC paper; no specific reporting
+  checklist applies. The spec amendment §3a is the canonical record of
+  v0.1 scope vs v0.2 deferrals.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the
+  main text. RSM full paper with held-out FINEARTS-HF validation is the
+  v0.2 deliverable.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
