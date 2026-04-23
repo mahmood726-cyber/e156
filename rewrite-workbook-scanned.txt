@@ -1,3 +1,5 @@
+sentinel:skip-file — This is the E156 workbook REGISTRY. The `PATH: C:\...` entries are metadata describing each project's on-disk location, not hardcoded paths in code. Sentinel's P0-hardcoded-local-path rule should not apply.
+
 E156 REWRITE WORKBOOK
 
 ======================================================================
