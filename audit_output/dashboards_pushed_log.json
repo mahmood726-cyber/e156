@@ -1,8 +1,29 @@
 {
-  "pushed_new": 0,
+  "pushed_new": 35,
   "pushed_updated": 0,
-  "has_existing_index": 5,
-  "enabled_pages": 0,
-  "pages_already": 5,
-  "failed": []
+  "has_existing_index": 83,
+  "enabled_pages": 39,
+  "pages_already": 79,
+  "failed": [
+    {
+      "num": 43,
+      "name": "cv-rct-analysis",
+      "reason": "git -C C:\\Users\\user\\AppData\\Local\\Temp\\tmpheajd9lv\\cv-rct-analysis add failed: The following paths are ignored by one of your .gitignore files:\nindex.html\nhint: Use -f if you really want to add them.\nhint: Disable this message wi"
+    },
+    {
+      "num": 88,
+      "name": "meta-epidemiology-bias-correction",
+      "reason": "git -C C:\\Users\\user\\AppData\\Local\\Temp\\tmp1mt_as91\\meta-epidemiology-bias-correction add failed: The following paths are ignored by one of your .gitignore files:\nindex.html\nhint: Use -f if you really want to add them.\nhint: Disable this message wi"
+    },
+    {
+      "num": 347,
+      "name": "HTNPipeline",
+      "reason": "git -C C:\\Users\\user\\AppData\\Local\\Temp\\tmpvs3bau1j\\HTNPipeline push failed: error: src refspec hyperatlas-v4 does not match any\nerror: failed to push some refs to 'https://github.com/mahmood726-cyber/htnpipeline.git'\n"
+    },
+    {
+      "num": 483,
+      "name": "dissonance-field-synthesis",
+      "reason": "workbook parse failed"
+    }
+  ]
 }

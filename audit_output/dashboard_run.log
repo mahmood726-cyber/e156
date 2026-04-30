@@ -1,0 +1,155 @@
+[dash] 122 repos will be processed
+[1/122] mahmood726-cyber/Burhan has index.html; pages:already enabled
+[2/122] mahmood726-cyber/CardioTrialAudit (492981 B new) push:pushed-new pages:already enabled
+[3/122] mahmood726-cyber/CausalSynth has index.html; pages:already enabled
+[4/122] mahmood726-cyber/clinic-site has index.html; pages:already enabled
+[5/122] mahmood726-cyber/cv-rct-analysis (24265 B new) FAIL: git -C C:\Users\user\AppData\Local\Temp\tmpheajd9lv\cv-rct-analysis add failed: The following paths are ignored by one of your .gitignore files:
+index.html
+hint: Use -f if you really want to add them.
+hint: Disable this message wi
+[6/122] mahmood726-cyber/DTA70 (6035 B new) push:pushed-new pages:already enabled
+[7/122] mahmood726-cyber/hfpef-registry-synth has index.html; pages:enabled on main
+[8/122] mahmood726-cyber/LFA (488383 B new) push:pushed-new pages:already enabled
+[9/122] mahmood726-cyber/MAPriors has index.html; pages:already enabled
+[10/122] mahmood726-cyber/meta-epidemiology-bias-correction (299982 B new) FAIL: git -C C:\Users\user\AppData\Local\Temp\tmp1mt_as91\meta-epidemiology-bias-correction add failed: The following paths are ignored by one of your .gitignore files:
+index.html
+hint: Use -f if you really want to add them.
+hint: Disable this message wi
+[11/122] mahmood726-cyber/MetaAudit has index.html; pages:already enabled
+[12/122] mahmood726-cyber/Metanew has index.html; pages:already enabled
+[13/122] mahmood726-cyber/MetaReproducer (6141 B new) push:pushed-new pages:already enabled
+[14/122] mahmood726-cyber/metasprint-autopilot has index.html; pages:already enabled
+[15/122] mahmood726-cyber/MLM501 has index.html; pages:already enabled
+[16/122] mahmood726-cyber/MLMResearch has index.html; pages:already enabled
+[17/122] mahmood726-cyber/Multipledatameta has index.html; pages:enabled on main
+[18/122] mahmood726-cyber/MultiverseMA has index.html; pages:already enabled
+[19/122] mahmood726-cyber/rct-extractor-v2 has index.html; pages:already enabled
+[20/122] mahmood726-cyber/Truthcert1 has index.html; pages:already enabled
+[21/122] mahmood726-cyber/Truthcert1_work (92745 B new) push:pushed-new pages:enabled on master
+[22/122] mahmood726-cyber/WorldIPD has index.html; pages:enabled on main
+[23/122] mahmood726-cyber/WorldIPD-private has index.html; pages:enabled on main
+[24/122] mahmood726-cyber/AsSirat has index.html; pages:enabled on master
+[25/122] mahmood726-cyber/cardio-ctgov-living-meta-portfolio has index.html; pages:enabled on main
+[26/122] mahmood726-cyber/denominator-calibrated-living-nma (1880121 B new) push:pushed-new pages:enabled on master
+[27/122] mahmood726-cyber/esc-acs-living-meta has index.html; pages:enabled on main
+[28/122] mahmood726-cyber/Fatiha-Course has index.html; pages:enabled on master
+[29/122] mahmood726-cyber/HFN786 (1736670 B new) push:pushed-new pages:already enabled
+[30/122] mahmood726-cyber/ipd-simulator has index.html; pages:enabled on master
+[31/122] mahmood726-cyber/LivingMeta-Watchman-Amulet has index.html; pages:already enabled
+[32/122] mahmood726-cyber/PFA-AF-LivingMeta has index.html; pages:already enabled
+[33/122] mahmood726-cyber/tower (1174670 B new) push:pushed-new pages:enabled on master
+[34/122] mahmood726-cyber/tower has index.html; pages:already enabled
+[35/122] mahmood726-cyber/Tricuspid-TEER-LivingMeta has index.html; pages:already enabled
+[36/122] mahmood726-cyber/actionable-evidence has index.html; pages:enabled on master
+[37/122] mahmood726-cyber/auto-review (814681 B new) push:pushed-new pages:enabled on master
+[38/122] mahmood726-cyber/contradiction-map has index.html; pages:enabled on master
+[39/122] mahmood726-cyber/evidence-atlas has index.html; pages:enabled on master
+[40/122] mahmood726-cyber/evidence-copula has index.html; pages:enabled on master
+[41/122] mahmood726-cyber/evidence-entropy has index.html; pages:enabled on master
+[42/122] mahmood726-cyber/evidence-extremes has index.html; pages:enabled on master
+[43/122] mahmood726-cyber/evidence-km has index.html; pages:enabled on master
+[44/122] mahmood726-cyber/evidence-score (662852 B new) push:pushed-new pages:enabled on master
+[45/122] mahmood726-cyber/evidence-spectral has index.html; pages:enabled on master
+[46/122] mahmood726-cyber/evidence-topology has index.html; pages:enabled on master
+[47/122] mahmood726-cyber/HyperMeta has index.html; pages:enabled on master
+[48/122] mahmood726-cyber/infogeo-ma has index.html; pages:enabled on master
+[49/122] mahmood726-cyber/MoneyTrail (526663 B new) push:pushed-new pages:enabled on master
+[50/122] mahmood726-cyber/PatientMA (509286 B new) push:pushed-new pages:already enabled
+[51/122] mahmood726-cyber/sroc-plotter has index.html; pages:enabled on master
+[52/122] mahmood726-cyber/safe-ma has index.html; pages:enabled on master
+[53/122] mahmood726-cyber/therapy-graveyard has index.html; pages:enabled on master
+[54/122] mahmood726-cyber/transport-ma has index.html; pages:enabled on master
+[55/122] mahmood726-cyber/TrustGate (391598 B new) push:pushed-new pages:enabled on master
+[56/122] mahmood726-cyber/ctgov-registry-survival (374298 B new) push:pushed-new pages:already enabled
+[57/122] mahmood726-cyber/surroNMA (357253 B new) push:pushed-new pages:already enabled
+[58/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[59/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[60/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[61/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[62/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[63/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[64/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[65/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[66/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[67/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[68/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[69/122] mahmood726-cyber/Fatiha-Course has index.html; pages:already enabled
+[70/122] mahmood726-cyber/AlBurhan has index.html; pages:enabled on master
+[71/122] mahmood726-cyber/AfricaForecast (100941 B new) push:pushed-new pages:already enabled
+[72/122] mahmood726-cyber/EnrollmentOracle (87432 B new) push:pushed-new pages:already enabled
+[73/122] mahmood726-cyber/HTNPipeline (74115 B new) FAIL: git -C C:\Users\user\AppData\Local\Temp\tmpvs3bau1j\HTNPipeline push failed: error: src refspec hyperatlas-v4 does not match any
+error: failed to push some refs to 'https://github.com/mahmood726-cyber/htnpipeline.git'
+
+[74/122] mahmood726-cyber/OutcomeSwitchDetector (60585 B new) push:pushed-new pages:already enabled
+[75/122] mahmood726-cyber/ProtocolEvolution (47069 B new) push:pushed-new pages:already enabled
+[76/122] mahmood726-cyber/TrialAtlas (33507 B new) push:pushed-new pages:already enabled
+[77/122] mahmood726-cyber/ctgov-protocol-evolution (74105 B new) push:pushed-new pages:enabled on master
+[78/122] mahmood726-cyber/ihme-data-lakehouse (46891 B new) push:pushed-new pages:enabled on master
+[79/122] mahmood726-cyber/PFA-AF-LivingMeta has index.html; pages:already enabled
+[80/122] mahmood726-cyber/LivingMeta-Watchman-Amulet has index.html; pages:already enabled
+[81/122] mahmood726-cyber/Tricuspid-TEER-LivingMeta has index.html; pages:already enabled
+[82/122] mahmood726-cyber/modern-stats-global-health (1553573 B new) push:pushed-new pages:enabled on main
+[83/122] mahmood726-cyber/DCB_PAD_LivingMeta has index.html; pages:already enabled
+[84/122] mahmood726-cyber/Orforglipron_LivingMeta has index.html; pages:already enabled
+[85/122] mahmood726-cyber/MendelianMR has index.html; pages:already enabled
+[86/122] mahmood726-cyber/SafetyMA has index.html; pages:already enabled
+[87/122] mahmood726-cyber/PredModelMA has index.html; pages:already enabled
+[88/122] mahmood726-cyber/RetractionImpact has index.html; pages:already enabled
+[89/122] mahmood726-cyber/LivingNMA has index.html; pages:already enabled
+[90/122] mahmood726-cyber/IPDNMA has index.html; pages:already enabled
+[91/122] mahmood726-cyber/FederatedMA has index.html; pages:already enabled
+[92/122] mahmood726-cyber/FigureEngine (1124332 B new) push:pushed-new pages:enabled on master
+[93/122] mahmood726-cyber/ZenodoPipeline (1111221 B new) push:pushed-new pages:enabled on master
+[94/122] mahmood726-cyber/who-data-lakehouse (1097915 B new) push:pushed-new pages:enabled on master
+[95/122] mahmood726-cyber/Tezepelumab_Asthma_LivingMeta has index.html; pages:already enabled
+[96/122] mahmood726-cyber/Osimertinib_NSCLC_LivingMeta (1040084 B new) push:pushed-new pages:already enabled
+[97/122] mahmood726-cyber/Enfortumab_UC_LivingMeta has index.html; pages:already enabled
+[98/122] mahmood726-cyber/KRAS_G12C_LivingMeta has index.html; pages:already enabled
+[99/122] mahmood726-cyber/Pembro_Adj_Mel_LivingMeta has index.html; pages:already enabled
+[100/122] mahmood726-cyber/Antiplatelet_NMA_LivingMeta has index.html; pages:already enabled
+[101/122] mahmood726-cyber/Dupilumab_COPD_LivingMeta has index.html; pages:already enabled
+[102/122] mahmood726-cyber/Semaglutide_CKD_LivingMeta (944081 B new) push:pushed-new pages:already enabled
+[103/122] mahmood726-cyber/TDXd_Breast_LivingMeta (713952 B new) push:pushed-new pages:already enabled
+[104/122] mahmood726-cyber/Obesity_NMA_LivingMeta has index.html; pages:already enabled
+[105/122] mahmood726-cyber/Bimekizumab_Pso_LivingMeta has index.html; pages:already enabled
+[106/122] mahmood726-cyber/DCB_PAD_LivingMeta has index.html; pages:already enabled
+[107/122] mahmood726-cyber/PAH_NMA_LivingMeta has index.html; pages:already enabled
+[108/122] mahmood726-cyber/K_Binders_LivingMeta has index.html; pages:already enabled
+[109/122] mahmood726-cyber/Ticagrelor_Mono_LivingMeta (566201 B new) push:pushed-new pages:already enabled
+[110/122] mahmood726-cyber/Icosapent_Ethyl_LivingMeta (552359 B new) push:pushed-new pages:already enabled
+[111/122] mahmood726-cyber/HFrEF_NMA_LivingMeta has index.html; pages:already enabled
+[112/122] mahmood726-cyber/Empa_MI_LivingMeta has index.html; pages:already enabled
+[113/122] mahmood726-cyber/PFA-AF-LivingMeta has index.html; pages:already enabled
+[114/122] mahmood726-cyber/LivingMeta-Watchman-Amulet has index.html; pages:already enabled
+[115/122] mahmood726-cyber/Sacituzumab_TNBC_LivingMeta has index.html; pages:already enabled
+[116/122] mahmood726-cyber/Iptacopan_LivingMeta has index.html; pages:already enabled
+[117/122] mahmood726-cyber/meta-paradigm-shift (375712 B new) push:pushed-new pages:enabled on master
+[118/122] mahmood726-cyber/Metadta (307827 B new) push:pushed-new pages:already enabled
+[119/122] mahmood726-cyber/Dapa_AcuteHF_LivingMeta has index.html; pages:already enabled
+[120/122] mahmood726-cyber/Sotatercept_PAH_LivingMeta (141062 B new) push:pushed-new pages:already enabled
+[121/122] mahmood726-cyber/GuidelineLag (127349 B new) push:pushed-new pages:already enabled
+[122/122] mahmood726-cyber/dissonance-field-synthesis FAIL: couldn't parse workbook entry
+
+============================================================
+Pushed new dashboards:          35
+Pushed updated dashboards:      0
+Had existing hand-made index:   83
+Pages enabled (new):            39
+Pages already enabled:          79
+Failed:                         4
+
+Failures:
+  [43] cv-rct-analysis: git -C C:\Users\user\AppData\Local\Temp\tmpheajd9lv\cv-rct-analysis add failed: The following paths are ignored by one of your .gitignore files:
+index.html
+hint: Use -f if you really want to add them.
+hint: Disable this message wi
+  [88] meta-epidemiology-bias-correction: git -C C:\Users\user\AppData\Local\Temp\tmp1mt_as91\meta-epidemiology-bias-correction add failed: The following paths are ignored by one of your .gitignore files:
+index.html
+hint: Use -f if you really want to add them.
+hint: Disable this message wi
+  [347] HTNPipeline: git -C C:\Users\user\AppData\Local\Temp\tmpvs3bau1j\HTNPipeline push failed: error: src refspec hyperatlas-v4 does not match any
+error: failed to push some refs to 'https://github.com/mahmood726-cyber/htnpipeline.git'
+
+  [483] dissonance-field-synthesis: workbook parse failed
+
+Log: C:\E156\audit_output\dashboards_pushed_log.json
