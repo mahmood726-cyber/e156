@@ -76,7 +76,7 @@ Step 4 — Confirm submission on the student board
 Fallback: if OJS is down, email submissions@synthes.is with the .docx
 attached and the line "RE: E156 Methods Note submission, paper #N".
 
-Total projects: 549 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15, +1 ARAC 2026-04-28 [v0.9.0; 5/5 RGS metrics + 3 user-facing artifacts], +1 outcome-switching-ma-hf 2026-04-30 [v0.2; n=22 full pool, 21/22 drift]) [see --- ENTRY N --- blocks for entries 473-478]
+Total projects: 549 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15, +1 ARAC 2026-04-28 [v0.9.0; 5/5 RGS metrics + 3 user-facing artifacts], +1 outcome-switching-ma-hf 2026-04-30 [v0.2.1; n=22, 21/22 drift, DIAMOND outcome-content change is headline]) [see --- ENTRY N --- blocks for entries 473-478]
 
 SUBMITTED: [ ]
 
@@ -40940,7 +40940,7 @@ DATA: 22 pivotal post-2015 HF Phase 3 trials with results posted, n>=500 (FINEAR
 PATH: C:\Projects\Finrenone\outcome_switching
 
 CURRENT BODY (156 words):
-Does the CT.gov v2 API capture outcome-switching events in pivotal heart-failure Phase 3 trials, or does scraping initial-registration history reveal additional drift? We audited 22 pivotal post-2015 heart-failure Phase 3 trials with results posted and enrolment >=500, after excluding 3 non-HF indications, sourced from CT.gov on 2026-04-30. Two-comparator audit: v2 API current-vs-reported (primary outcomes only), and Playwright Python scrape of version 1 vs current registered for all 22. We found 21/22 (95%) trials drift between initial and current registration; 13 had time-frame change >5% (8 compressions, 5 extensions, range -95% to +150%) and 3 had statistical-framework change (PARADISE-MI, DAPA-HF, DELIVER, time-to-event reframed as cumulative-incidence). The same 22 trials show 0/22 switching events under v2 API alone; comprehensive prereg-fidelity audit requires both methodologies, plus a published-manuscript comparator. Small curated pool of industry pivotal trials; published-manuscript pair deferred to v0.3.
+Does the CT.gov v2 API capture outcome-switching in pivotal heart-failure Phase 3 trials, or does scraping initial-registration history reveal more serious drift? We audited 22 pivotal post-2015 HF Phase 3 trials with results posted and n>=500, sourced from CT.gov on 2026-04-30. Two-comparator audit: v2 API current-vs-reported, and Playwright Python scrape of version 1 vs current registered for all 22. The v2 API alone detected 0/22 switching events; v1-vs-current detected 21/22 (95%) with drift, including 1/22 outcome-content change (DIAMOND, hard CV-event endpoint reframed as serum-potassium biomarker), 3/22 statistical-framework changes (PARADISE-MI, DAPA-HF, DELIVER, time-to-event reframed as cumulative-incidence), and 14/22 timeframe changes mixing 9 compressions and 5 extensions. The DIAMOND case study is the most serious drift: the primary outcome changed *what the trial measures*, invisible to the API. Small curated pivotal pool; published-manuscript pair deferred to v0.3.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
