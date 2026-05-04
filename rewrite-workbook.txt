@@ -48778,3 +48778,73 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
+[677/677] malaria-ct-recon (2026-05-04)
+TITLE: Two reporting requirements, opposite directions: undercompliance trajectories in 2,277 registered malaria trials
+TYPE: methods note  |  ESTIMAND: Proportion of trials compliant with each reporting requirement
+DATA: AACT 2026-04-12 snapshot (n = 2,277 registered malaria trials) · year-bins 2004–2024
+PATH: C:\Projects\malaria-ct-recon
+
+CURRENT BODY (156 words):
+Do malaria trials registered on ClinicalTrials.gov comply with two reporting requirements — the FDAAA results-posting mandate and the WHO PCR-correction declaration in primary outcomes? AACT 2026-04-12 snapshot of 2,277 registered malaria trials, year-binned 2004–2024 by primary completion date. P01 = fraction posting results within 12 months; P03 = fraction declaring PCR-correction (strict regex plus ACPR-inclusive broad regex); Wilson 95 % CIs. Compliance is below target: P01 = 7.6 % [6.3, 9.1] of 1,420 completed trials; P03 strict = 2.8 % [2.0, 3.9] / broad = 7.5 % [6.2, 9.1] of 1,276 drug-efficacy trials. Trajectories diverge: FDAAA results-posting rose 4.0 % → 14.5 % pre/post-2017 (Fisher p < 0.001); WHO PCR-correction fell 8.0 % → 2.4 % pre/post-2009 (p = 0.01). Malaria-specific FDAAA compliance trails the ~41 % cross-disease benchmark threefold; the WHO methodological standard has not moved without enforcement infrastructure. P03 strict regex is a lower bound; trials registered only in PACTR/CTRI/ISRCTN are outside this corpus.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/malaria-ct-recon
+  Protocol:  https://github.com/mahmood726-cyber/malaria-ct-recon/blob/master/.preregistration_commit.txt
+  Release:   https://github.com/mahmood726-cyber/malaria-ct-recon/releases/tag/v0.1.3
+  Dashboard: https://mahmood726-cyber.github.io/malaria-ct-recon/
+
+References (topic pack: CT.gov audit / FDAAA compliance / WHO malaria endpoints):
+  1. DeVito NJ, Bacon S, Goldacre B. 2020. Compliance with legal requirement
+     to report clinical trial results on ClinicalTrials.gov: a cohort study.
+     Lancet 395(10221):361-369. doi:10.1016/S0140-6736(19)33220-9
+  2. World Health Organization. 2009. Methods for Surveillance of
+     Antimalarial Drug Efficacy. Geneva: WHO.
+
+Data availability: No patient-level data used. Analysis derived exclusively
+  from publicly available trial-level ClinicalTrials.gov records via AACT
+  2026-04-12 export.
+
+Ethics: Not required. Secondary methodological audit of publicly available
+  aggregate trial registration data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: STROBE (observational audit variant).
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — paper draft shipped v0.1.3 (2026-05-04);
+  methods-paper-design spec OTS-anchored to Bitcoin block 947705.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
