@@ -48785,7 +48785,7 @@ DATA: AACT 2026-04-12 snapshot (n = 2,277 registered malaria trials) · year-bin
 PATH: C:\Projects\malaria-ct-recon
 
 CURRENT BODY (156 words):
-Do malaria trials registered on ClinicalTrials.gov comply with two reporting requirements — the FDAAA results-posting mandate and the WHO PCR-correction declaration in primary outcomes? AACT 2026-04-12 snapshot of 2,277 registered malaria trials, year-binned 2004–2024 by primary completion date. P01 = fraction posting results within 12 months; P03 = fraction declaring PCR-correction (strict regex plus ACPR-inclusive broad regex); Wilson 95 % CIs. Compliance is below target: P01 = 7.6 % [6.3, 9.1] of 1,420 completed trials; P03 strict = 2.8 % [2.0, 3.9] / broad = 7.5 % [6.2, 9.1] of 1,270 drug-efficacy trials. Trajectories diverge: FDAAA results-posting rose 4.0 % → 14.5 % pre/post-2017 (Fisher p < 0.001); WHO PCR-correction fell 8.1 % → 2.3 % pre/post-2009 (p = 0.008). Malaria-specific FDAAA compliance trails the ~41 % cross-disease benchmark threefold; the WHO methodological standard has not moved without enforcement infrastructure. P03 strict regex is a lower bound; trials registered only in PACTR/CTRI/ISRCTN are outside this corpus.
+Do malaria trials registered on ClinicalTrials.gov comply with two reporting requirements — the FDAAA results-posting mandate and the WHO PCR-correction declaration in primary outcomes? AACT 2026-04-12 snapshot of 2,277 registered malaria trials, year-binned 2004–2024 by primary completion date. P01 = fraction posting results within 12 months; P03 = fraction declaring PCR-correction (strict regex plus ACPR-inclusive broad regex); Wilson 95 % CIs. Compliance is below target: P01 = 7.6 % [6.3, 9.1] of 1,420 completed trials; P03 strict = 2.8 % [2.0, 3.8] / broad = 7.5 % [6.2, 9.1] of 1,270 drug-efficacy trials. Trajectories diverge: FDAAA results-posting rose 4.0 % → 14.5 % pre/post-2017 (Fisher p < 0.001); WHO PCR-correction fell 8.1 % → 2.3 % pre/post-2009 (p = 0.008). Malaria-specific FDAAA compliance trails the ~41 % cross-disease benchmark threefold; the WHO methodological standard has not moved without enforcement infrastructure. P03 strict regex is a lower bound; trials registered only in PACTR/CTRI/ISRCTN are outside this corpus.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -48799,7 +48799,7 @@ Affiliation: Tahir Heart Institute, Rabwah, Pakistan
 Links:
   Code:      https://github.com/mahmood726-cyber/malaria-ct-recon
   Protocol:  https://github.com/mahmood726-cyber/malaria-ct-recon/blob/master/.preregistration_commit.txt
-  Release:   https://github.com/mahmood726-cyber/malaria-ct-recon/releases/tag/v0.1.4
+  Release:   https://github.com/mahmood726-cyber/malaria-ct-recon/releases/tag/v0.1.5
   Dashboard: https://mahmood726-cyber.github.io/malaria-ct-recon/
 
 References (topic pack: CT.gov audit / FDAAA compliance / WHO malaria endpoints):
@@ -48839,7 +48839,7 @@ Preprint: Not preprinted.
 Reporting checklist: STROBE (observational audit variant).
 
 Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
-  Section: Methods Note — paper draft shipped v0.1.4 (2026-05-04);
+  Section: Methods Note — paper draft shipped v0.1.5 (2026-05-04);
   methods-paper-design spec OTS-anchored to Bitcoin block 947705.
 
 Manuscript license: CC-BY-4.0.
