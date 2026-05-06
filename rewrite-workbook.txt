@@ -5,6 +5,15 @@ lines pointing to each project's local source directory — they're metadata,
 not code. The marker keeps Sentinel from emitting ~16 P0 hardcoded-path
 BLOCKs every push.)
 
+DENOMINATOR CONVENTION (added 2026-05-06 after review-findings P1-5):
+  Each entry header is `[N/total]` where N = ordinal insertion index and
+  `total` = current portfolio size as of the most recent reconcile sweep.
+  Older entries are back-rewritten on milestone boundaries (rather than
+  preserving their insertion-time denominator) to keep
+  reconcile_counts.py from flagging "WORKBOOK DRIFT". The pre-commit
+  guard (scripts/check_workbook_commit.py) blocks commits that bundle a
+  denominator sweep with substantive content edits to existing entries.
+
 ======================================================================
 
 INSTRUCTIONS:
