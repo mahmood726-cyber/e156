@@ -76,7 +76,7 @@ Step 4 — Confirm submission on the student board
 Fallback: if OJS is down, email submissions@synthes.is with the .docx
 attached and the line "RE: E156 Methods Note submission, paper #N".
 
-Total projects: 678 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15, +1 ARAC 2026-04-28 [v0.9.0; 5/5 RGS metrics + 3 user-facing artifacts], +1 outcome-switching-ma-hf 2026-04-30 [v0.2.1; n=22, 21/22 drift, DIAMOND outcome-content change is headline]) [see --- ENTRY N --- blocks for entries 473-478]
+Total projects: 679 (6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15, +1 ARAC 2026-04-28 [v0.9.0; 5/5 RGS metrics + 3 user-facing artifacts], +1 outcome-switching-ma-hf 2026-04-30 [v0.2.1; n=22, 21/22 drift, DIAMOND outcome-content change is headline], +1 Tiba 2026-05-06 [v0.1.0; Pan-African federation; diagnostic Methods Note + constructive companion]) [see --- ENTRY N --- blocks for entries 473-478]
 
 SUBMITTED: [ ]
 
@@ -48929,6 +48929,47 @@ Reporting checklist: STROBE (observational audit variant) + PRISMA-S
 Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
   Section: Methods Note — paper draft shipped v0.1.0 (2026-05-05);
   spec OTS-anchored to Bitcoin via prereg-v0.0.1 + Amendment 1 + 2.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+================================================================
+[679/679] tiba (2026-05-06)
+TITLE: African evidence is hidden from existing synthesis infrastructure: a calibration study and a proposed framework (Tiba)
+TYPE: methods note  |  ESTIMAND: Algorithm gate2 sensitivity (NCT-bridge) for PACTR-registered African trial publications; Cohen kappa for LLM-based geographic classifier agreement
+DATA: PACTR full-registry scrape (n=5,878 trials; 768 matched to 10 conditions); 30-trial blinded spot-check; Cochrane Pairwise70 (30 Tier-P trials, two masked LLM classifiers)
+PATH: C:\Projects\tiba
+DELIVERABLE: Synthesis Methods Note (<=400 words) + longer-form companion preprint (4-6kw)
+DASHBOARD: https://mahmood726-cyber.github.io/tiba/site/
+
+CURRENT BODY:
+African clinical trials are increasingly registered on the Pan-African Clinical Trials Registry (PACTR), not ClinicalTrials.gov (NCT). Existing evidence-synthesis infrastructure identifies trial publications by linking NCT registration numbers to journal articles — the NCT-bridge. Trials registered exclusively on PACTR carry no NCT identifier and are therefore structurally invisible to any synthesis tool relying on NCT-bridge linkage. This gap is not editorial bias: it is an architectural mismatch between the primary registry used by African trialists and the discovery mechanism used by systematic reviewers globally.
+
+We conducted two pre-registered calibration studies. In the PACTR Hiddenness Atlas (v0.1.0), we assembled 30 PACTR-registered trials with confirmed peer-reviewed publications. A blinded human auditor independently searched EuropePMC; an automated algorithm applied the standard NCT-bridge. Both searches were completed before results were shared (pre-registered; Open Timestamps-stamped). In the African Representation Atlas of Cochrane (ARAC) Tier-P audit (v0.1.1), 30 Cochrane Pairwise70 trials were independently classified by two masked LLM-based classifiers following a pre-registered protocol with two documented amendments.
+
+NCT-bridge sensitivity was 6.2% (1/30 algorithm vs 16/30 blinded auditor; Wilson 95% CI 0.2-30.2): the algorithm found one publication; the auditor found 16. For ARAC Tier-P: Cohen's kappa = 1.000 on n_evaluable = 9 (perfect inter-classifier agreement); 21/30 trials were Insufficient — 7 because Pairwise70 PMID linkage errors caused both classifiers to retrieve the wrong record (an independently confirmed registry defect), and 14 because abstracts omitted participant geography. The ARAC kappa estimate is LLM-vs-LLM consistency, not a human gold standard; a Makerere PhD-cohort human inter-rater reliability audit is planned for v0.2.
+
+Tiba (Swahili: healing) is a federation of African-led evidence-synthesis projects sharing one architectural vocabulary. Version 0.1.0 operationalises four of five planned production layers: Discovery (PACTR Hiddenness Atlas), Quality gates (five Pairwise70 atlases), Equity scoreboard (ARAC), and Training (Synthesis Courses, 26 courses x 12 languages). The constructive companion paper details the full eight-layer architecture and governance model. Tiba is not affiliated with the Cochrane Collaboration.
+
+YOUR REWRITE:
+
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood726@gmail.com>
+ORCID: 0000-0001-9107-3704
+Affiliation: Makerere University, Uganda; Tiba steward
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/tiba
+  Release:   https://github.com/mahmood726-cyber/tiba/releases/tag/v0.1.0
+  Dashboard: https://mahmood726-cyber.github.io/tiba/site/
+
+Target journal: Synthesis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — diagnostic paper draft shipped v0.1.0 (2026-05-06);
+  companion preprint (BMJ Methods / JCE / Zenodo) also shipped v0.1.0.
 
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
