@@ -679,6 +679,7 @@ fetch("claims.json", { cache: "no-cache" })
     claimsLoaded = true;
     updateStats();
     render();
+    if (typeof applyFocusFromQuery === "function") applyFocusFromQuery();
   })
   .catch(() => {
     claims = {};
@@ -686,6 +687,7 @@ fetch("claims.json", { cache: "no-cache" })
     document.getElementById("claims-error").hidden = false;
     updateStats();
     render();
+    if (typeof applyFocusFromQuery === "function") applyFocusFromQuery();
   });
 
 // P1-12 — remember the user's GitHub login once they've claimed once
@@ -738,6 +740,62 @@ populateTopicFilter();
 populateSeriesFilter();
 updateStats();
 render();
+
+// Deep-link: ?focus=NNN scrolls to and highlights paper number NNN.
+// Used by rapidmeta-finerenone landing page and dashboards to send students
+// directly to a specific paper. Pure visual — does not change any filter.
+//
+// Uses a MutationObserver on #grid so the highlight survives re-renders
+// triggered by claims.json fetch settlement and filter changes.
+let __focusInitDone = false;
+let __focusObserver = null;
+function applyFocusFromQuery() {
+  let focusNum;
+  try { focusNum = new URLSearchParams(location.search).get("focus"); } catch (_) { return; }
+  if (!focusNum) return;
+  const target = String(focusNum).trim();
+  if (!/^\d+$/.test(target)) return;
+
+  function highlightAndMaybeScroll(scroll) {
+    const cards = document.querySelectorAll(".card");
+    for (const c of cards) {
+      const numEl = c.querySelector(".card-num");
+      if (numEl && numEl.textContent.replace(/[^\d]/g, "") === target) {
+        c.style.transition = "box-shadow 0.3s, border-color 0.3s";
+        c.style.boxShadow = "0 0 0 3px var(--accent)";
+        c.style.borderColor = "var(--accent)";
+        c.classList.add("focus-deeplinked");
+        if (scroll) c.scrollIntoView({ behavior: "smooth", block: "center" });
+        return c;
+      }
+    }
+    return null;
+  }
+
+  // Initial poll for up to 5s — in case the first render is async
+  if (!__focusInitDone) {
+    let attempts = 0;
+    const tick = () => {
+      if (highlightAndMaybeScroll(true)) { __focusInitDone = true; return; }
+      if (++attempts < 25) setTimeout(tick, 200);
+      else __focusInitDone = true;
+    };
+    setTimeout(tick, 200);
+  } else {
+    // Subsequent calls (post-fetch / post-filter) — re-apply without re-scrolling
+    highlightAndMaybeScroll(false);
+  }
+
+  // Bind observer once so re-renders re-apply the highlight automatically
+  if (!__focusObserver) {
+    const grid = document.getElementById("grid");
+    if (grid) {
+      __focusObserver = new MutationObserver(() => highlightAndMaybeScroll(false));
+      __focusObserver.observe(grid, { childList: true, subtree: false });
+    }
+  }
+}
+applyFocusFromQuery();
 </script>
 
 </body>
