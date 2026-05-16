@@ -1,30 +1,400 @@
 {
-  "ok": 0,
+  "ok": 1,
   "already_enabled": 0,
-  "branch_not_main": 0,
+  "branch_not_main": 1,
   "failed": [
     {
-      "repo": "mahmood726-cyber/AdaptSim",
+      "repo": "mahmood726-cyber/Burhan",
       "status": 409,
       "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
     },
     {
-      "repo": "mahmood726-cyber/AfricaRCT",
-      "status": 422,
-      "body": "{\n  \"message\": \"The master branch must exist before GitHub Pages can be built.\",\n  \"documentation_url\": \"https://docs.gi"
-    },
-    {
-      "repo": "mahmood726-cyber/Asa",
+      "repo": "mahmood726-cyber/CausalSynth",
       "status": 409,
       "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
     },
     {
-      "repo": "mahmood726-cyber/AutoGRADE",
+      "repo": "mahmood726-cyber/clinic-site",
       "status": 409,
       "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
     },
     {
-      "repo": "mahmood726-cyber/BayesianMA",
+      "repo": "mahmood726-cyber/cv-rct-analysis",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/DTA70",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/LFA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MAPriors",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/meta-epidemiology-bias-correction",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MetaAudit",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Metanew",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/metasprint-autopilot",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MLM501",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MLMResearch",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MultiverseMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/rct-extractor-v2",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Truthcert1",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Truthcert1_work",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/HFN786",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/LivingMeta-Watchman-Amulet",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/PFA-AF-LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Tricuspid-TEER-LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MoneyTrail",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/surroNMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Fatiha-Course",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/AlBurhan",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/HTNPipeline",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/PFA-AF-LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/LivingMeta-Watchman-Amulet",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Tricuspid-TEER-LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/DCB_PAD_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Orforglipron_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/MendelianMR",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/SafetyMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/PredModelMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/RetractionImpact",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/LivingNMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/IPDNMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/FederatedMA",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/FigureEngine",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/ZenodoPipeline",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Tezepelumab_Asthma_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Osimertinib_NSCLC_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Enfortumab_UC_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/KRAS_G12C_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Pembro_Adj_Mel_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Antiplatelet_NMA_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Dupilumab_COPD_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Semaglutide_CKD_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/TDXd_Breast_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Obesity_NMA_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Bimekizumab_Pso_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/DCB_PAD_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/PAH_NMA_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/K_Binders_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Ticagrelor_Mono_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Icosapent_Ethyl_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/HFrEF_NMA_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Empa_MI_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/PFA-AF-LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/LivingMeta-Watchman-Amulet",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Sacituzumab_TNBC_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Iptacopan_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/meta-paradigm-shift",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Metadta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Dapa_AcuteHF_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/Sotatercept_PAH_LivingMeta",
+      "status": 409,
+      "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
+    },
+    {
+      "repo": "mahmood726-cyber/GuidelineLag",
       "status": 409,
       "body": "{\n  \"message\": \"GitHub Pages is already enabled.\",\n  \"documentation_url\": \"https://docs.github.com/rest/pages/pages#crea"
     }
