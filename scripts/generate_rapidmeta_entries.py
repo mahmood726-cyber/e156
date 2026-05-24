@@ -105,9 +105,25 @@ AFFIL_LINE = "Tahir Heart Institute, Rabwah, Pakistan"
 
 
 def infer_specialty(fname: str) -> tuple[str, str]:
-    up = fname.replace("_REVIEW.html", "").upper()
+    # Whole-token match against underscore-separated parts. A bare substring
+    # match collides badly: "POSTOP" contains "OP" (osteoporosis), "INDUCED"
+    # contains "UC" (ulcerative colitis), "THERA" contains "RA" (rheumatoid
+    # arthritis), "BROAD" contains "AD" (atopic dermatitis). Anchoring on
+    # token boundaries kills those collisions while still matching the
+    # intended therapy-family keywords.
+    #
+    # Also strips conventional disease-stage prefixes (m = metastatic, n =
+    # non-) so 'mHSPC' still matches the HSPC tag and 'nmCRPC' still matches
+    # the broader prostate-cancer family.
+    up = fname.replace("_REVIEW.html", "").replace("_AUTO", "").replace("_FULL", "").upper()
+    tokens = set(up.split("_"))
+    for t in list(tokens):
+        if len(t) >= 3 and t[0] in ("M", "N"):
+            tokens.add(t[1:])
+        if len(t) >= 4 and t[:2] == "NM":
+            tokens.add(t[2:])
     for tag, pair in SPEC.items():
-        if tag in up:
+        if tag in tokens:
             return pair
     return ("clinical medicine", "effect estimate with 95% CI")
 
