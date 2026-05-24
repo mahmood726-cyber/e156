@@ -16,3 +16,6 @@ audit-report.json
 verification-report.json
 scripts/.push_failures.json
 scripts/_batch_all.json
+
+# run_full_cycle.py event log (local observability only)
+.run-cycle/
