@@ -34,6 +34,15 @@ jobs:
       - name: Rebuild students.html
         run: python scripts/build_students_page.py
 
+      - name: Validate regenerated artifacts (block placeholder leaks)
+        run: |
+          python -m pip install --quiet pytest
+          # The placeholder-leak guard parses students.html and the workbook
+          # and fails if any entry leaks 'n participants', 'None trials',
+          # bare Python None in body, or non-canonical Synthēsis spelling.
+          # This stops a generator regression from auto-shipping every Monday.
+          python -m pytest tests/test_no_placeholder_leak.py -q --maxfail=1
+
       - name: Commit and push (no-op if no new orphans)
         run: |
           git config user.name "github-actions[bot]"
