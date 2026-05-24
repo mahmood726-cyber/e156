@@ -169,6 +169,13 @@ section h2{{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-
 .btn:hover{{background:var(--border);text-decoration:none}}
 .btn.primary{{background:var(--accent);color:#052e16;border-color:var(--accent);font-weight:600}}
 .btn.primary:hover{{background:#16a34a}}
+/* E156 Assurance Standard pill — see F:\\e156\\docs\\assurance-standard.md */
+.assurance-pill{{display:inline-flex;align-items:center;gap:0.4rem;padding:0.2em 0.65em;border-radius:99px;font-size:0.75rem;font-family:var(--mono);font-weight:600;letter-spacing:0.04em;text-transform:uppercase}}
+.assurance-pill.bronze{{background:rgba(180,83,9,0.18);color:#fdba74;border:1px solid rgba(180,83,9,0.4)}}
+.assurance-pill.silver{{background:rgba(148,163,184,0.18);color:#e2e8f0;border:1px solid rgba(148,163,184,0.4)}}
+.assurance-pill.gold{{background:rgba(234,179,8,0.18);color:#fde047;border:1px solid rgba(234,179,8,0.4)}}
+.assurance-pill.none{{background:rgba(100,116,139,0.18);color:var(--text-dim);border:1px solid var(--border)}}
+.assurance-pill[title]{{cursor:help}}
 footer{{padding:1.5rem 0 3rem;color:var(--text-dim);font-size:0.82rem;text-align:center;border-top:1px solid var(--border);margin-top:1rem}}
 footer a{{color:var(--text-dim);text-decoration:underline}}
 </style>
@@ -216,6 +223,62 @@ footer a{{color:var(--text-dim);text-decoration:underline}}
 """
 
 
+_ASSURANCE_TIER_LABEL = {
+    "bronze": "Bronze · basic reproducibility",
+    "silver": "Silver · audited reproducibility",
+    "gold":   "Gold · independent verification",
+    "none":   "Unassured",
+}
+
+
+def _load_assurance(entry_path: str | None) -> dict | None:
+    """Look for `<path>/e156-submission/assurance.json` and return its parsed
+    content. Returns None if path missing, file missing, or parse error.
+
+    See `F:\\e156\\docs\\assurance-standard.md` for the schema.
+    """
+    if not entry_path:
+        return None
+    try:
+        # PATH lines often point at canonical C:\... paths; if F:\ junction is
+        # set up (per workstation_layout memory) they resolve transparently.
+        # Try the raw path first; if the e156-submission/ subfolder is missing,
+        # try a sibling fallback so this works in either layout.
+        from pathlib import Path as _P
+        candidates = []
+        raw = _P(entry_path)
+        candidates.append(raw / "e156-submission" / "assurance.json")
+        candidates.append(raw / "assurance.json")
+        for c in candidates:
+            if c.is_file():
+                import json as _json
+                return _json.loads(c.read_text(encoding="utf-8"))
+    except (OSError, ValueError, ImportError):
+        return None
+    return None
+
+
+def _assurance_pill_html(assurance: dict | None) -> str:
+    """Render a Bronze/Silver/Gold pill from an assurance.json blob. Returns
+    empty string when assurance is missing — entries without `assurance.json`
+    render exactly as they did before this feature shipped."""
+    if not assurance:
+        return ""
+    tier = (assurance.get("tier") or "none").lower()
+    if tier not in ("bronze", "silver", "gold", "none"):
+        tier = "none"
+    label = _ASSURANCE_TIER_LABEL[tier]
+    issued_at = assurance.get("issued_at", "")
+    issued_by = assurance.get("issued_by", "")
+    title = label
+    if issued_at or issued_by:
+        title += f" — issued {issued_at} by {issued_by}".rstrip(" by")
+    return (
+        f'<span class="assurance-pill {tier}" title="{esc(title)}">'
+        f'e156 {tier.upper()}</span>'
+    )
+
+
 def render_page(entry: dict) -> str:
     num = entry["num"]
     title = entry.get("title") or entry.get("name", "")
@@ -226,6 +289,11 @@ def render_page(entry: dict) -> str:
         f"&paper_title={esc(title)}"
     )
     badges_list: list[str] = []
+    # Assurance pill goes first so it's visually prominent next to the title.
+    assurance = _load_assurance(entry.get("path"))
+    pill = _assurance_pill_html(assurance)
+    if pill:
+        badges_list.append(pill)
     if entry.get("type"):
         badges_list.append(f'<span class="badge topic">{esc(entry["type"])}</span>')
     if entry.get("estimand"):
