@@ -178,6 +178,7 @@ HTML_TEMPLATE = r"""<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>E156 Student Board — Claim, rewrite, submit to Synthēsis</title>
 <meta name="description" content="__N_VISIBLE__ E156 micro-papers open to student co-authorship. Target journal: Synthēsis. Claim via GitHub Issues; one paper at a time; 30-day window, +10-day extension available; then claim expires.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230b1120'/%3E%3Ctext x='8' y='12' font-family='ui-monospace,monospace' font-size='10' font-weight='700' text-anchor='middle' fill='%2322c55e'%3EE%3C/text%3E%3C/svg%3E">
 
 <style>
 :root {
