@@ -82,6 +82,33 @@ header p.tagline { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 1.5re
 .toolbar input[type="search"] { flex: 1 1 240px; min-width: 180px; }
 .toolbar select { min-width: 140px; }
 .toolbar .count-chip { color: var(--text-dim); font-family: var(--mono); font-size: 0.88rem; margin-left: auto; }
+.toolbar #clear-filters {
+  background: var(--bg-card); color: var(--text-dim); border: 1px solid var(--border);
+  border-radius: 6px; padding: 0.45rem 0.7rem; font-family: inherit; font-size: 0.85rem;
+  cursor: pointer; transition: color 0.15s, border-color 0.15s;
+}
+.toolbar #clear-filters:hover { color: var(--text); border-color: var(--text-faint); }
+.toolbar #clear-filters[hidden] { display: none; }
+
+dialog#kbd-help {
+  background: var(--bg-card); color: var(--text); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.5rem 2rem; max-width: 480px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+dialog#kbd-help::backdrop { background: rgba(11, 17, 32, 0.7); }
+dialog#kbd-help h2 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--accent); }
+dialog#kbd-help dl { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1.5rem; margin: 0; }
+dialog#kbd-help dt { font-family: var(--mono); background: var(--bg-elev); padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.85em; }
+dialog#kbd-help dd { margin: 0; align-self: center; color: var(--text-dim); }
+dialog#kbd-help button { margin-top: 1.2rem; background: var(--bg-elev); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem 1rem; cursor: pointer; }
+
+.empty-state { color: var(--text-dim); text-align: center; padding: 3rem 0; }
+.empty-state .actions { margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+.empty-state .actions button {
+  background: var(--bg-card); color: var(--text); border: 1px solid var(--border);
+  border-radius: 6px; padding: 0.45rem 0.9rem; font-family: inherit; font-size: 0.88rem; cursor: pointer;
+}
+.empty-state .actions button:hover { border-color: var(--accent); color: var(--accent); }
 
 .grid { display: flex; flex-direction: column; gap: 0.9rem; padding: 1.5rem 0 4rem; }
 
@@ -282,10 +309,29 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <option value="claimed">Claimed</option>
         <option value="submitted">Submitted</option>
       </select>
+      <select id="sort-by" aria-label="Sort papers">
+        <option value="num">Sort: Paper #</option>
+        <option value="open-first">Sort: Open first</option>
+        <option value="recent-claim">Sort: Recently claimed</option>
+        <option value="az">Sort: A–Z by title</option>
+        <option value="topic">Sort: By topic</option>
+      </select>
+      <button type="button" id="clear-filters" hidden aria-label="Clear all filters">Clear filters</button>
       <span class="count-chip" id="count-chip" role="status" aria-live="polite">showing 0 of 0</span>
     </div>
   </div>
 </div>
+
+<dialog id="kbd-help" aria-labelledby="kbd-help-title">
+  <h2 id="kbd-help-title">Keyboard shortcuts</h2>
+  <dl>
+    <dt>/</dt><dd>focus the search box</dd>
+    <dt>Esc</dt><dd>clear search if filled, otherwise close help</dd>
+    <dt>?</dt><dd>toggle this help</dd>
+    <dt>c</dt><dd>clear all filters</dd>
+  </dl>
+  <button type="button" autofocus onclick="this.closest('dialog').close()">Close</button>
+</dialog>
 
 <main class="container" id="main">
   <div id="claims-error" class="claims-error" hidden role="alert">
@@ -315,11 +361,48 @@ const ENTRIES = [{"num": 1, "name": "501MLM", "title": "MLM501: Cochrane Multile
 let claims = {};  // populated from claims.json
 let claimsLoaded = false;  // P1-10 — false if fetch failed
 let currentUser = null;    // P1-12 — set by URL `?user=` hint or localStorage
+// Filter + sort state. B2 (2026-05-24): restored from / mirrored to URL
+// search params so a filtered view is shareable.
 let filterText = "";
 let filterTopic = "";
 let filterStatus = "";
 let filterKind = "";
 let filterSeries = "";
+let sortBy = "num";  // num | open-first | recent-claim | az | topic
+
+function readFilterStateFromUrl() {
+  try {
+    const p = new URLSearchParams(location.search);
+    filterText   = p.get("q")      || "";
+    filterKind   = p.get("kind")   || "";
+    filterSeries = p.get("series") || "";
+    filterTopic  = p.get("topic")  || "";
+    filterStatus = p.get("status") || "";
+    sortBy       = p.get("sort")   || "num";
+  } catch (_) { /* malformed URL — ignore */ }
+}
+
+function writeFilterStateToUrl() {
+  try {
+    const p = new URLSearchParams();
+    if (filterText)   p.set("q",      filterText);
+    if (filterKind)   p.set("kind",   filterKind);
+    if (filterSeries) p.set("series", filterSeries);
+    if (filterTopic)  p.set("topic",  filterTopic);
+    if (filterStatus) p.set("status", filterStatus);
+    if (sortBy !== "num") p.set("sort", sortBy);
+    // Preserve ?focus= so deep-links keep working alongside filter state
+    const focus = new URLSearchParams(location.search).get("focus");
+    if (focus) p.set("focus", focus);
+    const qs = p.toString();
+    const target = qs ? `?${qs}` : location.pathname;
+    history.replaceState(null, "", target);
+  } catch (_) { /* history API unsupported — ignore */ }
+}
+
+function hasAnyFilter() {
+  return !!(filterText || filterKind || filterSeries || filterTopic || filterStatus || sortBy !== "num");
+}
 
 // Coarse kind-classification. Order:
 //   1. RapidMeta — papers backed by the rapidmeta-finerenone multi-therapy
@@ -563,6 +646,13 @@ function extensionIssueUrl(entry) {
 }
 
 function render() {
+  // B2: keep URL in sync so filtered views can be shared by URL.
+  writeFilterStateToUrl();
+
+  // B1: show/hide the clear-filters button based on whether any filter is active.
+  const clearBtn = document.getElementById("clear-filters");
+  if (clearBtn) clearBtn.hidden = !hasAnyFilter();
+
   const grid = document.getElementById("grid");
   const q = filterText.toLowerCase().trim();
   const matches = ENTRIES.filter(e => {
@@ -575,10 +665,39 @@ function render() {
     return hay.includes(q);
   });
 
+  // B4: sort. Default ("num") keeps original ENTRIES ordering.
+  if (sortBy === "open-first") {
+    const rank = e => statusOf(e) === "open" ? 0 : statusOf(e) === "claimed" ? 1 : 2;
+    matches.sort((a, b) => rank(a) - rank(b) || a.num - b.num);
+  } else if (sortBy === "recent-claim") {
+    const ts = e => {
+      const c = claims[e.num];
+      if (!c) return 0;
+      const d = c.submit_date || c.claim_date;
+      return d ? Date.parse(d) || 0 : 0;
+    };
+    matches.sort((a, b) => ts(b) - ts(a) || a.num - b.num);
+  } else if (sortBy === "az") {
+    matches.sort((a, b) => (a.title || a.name || "").localeCompare(b.title || b.name || ""));
+  } else if (sortBy === "topic") {
+    matches.sort((a, b) => (a.topic || "").localeCompare(b.topic || "") || a.num - b.num);
+  }
+
   document.getElementById("count-chip").textContent = `showing ${matches.length} of ${ENTRIES.length}`;
 
   if (matches.length === 0) {
-    grid.innerHTML = '<p style="color:var(--text-dim); text-align:center; padding:3rem 0;">No papers match your filters.</p>';
+    // B5: empty-state with action chips. Each chip prefills a sample search
+    // so the student doesn't dead-end on "no matches".
+    grid.innerHTML = `
+      <div class="empty-state">
+        <p>No papers match your filters.</p>
+        <div class="actions">
+          <button type="button" data-action="clear">Clear all filters</button>
+          <button type="button" data-action="try" data-q="living MA">Try "living MA"</button>
+          <button type="button" data-action="try" data-q="rapidmeta">Try "rapidmeta"</button>
+          <button type="button" data-action="try" data-q="diagnostic">Try "diagnostic"</button>
+        </div>
+      </div>`;
     return;
   }
 
@@ -714,6 +833,61 @@ document.getElementById("filter-topic").addEventListener("change", e => { filter
 document.getElementById("filter-status").addEventListener("change", e => { filterStatus = e.target.value; render(); });
 document.getElementById("filter-kind").addEventListener("change", e => { filterKind = e.target.value; render(); });
 document.getElementById("filter-series").addEventListener("change", e => { filterSeries = e.target.value; render(); });
+document.getElementById("sort-by").addEventListener("change", e => { sortBy = e.target.value; render(); });
+
+// B1: Clear-all-filters resets every control + URL state in one click.
+function clearAllFilters() {
+  filterText = ""; filterTopic = ""; filterStatus = ""; filterKind = "";
+  filterSeries = ""; sortBy = "num";
+  document.getElementById("search").value = "";
+  document.getElementById("filter-kind").value = "";
+  document.getElementById("filter-series").value = "";
+  document.getElementById("filter-topic").value = "";
+  document.getElementById("filter-status").value = "";
+  document.getElementById("sort-by").value = "num";
+  render();
+}
+document.getElementById("clear-filters").addEventListener("click", clearAllFilters);
+
+// B5: empty-state action chips. Delegated on #grid since they only exist
+// when matches.length === 0 and the DOM is re-rendered each time.
+document.getElementById("grid").addEventListener("click", ev => {
+  const btn = ev.target.closest(".empty-state button[data-action]");
+  if (!btn) return;
+  if (btn.dataset.action === "clear") {
+    clearAllFilters();
+  } else if (btn.dataset.action === "try" && btn.dataset.q) {
+    clearAllFilters();
+    filterText = btn.dataset.q;
+    document.getElementById("search").value = btn.dataset.q;
+    render();
+  }
+});
+
+// B3: keyboard shortcuts. Skip when an input/textarea/select is focused.
+document.addEventListener("keydown", ev => {
+  const tag = (ev.target && ev.target.tagName || "").toUpperCase();
+  const inField = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+  const helpDlg = document.getElementById("kbd-help");
+  if (ev.key === "/" && !inField) {
+    ev.preventDefault();
+    document.getElementById("search").focus();
+  } else if (ev.key === "?" && !inField) {
+    ev.preventDefault();
+    if (helpDlg.open) helpDlg.close();
+    else if (helpDlg.showModal) helpDlg.showModal();
+  } else if (ev.key === "Escape") {
+    const s = document.getElementById("search");
+    if (document.activeElement === s) {
+      if (s.value) { s.value = ""; filterText = ""; render(); }
+      else { s.blur(); }
+    } else if (helpDlg.open) {
+      helpDlg.close();
+    }
+  } else if (ev.key === "c" && !inField && !ev.ctrlKey && !ev.metaKey && !ev.altKey) {
+    clearAllFilters();
+  }
+});
 
 // P2-2 — event delegation for toggle buttons (avoids 485 inline onclicks).
 document.getElementById("grid").addEventListener("click", ev => {
@@ -740,6 +914,18 @@ document.getElementById("grid").addEventListener("click", ev => {
 populateTopicFilter();
 populateSeriesFilter();
 updateStats();
+
+// B2: restore filter state from URL on first load. Must run AFTER the
+// topic/series dropdowns are populated (so the .value=... below succeeds)
+// but BEFORE the first render() so we don't render twice.
+readFilterStateFromUrl();
+document.getElementById("search").value = filterText;
+document.getElementById("filter-kind").value = filterKind;
+document.getElementById("filter-series").value = filterSeries;
+document.getElementById("filter-topic").value = filterTopic;
+document.getElementById("filter-status").value = filterStatus;
+document.getElementById("sort-by").value = sortBy;
+
 render();
 
 // Deep-link: ?focus=NNN scrolls to and highlights paper number NNN.
