@@ -200,12 +200,18 @@ def synth_body(fname: str, title: str, specialty: str, estimand: str,
         "interval reported alongside the 95% CI."
     )
     # 7 sentences
+    # P0-1 (2026-05-24) — fix the 'n participants' placeholder leak: when the
+    # parsed participant count is missing, omit the participant-count clause
+    # entirely rather than emitting the literal token 'n'.
+    if n and n != "a pooled cohort":
+        cohort_clause = f"trials with {n} participants in a "
+    else:
+        cohort_clause = "trials in a "
     s = [
         f"Do {therapy.split(' for ')[0].split('|')[-1].strip()} trials support a "
         f"clinically meaningful effect on the registered {estimand}?",
         f"The RapidMeta {specialty} living review aggregates {k} randomized "
-        f"trials with {n if n != 'a pooled cohort' else 'n'} participants in a "
-        f"browser-native, audit-trailed pipeline.",
+        f"{cohort_clause}browser-native, audit-trailed pipeline.",
         "Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-"
         "Jonkman adjustment with back-transformation to the reported scale.",
         f"The pooled estimate was {eff_txt}, held in a continuously updated "
@@ -243,10 +249,18 @@ def build_entry(num: int, total: int, fname: str) -> str:
 
     name = fname.replace("_REVIEW.html", "")  # short slug for [N/T] HEADING
     body = synth_body(fname, clean_title, specialty, estimand, parsed)
+    # P0-2 (2026-05-24) — when k or n is missing, fall back to a phrase
+    # rather than emitting the literal token 'None' or 'n'.
+    k = parsed.get("k") or "all eligible"
+    n = parsed.get("n")
+    if n:
+        n_clause = f" · {n} participants"
+    else:
+        n_clause = " · cohort sizes not reported"
     data_line = (
         f"RapidMeta {specialty} review · "
-        f"{parsed.get('k','eligible')} trials · "
-        f"{parsed.get('n','n')} participants"
+        f"{k} trials"
+        f"{n_clause}"
     )
     dash = f"{PAGES_BASE}/{fname}"
 
