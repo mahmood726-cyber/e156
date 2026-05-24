@@ -755,13 +755,13 @@ function applyFocusFromQuery() {
   try { focusNum = new URLSearchParams(location.search).get("focus"); } catch (_) { return; }
   if (!focusNum) return;
   const target = String(focusNum).trim();
-  if (!/^\\d+$/.test(target)) return;
+  if (!/^\d+$/.test(target)) return;
 
   function highlightAndMaybeScroll(scroll) {
     const cards = document.querySelectorAll(".card");
     for (const c of cards) {
       const numEl = c.querySelector(".card-num");
-      if (numEl && numEl.textContent.replace(/[^\\d]/g, "") === target) {
+      if (numEl && numEl.textContent.replace(/[^\d]/g, "") === target) {
         c.style.transition = "box-shadow 0.3s, border-color 0.3s";
         c.style.boxShadow = "0 0 0 3px var(--accent)";
         c.style.borderColor = "var(--accent)";
