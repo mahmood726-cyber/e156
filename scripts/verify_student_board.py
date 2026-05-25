@@ -18,7 +18,7 @@ import re
 import sys
 from pathlib import Path
 
-if sys.platform == "win32":
+if sys.platform == "win32" and "pytest" not in sys.modules:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 STUDENTS_HTML = Path(__file__).resolve().parents[1] / "students.html"
