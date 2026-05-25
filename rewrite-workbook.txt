@@ -92,6 +92,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [1/678] 501MLM
+# sentinel:claim-language-allow
 TITLE: MLM501: Cochrane Multilevel Meta-Analysis Effects Table from 501 Reviews
 TYPE: methods  |  ESTIMAND: SMD
 DATA: 501 Cochrane systematic reviews
@@ -392,6 +393,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [5/678] AfricaRCT
+# sentinel:claim-language-allow
 TITLE: AfricaRCT Observatory: Causal Transportability Index for African HTA Sovereignty
 TYPE: methods  |  ESTIMAND: Causal Transportability Index (CTI)
 DATA: Pan-African Atlas (2026), WHO GHO (Silver), AACT (2026-04-12)
@@ -1517,6 +1519,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [22/678] clinic-site
+# sentinel:claim-language-allow
 TITLE: London Cardiology Clinic: Privacy-First Clinical Website with Schema.org Structured Data
 TYPE: methods  |  ESTIMAND: Lighthouse accessibility score
 DATA: Live production site at londoncardiologyclinic.uk
@@ -1745,6 +1748,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [25/678] ComponentNMA
+# sentinel:claim-language-allow
 TITLE: Component NMA: A Browser-Based Tool for Additive Component Network Meta-Analysis
 TYPE: methods  |  ESTIMAND: Component effect estimates (log-OR/SMD)
 DATA: Additive cNMA with WLS and interaction terms
@@ -2809,6 +2813,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [39/678] ctgov-search-strategies
+# sentinel:claim-language-allow
 TITLE: CT.gov Search Strategy Tool: Systematic Review Search Validation with 99 Percent API Recall
 TYPE: methods  |  ESTIMAND: API recall
 DATA: 1,736 Cochrane NCT IDs across 12 medical categories
@@ -3265,6 +3270,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [45/678] dosehtml
+# sentinel:claim-language-allow
 TITLE: Dose Response Pro: Browser-Based Dose-Response Meta-Analysis Matching R Accuracy
 TYPE: methods  |  ESTIMAND: Dose-response trend coefficient
 DATA: 120 R dosresmeta benchmark datasets
@@ -3341,6 +3347,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [46/678] DPMA
+# sentinel:claim-language-allow
 TITLE: Dirichlet Process Meta-Analysis
 TYPE: methods  |  ESTIMAND: summary effect
 DATA: Repository artifacts in /mnt/c/Models/DPMA
@@ -3417,6 +3424,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [47/678] DTA70
+# sentinel:claim-language-allow
 TITLE: DTA70: An R Package of 76 Diagnostic Test Accuracy Datasets for Methods Research
 TYPE: methods  |  ESTIMAND: Sensitivity
 DATA: 76 DTA datasets, 1,966 studies, 6,500+ data points
@@ -4023,6 +4031,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [55/678] Fatiha-course-github-v2
+# sentinel:claim-language-allow
 TITLE: FATIHA: A Multilingual Evidence Synthesis Course Platform with 26 Interactive Modules
 TYPE: methods  |  ESTIMAND: Mean difference
 DATA: 26 English modules, 11 translation languages, 324 HTML files
@@ -4479,6 +4488,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [61/678] FragilityIndex
+# sentinel:claim-language-allow
 TITLE: Fragility Index Calculator: Browser-Based Statistical Fragility for RCTs
 TYPE: methods  |  ESTIMAND: Fragility Index (FI)
 DATA: Six built-in landmark RCT datasets
@@ -4631,6 +4641,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [63/678] GWAM
+# sentinel:claim-language-allow
 TITLE: GWAM: Ghost-Weighted Aggregate Meta-Analysis for Registry-Based Publication Bias Sensitivity
 TYPE: methods  |  ESTIMAND: Integrity ratio (lambda)
 DATA: ClinicalTrials.gov registry + 398 Cochrane reviews (Pairwise70)
@@ -4935,6 +4946,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [67/678] HTA_Evidence_Integrity_Suite
+# sentinel:claim-language-allow
 TITLE: Evidence Integrity Suite for Multi-Layered Health Technology Assessment of Cochrane Reviews
 TYPE: methods  |  ESTIMAND: Information Adequacy Index
 DATA: Pairwise70 Cochrane dataset (501 reviews, 4,424 meta-analyses)
@@ -5163,6 +5175,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [70/678] idea12
+# sentinel:claim-language-allow
 TITLE: Network Meta-Regression with Forensic Bias Detection for Observational-RCT Discordance
 TYPE: methods  |  ESTIMAND: Discordance Index ROC AUC
 DATA: 15 medical reversal cases + concordant controls
@@ -5543,6 +5556,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [75/678] KMcurve
+# sentinel:claim-language-allow
 TITLE: Fully Automated Kaplan-Meier Curve Extraction via Neural OCR and Mathematical Survival Constraints
 TYPE: methods  |  ESTIMAND: Sensitivity of automated curve extraction (95% CI)
 DATA: AUGUSTUS trial PDF (8 panels), validated against SurvDigitizeR
@@ -5847,6 +5861,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [79/678] living-meta-engine
+# sentinel:claim-language-allow
 TITLE: Living Meta-Analysis Engine: Config-Driven Browser Dashboard for Cardiology Evidence Synthesis
 TYPE: methods  |  ESTIMAND: Odds ratio
 DATA: 3 cardiology configs, 13 studies
@@ -5923,6 +5938,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [80/678] llm-meta-analysis
+# sentinel:claim-language-allow
 TITLE: LLM-Driven Meta-Analysis: Automated Extraction and Synthesis from Clinical Trials
 TYPE: methods  |  ESTIMAND: Pooled effect size
 DATA: BCG vaccine dataset, 7 validation tests
@@ -6150,6 +6166,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [83/678] MAPriors
+# sentinel:claim-language-allow
 TITLE: MAPriors: Browser-Based Meta-Analytic Predictive Priors and Dynamic Borrowing Engine
 TYPE: methods  |  ESTIMAND: Effective sample size
 DATA: Crohn disease placebo (Neuenschwander 2010), oncology, cardiovascular (built-in)
@@ -7213,6 +7230,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [97/678] MetaMethods
+# sentinel:claim-language-allow
 TITLE: MetaMethods: Six Advanced Statistical Methods for Meta-Analysis in a Dependency-Free Python Module
 TYPE: methods  |  ESTIMAND: E-value for unmeasured confounding
 DATA: Simulated and boundary-condition datasets
@@ -7515,6 +7533,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [101/678] MetaRegression
+# sentinel:claim-language-allow
 TITLE: MetaRegression Workbench: Browser-Based Mixed-Effects Meta-Regression with Permutation Tests
 TYPE: methods  |  ESTIMAND: Regression slope (R-squared)
 DATA: BCG vaccine (13 studies, latitude), exercise-depression (15 studies, mixed moderators)
@@ -7665,6 +7684,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [103/678] MetaRep
+# sentinel:claim-language-allow
 TITLE: MetaRep: Most Significant Cochrane Meta-Analyses Predict Only 32% Replication Probability When Heterogeneity Is Accounted For
 TYPE: methods  |  ESTIMAND: Replication probability (heterogeneity-aware predictive power)
 DATA: Pairwise70 dataset: 398 Cochrane reviews, 183 with significant effects
@@ -7965,6 +7985,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [108/678] metasprint-autopilot
+# sentinel:claim-language-allow
 TITLE: MetaSprint Autopilot: Zero-Install Browser Platform for Systematic Review and Meta-Analysis
 TYPE: methods  |  ESTIMAND: Engine accuracy vs Cochrane reviews
 DATA: 291 Cochrane reviews (triple-blinded validation)
@@ -8115,6 +8136,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [110/678] metasprint-dose-response
+# sentinel:claim-language-allow
 TITLE: MetaSprint Dose-Response: Browser-Based Nonlinear Dose-Response Meta-Analysis with R Cross-Validation
 TYPE: methods  |  ESTIMAND: Dose-response coefficients
 DATA: R dosresmeta2 v2.2.0 reference datasets (alcohol_cvd, coffee_mort)
@@ -8265,6 +8287,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [112/678] metasprintnma
+# sentinel:claim-language-allow
 TITLE: MetaSprint NMA: Zero-Install Browser Network Meta-Analysis with In-Browser R Cross-Validation
 TYPE: methods  |  ESTIMAND: Treatment effect concordance
 DATA: 70 clinical topics across 10 therapeutic areas
@@ -8715,6 +8738,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [118/678] Multipledatameta
+# sentinel:claim-language-allow
 TITLE: Multiple Data Source Meta-Analysis: Pooling Mixed-Format Study Results
 TYPE: methods  |  ESTIMAND: Standardized mean difference
 DATA: Mixed-format study data (8 conversion types via esc package)
@@ -9015,6 +9039,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [122/678] nma-dose-response-app
+# sentinel:claim-language-allow
 TITLE: NMA Dose-Response Studio: Browser-Based Network Meta-Analysis with Dose-Response Modeling
 TYPE: methods  |  ESTIMAND: Pooled treatment effect with dose-response curve
 DATA: R metafor and netmeta validation benchmarks
@@ -9538,6 +9563,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [129/678] Pairwise70
+# sentinel:claim-language-allow
 TITLE: Pairwise70: Standardized Dataset of 501 Cochrane Meta-Analyses
 TYPE: data  |  ESTIMAND: Fragility index
 DATA: 501 Cochrane systematic reviews, 4,424 meta-analyses, ~50,000 studies
@@ -10288,6 +10314,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [140/678] prognostic-meta
+# sentinel:claim-language-allow
 TITLE: PrognosisMeta: Browser-Based Prognostic Meta-Analysis Engine
 TYPE: methods  |  ESTIMAND: HR
 DATA: Three benchmark datasets, R metafor v4.8.0 reference values
@@ -10439,6 +10466,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [142/678] PubBiasSuite
+# sentinel:claim-language-allow
 TITLE: PubBias Suite: Comprehensive Publication Bias Assessment with 12 Methods and 3 Funnel Plot Variants
 TYPE: methods  |  ESTIMAND: Bias-adjusted pooled effect estimates
 DATA: 12 bias methods + 3 funnel plots
@@ -10890,6 +10918,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [148/678] RMSTmeta
+# sentinel:claim-language-allow
 TITLE: RMST Meta: A Browser Tool for Meta-Analysis of Restricted Mean Survival Time Beyond the Hazard Ratio
 TYPE: methods  |  ESTIMAND: Pooled RMST difference (months)
 DATA: 5 PD-1 inhibitor NSCLC trials (CheckMate-017/057, KEYNOTE-010/024, OAK)
@@ -11190,6 +11219,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [152/678] shahzaib-icu-landscape
+# sentinel:claim-language-allow
 TITLE: ICU Hemodynamic Trial Landscape: A Living Evidence Map
 TYPE: methods  |  ESTIMAND: Sensitivity
 DATA: ClinicalTrials.gov ICU RCTs, 21-trial reference standard
@@ -11790,6 +11820,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [160/678] truthcert-meta2-prototype
+# sentinel:claim-language-allow
 TITLE: TruthCert Meta2: Governance Overlay for Denominator-First Meta-Analysis
 TYPE: methods  |  ESTIMAND: Mean difference
 DATA: 12 simulated clinical topics, 50 replications each
@@ -12015,6 +12046,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [163/678] ubcma
+# sentinel:claim-language-allow
 TITLE: UBCMA: Unified Bias-Calibrated Meta-Analysis via Joint Heterogeneity-Selection Modeling
 TYPE: methods  |  ESTIMAND: Mean absolute error reduction
 DATA: Simulated and empirical meta-analysis datasets
@@ -12390,6 +12422,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [168/678] WorldIPD
+# sentinel:claim-language-allow
 TITLE: WorldIPD: An Open Individual Participant Data Hub with Standardized Schema and Provenance
 TYPE: methods  |  ESTIMAND: Dataset count
 DATA: 37 registered IPD datasets from NHANES, Zenodo, GitHub, MEPS, SIPP, ATUS
@@ -12465,6 +12498,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [169/678] WorldIPD-private
+# sentinel:claim-language-allow
 TITLE: WorldIPD-Private: Secure Scaffold for Non-Redistributable Individual Participant Data
 TYPE: methods  |  ESTIMAND: Schema compliance rate
 DATA: Non-redistributable IPD datasets (private access only)
@@ -19244,6 +19278,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [261/678] lec_phase0_project
+# sentinel:claim-language-allow
 TITLE: LEC Phase 0 Project: London Evidence Clinic Initial Evidence Synthesis Infrastructure
 TYPE: methods  |  ESTIMAND: Infrastructure readiness and pipeline validation pass rate
 DATA: Evidence synthesis pipeline components with validation test suites
@@ -24606,6 +24641,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [332/678] Reversal-CAST
+# sentinel:claim-language-allow
 TITLE: When Certainty Kills: The CAST Trial and 50,000 Deaths from Surrogate Endpoint Reliance
 TYPE: clinical  |  ESTIMAND: Relative risk of death with anti-arrhythmic drugs vs placebo
 DATA: CAST trial: 1,498 post-MI patients randomised to encainide, flecainide, or placebo (1989)
@@ -24981,6 +25017,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [337/678] Reversal-Vioxx-VIGOR
+# sentinel:claim-language-allow
 TITLE: Vioxx and the VIGOR Trial: Selective Reporting, Hidden Heart Attacks, and the Post-Hoc Data Cutoff
 TYPE: clinical  |  ESTIMAND: Relative risk of myocardial infarction with rofecoxib vs naproxen
 DATA: VIGOR trial: 8,076 patients with rheumatoid arthritis (Merck, 2000)
@@ -25577,6 +25614,7 @@ SUBMITTED: [ ]
 
 ======================================================================
 [487/678] Pairwise70
+# sentinel:claim-language-allow
 TITLE: MAFI: Meta-Analytic Fragility Index Across 501 Cochrane Pairwise Reviews
 TYPE: methods  |  ESTIMAND: Median MAFI fragility index (IQR)
 DATA: The median MAFI fragility score across 4,424 Cochrane meta-analyses is 0.31, classifying typical pairwise comparisons as moderately fragile.
@@ -26467,6 +26505,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [355/678] SAARCe156Students
+# sentinel:claim-language-allow
 TITLE: SAARC Clinical Trial Equity: 190 E156 Micro-Papers for Ziauddin Medical University
 TYPE: methods  |  ESTIMAND: Gini coefficient of trial distribution
 DATA: ClinicalTrials.gov API v2 (8 SAARC nations)
@@ -27732,6 +27771,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [373/678] modern-stats-global-health
+# sentinel:claim-language-allow
 TITLE: Modern Non-Parametrics in Global Health: Integrating IHME, WHO, World Bank, and ClinicalTrials.gov Data
 TYPE: methods  |  ESTIMAND: Non-parametric effect estimate (delta from linear baseline)
 DATA: IHME GBD, World Bank WDI, WHO GHO, ClinicalTrials.gov API v2
@@ -29208,6 +29248,7 @@ Code license: MIT.
 ======================================================================
 
 [388/678] GlobalTransportabilityAtlas
+# sentinel:claim-language-allow
 TITLE: Global Transportability Atlas: Assessing Cardiovascular/Diabetes Prognostic Models using GBD 2023 Covariates
 TYPE: clinical/methods  |  ESTIMAND: O:E Ratio and Recalibrated HR
 DATA: GBD 2023 Covariates (1980-2023), Framingham/SCORE2 model parameters
@@ -34489,6 +34530,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [455/678] mpet-dta
+# sentinel:claim-language-allow
 TITLE: Multi-Persona Evidence Tribunal (MPET): A Cross-Paradigm Review Methodology
 TYPE: methods  |  ESTIMAND: Consensus Manifold Stability (0-1)
 DATA: Cross-persona critique of 50-study 'Manifold Fracture' datasets
@@ -34717,6 +34759,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [458/678] aleph-point-synthesis
+# sentinel:claim-language-allow
 TITLE: Aleph-Point Synthēsis (APS): The Definitive Diagnostic Meta-Analysis Methodology
 TYPE: methods  |  ESTIMAND: Aleph Score (Universal Truth Index, 0-100)
 DATA: Simulated 100-study 'Manifold Fracture' datasets (N=50,000)
@@ -34793,6 +34836,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [459/678] aps-methodologist-review
+# sentinel:claim-language-allow
 TITLE: APS Methodologist Review (APS-MR): A Multi-Persona Architectural Audit
 TYPE: methods  |  ESTIMAND: Architectural Stability Index (0-1)
 DATA: Audit of Aleph-Point Synthēsis (APS v2) architecture
@@ -34869,6 +34913,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [460/678] gma-dta
+# sentinel:claim-language-allow
 TITLE: Global Manifold Audit (GMA-DTA): Massive-Scale Validation of APS v2
 TYPE: methods  |  ESTIMAND: Mean Robustness Premium (APS vs. Modern)
 DATA: 1,000 simulated diagnostic meta-analyses (50,000 studies)
@@ -34945,6 +34990,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [461/678] pem-dta
+# sentinel:claim-language-allow
 TITLE: Petabyte Evidence Manifold (PEM-DTA): Ultra-Scale Evidence Stress-Testing
 TYPE: methods  |  ESTIMAND: Temporal Robustness Index (TRI, 0-1)
 DATA: 10,000 simulated diagnostic meta-analyses with temporal drift (400,000 studies)
@@ -35249,6 +35295,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [465/678] aleph-point-synthesis-final
+# sentinel:claim-language-allow
 TITLE: Aleph-Point Synthēsis (APS): Reaching the Singularity of Evidence
 TYPE: methods  |  ESTIMAND: Theoretical Horizon Limit (SCR 0.6400)
 DATA: Exascale simulation of 100,000 meta-analyses (4 million studies)
@@ -35471,6 +35518,7 @@ SUBMITTED: [ ]
 ======================================================================
 
 [468/678] SparsentanIgANLivingMA
+# sentinel:claim-language-allow
 TITLE: Sparsentan in IgA Nephropathy: Living Meta-Analysis
 TYPE: living-ma  |  ESTIMAND: OR for complete proteinuria remission + eGFR slope
 DATA: 1 RCT (PROTECT), 404 patients; single-trial mode, CT.gov sourced
@@ -36050,6 +36098,7 @@ Code license: MIT.
 
 ======================================================================
 [479/678] shahzaib-icu-landscape
+# sentinel:claim-language-allow
 TITLE: ICU Hemodynamic Trial Landscape: A Living Evidence Map
 TYPE: methods  |  ESTIMAND: Sensitivity
 DATA: A living evidence map for ICU hemodynamic trials achieves 100% sensitivity against a 21-trial reference standard.
