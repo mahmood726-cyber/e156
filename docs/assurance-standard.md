@@ -159,9 +159,9 @@ F:\e156\paper\<N>.html   (renderer reads ../<project>/e156-submission/assurance.
 
 - This document.
 - The JSON schema above.
-- A memory entry (`C:\Users\mahmo\.claude\projects\C--Users-mahmo\memory\e156_assurance_standard.md`) so future sessions don't lose the vocabulary.
+- A memory entry (`<claude-config>/projects/<project-slug>/memory/e156_assurance_standard.md`) so future sessions don't lose the vocabulary.
 - Three new Sentinel rules — `citation_cascade`, `claim_language`, `denominator_logic` — that emit `pass / warn / fail` verdicts to the `checks` block.
-- A small edit to `F:\e156\scripts\build_paper_pages.py` that renders a Bronze/Silver/Gold pill on the paper page when an `assurance.json` exists.
+- A small edit to `scripts/build_paper_pages.py` that renders a Bronze/Silver/Gold pill on the paper page when an `assurance.json` exists.
 
 What Phase 1 does NOT ship: auto-population of `assurance.json` (operator hand-writes for now), the analysis-rerun check (needs cached datasets + pinned environments), the paper-dashboard value match (needs cross-format number extraction), the PDF-output match. Those are Phase 2.
 
