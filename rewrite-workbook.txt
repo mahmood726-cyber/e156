@@ -1,9 +1,17 @@
 E156 REWRITE WORKBOOK
 sentinel:skip-file
-(Sentinel marker above: this workbook intentionally contains C:\Users\... PATH:
-lines pointing to each project's local source directory — they're metadata,
-not code. The marker keeps Sentinel from emitting ~16 P0 hardcoded-path
-BLOCKs every push.)
+sentinel:claim-language-allow
+(Sentinel markers above:
+ - sentinel:skip-file: this workbook intentionally contains C:\Users\... PATH:
+   lines pointing to each project's local source directory — they're metadata,
+   not code. The marker keeps Sentinel from emitting ~16 P0 hardcoded-path
+   BLOCKs every push.
+ - sentinel:claim-language-allow: CURRENT BODY entries are the AI-drafted
+   summaries that students rewrite into hedged language — flagging overclaim
+   words IN those drafts is the whole pedagogical point, not a defect.
+   File-scope marker here suppresses the ~1293 claim-language WARNs on the
+   CURRENT BODY entries; the YOUR REWRITE entries are where the hedging
+   discipline matters and remains lintable in the rendered student board.)
 
 DENOMINATOR CONVENTION (added 2026-05-06 after review-findings P1-5):
   Each entry header is `[N/total]` where N = ordinal insertion index and

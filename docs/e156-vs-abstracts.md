@@ -1,3 +1,4 @@
+<!-- sentinel:claim-language-allow: demo content for E156 format comparison -->
 # E156 vs. Original Abstracts: A Comparison Across 40 Meta-Analyses
 
 ## Methodology
