@@ -231,37 +231,38 @@ _ASSURANCE_TIER_LABEL = {
 }
 
 
-def _load_assurance(entry_path: str | None) -> dict | None:
-    """Look for `<path>/e156-submission/assurance.json` and return its parsed
-    content. Returns None if path missing, file missing, or parse error.
+def _load_assurance(entry_path: str | None, entry_num: int | None = None) -> dict | None:
+    """Look for the assurance.json for an entry. Returns the parsed content,
+    or None if no source could be found.
+
+    Lookup order:
+      1. <PATH>/e156-submission/assurance.json   (canonical for project-with-repo)
+      2. <PATH>/assurance.json                   (fallback)
+      3. F:\\X\\e156-submission\\assurance.json    (C:\\X -> F:\\X stale-mirror)
+      4. F:\\X\\assurance.json                    (same)
+      5. F:\\e156\\assurance-cache\\<num>.json      (rapidmeta-only, no local repo)
 
     See `F:\\e156\\docs\\assurance-standard.md` for the schema.
-
-    Junction-aware: workbook PATH lines often point at canonical C:\\... or
-    C:\\Models\\... paths. Some are NTFS junctions to F:\\ (per the 2026-05-24
-    layout); others are stale and must fall back to a sibling F:\\... mirror.
-    Both code paths are tried.
     """
-    if not entry_path:
-        return None
-    try:
-        from pathlib import Path as _P
-        candidates = []
+    from pathlib import Path as _P
+    candidates: list[_P] = []
+    if entry_path:
         raw = _P(entry_path)
-        # 1. Raw path (works if it's a real dir OR a NTFS junction)
         candidates.append(raw / "e156-submission" / "assurance.json")
         candidates.append(raw / "assurance.json")
-        # 2. C:\X\... -> F:\X\... fallback (manual mirror, not a junction)
         if raw.parts and raw.parts[0].upper() in ("C:\\",) and len(raw.parts) >= 2:
             alt = _P("F:\\") / _P(*raw.parts[1:])
             candidates.append(alt / "e156-submission" / "assurance.json")
             candidates.append(alt / "assurance.json")
-        for c in candidates:
+    if entry_num is not None:
+        candidates.append(_P(r"F:\e156\assurance-cache") / f"{entry_num}.json")
+    import json as _json
+    for c in candidates:
+        try:
             if c.is_file():
-                import json as _json
                 return _json.loads(c.read_text(encoding="utf-8"))
-    except (OSError, ValueError, ImportError):
-        return None
+        except (OSError, ValueError):
+            continue
     return None
 
 
@@ -297,7 +298,7 @@ def render_page(entry: dict) -> str:
     )
     badges_list: list[str] = []
     # Assurance pill goes first so it's visually prominent next to the title.
-    assurance = _load_assurance(entry.get("path"))
+    assurance = _load_assurance(entry.get("path"), entry.get("num"))
     pill = _assurance_pill_html(assurance)
     if pill:
         badges_list.append(pill)
