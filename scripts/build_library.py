@@ -62,6 +62,14 @@ def count_sentences(text):
     return len([s for s in sents if s.strip()])
 
 
+def trim_to_word_limit(text, max_words=156):
+    """Trim text to at most max_words words, preserving word order."""
+    words = text.split()
+    if len(words) <= max_words:
+        return text.strip()
+    return ' '.join(words[:max_words]).strip()
+
+
 def generate_tags(title):
     """Generate a list of tags from a title string using TAG_KEYWORDS patterns."""
     tags = []
@@ -95,6 +103,40 @@ def is_placeholder_text(text):
     )
 
 
+def clean_rewrite_text(text):
+    """Strip metadata spill from malformed or blank YOUR REWRITE blocks."""
+    stop_patterns = (
+        r'^SUBMISSION METADATA:',
+        r'^SUBMITTED:',
+        r'^SOURCE ID:',
+        r'^SOURCE URL:',
+        r'^ETHICS:',
+        r'^FUNDING:',
+        r'^COMPETING INTERESTS:',
+        r'^AUTHOR CONTRIBUTIONS',
+        r'^TARGET JOURNAL:',
+        r'^LINKS:',
+        r'^DATA AVAILABILITY:',
+        r'^AI DISCLOSURE:',
+        r'^REPORTING CHECKLIST:',
+        r'^MANUSCRIPT LICENSE:',
+        r'^CODE LICENSE:',
+        r'^DELIVERABLE:',
+        r'^DASHBOARD:',
+        r'^={10,}$',
+        r'^\[\d+/\d+\]',
+    )
+    cleaned_lines = []
+    for raw_line in text.splitlines():
+        stripped = raw_line.strip()
+        if re.match(r'^\[[ xX]?\]$', stripped):
+            break
+        if any(re.match(pattern, stripped, re.IGNORECASE) for pattern in stop_patterns):
+            break
+        cleaned_lines.append(raw_line)
+    return '\n'.join(cleaned_lines).strip()
+
+
 # ---------------------------------------------------------------------------
 # Workbook parser
 # ---------------------------------------------------------------------------
@@ -114,51 +156,64 @@ def parse_workbook(path):
         text = f.read()
 
     entries = []
-    header_matches = list(re.finditer(r'(?m)^\[(\d+)/\d+\]\s+(.+)$', text))
+    header_matches = list(re.finditer(r'(?m)^\[(\d+)/\d+\](?:[ \t]+(.+))?$', text))
 
     for idx, header_match in enumerate(header_matches):
         sec_start = header_match.start()
         sec_end = header_matches[idx + 1].start() if idx + 1 < len(header_matches) else len(text)
         sec = text[sec_start:sec_end]
         entry_id = int(header_match.group(1))
-        slug = header_match.group(2).strip()
+        slug = (header_match.group(2) or '').strip()
 
         # Extract TITLE
-        title_m = re.search(r'TITLE:\s*(.+)', sec)
-        title = title_m.group(1).strip() if title_m else slug
+        title_m = re.search(r'(?im)^(?:TITLE|TOPIC):\s*(.+)$', sec)
+        title = title_m.group(1).strip() if title_m else slug or f'entry-{entry_id}'
 
         # Extract TYPE and ESTIMAND from "TYPE: xxx  |  ESTIMAND: yyy"
-        type_m = re.search(r'TYPE:\s*(.+?)\s*\|', sec)
+        type_m = re.search(r'(?im)^TYPE:\s*(.+?)(?:\s*\|.*)?$', sec)
         type_str = type_m.group(1).strip() if type_m else 'methods'
 
-        estimand_m = re.search(r'ESTIMAND:\s*(.+)', sec)
+        estimand_m = re.search(r'(?im)^ESTIMAND:\s*(.+)$', sec)
         estimand = estimand_m.group(1).strip() if estimand_m else ''
 
         # Extract DATA
-        data_m = re.search(r'DATA:\s*(.+)', sec)
+        data_m = re.search(r'(?im)^DATA:\s*(.+)$', sec)
         data = data_m.group(1).strip() if data_m else ''
 
         # Extract PATH
-        path_m = re.search(r'PATH:\s*(.+)', sec)
+        path_m = re.search(r'(?im)^PATH:\s*(.+)$', sec)
         proj_path = path_m.group(1).strip() if path_m else ''
+        if not slug and proj_path:
+            slug = os.path.basename(proj_path.rstrip('/\\'))
+        if not slug:
+            slug = re.sub(r'[^A-Za-z0-9._-]+', '-', title).strip('-') or f'entry-{entry_id}'
 
         # Extract CURRENT BODY
         body_m = re.search(
-            r'CURRENT BODY[^\n]*:[^\S\n]*\n(.*?)(?=YOUR REWRITE)',
-            sec, re.DOTALL
+            r'(?im)^CURRENT BODY[^\n]*:[^\S\n]*\n(.*?)(?=^YOUR REWRITE)',
+            sec,
+            re.DOTALL | re.MULTILINE,
         )
         body = body_m.group(1).strip() if body_m else ''
 
         # Extract YOUR REWRITE
         rw_m = re.search(
-            r'YOUR REWRITE[^\n]*:[^\S\n]*\n(.*?)(?=\n(?:SUBMITTED:|={10,})|\Z)',
+            r'(?im)^YOUR REWRITE[^\n]*:[^\S\n]*\n(.*?)(?=^(?:SUBMISSION METADATA:|SUBMITTED:|={10,}|\[\d+/\d+\])|\Z)',
             sec,
-            re.DOTALL,
+            re.DOTALL | re.MULTILINE,
         )
-        rewrite = rw_m.group(1).strip() if rw_m else ''
+        rewrite = clean_rewrite_text(rw_m.group(1).strip() if rw_m else '')
 
-        # Use rewrite if available, fallback to body
-        display_text = rewrite if len(rewrite) > 10 else body
+        rewrite_wc = count_words(rewrite)
+        body_wc = count_words(body)
+        if 90 <= rewrite_wc <= 170:
+            display_text = rewrite
+        elif body_wc:
+            display_text = body
+        else:
+            display_text = rewrite or body
+        if count_words(display_text) > 170:
+            display_text = trim_to_word_limit(display_text)
         if is_placeholder_text(display_text):
             continue
 
