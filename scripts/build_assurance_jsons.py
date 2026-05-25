@@ -63,7 +63,11 @@ SEP = "=" * 70
 
 
 def iter_workbook_entries() -> Iterator[dict]:
-    """Yield {num, name, path} per workbook entry."""
+    """Yield {num, name, path, body, pages_url} per workbook entry.
+
+    Phase 2b: body and pages_url added so derive_dashboard_match can do
+    the body-vs-realData comparison without re-parsing the workbook.
+    """
     if not WORKBOOK.is_file():
         return
     text = WORKBOOK.read_text(encoding="utf-8")
@@ -75,7 +79,15 @@ def iter_workbook_entries() -> Iterator[dict]:
         name = m.group(2).strip()
         path_m = re.search(r"^PATH:\s+(.+?)\s*$", block, re.MULTILINE)
         path = path_m.group(1) if path_m else ""
-        yield {"num": num, "name": name, "path": path}
+        pages_m = re.search(r"^\s+Dashboard:\s+(https?://\S+)", block, re.MULTILINE)
+        pages_url = pages_m.group(1) if pages_m else ""
+        # CURRENT BODY (...): heading line, then prose until next blank line block
+        body_m = re.search(
+            r"^CURRENT BODY[^\n]*\n(.*?)(?=\n\nYOUR REWRITE|\n\nSUBMISSION METADATA|\n=)",
+            block, re.MULTILINE | re.DOTALL,
+        )
+        body = body_m.group(1).strip() if body_m else ""
+        yield {"num": num, "name": name, "path": path, "body": body, "pages_url": pages_url}
 
 
 def resolve_local_path(raw: str) -> Path | None:
@@ -204,6 +216,79 @@ def _build_bundle_index() -> dict[str, Path]:
     return index
 
 
+RAPIDMETA_LOCAL = Path(r"F:\rapidmeta-finerenone")
+DASHBOARD_TOLERANCE = 0.2
+
+_POOLED_RE = re.compile(
+    r"\b(?:pooled\s+)?(OR|HR|RR|IRR)\s*[:=]?\s*(\d+\.\d+)\s*"
+    r"[\(\[,]?\s*(?:95\s*%?\s*CI\s*:?\s*)?"
+    r"(\d+\.\d+)\s*[-–to]+\s*(\d+\.\d+)",
+    re.IGNORECASE,
+)
+
+
+def derive_dashboard_match(workbook_entry: dict, pages_url: str = "") -> str:
+    """Phase-2b Silver-tier check.
+
+    Returns one of: pass | warn | fail | not-run.
+
+    Strategy: extract the body's pooled HR/OR claim; extract per-trial
+    publishedHR values from the matching dashboard's realData block; check
+    that the body claim sits inside the per-trial min/max (with tolerance).
+    Same heuristic as the dashboard_match Sentinel rule, but per-project
+    rather than scan-wide.
+
+    not-run: no body claim found, OR no matching dashboard file found, OR
+             dashboard has <2 trials with extractable HRs.
+    pass:    body pooled HR is inside the per-trial range +/- TOLERANCE.
+    warn:    body pooled HR is outside the range (could be RE pooling drift).
+    fail:    reserved for Phase 3 exact-match check.
+    """
+    body = workbook_entry.get("body") or ""
+    if not body or not pages_url:
+        return "not-run"
+
+    # Only attempt for rapidmeta dashboards (the only known URL-pattern with
+    # an inspectable realData block on disk).
+    if "rapidmeta-finerenone" not in pages_url:
+        return "not-run"
+
+    # Pages URL like https://...github.io/rapidmeta-finerenone/FOO_REVIEW.html
+    fname = pages_url.rsplit("/", 1)[-1]
+    local = RAPIDMETA_LOCAL / fname
+    if not local.is_file():
+        return "not-run"
+
+    try:
+        text = local.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return "not-run"
+
+    # Per-trial HRs from realData. Cheap inline parser; the full version is
+    # in F:\Sentinel\sentinel\rules\plugins\dashboard_match.py (same logic).
+    hrs = []
+    for m in re.finditer(r"publishedHR\s*:\s*(\d+\.\d+)", text):
+        try:
+            hrs.append(float(m.group(1)))
+        except ValueError:
+            pass
+    if len(hrs) < 2:
+        return "not-run"
+
+    bm = _POOLED_RE.search(body)
+    if not bm:
+        return "not-run"
+    try:
+        body_hr = float(bm.group(2))
+    except ValueError:
+        return "not-run"
+
+    lo, hi = min(hrs), max(hrs)
+    if lo - DASHBOARD_TOLERANCE <= body_hr <= hi + DASHBOARD_TOLERANCE:
+        return "pass"
+    return "warn"
+
+
 def derive_overmind_checks(project_name: str) -> dict:
     """Find the latest Overmind bundle for this project; derive code_runs
     + data_file_present from it. Returns {data_file_present, code_runs,
@@ -304,36 +389,109 @@ def compute_tier(checks: dict) -> str:
 # Writer
 # ---------------------------------------------------------------------------
 
+ASSURANCE_CACHE = E156 / "assurance-cache"
+_NULL_OVERMIND = {"data_file_present": "not-run", "code_runs": "not-run", "bundle_path": ""}
+
+# Inline claim_language patterns. Kept narrow to mirror the Sentinel rule's
+# detection set but with no per-entry override lookup (this is just a
+# rapidmeta-mode "fast check" — the real Sentinel rule runs on the
+# rapidmeta-finerenone repo separately).
+_CLAIM_CAUSAL_RE = re.compile(
+    r"\b(prov(?:es|en)|eliminat(?:es|ed)|definitiv(?:e|ely)|undeniably|conclusively)\b",
+    re.IGNORECASE,
+)
+_CLAIM_HETERO_RE = re.compile(
+    r"I[²2]\s*=|prediction interval|wide CI|tau[²2]|few studies|risk of bias|"
+    r"downgraded|uncertain|low certainty",
+    re.IGNORECASE,
+)
+_CLAIM_CERTAIN_RE = re.compile(
+    r"\b(safe|effective|no difference|significant benefit|clinically meaningful|"
+    r"cures|prevents?)\b",
+    re.IGNORECASE,
+)
+
+
+def _claim_language_fires_in(body: str) -> bool:
+    """Return True if the body would trigger any claim_language WARN. Used
+    only for rapidmeta-only mode (no local Sentinel scan available)."""
+    if not body:
+        return False
+    if _CLAIM_CAUSAL_RE.search(body):
+        return True
+    if _CLAIM_CERTAIN_RE.search(body) and _CLAIM_HETERO_RE.search(body):
+        return True
+    return False
+
+
 def build_assurance_for(entry: dict) -> dict | None:
     """Return the assurance.json blob for one workbook entry, or None if
-    the project's path isn't on disk on this PC."""
+    nothing can be assessed (no local path AND no rapidmeta dashboard).
+
+    Phase 2b: entries with no local path but WITH a rapidmeta dashboard URL
+    still get an assurance.json — dashboard_match works from pages_url alone.
+    Sentinel + Overmind checks default to 'not-run' for those entries since
+    there's no local repo to scan.
+    """
     local = resolve_local_path(entry["path"])
-    if local is None:
+    is_rapidmeta = "rapidmeta-finerenone" in (entry.get("pages_url") or "")
+    if local is None and not is_rapidmeta:
         return None
 
-    sent_checks = derive_sentinel_checks(local)
-    overmind_checks = derive_overmind_checks(entry["name"])
+    if local is None:
+        # Rapidmeta-only mode (no local repo). data_file_present="pass" if
+        # the dashboard file exists locally with parseable trial data — the
+        # rapidmeta dashboard IS the data store for these entries.
+        # claim_language and other Sentinel-rule checks are derived inline
+        # from the workbook entry body (no Sentinel scan needed; the body
+        # IS the rendered text).
+        body = entry.get("body") or ""
+        inline_claim_pass = not _claim_language_fires_in(body)
+        sent_checks = {
+            "citation_cascade": "not-run",   # no references in workbook body
+            "denominator_logic": "not-run",   # checked at the dashboard level
+            "claim_language": "pass" if inline_claim_pass else "warn",
+        }
+        overmind_checks = dict(_NULL_OVERMIND)
+        # Promote data_file_present if the dashboard exists with trials
+        dashboard_fname = (entry.get("pages_url") or "").rsplit("/", 1)[-1]
+        dashboard_path = RAPIDMETA_LOCAL / dashboard_fname
+        if dashboard_path.is_file():
+            try:
+                dtext = dashboard_path.read_text(encoding="utf-8", errors="replace")
+                # Cheap check: at least 2 publishedHR values
+                if len(re.findall(r"publishedHR\s*:\s*\d+\.\d+", dtext)) >= 2:
+                    overmind_checks["data_file_present"] = "pass"
+            except OSError:
+                pass
+    else:
+        sent_checks = derive_sentinel_checks(local)
+        overmind_checks = derive_overmind_checks(entry["name"])
 
+    dashboard_match = derive_dashboard_match(entry, entry.get("pages_url") or "")
     all_checks = {
         **sent_checks,
         "data_file_present": overmind_checks["data_file_present"],
         "code_runs": overmind_checks["code_runs"],
-        "dashboard_match": "not-run",
+        "dashboard_match": dashboard_match,
         "analysis_rerun": "not-run",
         "external_review": "not-run",
     }
     tier = compute_tier(all_checks)
 
+    evidence = {"overmind_bundle": overmind_checks["bundle_path"]}
+    if local is not None:
+        if (local / "sentinel-findings.jsonl").is_file():
+            evidence["sentinel_findings"] = str(local / "sentinel-findings.jsonl")
+        if (local / "STUCK_FAILURES.jsonl").is_file():
+            evidence["stuck_failures"] = str(local / "STUCK_FAILURES.jsonl")
+    if local is None:
+        evidence["dashboard_url"] = entry.get("pages_url") or ""
+
     return {
         "tier": tier,
         "checks": all_checks,
-        "evidence": {
-            "sentinel_findings": str(local / "sentinel-findings.jsonl")
-                if (local / "sentinel-findings.jsonl").is_file() else "",
-            "stuck_failures": str(local / "STUCK_FAILURES.jsonl")
-                if (local / "STUCK_FAILURES.jsonl").is_file() else "",
-            "overmind_bundle": overmind_checks["bundle_path"],
-        },
+        "evidence": evidence,
         "tier_rule": ("bronze = citation_cascade != fail AND data_file_present == pass "
                       "AND code_runs in (pass, not-run); silver = + dashboard_match == pass "
                       "AND claim_language == pass; gold = + analysis_rerun == pass "
@@ -343,13 +501,22 @@ def build_assurance_for(entry: dict) -> dict | None:
         "version": SCHEMA_VERSION,
         "project_name": entry["name"],
         "workbook_num": entry["num"],
-        "local_path": str(local),
+        "local_path": str(local) if local is not None else "",
     }
 
 
-def target_path_for(local: Path) -> Path:
-    """Where to write assurance.json. Prefer <repo>/e156-submission/ if it
-    exists; else <repo>/assurance.json."""
+def target_path_for(local: Path | None, workbook_num: int) -> Path:
+    """Where to write assurance.json.
+
+    - Prefer <repo>/e156-submission/assurance.json if a local repo exists.
+    - Else <repo>/assurance.json.
+    - For browser-native entries with no local path (rapidmeta), write to
+      F:\\e156\\assurance-cache\\<workbook_num>.json so the paper renderer
+      can find it.
+    """
+    if local is None:
+        ASSURANCE_CACHE.mkdir(exist_ok=True)
+        return ASSURANCE_CACHE / f"{workbook_num}.json"
     sub = local / "e156-submission"
     if sub.is_dir():
         return sub / "assurance.json"
@@ -382,7 +549,8 @@ def main(argv=None) -> int:
         if blob is None:
             skipped_no_path += 1
             continue
-        target = target_path_for(Path(blob["local_path"]))
+        local_for_target = Path(blob["local_path"]) if blob["local_path"] else None
+        target = target_path_for(local_for_target, blob["workbook_num"])
         by_tier[blob["tier"]] = by_tier.get(blob["tier"], 0) + 1
         if args.dry_run:
             print(f"  [{blob['tier']:6s}] #{entry['num']} {entry['name']:40s} -> {target}")
