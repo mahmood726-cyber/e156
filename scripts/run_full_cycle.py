@@ -92,18 +92,26 @@ def main(argv=None):
                     help="skip the validation gate (NOT recommended)")
     args = ap.parse_args(argv)
 
+    # 2026-05-25 (Phase 2a F2): re-ordered so that assurance.json is written
+    # BEFORE paper-pages. Otherwise paper/<N>.html renders without the
+    # Bronze/Silver/Gold pill because the json doesn't exist yet.
+    # Sequence: workbook update -> students.html -> library -> assurance.json
+    # -> paper-pages (reads the just-written assurance.json) -> tests.
     plan = [
         ("rapidmeta-sync",
          [sys.executable, "scripts/generate_rapidmeta_entries.py"],
          args.skip_sync),
-        ("paper-pages",
-         [sys.executable, "scripts/build_paper_pages.py"],
-         False),
         ("students-page",
          [sys.executable, "scripts/build_students_page.py"],
          False),
         ("library",
          [sys.executable, "scripts/build_library.py"],
+         False),
+        ("assurance-write",
+         [sys.executable, "scripts/build_assurance_jsons.py"],
+         False),
+        ("paper-pages",
+         [sys.executable, "scripts/build_paper_pages.py"],
          False),
         ("validate",
          [sys.executable, "-m", "pytest", "tests/test_no_placeholder_leak.py",

@@ -236,19 +236,26 @@ def _load_assurance(entry_path: str | None) -> dict | None:
     content. Returns None if path missing, file missing, or parse error.
 
     See `F:\\e156\\docs\\assurance-standard.md` for the schema.
+
+    Junction-aware: workbook PATH lines often point at canonical C:\\... or
+    C:\\Models\\... paths. Some are NTFS junctions to F:\\ (per the 2026-05-24
+    layout); others are stale and must fall back to a sibling F:\\... mirror.
+    Both code paths are tried.
     """
     if not entry_path:
         return None
     try:
-        # PATH lines often point at canonical C:\... paths; if F:\ junction is
-        # set up (per workstation_layout memory) they resolve transparently.
-        # Try the raw path first; if the e156-submission/ subfolder is missing,
-        # try a sibling fallback so this works in either layout.
         from pathlib import Path as _P
         candidates = []
         raw = _P(entry_path)
+        # 1. Raw path (works if it's a real dir OR a NTFS junction)
         candidates.append(raw / "e156-submission" / "assurance.json")
         candidates.append(raw / "assurance.json")
+        # 2. C:\X\... -> F:\X\... fallback (manual mirror, not a junction)
+        if raw.parts and raw.parts[0].upper() in ("C:\\",) and len(raw.parts) >= 2:
+            alt = _P("F:\\") / _P(*raw.parts[1:])
+            candidates.append(alt / "e156-submission" / "assurance.json")
+            candidates.append(alt / "assurance.json")
         for c in candidates:
             if c.is_file():
                 import json as _json
