@@ -45,10 +45,6 @@ WORKBOOK = E156 / "rewrite-workbook.txt"
 OVERMIND_BUNDLES = Path(r"F:\overmind\data\nightly_reports\bundles")
 ISSUED_BY = "build_assurance_jsons.py"
 SCHEMA_VERSION = 1
-# Phase-3 P: when True, build_assurance_for() will invoke the Selenium
-# headless dashboard_match. Set by --headless on the CLI. Default off so
-# the regex-only fast path remains the default behavior.
-_USE_HEADLESS = False
 
 # Phase-1 Sentinel rules that map onto Assurance Standard checks.
 RULE_TO_CHECK = {
@@ -473,24 +469,6 @@ def build_assurance_for(entry: dict) -> dict | None:
         overmind_checks = derive_overmind_checks(entry["name"])
 
     dashboard_match = derive_dashboard_match(entry, entry.get("pages_url") or "")
-    # Phase-3 P: opt-in headless override. When _USE_HEADLESS is set (via
-    # --headless), call the Selenium-based check that reads the JS-computed
-    # pooled estimate directly from the live dashboard. The default fast
-    # regex path stays unchanged; headless only OVERRIDES not-run/warn (it
-    # never weakens a "pass" — if headless can't read the dashboard, the
-    # original verdict is retained).
-    if _USE_HEADLESS:
-        try:
-            import importlib.util as _ilu  # noqa: PLC0415
-            _here = Path(__file__).parent
-            spec = _ilu.spec_from_file_location(
-                "dashboard_match_headless", str(_here / "dashboard_match_headless.py"))
-            _hl = _ilu.module_from_spec(spec); spec.loader.exec_module(_hl)  # type: ignore
-            headless_verdict = _hl.derive_dashboard_match_headless(entry)
-            if headless_verdict in ("pass", "warn", "fail"):
-                dashboard_match = headless_verdict
-        except Exception:
-            pass  # graceful: keep regex verdict if Selenium unavailable
     # Phase-3 S + T: opt-in analysis-rerun and PDF-match checks. Default
     # not-run for all entries; activates when operator drops a rerun.sh
     # or preprint.pdf into the project root.
@@ -574,12 +552,7 @@ def main(argv=None) -> int:
                     help="print a tier-distribution summary")
     ap.add_argument("--project",
                     help="only process this project (by workbook 'name' slug)")
-    ap.add_argument("--headless", action="store_true",
-                    help="use Selenium headless to read the JS-computed pooled "
-                         "estimate from each dashboard (Phase-3 P; default off)")
     args = ap.parse_args(argv)
-    global _USE_HEADLESS
-    _USE_HEADLESS = bool(args.headless)
 
     entries = list(iter_workbook_entries())
     if args.project:
