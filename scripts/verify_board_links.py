@@ -32,7 +32,7 @@ import urllib.request
 from pathlib import Path
 from collections import defaultdict
 
-if sys.platform == "win32":
+if sys.platform == "win32" and "pytest" not in sys.modules:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 E156 = Path(__file__).resolve().parents[1]

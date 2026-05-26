@@ -18,7 +18,8 @@ import io
 from datetime import datetime
 from pathlib import Path
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+if sys.platform == "win32" and "pytest" not in sys.modules:
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 WORKBOOK = Path("C:/E156/rewrite-workbook.txt")
 GH_USER = "mahmood726-cyber"

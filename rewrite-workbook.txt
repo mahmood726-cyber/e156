@@ -38812,11 +38812,11 @@ Funding: None.
 Competing interests: None declared.
 
 Author contributions (CRediT):
-  Mahmood Ahmad â€” Conceptualization, Methodology, Software, Formal analysis,
-    Writing â€“ original draft, Visualization.
+  Mahmood Ahmad — Conceptualization, Methodology, Software, Formal analysis,
+    Writing – original draft, Visualization.
 
 Target journal: Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
-  Section: Methods Note â€” submit the 156-word E156 body verbatim as the main text.
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
 
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
