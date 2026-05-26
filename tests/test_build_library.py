@@ -2,14 +2,17 @@
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
+ROOT = os.path.join(os.path.dirname(__file__), '..')
+WORKBOOK = os.path.join(ROOT, 'rewrite-workbook.txt')
+
 def test_parse_workbook_count():
     from build_library import parse_workbook
-    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entries = parse_workbook(WORKBOOK)
     assert len(entries) >= 325, f"Expected at least 325 entries, got {len(entries)}"
 
 def test_parse_workbook_fields():
     from build_library import parse_workbook
-    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entries = parse_workbook(WORKBOOK)
     first = entries[0]
     assert 'id' in first
     assert 'title' in first
@@ -24,20 +27,20 @@ def test_parse_workbook_fields():
 
 def test_parse_workbook_no_blank_rewrites():
     from build_library import parse_workbook
-    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entries = parse_workbook(WORKBOOK)
     blank = [e for e in entries if e['wordCount'] < 10]
     assert len(blank) == 0, f"Found {len(blank)} blank rewrites"
 
 def test_parse_workbook_word_counts_in_range():
     from build_library import parse_workbook
-    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entries = parse_workbook(WORKBOOK)
     out_of_range = [(e['id'], e['slug'], e['wordCount']) for e in entries
                     if e['wordCount'] < 90 or e['wordCount'] > 170]
     assert len(out_of_range) == 0, f"Out of range: {out_of_range[:5]}"
 
 def test_parse_workbook_blank_rewrite_falls_back_to_current_body():
     from build_library import parse_workbook
-    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entries = parse_workbook(WORKBOOK)
     entry = next(
         e for e in entries
         if e['slug'] == 'advanced-nma-pooling' and e['path'] == 'C:\\Projects\\advanced-nma-pooling'
@@ -47,7 +50,7 @@ def test_parse_workbook_blank_rewrite_falls_back_to_current_body():
 
 def test_parse_workbook_blank_rewrite_does_not_capture_divider():
     from build_library import parse_workbook
-    entries = parse_workbook('C:/E156/rewrite-workbook.txt')
+    entries = parse_workbook(WORKBOOK)
     entry = next(
         e for e in entries
         if e['slug'] == 'AuthorshipLedger' and e['path'] == 'C:\\Projects\\AuthorshipLedger'

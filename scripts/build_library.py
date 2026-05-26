@@ -11,9 +11,10 @@ import re
 # Constants
 # ---------------------------------------------------------------------------
 
-WORKBOOK_PATH = 'C:/E156/rewrite-workbook.txt'
-TEMPLATE_PATH = 'C:/E156/templates/library-template.html'
-OUTPUT_PATH = 'C:/E156/e156-library.html'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WORKBOOK_PATH = os.path.join(ROOT, 'rewrite-workbook.txt')
+TEMPLATE_PATH = os.path.join(ROOT, 'templates', 'library-template.html')
+OUTPUT_PATH = os.path.join(ROOT, 'e156-library.html')
 
 TAG_KEYWORDS = {
     'NMA': [r'\bNMA\b', r'NMA\b', r'\bnetwork meta'],
@@ -90,9 +91,29 @@ def is_placeholder_text(text):
     stripped = text.strip()
     return (
         not stripped
+        or re.fullmatch(r'\[\s*\]', stripped) is not None
         or stripped.startswith('[Pending')
         or stripped.startswith('[No E156 body generated yet]')
     )
+
+
+def _trim_rewrite_block(text):
+    """Drop workbook metadata that should not count as user rewrite content."""
+    terminators = (
+        r'\nSUBMISSION METADATA:',
+        r'\nCURRENT BODY:',
+        r'\nNotes for authors:',
+        r'\nCode:\s+https?://',
+        r'\nProtocol:\s+https?://',
+        r'\nDashboard:\s+https?://',
+        r'\n={10,}',
+    )
+    end = len(text)
+    for pattern in terminators:
+        match = re.search(pattern, text)
+        if match:
+            end = min(end, match.start())
+    return text[:end].strip()
 
 
 # ---------------------------------------------------------------------------
@@ -155,7 +176,7 @@ def parse_workbook(path):
             sec,
             re.DOTALL,
         )
-        rewrite = rw_m.group(1).strip() if rw_m else ''
+        rewrite = _trim_rewrite_block(rw_m.group(1)) if rw_m else ''
 
         # Use rewrite if available, fallback to body
         display_text = rewrite if len(rewrite) > 10 else body
@@ -164,6 +185,8 @@ def parse_workbook(path):
 
         wc = count_words(display_text)
         sc = count_sentences(display_text)
+        if wc < 90 or wc > 170:
+            continue
         tags = generate_tags(title)
 
         entries.append({
