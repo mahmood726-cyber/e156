@@ -67,8 +67,11 @@
 </header>
 
 <main class="wrap">
-  <div class="section-h">The suite</div>
+  <div class="section-h">Meta-analysis designs</div>
   <div class="grid" id="grid"></div>
+
+  <div class="section-h">Meta-research &amp; evidence integrity</div>
+  <div class="grid" id="gridMR"></div>
 
   <div class="section-h">What each capsule shares</div>
   <p class="note">A sticky <b>assurance ribbon</b> (Bronze / Silver / Gold) that turns green only when the numbers reconcile; a PRISMA-style pipeline from protocol to result; an <b>editable data table</b> that re-runs the analysis on every keystroke and persists locally; an <b>“inspect the computation”</b> panel exposing the exact JavaScript via <code>Function.toString()</code>; and a copy-paste <b>R script</b> so anyone can reproduce the estimate in <code>metafor</code>, <code>meta</code>, <code>bayesmeta</code>, <code>mada</code>, <code>robvis</code>, <code>RTSA</code> or GRADEpro. Gold is reserved for independent reproduction.</p>
@@ -95,14 +98,23 @@ const CAPSULES=[
   {t:11,slug:'tsa-demo',file:'tsa-capsule.html',cat:'Sequential',name:'Trial sequential analysis',desc:'Cumulative Z against an O’Brien–Fleming monitoring boundary and a heterogeneity-adjusted required information size.'},
   {t:12,slug:'grade-sof-demo',file:'grade-capsule.html',cat:'Certainty',name:'GRADE Summary of Findings',desc:'Certainty derived from the eight GRADE domains, plus absolute effects per 1000 — the relative effect made concrete.'}
 ];
+const METARESEARCH=[
+  {tag:'meta-research',slug:'p-curve-demo',file:'pcurve-capsule.html',cat:'p-curve',name:'p-curve',desc:'Right-skew test for evidential value, the 33%-power flatness test, and an estimated underlying power from significant p-values.'},
+  {tag:'meta-research',slug:'fragility-index-demo',file:'fragility-capsule.html',cat:'Fragility',name:'Fragility index',desc:'How many single-patient outcome flips erase a significant trial, by Fisher’s exact test — compared against the number lost to follow-up.'},
+  {tag:'meta-research',slug:'excess-significance-demo',file:'excess-significance-capsule.html',cat:'Excess sig.',name:'Excess significance',desc:'Observed vs expected number of significant studies (Ioannidis–Trikalinos) — too many positives for the studies’ power.'},
+  {tag:'meta-research',slug:'prediction-interval-gap-demo',file:'prediction-gap-capsule.html',cat:'PI gap',name:'Prediction-interval gap',desc:'When the pooled CI excludes the null but the 95% prediction interval does not — significant on average, unreliable next time.'},
+  {tag:'meta-research',slug:'benford-demo',file:'benford-capsule.html',cat:'Benford',name:'Benford screening',desc:'First-digit distribution of reported numbers vs Benford’s law, with χ² and the Nigrini MAD conformity thresholds.'},
+  {tag:'meta-research',slug:'study-overlap-cca-demo',file:'overlap-cca-capsule.html',cat:'Overlap',name:'Study overlap (CCA)',desc:'Corrected covered area for overlapping reviews — how much an umbrella’s evidence is the same trials counted again.'}
+];
 const hue=slug=>{let h=0;for(const c of slug)h=(h*31+c.charCodeAt(0))>>>0;return h%360;};
-const grid=document.getElementById('grid');
-grid.innerHTML=CAPSULES.map(c=>{const H=hue(c.slug);
+const card=c=>{const H=hue(c.slug);
   return `<a class="card" href="${c.file}" style="--ch:hsl(${H} 55% 47%)">`+
     `<span class="bar"></span>`+
-    `<div class="top"><span class="tno">Type ${c.t}</span><span class="cat">${c.cat}</span></div>`+
+    `<div class="top"><span class="tno">${c.tag||('Type '+c.t)}</span><span class="cat">${c.cat}</span></div>`+
     `<h2>${c.name}</h2><p>${c.desc}</p>`+
-    `<span class="go">Open capsule →</span></a>`;}).join('');
+    `<span class="go">Open capsule →</span></a>`;};
+document.getElementById('grid').innerHTML=CAPSULES.map(card).join('');
+document.getElementById('gridMR').innerHTML=METARESEARCH.map(card).join('');
 document.getElementById('stamp').textContent=new Date().toISOString().slice(0,10);
 </script>
 </body>
