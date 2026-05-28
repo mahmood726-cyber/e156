@@ -1,15 +1,17 @@
 # e156 living evidence capsules — flagship suite
 
-Twelve self-contained HTML files, one per evidence-synthesis design. Every estimate is
-computed live in the browser, the data is editable, the engine is reader-inspectable, and
-each result ships with a copy-paste R script that reproduces it in the standard package.
-No server, no build step, no external dependencies — open any file and it runs offline.
+Thirty-two self-contained HTML files spanning five method families — meta-analysis,
+meta-research, causal inference, primary study designs, and health economics. Every
+estimate is computed live in the browser, the data is editable, the engine is
+reader-inspectable, and each result ships with a copy-paste R script that reproduces it in
+the standard package. No server, no build step, no external dependencies — open any file
+and it runs offline. `index.html` links all 32.
 
 **Live:** https://mahmood726-cyber.github.io/e156/flagship/
 
 > The capsule must agree with itself before asking the world to agree with it.
 
-## The 12 capsules
+## Meta-analysis designs (12)
 
 | # | Type | File | What it does |
 |---|------|------|--------------|
@@ -26,7 +28,47 @@ No server, no build step, no external dependencies — open any file and it runs
 | 11 | Trial sequential analysis | `tsa-capsule.html` | Cumulative Z vs O'Brien–Fleming boundary, heterogeneity-adjusted RIS |
 | 12 | GRADE SoF | `grade-capsule.html` | Certainty derived from eight domains, absolute effects per 1000 |
 
-`index.html` is the landing page linking all twelve.
+## Meta-research & evidence integrity (6)
+
+| Type | File | What it does |
+|------|------|--------------|
+| p-curve | `pcurve-capsule.html` | Right-skew (evidential value) test, 33%-power flatness test, estimated power |
+| Fragility index | `fragility-capsule.html` | Single-patient flips to undo significance (Fisher's exact), vs lost-to-follow-up |
+| Excess significance | `excess-significance-capsule.html` | Observed vs expected significant studies (Ioannidis–Trikalinos) |
+| Prediction-interval gap | `prediction-gap-capsule.html` | CI excludes null but 95% prediction interval does not |
+| Benford screening | `benford-capsule.html` | First-digit distribution vs Benford's law (χ² + Nigrini MAD) |
+| Study overlap (CCA) | `overlap-cca-capsule.html` | Corrected covered area for overlapping reviews |
+
+## Causal & quasi-experimental (5)
+
+| Type | File | What it does |
+|------|------|--------------|
+| Mendelian randomization | `mr-capsule.html` | IVW, MR-Egger (+ pleiotropy intercept), weighted median |
+| Difference-in-differences | `did-capsule.html` | 2×2 group×period effect with the parallel-trends counterfactual |
+| Regression discontinuity | `rdd-capsule.html` | Local linear jump at a cutoff, adjustable bandwidth |
+| Interrupted time series | `its-capsule.html` | Segmented regression: level change + slope change |
+| Propensity-score balance | `psbalance-capsule.html` | Love plot of SMDs before vs after adjustment |
+
+## Primary study designs (5)
+
+| Type | File | What it does |
+|------|------|--------------|
+| RCT / CONSORT | `rct-capsule.html` | Flow reconciliation, RR/OR/ARR/NNT, sample-size adequacy |
+| Prediction model (TRIPOD) | `prediction-capsule.html` | ROC/AUC + Brier + calibration plot/slope |
+| Observational (STROBE) | `strobe-capsule.html` | Crude vs adjusted, DAG, E-value |
+| Diagnostic (STARD) | `stard-capsule.html` | Se/Sp/PPV/NPV/LRs (Wilson CIs) + prevalence dependence |
+| Survival (KM/Cox) | `survival-primary-capsule.html` | Kaplan–Meier, log-rank, Cox HR, Schoenfeld PH check |
+
+## Health economics & HTA (4)
+
+| Type | File | What it does |
+|------|------|--------------|
+| Cost-effectiveness | `ce-plane-capsule.html` | ICER, CE plane + WTP threshold, INMB, dominance |
+| Acceptability curve | `ceac-capsule.html` | Seeded PSA, scatter, probability cost-effective vs WTP |
+| Markov model | `markov-capsule.html` | Transition matrix, cohort trace, discounted cost/QALYs |
+| Transportability | `transportability-capsule.html` | Effect-modifier SMDs + effect re-standardised to target |
+
+`index.html` is the landing page linking all 32.
 
 ## What every capsule shares
 

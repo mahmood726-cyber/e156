@@ -53,8 +53,8 @@
 <body>
 <header class="wrap">
   <div class="eyebrow">e156 · living evidence capsules</div>
-  <h1>Twelve meta-analyses that audit themselves</h1>
-  <p class="standfirst">One self-contained HTML file per evidence-synthesis design. Every estimate is computed live in your browser, the data is editable, the engine is reader-inspectable, and each result is cross-validated against the standard R package — offline, with no server and no dependencies.</p>
+  <h1>Thirty-two analyses that audit themselves</h1>
+  <p class="standfirst">One self-contained HTML file per method — meta-analysis, meta-research, causal inference, primary study designs, and health economics. Every estimate is computed live in your browser, the data is editable, the engine is reader-inspectable, and each result is cross-validated against the standard R package — offline, with no server and no dependencies.</p>
   <div class="props">
     <span class="prop"><span class="d"></span>editable · live re-run</span>
     <span class="prop"><span class="d"></span>self-auditing assurance ribbon</span>
@@ -79,11 +79,14 @@
   <div class="section-h">Primary study designs</div>
   <div class="grid" id="gridC"></div>
 
+  <div class="section-h">Health economics &amp; HTA</div>
+  <div class="grid" id="gridD"></div>
+
   <div class="section-h">What each capsule shares</div>
   <p class="note">A sticky <b>assurance ribbon</b> (Bronze / Silver / Gold) that turns green only when the numbers reconcile; a PRISMA-style pipeline from protocol to result; an <b>editable data table</b> that re-runs the analysis on every keystroke and persists locally; an <b>“inspect the computation”</b> panel exposing the exact JavaScript via <code>Function.toString()</code>; and a copy-paste <b>R script</b> so anyone can reproduce the estimate in <code>metafor</code>, <code>meta</code>, <code>bayesmeta</code>, <code>mada</code>, <code>robvis</code>, <code>RTSA</code> or GRADEpro. Gold is reserved for independent reproduction.</p>
 
   <footer>
-    <p>e156 living evidence capsules · 12 designs · offline · <span id="stamp"></span></p>
+    <p>e156 living evidence capsules · 32 methods · offline · <span id="stamp"></span></p>
     <p class="note" style="margin-top:.4rem">Illustrative demo data throughout — edit any capsule to load your own. Built to the e156 assurance standard.</p>
   </footer>
 </main>
@@ -126,6 +129,12 @@ const PRIMARY=[
   {tag:'primary',slug:'diagnostic-stard-demo',file:'stard-capsule.html',cat:'STARD',name:'Diagnostic accuracy',desc:'2×2 to sensitivity/specificity/PPV/NPV/likelihood ratios with Wilson CIs, and how predictive values swing with prevalence.'},
   {tag:'primary',slug:'survival-primary-km-cox-demo',file:'survival-primary-capsule.html',cat:'KM / Cox',name:'Survival analysis',desc:'Kaplan–Meier curves, the log-rank test, a Cox hazard ratio, and a Schoenfeld check that the hazards stay proportional.'}
 ];
+const HTA=[
+  {tag:'HTA',slug:'cost-effectiveness-plane-demo',file:'ce-plane-capsule.html',cat:'ICER',name:'Cost-effectiveness',desc:'ICER, the cost-effectiveness plane with a willingness-to-pay threshold, incremental net monetary benefit, and dominance detection.'},
+  {tag:'HTA',slug:'ceac-psa-demo',file:'ceac-capsule.html',cat:'CEAC',name:'Acceptability curve',desc:'Probabilistic sensitivity analysis (seeded, reproducible) — the PSA scatter and the probability cost-effective across willingness-to-pay.'},
+  {tag:'HTA',slug:'markov-state-transition-demo',file:'markov-capsule.html',cat:'Markov',name:'Markov model',desc:'A cohort cycling between health states by a transition matrix, the cohort trace, and discounted total cost and QALYs.'},
+  {tag:'HTA',slug:'transportability-demo',file:'transportability-capsule.html',cat:'Transport',name:'Transportability',desc:'Effect-modifier overlap (SMDs) between trial and target, and the trial effect re-standardised to the target population.'}
+];
 const hue=slug=>{let h=0;for(const c of slug)h=(h*31+c.charCodeAt(0))>>>0;return h%360;};
 const card=c=>{const H=hue(c.slug);
   return `<a class="card" href="${c.file}" style="--ch:hsl(${H} 55% 47%)">`+
@@ -137,6 +146,7 @@ document.getElementById('grid').innerHTML=CAPSULES.map(card).join('');
 document.getElementById('gridMR').innerHTML=METARESEARCH.map(card).join('');
 document.getElementById('gridB').innerHTML=CAUSAL.map(card).join('');
 document.getElementById('gridC').innerHTML=PRIMARY.map(card).join('');
+document.getElementById('gridD').innerHTML=HTA.map(card).join('');
 document.getElementById('stamp').textContent=new Date().toISOString().slice(0,10);
 </script>
 </body>
