@@ -73,6 +73,9 @@
   <div class="section-h">Meta-research &amp; evidence integrity</div>
   <div class="grid" id="gridMR"></div>
 
+  <div class="section-h">Causal &amp; quasi-experimental</div>
+  <div class="grid" id="gridB"></div>
+
   <div class="section-h">What each capsule shares</div>
   <p class="note">A sticky <b>assurance ribbon</b> (Bronze / Silver / Gold) that turns green only when the numbers reconcile; a PRISMA-style pipeline from protocol to result; an <b>editable data table</b> that re-runs the analysis on every keystroke and persists locally; an <b>“inspect the computation”</b> panel exposing the exact JavaScript via <code>Function.toString()</code>; and a copy-paste <b>R script</b> so anyone can reproduce the estimate in <code>metafor</code>, <code>meta</code>, <code>bayesmeta</code>, <code>mada</code>, <code>robvis</code>, <code>RTSA</code> or GRADEpro. Gold is reserved for independent reproduction.</p>
 
@@ -106,6 +109,13 @@ const METARESEARCH=[
   {tag:'meta-research',slug:'benford-demo',file:'benford-capsule.html',cat:'Benford',name:'Benford screening',desc:'First-digit distribution of reported numbers vs Benford’s law, with χ² and the Nigrini MAD conformity thresholds.'},
   {tag:'meta-research',slug:'study-overlap-cca-demo',file:'overlap-cca-capsule.html',cat:'Overlap',name:'Study overlap (CCA)',desc:'Corrected covered area for overlapping reviews — how much an umbrella’s evidence is the same trials counted again.'}
 ];
+const CAUSAL=[
+  {tag:'causal',slug:'mendelian-randomization-demo',file:'mr-capsule.html',cat:'MR',name:'Mendelian randomization',desc:'Two-sample summary MR — IVW, MR-Egger (with a pleiotropy intercept) and weighted median, plus the genetic-association scatter.'},
+  {tag:'causal',slug:'difference-in-differences-demo',file:'did-capsule.html',cat:'DiD',name:'Difference-in-differences',desc:'The 2×2 group-by-period causal estimate, with the parallel-trends counterfactual drawn as the line the treated group would have followed.'},
+  {tag:'causal',slug:'regression-discontinuity-demo',file:'rdd-capsule.html',cat:'RDD',name:'Regression discontinuity',desc:'The causal jump at a cutoff by local linear regression on each side, with an adjustable bandwidth to probe sensitivity.'},
+  {tag:'causal',slug:'interrupted-time-series-demo',file:'its-capsule.html',cat:'ITS',name:'Interrupted time series',desc:'Segmented regression splitting an intervention into an immediate level change and a slope change, against the extended pre-trend.'},
+  {tag:'causal',slug:'propensity-balance-demo',file:'psbalance-capsule.html',cat:'PS balance',name:'Propensity-score balance',desc:'The love plot of standardized mean differences before vs after adjustment, judged against the 0.1 balance threshold — not p-values.'}
+];
 const hue=slug=>{let h=0;for(const c of slug)h=(h*31+c.charCodeAt(0))>>>0;return h%360;};
 const card=c=>{const H=hue(c.slug);
   return `<a class="card" href="${c.file}" style="--ch:hsl(${H} 55% 47%)">`+
@@ -115,6 +125,7 @@ const card=c=>{const H=hue(c.slug);
     `<span class="go">Open capsule →</span></a>`;};
 document.getElementById('grid').innerHTML=CAPSULES.map(card).join('');
 document.getElementById('gridMR').innerHTML=METARESEARCH.map(card).join('');
+document.getElementById('gridB').innerHTML=CAUSAL.map(card).join('');
 document.getElementById('stamp').textContent=new Date().toISOString().slice(0,10);
 </script>
 </body>
