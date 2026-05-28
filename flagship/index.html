@@ -76,6 +76,9 @@
   <div class="section-h">Causal &amp; quasi-experimental</div>
   <div class="grid" id="gridB"></div>
 
+  <div class="section-h">Primary study designs</div>
+  <div class="grid" id="gridC"></div>
+
   <div class="section-h">What each capsule shares</div>
   <p class="note">A sticky <b>assurance ribbon</b> (Bronze / Silver / Gold) that turns green only when the numbers reconcile; a PRISMA-style pipeline from protocol to result; an <b>editable data table</b> that re-runs the analysis on every keystroke and persists locally; an <b>“inspect the computation”</b> panel exposing the exact JavaScript via <code>Function.toString()</code>; and a copy-paste <b>R script</b> so anyone can reproduce the estimate in <code>metafor</code>, <code>meta</code>, <code>bayesmeta</code>, <code>mada</code>, <code>robvis</code>, <code>RTSA</code> or GRADEpro. Gold is reserved for independent reproduction.</p>
 
@@ -116,6 +119,13 @@ const CAUSAL=[
   {tag:'causal',slug:'interrupted-time-series-demo',file:'its-capsule.html',cat:'ITS',name:'Interrupted time series',desc:'Segmented regression splitting an intervention into an immediate level change and a slope change, against the extended pre-trend.'},
   {tag:'causal',slug:'propensity-balance-demo',file:'psbalance-capsule.html',cat:'PS balance',name:'Propensity-score balance',desc:'The love plot of standardized mean differences before vs after adjustment, judged against the 0.1 balance threshold — not p-values.'}
 ];
+const PRIMARY=[
+  {tag:'primary',slug:'rct-consort-demo',file:'rct-capsule.html',cat:'RCT / CONSORT',name:'Randomised controlled trial',desc:'CONSORT flow with reconciliation, the primary binary outcome (RR/OR/ARR/NNT), and achieved-vs-required sample size.'},
+  {tag:'primary',slug:'prediction-model-tripod-demo',file:'prediction-capsule.html',cat:'TRIPOD',name:'Prediction model',desc:'Discrimination (ROC/AUC, Brier) and calibration (plot + slope/intercept) — because a high AUC with poor calibration still misleads.'},
+  {tag:'primary',slug:'observational-strobe-demo',file:'strobe-capsule.html',cat:'STROBE',name:'Observational cohort',desc:'Crude vs adjusted effect (the confounding shift), a causal DAG, and the E-value for sensitivity to unmeasured confounding.'},
+  {tag:'primary',slug:'diagnostic-stard-demo',file:'stard-capsule.html',cat:'STARD',name:'Diagnostic accuracy',desc:'2×2 to sensitivity/specificity/PPV/NPV/likelihood ratios with Wilson CIs, and how predictive values swing with prevalence.'},
+  {tag:'primary',slug:'survival-primary-km-cox-demo',file:'survival-primary-capsule.html',cat:'KM / Cox',name:'Survival analysis',desc:'Kaplan–Meier curves, the log-rank test, a Cox hazard ratio, and a Schoenfeld check that the hazards stay proportional.'}
+];
 const hue=slug=>{let h=0;for(const c of slug)h=(h*31+c.charCodeAt(0))>>>0;return h%360;};
 const card=c=>{const H=hue(c.slug);
   return `<a class="card" href="${c.file}" style="--ch:hsl(${H} 55% 47%)">`+
@@ -126,6 +136,7 @@ const card=c=>{const H=hue(c.slug);
 document.getElementById('grid').innerHTML=CAPSULES.map(card).join('');
 document.getElementById('gridMR').innerHTML=METARESEARCH.map(card).join('');
 document.getElementById('gridB').innerHTML=CAUSAL.map(card).join('');
+document.getElementById('gridC').innerHTML=PRIMARY.map(card).join('');
 document.getElementById('stamp').textContent=new Date().toISOString().slice(0,10);
 </script>
 </body>
