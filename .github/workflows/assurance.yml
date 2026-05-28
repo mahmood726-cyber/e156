@@ -1,0 +1,105 @@
+name: e156 assurance
+
+# Flips on the "external actor" half of the Assurance Standard that can't run
+# locally: live DOI resolution (CI has network), Sigstore KEYLESS signing
+# (GitHub OIDC — no key to manage), an HMAC verification gate, and a public
+# Pages dashboard. The commit-time Sentinel rules stay the local gate; this is
+# the publish-time gate.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly Monday 06:00 UTC (re-verifies DOIs with --force)
+  push:
+    branches: [master]
+    paths:
+      - "scripts/assurance/**"
+      - "scripts/build_assurance_jsons.py"
+      - "tests/**"
+      - "**/*_REVIEW.html"
+      - "e156-submission/**"
+      - ".github/workflows/assurance.yml"
+
+permissions:
+  contents: write     # commit refreshed doi-cache.json / badges / signatures / dashboard
+  id-token: write     # Sigstore keyless signing via GitHub OIDC
+
+concurrency:
+  group: assurance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  assurance:
+    runs-on: ubuntu-latest
+    env:
+      E156_ASSURANCE_HMAC_KEY: ${{ secrets.E156_ASSURANCE_HMAC_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check out Sentinel (best-effort, for full rule coverage)
+        continue-on-error: true
+        run: |
+          if git clone --depth 1 https://github.com/${{ github.repository_owner }}/Sentinel.git "$RUNNER_TEMP/Sentinel"; then
+            echo "SENTINEL_ROOT=$RUNNER_TEMP/Sentinel" >> "$GITHUB_ENV"
+          else
+            echo "Sentinel repo not available; rule-dependent tests will skip."
+          fi
+
+      - name: Run the assurance test suite (hard gate)
+        run: python -m pytest tests/ -q
+
+      - name: Resolve DOIs against doi.org (live)
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python scripts/assurance/doi_resolver.py --repo . --force
+          else
+            python scripts/assurance/doi_resolver.py --repo .
+          fi
+
+      - name: Sentinel scan to produce findings (best-effort)
+        if: env.SENTINEL_ROOT != ''
+        continue-on-error: true
+        run: |
+          PYTHONPATH="$SENTINEL_ROOT" python -m sentinel scan --repo . || true
+
+      - name: Regenerate this repo's badge
+        run: python scripts/build_assurance_jsons.py --here e156
+
+      - name: HMAC-sign + verify badges (if key secret present)
+        run: |
+          if [ -n "$E156_ASSURANCE_HMAC_KEY" ]; then
+            find . -name assurance.json -not -path './.git/*' -print0 |
+              while IFS= read -r -d '' f; do python scripts/assurance/sign_badge.py sign "$f"; done
+            python scripts/assurance/verify_badges.py --repo . --require-signed
+          else
+            echo "E156_ASSURANCE_HMAC_KEY not set; skipping HMAC sign/verify (set the secret to enable)."
+          fi
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sigstore keyless-sign badges (public, transparency-logged)
+        run: |
+          find . -name assurance.json -not -path './.git/*' -print0 |
+            while IFS= read -r -d '' f; do
+              cosign sign-blob --yes --bundle "$f.cosign.bundle" "$f"
+            done
+
+      - name: Build the public assurance dashboard (served by existing Pages)
+        run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html
+
+      - name: Commit refreshed cache, badges, signatures, dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "assurance: refresh DOI cache, badges, signatures, dashboard [skip ci]"
+            git push
+          fi

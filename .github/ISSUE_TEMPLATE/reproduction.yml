@@ -1,0 +1,72 @@
+name: Independent reproduction
+description: Certify a CODECHECK-style independent reproduction of an e156 capsule
+title: "[REPRODUCTION #<paper-number>] <short result>"
+labels: ["reproduction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Independent reproduction is what turns an e156 capsule from "the author
+        says it checks out" into "someone else verified it". It is the basis for
+        the **Independently Reproduced** attestation (and the Gold tier's
+        `external_review`). You must be **independent — not an author** of the
+        capsule. Re-run the capsule from its own data/code and report what you got.
+  - type: input
+    id: paper_number
+    attributes:
+      label: Paper / capsule number (or DOI)
+    validations:
+      required: true
+  - type: input
+    id: reproducer
+    attributes:
+      label: Your name + ORCID (the reproducer)
+      description: Must not be an author of the capsule.
+    validations:
+      required: true
+  - type: dropdown
+    id: independence
+    attributes:
+      label: Independence confirmation
+      options:
+        - "I am NOT an author or contributor to this capsule"
+        - "I am an author/contributor (STOP — this would not be independent)"
+    validations:
+      required: true
+  - type: input
+    id: recomputed
+    attributes:
+      label: Recomputed primary estimate with 95% CI
+      placeholder: "e.g. HR 0.85 (95% CI 0.78-0.92)"
+    validations:
+      required: true
+  - type: dropdown
+    id: agreement
+    attributes:
+      label: Does your result agree with the capsule's stated estimate?
+      options:
+        - "Yes — consistent within rounding"
+        - "Partly — same direction, different magnitude"
+        - "No — materially different (explain below)"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: How you reran it
+      description: OS, language + package versions, exact commands, data source.
+    validations:
+      required: true
+  - type: input
+    id: certificate
+    attributes:
+      label: Signed certificate URL
+      description: A cosign bundle, CODECHECK certificate, or other signed attestation of your run.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes, discrepancies, caveats
+    validations:
+      required: false

@@ -48,9 +48,10 @@ SCHEMA_VERSION = 1
 
 # Phase-1 Sentinel rules that map onto Assurance Standard checks.
 RULE_TO_CHECK = {
-    "P0-citation-cascade":  "citation_cascade",
-    "P1-claim-language":    "claim_language",
-    "P0-denominator-logic": "denominator_logic",
+    "P0-citation-cascade":       "citation_cascade",
+    "P0-citation-resolution":    "citation_cascade",  # live DOI resolution feeds the same check
+    "P0-claim-language-workbook": "claim_language",
+    "P0-denominator-logic":      "denominator_logic",
 }
 
 
@@ -359,8 +360,11 @@ def compute_tier(checks: dict) -> str:
              AND code_runs in (pass, not-run)
     Silver = Bronze + dashboard_match == pass AND claim_language == pass
     Gold   = Silver + analysis_rerun == pass AND external_review == pass
-    Any single 'fail' in a contributing check forces tier=none.
+    Any single 'fail' in a contributing check forces tier=none
+    (honest under-claiming is the safer error).
     """
+    if "fail" in checks.values():
+        return "none"
     bronze_ok = (
         checks.get("citation_cascade") != "fail"
         and checks.get("data_file_present") == "pass"
@@ -526,6 +530,76 @@ def build_assurance_for(entry: dict) -> dict | None:
     }
 
 
+def build_assurance_here(repo: Path, name: str) -> dict:
+    """Build a badge for the checked-out repo itself (GitHub Actions per-repo
+    mode). No workbook PATH resolution and no Overmind bundle: Sentinel checks
+    come from the repo's own findings files, data_file_present from a local data
+    scan; code_runs / dashboard_match / external_review stay not-run.
+    """
+    sent_checks = derive_sentinel_checks(repo)
+
+    data_file_present = "not-run"
+    for f in repo.rglob("*"):
+        if any(d in (".git", "node_modules", "__pycache__") for d in f.parts):
+            continue
+        if f.is_file() and f.suffix.lower() in (".csv", ".parquet", ".json", ".tsv"):
+            if f.name in ("assurance.json", "doi-cache.json"):
+                continue
+            try:
+                if f.stat().st_size > 1024:
+                    data_file_present = "pass"
+                    break
+            except OSError:
+                pass
+
+    try:
+        from scripts.assurance.rerun_analysis import derive_analysis_rerun  # type: ignore
+        from scripts.assurance.pdf_match import derive_pdf_match  # type: ignore
+    except ImportError:
+        import importlib.util as _ilu
+        _here = Path(__file__).parent
+
+        def _load(modname: str, path: Path):
+            spec = _ilu.spec_from_file_location(modname, str(path))
+            mod = _ilu.module_from_spec(spec); spec.loader.exec_module(mod)  # type: ignore
+            return mod
+
+        derive_analysis_rerun = _load("rerun_analysis", _here / "assurance" / "rerun_analysis.py").derive_analysis_rerun
+        derive_pdf_match = _load("pdf_match", _here / "assurance" / "pdf_match.py").derive_pdf_match
+
+    all_checks = {
+        **sent_checks,
+        "data_file_present": data_file_present,
+        "code_runs": "not-run",
+        "dashboard_match": "not-run",
+        "analysis_rerun": derive_analysis_rerun(repo),
+        "pdf_match": derive_pdf_match(repo, ""),
+        "external_review": "not-run",
+    }
+    tier = compute_tier(all_checks)
+
+    evidence = {}
+    if (repo / "sentinel-findings.jsonl").is_file():
+        evidence["sentinel_findings"] = str(repo / "sentinel-findings.jsonl")
+    if (repo / "STUCK_FAILURES.jsonl").is_file():
+        evidence["stuck_failures"] = str(repo / "STUCK_FAILURES.jsonl")
+
+    return {
+        "tier": tier,
+        "checks": all_checks,
+        "evidence": evidence,
+        "tier_rule": ("bronze = citation_cascade != fail AND data_file_present == pass "
+                      "AND code_runs in (pass, not-run); silver = + dashboard_match == pass "
+                      "AND claim_language == pass; gold = + analysis_rerun == pass "
+                      "AND external_review == pass"),
+        "issued_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "issued_by": ISSUED_BY,
+        "version": SCHEMA_VERSION,
+        "project_name": name,
+        "local_path": str(repo),
+    }
+
+
 def target_path_for(local: Path | None, workbook_num: int) -> Path:
     """Where to write assurance.json.
 
@@ -552,7 +626,18 @@ def main(argv=None) -> int:
                     help="print a tier-distribution summary")
     ap.add_argument("--project",
                     help="only process this project (by workbook 'name' slug)")
+    ap.add_argument("--here", metavar="NAME",
+                    help="build a badge for the current directory (GitHub Actions per-repo mode)")
     args = ap.parse_args(argv)
+
+    if args.here:
+        repo = Path.cwd()
+        blob = build_assurance_here(repo, args.here)
+        target = target_path_for(repo, 0)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(blob, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        print(f"[{blob['tier']:6s}] {args.here} -> {target}")
+        return 0
 
     entries = list(iter_workbook_entries())
     if args.project:

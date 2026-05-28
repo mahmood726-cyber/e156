@@ -165,6 +165,122 @@ F:\e156\paper\<N>.html   (renderer reads ../<project>/e156-submission/assurance.
 
 What Phase 1 does NOT ship: auto-population of `assurance.json` (operator hand-writes for now), the analysis-rerun check (needs cached datasets + pinned environments), the paper-dashboard value match (needs cross-format number extraction), the PDF-output match. Those are Phase 2.
 
+## v0.3 additions (2026-05-28) — credibility for people other than the author
+
+v0.2 (everything above) makes a capsule *agree with itself*. A capsule can be
+perfectly self-consistent and still wrong, so v0.3 adds the layer that earns
+*outside* trust. v0.2 semantics are unchanged; these are additive.
+
+### Precise terminology (NISO / ACM)
+
+The standard adopts the harmonised NISO/ACM vocabulary so methodologists read it
+the same way the rest of computational science does:
+
+- **Reproduction** = the *same* analysis artifacts (data + code) produce the
+  same result. e156's `analysis_rerun` check (re-running the pipeline) and the
+  `pooled_recompute` rule (re-pooling the stored `realData`) are reproduction.
+- **Replication** = an *independent* team, with independently obtained
+  materials, reaches a consistent finding. e156 does not claim to perform
+  replication; it can only record when a replication exists.
+
+Do not say "independent rerun" for same-artifact re-execution — that is
+reproduction. Reserve "independent" for the reproduction badge below.
+
+### Independent reproduction is an orthogonal badge, not a higher rung
+
+The Bronze/Silver/Gold ladder measures *artifact quality* (does the object hold
+together and reproduce from its own materials). **Who verified it** is a
+separate axis, modelled on ACM Artifact Badging and CODECHECK: a named third
+party — not the author — re-executes the capsule and signs a public,
+time-stamped certificate. That is represented by the `external_review` check and
+surfaced as an **"Independently Reproduced"** attestation shown *alongside* the
+tier, never folded into it. Gold therefore requires the independent attestation
+(`external_review == pass`), making Gold mean "someone other than the author
+verified this", not "the author asserts it".
+
+`assurance.json` gains an optional block:
+
+```json
+"independent_reproduction": {
+  "reproduced": true,
+  "reproducer": "name or ORCID of the third party (NOT the author)",
+  "certificate": "URL or path to the signed CODECHECK-style certificate",
+  "date": "ISO-8601"
+}
+```
+
+### Signed badges (implemented)
+
+A consistent badge is still forgeable by rewriting tier *and* checks together.
+`scripts/assurance/sign_badge.py` binds the badge to a key holder with
+HMAC-SHA256 over the canonical badge content (signature/`signed_at` excluded).
+The key comes from `$E156_ASSURANCE_HMAC_KEY` or a gitignored key file and the
+signer **fails closed** if no key is present — never a forgeable default
+(see `rules/lessons.md` "Cryptography / Signing"). The badge gains:
+
+```json
+"signature": "HMAC-SHA256:<hex>",
+"signed_at": "ISO-8601"
+```
+
+Verification (`sign_badge.py verify`) uses `hmac.compare_digest` and runs where
+the key is available, not at commit time. The enforcement point is
+`scripts/assurance/verify_badges.py`, run in CI with the key as a secret — it
+fails the build on any forged/invalid (and, with `--require-signed`, unsigned)
+badge, so the HMAC signature is load-bearing rather than decorative.
+
+### Public verification + the GitHub pipeline (implemented)
+
+HMAC verifies for a key holder; for *public* verifiability the
+`.github/workflows/assurance.yml` workflow additionally **keyless-signs** each
+badge with Sigstore `cosign` via GitHub OIDC (no key to manage). Anyone can
+verify against the transparency log:
+
+```
+cosign verify-blob \
+  --bundle assurance.json.cosign.bundle \
+  --certificate-identity-regexp 'https://github.com/<owner>/<repo>/' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  assurance.json
+```
+
+The same workflow runs the test suite (gate), resolves DOIs live against
+doi.org into `doi-cache.json`, regenerates the badge (`build_assurance_jsons.py
+--here`), runs the HMAC verify gate, and publishes `assurance.html` (the public
+dashboard) through the repo's existing GitHub Pages. Independent reproduction
+(the `external_review` / Independently-Reproduced attestation) is submitted via
+the `reproduction` issue template by a third party who is not an author.
+
+### Machine-readable research object (implemented)
+
+`scripts/assurance/ro_crate.py` emits an RO-Crate 1.1 `ro-crate-metadata.json`
+(schema.org JSON-LD) describing the capsule's parts (body, data, dashboard,
+`assurance.json`, DOI, tier). This makes the capsule FAIR and tool-interoperable
+instead of a private folder layout.
+
+### Versioned DOI + correction policy
+
+Each released capsule should carry a persistent identifier (DataCite/Zenodo
+DOI). Corrections do not overwrite: a new version gets a new DOI linked to the
+prior with `IsNewVersionOf` / `IsPreviousVersionOf`, and the changelog records
+what changed and why. A retraction sets the capsule's status to `retracted` and
+keeps the record. "Version check" (#10) is satisfied when the released PDF, the
+capsule version, and the DOI version agree.
+
+### Domain hooks (evidence-synthesis specific)
+
+- **PRISMA 2020 / PRISMA-LSR**: the capsule carries a machine-checkable map of
+  the 27 PRISMA items it satisfies; living capsules use the PRISMA-LSR flow.
+- **GRADE**: the outside-note `Certainty` field uses GRADE wording
+  (high/moderate/low/very-low). *(Planned)* a future `claim_language` upgrade
+  will parse that structured field and flag a "high certainty" body whose
+  GRADE rating is low; today `claim_language` only matches certainty *phrases*
+  co-occurring with heterogeneity markers, it does not read a GRADE field.
+- **RoB2 / ROBINS-I**: per-study risk-of-bias domains are recorded in
+  `realData` so directionality and certainty checks can reference them.
+- **PROSPERO**: a registered protocol id is recorded as a preregistration
+  signal (an orthogonal practice badge, like COS "Preregistered").
+
 ## Provenance
 
 This standard was articulated by Mahmood Ahmad (mahmood726@gmail.com) in a 2026-05-20 email and adopted into the E156 architecture on 2026-05-24. The Quranic framing — *amānah* (trust) and *muhāsabah* (self-accounting) — captures the underlying principle that the work accounts for itself before asking others to trust it.

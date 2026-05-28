@@ -198,7 +198,7 @@ def emit_triage(entries: list[dict]) -> str:
         f"# claim_language override triage — {now}",
         "",
         f"_Scanned `{WORKBOOK.name}` for entries that would trigger the "
-        f"P1-claim-language Sentinel rule. Classified each by simple "
+        f"P0-claim-language-workbook Sentinel rule. Classified each by simple "
         f"pattern matching; operator decides which to whitelist via_ "
         f"`{OVERRIDE_MARKER}` _markers._",
         "",
