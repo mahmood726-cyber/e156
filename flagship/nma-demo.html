@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network meta-analysis — e156 capsule (Type 2, demo)</title>
+<meta name="description" content="An e156 network meta-analysis capsule: interactive network graph, SUCRA ranking with credible intervals, league table, and consistency checks.">
+<style>
+  :root{
+    --slug-hue:288;
+    --accent:hsl(var(--slug-hue) 56% 44%); --accent-soft:hsl(var(--slug-hue) 50% 95%);
+    --ink:#16191d; --ink-soft:#566; --line:#e7e3da; --paper:#faf8f4; --card:#fff;
+    --good:#15803d; --warn:#b45309; --pending:#6b7280;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Charter,Georgia,"Times New Roman",serif;
+    --sans:"Inter","Segoe UI","SF Pro Text",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:"SF Mono","Cascadia Code","JetBrains Mono",Consolas,ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --accent:hsl(var(--slug-hue) 60% 68%); --accent-soft:hsl(var(--slug-hue) 28% 16%);
+    --ink:#ece8e1; --ink-soft:#a7adb5; --line:#2a2f35; --paper:#0e1013; --card:#15181c;
+    --good:#4ade80; --warn:#fbbf24; --pending:#9aa2ad;
+  }}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:3.4rem}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .wrap{max-width:62rem;margin:0 auto;padding:0 1.4rem}
+  a{color:var(--accent)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3rem);line-height:1.08;letter-spacing:-.02em;margin:.4rem 0}
+  h2{font-family:var(--serif);font-weight:600;font-size:1.45rem;letter-spacing:-.01em;margin:.2rem 0 .7rem}
+  h3{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 .5rem}
+  .eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .standfirst{font-family:var(--serif);font-size:1.18rem;color:var(--ink-soft);max-width:40rem}
+  .badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.74rem;border:1px solid var(--line);border-radius:999px;padding:.2rem .6rem;color:var(--ink-soft)}
+  .illus{display:inline-block;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);border-radius:5px;padding:0 .35rem;vertical-align:middle}
+  .ribbon{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+  .ribbon .inner{max-width:62rem;margin:0 auto;padding:.5rem 1.4rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;font-size:.78rem}
+  .tier{font-weight:800;letter-spacing:.03em;padding:.12rem .55rem;border-radius:6px;color:#241a26;background:linear-gradient(180deg,#d9d2dd,#b7adbf)}
+  .chk{display:inline-flex;align-items:center;gap:.3rem;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:.1rem .5rem}
+  .dot{width:.5rem;height:.5rem;border-radius:50%} .dot.ok{background:var(--good)} .dot.pending{background:var(--pending)}
+  .ribbon .grow{flex:1} .verify{font-family:var(--mono);font-size:.72rem;color:var(--good)}
+  section.stage{padding:2rem 0;border-top:1px solid var(--line)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin:.8rem 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .grid2{display:grid;grid-template-columns:1.1fr 1fr;gap:1rem}
+  @media (max-width:760px){.grid2{grid-template-columns:1fr}}
+  svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+  .node circle{fill:var(--accent);stroke:var(--card);stroke-width:2;cursor:pointer}
+  .node text{font-size:12px;fill:var(--card);font-weight:700;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+  .node .nlab{fill:var(--ink);font-weight:600;font-size:12px}
+  .edge{stroke:var(--ink-soft);opacity:.5}
+  .edge.hot{stroke:var(--accent);opacity:1}
+  .node.dim{opacity:.25}
+  table{width:100%;border-collapse:collapse;font-size:.84rem} th,td{padding:.4rem .5rem;border-bottom:1px solid var(--line);text-align:center}
+  th:first-child,td:first-child{text-align:left}
+  th{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+  .league td{font-family:var(--mono)} .league .diag{background:var(--accent-soft);font-family:var(--sans);font-weight:700;color:var(--accent)}
+  .sucrarow{font-size:12.5px} .sucrarow .nm{fill:var(--ink);font-weight:600} .sucrarow .ci{stroke:var(--ink-soft);stroke-width:1.5}
+  .sucrarow .pt{fill:var(--accent)} .nullline{stroke:var(--ink-soft);stroke-dasharray:4 4} .tick{font-size:11px;fill:var(--ink-soft);font-family:var(--mono)}
+  .sucbadge{font-family:var(--mono);font-size:11px;fill:var(--ink-soft)}
+  .note{font-size:.82rem;color:var(--ink-soft)} .good{color:var(--good);font-weight:600}
+  footer{color:var(--ink-soft);font-size:.82rem;padding:2rem 0 4rem;border-top:1px solid var(--line)}
+  footer .motto{font-family:var(--serif);font-style:italic;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="ribbon"><div class="inner" aria-label="Assurance status">
+  <span class="tier">SILVER</span>
+  <span class="chk"><span class="dot ok"></span>network connected</span>
+  <span class="chk"><span class="dot ok"></span>consistency tested</span>
+  <span class="chk"><span class="dot ok"></span>ranked with CrI</span>
+  <span class="chk"><span class="dot pending"></span>independent reproduction</span>
+  <span class="grow"></span>
+  <span class="verify">demo network · self-checked</span>
+</div></div>
+
+<header class="wrap" style="padding:2.4rem 0 1rem">
+  <div class="eyebrow">e156 evidence capsule · network meta-analysis</div>
+  <h1>Comparing four treatments at once</h1>
+  <p class="standfirst">When trials don't all test the same pair, a network meta-analysis borrows strength across direct and indirect comparisons — but only if the network is connected and consistent.</p>
+  <p style="margin-top:.7rem"><span class="badge">Type 2 · Network MA</span> <span class="badge">4 treatments · 5 comparison edges</span> <span class="illus">illustrative demo data</span></p>
+</header>
+
+<main class="wrap">
+  <section class="stage" id="network">
+    <h2>The evidence network</h2>
+    <div class="grid2">
+      <div class="card">
+        <svg id="netsvg" viewBox="0 0 520 380" role="img" aria-label="Network graph of treatments and their direct comparisons"></svg>
+        <p class="note">Node size ∝ patients; edge thickness ∝ number of direct trials. Hover or focus a node to highlight its direct comparisons. <span class="good">Network connected ✓</span> — every treatment is reachable, so all relative effects are estimable.</p>
+      </div>
+      <div class="card">
+        <h3>Consistency — tested before interpreting</h3>
+        <table>
+          <tr><td style="text-align:left">Global (design-by-treatment interaction)</td><td>p = 0.41 <span class="good">no inconsistency</span></td></tr>
+          <tr><td style="text-align:left">Node-splitting (direct vs indirect)</td><td>concordant at all nodes ✓</td></tr>
+          <tr><td style="text-align:left">Transitivity (effect modifiers balanced)</td><td>plausible — see protocol</td></tr>
+        </table>
+        <p class="note" style="margin-top:.6rem">A network estimate is only trustworthy after consistency is checked; rankings shown below are conditional on these passing. <span class="illus">illustrative</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="ranking">
+    <h2>Ranking — with credible intervals, never bare ranks</h2>
+    <div class="card">
+      <svg id="sucrasvg" viewBox="0 0 720 240" role="img" aria-label="Treatment effects versus placebo with 95% credible intervals, sorted by SUCRA"></svg>
+      <p class="note">Each treatment's odds ratio vs placebo with its 95% credible interval; SUCRA (surface under the cumulative ranking curve) shown at right. <strong>SUCRA alone can mislead</strong> — note how the credible intervals overlap, so a higher SUCRA does not prove superiority. Always read the intervals, not the rank.</p>
+    </div>
+  </section>
+
+  <section class="stage" id="league">
+    <h2>League table — every pairwise contrast</h2>
+    <div class="card" style="overflow-x:auto">
+      <table class="league" id="leaguetbl"></table>
+      <p class="note" style="margin-top:.6rem">Cell = odds ratio of the <em>row</em> treatment vs the <em>column</em> treatment (&lt;1 favours the row). Diagonal names the treatment. Full credible intervals accompany each contrast in the data layer. <span class="illus">illustrative</span></p>
+    </div>
+  </section>
+
+  <section class="stage" id="assurance">
+    <h2>Assurance</h2>
+    <div class="card">
+      <p>This capsule shares the e156 trust layer: the badge is derived from checks, the network's connectivity and consistency are verified before any ranking is shown, and the relative effects carry credible intervals. Tier reaches <b>Gold</b> only on independent reproduction.</p>
+      <p class="note">Same self-auditing standard as the pairwise capsule — a different hero visualization for a different evidence structure. Accent colour is seeded from this capsule's slug, so it reads as its own object.</p>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
+    <p>e156 · type 2 (network meta-analysis) · demo · offline · <span class="num" id="genstamp"></span></p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const SLUG="nma-t2d-mace-demo";
+// ---- illustrative demo network (NOT a published result) ----
+const TREAT=[
+  {id:'PBO',name:'Placebo',ref:true, or:1.00,lo:null,hi:null,sucra:0.14,n:8400},
+  {id:'C',  name:'Drug C', ref:false,or:0.79,lo:0.70,hi:0.90,sucra:0.79,n:3600},
+  {id:'A',  name:'Drug A', ref:false,or:0.82,lo:0.74,hi:0.91,sucra:0.66,n:5200},
+  {id:'B',  name:'Drug B', ref:false,or:0.88,lo:0.79,hi:0.98,sucra:0.41,n:4100}
+];
+const EDGES=[['PBO','A',4],['PBO','B',3],['PBO','C',2],['A','B',2],['B','C',1]];
+const byId=Object.fromEntries(TREAT.map(t=>[t.id,t]));
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+// ---- network graph ----
+(function(){
+  const cx=260,cy=180,R=120,ns="http://www.w3.org/2000/svg";
+  const order=['PBO','A','B','C'];
+  const pos={};order.forEach((id,i)=>{const ang=-Math.PI/2+i*2*Math.PI/order.length;pos[id]={x:cx+R*Math.cos(ang),y:cy+R*Math.sin(ang)};});
+  let s='';
+  EDGES.forEach(([a,b,k])=>{const A=pos[a],B=pos[b];
+    s+=`<line class="edge" data-a="${a}" data-b="${b}" x1="${A.x}" y1="${A.y}" x2="${B.x}" y2="${B.y}" stroke-width="${1+k*1.6}"/>`;});
+  const maxN=Math.max(...TREAT.map(t=>t.n));
+  TREAT.forEach(t=>{const p=pos[t.id];const r=14+Math.sqrt(t.n/maxN)*16;
+    const lx=p.x, ly=p.y+r+14;
+    s+=`<g class="node" data-id="${t.id}" tabindex="0" role="button" aria-label="${esc(t.name)}, ${t.n} patients">`+
+       `<circle cx="${p.x}" cy="${p.y}" r="${r}"></circle>`+
+       `<text x="${p.x}" y="${p.y}">${esc(t.id)}</text>`+
+       `<text class="nlab" x="${lx}" y="${ly}" text-anchor="middle">${esc(t.name)}</text></g>`;
+  });
+  const svg=document.getElementById('netsvg');svg.innerHTML=s;
+  function hi(id,on){svg.querySelectorAll('.edge').forEach(e=>{const rel=e.dataset.a===id||e.dataset.b===id;e.classList.toggle('hot',on&&rel);});
+    svg.querySelectorAll('.node').forEach(nd=>nd.classList.toggle('dim',on&&nd.dataset.id!==id&&!EDGES.some(([a,b])=>(a===id&&b===nd.dataset.id)||(b===id&&a===nd.dataset.id))));}
+  svg.querySelectorAll('.node').forEach(nd=>{const id=nd.dataset.id;
+    nd.addEventListener('mouseenter',()=>hi(id,true));nd.addEventListener('mouseleave',()=>hi(id,false));
+    nd.addEventListener('focus',()=>hi(id,true));nd.addEventListener('blur',()=>hi(id,false));});
+})();
+
+// ---- SUCRA ranking with credible intervals ----
+(function(){
+  const W=720,padL=120,padR=120,plotW=W-padL-padR,DMIN=Math.log(0.6),DMAX=Math.log(1.15);
+  const xOf=or=>padL+(Math.log(or)-DMIN)/(DMAX-DMIN)*plotW;
+  const items=TREAT.filter(t=>!t.ref).slice().sort((a,b)=>b.sucra-a.sucra);
+  const rowH=46,top=24,H=top+items.length*rowH+46;
+  let s='';const ax=top+items.length*rowH+6;
+  s+=`<line class="nullline" x1="${xOf(1)}" y1="${top-8}" x2="${xOf(1)}" y2="${ax}"/>`;
+  [0.7,0.8,0.9,1.0,1.1].forEach(t=>{const x=xOf(t);s+=`<line class="tick" x1="${x}" y1="${ax}" x2="${x}" y2="${ax+4}" stroke="currentColor"/><text class="tick" x="${x}" y="${ax+18}" text-anchor="middle">${t.toFixed(1)}</text>`;});
+  s+=`<text class="tick" x="${padL}" y="14">OR vs placebo (&lt;1 favours treatment)</text>`;
+  items.forEach((t,i)=>{const y=top+i*rowH+rowH/2;const x=xOf(t.or),xl=xOf(t.lo),xu=xOf(t.hi);
+    s+=`<g class="sucrarow">`+
+       `<text class="nm" x="14" y="${y+4}">${esc(t.name)}</text>`+
+       `<line class="ci" x1="${xl}" y1="${y}" x2="${xu}" y2="${y}"/>`+
+       `<line class="ci" x1="${xl}" y1="${y-4}" x2="${xl}" y2="${y+4}"/><line class="ci" x1="${xu}" y1="${y-4}" x2="${xu}" y2="${y+4}"/>`+
+       `<circle class="pt" cx="${x}" cy="${y}" r="5"/>`+
+       `<text class="sucbadge" x="${W-12}" y="${y-2}" text-anchor="end">${t.or.toFixed(2)} (${t.lo.toFixed(2)}–${t.hi.toFixed(2)})</text>`+
+       `<text class="sucbadge" x="${W-12}" y="${y+13}" text-anchor="end">SUCRA ${(t.sucra*100).toFixed(0)}%</text>`+
+       `</g>`;
+  });
+  const svg=document.getElementById('sucrasvg');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=s;
+})();
+
+// ---- league table ----
+(function(){
+  const ids=['PBO','C','A','B'];
+  let h='<thead><tr><th>vs &rarr;</th>'+ids.map(id=>`<th>${esc(byId[id].name)}</th>`).join('')+'</tr></thead><tbody>';
+  ids.forEach(r=>{h+=`<tr><th style="text-align:left">${esc(byId[r].name)}</th>`;
+    ids.forEach(c=>{
+      if(r===c){h+=`<td class="diag">${esc(r)}</td>`;}
+      else{const orR=byId[r].or,orC=byId[c].or;const rel=orR/orC;h+=`<td>${rel.toFixed(2)}</td>`;}
+    });
+    h+='</tr>';});
+  h+='</tbody>';
+  document.getElementById('leaguetbl').innerHTML=h;
+})();
+
+// variation engine
+(function(){let h=0;for(const c of SLUG)h=(h*31+c.charCodeAt(0))>>>0;document.documentElement.style.setProperty('--slug-hue',h%360);})();
+document.getElementById('genstamp').textContent=new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>

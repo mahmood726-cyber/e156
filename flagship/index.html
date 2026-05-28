@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>e156 living evidence capsules — the suite</title>
+<meta name="description" content="Twelve self-auditing, editable, offline meta-analysis capsules: pairwise, network, diagnostic, prevalence, dose-response, survival, Bayesian, meta-regression, risk-of-bias, PRISMA, trial sequential analysis, and GRADE.">
+<meta property="og:title" content="e156 living evidence capsules — the suite">
+<meta property="og:description" content="Twelve self-auditing, editable, offline meta-analysis capsules — every estimate live, reader-inspectable, and cross-validated against R.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --accent:hsl(212 52% 50%); --accent-strong:hsl(212 56% 40%); --accent-soft:hsl(212 48% 95%);
+    --ink:#16191d; --ink-soft:#4a5560; --line:#e7e3da; --paper:#faf8f4; --card:#fff;
+    --good:#15803d; --warn:#b45309; --pending:#6b7280;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Charter,Georgia,"Times New Roman",serif;
+    --sans:"Inter","Segoe UI","SF Pro Text",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:"SF Mono","Cascadia Code","JetBrains Mono",Consolas,ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --accent:hsl(212 60% 70%); --accent-strong:hsl(212 64% 78%); --accent-soft:hsl(212 28% 17%);
+    --ink:#ece8e1; --ink-soft:#9aa2ad; --line:#2a2f35; --paper:#0e1013; --card:#15181c; --good:#4ade80;--warn:#fbbf24;--pending:#9aa2ad;
+  }}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:tabular-nums}
+  .wrap{max-width:68rem;margin:0 auto;padding:0 1.4rem}
+  a{color:var(--accent);text-decoration:none}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.04;letter-spacing:-.02em;margin:.4rem 0;text-wrap:balance}
+  .eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .standfirst{font-family:var(--serif);font-size:1.3rem;line-height:1.4;color:var(--ink-soft);max-width:44rem;text-wrap:balance}
+  header{padding:3.2rem 0 1.4rem}
+  .props{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 0}
+  .prop{display:inline-flex;align-items:center;gap:.4rem;font-size:.76rem;border:1px solid var(--line);border-radius:999px;padding:.22rem .65rem;color:var(--ink-soft)}
+  .prop .d{width:.45rem;height:.45rem;border-radius:50%;background:var(--good)}
+  .motto{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:1.05rem;margin:1.6rem 0 0;padding-left:1rem;border-left:3px solid var(--accent)}
+  .grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fill,minmax(18.5rem,1fr));margin:2.4rem 0}
+  .card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem 1.2rem;overflow:hidden;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 14px 34px -24px rgba(0,0,0,.3);transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease}
+  .card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--ch);box-shadow:0 1px 2px rgba(0,0,0,.05),0 22px 44px -22px rgba(0,0,0,.4);outline:none}
+  .card .bar{position:absolute;left:0;top:0;height:5px;width:100%;background:var(--ch)}
+  .card .tno{font-family:var(--serif);font-size:.84rem;color:var(--ch);font-weight:700;letter-spacing:.04em}
+  .card .cat{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-left:auto}
+  .card .top{display:flex;align-items:baseline;gap:.5rem;margin-top:.3rem}
+  .card h2{font-family:var(--serif);font-weight:600;font-size:1.32rem;letter-spacing:-.01em;margin:.5rem 0 .3rem;color:var(--ink)}
+  .card p{font-size:.86rem;color:var(--ink-soft);margin:0 0 .8rem}
+  .card .go{margin-top:auto;font-size:.8rem;font-weight:600;color:var(--ch);display:inline-flex;align-items:center;gap:.35rem}
+  .note{font-size:.85rem;color:var(--ink-soft);max-width:44rem}
+  .section-h{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:2.4rem 0 .2rem}
+  footer{color:var(--ink-soft);font-size:.82rem;padding:2.4rem 0 4rem;border-top:1px solid var(--line);margin-top:1.5rem}
+  code{font-family:var(--mono);font-size:.82em;background:color-mix(in srgb,var(--ink) 6%,transparent);padding:.05rem .3rem;border-radius:4px}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="eyebrow">e156 · living evidence capsules</div>
+  <h1>Twelve meta-analyses that audit themselves</h1>
+  <p class="standfirst">One self-contained HTML file per evidence-synthesis design. Every estimate is computed live in your browser, the data is editable, the engine is reader-inspectable, and each result is cross-validated against the standard R package — offline, with no server and no dependencies.</p>
+  <div class="props">
+    <span class="prop"><span class="d"></span>editable · live re-run</span>
+    <span class="prop"><span class="d"></span>self-auditing assurance ribbon</span>
+    <span class="prop"><span class="d"></span>reader-inspectable engine</span>
+    <span class="prop"><span class="d"></span>R cross-validation</span>
+    <span class="prop"><span class="d"></span>fully offline</span>
+    <span class="prop"><span class="d"></span>seeded accent per capsule</span>
+  </div>
+  <p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
+</header>
+
+<main class="wrap">
+  <div class="section-h">The suite</div>
+  <div class="grid" id="grid"></div>
+
+  <div class="section-h">What each capsule shares</div>
+  <p class="note">A sticky <b>assurance ribbon</b> (Bronze / Silver / Gold) that turns green only when the numbers reconcile; a PRISMA-style pipeline from protocol to result; an <b>editable data table</b> that re-runs the analysis on every keystroke and persists locally; an <b>“inspect the computation”</b> panel exposing the exact JavaScript via <code>Function.toString()</code>; and a copy-paste <b>R script</b> so anyone can reproduce the estimate in <code>metafor</code>, <code>meta</code>, <code>bayesmeta</code>, <code>mada</code>, <code>robvis</code>, <code>RTSA</code> or GRADEpro. Gold is reserved for independent reproduction.</p>
+
+  <footer>
+    <p>e156 living evidence capsules · 12 designs · offline · <span id="stamp"></span></p>
+    <p class="note" style="margin-top:.4rem">Illustrative demo data throughout — edit any capsule to load your own. Built to the e156 assurance standard.</p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const CAPSULES=[
+  {t:1,slug:'sglt2-hf',file:'sglt2-hf-capsule.html',cat:'Pairwise',name:'Pairwise meta-analysis',desc:'Random-effects pooling with an estimator suite, GOSH, selection models, influence diagnostics and in-browser R.'},
+  {t:2,slug:'nma-t2d-mace',file:'nma-capsule.html',cat:'Network',name:'Network meta-analysis',desc:'Multiple treatments compared at once, with consistency checks, a league table and SUCRA ranking.'},
+  {t:3,slug:'dta-demo',file:'dta-capsule.html',cat:'Diagnostic',name:'Diagnostic test accuracy',desc:'Summary ROC, pooled sensitivity and specificity, and a threshold-effect check that warns when a point estimate misleads.'},
+  {t:4,slug:'prevalence-demo',file:'prevalence-capsule.html',cat:'Proportion',name:'Prevalence / proportion',desc:'Logit-scale random-effects pooling of a single proportion, respecting the 0–1 boundary, with a prediction interval.'},
+  {t:5,slug:'dose-response-demo',file:'doseresponse-capsule.html',cat:'Dose-response',name:'Dose-response',desc:'Two-stage random-effects trend across doses, drawn as a dose-response curve with a widening uncertainty band.'},
+  {t:6,slug:'survival-rmst-demo',file:'survival-capsule.html',cat:'Survival',name:'Survival / RMST',desc:'Pooled restricted mean survival time differences with a pooled hazard ratio and a non-proportional-hazards honesty check.'},
+  {t:7,slug:'bayesian-nn-demo',file:'bayesian-capsule.html',cat:'Bayesian',name:'Bayesian random-effects',desc:'The full posterior — credible intervals, P(benefit), a shrinkage forest and a Bayesian prediction interval — exact on a grid.'},
+  {t:8,slug:'metareg-baseline-risk-demo',file:'metaregression-capsule.html',cat:'Meta-regression',name:'Meta-regression',desc:'Random-effects regression of the effect on a moderator, a bubble plot with fitted line, and R² for variance explained.'},
+  {t:9,slug:'rob2-demo',file:'rob2-capsule.html',cat:'Risk of bias',name:'Risk of bias (RoB2)',desc:'Per-domain judgements, an overall verdict derived by the Cochrane RoB2 algorithm, a traffic-light matrix and weighted summary.'},
+  {t:10,slug:'prisma2020-demo',file:'prisma-capsule.html',cat:'Reporting',name:'PRISMA 2020 flow',desc:'A flow diagram that has to add up: every box is derived by subtraction and turns red the instant it would go negative.'},
+  {t:11,slug:'tsa-demo',file:'tsa-capsule.html',cat:'Sequential',name:'Trial sequential analysis',desc:'Cumulative Z against an O’Brien–Fleming monitoring boundary and a heterogeneity-adjusted required information size.'},
+  {t:12,slug:'grade-sof-demo',file:'grade-capsule.html',cat:'Certainty',name:'GRADE Summary of Findings',desc:'Certainty derived from the eight GRADE domains, plus absolute effects per 1000 — the relative effect made concrete.'}
+];
+const hue=slug=>{let h=0;for(const c of slug)h=(h*31+c.charCodeAt(0))>>>0;return h%360;};
+const grid=document.getElementById('grid');
+grid.innerHTML=CAPSULES.map(c=>{const H=hue(c.slug);
+  return `<a class="card" href="${c.file}" style="--ch:hsl(${H} 55% 47%)">`+
+    `<span class="bar"></span>`+
+    `<div class="top"><span class="tno">Type ${c.t}</span><span class="cat">${c.cat}</span></div>`+
+    `<h2>${c.name}</h2><p>${c.desc}</p>`+
+    `<span class="go">Open capsule →</span></a>`;}).join('');
+document.getElementById('stamp').textContent=new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
