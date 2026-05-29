@@ -127,7 +127,7 @@
     <div class="stagehdr"><span class="stagenum">05</span><h2>Estimates</h2><span class="prismaref">solid = IVW · dashed = Egger</span></div>
     <div class="grid2">
       <div class="card"><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">SNP–outcome (βY) vs SNP–exposure (βX)</div>
-        <svg id="scatter" viewBox="0 0 460 360" role="group" aria-label="MR scatter plot"></svg></div>
+        <svg id="scatterPlot" viewBox="0 0 460 360" role="group" aria-label="MR scatter plot"></svg></div>
       <div class="card"><h3>Causal estimate</h3>
         <div class="readouts">
           <div class="ro"><div class="k">IVW (OR)</div><div class="v" id="roIVW">—</div></div>
@@ -223,7 +223,7 @@ function mr(rows){
 }
 const fmtP=p=>p<0.0001?'<0.0001':p.toFixed(4);
 function renderScatter(res){
-  const svg=document.getElementById('scatter');if(!res){svg.innerHTML='<text x="14" y="24" class="tick">need ≥2 SNPs</text>';return;}
+  const svg=document.getElementById('scatterPlot');if(!res){svg.innerHTML='<text x="14" y="24" class="tick">need ≥2 SNPs</text>';return;}
   const W=460,H=360,padL=54,padR=14,padT=14,padB=44,plotW=W-padL-padR,plotH=H-padT-padB;
   const xs=res.bx,ysAll=res.use.flatMap((r,i)=>[r.by-Z*r.sy,r.by+Z*r.sy]);
   let xLo=0,xHi=Math.max(...xs)*1.1||1;let yLo=Math.min(0,...ysAll),yHi=Math.max(...ysAll);const yp=(yHi-yLo)*0.1||0.01;yLo-=yp;yHi+=yp;

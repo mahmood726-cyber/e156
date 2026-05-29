@@ -140,7 +140,7 @@
 
   <section class="stage" id="flow">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Flow diagram</h2><span class="prismaref">databases &amp; registers variant</span></div>
-    <div class="card"><svg id="flow" viewBox="0 0 760 560" role="group" aria-label="PRISMA 2020 flow diagram"></svg>
+    <div class="card"><svg id="flowPlot" viewBox="0 0 760 560" role="group" aria-label="PRISMA 2020 flow diagram"></svg>
       <div class="readouts">
         <div class="ro"><div class="k">Identified</div><div class="v" id="roId">—</div></div>
         <div class="ro"><div class="k">Screened</div><div class="v" id="roScr">—</div></div>
@@ -205,7 +205,7 @@ function box(x,y,w,h,lines,cls){const bad=cls&&cls.includes('bad');let t='';cons
     t+=`<text class="pboxtxt${isN?' n':''}${bad&&isN?' bad':''}" x="${x+w/2}" y="${(startY+i*lh+4).toFixed(1)}" text-anchor="middle">${esc(txt)}</text>`;});
   return `<rect class="pbox ${cls||''}" x="${x}" y="${y}" width="${w}" height="${h}" rx="5"/>${t}`;}
 function renderFlow(f,m){
-  const svg=document.getElementById('flow');const W=760;
+  const svg=document.getElementById('flowPlot');const W=760;
   const laneX=18,laneW=22,mainX=120,mainW=300,sideX=470,sideW=270;
   const ys=[20,140,260,380,500],h=84,sh=84;
   const N=v=>'​'+v.toLocaleString();

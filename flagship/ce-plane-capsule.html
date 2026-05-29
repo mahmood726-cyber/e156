@@ -127,7 +127,7 @@
   <section class="stage" id="plane">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Cost-effectiveness plane</h2><span class="prismaref">below the dashed WTP line = cost-effective</span></div>
     <div class="grid2">
-      <div class="card"><svg id="plane" viewBox="0 0 360 320" role="group" aria-label="cost-effectiveness plane"></svg></div>
+      <div class="card"><svg id="planePlot" viewBox="0 0 360 320" role="group" aria-label="cost-effectiveness plane"></svg></div>
       <div class="card"><h3>Incremental result</h3>
         <div class="readouts">
           <div class="ro"><div class="k">Δ Cost</div><div class="v" id="roDC">—</div></div>
@@ -141,7 +141,7 @@
 
   <section class="stage" id="verdict">
     <div class="stagehdr"><span class="stagenum">06</span><h2>Decision</h2></div>
-    <div class="card"><div class="verdict" id="verdict">—</div>
+    <div class="card"><div class="verdict" id="verdictBox">—</div>
       <p class="note" style="margin-top:.6rem">An ICER is only interpretable in the north-east quadrant (more effective, more costly). A strategy that is cheaper <em>and</em> more effective <b>dominates</b> (always adopt); one that is costlier <em>and</em> less effective is <b>dominated</b> (never adopt) — the ICER's sign is then meaningless. The INMB sidesteps this: positive = adopt at this λ. This is the deterministic (point-estimate) result; uncertainty needs probabilistic sensitivity analysis (the CEAC capsule).</p></div>
   </section>
 
@@ -185,7 +185,7 @@ function ce(m){
   return {dC,dE,icer,inmb,inhb,status};
 }
 function renderPlane(m,r){
-  const svg=document.getElementById('plane');const W=360,H=320,P=46,plotW=W-P-14,plotH=H-P-30,cx=P+plotW/2,cy=P+plotH/2;
+  const svg=document.getElementById('planePlot');const W=360,H=320,P=46,plotW=W-P-14,plotH=H-P-30,cx=P+plotW/2,cy=P+plotH/2;
   const eMax=Math.max(Math.abs(r.dE),0.5)*1.6,cMax=Math.max(Math.abs(r.dC),m.wtp*eMax*0.6,1000)*1.4;
   const X=e=>cx+e/eMax*(plotW/2),Y=c=>cy-c/cMax*(plotH/2);
   let s=`<rect x="${P}" y="${P-30+30}" width="${plotW}" height="${plotH}" fill="none" class="axis"/>`;
@@ -211,7 +211,7 @@ function renderReadouts(m,r){const set=(id,v)=>{const e=document.getElementById(
   document.getElementById('dotDom').className='dot '+(r.status==='dominant'||r.status==='ce'?'ok':(r.status==='dominated'||r.status==='notce'||r.status==='sw')?'warn':'ok');
   const ceFlag=r.inmb>0;
   document.getElementById('ceNote').innerHTML=`Intervention costs ${fmt(r.dC)} more for ${r.dE.toFixed(2)} more QALYs. ${isFinite(r.icer)&&r.status==='notce'||r.status==='ce'?`ICER ${fmt(r.icer)}/QALY vs threshold ${fmt(m.wtp)}.`:''} INMB at λ=${fmt(m.wtp)} is <b class="num">${fmt(r.inmb)}</b>.`;
-  const vd=document.getElementById('verdict');
+  const vd=document.getElementById('verdictBox');
   if(r.status==='dominant'){vd.className='verdict good';vd.innerHTML=`<b>Dominant.</b> The intervention is more effective <em>and</em> not more costly — adopt regardless of threshold.`;}
   else if(r.status==='dominated'){vd.className='verdict bad';vd.innerHTML=`<b>Dominated.</b> The intervention is less effective <em>and</em> more costly — reject; the ICER is meaningless here.`;}
   else if(r.status==='ce'){vd.className='verdict good';vd.innerHTML=`<b>Cost-effective at λ=${fmt(m.wtp)}.</b> ${isFinite(r.icer)?`ICER ${fmt(r.icer)}/QALY is below the threshold; `:''}INMB = ${fmt(r.inmb)} (&gt; 0).`;}

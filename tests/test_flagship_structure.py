@@ -56,6 +56,18 @@ def test_no_placeholder_leaks(path):
 
 
 @pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
+def test_no_unique_id_collisions(path):
+    # A section and its inner <svg>/<table> sharing an id makes getElementById
+    # return the section (first in DOM order), so the primary visualisation is
+    # written into the wrong element and renders blank. Fixed across the suite
+    # 2026-05-29; this guards against regressions.
+    html = path.read_text(encoding="utf-8")
+    ids = re.findall(r'\bid="([A-Za-z0-9_]+)"', html)
+    dupes = {i for i in ids if ids.count(i) > 1}
+    assert not dupes, f"{path.name}: duplicate id(s) {sorted(dupes)}"
+
+
+@pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
 def test_capsule_plumbing(path):
     """Seeded accent, local persistence, inspect panel, assurance ribbon, motto."""
     html = path.read_text(encoding="utf-8")

@@ -126,7 +126,7 @@
   <section class="stage" id="forest">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Pooled proportion</h2><span class="prismaref">logit random-effects</span></div>
     <div class="card">
-      <svg class="forest" id="forest" viewBox="0 0 720 360" role="group" aria-label="Forest plot of proportions"></svg>
+      <svg class="forest" id="forestPlot" viewBox="0 0 720 360" role="group" aria-label="Forest plot of proportions"></svg>
       <div class="readouts">
         <div class="ro"><div class="k">Pooled proportion</div><div class="v" id="roP">—</div></div>
         <div class="ro"><div class="k">95% CI</div><div class="v" id="roCI">—</div></div>
@@ -202,7 +202,7 @@ function pool(rows){
 }
 // forest geometry (linear 0..max)
 function renderForest(res){
-  const svg=document.getElementById('forest');if(!res){svg.innerHTML='<text x="14" y="24" class="yr">need ≥1 valid study</text>';return;}
+  const svg=document.getElementById('forestPlot');if(!res){svg.innerHTML='<text x="14" y="24" class="yr">need ≥1 valid study</text>';return;}
   const n=res.use.length,rowH=38,top=22,W=720,padL=170,padR=120,plotW=W-padL-padR;
   const allHi=Math.max(res.piU||0,...res.st.map(s=>s.hi)),dmax=Math.min(1,Math.max(0.1,allHi*1.15));
   const xOf=p=>padL+(p/dmax)*plotW;const axisY=top+n*rowH+8,diaY=top+n*rowH+28;

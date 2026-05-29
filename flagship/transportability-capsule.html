@@ -136,7 +136,7 @@
 
   <section class="stage" id="smd">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Population overlap</h2><span class="prismaref">|SMD| of effect modifiers</span></div>
-    <div class="card"><svg id="smd" viewBox="0 0 480 240" role="group" aria-label="standardized mean differences of effect modifiers"></svg>
+    <div class="card"><svg id="smdPlot" viewBox="0 0 480 240" role="group" aria-label="standardized mean differences of effect modifiers"></svg>
       <p class="note" id="smdNote">—</p></div>
   </section>
 
@@ -208,7 +208,7 @@ function transport(m){
   return {smds,maxSMD,nBig,trans,transportable};
 }
 function renderSMD(res){
-  const svg=document.getElementById('smd');if(!res.smds.length){svg.innerHTML='<text x="14" y="24" class="tick">add effect modifiers</text>';return;}
+  const svg=document.getElementById('smdPlot');if(!res.smds.length){svg.innerHTML='<text x="14" y="24" class="tick">add effect modifiers</text>';return;}
   const n=res.smds.length,rowH=34,top=16,padL=130,padR=20,W=480,plotW=W-padL-padR,H=top+n*rowH+30;
   const maxX=Math.max(0.3,res.maxSMD)*1.1;const X=v=>padL+v/maxX*plotW;
   let s=`<line class="axis" x1="${padL}" y1="${top-6}" x2="${padL}" y2="${top+n*rowH}"/>`;

@@ -134,7 +134,7 @@
 
   <section class="stage" id="matrix">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Traffic-light matrix</h2><span class="prismaref">one row per study</span></div>
-    <div class="card"><svg id="matrix" viewBox="0 0 720 320" role="group" aria-label="RoB2 traffic-light matrix"></svg>
+    <div class="card"><svg id="matrixPlot" viewBox="0 0 720 320" role="group" aria-label="RoB2 traffic-light matrix"></svg>
       <p class="note">Green <b style="color:var(--rlow)">+</b> = low · amber <b style="color:var(--rsome)">!</b> = some concerns · red <b style="color:var(--rhigh)">✕</b> = high. The Overall column is derived from the five domains to its left.</p></div>
   </section>
 
@@ -220,7 +220,7 @@ function summarise(rows){
 }
 const SYM={low:'+',some:'!',high:'✕'};
 function renderMatrix(res){
-  const svg=document.getElementById('matrix');if(!res){svg.innerHTML='<text x="14" y="24" class="tick">no studies</text>';return;}
+  const svg=document.getElementById('matrixPlot');if(!res){svg.innerHTML='<text x="14" y="24" class="tick">no studies</text>';return;}
   const cols=res.cols,n=res.use.length,padL=150,top=42,cw=78,rh=34,R=12,W=padL+cols.length*cw+20,H=top+n*rh+16;
   let s='';
   cols.forEach((c,j)=>{const cx=padL+j*cw+cw/2;const lbl=c==='overall'?'Overall':c.toUpperCase();

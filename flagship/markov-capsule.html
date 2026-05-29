@@ -135,7 +135,7 @@
 
   <section class="stage" id="trace">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Cohort trace</h2><span class="prismaref">state membership over cycles</span></div>
-    <div class="card"><svg id="trace" viewBox="0 0 480 280" role="group" aria-label="Markov cohort trace"></svg>
+    <div class="card"><svg id="tracePlot" viewBox="0 0 480 280" role="group" aria-label="Markov cohort trace"></svg>
       <p class="note"><span style="color:var(--sH)">█</span> Healthy · <span style="color:var(--sS)">█</span> Sick · <span style="color:var(--sD)">█</span> Dead. The bands always fill the full height — the cohort is conserved every cycle.</p></div>
   </section>
 
@@ -197,7 +197,7 @@ function markov(m){
   return {rs,rowsOK,trace,Q,C,time,alive};
 }
 function renderTrace(res){
-  const svg=document.getElementById('trace');const W=480,H=280,padL=40,padR=14,padT=14,padB=36,plotW=W-padL-padR,plotH=H-padT-padB;
+  const svg=document.getElementById('tracePlot');const W=480,H=280,padL=40,padR=14,padT=14,padB=36,plotW=W-padL-padR,plotH=H-padT-padB;
   const n=res.trace.length;const X=t=>padL+t/(n-1)*plotW,Y=v=>padT+plotH-v*plotH;
   let s=`<rect x="${padL}" y="${padT}" width="${plotW}" height="${plotH}" fill="none" class="axis"/>`;
   // stacked areas: Healthy (bottom), Sick, Dead (top)

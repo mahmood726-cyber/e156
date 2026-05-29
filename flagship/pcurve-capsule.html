@@ -130,7 +130,7 @@
     <div class="stagehdr"><span class="stagenum">05</span><h2>p-curve &amp; tests</h2><span class="prismaref">observed vs null vs 33%-power</span></div>
     <div class="grid2">
       <div class="card"><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">Distribution of significant p-values</div>
-        <svg id="curve" viewBox="0 0 480 300" role="group" aria-label="p-curve plot"></svg>
+        <svg id="curvePlot" viewBox="0 0 480 300" role="group" aria-label="p-curve plot"></svg>
         <p class="note"><span style="color:var(--accent-strong)">━</span> observed · <span style="color:var(--ctrl)">╌</span> null (no effect, flat) · <span style="color:var(--warn)">┄</span> 33% power. A right-leaning observed curve (mass at .01) signals evidential value.</p></div>
       <div class="card"><h3>Tests</h3>
         <div class="readouts">
@@ -146,7 +146,7 @@
 
   <section class="stage" id="verdict">
     <div class="stagehdr"><span class="stagenum">06</span><h2>Verdict</h2></div>
-    <div class="card"><div class="verdict" id="verdict">—</div>
+    <div class="card"><div class="verdict" id="verdictBox">—</div>
       <p class="note" style="margin-top:.6rem">Inference rules (Simonsohn, Nelson &amp; Simmons): <b>evidential value present</b> if the half p-curve right-skew test is p&lt;.05, or both right-skew tests are p&lt;.1. <b>Evidential value inadequate</b> if the 33%-power flatness test is p&lt;.05 (full or half). Otherwise inconclusive. p-curve cannot detect effects from non-significant studies, and is fooled if the wrong test is selected.</p></div>
   </section>
 
@@ -236,7 +236,7 @@ function pcurve(rows){
 }
 const fmtP=p=>isNaN(p)?'—':(p<0.0001?'p < .0001':'p = '+p.toFixed(4));
 function renderCurve(res){
-  const svg=document.getElementById('curve');if(!res){svg.innerHTML='<text x="14" y="24" class="tick">need ≥1 significant study</text>';return;}
+  const svg=document.getElementById('curvePlot');if(!res){svg.innerHTML='<text x="14" y="24" class="tick">need ≥1 significant study</text>';return;}
   const W=480,H=300,padL=46,padR=14,padT=14,padB=40,plotW=W-padL-padR,plotH=H-padT-padB;
   const maxY=Math.max(50,...res.obsPct,...res.p33Pct)*1.05;
   const labels=['.01','.02','.03','.04','.05'];
@@ -251,11 +251,11 @@ function renderCurve(res){
   svg.innerHTML=s;
 }
 function renderReadouts(res){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  if(!res){['roK','roFull','roHalf','roFlat','roPow'].forEach(id=>set(id,'—'));document.getElementById('testNote').textContent='—';document.getElementById('verdict').textContent='—';return;}
+  if(!res){['roK','roFull','roHalf','roFlat','roPow'].forEach(id=>set(id,'—'));document.getElementById('testNote').textContent='—';document.getElementById('verdictBox').textContent='—';return;}
   set('roK',res.k);set('roFull',fmtP(res.pFull));set('roHalf',res.kh>0?fmtP(res.pHalf):'n/a');set('roFlat',fmtP(res.pFlat));set('roPow',(res.power*100).toFixed(0)+'%');
   document.getElementById('dotEv').className='dot '+(res.present&&!res.inadequate?'ok':(res.inadequate?'warn':'pending'));
   document.getElementById('testNote').innerHTML=`The right-skew test asks whether significant p's cluster near zero (evidential value); the flatness test asks whether the curve is flatter than studies powered at 33% (no value). Estimated underlying power ≈ <b class="num">${(res.power*100).toFixed(0)}%</b>.`;
-  const v=res.verdict,vd=document.getElementById('verdict');vd.className='verdict '+(v.k==='good'?'good':v.k==='bad'?'bad':'warn');
+  const v=res.verdict,vd=document.getElementById('verdictBox');vd.className='verdict '+(v.k==='good'?'good':v.k==='bad'?'bad':'warn');
   vd.innerHTML=`<b>${v.t}.</b> Full right-skew ${fmtP(res.pFull)}; half-curve ${res.kh>0?fmtP(res.pHalf):'n/a'}; flatter-than-33%-power ${fmtP(res.pFlat)}.`;
 }
 function rcode(){const use=model.filter(sig);
