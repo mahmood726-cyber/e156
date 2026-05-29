@@ -1,17 +1,17 @@
 # e156 living evidence capsules — flagship suite
 
-Thirty-two self-contained HTML files spanning five method families — meta-analysis,
+Forty self-contained HTML files spanning five method families — meta-analysis,
 meta-research, causal inference, primary study designs, and health economics. Every
 estimate is computed live in the browser, the data is editable, the engine is
 reader-inspectable, and each result ships with a copy-paste R script that reproduces it in
 the standard package. No server, no build step, no external dependencies — open any file
-and it runs offline. `index.html` links all 32.
+and it runs offline. `index.html` links all 40.
 
 **Live:** https://mahmood726-cyber.github.io/e156/flagship/
 
 > The capsule must agree with itself before asking the world to agree with it.
 
-## Meta-analysis designs (12)
+## Meta-analysis designs (15)
 
 | # | Type | File | What it does |
 |---|------|------|--------------|
@@ -27,8 +27,11 @@ and it runs offline. `index.html` links all 32.
 | 10 | PRISMA 2020 | `prisma-capsule.html` | Flow diagram that reconciles — every box derived, negatives flagged |
 | 11 | Trial sequential analysis | `tsa-capsule.html` | Cumulative Z vs O'Brien–Fleming boundary, heterogeneity-adjusted RIS |
 | 12 | GRADE SoF | `grade-capsule.html` | Certainty derived from eight domains, absolute effects per 1000 |
+| 13 | IPD | `ipd-capsule.html` | Within-trial vs across-trial effect modification; the ecological/aggregation bias only patient-level data resolves |
+| 14 | Three-level | `threelevel-capsule.html` | REML variance decomposition for nested effect sizes; within- vs between-cluster (I²₂/I²₃) split |
+| 15 | Correlation | `correlation-capsule.html` | Fisher z pooling with exact 1/(n−3) variance, back-transformed to r with a prediction interval |
 
-## Meta-research & evidence integrity (6)
+## Meta-research & evidence integrity (7)
 
 | Type | File | What it does |
 |------|------|--------------|
@@ -38,6 +41,7 @@ and it runs offline. `index.html` links all 32.
 | Prediction-interval gap | `prediction-gap-capsule.html` | CI excludes null but 95% prediction interval does not |
 | Benford screening | `benford-capsule.html` | First-digit distribution vs Benford's law (χ² + Nigrini MAD) |
 | Study overlap (CCA) | `overlap-cca-capsule.html` | Corrected covered area for overlapping reviews |
+| Publication bias | `pubbias-capsule.html` | Funnel asymmetry, Egger's test, Duval–Tweedie trim-and-fill, conditional PET-PEESE |
 
 ## Causal & quasi-experimental (5)
 
@@ -49,7 +53,7 @@ and it runs offline. `index.html` links all 32.
 | Interrupted time series | `its-capsule.html` | Segmented regression: level change + slope change |
 | Propensity-score balance | `psbalance-capsule.html` | Love plot of SMDs before vs after adjustment |
 
-## Primary study designs (5)
+## Primary study designs (8)
 
 | Type | File | What it does |
 |------|------|--------------|
@@ -58,8 +62,11 @@ and it runs offline. `index.html` links all 32.
 | Observational (STROBE) | `strobe-capsule.html` | Crude vs adjusted, DAG, E-value |
 | Diagnostic (STARD) | `stard-capsule.html` | Se/Sp/PPV/NPV/LRs (Wilson CIs) + prevalence dependence |
 | Survival (KM/Cox) | `survival-primary-capsule.html` | Kaplan–Meier, log-rank, Cox HR, Schoenfeld PH check |
+| Cluster RCT | `cluster-capsule.html` | ICC, design effect, effective N, naive-vs-cluster-adjusted CI (df = clusters − 2) |
+| Non-inferiority | `noninferiority-capsule.html` | Risk difference vs a pre-specified margin, the five interpretation zones, one-sided NI test |
+| Decision curve | `dca-capsule.html` | Net benefit vs threshold probability; model against treat-all and treat-none |
 
-## Health economics & HTA (4)
+## Health economics & HTA (5)
 
 | Type | File | What it does |
 |------|------|--------------|
@@ -67,8 +74,9 @@ and it runs offline. `index.html` links all 32.
 | Acceptability curve | `ceac-capsule.html` | Seeded PSA, scatter, probability cost-effective vs WTP |
 | Markov model | `markov-capsule.html` | Transition matrix, cohort trace, discounted cost/QALYs |
 | Transportability | `transportability-capsule.html` | Effect-modifier SMDs + effect re-standardised to target |
+| Value of information | `voi-capsule.html` | EVPI from a seeded PSA: per-person + population EVPI across willingness-to-pay |
 
-`index.html` is the landing page linking all 32.
+`index.html` is the landing page linking all 40.
 
 ## What every capsule shares
 

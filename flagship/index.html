@@ -53,7 +53,7 @@
 <body>
 <header class="wrap">
   <div class="eyebrow">e156 · living evidence capsules</div>
-  <h1>Thirty-two analyses that audit themselves</h1>
+  <h1>Forty analyses that audit themselves</h1>
   <p class="standfirst">One self-contained HTML file per method — meta-analysis, meta-research, causal inference, primary study designs, and health economics. Every estimate is computed live in your browser, the data is editable, the engine is reader-inspectable, and each result is cross-validated against the standard R package — offline, with no server and no dependencies.</p>
   <div class="props">
     <span class="prop"><span class="d"></span>editable · live re-run</span>
@@ -86,7 +86,7 @@
   <p class="note">A sticky <b>assurance ribbon</b> (Bronze / Silver / Gold) that turns green only when the numbers reconcile; a PRISMA-style pipeline from protocol to result; an <b>editable data table</b> that re-runs the analysis on every keystroke and persists locally; an <b>“inspect the computation”</b> panel exposing the exact JavaScript via <code>Function.toString()</code>; and a copy-paste <b>R script</b> so anyone can reproduce the estimate in <code>metafor</code>, <code>meta</code>, <code>bayesmeta</code>, <code>mada</code>, <code>robvis</code>, <code>RTSA</code> or GRADEpro. Gold is reserved for independent reproduction.</p>
 
   <footer>
-    <p>e156 living evidence capsules · 32 methods · offline · <span id="stamp"></span></p>
+    <p>e156 living evidence capsules · 40 methods · offline · <span id="stamp"></span></p>
     <p class="note" style="margin-top:.4rem">Illustrative demo data throughout — edit any capsule to load your own. Built to the e156 assurance standard.</p>
   </footer>
 </main>
@@ -105,7 +105,10 @@ const CAPSULES=[
   {t:9,slug:'rob2-demo',file:'rob2-capsule.html',cat:'Risk of bias',name:'Risk of bias (RoB2)',desc:'Per-domain judgements, an overall verdict derived by the Cochrane RoB2 algorithm, a traffic-light matrix and weighted summary.'},
   {t:10,slug:'prisma2020-demo',file:'prisma-capsule.html',cat:'Reporting',name:'PRISMA 2020 flow',desc:'A flow diagram that has to add up: every box is derived by subtraction and turns red the instant it would go negative.'},
   {t:11,slug:'tsa-demo',file:'tsa-capsule.html',cat:'Sequential',name:'Trial sequential analysis',desc:'Cumulative Z against an O’Brien–Fleming monitoring boundary and a heterogeneity-adjusted required information size.'},
-  {t:12,slug:'grade-sof-demo',file:'grade-capsule.html',cat:'Certainty',name:'GRADE Summary of Findings',desc:'Certainty derived from the eight GRADE domains, plus absolute effects per 1000 — the relative effect made concrete.'}
+  {t:12,slug:'grade-sof-demo',file:'grade-capsule.html',cat:'Certainty',name:'GRADE Summary of Findings',desc:'Certainty derived from the eight GRADE domains, plus absolute effects per 1000 — the relative effect made concrete.'},
+  {t:13,slug:'ipd',file:'ipd-capsule.html',cat:'IPD',name:'IPD meta-analysis',desc:'Within-trial vs across-trial effect modification from individual participant data — the ecological bias only patient-level data resolves.'},
+  {t:14,slug:'threelevel',file:'threelevel-capsule.html',cat:'Three-level',name:'Three-level meta-analysis',desc:'REML variance decomposition for effect sizes nested in clusters, splitting heterogeneity into within- and between-cluster components.'},
+  {t:15,slug:'correlation',file:'correlation-capsule.html',cat:'Correlation',name:'Correlation meta-analysis',desc:'Fisher z pooling with the exact 1/(n−3) variance, back-transformed to r with a prediction interval — never averaging raw correlations.'}
 ];
 const METARESEARCH=[
   {tag:'meta-research',slug:'p-curve-demo',file:'pcurve-capsule.html',cat:'p-curve',name:'p-curve',desc:'Right-skew test for evidential value, the 33%-power flatness test, and an estimated underlying power from significant p-values.'},
@@ -113,7 +116,8 @@ const METARESEARCH=[
   {tag:'meta-research',slug:'excess-significance-demo',file:'excess-significance-capsule.html',cat:'Excess sig.',name:'Excess significance',desc:'Observed vs expected number of significant studies (Ioannidis–Trikalinos) — too many positives for the studies’ power.'},
   {tag:'meta-research',slug:'prediction-interval-gap-demo',file:'prediction-gap-capsule.html',cat:'PI gap',name:'Prediction-interval gap',desc:'When the pooled CI excludes the null but the 95% prediction interval does not — significant on average, unreliable next time.'},
   {tag:'meta-research',slug:'benford-demo',file:'benford-capsule.html',cat:'Benford',name:'Benford screening',desc:'First-digit distribution of reported numbers vs Benford’s law, with χ² and the Nigrini MAD conformity thresholds.'},
-  {tag:'meta-research',slug:'study-overlap-cca-demo',file:'overlap-cca-capsule.html',cat:'Overlap',name:'Study overlap (CCA)',desc:'Corrected covered area for overlapping reviews — how much an umbrella’s evidence is the same trials counted again.'}
+  {tag:'meta-research',slug:'study-overlap-cca-demo',file:'overlap-cca-capsule.html',cat:'Overlap',name:'Study overlap (CCA)',desc:'Corrected covered area for overlapping reviews — how much an umbrella’s evidence is the same trials counted again.'},
+  {tag:'meta-research',slug:'pubbias',file:'pubbias-capsule.html',cat:'Pub. bias',name:'Publication bias',desc:'Funnel asymmetry, Egger’s regression test, Duval–Tweedie trim-and-fill, and the conditional PET-PEESE small-study-effect correction.'}
 ];
 const CAUSAL=[
   {tag:'causal',slug:'mendelian-randomization-demo',file:'mr-capsule.html',cat:'MR',name:'Mendelian randomization',desc:'Two-sample summary MR — IVW, MR-Egger (with a pleiotropy intercept) and weighted median, plus the genetic-association scatter.'},
@@ -127,13 +131,17 @@ const PRIMARY=[
   {tag:'primary',slug:'prediction-model-tripod-demo',file:'prediction-capsule.html',cat:'TRIPOD',name:'Prediction model',desc:'Discrimination (ROC/AUC, Brier) and calibration (plot + slope/intercept) — because a high AUC with poor calibration still misleads.'},
   {tag:'primary',slug:'observational-strobe-demo',file:'strobe-capsule.html',cat:'STROBE',name:'Observational cohort',desc:'Crude vs adjusted effect (the confounding shift), a causal DAG, and the E-value for sensitivity to unmeasured confounding.'},
   {tag:'primary',slug:'diagnostic-stard-demo',file:'stard-capsule.html',cat:'STARD',name:'Diagnostic accuracy',desc:'2×2 to sensitivity/specificity/PPV/NPV/likelihood ratios with Wilson CIs, and how predictive values swing with prevalence.'},
-  {tag:'primary',slug:'survival-primary-km-cox-demo',file:'survival-primary-capsule.html',cat:'KM / Cox',name:'Survival analysis',desc:'Kaplan–Meier curves, the log-rank test, a Cox hazard ratio, and a Schoenfeld check that the hazards stay proportional.'}
+  {tag:'primary',slug:'survival-primary-km-cox-demo',file:'survival-primary-capsule.html',cat:'KM / Cox',name:'Survival analysis',desc:'Kaplan–Meier curves, the log-rank test, a Cox hazard ratio, and a Schoenfeld check that the hazards stay proportional.'},
+  {tag:'primary',slug:'cluster',file:'cluster-capsule.html',cat:'Cluster RCT',name:'Cluster-randomised trial',desc:'Intracluster correlation, the design effect that shrinks effective sample size, and the naive-vs-adjusted CI that can flip the verdict.'},
+  {tag:'primary',slug:'noninferiority',file:'noninferiority-capsule.html',cat:'Non-inferiority',name:'Non-inferiority trial',desc:'Risk difference against a pre-specified margin, the five interpretation zones, and the one-sided test — judged against −Δ, not zero.'},
+  {tag:'primary',slug:'dca',file:'dca-capsule.html',cat:'Decision curve',name:'Decision curve analysis',desc:'Net benefit of a model against treat-all and treat-none across threshold probabilities — clinical utility, not just discrimination.'}
 ];
 const HTA=[
   {tag:'HTA',slug:'cost-effectiveness-plane-demo',file:'ce-plane-capsule.html',cat:'ICER',name:'Cost-effectiveness',desc:'ICER, the cost-effectiveness plane with a willingness-to-pay threshold, incremental net monetary benefit, and dominance detection.'},
   {tag:'HTA',slug:'ceac-psa-demo',file:'ceac-capsule.html',cat:'CEAC',name:'Acceptability curve',desc:'Probabilistic sensitivity analysis (seeded, reproducible) — the PSA scatter and the probability cost-effective across willingness-to-pay.'},
   {tag:'HTA',slug:'markov-state-transition-demo',file:'markov-capsule.html',cat:'Markov',name:'Markov model',desc:'A cohort cycling between health states by a transition matrix, the cohort trace, and discounted total cost and QALYs.'},
-  {tag:'HTA',slug:'transportability-demo',file:'transportability-capsule.html',cat:'Transport',name:'Transportability',desc:'Effect-modifier overlap (SMDs) between trial and target, and the trial effect re-standardised to the target population.'}
+  {tag:'HTA',slug:'transportability-demo',file:'transportability-capsule.html',cat:'Transport',name:'Transportability',desc:'Effect-modifier overlap (SMDs) between trial and target, and the trial effect re-standardised to the target population.'},
+  {tag:'HTA',slug:'voi',file:'voi-capsule.html',cat:'EVPI',name:'Value of information',desc:'Expected value of perfect information from a seeded PSA — per-person and population EVPI across willingness-to-pay, the ceiling on research value.'}
 ];
 const hue=slug=>{let h=0;for(const c of slug)h=(h*31+c.charCodeAt(0))>>>0;return h%360;};
 const card=c=>{const H=hue(c.slug);
