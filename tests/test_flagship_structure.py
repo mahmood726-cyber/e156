@@ -8,6 +8,9 @@ assurance ribbon, and full linkage from index.html. See rules/lessons.md
 ("Placeholder leaks", "</script> in template literals", "Div balance").
 """
 import re
+import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -76,6 +79,31 @@ def test_capsule_plumbing(path):
     assert "Function.toString" in html, f"{path.name}: missing inspect-the-computation panel"
     assert 'class="tier"' in html, f"{path.name}: missing assurance tier badge"
     assert "agree with itself" in html, f"{path.name}: missing capsule motto"
+
+
+def _extract_script(html):
+    # The capsule's single inline <script> body (between the opening tag and
+    # the lone real </script>).
+    return html.split("<script>", 1)[1].rsplit("</script>", 1)[0]
+
+
+@pytest.mark.skipif(shutil.which("node") is None, reason="node not available")
+@pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
+def test_capsule_js_parses(path):
+    """The inline engine must parse. A missing paren in a setH(...) ternary
+    silently bricks the whole capsule (script never runs); see voi/cluster,
+    fixed 2026-05-29. `node --check` is the guard the structural checks miss."""
+    js = _extract_script(path.read_text(encoding="utf-8"))
+    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as fh:
+        fh.write(js)
+        tmp = fh.name
+    try:
+        proc = subprocess.run(
+            ["node", "--check", tmp], capture_output=True, text=True, timeout=30
+        )
+        assert proc.returncode == 0, f"{path.name}: JS syntax error\n{proc.stderr}"
+    finally:
+        Path(tmp).unlink(missing_ok=True)
 
 
 def test_index_links_every_capsule():

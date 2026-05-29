@@ -115,8 +115,8 @@
         <thead><tr><th>Strategy</th><th class="n">Mean cost</th><th class="n">SD cost</th><th class="n">Mean QALYs</th><th class="n">SD QALYs</th></tr></thead>
         <tbody id="cBody"></tbody></table></div>
       <div style="margin-top:.6rem">
-        <span class="field"><label>PSA iterations</label><input class="ed" id="itIn" type="number" step="500" min="200" max="20000" value="4000"></span>
-        <span class="field"><label>Seed</label><input class="ed" id="seedIn" type="number" step="1" value="12345"></span>
+        <span class="field"><label for="itIn">PSA iterations</label><input class="ed" id="itIn" type="number" step="500" min="200" max="20000" value="4000"></span>
+        <span class="field"><label for="seedIn">Seed</label><input class="ed" id="seedIn" type="number" step="1" value="12345"></span>
       </div>
       <div class="toolbar"><button class="btn" id="resetData">Reset</button><button class="btn" id="exportData">Export JSON</button><span class="livetag" id="liveTag">illustrative demo</span></div>
     </div>
@@ -138,7 +138,7 @@
   <section class="stage" id="decision">
     <div class="stagehdr"><span class="stagenum">04</span><h2>At a willingness-to-pay</h2></div>
     <div class="card">
-      <p>WTP threshold λ = <input class="ed" id="lamIn" type="number" step="1000" min="0" value="20000"> per QALY.</p>
+      <p>WTP threshold λ = <input class="ed" id="lamIn" type="number" step="1000" min="0" value="20000" aria-label="willingness-to-pay per QALY"> per QALY.</p>
       <div class="readouts">
         <div class="ro"><div class="k">Optimal (current info)</div><div class="v" id="roOpt">—</div></div>
         <div class="ro"><div class="k">P(optimal best)</div><div class="v" id="roPbest">—</div></div>
@@ -151,7 +151,7 @@
   <section class="stage" id="population">
     <div class="stagehdr"><span class="stagenum">05</span><h2>Population EVPI</h2></div>
     <div class="card">
-      <p>Affected population over the decision's relevant horizon: <input class="ed" id="popIn" type="number" step="1000" min="0" value="50000"> people.</p>
+      <p>Affected population over the decision's relevant horizon: <input class="ed" id="popIn" type="number" step="1000" min="0" value="50000" aria-label="affected population size"> people.</p>
       <div class="readouts">
         <div class="ro"><div class="k">Population EVPI</div><div class="v" id="roPopEvpi">—</div></div>
         <div class="ro"><div class="k">Research worth it?</div><div class="v" id="roWorth">—</div></div>
@@ -244,7 +244,7 @@ function renderOutputs(){
   const at=evpiAt(_psa,cfg.lambda);
   setT('roOpt',cfg.strats[at.opt].name);setH('roPbest',(at.pBest*100).toFixed(0)+'<small>%</small>');setT('roEvpi',money(at.evpi));
   setH('decNote',`At λ = ${money(cfg.lambda)}/QALY the strategy with the highest mean net benefit is <b>${esc(cfg.strats[at.opt].name)}</b>, best in <b class="num">${(at.pBest*100).toFixed(0)}%</b> of PSA draws. Per-person EVPI = <b class="num">${money(at.evpi)}</b> — `+
-    (at.evpi<1?'<span class="good">essentially zero</span>: the decision is settled at this threshold; no study could improve it.':(at.pBest<0.7?'<span class="warnf">substantial decision uncertainty</span> — the optimal choice flips often across the PSA.':'modest residual uncertainty.'));
+    (at.evpi<1?'<span class="good">essentially zero</span>: the decision is settled at this threshold; no study could improve it.':(at.pBest<0.7?'<span class="warnf">substantial decision uncertainty</span> — the optimal choice flips often across the PSA.':'modest residual uncertainty.')));
   const pop=cfg.pop*at.evpi;setT('roPopEvpi',money(pop));
   setH('roWorth',pop>1e6?'<span class="warnf">maybe</span>':(pop<1e5?'<span class="good">unlikely</span>':'borderline'));
   const vv=document.getElementById('verify');vv.textContent=`EVPI@${(cfg.lambda/1000).toFixed(0)}k ${money(at.evpi)} · peak ${money(peak.evpi)} ✓`;vv.style.color='var(--good)';

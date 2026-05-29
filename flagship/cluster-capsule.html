@@ -114,7 +114,7 @@
       <div class="tablewrap"><table id="cTable">
         <thead><tr><th>Arm</th><th class="n">Clusters</th><th class="n">Cluster size</th><th class="n">Mean</th><th class="n">SD</th></tr></thead>
         <tbody id="cBody"></tbody></table></div>
-      <div style="margin-top:.6rem"><span class="field"><label>ICC (ρ)</label><input class="ed" id="iccIn" type="number" step="0.01" min="0" max="0.999" value="0.05"></span></div>
+      <div style="margin-top:.6rem"><span class="field"><label for="iccIn">ICC (ρ)</label><input class="ed" id="iccIn" type="number" step="0.01" min="0" max="0.999" value="0.05"></span></div>
       <div class="toolbar"><button class="btn" id="resetData">Reset</button><button class="btn" id="exportData">Export JSON</button><span class="livetag" id="liveTag">illustrative demo</span></div>
     </div>
   </section>
@@ -231,7 +231,7 @@ function renderOutputs(){const r=analyse(cfg);renderCI(r);
   setT('roN',r.N+'');setT('roM',r.mbar.toFixed(1));setT('roDeff',r.deff.toFixed(2));setT('roNeff',Math.round(r.neff)+'');setT('roK',r.K+'');
   setT('badgeDeff','DEFF '+r.deff.toFixed(2));
   setH('deffNote',`With ICC = <b class="num">${f2p(cfg.icc)}</b> and mean cluster size <b class="num">${r.mbar.toFixed(1)}</b>, the design effect is <b class="num">${r.deff.toFixed(2)}</b>: the ${r.N} participants are worth only about <b class="num">${Math.round(r.neff)}</b> independent observations. `+
-    (r.deff>=1.5?'<span class="warnf">Large inflation</span> — the clustering costs a lot of effective sample.':'Modest inflation at this ICC and cluster size.');
+    (r.deff>=1.5?'<span class="warnf">Large inflation</span> — the clustering costs a lot of effective sample.':'Modest inflation at this ICC and cluster size.'));
   setT('roMD',f2(r.md));setH('roCIn',`${f2(r.ciN[0])} to ${f2(r.ciN[1])}`);setH('roCIa',`${f2(r.ciA[0])} to ${f2(r.ciA[1])}`);
   // flip
   let msg;
