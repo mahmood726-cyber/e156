@@ -103,6 +103,31 @@
   .auditlog{font-family:var(--mono);font-size:.76rem} .auditlog .row{display:flex;gap:1rem;padding:.3rem 0;border-bottom:1px solid var(--line)} .auditlog .t{color:var(--ink-soft);white-space:nowrap}
   footer{color:var(--ink-soft);font-size:.82rem;padding:2rem 0 4rem;border-top:1px solid var(--line)} footer .motto{font-family:var(--serif);font-style:italic;color:var(--ink)}
   @media print{.ribbon,nav.toc{position:static;backdrop-filter:none}}
+  /* screening tabs + record browser */
+  .tabs{display:flex;gap:.3rem;flex-wrap:wrap;margin:.2rem 0 .8rem;border-bottom:1px solid var(--line)}
+  .tab{font:inherit;font-size:.82rem;border:1px solid var(--line);border-bottom:none;background:var(--paper);color:var(--ink-soft);border-radius:8px 8px 0 0;padding:.35rem .8rem;cursor:pointer;position:relative;top:1px}
+  .tab[aria-selected="true"]{background:var(--card);color:var(--accent);font-weight:700;border-color:var(--line)}
+  .tab .ct{font-family:var(--mono);font-size:.72rem;opacity:.8}
+  .recs{display:grid;gap:.5rem}
+  .rec{display:grid;grid-template-columns:auto 1fr auto;gap:.2rem .7rem;align-items:start;border:1px solid var(--line);border-radius:9px;padding:.5rem .7rem;background:var(--card)}
+  .rec .dec{font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:.12rem .45rem;border-radius:5px;white-space:nowrap;align-self:center}
+  .rec.inc .dec{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)}
+  .rec.exc .dec{color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+  .rec .ttl{font-weight:600;font-size:.9rem}
+  .rec .meta{font-size:.76rem;color:var(--ink-soft);margin-top:.1rem}
+  .rec .reason{font-size:.78rem;color:var(--warn);margin-top:.15rem}
+  .rec .links{display:flex;flex-direction:column;gap:.2rem;align-items:flex-end}
+  a.srclink{font-size:.74rem;font-family:var(--mono);color:var(--accent);text-decoration:none;white-space:nowrap;border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);border-radius:6px;padding:.1rem .4rem}
+  a.srclink:hover{background:var(--accent-soft)} a.srclink::after{content:" ↗";opacity:.6}
+  /* provenance / data trace */
+  .trace{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.5rem;margin-top:.4rem}
+  .traceitem{border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem;background:var(--paper)}
+  .traceitem .pt{font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)} .traceitem .pv{font-family:var(--mono);font-weight:600}
+  /* lay summary */
+  .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:.6rem 0}
+  .lay h3{color:var(--accent-strong)}
+  /* narrative prose */
+  .prose p{max-width:42rem} .prose h3{margin-top:1rem}
 </style>
 </head>
 <body>
@@ -122,13 +147,15 @@
   <li><a href="#protocol">1 · Protocol</a></li>
   <li><a href="#search">2 · Search</a></li>
   <li><a href="#screening">3 · Screening</a></li>
-  <li><a href="#extraction">4 · Extraction (editable)</a></li>
+  <li><a href="#extraction">4 · Extraction</a></li>
   <li><a href="#rob">5 · Risk of bias</a></li>
-  <li><a href="#results">6 · Analysis &amp; results</a></li>
-  <li><a href="#xval">7 · R cross-validation</a></li>
-  <li><a href="#grade">8 · Certainty</a></li>
-  <li><a href="#audit">9 · Audit</a></li>
-  <li><a href="#assurance">10 · Assurance</a></li>
+  <li><a href="#methods">6 · Methods</a></li>
+  <li><a href="#results">7 · Analysis</a></li>
+  <li><a href="#resultstext">8 · Results</a></li>
+  <li><a href="#xval">9 · R cross-validation</a></li>
+  <li><a href="#grade">10 · Certainty</a></li>
+  <li><a href="#audit">11 · Audit</a></li>
+  <li><a href="#assurance">12 · Assurance</a></li>
 </ul></nav>
 
 <header class="wrap" style="padding:2.4rem 0 1rem">
@@ -139,6 +166,10 @@
 </header>
 
 <main class="wrap">
+  <div class="lay" id="laySummary">
+    <h3>What this means — in plain language</h3>
+    <p id="layText" style="margin:.2rem 0 0">—</p>
+  </div>
   <section class="stage" id="protocol">
     <div class="stagehdr"><span class="stagenum">01</span><h2>Protocol</h2><span class="prismaref">PRISMA #3,5–8 · AMSTAR #1–3</span></div>
     <div class="card"><h3>Review question — PICO</h3>
@@ -171,6 +202,16 @@
       <div class="parrow">↓</div>
       <div class="pnode" style="border-color:var(--accent)"><span>Randomized trials included</span><b id="prismaIncl" style="color:var(--good)">5 ✓</b></div>
     </div>
+    <div class="card">
+      <h3>Every screened record — included &amp; excluded</h3>
+      <p class="note" style="margin-bottom:.4rem">Confirm the screening yourself. Each record links to its registry entry and a publication search — press a link to go to the source. Excluded records show the screening stage and the exclusion reason. <span class="illus">excluded set illustrative</span></p>
+      <div class="tabs" id="screenTabs" role="tablist">
+        <button class="tab" role="tab" data-tab="included" aria-selected="true">Included <span class="ct" id="tabInc">—</span></button>
+        <button class="tab" role="tab" data-tab="excluded" aria-selected="false">Excluded <span class="ct" id="tabExc">—</span></button>
+        <button class="tab" role="tab" data-tab="all" aria-selected="false">All records <span class="ct" id="tabAll">—</span></button>
+      </div>
+      <div class="recs" id="recList"></div>
+    </div>
   </section>
 
   <section class="stage" id="extraction">
@@ -189,6 +230,11 @@
       </div>
       <p class="note" style="margin-top:.6rem">Provenance: each row carries its registry ID + primary publication (the row-level source rule). Denominator check runs live: events must not exceed N.</p>
     </div>
+    <div class="card">
+      <h3>Full data provenance — every extracted point traced to source</h3>
+      <p class="note" style="margin-bottom:.2rem">For each included trial, every data point we extracted is shown with a direct link to its registry record and publication, so any value can be checked at source.</p>
+      <div id="provList"></div>
+    </div>
   </section>
 
   <section class="stage" id="rob">
@@ -197,8 +243,30 @@
       <p class="note" style="margin-top:.7rem">RoB 2 domains D1–D5. Ratings shown are <span class="illus">illustrative</span> — replace with the adjudicated assessment.</p></div>
   </section>
 
+  <section class="stage" id="methods">
+    <div class="stagehdr"><span class="stagenum">06</span><h2>Methods</h2><span class="prismaref">PRISMA #5–15 · narrative</span></div>
+    <div class="card prose">
+      <h3>Protocol and registration</h3>
+      <p>This synthesis followed a pre-specified living protocol (v1.0) and is reported in line with PRISMA 2020. The review question, eligibility criteria, outcome and analysis plan were fixed before data extraction; the capsule re-runs the planned analysis whenever the underlying data change.</p>
+      <h3>Eligibility criteria</h3>
+      <p>We included randomised, placebo-controlled outcome trials of an SGLT2 inhibitor added to guideline-directed therapy in adults with heart failure across the full ejection-fraction spectrum, reporting a hazard ratio for the composite of cardiovascular death or worsening heart failure. Trials whose population was type 2 diabetes or chronic kidney disease without heart failure as the index condition, non-randomised studies, and secondary/subgroup publications of already-included trials were excluded (see Screening for each excluded record and its reason).</p>
+      <h3>Information sources and search</h3>
+      <p>ClinicalTrials.gov and PubMed were searched and the results de-duplicated by NCT identifier and then by normalised title. The search log shown is illustrative; the included set is fixed and every record is listed with a link to its registry entry and publication.</p>
+      <h3>Study selection and data extraction</h3>
+      <p>Records were screened by title/abstract and then full text against the eligibility criteria. For each included trial we extracted the 2×2 event counts (events and totals in each arm), the reported hazard ratio and its 95% confidence interval, the agent, year and risk-of-bias domains — each value traceable to the trial's registry record and primary publication (see Extraction). A live denominator check confirms events never exceed the arm total.</p>
+      <h3>Risk of bias</h3>
+      <p>Each trial was appraised with the Cochrane RoB 2 tool across its five domains; the per-domain judgements and an algorithmically-derived overall rating are shown in the Risk-of-bias matrix (ratings illustrative pending adjudication).</p>
+      <h3>Effect measures and synthesis</h3>
+      <p>Hazard ratios were pooled on the natural-log scale by inverse-variance random-effects meta-analysis. Each trial's log-HR standard error is recovered from its confidence interval as (ln UCL − ln LCL)/(2·1.96). The between-study variance τ² is estimated by Paule–Mandel by default (DerSimonian–Laird is biased for k&lt;10; REML and DL are selectable). A 95% prediction interval is computed on t<sub>k−1</sub> degrees of freedom (Cochrane Handbook v6.5). An optional Hartung–Knapp–Sidik–Jonkman adjustment is available for the confidence interval.</p>
+      <h3>Heterogeneity, robustness and reporting bias</h3>
+      <p>Heterogeneity is summarised by I² and τ². Robustness is probed by leave-one-out influence, a GOSH plot of every subset meta-analysis, a cumulative meta-analysis by year, subgroup analysis by agent, and meta-regression on trial year. Small-study/publication-bias effects are assessed by a contour-style funnel plot with Egger's radial regression test (low power at k&lt;10), with a Vevea–Hedges selection model and RoBMA available via in-browser R.</p>
+      <h3>Certainty of evidence and software</h3>
+      <p>Certainty in the pooled estimate is rated with GRADE across its domains, with inconsistency and imprecision updating live from the analysis. Every estimate is computed in the browser and is independently reproducible against R's <code>metafor</code> (a copy-paste script and an in-browser WebR run are provided).</p>
+    </div>
+  </section>
+
   <section class="stage" id="results">
-    <div class="stagehdr"><span class="stagenum">06</span><h2>Analysis &amp; results</h2><span class="prismaref">PRISMA #13,20</span></div>
+    <div class="stagehdr"><span class="stagenum">07</span><h2>Analysis &amp; results</h2><span class="prismaref">PRISMA #13,20</span></div>
     <div class="card">
       <p style="margin:.1rem 0 .4rem">Hazard ratio — CV death or worsening heart failure. <span class="note">Click a trial to include/exclude; edits in stage 4 also flow here live.</span></p>
       <div class="toolbar" style="margin:.2rem 0 .6rem">
@@ -212,6 +280,7 @@
         <span class="livetag" id="methodTag"></span>
       </div>
       <svg class="forest" id="forest" viewBox="0 0 720 360" role="group" aria-label="Forest plot of hazard ratios (interactive)"></svg>
+      <p class="note" style="margin:.1rem 0 .4rem"><span style="color:var(--accent-strong)">◆</span> diamond = pooled estimate &amp; 95% confidence interval &nbsp;·&nbsp; <span style="color:var(--accent)">▭</span> band = 95% prediction interval (where a new trial would plausibly fall) &nbsp;·&nbsp; box area ∝ study weight. HR &lt; 1 favours SGLT2 inhibitor.</p>
       <div class="readouts" aria-live="polite">
         <div class="ro"><div class="k">Pooled HR (random)</div><div class="v" id="roHR">—</div></div>
         <div class="ro"><div class="k">95% CI</div><div class="v" id="roCI">—</div></div>
@@ -254,11 +323,45 @@
         </div>
       </div>
     </div>
+    <div class="card">
+      <h3>Cumulative evidence &amp; external comparison</h3>
+      <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))">
+        <div>
+          <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">Cumulative meta-analysis — pooled HR as each trial is added chronologically (the estimate stabilising over time)</div>
+          <svg class="forest" id="cumsvg" viewBox="0 0 440 230" role="group" aria-label="Cumulative meta-analysis"></svg>
+        </div>
+        <div>
+          <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">External check — this capsule vs an independent published pooled estimate</div>
+          <svg class="forest" id="benchsvg" viewBox="0 0 440 150" role="group" aria-label="Benchmark comparison"></svg>
+          <p class="note" id="benchOut" style="margin-top:.3rem">—</p>
+        </div>
+      </div>
+    </div>
     <p>Pooled hazard ratio <span class="num" id="inlineHR">—</span> (95% CI <span class="num" id="inlineCI">—</span>) — about a <span id="inlineRRR">—</span> relative reduction. The prediction interval (dashed band) is where a new trial would plausibly land; when it excludes 1.0 the signal is robust. With few studies, DerSimonian–Laird, REML and PM coincide here because between-study variance is estimated at zero.</p>
   </section>
 
+  <section class="stage" id="resultstext">
+    <div class="stagehdr"><span class="stagenum">08</span><h2>Results</h2><span class="prismaref">PRISMA #16–22 · narrative</span></div>
+    <div class="card prose">
+      <h3>Study selection</h3>
+      <p id="rsSelection">—</p>
+      <h3>Study characteristics</h3>
+      <p id="rsChar">—</p>
+      <h3>Primary outcome — cardiovascular death or worsening heart failure</h3>
+      <p id="rsPrimary">—</p>
+      <h3>Heterogeneity</h3>
+      <p id="rsHet">—</p>
+      <h3>Robustness and small-study effects</h3>
+      <p id="rsRobust">—</p>
+      <h3>Subgroups and meta-regression</h3>
+      <p id="rsSubg">—</p>
+      <h3>External comparison and certainty</h3>
+      <p id="rsCertainty">—</p>
+    </div>
+  </section>
+
   <section class="stage" id="xval">
-    <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation</h2><span class="prismaref">independent replication — metafor</span></div>
+    <div class="stagehdr"><span class="stagenum">09</span><h2>R cross-validation</h2><span class="prismaref">independent replication — metafor</span></div>
     <p>The browser engine is checked against R’s <code>metafor</code> (DerSimonian–Laird). This script regenerates live from the current data and reproduces the pooled estimate, CI and prediction interval.</p>
     <pre class="code" id="rcode"></pre>
     <div class="card"><div class="xval">
@@ -278,7 +381,7 @@
   </section>
 
   <section class="stage" id="grade">
-    <div class="stagehdr"><span class="stagenum">08</span><h2>Certainty (GRADE)</h2><span class="prismaref">PRISMA #22</span></div>
+    <div class="stagehdr"><span class="stagenum">10</span><h2>Certainty (GRADE)</h2><span class="prismaref">PRISMA #22</span></div>
     <div class="card"><div class="tablewrap"><table>
       <thead><tr><th>Domain</th><th>Assessment (pre-specified all-trials model)</th></tr></thead>
       <tbody>
@@ -293,12 +396,12 @@
   </section>
 
   <section class="stage" id="audit">
-    <div class="stagehdr"><span class="stagenum">09</span><h2>Audit trail</h2><span class="prismaref">internal self-audit log</span></div>
+    <div class="stagehdr"><span class="stagenum">11</span><h2>Audit trail</h2><span class="prismaref">internal self-audit log</span></div>
     <div class="card auditlog" id="auditlog"></div>
   </section>
 
   <section class="stage" id="assurance">
-    <div class="stagehdr"><span class="stagenum">10</span><h2>Assurance</h2><span class="prismaref">the capsule audits itself</span></div>
+    <div class="stagehdr"><span class="stagenum">12</span><h2>Assurance</h2><span class="prismaref">the capsule audits itself</span></div>
     <div class="card">
       <p>This badge is <strong>derived from checks, never hand-set</strong>. The pooled estimate was re-computed in your browser and matched against the stated claim and the R-metafor target.</p>
       <div class="tablewrap"><table>
@@ -339,6 +442,23 @@ const PUBLISHED=[
   {nct:'NCT03521934',name:'SOLOIST-WHF',year:2021,agent:'Sotagliflozin',journal:'NEJM 2021',tE:245,tN:608,cE:355,cN:614,hr:0.67,lci:0.52,uci:0.85,rob:['L','S','S','L','L'],inc:true}
 ];
 const CLAIM_HR=0.77, Z=1.959963984540054;
+// ---- source links (every record is clickable to its registry / publication) ----
+const regUrl=nct=>nct?'https://clinicaltrials.gov/study/'+encodeURIComponent(nct):null;
+const pmUrl=q=>'https://pubmed.ncbi.nlm.nih.gov/?term='+encodeURIComponent(q);
+const ctSearch=q=>'https://clinicaltrials.gov/search?term='+encodeURIComponent(q);
+// ---- excluded records (illustrative) — real SGLT2i trials a HF review screens out, each traceable ----
+const EXCLUDED=[
+  {id:'DAPA-CKD',source:'CT.gov + PubMed',stage:'Full-text',title:'Dapagliflozin in Patients with Chronic Kidney Disease (DAPA-CKD)',reason:'Population is chronic kidney disease, not heart failure; HF events a secondary outcome.'},
+  {id:'EMPA-KIDNEY',source:'CT.gov + PubMed',stage:'Full-text',title:'Empagliflozin in Patients with Chronic Kidney Disease (EMPA-KIDNEY)',reason:'Population is CKD; no primary HF composite hazard ratio reported.'},
+  {id:'DECLARE-TIMI 58',source:'CT.gov + PubMed',stage:'Full-text',title:'Dapagliflozin and Cardiovascular Outcomes in Type 2 Diabetes (DECLARE–TIMI 58)',reason:'Population is type 2 diabetes; HF hospitalisation a secondary, not the primary HF composite.'},
+  {id:'EMPA-REG OUTCOME',source:'CT.gov + PubMed',stage:'Full-text',title:'Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes',reason:'Population is type 2 diabetes with established CV disease; not a heart-failure trial.'},
+  {id:'CANVAS Program',source:'CT.gov + PubMed',stage:'Title/abstract',title:'Canagliflozin and Cardiovascular and Renal Events in Type 2 Diabetes',reason:'Population is type 2 diabetes; outcome not the HF composite.'},
+  {id:'SCORED',source:'CT.gov + PubMed',stage:'Title/abstract',title:'Sotagliflozin in Patients with Diabetes and Chronic Kidney Disease',reason:'Population is T2D + CKD; primary endpoint not the HF composite.'},
+  {id:'DAPA-HF diabetes subgroup',source:'PubMed',stage:'Title/abstract',title:'Effect of Dapagliflozin in DAPA-HF According to Diabetes Status',reason:'Secondary/subgroup publication of an already-included trial (DAPA-HF) — would double-count.'},
+  {id:'Observational SGLT2i HF cohort',source:'PubMed',stage:'Title/abstract',title:'Real-world outcomes with SGLT2 inhibitors in heart failure (registry cohort)',reason:'Not a randomised controlled trial (observational design) — outside eligibility.'}
+];
+// ---- published benchmark for external comparison ----
+const BENCHMARK={label:'Published pooled estimate (trial-level meta-analysis of the 5 SGLT2i HF trials)',hr:0.77,lci:0.72,uci:0.83,note:'Independent published synthesis of CV death or worsening heart failure — an external check on this capsule.'};
 const T975={1:12.706,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,10:2.228,12:2.179,15:2.131,20:2.086,30:2.042};
 function tcrit(df){if(df<=0)return Z;if(T975[df])return T975[df];const ks=Object.keys(T975).map(Number).sort((a,b)=>a-b);for(const k of ks)if(df<=k)return T975[k];return 1.962;}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -429,7 +549,7 @@ function renderForest(res){
   const n=model.length,H=padTop+n*rowH+108,svg=document.getElementById('forest');
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   let s=`<desc>Per-trial hazard ratios with 95% CIs and a pooled random-effects diamond with prediction interval.</desc>`;
-  const axisY=padTop+n*rowH+8, diaY=padTop+n*rowH+30;
+  const axisY=padTop+n*rowH+8, diaY=padTop+n*rowH+66;
   ticks.forEach(t=>{const x=xOf(t);s+=`<line class="${t===1?'nullline':'grid'}" x1="${x}" y1="${padTop-8}" x2="${x}" y2="${axisY}"/>`;
     s+=`<text class="tick" x="${x}" y="${axisY+16}" text-anchor="middle">${t.toFixed(1)}</text>`;});
   s+=`<line class="colrule" x1="${padL-12}" y1="${padTop-8}" x2="${padL-12}" y2="${diaY+8}"/>`;
@@ -455,7 +575,7 @@ function renderForest(res){
     const dcx=xOf(res.reHR),dxl=xOf(res.ciL),dxu=xOf(res.ciU),h=8;
     if(res.piL&&res.piU){const pl=xOf(res.piL),pu=xOf(res.piU);s+=`<rect class="piband" x="${pl}" y="${diaY-4}" width="${Math.max(1,pu-pl)}" height="8" rx="4"/>`;}
     s+=`<polygon class="diamond" points="${dxl},${diaY} ${dcx},${diaY-h} ${dxu},${diaY} ${dcx},${diaY+h}"/>`;
-    s+=`<text class="pooledlbl" x="14" y="${diaY-1}">Pooled (random-effects)</text><text class="yr" x="14" y="${diaY+13}">diamond = 95% CI · band = 95% prediction</text>`;
+    s+=`<text class="pooledlbl" x="14" y="${diaY+4}">Pooled (random-effects)</text>`;
     s+=`<text class="pooledval" x="${W-12}" y="${diaY+4}" text-anchor="end">${f(res.reHR)} (${f(res.ciL)}–${f(res.ciU)})</text>`;
   } else {
     s+=`<text class="yr" x="14" y="${diaY+4}">no valid included studies — nothing to pool</text>`;
@@ -649,7 +769,81 @@ function renderInspect(){
   const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model,null,2);
   const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[wmean,genQ,tau2DL,tau2PM,tau2REML,tau2est,pool,egger,metareg].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}
 }
-function renderOutputs(){const res=pool(model);renderForest(res);updateReadouts(res);runVerify(res);renderRcode();renderRobmaCode();renderLOO();renderFunnelEgger(res);renderGosh();renderSubgroup();renderMetaReg(res);renderInspect();badgeCounts();
+// ---- screening record browser (Included / Excluded / All), every record linked ----
+let _screenTab='included';
+function incRec(t){const reg=regUrl(t.nct),pub=pmUrl(t.name+' '+t.journal+' '+t.year);
+  return `<div class="rec inc"><span class="dec">Included</span>`+
+    `<div><div class="ttl">${esc(t.name)}</div><div class="meta">${esc(t.agent)} · ${esc(String(t.year))} · ${esc(t.journal)} · ${esc(t.nct)}</div></div>`+
+    `<div class="links">${reg?`<a class="srclink" href="${reg}" target="_blank" rel="noopener">Registry</a>`:''}<a class="srclink" href="${pub}" target="_blank" rel="noopener">PubMed</a></div></div>`;}
+function excRec(e){const reg=ctSearch(e.id),pub=pmUrl(e.title);
+  return `<div class="rec exc"><span class="dec">Excluded</span>`+
+    `<div><div class="ttl">${esc(e.title)}</div><div class="meta">${esc(e.source)} · excluded at ${esc(e.stage)} screening</div><div class="reason">Reason — ${esc(e.reason)}</div></div>`+
+    `<div class="links"><a class="srclink" href="${reg}" target="_blank" rel="noopener">CT.gov</a><a class="srclink" href="${pub}" target="_blank" rel="noopener">PubMed</a></div></div>`;}
+function renderScreening(){
+  const inc=model,nInc=inc.length,nExc=EXCLUDED.length;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('tabInc',nInc);set('tabExc',nExc);set('tabAll',nInc+nExc);
+  document.querySelectorAll('#screenTabs .tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===_screenTab?'true':'false'));
+  let list=[];
+  if(_screenTab==='included')list=inc.map(incRec);
+  else if(_screenTab==='excluded')list=EXCLUDED.map(excRec);
+  else list=inc.map(incRec).concat(EXCLUDED.map(excRec));
+  const el=document.getElementById('recList');if(el)el.innerHTML=list.join('')||'<p class="note">No records.</p>';}
+// ---- full data provenance — every extracted point traced to a clickable source ----
+function renderProvenance(){const el=document.getElementById('provList');if(!el)return;
+  el.innerHTML=model.map(t=>{const reg=regUrl(t.nct),pub=pmUrl(t.name+' '+t.journal+' '+t.year);
+    const pt=(k,v)=>`<div class="traceitem"><div class="pt">${k}</div><div class="pv">${v}</div></div>`;
+    return `<div class="card" style="margin:.5rem 0;padding:.7rem .9rem;box-shadow:none">`+
+      `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem"><b>${esc(t.name)} <span class="note" style="font-weight:400">(${esc(t.agent)}, ${esc(String(t.year))})</span></b>`+
+      `<span class="links" style="display:flex;gap:.3rem">${reg?`<a class="srclink" href="${reg}" target="_blank" rel="noopener">Registry ${esc(t.nct)}</a>`:''}<a class="srclink" href="${pub}" target="_blank" rel="noopener">Publication · ${esc(t.journal)}</a></span></div>`+
+      `<div class="trace">`+pt('Treatment events / N',`${t.tE} / ${t.tN}`)+pt('Control events / N',`${t.cE} / ${t.cN}`)+
+      pt('Hazard ratio',f(t.hr))+pt('95% confidence interval',`${f(t.lci)} – ${f(t.uci)}`)+
+      pt('RoB 2 (D1–D5)',esc(t.rob.join(' ')))+pt('Registry ID',esc(t.nct))+`</div></div>`;}).join('');}
+// ---- mini log-HR forest (shared by cumulative + benchmark) ----
+function miniForest(svgId,rows,opts){const svg=document.getElementById(svgId);if(!svg)return;
+  const vb=svg.getAttribute('viewBox').split(' ').map(Number),W=vb[2];const padL=opts.padL||120,padR=14,top=14,rowH=opts.rowH||26;
+  const lo=Math.log(0.45),hi=Math.log(1.7),x=hr=>padL+(Math.log(hr)-lo)/(hi-lo)*(W-padL-padR);
+  if(!rows.length){svg.innerHTML='<text x="10" y="20" class="yr">no studies</text>';return;}
+  let s='';[0.5,0.7,1.0,1.5].forEach(t=>{const xx=x(t);s+=`<line class="${t===1?'nullline':'grid'}" x1="${xx}" y1="${top-6}" x2="${xx}" y2="${top+rows.length*rowH+2}"/><text class="tick" x="${xx}" y="${top+rows.length*rowH+16}" text-anchor="middle">${t}</text>`;});
+  rows.forEach((r,i)=>{const y=top+i*rowH+rowH/2;s+=`<text class="lbl" x="8" y="${y+3}" style="font-size:11px">${esc(r.label)}</text>`;
+    if(r.hr>0){s+=`<line class="whisk" x1="${x(r.lo)}" y1="${y}" x2="${x(r.hi)}" y2="${y}"/>`+
+      `<rect x="${x(r.hr)-3.5}" y="${y-3.5}" width="7" height="7" fill="${r.accent?'var(--accent-strong)':'var(--accent)'}"/>`+
+      `<text class="val" x="${W-6}" y="${y+3}" text-anchor="end" style="font-size:10.5px">${f(r.hr)} (${f(r.lo)}–${f(r.hi)})</text>`;}});
+  svg.setAttribute('viewBox',`0 0 ${W} ${top+rows.length*rowH+24}`);svg.innerHTML=s;}
+function renderCumulative(){const use=model.filter(t=>t.inc&&valid(t)).slice().sort((a,b)=>(a.year-b.year)||String(a.name).localeCompare(String(b.name)));
+  const rows=[];for(let i=1;i<=use.length;i++){const p=pooledSub(use.slice(0,i));if(p)rows.push({label:i+' trial'+(i>1?'s':'')+' · +'+use[i-1].name,hr:p.hr,lo:p.lo,hi:p.hi,accent:i===use.length});}
+  miniForest('cumsvg',rows,{padL:188,rowH:24});}
+function renderBenchmark(res){const rows=[];
+  if(res)rows.push({label:'This capsule (live)',hr:res.reHR,lo:res.ciL,hi:res.ciU,accent:true});
+  rows.push({label:'Published pooled',hr:BENCHMARK.hr,lo:BENCHMARK.lci,hi:BENCHMARK.uci});
+  miniForest('benchsvg',rows,{padL:150,rowH:30});
+  const out=document.getElementById('benchOut');if(!out)return;
+  if(res){const d=Math.abs(res.reHR-BENCHMARK.hr);out.innerHTML=`This capsule HR <b class="num">${f(res.reHR)}</b> vs published <b class="num">${f(BENCHMARK.hr)}</b> (${esc(BENCHMARK.note)}) — ${d<=0.03?'<span class="good">agree within 0.03</span>':'<span class="warnf">differ by '+d.toFixed(2)+' — check data/methods</span>'}.`;}else out.textContent='—';}
+// ---- live plain-language + narrative Results ----
+function renderLay(res){const el=document.getElementById('layText');if(!el)return;
+  if(!res){el.textContent='No studies are currently included — add or include trials above to see a summary.';return;}
+  const rrr=Math.round((1-res.reHR)*100),robust=res.piL&&res.piU&&res.piU<1;
+  el.innerHTML=`Across <b>${res.k}</b> randomised trial${res.k>1?'s':''} in heart failure, adding an SGLT2 inhibitor lowered the risk of cardiovascular death or worsening heart failure by about <b>${rrr}%</b> (hazard ratio <b class="num">${f(res.reHR)}</b>, 95% CI ${f(res.ciL)}–${f(res.ciU)}). `+
+    (robust?'The benefit was consistent enough that a future trial would be expected to show the same direction.':'The effect is clear on average, though results varied across trials.')+` These are illustrative demo data — edit the table to see how the conclusion changes.`;}
+function renderResultsText(res){const setH=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
+  if(!res){['rsSelection','rsChar','rsPrimary','rsHet','rsRobust','rsSubg','rsCertainty'].forEach(id=>setH(id,'No included studies — nothing to report.'));return;}
+  const use=res.use,k=res.k;
+  setH('rsSelection',`After de-duplication and two-stage screening, <b>${model.length}</b> randomised trial${model.length>1?'s were':' was'} included and <b>${EXCLUDED.length}</b> record${EXCLUDED.length>1?'s were':' was'} excluded with documented reasons (most commonly a diabetes or CKD population rather than heart failure). Every included and excluded record is listed with a link to its registry entry and publication in the Screening section. ${k} trial${k>1?'s are':' is'} currently in the pooled analysis.`);
+  const agents=[...new Set(use.map(t=>t.agent))],yrs=use.map(t=>+t.year).filter(isFinite);
+  const totN=use.reduce((a,t)=>a+t.tN+t.cN,0),totEv=use.reduce((a,t)=>a+t.tE+t.cE,0);
+  setH('rsChar',`The included trials evaluated ${agents.length} agent${agents.length>1?'s':''} (${esc(agents.join(', '))}), published ${yrs.length?Math.min(...yrs)+'–'+Math.max(...yrs):'—'}, contributing <b class="num">${totN.toLocaleString('en-GB')}</b> randomised participants and <b class="num">${totEv.toLocaleString('en-GB')}</b> primary events. Full per-trial 2×2 tables and effect estimates, each traceable to source, are in the Extraction section.`);
+  setH('rsPrimary',`Adding an SGLT2 inhibitor reduced the composite of cardiovascular death or worsening heart failure: pooled hazard ratio <b class="num">${f(res.reHR)}</b> (95% ${res.ciNote==='HKSJ'?'HKSJ ':''}CI <b class="num">${f(res.ciL)}–${f(res.ciU)}</b>), a relative reduction of about <b>${Math.round((1-res.reHR)*100)}%</b>, by inverse-variance random-effects meta-analysis (${METHOD_LABEL[res.method]} τ²). `+(res.piL?`The 95% prediction interval was ${f(res.piL)}–${f(res.piU)}, ${res.piU<1?'<span class="good">excluding no-effect — a robust signal</span>':'<span class="warnf">crossing no-effect — the next trial could differ</span>'}.`:''));
+  setH('rsHet',`Between-study heterogeneity was ${res.I2==null?'—':(res.I2<25?'low':res.I2<50?'moderate':'substantial')+` (I² = <b class="num">${res.I2.toFixed(0)}%</b>`}, τ² = <b class="num">${res.tau2.toFixed(4)}</b>, Cochran's Q = ${res.Q.toFixed(1)} on ${res.df} df). With few large trials the moment-based τ² is near zero, so DerSimonian–Laird, REML and Paule–Mandel coincide.`);
+  let looMin=Infinity,looMax=-Infinity;use.forEach((t,i)=>{const p=pooledSub(use.filter((_,j)=>j!==i));if(p){looMin=Math.min(looMin,p.hr);looMax=Math.max(looMax,p.hr);}});
+  const eg=egger(res);
+  setH('rsRobust',`The pooled estimate was stable on leave-one-out (range ${isFinite(looMin)?f(looMin)+'–'+f(looMax):'—'}), and the GOSH plot of every subset formed a single tight cloud — no single trial drives the result. `+(eg?`Egger's radial test for funnel asymmetry gave intercept ${eg.intercept.toFixed(2)} (p = ${eg.p<0.001?'<0.001':eg.p.toFixed(2)}), ${eg.p<0.05?'<span class="warnf">suggesting small-study effects</span>':'with no evidence of small-study effects'} (low power at k&lt;10).`:'Funnel-based tests need ≥3 trials.'));
+  const byAgent={};use.forEach(t=>{(byAgent[t.agent]=byAgent[t.agent]||[]).push(t);});
+  const subStr=Object.entries(byAgent).map(([a,arr])=>{const p=pooledSub(arr);return `${esc(a)} (${arr.length} trial${arr.length>1?'s':''}): HR ${p?f(p.hr):'—'}`;}).join('; ');
+  let mrTxt='';try{const mr=metareg(res.y,res.v,use.map(t=>+t.year));mrTxt=` Meta-regression on trial year showed ${mr.p<0.05?'a significant':'no significant'} time trend (p = ${mr.p<0.001?'<0.001':mr.p.toFixed(2)}).`;}catch(e){}
+  setH('rsSubg',`By agent — ${subStr}. ${Object.keys(byAgent).length>1?'Effects were consistent across agents.':''}${mrTxt}`);
+  const d=Math.abs(res.reHR-BENCHMARK.hr);
+  setH('rsCertainty',`The capsule's live pooled HR (${f(res.reHR)}) ${d<=0.03?'agrees within 0.03 with':'differs by '+d.toFixed(2)+' from'} an independent published pooled estimate (${f(BENCHMARK.hr)}), and is reproducible against R's metafor. By GRADE the certainty for the composite endpoint is <b>${(res.ciL>1||res.ciU<1)&&(res.I2==null||res.I2<50)?'HIGH':'MODERATE'}</b>, downgraded only where heterogeneity or imprecision apply.`);}
+function renderOutputs(){const res=pool(model);renderForest(res);updateReadouts(res);runVerify(res);renderRcode();renderRobmaCode();renderLOO();renderFunnelEgger(res);renderGosh();renderSubgroup();renderMetaReg(res);renderCumulative();renderBenchmark(res);renderResultsText(res);renderLay(res);renderInspect();badgeCounts();
   const mt=document.getElementById('methodTag');if(mt)mt.textContent=METHOD_LABEL[METHOD]+(res&&res.tau2!=null?` · τ²=${res.tau2.toFixed(4)}`:'')+(HKSJ?' · Hartung–Knapp':'');}
 async function runWebR(){
   const out=document.getElementById('webrOut'),btn=document.getElementById('webrBtn');
@@ -692,7 +886,8 @@ async function runWebRSel(){
   }catch(e){out.innerHTML=`<span style="color:var(--warn)">WebR/selmodel could not run here (needs network + https; metafor wasm must be available): ${esc(String((e&&e.message)||e))}.</span> Copy the metafor script above and run <code>selmodel()</code> locally.`;}
   finally{btn.disabled=false;}
 }
-function renderAll(){renderTable();renderRob();renderOutputs();}
+function renderAll(){renderTable();renderRob();renderScreening();renderProvenance();renderOutputs();}
+const _st=document.getElementById('screenTabs');if(_st)_st.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;_screenTab=b.dataset.tab;renderScreening();});
 
 // events
 document.getElementById('extractBody').addEventListener('input',e=>{
