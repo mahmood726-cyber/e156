@@ -106,6 +106,34 @@ def test_capsule_js_parses(path):
         Path(tmp).unlink(missing_ok=True)
 
 
+# Identifiers that are predefined properties of the browser global (window).
+# A top-level `const`/`let` binding of one of these throws a browser-only
+# SyntaxError ("Identifier 'top' has already been declared") that node --check
+# cannot see — it silently bricks the whole capsule. sglt2-hf shipped broken
+# this way via `const ...,top=24,...`; fixed 2026-05-30 (renamed to padTop).
+WINDOW_GLOBALS = {
+    "top", "parent", "self", "name", "length", "status", "closed",
+    "origin", "frames", "history", "location", "event", "external",
+}
+
+
+@pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
+def test_no_toplevel_window_global_shadowing(path):
+    js = _extract_script(path.read_text(encoding="utf-8"))
+    offenders = []
+    for line in js.splitlines():
+        # Top-level declarations in these capsules sit at column 0; anything
+        # inside a function is indented and is safely function-scoped.
+        if not re.match(r"(?:const|let|var)\s", line):
+            continue
+        names = re.findall(r"(?:^(?:const|let|var)\s+|,\s*)([A-Za-z_$][\w$]*)\s*=", line)
+        offenders += [n for n in names if n in WINDOW_GLOBALS]
+    assert not offenders, (
+        f"{path.name}: top-level declaration shadows window global(s) {offenders} "
+        "— browser-only SyntaxError, will brick the capsule"
+    )
+
+
 def test_index_links_every_capsule():
     index = (FLAGSHIP / "index.html").read_text(encoding="utf-8")
     missing = [p.name for p in CAPSULES if p.name not in index]

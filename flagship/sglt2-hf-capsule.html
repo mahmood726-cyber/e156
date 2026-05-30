@@ -423,21 +423,21 @@ function metareg(y,v,x){const k=y.length;
 
 const W=720,padL=176,padR=150,plotW=W-padL-padR,DMIN=Math.log(0.45),DMAX=Math.log(1.7);
 const xOf=hr=>padL+(Math.log(hr)-DMIN)/(DMAX-DMIN)*plotW;
-const rowH=40,top=24,ticks=[0.5,0.7,1.0,1.5];
+const rowH=40,padTop=24,ticks=[0.5,0.7,1.0,1.5];
 
 function renderForest(res){
-  const n=model.length,H=top+n*rowH+108,svg=document.getElementById('forest');
+  const n=model.length,H=padTop+n*rowH+108,svg=document.getElementById('forest');
   svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   let s=`<desc>Per-trial hazard ratios with 95% CIs and a pooled random-effects diamond with prediction interval.</desc>`;
-  const axisY=top+n*rowH+8, diaY=top+n*rowH+30;
-  ticks.forEach(t=>{const x=xOf(t);s+=`<line class="${t===1?'nullline':'grid'}" x1="${x}" y1="${top-8}" x2="${x}" y2="${axisY}"/>`;
+  const axisY=padTop+n*rowH+8, diaY=padTop+n*rowH+30;
+  ticks.forEach(t=>{const x=xOf(t);s+=`<line class="${t===1?'nullline':'grid'}" x1="${x}" y1="${padTop-8}" x2="${x}" y2="${axisY}"/>`;
     s+=`<text class="tick" x="${x}" y="${axisY+16}" text-anchor="middle">${t.toFixed(1)}</text>`;});
-  s+=`<line class="colrule" x1="${padL-12}" y1="${top-8}" x2="${padL-12}" y2="${diaY+8}"/>`;
+  s+=`<line class="colrule" x1="${padL-12}" y1="${padTop-8}" x2="${padL-12}" y2="${diaY+8}"/>`;
   s+=`<text class="fav" x="${xOf(0.62)}" y="${axisY+32}" text-anchor="middle"><tspan class="favarr">◀</tspan> favours SGLT2i</text>`+
      `<text class="fav" x="${xOf(1.4)}" y="${axisY+32}" text-anchor="middle">favours placebo <tspan class="favarr">▶</tspan></text>`;
   let maxW=0;if(res)res.wmap.forEach(v=>{if(v>maxW)maxW=v;});if(maxW<=0)maxW=1;
   model.forEach((t,i)=>{
-    const y=top+i*rowH+rowH/2,ok=valid(t);
+    const y=padTop+i*rowH+rowH/2,ok=valid(t);
     const x=ok?xOf(t.hr):padL,xl=ok?xOf(t.lci):padL,xu=ok?xOf(t.uci):padL;
     const wv=(res&&res.wmap.get(t))||0,half=2+Math.sqrt(wv/maxW)*10;
     const exc=!t.inc||!ok;
