@@ -29,7 +29,10 @@ import subprocess
 import sys
 
 # UTF-8 stdout on Windows consoles (cp1252 would crash on any non-ASCII).
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+# Guarded so it never runs under pytest (module-level stdout reassignment
+# corrupts pytest's capture — see rules/lessons.md).
+if "pytest" not in sys.modules:
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 START = "<!--PROTOREG_START-->"
 END = "<!--PROTOREG_END-->"
