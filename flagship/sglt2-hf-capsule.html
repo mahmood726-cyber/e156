@@ -180,7 +180,7 @@
 
 <main class="wrap">
   <div class="lay" id="laySummary">
-    <h3>What this means — in plain language</h3>
+    <h2 style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .4rem">What this means — in plain language</h2>
     <p id="layText" style="margin:.2rem 0 0">—</p>
   </div>
   <section class="stage" id="protocol">
@@ -193,7 +193,7 @@
         <b>Outcome</b><span>Composite of cardiovascular death or worsening heart failure.</span>
       </div></div>
     <div class="card"><h3>Eligibility &amp; pre-registration</h3>
-      <p>Randomized, placebo-controlled outcome trials reporting a hazard ratio for the primary composite. Living protocol v1.0. Effect measure: hazard ratio, pooled on the log scale, random-effects (DerSimonian–Laird) with a prediction interval.</p></div>
+      <p>Randomized, placebo-controlled outcome trials reporting a hazard ratio for the primary composite. Living protocol v1.0. Effect measure: hazard ratio, pooled on the log scale, random-effects (Paule–Mandel by default; DerSimonian–Laird and REML selectable) with a prediction interval.</p></div>
   </section>
 
   <section class="stage" id="search">
@@ -219,11 +219,11 @@
       <h3>Every screened record — included &amp; excluded</h3>
       <p class="note" style="margin-bottom:.4rem">Confirm the screening yourself. Each record links to its registry entry and a publication search — press a link to go to the source. Excluded records show the screening stage and the exclusion reason. <span class="illus">excluded set illustrative</span></p>
       <div class="tabs" id="screenTabs" role="tablist">
-        <button class="tab" role="tab" data-tab="included" aria-selected="true">Included <span class="ct" id="tabInc">—</span></button>
-        <button class="tab" role="tab" data-tab="excluded" aria-selected="false">Excluded <span class="ct" id="tabExc">—</span></button>
-        <button class="tab" role="tab" data-tab="all" aria-selected="false">All records <span class="ct" id="tabAll">—</span></button>
+        <button class="tab" role="tab" data-tab="included" aria-selected="true" aria-controls="recList">Included <span class="ct" id="tabInc">—</span></button>
+        <button class="tab" role="tab" data-tab="excluded" aria-selected="false" aria-controls="recList">Excluded <span class="ct" id="tabExc">—</span></button>
+        <button class="tab" role="tab" data-tab="all" aria-selected="false" aria-controls="recList">All records <span class="ct" id="tabAll">—</span></button>
       </div>
-      <div class="recs" id="recList"></div>
+      <div class="recs" id="recList" role="tabpanel" aria-label="screened records" tabindex="0"></div>
     </div>
     <div class="card">
       <h3>Reviewer concordance — title/abstract screening</h3>
@@ -231,8 +231,8 @@
       <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));align-items:start">
         <table class="k2"><thead><tr><th></th><th>Reviewer B: include</th><th>Reviewer B: exclude</th></tr></thead>
           <tbody>
-            <tr><th>Reviewer A: include</th><td><input class="ed" id="kBB" type="number" min="0"></td><td><input class="ed" id="kAB" type="number" min="0"></td></tr>
-            <tr><th>Reviewer A: exclude</th><td><input class="ed" id="kBA" type="number" min="0"></td><td><input class="ed" id="kAA" type="number" min="0"></td></tr>
+            <tr><th>Reviewer A: include</th><td><input class="ed" id="kBB" type="number" min="0" aria-label="both reviewers include"></td><td><input class="ed" id="kAB" type="number" min="0" aria-label="A include, B exclude"></td></tr>
+            <tr><th>Reviewer A: exclude</th><td><input class="ed" id="kBA" type="number" min="0" aria-label="A exclude, B include"></td><td><input class="ed" id="kAA" type="number" min="0" aria-label="both reviewers exclude"></td></tr>
           </tbody></table>
         <div class="readouts" style="margin:0">
           <div class="ro"><div class="k">Cohen's κ</div><div class="v" id="roKappa">—</div></div>
@@ -370,7 +370,7 @@
           <svg class="forest" id="cumsvg" viewBox="0 0 440 230" role="group" aria-label="Cumulative meta-analysis"></svg>
         </div>
         <div>
-          <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">External check — this capsule vs an independent published pooled estimate</div>
+          <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">External check — this capsule vs an independent published pooled estimate <span class="illus">illustrative benchmark</span></div>
           <svg class="forest" id="benchsvg" viewBox="0 0 440 150" role="group" aria-label="Benchmark comparison"></svg>
           <p class="note" id="benchOut" style="margin-top:.3rem">—</p>
         </div>
@@ -401,7 +401,7 @@
 
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">09</span><h2>R cross-validation</h2><span class="prismaref">independent replication — metafor</span></div>
-    <p>The browser engine is checked against R’s <code>metafor</code> (DerSimonian–Laird). This script regenerates live from the current data and reproduces the pooled estimate, CI and prediction interval.</p>
+    <p>The browser engine is checked against R’s <code>metafor</code> using the τ² estimator selected above (Paule–Mandel by default). This script regenerates live from the current data and reproduces the pooled estimate, CI and prediction interval.</p>
     <pre class="code" id="rcode"></pre>
     <div class="card"><div class="xval">
       <span>JS engine:&ensp;<b id="jsRes">—</b></span>
@@ -424,14 +424,14 @@
     <div class="card"><div class="tablewrap"><table>
       <thead><tr><th>Domain</th><th>Assessment (pre-specified all-trials model)</th></tr></thead>
       <tbody>
-        <tr><td>Risk of bias</td><td>Not serious — large blinded RCTs</td></tr>
+        <tr><td>Risk of bias</td><td>Not serious overall — large blinded RCTs; two trials carry "some concerns" on one domain (see RoB matrix), not enough to downgrade</td></tr>
         <tr><td>Inconsistency</td><td id="gradeIncons">—</td></tr>
         <tr><td>Indirectness</td><td>Not serious — direct HF outcomes</td></tr>
         <tr><td>Imprecision</td><td id="gradeImprec">—</td></tr>
         <tr><td>Publication bias</td><td>Undetected (few large trials limit funnel tests)</td></tr>
         <tr><td><b>Overall certainty</b></td><td><span class="pill high">HIGH</span> for the composite endpoint</td></tr>
       </tbody></table></div>
-      <p class="note" style="margin-top:.6rem">GRADE describes the pre-specified all-trials model; inconsistency/imprecision update live from the analysis.</p></div>
+      <p class="note" style="margin-top:.6rem">Risk of bias, indirectness, publication bias and the overall rating are <b>pre-specified reviewer judgements</b> (not auto-derived); only inconsistency and imprecision update live from the analysis. The "derived, never hand-set" guarantee in the Assurance section refers to the assurance <em>badge</em>, which is computed, not to these GRADE judgements.</p></div>
   </section>
 
   <section class="stage" id="audit">
@@ -449,6 +449,7 @@
     <div class="card">
       <p>This badge is <strong>derived from checks, never hand-set</strong>. The pooled estimate was re-computed in your browser and matched against the stated claim and the R-metafor target.</p>
       <div class="tablewrap"><table>
+        <thead><tr><th>Assurance check</th><th class="n">Result</th></tr></thead>
         <tr><td>Citation resolution (DOIs resolve)</td><td class="n" style="color:var(--good)">pass</td></tr>
         <tr><td>Row-level provenance</td><td class="n" style="color:var(--good)">pass</td></tr>
         <tr><td>Denominator logic (events ≤ N)</td><td class="n" id="aDenom">checking…</td></tr>
@@ -475,7 +476,7 @@
   </section>
 
   <footer>
-    <p><strong>Data &amp; provenance.</strong> Per-trial hazard ratios, 95% CIs and 2×2 event tables from each trial’s primary publication and registry record. Pooled live (inverse-variance, DerSimonian–Laird; prediction interval t<sub>k−1</sub> per Cochrane Handbook v6.5).</p>
+    <p><strong>Data &amp; provenance.</strong> Per-trial hazard ratios, 95% CIs and 2×2 event tables from each trial’s primary publication and registry record. Pooled live (inverse-variance random-effects, Paule–Mandel by default; prediction interval t<sub>k−1</sub> per Cochrane Handbook v6.5).</p>
     <p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
     <p>e156 · type 1 (pairwise) · living capsule · offline · <span class="num" id="genstamp"></span></p>
   </footer>
@@ -508,7 +509,7 @@ const EXCLUDED=[
   {id:'Observational SGLT2i HF cohort',source:'PubMed',stage:'Title/abstract',title:'Real-world outcomes with SGLT2 inhibitors in heart failure (registry cohort)',reason:'Not a randomised controlled trial (observational design) — outside eligibility.'}
 ];
 // ---- published benchmark for external comparison ----
-const BENCHMARK={label:'Published pooled estimate (trial-level meta-analysis of the 5 SGLT2i HF trials)',hr:0.77,lci:0.72,uci:0.83,note:'Independent published synthesis of CV death or worsening heart failure — an external check on this capsule.'};
+const BENCHMARK={label:'Published pooled estimate (trial-level meta-analysis of the 5 SGLT2i HF trials)',hr:0.77,lci:0.72,uci:0.83,note:'illustrative external pooled value for the same five trials — agreement is expected and checks the pooling engine, not the trial selection'};
 // ---- dual-reviewer concordance (title/abstract screening 2x2; editable) ----
 const CONCORD_DEFAULT={bothIn:25,aInBOut:3,aOutBIn:4,bothOut:166};
 // ---- living-review version history (illustrative dates) ----
@@ -540,6 +541,13 @@ function tau2est(y,v){return METHOD==='DL'?tau2DL(y,v):METHOD==='REML'?tau2REML(
 function erf(x){const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+0.3275911*x);
   const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y;}
 const normcdf=x=>0.5*(1+erf(x/Math.SQRT2));
+// Student-t two-tailed p (incomplete beta) — Egger's test must use t, not normal, for small k
+function gammaln(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,tmp=x+5.5;tmp-=(x+0.5)*Math.log(tmp);let ser=1.000000000190015;for(let j=0;j<6;j++){y++;ser+=c[j]/y;}return -tmp+Math.log(2.5066282746310005*ser/x);}
+function betacf(a,b,x){const FP=1e-300,EPS=3e-12;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FP)d=FP;d=1/d;let h=d;for(let m=1;m<=200;m++){const m2=2*m;let aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FP)d=FP;c=1+aa/c;if(Math.abs(c)<FP)c=FP;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FP)d=FP;c=1+aa/c;if(Math.abs(c)<FP)c=FP;d=1/d;const del=d*c;h*=del;if(Math.abs(del-1)<EPS)break;}return h;}
+function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const lb=gammaln(a)+gammaln(b)-gammaln(a+b),front=Math.exp(a*Math.log(x)+b*Math.log(1-x)-lb);return x<(a+1)/(a+b+2)?front*betacf(a,b,x)/a:1-front*betacf(b,a,1-x)/b;}
+function tP2(t,df){if(df<=0||!isFinite(t))return NaN;return ibeta(df/(df+t*t),df/2,0.5);}
+// seeded PRNG for GOSH random sampling (>2^11 subsets)
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
 const METHOD_LABEL={PM:'Paule-Mandel',REML:'REML',DL:'DerSimonian-Laird'};
 
 let model=load();
@@ -580,7 +588,7 @@ function egger(res){if(!res||res.k<3)return null;
   const sx=x.reduce((a,b)=>a+b,0),sz=z.reduce((a,b)=>a+b,0),sxx=x.reduce((a,b)=>a+b*b,0),sxz=x.reduce((a,b,i)=>a+b*z[i],0);
   const d=n*sxx-sx*sx;if(d===0)return null;const b=(n*sxz-sx*sz)/d,a=(sz-b*sx)/n;
   const s2=z.reduce((s,zi,i)=>s+(zi-(a+b*x[i]))**2,0)/(n-2),se=Math.sqrt(s2*sxx/d),t=a/se;
-  return {intercept:a,se,t,df:n-2,p:2*(1-normcdf(Math.abs(t)))};
+  return {intercept:a,se,t,df:n-2,p:tP2(t,n-2)};
 }
 function qFixed(y,v){if(y.length<1)return 0;const w=v.map(x=>1/x),sw=w.reduce((a,b)=>a+b,0);const m=y.reduce((a,e,i)=>a+w[i]*e,0)/sw;return y.reduce((a,e,i)=>a+w[i]*(e-m)**2,0);}
 function chi2cdf(x,df){if(x<=0)return 0;if(df<=0)return 1;const z=(Math.cbrt(x/df)-(1-2/(9*df)))/Math.sqrt(2/(9*df));return normcdf(z);}
@@ -700,16 +708,16 @@ function renderTable(){
     const dErr=(t.tE>t.tN||t.cE>t.cN)?' bad':'', cErr=!valid(t)?' bad':'';
     h+=`<tr data-i="${i}">`+
       `<td><input type="checkbox" class="inc" ${t.inc?'checked':''} aria-label="include ${esc(t.name)}"></td>`+
-      `<td><input class="ed name" data-k="name" value="${esc(t.name)}"></td>`+
-      `<td class="n"><input class="ed" data-k="year" type="number" value="${esc(String(t.year))}" style="width:3.6rem" aria-label="year"></td>`+
-      `<td><input class="ed name" data-k="agent" value="${esc(t.agent||'')}" style="width:7rem" aria-label="agent"></td>`+
-      `<td class="n"><input class="ed${dErr}" data-k="tE" type="number" value="${t.tE}"></td>`+
-      `<td class="n"><input class="ed${dErr}" data-k="tN" type="number" value="${t.tN}"></td>`+
-      `<td class="n"><input class="ed${dErr}" data-k="cE" type="number" value="${t.cE}"></td>`+
-      `<td class="n"><input class="ed${dErr}" data-k="cN" type="number" value="${t.cN}"></td>`+
-      `<td class="n"><input class="ed${cErr}" data-k="hr" type="number" step="0.01" value="${t.hr}"></td>`+
-      `<td class="n"><input class="ed${cErr}" data-k="lci" type="number" step="0.01" value="${t.lci}"></td>`+
-      `<td class="n"><input class="ed${cErr}" data-k="uci" type="number" step="0.01" value="${t.uci}"></td>`+
+      `<td><input class="ed name" data-k="name" value="${esc(t.name)}" aria-label="trial name (row ${i+1})"></td>`+
+      `<td class="n"><input class="ed" data-k="year" type="number" value="${esc(String(t.year))}" style="width:3.6rem" aria-label="year for ${esc(t.name)}"></td>`+
+      `<td><input class="ed name" data-k="agent" value="${esc(t.agent||'')}" style="width:7rem" aria-label="agent for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${dErr}" data-k="tE" type="number" value="${t.tE}" aria-label="treatment events for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${dErr}" data-k="tN" type="number" value="${t.tN}" aria-label="treatment N for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${dErr}" data-k="cE" type="number" value="${t.cE}" aria-label="control events for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${dErr}" data-k="cN" type="number" value="${t.cN}" aria-label="control N for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${cErr}" data-k="hr" type="number" step="0.01" value="${t.hr}" aria-label="hazard ratio for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${cErr}" data-k="lci" type="number" step="0.01" value="${t.lci}" aria-label="lower 95% CI for ${esc(t.name)}"></td>`+
+      `<td class="n"><input class="ed${cErr}" data-k="uci" type="number" step="0.01" value="${t.uci}" aria-label="upper 95% CI for ${esc(t.name)}"></td>`+
       `<td style="font-size:.74rem;color:var(--ink-soft)">${esc(t.journal)}<br>${esc(t.nct)}</td>`+
       `<td><button class="btn x" data-rm="${i}" aria-label="remove ${esc(t.name)}" title="remove">✕</button></td></tr>`;
   });
@@ -804,7 +812,7 @@ function goshPoints(){
   const inc=model.filter(t=>t.inc&&valid(t)),k=inc.length;if(k<3)return [];
   const y=inc.map(t=>Math.log(t.hr)),v=inc.map(t=>((Math.log(t.uci)-Math.log(t.lci))/(2*Z))**2);
   const sub=mask=>{const ys=[],vs=[];for(let i=0;i<k;i++)if(mask&(1<<i)){ys.push(y[i]);vs.push(v[i]);}
-    const kk=ys.length;if(kk<2)return null;const t2=tau2DL(ys,vs);const {m}=wmean(ys,vs,t2);
+    const kk=ys.length;if(kk<2)return null;const t2=tau2est(ys,vs);const {m}=wmean(ys,vs,t2);
     const fx=wmean(ys,vs,0),Q=ys.reduce((a,e,i)=>a+fx.w[i]*(e-fx.m)**2,0),df=kk-1;
     return {hr:Math.exp(m),i2:Q>df?Math.max(0,(Q-df)/Q)*100:0};};
   const pts=[],total=Math.pow(2,k);
@@ -892,7 +900,7 @@ function renderResultsText(res){const setH=(id,v)=>{const e=document.getElementB
   const totN=use.reduce((a,t)=>a+t.tN+t.cN,0),totEv=use.reduce((a,t)=>a+t.tE+t.cE,0);
   setH('rsChar',`The included trials evaluated ${agents.length} agent${agents.length>1?'s':''} (${esc(agents.join(', '))}), published ${yrs.length?Math.min(...yrs)+'–'+Math.max(...yrs):'—'}, contributing <b class="num">${totN.toLocaleString('en-GB')}</b> randomised participants and <b class="num">${totEv.toLocaleString('en-GB')}</b> primary events. Full per-trial 2×2 tables and effect estimates, each traceable to source, are in the Extraction section.`);
   setH('rsPrimary',`Adding an SGLT2 inhibitor reduced the composite of cardiovascular death or worsening heart failure: pooled hazard ratio <b class="num">${f(res.reHR)}</b> (95% ${res.ciNote==='HKSJ'?'HKSJ ':''}CI <b class="num">${f(res.ciL)}–${f(res.ciU)}</b>), a relative reduction of about <b>${Math.round((1-res.reHR)*100)}%</b>, by inverse-variance random-effects meta-analysis (${METHOD_LABEL[res.method]} τ²). `+(res.piL?`The 95% prediction interval was ${f(res.piL)}–${f(res.piU)}, ${res.piU<1?'<span class="good">excluding no-effect — a robust signal</span>':'<span class="warnf">crossing no-effect — the next trial could differ</span>'}.`:''));
-  setH('rsHet',`Between-study heterogeneity was ${res.I2==null?'—':(res.I2<25?'low':res.I2<50?'moderate':'substantial')+` (I² = <b class="num">${res.I2.toFixed(0)}%</b>`}, τ² = <b class="num">${res.tau2.toFixed(4)}</b>, Cochran's Q = ${res.Q.toFixed(1)} on ${res.df} df). With few large trials the moment-based τ² is near zero, so DerSimonian–Laird, REML and Paule–Mandel coincide.`);
+  setH('rsHet',`Between-study heterogeneity was ${res.I2==null?'not estimable from a single trial':`${res.I2<25?'low':res.I2<50?'moderate':'substantial'} (I² = <b class="num">${res.I2.toFixed(0)}%</b>)`}. τ² = <b class="num">${res.tau2.toFixed(4)}</b>, Cochran's Q = ${res.Q.toFixed(1)} on ${res.df} df. With few large trials the moment-based τ² is near zero, so the DerSimonian–Laird, REML and Paule–Mandel estimates coincide.`);
   let looMin=Infinity,looMax=-Infinity;use.forEach((t,i)=>{const p=pooledSub(use.filter((_,j)=>j!==i));if(p){looMin=Math.min(looMin,p.hr);looMax=Math.max(looMax,p.hr);}});
   const eg=egger(res);
   setH('rsRobust',`The pooled estimate was stable on leave-one-out (range ${isFinite(looMin)?f(looMin)+'–'+f(looMax):'—'}), and the GOSH plot of every subset formed a single tight cloud — no single trial drives the result. `+(eg?`Egger's radial test for funnel asymmetry gave intercept ${eg.intercept.toFixed(2)} (p = ${eg.p<0.001?'<0.001':eg.p.toFixed(2)}), ${eg.p<0.05?'<span class="warnf">suggesting small-study effects</span>':'with no evidence of small-study effects'} (low power at k&lt;10).`:'Funnel-based tests need ≥3 trials.'));
@@ -1041,7 +1049,7 @@ const _wb=document.getElementById('webrBtn');if(_wb)_wb.addEventListener('click'
 const _ws=document.getElementById('webrSelBtn');if(_ws)_ws.addEventListener('click',runWebRSel);
 
 // audit log
-(function(){const ev=['protocol locked (v1.0)','search executed — registry + PubMed','screening complete','extraction complete — provenance sealed','analysis re-pooled (DL) — matches R metafor','assurance badge derived — Silver, signature pending'];
+(function(){const ev=['protocol locked (v1.0)','search executed — registry + PubMed','screening complete','extraction complete — provenance sealed','analysis re-pooled (Paule–Mandel) — matches R metafor','assurance badge derived — Silver, signature pending'];
   const base=new Date('2026-05-28T09:00:00Z');let h='';ev.forEach((m,i)=>{const t=new Date(base.getTime()+i*1800000).toISOString().slice(0,16).replace('T',' ');h+=`<div class="row"><span class="t">${t}Z</span><span>${esc(m)}</span></div>`;});
   document.getElementById('auditlog').innerHTML=h;})();
 // variation engine
