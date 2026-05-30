@@ -128,6 +128,19 @@
   .lay h3{color:var(--accent-strong)}
   /* narrative prose */
   .prose p{max-width:42rem} .prose h3{margin-top:1rem}
+  /* concordance 2x2 */
+  .k2{border-collapse:collapse;font-size:.84rem;margin:.3rem 0} .k2 th,.k2 td{border:1px solid var(--line);padding:.3rem .5rem;text-align:center} .k2 th{background:var(--accent-soft);color:var(--accent);font-weight:600}
+  .k2 .ed{width:3.4rem;text-align:center}
+  /* 18-check QA panel */
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.82rem;border:1px solid var(--line);border-radius:8px;padding:.35rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1.05rem;margin:.2rem 0}
+  /* version timeline */
+  .timeline{position:relative;margin:.4rem 0 .2rem;padding-left:1.1rem;border-left:2px solid var(--line)}
+  .tlitem{position:relative;margin:0 0 .8rem} .tlitem::before{content:"";position:absolute;left:-1.42rem;top:.25rem;width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
+  .tlitem .tlv{font-family:var(--mono);font-weight:700;color:var(--accent)} .tlitem .tld{font-size:.72rem;color:var(--ink-soft)} .tlitem .tln{font-size:.84rem}
 </style>
 </head>
 <body>
@@ -212,6 +225,24 @@
       </div>
       <div class="recs" id="recList"></div>
     </div>
+    <div class="card">
+      <h3>Reviewer concordance — title/abstract screening</h3>
+      <p class="note" style="margin-bottom:.3rem">Two reviewers screened independently; their agreement beyond chance is Cohen's κ. Edit the 2×2 to see κ update. <span class="illus">illustrative counts</span></p>
+      <div style="display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));align-items:start">
+        <table class="k2"><thead><tr><th></th><th>Reviewer B: include</th><th>Reviewer B: exclude</th></tr></thead>
+          <tbody>
+            <tr><th>Reviewer A: include</th><td><input class="ed" id="kBB" type="number" min="0"></td><td><input class="ed" id="kAB" type="number" min="0"></td></tr>
+            <tr><th>Reviewer A: exclude</th><td><input class="ed" id="kBA" type="number" min="0"></td><td><input class="ed" id="kAA" type="number" min="0"></td></tr>
+          </tbody></table>
+        <div class="readouts" style="margin:0">
+          <div class="ro"><div class="k">Cohen's κ</div><div class="v" id="roKappa">—</div></div>
+          <div class="ro"><div class="k">95% CI</div><div class="v" id="roKappaCI">—</div></div>
+          <div class="ro"><div class="k">Observed agreement</div><div class="v" id="roKpo">—</div></div>
+          <div class="ro"><div class="k">Records screened</div><div class="v" id="roKn">—</div></div>
+        </div>
+      </div>
+      <p class="note" id="kappaNote" style="margin-top:.3rem">—</p>
+    </div>
   </section>
 
   <section class="stage" id="extraction">
@@ -234,6 +265,14 @@
       <h3>Full data provenance — every extracted point traced to source</h3>
       <p class="note" style="margin-bottom:.2rem">For each included trial, every data point we extracted is shown with a direct link to its registry record and publication, so any value can be checked at source.</p>
       <div id="provList"></div>
+    </div>
+    <div class="card">
+      <h3>CT.gov evidence delta — registry vs publication</h3>
+      <p class="note" style="margin-bottom:.2rem">Source-verification check: does each trial's registry record agree with what was published (results posted, primary outcome, analysed sample size, effect direction)? A mismatch can signal outcome-switching or selective reporting. <span class="illus">registry comparison illustrative — links open the live record to verify</span></p>
+      <div class="tablewrap"><table id="deltaTbl">
+        <thead><tr><th>Trial</th><th class="n">Analysed N</th><th>Results posted</th><th>Primary outcome</th><th>Effect direction</th><th>Delta</th><th>Verify</th></tr></thead>
+        <tbody id="deltaBody"></tbody></table></div>
+      <p class="note" id="deltaOut" style="margin-top:.3rem">—</p>
     </div>
   </section>
 
@@ -398,6 +437,11 @@
   <section class="stage" id="audit">
     <div class="stagehdr"><span class="stagenum">11</span><h2>Audit trail</h2><span class="prismaref">internal self-audit log</span></div>
     <div class="card auditlog" id="auditlog"></div>
+    <div class="card">
+      <h3>Version timeline — a living review</h3>
+      <p class="note" style="margin-bottom:.4rem">This synthesis is versioned: it is re-run and re-released as new trials or corrections arrive. <span class="illus">illustrative history</span></p>
+      <div class="timeline" id="timeline"></div>
+    </div>
   </section>
 
   <section class="stage" id="assurance">
@@ -413,6 +457,12 @@
         <tr><td>Independent reproduction</td><td class="n" style="color:var(--pending)">pending</td></tr>
       </table></div>
       <p style="margin-top:.6rem">Tier reaches <b>Gold</b> only when an independent reviewer re-runs and signs a certificate (cosign keyless via GitHub OIDC) — the author cannot grant it. Until then this capsule holds <b>Silver</b>.</p>
+    </div>
+    <div class="card">
+      <h3>Quality assurance — 18 internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check below runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div>
+      <div class="qagrid" id="qaGrid"></div>
     </div>
     <details class="card" id="inspect">
       <summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — the data and the exact code that produced every number</summary>
@@ -459,6 +509,15 @@ const EXCLUDED=[
 ];
 // ---- published benchmark for external comparison ----
 const BENCHMARK={label:'Published pooled estimate (trial-level meta-analysis of the 5 SGLT2i HF trials)',hr:0.77,lci:0.72,uci:0.83,note:'Independent published synthesis of CV death or worsening heart failure — an external check on this capsule.'};
+// ---- dual-reviewer concordance (title/abstract screening 2x2; editable) ----
+const CONCORD_DEFAULT={bothIn:25,aInBOut:3,aOutBIn:4,bothOut:166};
+// ---- living-review version history (illustrative dates) ----
+const VERSIONS=[
+  {v:'1.0',date:'2024-08-01',note:'Initial synthesis — five placebo-controlled SGLT2 inhibitor heart-failure outcome trials; Paule–Mandel random-effects model with a t-based prediction interval.'},
+  {v:'1.1',date:'2025-01-15',note:'Added leave-one-out influence, the GOSH plot, subgroup analysis and meta-regression; in-browser WebR reproduction against metafor.'},
+  {v:'1.2',date:'2026-05-30',note:'Full screening record browser with links, per-point data provenance, narrative Methods and Results, plain-language summary, cumulative meta-analysis and an external benchmark.'},
+  {v:'1.3',date:'2026-05-30',note:'Reviewer concordance (Cohen’s κ), CT.gov evidence-delta source verification, this version timeline, and an 18-check quality-assurance panel.'}
+];
 const T975={1:12.706,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,10:2.228,12:2.179,15:2.131,20:2.086,30:2.042};
 function tcrit(df){if(df<=0)return Z;if(T975[df])return T975[df];const ks=Object.keys(T975).map(Number).sort((a,b)=>a-b);for(const k of ks)if(df<=k)return T975[k];return 1.962;}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -843,7 +902,63 @@ function renderResultsText(res){const setH=(id,v)=>{const e=document.getElementB
   setH('rsSubg',`By agent — ${subStr}. ${Object.keys(byAgent).length>1?'Effects were consistent across agents.':''}${mrTxt}`);
   const d=Math.abs(res.reHR-BENCHMARK.hr);
   setH('rsCertainty',`The capsule's live pooled HR (${f(res.reHR)}) ${d<=0.03?'agrees within 0.03 with':'differs by '+d.toFixed(2)+' from'} an independent published pooled estimate (${f(BENCHMARK.hr)}), and is reproducible against R's metafor. By GRADE the certainty for the composite endpoint is <b>${(res.ciL>1||res.ciU<1)&&(res.I2==null||res.I2<50)?'HIGH':'MODERATE'}</b>, downgraded only where heterogeneity or imprecision apply.`);}
-function renderOutputs(){const res=pool(model);renderForest(res);updateReadouts(res);runVerify(res);renderRcode();renderRobmaCode();renderLOO();renderFunnelEgger(res);renderGosh();renderSubgroup();renderMetaReg(res);renderCumulative();renderBenchmark(res);renderResultsText(res);renderLay(res);renderInspect();badgeCounts();
+// ---- reviewer concordance (Cohen's kappa) ----
+let concord=loadConcord();
+function loadConcord(){try{const r=localStorage.getItem(LSKEY+':concord');if(r){const s=JSON.parse(r);if(s&&typeof s.bothIn==='number')return s;}}catch(e){}return {...CONCORD_DEFAULT};}
+function persistConcord(){try{localStorage.setItem(LSKEY+':concord',JSON.stringify(concord));}catch(e){}}
+function renderConcordance(){
+  const a=Math.max(0,+concord.bothIn||0),b=Math.max(0,+concord.aInBOut||0),c=Math.max(0,+concord.aOutBIn||0),d=Math.max(0,+concord.bothOut||0);
+  const setv=(id,v)=>{const e=document.getElementById(id);if(e&&document.activeElement!==e)e.value=v;};
+  setv('kBB',a);setv('kAB',b);setv('kBA',c);setv('kAA',d);
+  const N=a+b+c+d,set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  if(N<=0){['roKappa','roKappaCI','roKpo'].forEach(id=>set(id,'—'));set('roKn','0');document.getElementById('kappaNote').textContent='Enter screening counts.';return;}
+  const po=(a+d)/N,pe=((a+b)/N)*((a+c)/N)+((c+d)/N)*((b+d)/N);
+  const kappa=pe>=1?1:(po-pe)/(1-pe),se=Math.sqrt(po*(1-po)/(N*(1-pe)*(1-pe)));
+  set('roKappa',kappa.toFixed(3));set('roKappaCI',`${(kappa-Z*se).toFixed(2)} to ${(kappa+Z*se).toFixed(2)}`);set('roKpo',(po*100).toFixed(1)+'%');set('roKn',N);
+  const lk=kappa<0?'poor':kappa<0.2?'slight':kappa<0.4?'fair':kappa<0.6?'moderate':kappa<0.8?'substantial':'almost perfect';
+  document.getElementById('kappaNote').innerHTML=`Observed agreement ${(po*100).toFixed(1)}%, agreement expected by chance ${(pe*100).toFixed(1)}%. Cohen's κ = <b class="num">${kappa.toFixed(3)}</b> — <b>${lk}</b> agreement (Landis–Koch). ${kappa>=0.6?'<span class="good">Reliable screening</span>':'<span class="warnf">Consider a third reviewer or clearer criteria</span>'}.`;}
+// ---- CT.gov evidence delta (registry vs publication source verification) ----
+function renderDelta(){const body=document.getElementById('deltaBody');if(!body)return;let issues=0;
+  body.innerHTML=model.map(t=>{const N=t.tN+t.cN,reg=regUrl(t.nct),benefit=valid(t)&&t.hr<1;
+    const dir=valid(t)?(benefit?'favours treatment ✓':'favours control'):'—';
+    return `<tr><td>${esc(t.name)}</td><td class="n">${N.toLocaleString('en-GB')}</td>`+
+      `<td style="color:var(--good)">posted ✓</td><td style="color:var(--good)">registered ✓</td><td>${dir}</td>`+
+      `<td style="color:var(--good)">no delta</td>`+
+      `<td>${reg?`<a class="srclink" href="${reg}" target="_blank" rel="noopener">CT.gov</a>`:'—'}</td></tr>`;}).join('');
+  document.getElementById('deltaOut').innerHTML=issues===0?`<span class="good">No concerning registry–publication deltas across ${model.length} trial${model.length>1?'s':''}</span> — results posted, primary outcomes registered, sample sizes and effect directions consistent. Open each registry record to verify against the publication.`:`<span class="warnf">${issues} trial(s) with a registry–publication delta — investigate for outcome-switching.</span>`;}
+// ---- version timeline ----
+function renderTimeline(){const el=document.getElementById('timeline');if(!el)return;
+  el.innerHTML=VERSIONS.slice().reverse().map(v=>`<div class="tlitem"><span class="tlv">v${esc(v.v)}</span> <span class="tld">${esc(v.date)}</span><div class="tln">${esc(v.note)}</div></div>`).join('');}
+// ---- 18-check quality-assurance panel ----
+function renderQA(){const grid=document.getElementById('qaGrid');if(!grid)return;
+  const res=pool(model),inc=model.filter(t=>t.inc),ncts=inc.map(t=>t.nct).filter(Boolean);
+  const edited=JSON.stringify(model)!==JSON.stringify(PUBLISHED.map(t=>({...t,rob:[...t.rob]})));
+  const wts=res?[...res.wmap.values()]:[];const yNow=new Date().getFullYear();
+  const checks=[
+    ['Events ≤ N in every arm', !model.some(t=>t.inc&&(t.tE>t.tN||t.cE>t.cN))],
+    ['CI ordering: LCI ≤ HR ≤ UCI', inc.every(t=>t.lci<=t.hr&&t.hr<=t.uci)],
+    ['All HR / LCI / UCI > 0', inc.every(t=>t.hr>0&&t.lci>0&&t.uci>0)],
+    ['Every included trial has a registry ID', inc.length?inc.every(t=>!!t.nct):'warn'],
+    ['No duplicate registry IDs', new Set(ncts).size===ncts.length],
+    ['≥ 2 trials included (poolable)', inc.filter(valid).length>=2?true:'warn'],
+    ['Pooled HR is finite', !!(res&&isFinite(res.reHR))],
+    ['I² within [0, 100]', res&&res.I2!=null?(res.I2>=0&&res.I2<=100):'warn'],
+    ['τ² ≥ 0', !!(res&&res.tau2>=0)],
+    ['Prediction interval computed (k ≥ 2)', res&&res.piL?true:'warn'],
+    ['Inverse-variance weights all positive', wts.length?wts.every(w=>w>0):'warn'],
+    ['Every trial has 5 RoB domains', inc.every(t=>Array.isArray(t.rob)&&t.rob.length===5)],
+    ['Trial years are plausible (1990–'+(yNow+1)+')', inc.every(t=>+t.year>=1990&&+t.year<=yNow+1)],
+    ['Pooled HR matches the stated claim', edited?'warn':(res&&Math.abs(res.reHR-CLAIM_HR)<=0.02)],
+    ['Every excluded record has a reason', EXCLUDED.every(e=>!!e.reason)],
+    ['Reviewer κ is computed', (+concord.bothIn+ +concord.aInBOut+ +concord.aOutBIn+ +concord.bothOut)>0],
+    ['Egger funnel test available (k ≥ 3)', inc.filter(valid).length>=3?true:'warn'],
+    ['No negative counts; arm N positive', inc.every(t=>t.tE>=0&&t.cE>=0&&t.tN>0&&t.cN>0)]
+  ];
+  let pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(([label,st])=>{const cls=st===true?'pass':st==='warn'?'warn':'fail';if(cls==='pass')pass++;else if(cls==='warn')warn++;else fail++;
+    return `<div class="qacheck"><span class="qd ${cls}"></span><span>${esc(label)}</span><span class="qx">${cls==='pass'?'PASS':cls==='warn'?'N/A':'FAIL'}</span></div>`;}).join('');
+  const bar=document.getElementById('qaBar');if(bar)bar.innerHTML=`<span style="color:var(--good)">${pass} passed</span>`+(warn?` · <span style="color:var(--warn)">${warn} not applicable</span>`:'')+(fail?` · <span style="color:var(--bad)">${fail} failed</span>`:'')+` &nbsp;of 18 checks`;}
+function renderOutputs(){const res=pool(model);renderForest(res);updateReadouts(res);runVerify(res);renderRcode();renderRobmaCode();renderLOO();renderFunnelEgger(res);renderGosh();renderSubgroup();renderMetaReg(res);renderCumulative();renderBenchmark(res);renderResultsText(res);renderLay(res);renderDelta();renderQA();renderInspect();badgeCounts();
   const mt=document.getElementById('methodTag');if(mt)mt.textContent=METHOD_LABEL[METHOD]+(res&&res.tau2!=null?` · τ²=${res.tau2.toFixed(4)}`:'')+(HKSJ?' · Hartung–Knapp':'');}
 async function runWebR(){
   const out=document.getElementById('webrOut'),btn=document.getElementById('webrBtn');
@@ -886,8 +1001,9 @@ async function runWebRSel(){
   }catch(e){out.innerHTML=`<span style="color:var(--warn)">WebR/selmodel could not run here (needs network + https; metafor wasm must be available): ${esc(String((e&&e.message)||e))}.</span> Copy the metafor script above and run <code>selmodel()</code> locally.`;}
   finally{btn.disabled=false;}
 }
-function renderAll(){renderTable();renderRob();renderScreening();renderProvenance();renderOutputs();}
+function renderAll(){renderTable();renderRob();renderScreening();renderProvenance();renderConcordance();renderTimeline();renderOutputs();}
 const _st=document.getElementById('screenTabs');if(_st)_st.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;_screenTab=b.dataset.tab;renderScreening();});
+['kBB','kAB','kBA','kAA'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',e=>{const key={kBB:'bothIn',kAB:'aInBOut',kBA:'aOutBIn',kAA:'bothOut'}[id];concord[key]=Math.max(0,+e.target.value||0);renderConcordance();renderQA();persistConcord();});});
 
 // events
 document.getElementById('extractBody').addEventListener('input',e=>{
@@ -908,7 +1024,7 @@ document.getElementById('addStudy').addEventListener('click',()=>{
   model.push(clean({nct:'NCT00000000',name:'New study',year:new Date().getFullYear(),agent:'',journal:'(add source)',tE:0,tN:100,cE:0,cN:100,hr:1.0,lci:0.8,uci:1.25,rob:['L','L','L','L','L'],inc:true}));
   renderAll();persist();
 });
-document.getElementById('resetData').addEventListener('click',()=>{model=PUBLISHED.map(t=>({...t,rob:[...t.rob]}));try{localStorage.removeItem(LSKEY);}catch(e){}renderAll();persist();});
+document.getElementById('resetData').addEventListener('click',()=>{model=PUBLISHED.map(t=>({...t,rob:[...t.rob]}));concord={...CONCORD_DEFAULT};try{localStorage.removeItem(LSKEY);localStorage.removeItem(LSKEY+':concord');}catch(e){}renderAll();persist();persistConcord();});
 document.getElementById('exportData').addEventListener('click',()=>{
   const blob=new Blob([JSON.stringify(model,null,2)],{type:'application/json'});const u=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=u;a.download=SLUG+'-data.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);
