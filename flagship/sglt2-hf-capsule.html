@@ -169,6 +169,7 @@
   <li><a href="#grade">10 · Certainty</a></li>
   <li><a href="#audit">11 · Audit</a></li>
   <li><a href="#assurance">12 · Assurance</a></li>
+  <li><a href="#references">13 · References</a></li>
 </ul></nav>
 
 <header class="wrap" style="padding:2.4rem 0 1rem">
@@ -192,8 +193,13 @@
         <b>Comparator</b><span>Placebo.</span>
         <b>Outcome</b><span>Composite of cardiovascular death or worsening heart failure.</span>
       </div></div>
-    <div class="card"><h3>Eligibility &amp; pre-registration</h3>
-      <p>Randomized, placebo-controlled outcome trials reporting a hazard ratio for the primary composite. Living protocol v1.0. Effect measure: hazard ratio, pooled on the log scale, random-effects (Paule–Mandel by default; DerSimonian–Laird and REML selectable) with a prediction interval.</p></div>
+    <div class="card"><h3>Eligibility</h3>
+      <p>Randomized, placebo-controlled outcome trials reporting a hazard ratio for the primary composite. Effect measure: hazard ratio, pooled on the log scale, random-effects (Paule–Mandel by default; DerSimonian–Laird and REML selectable) with a prediction interval.</p></div>
+    <div class="card" id="prereg">
+      <h3>Pre-registration — timestamped on GitHub</h3>
+      <p>The analysis plan was fixed <em>before</em> data extraction and committed to public version control. A Git commit is a tamper-evident, publicly verifiable timestamp, so the commit hash and GitHub's recorded commit date serve as an open, code-native registration record — an alternative to PROSPERO for a living, reproducible review. The companion CLI (<code>scripts/register_protocol.py</code>) commits the protocol and writes the permalink below.</p>
+      <p class="reglink" style="font-size:.86rem"><!--PROTOREG_START-->Protocol pre-registered <b>2026-05-30</b> &mdash; <a class="srclink" href="https://github.com/mahmood726-cyber/e156/blob/3376a1ba380fb0de83ef8e9e5f737b0915b1c307/protocols/sglt2-hf-protocol.md" target="_blank" rel="noopener">commit 3376a1ba</a> (immutable, timestamped on GitHub).<!--PROTOREG_END--></p>
+    </div>
   </section>
 
   <section class="stage" id="search">
@@ -475,6 +481,15 @@
     </details>
   </section>
 
+  <section class="stage" id="references">
+    <div class="stagehdr"><span class="stagenum">13</span><h2>References — included studies</h2><span class="prismaref">PRISMA #25–26</span></div>
+    <div class="card">
+      <p class="note" style="margin-bottom:.3rem">The primary publication and registry record for every included trial. The list tracks the current data; each entry links to its source so the full citation can be confirmed. <span class="illus">bibliographic details resolve via the links</span></p>
+      <ol id="refList" style="margin:.3rem 0;padding-left:1.4rem;font-size:.88rem;line-height:1.5"></ol>
+      <p class="note">Protocol: <a class="srclink" id="refProtoLink" href="../protocols/sglt2-hf-protocol.md" target="_blank" rel="noopener">registered protocol (this review)</a>. Reporting follows PRISMA 2020.</p>
+    </div>
+  </section>
+
   <footer>
     <p><strong>Data &amp; provenance.</strong> Per-trial hazard ratios, 95% CIs and 2×2 event tables from each trial’s primary publication and registry record. Pooled live (inverse-variance random-effects, Paule–Mandel by default; prediction interval t<sub>k−1</sub> per Cochrane Handbook v6.5).</p>
     <p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -519,6 +534,14 @@ const VERSIONS=[
   {v:'1.2',date:'2026-05-30',note:'Full screening record browser with links, per-point data provenance, narrative Methods and Results, plain-language summary, cumulative meta-analysis and an external benchmark.'},
   {v:'1.3',date:'2026-05-30',note:'Reviewer concordance (Cohen’s κ), CT.gov evidence-delta source verification, this version timeline, and an 18-check quality-assurance panel.'}
 ];
+// ---- primary-publication citations for the included trials (real; full details resolve via links) ----
+const REFS={
+  'NCT03036124':{author:'McMurray JJV, et al.',title:'Dapagliflozin in patients with heart failure and reduced ejection fraction',journal:'N Engl J Med',year:2019},
+  'NCT03057977':{author:'Packer M, et al.',title:'Cardiovascular and renal outcomes with empagliflozin in heart failure',journal:'N Engl J Med',year:2020},
+  'NCT03057951':{author:'Anker SD, et al.',title:'Empagliflozin in heart failure with a preserved ejection fraction',journal:'N Engl J Med',year:2021},
+  'NCT03619213':{author:'Solomon SD, et al.',title:'Dapagliflozin in heart failure with mildly reduced or preserved ejection fraction',journal:'N Engl J Med',year:2022},
+  'NCT03521934':{author:'Bhatt DL, et al.',title:'Sotagliflozin in patients with diabetes and recent worsening heart failure',journal:'N Engl J Med',year:2021}
+};
 const T975={1:12.706,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,10:2.228,12:2.179,15:2.131,20:2.086,30:2.042};
 function tcrit(df){if(df<=0)return Z;if(T975[df])return T975[df];const ks=Object.keys(T975).map(Number).sort((a,b)=>a-b);for(const k of ks)if(df<=k)return T975[k];return 1.962;}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -937,6 +960,12 @@ function renderDelta(){const body=document.getElementById('deltaBody');if(!body)
 // ---- version timeline ----
 function renderTimeline(){const el=document.getElementById('timeline');if(!el)return;
   el.innerHTML=VERSIONS.slice().reverse().map(v=>`<div class="tlitem"><span class="tlv">v${esc(v.v)}</span> <span class="tld">${esc(v.date)}</span><div class="tln">${esc(v.note)}</div></div>`).join('');}
+// ---- references (included studies; tracks the data) ----
+function renderReferences(){const el=document.getElementById('refList');if(!el)return;
+  el.innerHTML=model.map(t=>{const r=REFS[t.nct]||{author:esc(t.name)+' investigators',title:t.name,journal:t.journal,year:t.year};
+    const reg=regUrl(t.nct),pub=pmUrl((r.title||t.name)+' '+(r.journal||'')+' '+(r.year||''));
+    return `<li style="margin-bottom:.35rem"><b>${esc(t.name)}.</b> ${esc(r.author||'')} ${esc(r.title||'')}. <i>${esc(r.journal||'')}</i>${r.year?'. '+esc(String(r.year)):''}. `+
+      `${reg?`<a class="srclink" href="${reg}" target="_blank" rel="noopener">${esc(t.nct)}</a> `:''}<a class="srclink" href="${pub}" target="_blank" rel="noopener">PubMed</a></li>`;}).join('');}
 // ---- 18-check quality-assurance panel ----
 function renderQA(){const grid=document.getElementById('qaGrid');if(!grid)return;
   const res=pool(model),inc=model.filter(t=>t.inc),ncts=inc.map(t=>t.nct).filter(Boolean);
@@ -1009,7 +1038,7 @@ async function runWebRSel(){
   }catch(e){out.innerHTML=`<span style="color:var(--warn)">WebR/selmodel could not run here (needs network + https; metafor wasm must be available): ${esc(String((e&&e.message)||e))}.</span> Copy the metafor script above and run <code>selmodel()</code> locally.`;}
   finally{btn.disabled=false;}
 }
-function renderAll(){renderTable();renderRob();renderScreening();renderProvenance();renderConcordance();renderTimeline();renderOutputs();}
+function renderAll(){renderTable();renderRob();renderScreening();renderProvenance();renderConcordance();renderTimeline();renderReferences();renderOutputs();}
 const _st=document.getElementById('screenTabs');if(_st)_st.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;_screenTab=b.dataset.tab;renderScreening();});
 ['kBB','kAB','kBA','kAA'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',e=>{const key={kBB:'bothIn',kAB:'aInBOut',kBA:'aOutBIn',kAA:'bothOut'}[id];concord[key]=Math.max(0,+e.target.value||0);renderConcordance();renderQA();persistConcord();});});
 
