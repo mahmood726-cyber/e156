@@ -1,0 +1,24 @@
+{
+  "_about": "End-to-end pipeline config for the SGLT2-inhibitor heart-failure pairwise capsule. Run: python scripts/run_pipeline.py --config pipelines/sglt2-hf.json",
+  "capsule": "flagship/sglt2-hf-capsule.html",
+  "protocol": "protocols/sglt2-hf-protocol.md",
+  "author": { "name": "mahmood726-cyber", "email": "mahmood.ahmad2@nhs.net" },
+  "ncts": [
+    "NCT03036124",
+    "NCT03057977",
+    "NCT03057951",
+    "NCT03619213",
+    "NCT03521934",
+    "NCT01032629",
+    "NCT03315143"
+  ],
+  "pmid_map": {
+    "NCT03036124": "31535829",
+    "NCT03057977": "32865377",
+    "NCT03057951": "34449189",
+    "NCT03619213": "36027570",
+    "NCT03521934": "33200892"
+  },
+  "screening": "data/screening-decisions.json",
+  "extraction": "data/extraction-live.json"
+}
