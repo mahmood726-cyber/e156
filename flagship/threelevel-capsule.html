@@ -85,6 +85,12 @@
   .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
   .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
   .lay p{margin:0;max-width:44rem}
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.8rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.2rem 0}
+  .limts{font-size:.84rem;color:var(--ink-soft);border-left:3px solid var(--warn);padding:.4rem .8rem;margin:.5rem 0;background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:0 8px 8px 0;max-width:44rem}
 </style>
 </head>
 <body>
@@ -182,6 +188,10 @@
   <section class="stage" id="assurance">
     <div class="stagehdr"><span class="stagenum">07</span><h2>Assurance</h2></div>
     <div class="card"><p>Self-auditing trust layer: every sampling variance must be strictly positive (checked live), both REML variance components are constrained to σ² ≥ 0 (a 2-D search on the restricted likelihood, never a negative estimate), and the heterogeneity is split into I²₂ + I²₃ that sum below 100% alongside the level-1 sampling share. Accent is seeded from this capsule's slug. Tier reaches <b>Gold</b> only on independent reproduction.</p></div>
+    <div class="card"><h3>Self-audit — internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> Variance components are REML estimates from a 2-D grid search — fine for the unimodal restricted likelihood here, but a dedicated mixed-model package is preferred for many clusters. A two-level model that ignores the nesting understates the standard error. Demo data is illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -282,12 +292,29 @@ function renderVbar(fit){const el=document.getElementById('vbar');if(!fit){el.in
   const a=Math.max(0,fit.I2_1),b=Math.max(0,fit.I2_2),c=Math.max(0,fit.I2_3),tot=a+b+c||1;
   const seg=(cls,pct,lbl)=>`<div class="vseg ${cls}" style="width:${pct/tot*100}%">${pct>=9?lbl+' '+pct.toFixed(0)+'%':''}</div>`;
   el.innerHTML=seg('vs1',a,'L1')+seg('vs2',b,'L2')+seg('vs3',c,'L3');}
+function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
+  var pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(function(c){var s=c[1],cl=s===true?'pass':s==='warn'?'warn':'fail';if(cl==='pass')pass++;else if(cl==='warn')warn++;else fail++;
+    return '<div class="qacheck"><span class="qd '+cl+'"></span><span>'+c[0]+'</span><span class="qx">'+(cl==='pass'?'PASS':cl==='warn'?'N/A':'FAIL')+'</span></div>';}).join('');
+  var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
+  var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
+function renderQA(){var inc=included(),cls=clusters(inc),res=inc.length?fit3(cls):null;
+QA_RENDER([
+['Every sampling variance v > 0', inc.length?inc.every(function(r){return r.v>0;}):'warn'],
+['Every estimate is finite', inc.every(function(r){return isFinite(r.est);})],
+['≥ 1 effect size (poolable)', !!res],
+['σ²₂ (within-cluster) ≥ 0', !!(res&&res.s2>=0)],
+['σ²₃ (between-cluster) ≥ 0', !!(res&&res.s3>=0)],
+['I²₁ + I²₂ + I²₃ ≈ 100%', res?Math.abs(res.I2_1+res.I2_2+res.I2_3-100)<0.6:'warn'],
+['Pooled β is finite', !!(res&&isFinite(res.beta))],
+['SE(β) > 0', !!(res&&res.seBeta>0)]
+]);}
 function renderOutputs(){
   const inc=included();const cls=clusters(inc);
   const fit=inc.length?fit3(cls):null;renderForest(cls,fit);renderVbar(fit);
   if(!fit){['roMu','roCI','roS2','roS3','roI22','roI23'].forEach(id=>setT(id,'—'));setT('roK','0');setT('roC','0');
     setT('vNote','need ≥1 valid effect size');setT('cmpOut','—');setT('badgeK','—');
-    const vv=document.getElementById('verify');vv.textContent='no valid effect sizes';vv.style.color='var(--warn)';rcode();renderInspect();return;}
+    const vv=document.getElementById('verify');vv.textContent='no valid effect sizes';vv.style.color='var(--warn)';rcode();renderInspect();renderQA();return;}
   setT('roMu',f2(fit.beta));setH('roCI',`${f2(fit.ciL)} <small>to</small> ${f2(fit.ciU)}`);
   setT('roK',inc.length+'');setT('roC',cls.length+'');setT('badgeK',inc.length+' ES · '+cls.length+' clusters');
   setT('roS2',f3(fit.s2));setT('roS3',f3(fit.s3));
