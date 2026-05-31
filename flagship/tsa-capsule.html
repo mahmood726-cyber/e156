@@ -83,6 +83,10 @@
   .verdict.firm{border-color:var(--good);background:color-mix(in srgb,var(--good) 8%,var(--card))} .verdict.insuf{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 8%,var(--card))}
   footer{color:var(--ink-soft);font-size:.82rem;padding:2rem 0 4rem;border-top:1px solid var(--line)} footer .motto{font-family:var(--serif);font-style:italic;color:var(--ink)}
   @media print{.ribbon,nav.toc{position:static;backdrop-filter:none}}
+
+  .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
+  .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
+  .lay p{margin:0;max-width:44rem}
 </style>
 </head>
 <body>
@@ -110,6 +114,7 @@
 </header>
 
 <main class="wrap">
+  <div class="lay"><h2>What this means — in plain language</h2><p>Just as peeking at a trial repeatedly inflates false alarms, so does updating a meta-analysis with each new study. This draws a monitoring boundary the cumulative evidence must cross, and shows how much information is still needed.</p></div>
   <section class="stage" id="protocol">
     <div class="stagehdr"><span class="stagenum">01</span><h2>Protocol</h2></div>
     <div class="card"><h3>Review question — PICO</h3>
