@@ -78,11 +78,17 @@
   .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
   .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
   .lay p{margin:0;max-width:44rem}
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.8rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.2rem 0}
+  .limts{font-size:.84rem;color:var(--ink-soft);border-left:3px solid var(--warn);padding:.4rem .8rem;margin:.5rem 0;background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:0 8px 8px 0;max-width:44rem}
 </style>
 </head>
 <body>
 <div class="ribbon"><div class="inner" aria-label="Assurance status">
-  <span class="tier">SILVER</span>
+  <span class="tier" id="tier">SILVER</span>
   <span class="chk"><span class="dot ok"></span>Wilson CIs</span>
   <span class="chk"><span class="dot ok"></span>PPV/NPV vs prevalence</span>
   <span class="chk"><span class="dot ok"></span>likelihood ratios</span>
@@ -177,6 +183,10 @@
   <section class="stage" id="assurance">
     <div class="stagehdr"><span class="stagenum">08</span><h2>Assurance</h2></div>
     <div class="card"><p>Same self-auditing trust layer: proportions carry <b>Wilson</b> confidence intervals (well-behaved at extreme values, unlike the Wald interval), and PPV/NPV are shown as functions of prevalence — never as fixed test properties — with a Fagan pre/post-test readout. Accent is seeded from this capsule's slug. Tier reaches <b>Gold</b> only on independent reproduction.</p></div>
+    <div class="card"><h3>Self-audit — internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> Sensitivity and specificity are properties of the test; predictive values (PPV/NPV) depend on disease prevalence in the tested population, so they do not transport to a setting with different prevalence. Needs a proper reference standard applied to all. Demo counts are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -245,7 +255,21 @@ epi.tests(dat)   # Se, Sp, PPV, NPV, LR+, LR−, accuracy with CIs
 function renderInspect(){const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model,null,2);
   const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[dta,wilson,pvAt].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
 function syncInputs(){['tp','fp','fn','tn'].forEach(k=>{const el=document.getElementById(k);if(el)el.value=model[k];});}
-function renderOutputs(){const res=dta(model);renderPrev(res);renderReadouts(res);rcode();renderInspect();
+function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
+  var pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(function(c){var s=c[1],cl=s===true?'pass':s==='warn'?'warn':'fail';if(cl==='pass')pass++;else if(cl==='warn')warn++;else fail++;
+    return '<div class="qacheck"><span class="qd '+cl+'"></span><span>'+c[0]+'</span><span class="qx">'+(cl==='pass'?'PASS':cl==='warn'?'N/A':'FAIL')+'</span></div>';}).join('');
+  var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
+  var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
+function renderQA(){var res=dta(model);
+QA_RENDER([
+['2×2 counts are non-negative integers', [model.tp,model.fp,model.fn,model.tn].every(function(x){return x>=0&&x===Math.round(x);})],
+['At least one diseased and one non-diseased case', !!((model.tp+model.fn)>0&&(model.fp+model.tn)>0)],
+['Sensitivity & specificity within [0,1]', !!(res&&res.se.p>=0&&res.se.p<=1&&res.sp.p>=0&&res.sp.p<=1)],
+['PPV & NPV within [0,1]', !!(res&&res.ppv.p>=0&&res.ppv.p<=1&&res.npv.p>=0&&res.npv.p<=1)],
+["Youden's J = Se+Sp−1 within [−1,1]", !!(res&&res.youden>=-1&&res.youden<=1)]
+]);}
+function renderOutputs(){const res=dta(model);renderPrev(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeN').textContent=res?`n = ${res.n}`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`Se ${pct(res.se)} · Sp ${pct(res.sp)} · LR+ ${isFinite(res.lrp)?res.lrp.toFixed(1):'∞'} · PPV ${pct(res.ppv)} ✓`;v.style.color='var(--good)';}else{v.textContent='enter a valid 2×2';v.style.color='var(--warn)';}}
 function renderAll(){syncInputs();renderOutputs();}

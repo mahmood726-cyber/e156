@@ -77,11 +77,17 @@
   .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
   .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
   .lay p{margin:0;max-width:44rem}
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.8rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.2rem 0}
+  .limts{font-size:.84rem;color:var(--ink-soft);border-left:3px solid var(--warn);padding:.4rem .8rem;margin:.5rem 0;background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:0 8px 8px 0;max-width:44rem}
 </style>
 </head>
 <body>
 <div class="ribbon"><div class="inner" aria-label="Assurance status">
-  <span class="tier">SILVER</span>
+  <span class="tier" id="tier">SILVER</span>
   <span class="chk"><span class="dot ok"></span>log-rank + Cox</span>
   <span class="chk"><span class="dot" id="dotPH">—</span>proportional hazards</span>
   <span class="chk"><span class="dot ok"></span>censoring shown</span>
@@ -161,6 +167,10 @@
   <section class="stage" id="assurance">
     <div class="stagehdr"><span class="stagenum">08</span><h2>Assurance</h2></div>
     <div class="card"><p>Same self-auditing trust layer: the log-rank test and the Cox HR are reported together (they should agree), censoring is drawn on the curves rather than ignored, and the Schoenfeld PH test gates the ribbon dot — a single HR is only shown with the caveat when hazards aren't proportional. Accent is seeded from this capsule's slug. Tier reaches <b>Gold</b> only on independent reproduction.</p></div>
+    <div class="card"><h3>Self-audit — internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> A single hazard ratio assumes proportional hazards; when the Schoenfeld test rejects PH, the HR is a misleading time-average and interval HRs or RMST are the honest summary. The log-rank test shares the PH sensitivity. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -251,7 +261,22 @@ survdiff(Surv(time, event) ~ arm, data = d)     # log-rank
 fit <- coxph(Surv(time, event) ~ arm, data = d) # hazard ratio
 summary(fit); cox.zph(fit)                       # PH test (Schoenfeld)`;}
 function renderInspect(){const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[survAll,km,logrank,cox].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
-function renderOutputs(){const rows=parse(text),res=survAll(rows);renderKM(res);renderReadouts(res);rcode();renderInspect();
+function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
+  var pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(function(c){var s=c[1],cl=s===true?'pass':s==='warn'?'warn':'fail';if(cl==='pass')pass++;else if(cl==='warn')warn++;else fail++;
+    return '<div class="qacheck"><span class="qd '+cl+'"></span><span>'+c[0]+'</span><span class="qx">'+(cl==='pass'?'PASS':cl==='warn'?'N/A':'FAIL')+'</span></div>';}).join('');
+  var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
+  var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
+function renderQA(){var rows=parse(text),res=survAll(rows);
+QA_RENDER([
+['≥ 1 patient parsed', !!(res&&res.rows&&res.rows.length>=1)],
+['Cox hazard ratio > 0', !!(res&&res.cox&&res.cox.hr>0)],
+['Cox CI ordered (lo ≤ hi)', !!(res&&res.cox&&res.cox.lo<=res.cox.hi)],
+['Log-rank χ² ≥ 0 with p in [0,1]', !!(res&&res.lr&&res.lr.chi>=0&&res.lr.p>=0&&res.lr.p<=1)],
+['Proportional-hazards test reported', (res&&res.cox&&isFinite(res.cox.phP))?true:'warn'],
+['PH holds (Schoenfeld p > 0.05) — else read HR with caution', (res&&res.cox&&isFinite(res.cox.phP))?(res.cox.phP>0.05):'warn']
+]);}
+function renderOutputs(){const rows=parse(text),res=survAll(rows);renderKM(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeN').textContent=rows.length?`${rows.length} subjects`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`HR ${res.cox.hr.toFixed(2)} (${res.cox.lo.toFixed(2)}–${res.cox.hi.toFixed(2)}) · log-rank ${fmtP(res.lr.p)} · PH ${fmtP(res.cox.phP)} ✓`;v.style.color=res.cox.phP>=0.05?'var(--good)':'var(--warn)';}else{v.textContent='need ≥1 per arm';v.style.color='var(--warn)';}}
 function renderAll(){document.getElementById('data').value=text;renderOutputs();}
