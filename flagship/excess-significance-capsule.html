@@ -83,11 +83,17 @@
   .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
   .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
   .lay p{margin:0;max-width:44rem}
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.8rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.2rem 0}
+  .limts{font-size:.84rem;color:var(--ink-soft);border-left:3px solid var(--warn);padding:.4rem .8rem;margin:.5rem 0;background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:0 8px 8px 0;max-width:44rem}
 </style>
 </head>
 <body>
 <div class="ribbon"><div class="inner" aria-label="Assurance status">
-  <span class="tier">SILVER</span>
+  <span class="tier" id="tier">SILVER</span>
   <span class="chk"><span class="dot ok"></span>power-based expectation</span>
   <span class="chk"><span class="dot ok"></span>effect from largest study option</span>
   <span class="chk"><span class="dot" id="dotEx"></span>excess flagged</span>
@@ -173,6 +179,10 @@
   <section class="stage" id="assurance">
     <div class="stagehdr"><span class="stagenum">08</span><h2>Assurance</h2></div>
     <div class="card"><p>Same self-auditing trust layer: the expected count is built from each study's actual power (not a hand-wave), the assumed effect is explicit and switchable so the test's known sensitivity is visible, and O/E is shown beside the p-value so a near-miss can't be sold as exoneration. Accent is seeded from this capsule's slug. Tier reaches <b>Gold</b> only on independent reproduction.</p></div>
+    <div class="card"><h3>Self-audit — internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> The test for excess significance compares how many studies were significant against how many you would expect given their power; it needs a defensible effect-size assumption (power is computed under it) and a useful number of studies. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -267,7 +277,21 @@ function renderTable(res){let h='';model.forEach((r,i)=>{const bad=valid(r)?'':'
     `<td class="c">${sig}</td><td class="n">${pw}</td>`+
     `<td><button class="btn x" data-rm="${i}" title="remove">✕</button></td></tr>`;});
   document.getElementById('cBody').innerHTML=h;}
-function renderOutputs(){const res=tes(model,effMode);renderBars(res);renderReadouts(res);renderTable(res);rcode();renderInspect();
+function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
+  var pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(function(c){var s=c[1],cl=s===true?'pass':s==='warn'?'warn':'fail';if(cl==='pass')pass++;else if(cl==='warn')warn++;else fail++;
+    return '<div class="qacheck"><span class="qd '+cl+'"></span><span>'+c[0]+'</span><span class="qx">'+(cl==='pass'?'PASS':cl==='warn'?'N/A':'FAIL')+'</span></div>';}).join('');
+  var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
+  var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
+function renderQA(){var res=tes(model,effMode);
+QA_RENDER([
+['Every included study OR>0 with LCI<UCI', model.filter(function(r){return r.inc;}).every(function(r){return r.or>0&&r.lci<r.uci;})],
+['Observed significant count O ≥ 0 (integer)', !!(res&&res.O>=0&&res.O===Math.round(res.O))],
+['Expected count E within [0, k]', !!(res&&res.E>=0&&res.E<=res.k)],
+['O/E excess-significance ratio is finite', !!(res&&isFinite(res.ratio))],
+['χ² test p-value in [0,1]', !!(res&&res.pv>=0&&res.pv<=1)]
+]);}
+function renderOutputs(){const res=tes(model,effMode);renderBars(res);renderReadouts(res);renderTable(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeK').textContent=res?`${res.k} studies`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`O=${res.O} vs E=${res.E.toFixed(1)} (O/E=${isFinite(res.ratio)?res.ratio.toFixed(2):'∞'}) · ${res.excess?'excess significance':'no excess'} ✓`;v.style.color=res.excess?'var(--warn)':'var(--good)';}else{v.textContent='need ≥2 studies';v.style.color='var(--warn)';}}
 function renderAll(){renderOutputs();}

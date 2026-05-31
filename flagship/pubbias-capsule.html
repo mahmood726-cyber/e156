@@ -82,6 +82,12 @@
   .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
   .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
   .lay p{margin:0;max-width:44rem}
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.8rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.2rem 0}
+  .limts{font-size:.84rem;color:var(--ink-soft);border-left:3px solid var(--warn);padding:.4rem .8rem;margin:.5rem 0;background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:0 8px 8px 0;max-width:44rem}
 </style>
 </head>
 <body>
@@ -177,6 +183,10 @@
   <section class="stage" id="assurance">
     <div class="stagehdr"><span class="stagenum">08</span><h2>Assurance</h2></div>
     <div class="card"><p>Self-auditing trust layer: every SE must be strictly positive (checked live), Egger's intercept is tested on the correct <b>k−2</b> t-distribution, and PET-PEESE applies the <b>conditional</b> procedure (PET before PEESE) rather than always reporting the more aggressive correction. Trim-and-fill is labelled a sensitivity analysis throughout. Accent is seeded from this capsule's slug. Tier reaches <b>Gold</b> only on independent reproduction.</p></div>
+    <div class="card"><h3>Self-audit — internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> Funnel-plot tests detect small-study effects, which may be publication bias or genuine heterogeneity; Egger's test uses the radial t-distribution and has low power below ~10 studies, and trim-and-fill is a sensitivity analysis, never the primary result. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -286,6 +296,22 @@ function renderFunnel(res,tf){const svg=document.getElementById('funnelPlot');
   svg.innerHTML=s;}
 function niceTicks(lo,hi,n){if(!isFinite(lo)||!isFinite(hi)||hi<=lo)return [lo];const raw=(hi-lo)/n,mag=Math.pow(10,Math.floor(Math.log10(raw))),norm=raw/mag;const step=(norm<1.5?1:norm<3?2:norm<7?5:10)*mag;const start=Math.ceil(lo/step)*step,out=[];for(let v=start;v<=hi+1e-9;v+=step)out.push(+v.toFixed(10));return out;}
 function setH(id,v){const e=document.getElementById(id);if(e)e.innerHTML=v;}
+function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
+  var pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(function(c){var s=c[1],cl=s===true?'pass':s==='warn'?'warn':'fail';if(cl==='pass')pass++;else if(cl==='warn')warn++;else fail++;
+    return '<div class="qacheck"><span class="qd '+cl+'"></span><span>'+c[0]+'</span><span class="qx">'+(cl==='pass'?'PASS':cl==='warn'?'N/A':'FAIL')+'</span></div>';}).join('');
+  var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
+  var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
+function renderQA(){var inc=included();var y=inc.map(function(r){return r.yi;}),v=inc.map(function(r){return r.sei*r.sei;}),s=inc.map(function(r){return r.sei;});
+var m=inc.length?pool(y,v):null,eg=inc.length>=3?egger(y,s):null,tf=inc.length?trimfill(y,v):null;
+QA_RENDER([
+['Every included study has SE > 0', inc.length?inc.every(function(r){return r.sei>0;}):'warn'],
+['Pooled τ² ≥ 0', !!(m&&m.tau2>=0)],
+['I² within [0,100]', (m&&m.I2!=null)?(m.I2>=0&&m.I2<=100):'warn'],
+['Egger test p-value (t-distribution) in [0,1]', (eg&&isFinite(eg.p))?(eg.p>=0&&eg.p<=1):'warn'],
+['Trim-and-fill imputes k₀ ≥ 0 studies', !!(tf&&tf.k0>=0)],
+['≥ 10 studies for adequate funnel power', inc.length>=10?true:'warn']
+]);}
 function renderOutputs(){
   const inc=included(),y=inc.map(r=>r.yi),v=inc.map(r=>r.sei*r.sei),s=inc.map(r=>r.sei);
   const res=pool(y,v);const tf=res?trimfill(y,v):{k0:0,imp:[],adj:null};
@@ -343,7 +369,7 @@ function renderTable(){let h='';const totW=included().reduce((a,r)=>a+1/(r.sei*r
     `<td class="n"><input class="ed${bad}" data-k="sei" type="number" step="0.01" value="${r.sei}"></td>`+
     `<td class="n">${w}</td><td><button class="btn x" data-rm="${i}" title="remove">✕</button></td></tr>`;});
   document.getElementById('cBody').innerHTML=h;}
-function renderAll(){renderTable();renderOutputs();}
+function renderAll(){renderTable();renderOutputs();renderQA();}
 
 document.getElementById('cBody').addEventListener('input',e=>{const tr=e.target.closest('tr');if(!tr)return;const i=+tr.dataset.i;
   if(e.target.classList.contains('inc')){model[i].inc=e.target.checked;renderTable();renderOutputs();persist();return;}
