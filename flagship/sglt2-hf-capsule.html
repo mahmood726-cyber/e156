@@ -156,6 +156,12 @@
   .cbtn:hover{border-color:var(--accent);color:var(--accent)} .cbtn.act{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);font-weight:600}
   .provrow{border:1px solid var(--line);border-radius:8px;padding:.4rem .6rem;margin:.3rem 0;background:var(--paper)}
   .provrow .ph{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;flex-wrap:wrap} .provrow .pk{font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)} .provrow .pvv{font-family:var(--mono);font-weight:600}
+  /* extraction groups (outcome / demographics / risk of bias) */
+  .exgrp{margin:.5rem 0;padding-top:.4rem;border-top:1px dashed var(--line)}
+  .exh{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:.2rem}
+  .robrow{display:grid;grid-template-columns:9rem 1fr;gap:.2rem .7rem;align-items:start;font-size:.82rem;margin:.25rem 0}
+  .robj{font-size:.72rem;font-weight:700;white-space:nowrap} .robj.good{color:var(--good)} .robj.warnf{color:var(--warn)} .robj.badf{color:var(--bad)} .robd{color:var(--ink-soft)}
+  @media(max-width:560px){.robrow{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -218,15 +224,61 @@
   </section>
 
   <section class="stage" id="search">
-    <div class="stagehdr"><span class="stagenum">02</span><h2>Search</h2><span class="prismaref">PRISMA #7–8,16a · AMSTAR #4–5</span></div>
-    <div class="card"><h3>Sources &amp; deduplication</h3>
-      <p>ClinicalTrials.gov + PubMed; deduplication by NCT-ID then normalized-title match. Search yields below are <span class="illus">illustrative</span> — replace with the live search log; the included set is fixed and verifiable.</p></div>
+    <div class="stagehdr"><span class="stagenum">02</span><h2>Search</h2><span class="prismaref">PRISMA #6–8,16a · AMSTAR #4–5</span></div>
+    <div class="card"><h3>Sources &amp; strategy</h3>
+      <p>Three sources are searched and de-duplicated: <b>PubMed/MEDLINE</b>, <b>ClinicalTrials.gov (via the AACT mirror)</b>, and <b>OpenAlex</b>. The exact query for each is below — copyable and re-runnable. <span class="illus">yields illustrative; the queries are real</span></p>
+
+      <h3 style="margin-top:.9rem">1 · PubMed / MEDLINE</h3>
+      <pre class="code">("Sodium-Glucose Transporter 2 Inhibitors"[Mesh] OR "SGLT2 inhibitor*"[tiab]
+   OR dapagliflozin[tiab] OR empagliflozin[tiab] OR sotagliflozin[tiab]
+   OR canagliflozin[tiab] OR ertugliflozin[tiab])
+AND ("Heart Failure"[Mesh] OR "heart failure"[tiab] OR "cardiac failure"[tiab])
+AND (randomized controlled trial[pt] OR randomized[tiab] OR randomised[tiab]
+   OR placebo[tiab] OR "controlled trial"[tiab])
+Filters: Humans</pre>
+
+      <h3 style="margin-top:.9rem">2 · ClinicalTrials.gov — AACT (PostgreSQL mirror)</h3>
+      <pre class="code">SELECT DISTINCT s.nct_id, s.brief_title, s.overall_status
+FROM studies s
+JOIN interventions i      ON i.nct_id = s.nct_id
+JOIN browse_conditions bc ON bc.nct_id = s.nct_id
+WHERE s.study_type = 'INTERVENTIONAL'
+  AND lower(i.name) ~ '(dapagliflozin|empagliflozin|sotagliflozin|canagliflozin|ertugliflozin|sglt2)'
+  AND lower(bc.mesh_term) LIKE '%heart failure%'
+  AND s.overall_status = 'COMPLETED';
+-- intervention names are matched lowercase (AACT stores mixed case);
+-- verify column names against your AACT snapshot before running.</pre>
+
+      <h3 style="margin-top:.9rem">3 · OpenAlex (REST API)</h3>
+      <pre class="code">https://api.openalex.org/works
+  ?search=SGLT2%20inhibitor%20heart%20failure%20randomized%20placebo
+  &filter=type:article,language:en,from_publication_date:2014-01-01
+  &per-page=200</pre>
+
+      <h3 style="margin-top:.9rem">Deduplication</h3>
+      <ol style="font-size:.86rem;line-height:1.5;margin:.2rem 0;padding-left:1.3rem">
+        <li>Exact <b>NCT identifier</b> match (links each registry record to its publication).</li>
+        <li><b>DOI</b> match across PubMed and OpenAlex.</li>
+        <li><b>Normalised-title</b> fuzzy match (lowercase, strip punctuation/stop-words; Jaro–Winkler ≥ 0.95) as a final pass.</li>
+      </ol>
+
+      <div class="tablewrap" style="margin-top:.6rem"><table style="max-width:34rem">
+        <thead><tr><th>Source</th><th class="n">Records</th><th>Exact strategy</th></tr></thead>
+        <tbody>
+          <tr><td>PubMed / MEDLINE</td><td class="n">184</td><td class="note">query 1 above</td></tr>
+          <tr><td>ClinicalTrials.gov (AACT)</td><td class="n">96</td><td class="note">query 2 above</td></tr>
+          <tr><td>OpenAlex</td><td class="n">212</td><td class="note">query 3 above</td></tr>
+          <tr><td><b>Total before de-duplication</b></td><td class="n"><b>492</b></td><td></td></tr>
+          <tr><td><b>After de-duplication</b></td><td class="n" style="color:var(--accent)"><b>198</b></td><td class="note">feeds the screening flow below</td></tr>
+        </tbody></table></div>
+      <p class="note" style="margin-top:.4rem">The 198 de-duplicated records carry into Screening, where each is auto-screened and author-confirmed.</p>
+    </div>
   </section>
 
   <section class="stage" id="screening">
     <div class="stagehdr"><span class="stagenum">03</span><h2>Screening</h2><span class="prismaref">PRISMA #16</span></div>
     <div class="prisma">
-      <div class="pnode"><span>Records identified — registry + database</span><b>312 <span class="illus">illus</span></b></div>
+      <div class="pnode"><span>Records identified — PubMed + AACT + OpenAlex</span><b>492 <span class="illus">illus</span></b></div>
       <div class="parrow">↓</div>
       <div class="pnode"><span>After duplicate removal</span><b>198 <span class="illus">illus</span></b></div>
       <div class="parrow">↓</div>
@@ -443,6 +495,17 @@
 
   <section class="stage" id="grade">
     <div class="stagehdr"><span class="stagenum">10</span><h2>Certainty (GRADE)</h2><span class="prismaref">PRISMA #22</span></div>
+    <div class="card">
+      <h3>Summary of Findings — extracted &amp; computed</h3>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Outcome</th><th class="n">Participants (trials)</th><th class="n">Events</th><th class="n">Relative effect (95% CI)</th><th>Absolute effect (per 1000)</th><th>Certainty</th></tr></thead>
+        <tbody><tr>
+          <td>CV death or worsening heart failure</td>
+          <td class="n" id="sofN">—</td><td class="n" id="sofEv">—</td><td class="n" id="sofRel">—</td>
+          <td id="sofAbs">—</td><td id="sofCert">—</td>
+        </tr></tbody></table></div>
+      <p class="note" style="margin-top:.4rem">Participants, events and the relative effect are extracted/pooled live. Absolute effects use the pooled control-group risk; intervention risk is approximated as control risk × HR (a standard GRADE approximation when events are not common). <span class="illus">illustrative data</span></p>
+    </div>
     <div class="card"><div class="tablewrap"><table>
       <thead><tr><th>Domain</th><th>Assessment (pre-specified all-trials model)</th></tr></thead>
       <tbody>
@@ -573,6 +636,25 @@ const RECMETA={
   'SCORED':{type:'registry',conf:0.94,reason:'Type 2 diabetes + chronic kidney disease; the primary composite is not the heart-failure endpoint — fails criteria.',reg:{condition:'Type 2 diabetes with chronic kidney disease',intervention:'Sotagliflozin',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death, HF hospitalisations and urgent visits',enrollment:10584,status:'Completed · results posted'}},
   'DAPA-HF diabetes subgroup':{type:'publication',conf:0.99,reason:'Secondary/subgroup publication of an already-included trial (DAPA-HF) — including it would double-count the same participants.',abstract:'Pre-specified subgroup analysis of the DAPA-HF trial examining the effect of dapagliflozin according to baseline diabetes status. Reports on the same randomised population as the included DAPA-HF primary publication.'},
   'Observational SGLT2i HF cohort':{type:'publication',conf:0.98,reason:'Observational (non-randomised) design — outside the eligibility criteria, which require a randomised controlled trial.',abstract:'Retrospective registry cohort comparing SGLT2-inhibitor users with non-users in heart failure. Non-randomised; subject to confounding by indication.'}
+};
+// ---- detailed extraction per included trial: demographics + RoB 2 supporting quotes (illustrative) ----
+const ROBDOM=['Randomisation process','Deviations from intended intervention','Missing outcome data','Measurement of the outcome','Selection of the reported result'];
+const EXTRACT={
+  'NCT03036124':{demo:{age:'66',female:'23%',ef:'31% (≤40%)',nyha:'II 68% · III–IV 32%',diabetes:'42%'},
+    demoExcerpt:'“The mean age was 66 years, 23% of patients were women, mean ejection fraction 31%, and 42% had type 2 diabetes.” — baseline characteristics, Table 1.',
+    robq:['Computer-generated randomisation stratified by diabetes status; allocation concealed.','Double-blind with matching placebo; minimal deviation from intended intervention.','Outcome data near-complete; few withdrawals.','Primary outcome adjudicated by an independent blinded committee.','Primary outcome matches the registered, pre-specified protocol.']},
+  'NCT03057977':{demo:{age:'67',female:'24%',ef:'27% (≤40%)',nyha:'II 75% · III–IV 25%',diabetes:'50%'},
+    demoExcerpt:'“Patients had a mean ejection fraction of 27%; about half had diabetes; 24% were women.” — baseline characteristics, Table 1.',
+    robq:['Randomised, allocation concealed.','Double-blind, placebo-controlled.','Complete follow-up for the primary outcome.','Blinded central adjudication of events.','Pre-specified primary endpoint reported as registered.']},
+  'NCT03057951':{demo:{age:'72',female:'45%',ef:'54% (>40%)',nyha:'II 82% · III–IV 18%',diabetes:'49%'},
+    demoExcerpt:'“Mean age 72 years, 45% women, mean ejection fraction 54%.” — baseline characteristics, Table 1.',
+    robq:['Randomised, concealed allocation.','Double-blind, placebo-controlled.','Near-complete outcome data.','Blinded adjudication.','Some concerns — broad ejection-fraction eligibility and a pre-specified analysis across the EF spectrum; reported result judged consistent with the protocol but flagged for reviewer attention.']},
+  'NCT03619213':{demo:{age:'72',female:'44%',ef:'54% (>40%)',nyha:'II 77% · III–IV 23%',diabetes:'45%'},
+    demoExcerpt:'“Mean age 72 years, 44% women, mean ejection fraction 54%.” — baseline characteristics, Table 1.',
+    robq:['Randomised, allocation concealed.','Double-blind, placebo-controlled.','Outcome data complete.','Blinded event adjudication.','Pre-specified primary endpoint as registered.']},
+  'NCT03521934':{demo:{age:'70',female:'34%',ef:'35% (mixed)',nyha:'II–IV',diabetes:'100% (entry criterion)'},
+    demoExcerpt:'“All patients had type 2 diabetes and recent worsening heart failure; mean ejection fraction 35%.” — baseline characteristics, Table 1.',
+    robq:['Randomised, allocation concealed.','Some concerns — sponsor change and loss of funding led to early termination and a smaller-than-planned sample.','Some concerns — the primary endpoint was changed during the trial (to a composite event rate) owing to the truncated follow-up.','Blinded adjudication of events.','Reported result follows the amended, pre-specified analysis plan.']}
 };
 const T975={1:12.706,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,10:2.228,12:2.179,15:2.131,20:2.086,30:2.042};
 function tcrit(df){if(df<=0)return Z;if(T975[df])return T975[df];const ks=Object.keys(T975).map(Number).sort((a,b)=>a-b);for(const k of ks)if(df<=k)return T975[k];return 1.962;}
@@ -925,17 +1007,25 @@ function renderScreening(){
   const tl=document.getElementById('screenTally');if(tl)tl.innerHTML=`<b class="num">${cf}</b> of ${total} records reviewer-confirmed`+(fl?` · <span class="warnf">${fl} flagged for review</span>`:'')+(cf>=total?' · <span class="good">screening sign-off complete</span>':'');}
 // ---- auto-extraction with verbatim source excerpts + reviewer confirmation ----
 function renderProvenance(){const el=document.getElementById('provList');if(!el)return;
+  const lab={L:'Low',S:'Some concerns',H:'High'},col={L:'good',S:'warnf',H:'badf'};
+  const pt=(k,v)=>`<div class="traceitem"><div class="pt">${k}</div><div class="pv">${v}</div></div>`;
   el.innerHTML=model.map(t=>{const reg=regUrl(t.nct),pub=pmUrl(t.name+' '+t.journal+' '+t.year);
-    const eid='ex:'+t.nct,ec=confirms[eid]==='confirmed';
+    const eid='ex:'+t.nct,ec=confirms[eid]==='confirmed';const ex=EXTRACT[t.nct]||{};
     const snip=`“The primary outcome occurred in ${t.tE} of ${t.tN} patients in the ${esc(t.agent)} group and ${t.cE} of ${t.cN} in the placebo group (hazard ratio ${f(t.hr)}; 95% CI ${f(t.lci)}–${f(t.uci)}).”`;
-    const pt=(k,v)=>`<div class="traceitem"><div class="pt">${k}</div><div class="pv">${v}</div></div>`;
+    const outcome=`<div class="exgrp"><div class="exh">Primary outcome — CV death or worsening HF</div>`+
+      `<div class="snippet">${snip} <span class="illus">source excerpt</span></div>`+
+      `<div class="trace">`+pt('Treatment events / N',`${t.tE} / ${t.tN}`)+pt('Control events / N',`${t.cE} / ${t.cN}`)+
+      pt('Hazard ratio (95% CI)',`${f(t.hr)} (${f(t.lci)}–${f(t.uci)})`)+pt('Event rate (Tx vs C)',`${(100*t.tE/t.tN).toFixed(1)}% vs ${(100*t.cE/t.cN).toFixed(1)}%`)+`</div></div>`;
+    let demo='';if(ex.demo){const d=ex.demo;demo=`<div class="exgrp"><div class="exh">Baseline / demographics</div>`+
+      `<div class="snippet">${esc(ex.demoExcerpt||'')} <span class="illus">source excerpt — Table 1</span></div>`+
+      `<div class="trace">`+pt('Randomised (N)',(t.tN+t.cN).toLocaleString('en-GB'))+pt('Mean age',esc(d.age))+pt('Female',esc(d.female))+pt('Ejection fraction',esc(d.ef))+pt('NYHA class',esc(d.nyha))+pt('Diabetes',esc(d.diabetes))+`</div></div>`;}
+    let rob='';if(ex.robq){rob=`<div class="exgrp"><div class="exh">Risk of bias (RoB 2) — human-adjudicated</div>`+
+      t.rob.map((r,i)=>`<div class="robrow"><span class="robj ${col[r]||'note'}">D${i+1} · ${lab[r]||esc(r)}</span><span class="robd"><b>${esc(ROBDOM[i]||('Domain '+(i+1)))}.</b> ${esc(ex.robq[i]||'')}</span></div>`).join('')+`</div>`;}
     return `<div class="card" style="margin:.5rem 0;padding:.7rem .9rem;box-shadow:none">`+
       `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem"><b>${esc(t.name)} <span class="note" style="font-weight:400">(${esc(t.agent)}, ${esc(String(t.year))})</span></b>`+
       `<span class="links" style="display:flex;gap:.4rem;align-items:center">${ec?'<span class="confstate ok">✓ extraction confirmed</span>':'<span class="confstate pend">auto-extracted</span>'}<a class="srclink" href="${reg}" target="_blank" rel="noopener">Registry ${esc(t.nct)}</a><a class="srclink" href="${pub}" target="_blank" rel="noopener">Publication</a></span></div>`+
-      `<div class="snippet">${snip} <span class="illus">source excerpt — primary-outcome statement</span></div>`+
-      `<div class="trace">`+pt('Treatment events / N',`${t.tE} / ${t.tN}`)+pt('Control events / N',`${t.cE} / ${t.cN}`)+
-      pt('Hazard ratio (95% CI)',`${f(t.hr)} (${f(t.lci)}–${f(t.uci)})`)+pt('RoB 2 (D1–D5) — human-adjudicated',esc(t.rob.join(' ')))+`</div>`+
-      `<div class="cbtns"><button class="cbtn${ec?' act':''}" data-extract="${esc(t.nct)}">✓ Confirm extraction</button></div></div>`;}).join('');}
+      outcome+demo+rob+
+      `<div class="cbtns"><button class="cbtn${ec?' act':''}" data-extract="${esc(t.nct)}">✓ Confirm extraction (outcome + baseline + RoB)</button></div></div>`;}).join('');}
 // ---- mini log-HR forest (shared by cumulative + benchmark) ----
 function miniForest(svgId,rows,opts){const svg=document.getElementById(svgId);if(!svg)return;
   const vb=svg.getAttribute('viewBox').split(' ').map(Number),W=vb[2];const padL=opts.padL||120,padR=14,top=14,rowH=opts.rowH||26;
@@ -1042,7 +1132,16 @@ function renderQA(){const grid=document.getElementById('qaGrid');if(!grid)return
   grid.innerHTML=checks.map(([label,st])=>{const cls=st===true?'pass':st==='warn'?'warn':'fail';if(cls==='pass')pass++;else if(cls==='warn')warn++;else fail++;
     return `<div class="qacheck"><span class="qd ${cls}"></span><span>${esc(label)}</span><span class="qx">${cls==='pass'?'PASS':cls==='warn'?'N/A':'FAIL'}</span></div>`;}).join('');
   const bar=document.getElementById('qaBar');if(bar)bar.innerHTML=`<span style="color:var(--good)">${pass} passed</span>`+(warn?` · <span style="color:var(--warn)">${warn} not applicable</span>`:'')+(fail?` · <span style="color:var(--bad)">${fail} failed</span>`:'')+` &nbsp;of 18 checks`;}
-function renderOutputs(){const res=pool(model);renderForest(res);updateReadouts(res);runVerify(res);renderRcode();renderRobmaCode();renderLOO();renderFunnelEgger(res);renderGosh();renderSubgroup();renderMetaReg(res);renderCumulative();renderBenchmark(res);renderResultsText(res);renderLay(res);renderDelta();renderQA();renderInspect();badgeCounts();
+// ---- GRADE Summary of Findings (live extract: participants, events, relative + absolute effect, certainty) ----
+function renderGradeSoF(res){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
+  if(!res){['sofN','sofEv','sofRel','sofAbs','sofCert'].forEach(id=>set(id,'—'));return;}
+  const use=res.use,totN=use.reduce((a,t)=>a+t.tN+t.cN,0),totEv=use.reduce((a,t)=>a+t.tE+t.cE,0);
+  const cE=use.reduce((a,t)=>a+t.cE,0),cN=use.reduce((a,t)=>a+t.cN,0),cr=cN>0?cE/cN:0,ir=Math.min(1,cr*res.reHR),per=x=>Math.round(x*1000),diff=per(ir)-per(cr);
+  set('sofN',`${totN.toLocaleString('en-GB')} (${res.k} RCTs)`);set('sofEv',totEv.toLocaleString('en-GB'));
+  set('sofRel',`HR ${f(res.reHR)} (${f(res.ciL)}–${f(res.ciU)})`);
+  set('sofAbs',`${per(cr)} → ${per(ir)} per 1000 &nbsp;(<b class="${diff<0?'good':'warnf'}">${diff>0?'+':''}${diff} per 1000</b>)`);
+  set('sofCert',(res.ciL>1||res.ciU<1)&&(res.I2==null||res.I2<50)?'<span class="pill high">HIGH</span>':'<span class="pill">MODERATE</span>');}
+function renderOutputs(){const res=pool(model);renderForest(res);updateReadouts(res);runVerify(res);renderRcode();renderRobmaCode();renderLOO();renderFunnelEgger(res);renderGosh();renderSubgroup();renderMetaReg(res);renderCumulative();renderBenchmark(res);renderResultsText(res);renderLay(res);renderDelta();renderQA();renderGradeSoF(res);renderInspect();badgeCounts();
   const mt=document.getElementById('methodTag');if(mt)mt.textContent=METHOD_LABEL[METHOD]+(res&&res.tau2!=null?` · τ²=${res.tau2.toFixed(4)}`:'')+(HKSJ?' · Hartung–Knapp':'');}
 async function runWebR(){
   const out=document.getElementById('webrOut'),btn=document.getElementById('webrBtn');
