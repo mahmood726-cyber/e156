@@ -1,0 +1,93 @@
+{
+ "NCT03036124": {
+  "title": "Study to Evaluate the Effect of Dapagliflozin on the Incidence of Worsening Heart Failure or Cardiovascular Death in Patients With Chronic Heart Failure",
+  "acronym": "DAPA-HF",
+  "condition": "Chronic Heart Failure With Reduced Ejection Fraction (HFrEF)",
+  "intervention": "Dapagliflozin",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Quadruple-blind",
+  "primary": "Subjects Included in the Composite Endpoint of CV Death, Hospitalization Due to Heart Failure or Urgent Visit Due to Heart Failure.",
+  "enrollment": 4744,
+  "status": "Completed",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ },
+ "NCT03057977": {
+  "title": "EMPagliflozin outcomE tRial in Patients With chrOnic heaRt Failure With Reduced Ejection Fraction (EMPEROR-Reduced)",
+  "acronym": "",
+  "condition": "Heart Failure",
+  "intervention": "Empagliflozin",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Double-blind",
+  "primary": "Time to the First Event of Adjudicated Cardiovascular (CV) Death or Adjudicated Hospitalisation for Heart Failure (HHF)",
+  "enrollment": 3730,
+  "status": "Completed",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ },
+ "NCT03057951": {
+  "title": "EMPagliflozin outcomE tRial in Patients With chrOnic heaRt Failure With Preserved Ejection Fraction (EMPEROR-Preserved)",
+  "acronym": "",
+  "condition": "Heart Failure",
+  "intervention": "Empagliflozin",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Double-blind",
+  "primary": "Time to First Event of Adjudicated Cardiovascular (CV) Death or Adjudicated Hospitalisation for Heart Failure (HHF)",
+  "enrollment": 5988,
+  "status": "Completed",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ },
+ "NCT03619213": {
+  "title": "Dapagliflozin Evaluation to Improve the LIVEs of Patients With PReserved Ejection Fraction Heart Failure.",
+  "acronym": "DELIVER",
+  "condition": "Heart Failure With Preserved Ejection Fraction",
+  "intervention": "Dapagliflozin",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Quadruple-blind",
+  "primary": "Subjects Included in the Composite Endpoint of CV Death, Hospitalization Due to Heart Failure or Urgent Visit Due to Heart Failure.",
+  "enrollment": 6263,
+  "status": "Completed",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ },
+ "NCT03521934": {
+  "title": "Effect of Sotagliflozin on Cardiovascular Events in Participants With Type 2 Diabetes Post Worsening Heart Failure (SOLOIST-WHF Trial)",
+  "acronym": "",
+  "condition": "Heart Failure",
+  "intervention": "Sotagliflozin",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Quadruple-blind",
+  "primary": "Number of Total Occurrences of Cardiovascular (CV) Death, Hospitalizations for Heart Failure (HHF) and Urgent Visits for Heart Failure (HF)",
+  "enrollment": 1222,
+  "status": "Terminated",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ },
+ "NCT01032629": {
+  "title": "CANVAS - CANagliflozin cardioVascular Assessment Study",
+  "acronym": "CANVAS",
+  "condition": "Diabetes Mellitus, Type 2",
+  "intervention": "Canagliflozin (JNJ-28431754) 100 mg, Canagliflozin (JNJ-28431754) 300 mg",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Quadruple-blind",
+  "primary": "Major Adverse Cardiovascular Events (MACE) Composite of Cardiovascular (CV) Death, Non-Fatal Myocardial Infarction (MI), and Non-Fatal Stroke",
+  "enrollment": 4330,
+  "status": "Completed",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ },
+ "NCT03315143": {
+  "title": "Effect of Sotagliflozin on Cardiovascular and Renal Events in Participants With Type 2 Diabetes and Moderate Renal Impairment Who Are at Cardiovascular Risk",
+  "acronym": "SCORED",
+  "condition": "Heart Failure",
+  "intervention": "Sotagliflozin",
+  "comparator": "Placebo",
+  "design": "Interventional · Phase3 · Randomized · Quadruple-blind",
+  "primary": "Number of Total Occurrences of Cardiovascular (CV) Death, Hospitalizations for Heart Failure (HHF) and Urgent Visits for Heart Failure (HF)",
+  "enrollment": 10584,
+  "status": "Terminated",
+  "live": true,
+  "source": "ClinicalTrials.gov API v2"
+ }
+}
