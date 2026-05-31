@@ -17,11 +17,18 @@
     --mono:"SF Mono","Cascadia Code","JetBrains Mono",Consolas,ui-monospace,monospace;
     --ribbonH:5rem;
   }
-  @media (prefers-color-scheme:dark){:root{
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
     --accent:hsl(var(--slug-hue) 60% 64%); --accent-strong:hsl(var(--slug-hue) 64% 74%); --accent-soft:hsl(var(--slug-hue) 30% 15%);
     --ink:#ece8e1; --ink-soft:#9aa2ad; --line:#2a2f35; --paper:#0e1013; --card:#15181c;
     --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --pending:#9aa2ad; --some:#d4a017;
   }}
+  :root[data-theme="dark"]{
+    --accent:hsl(var(--slug-hue) 60% 64%); --accent-strong:hsl(var(--slug-hue) 64% 74%); --accent-soft:hsl(var(--slug-hue) 30% 15%);
+    --ink:#ece8e1; --ink-soft:#9aa2ad; --line:#2a2f35; --paper:#0e1013; --card:#15181c;
+    --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --pending:#9aa2ad; --some:#d4a017;
+  }
+  .themebtn{font:inherit;font-size:.9rem;line-height:1;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);border-radius:7px;padding:.2rem .45rem;cursor:pointer}
+  .themebtn:hover{border-color:var(--accent);color:var(--accent)}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;scroll-padding-top:6rem}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -175,6 +182,7 @@
   <span class="chk"><span class="dot pending"></span>independent reproduction</span>
   <span class="grow"></span>
   <span class="verify" id="verify" aria-live="polite">re-pooling…</span>
+  <button class="themebtn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark / light mode">☾</button>
 </div></div>
 
 <nav class="toc" aria-label="Pipeline"><ul>
@@ -1265,6 +1273,12 @@ const _ws=document.getElementById('webrSelBtn');if(_ws)_ws.addEventListener('cli
   if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){links.forEach(l=>l.classList.remove('active'));const a=map[en.target.id];if(a)a.classList.add('active');}}),{rootMargin:'-40% 0px -55% 0px'});
     document.querySelectorAll('section.stage').forEach(s=>io.observe(s));}})();
 document.getElementById('genstamp').textContent=new Date().toISOString().slice(0,10);
+// theme toggle — manual dark/light overriding the OS preference, persisted
+(function(){const KEY=LSKEY+':theme',btn=document.getElementById('themeBtn');
+  const effective=()=>{const t=document.documentElement.getAttribute('data-theme');return t||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');};
+  const apply=t=>{if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.removeAttribute('data-theme');if(btn)btn.textContent=effective()==='dark'?'☀':'☾';};
+  let saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}apply(saved);
+  if(btn)btn.addEventListener('click',()=>{const next=effective()==='dark'?'light':'dark';try{localStorage.setItem(KEY,next);}catch(e){}apply(next);});})();
 renderAll();persist();
 </script>
 </body>
