@@ -1,0 +1,52 @@
+{
+ "NCT03036124": {
+  "doi": "10.1056/nejmoa1911303",
+  "citedBy": 6786,
+  "oa": true,
+  "oaStatus": "bronze",
+  "year": 2019,
+  "openalexId": "W2974260792",
+  "title": "Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction",
+  "source": "OpenAlex"
+ },
+ "NCT03057977": {
+  "doi": "10.1056/nejmoa2022190",
+  "citedBy": 4973,
+  "oa": true,
+  "oaStatus": "bronze",
+  "year": 2020,
+  "openalexId": "W3081830235",
+  "title": "Cardiovascular and Renal Outcomes with Empagliflozin in Heart Failure",
+  "source": "OpenAlex"
+ },
+ "NCT03057951": {
+  "doi": "10.1056/nejmoa2107038",
+  "citedBy": 4533,
+  "oa": true,
+  "oaStatus": "bronze",
+  "year": 2021,
+  "openalexId": "W3193297191",
+  "title": "Empagliflozin in Heart Failure with a Preserved Ejection Fraction",
+  "source": "OpenAlex"
+ },
+ "NCT03619213": {
+  "doi": "10.1056/nejmoa2206286",
+  "citedBy": 2591,
+  "oa": true,
+  "oaStatus": "bronze",
+  "year": 2022,
+  "openalexId": "W4293354639",
+  "title": "Dapagliflozin in Heart Failure with Mildly Reduced or Preserved Ejection Fraction",
+  "source": "OpenAlex"
+ },
+ "NCT03521934": {
+  "doi": "10.1056/nejmoa2030183",
+  "citedBy": 1812,
+  "oa": true,
+  "oaStatus": "bronze",
+  "year": 2020,
+  "openalexId": "W3100542962",
+  "title": "Sotagliflozin in Patients with Diabetes and Recent Worsening Heart Failure",
+  "source": "OpenAlex"
+ }
+}
