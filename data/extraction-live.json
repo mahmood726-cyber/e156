@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "extracted_by": "orchestrating agentic CLI (Claude)",
+    "date": "2026-05-31",
+    "source": "live PubMed abstracts (data/pubmed-records.json)",
+    "method": "the host CLI agent read each trial's live PubMed abstract and extracted the fields the abstract supports, each with the verbatim sentence it came from; fields not present in the abstract (e.g. age, sex, full Table 1) require the full text and are left to the illustrative/human step",
+    "note": "values are cross-checked against the structured trial data where possible (e.g. randomised N)"
+  },
+  "extractions": {
+    "NCT03036124": {"fields": [
+      {"k": "Randomised (N)", "v": "4744", "snip": "we randomly assigned 4744 patients with New York Heart Association class II, III, or IV heart failure and an ejection fraction of 40% or less", "c": 0.99},
+      {"k": "NYHA class", "v": "II–IV", "snip": "New York Heart Association class II, III, or IV heart failure", "c": 0.98},
+      {"k": "Ejection fraction", "v": "≤ 40% (reduced)", "snip": "an ejection fraction of 40% or less", "c": 0.99},
+      {"k": "Intervention", "v": "Dapagliflozin 10 mg once daily", "snip": "to receive either dapagliflozin (at a dose of 10 mg once daily) or placebo", "c": 0.99},
+      {"k": "Comparator", "v": "Placebo", "snip": "or placebo, in addition to recommended therapy", "c": 0.98},
+      {"k": "Design", "v": "Phase 3, placebo-controlled, randomised", "snip": "In this phase 3, placebo-controlled trial", "c": 0.97}
+    ]},
+    "NCT03057977": {"fields": [
+      {"k": "Randomised (N)", "v": "3730", "snip": "we randomly assigned 3730 patients with class II, III, or IV heart failure and an ejection fraction of 40% or less", "c": 0.99},
+      {"k": "NYHA class", "v": "II–IV", "snip": "class II, III, or IV heart failure", "c": 0.98},
+      {"k": "Ejection fraction", "v": "≤ 40% (reduced)", "snip": "an ejection fraction of 40% or less", "c": 0.99},
+      {"k": "Intervention", "v": "Empagliflozin 10 mg once daily", "snip": "to receive empagliflozin (10 mg once daily) or placebo", "c": 0.99},
+      {"k": "Primary outcome", "v": "CV death or hospitalisation for worsening HF", "snip": "The primary outcome was a composite of cardiovascular death or hospitalization for worsening heart failure", "c": 0.98}
+    ]},
+    "NCT03057951": {"fields": [
+      {"k": "Randomised (N)", "v": "5988", "snip": "we randomly assigned 5988 patients with class II-IV heart failure and an ejection fraction of more than 40%", "c": 0.99},
+      {"k": "Ejection fraction", "v": "> 40% (preserved)", "snip": "an ejection fraction of more than 40%", "c": 0.99},
+      {"k": "Treatment-arm events", "v": "415 / 2997 (13.8%)", "snip": "a primary outcome event occurred in 415 of 2997 patients (13.8%)", "c": 0.97},
+      {"k": "Median follow-up", "v": "26.2 months", "snip": "Over a median of 26.2 months", "c": 0.98},
+      {"k": "Intervention", "v": "Empagliflozin 10 mg once daily", "snip": "to receive empagliflozin (10 mg once daily) or placebo", "c": 0.99}
+    ]},
+    "NCT03619213": {"fields": [
+      {"k": "Randomised (N)", "v": "6263", "snip": "We randomly assigned 6263 patients with heart failure and a left ventricular ejection fraction of more than 40%", "c": 0.99},
+      {"k": "Ejection fraction", "v": "> 40% (mildly reduced / preserved)", "snip": "a left ventricular ejection fraction of more than 40%", "c": 0.99},
+      {"k": "Intervention", "v": "Dapagliflozin 10 mg once daily", "snip": "to receive dapagliflozin (at a dose of 10 mg once daily) or matching placebo", "c": 0.99},
+      {"k": "Comparator", "v": "Matching placebo", "snip": "or matching placebo, in addition to usual therapy", "c": 0.98}
+    ]},
+    "NCT03521934": {"fields": [
+      {"k": "Population", "v": "T2D recently hospitalised for worsening HF", "snip": "patients with type 2 diabetes mellitus who were recently hospitalized for worsening heart failure", "c": 0.98},
+      {"k": "Intervention", "v": "Sotagliflozin vs placebo", "snip": "randomly assigned to receive sotagliflozin or placebo", "c": 0.98},
+      {"k": "Design", "v": "Multicentre, double-blind, randomised", "snip": "We performed a multicenter, double-blind trial", "c": 0.97},
+      {"k": "Primary endpoint", "v": "Total CV deaths + HF hospitalisations/urgent visits", "snip": "The primary end point was the total number of deaths from cardiovascular causes and hospitalizations and urgent visits for heart failure", "c": 0.97}
+    ]}
+  }
+}
