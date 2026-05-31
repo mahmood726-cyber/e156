@@ -141,6 +141,21 @@
   .timeline{position:relative;margin:.4rem 0 .2rem;padding-left:1.1rem;border-left:2px solid var(--line)}
   .tlitem{position:relative;margin:0 0 .8rem} .tlitem::before{content:"";position:absolute;left:-1.42rem;top:.25rem;width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);border:2px solid var(--paper)}
   .tlitem .tlv{font-family:var(--mono);font-weight:700;color:var(--accent)} .tlitem .tld{font-size:.72rem;color:var(--ink-soft)} .tlitem .tln{font-size:.84rem}
+  /* RapidMeta-style auto-screen / auto-extract with reviewer confirmation */
+  .airec{font-size:.8rem;margin:.25rem 0;display:flex;gap:.4rem;align-items:baseline;flex-wrap:wrap}
+  .aitag{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:.1rem .4rem;border-radius:5px;white-space:nowrap;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent-strong)}
+  .aiconf{font-family:var(--mono);font-size:.68rem;color:var(--ink-soft)}
+  .confstate{font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;font-weight:700;padding:.1rem .45rem;border-radius:5px;white-space:nowrap}
+  .confstate.ok{color:var(--good);background:color-mix(in srgb,var(--good) 14%,transparent)} .confstate.pend{color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,transparent)}
+  .recdetail{margin-top:.3rem;font-size:.82rem} .recdetail>summary{cursor:pointer;color:var(--accent);font-size:.78rem;font-weight:600}
+  .abstract{margin:.4rem 0;padding:.5rem .7rem;border-left:2px solid var(--line);color:var(--ink-soft);font-size:.84rem;line-height:1.5}
+  .ctsum{display:grid;grid-template-columns:auto 1fr;gap:.15rem .8rem;font-size:.82rem;margin:.4rem 0;padding:.5rem .7rem;border-left:2px solid var(--accent-soft)} .ctsum b{color:var(--accent)}
+  .snippet{font-style:italic;color:var(--ink-soft);font-size:.8rem;line-height:1.45;border-left:2px solid var(--accent-soft);padding:.1rem .5rem;margin:.15rem 0}
+  .cbtns{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.3rem}
+  .cbtn{font:inherit;font-size:.72rem;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);border-radius:6px;padding:.15rem .5rem;cursor:pointer}
+  .cbtn:hover{border-color:var(--accent);color:var(--accent)} .cbtn.act{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);font-weight:600}
+  .provrow{border:1px solid var(--line);border-radius:8px;padding:.4rem .6rem;margin:.3rem 0;background:var(--paper)}
+  .provrow .ph{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;flex-wrap:wrap} .provrow .pk{font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)} .provrow .pvv{font-family:var(--mono);font-weight:600}
 </style>
 </head>
 <body>
@@ -222,8 +237,9 @@
       <div class="pnode" style="border-color:var(--accent)"><span>Randomized trials included</span><b id="prismaIncl" style="color:var(--good)">5 ✓</b></div>
     </div>
     <div class="card">
-      <h3>Every screened record — included &amp; excluded</h3>
-      <p class="note" style="margin-bottom:.4rem">Confirm the screening yourself. Each record links to its registry entry and a publication search — press a link to go to the source. Excluded records show the screening stage and the exclusion reason. <span class="illus">excluded set illustrative</span></p>
+      <h3>Auto-screening — every record, for the author and reader to confirm</h3>
+      <p class="note" style="margin-bottom:.3rem">Each record was screened automatically against the eligibility criteria; the AI's decision, reason and confidence are shown. <b>You confirm or flag each one.</b> Publications show their abstract; ClinicalTrials.gov records (no abstract) show a structured summary with everything needed to decide — and every record links to its source so you can check it yourself.</p>
+      <p class="note" id="screenTally" style="margin-bottom:.5rem">—</p>
       <div class="tabs" id="screenTabs" role="tablist">
         <button class="tab" role="tab" data-tab="included" aria-selected="true" aria-controls="recList">Included <span class="ct" id="tabInc">—</span></button>
         <button class="tab" role="tab" data-tab="excluded" aria-selected="false" aria-controls="recList">Excluded <span class="ct" id="tabExc">—</span></button>
@@ -268,8 +284,8 @@
       <p class="note" style="margin-top:.6rem">Provenance: each row carries its registry ID + primary publication (the row-level source rule). Denominator check runs live: events must not exceed N.</p>
     </div>
     <div class="card">
-      <h3>Full data provenance — every extracted point traced to source</h3>
-      <p class="note" style="margin-bottom:.2rem">For each included trial, every data point we extracted is shown with a direct link to its registry record and publication, so any value can be checked at source.</p>
+      <h3>Auto-extraction with source verification — author confirms</h3>
+      <p class="note" style="margin-bottom:.2rem">Each trial's data was extracted automatically; the verbatim <b>source excerpt</b> it came from is shown beside the values, with links to the registry record and publication. <b>The author confirms each extraction.</b> Risk-of-bias domains are human-adjudicated (not all of RoB 2 can be done by AI). <span class="illus">excerpts illustrative; open the source to verify</span></p>
       <div id="provList"></div>
     </div>
     <div class="card">
@@ -541,6 +557,22 @@ const REFS={
   'NCT03057951':{author:'Anker SD, et al.',title:'Empagliflozin in heart failure with a preserved ejection fraction',journal:'N Engl J Med',year:2021},
   'NCT03619213':{author:'Solomon SD, et al.',title:'Dapagliflozin in heart failure with mildly reduced or preserved ejection fraction',journal:'N Engl J Med',year:2022},
   'NCT03521934':{author:'Bhatt DL, et al.',title:'Sotagliflozin in patients with diabetes and recent worsening heart failure',journal:'N Engl J Med',year:2021}
+};
+// ---- per-record screening metadata: AI auto-decision + abstract (publication) or structured summary (registry, no abstract). Illustrative. ----
+const RECMETA={
+  'NCT03036124':{type:'publication',conf:0.98,reason:'Randomised, placebo-controlled trial in heart failure (reduced EF); dapagliflozin vs placebo; reports a hazard ratio for the primary HF composite — meets every eligibility criterion.',abstract:'Double-blind RCT in patients with heart failure and an ejection fraction ≤40% (NYHA II–IV). Dapagliflozin 10 mg once daily vs placebo, added to recommended therapy. Primary outcome: worsening heart failure or cardiovascular death. The primary outcome occurred in fewer patients on dapagliflozin (HR 0.74, 95% CI 0.65–0.85; P<0.001).',reg:{condition:'Heart failure with reduced ejection fraction',intervention:'Dapagliflozin 10 mg once daily',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death or worsening heart failure',enrollment:4744,status:'Completed · results posted'}},
+  'NCT03057977':{type:'publication',conf:0.98,reason:'Randomised, placebo-controlled HFrEF trial; empagliflozin vs placebo; reports the primary HF composite hazard ratio — eligible.',abstract:'Double-blind RCT in class II–IV heart failure with an ejection fraction ≤40%. Empagliflozin 10 mg vs placebo. Primary composite of cardiovascular death or hospitalisation for heart failure occurred less often with empagliflozin (HR 0.75, 95% CI 0.65–0.86; P<0.001).',reg:{condition:'Heart failure with reduced ejection fraction',intervention:'Empagliflozin 10 mg once daily',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death or hospitalisation for HF',enrollment:3730,status:'Completed · results posted'}},
+  'NCT03057951':{type:'publication',conf:0.97,reason:'Randomised, placebo-controlled trial in heart failure with preserved EF; empagliflozin vs placebo; primary HF composite HR reported — eligible.',abstract:'Double-blind RCT in heart failure with an ejection fraction >40%. Empagliflozin 10 mg vs placebo. Primary composite of cardiovascular death or hospitalisation for heart failure was reduced (HR 0.79, 95% CI 0.69–0.90; P<0.001).',reg:{condition:'Heart failure with preserved ejection fraction',intervention:'Empagliflozin 10 mg once daily',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death or hospitalisation for HF',enrollment:5988,status:'Completed · results posted'}},
+  'NCT03619213':{type:'publication',conf:0.97,reason:'Randomised, placebo-controlled trial in HF with mildly reduced/preserved EF; dapagliflozin vs placebo; primary composite HR reported — eligible.',abstract:'Double-blind RCT in heart failure with an ejection fraction >40%. Dapagliflozin 10 mg vs placebo. Primary composite of worsening heart failure or cardiovascular death was reduced (HR 0.82, 95% CI 0.73–0.92; P<0.001).',reg:{condition:'HF with mildly reduced or preserved EF',intervention:'Dapagliflozin 10 mg once daily',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death or worsening HF',enrollment:6263,status:'Completed · results posted'}},
+  'NCT03521934':{type:'publication',conf:0.93,reason:'Randomised, placebo-controlled trial in patients with recent worsening heart failure; sotagliflozin vs placebo; HF composite HR reported — eligible (diabetes present but HF is the index condition).',abstract:'Double-blind RCT in patients with diabetes hospitalised for worsening heart failure. Sotagliflozin vs placebo, started before or shortly after discharge. Primary endpoint (CV death, HF hospitalisations and urgent visits) was reduced (HR 0.67, 95% CI 0.52–0.85; P<0.001).',reg:{condition:'Worsening heart failure (with type 2 diabetes)',intervention:'Sotagliflozin',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death + HF hospitalisations/urgent visits',enrollment:1222,status:'Completed · results posted'}},
+  'DAPA-CKD':{type:'publication',conf:0.96,reason:'Population is chronic kidney disease, not heart failure; HF events are a secondary outcome — fails the population criterion.',abstract:'RCT of dapagliflozin vs placebo in patients with chronic kidney disease (with and without type 2 diabetes). Primary composite was a sustained decline in eGFR, end-stage kidney disease, or renal/cardiovascular death. Heart-failure events were secondary.'},
+  'EMPA-KIDNEY':{type:'publication',conf:0.96,reason:'CKD population; no primary heart-failure composite hazard ratio — fails population/outcome criteria.',abstract:'RCT of empagliflozin vs placebo in chronic kidney disease at risk of progression. Primary outcome was kidney-disease progression or cardiovascular death; not a heart-failure trial.'},
+  'DECLARE-TIMI 58':{type:'publication',conf:0.95,reason:'Type 2 diabetes population; HF hospitalisation a secondary outcome, not the primary HF composite — fails population criterion.',abstract:'Large cardiovascular-outcomes RCT of dapagliflozin vs placebo in type 2 diabetes with or at risk of atherosclerotic disease. Co-primary outcomes were MACE and CV death/HF hospitalisation; population is diabetes, not heart failure.'},
+  'EMPA-REG OUTCOME':{type:'publication',conf:0.95,reason:'Type 2 diabetes with established CV disease; not a heart-failure trial.',abstract:'Cardiovascular-outcomes RCT of empagliflozin vs placebo in type 2 diabetes with established cardiovascular disease. Primary outcome was 3-point MACE; heart failure was exploratory.'},
+  'CANVAS Program':{type:'registry',conf:0.97,reason:'Type 2 diabetes population; outcome is MACE, not the HF composite — fails population/outcome criteria.',reg:{condition:'Type 2 diabetes with high CV risk',intervention:'Canagliflozin',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'3-point MACE (CV death, MI, stroke)',enrollment:10142,status:'Completed · results posted'}},
+  'SCORED':{type:'registry',conf:0.94,reason:'Type 2 diabetes + chronic kidney disease; the primary composite is not the heart-failure endpoint — fails criteria.',reg:{condition:'Type 2 diabetes with chronic kidney disease',intervention:'Sotagliflozin',comparator:'Placebo',design:'Randomised, double-blind, parallel, Phase 3',primary:'CV death, HF hospitalisations and urgent visits',enrollment:10584,status:'Completed · results posted'}},
+  'DAPA-HF diabetes subgroup':{type:'publication',conf:0.99,reason:'Secondary/subgroup publication of an already-included trial (DAPA-HF) — including it would double-count the same participants.',abstract:'Pre-specified subgroup analysis of the DAPA-HF trial examining the effect of dapagliflozin according to baseline diabetes status. Reports on the same randomised population as the included DAPA-HF primary publication.'},
+  'Observational SGLT2i HF cohort':{type:'publication',conf:0.98,reason:'Observational (non-randomised) design — outside the eligibility criteria, which require a randomised controlled trial.',abstract:'Retrospective registry cohort comparing SGLT2-inhibitor users with non-users in heart failure. Non-randomised; subject to confounding by indication.'}
 };
 const T975={1:12.706,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,10:2.228,12:2.179,15:2.131,20:2.086,30:2.042};
 function tcrit(df){if(df<=0)return Z;if(T975[df])return T975[df];const ks=Object.keys(T975).map(Number).sort((a,b)=>a-b);for(const k of ks)if(df<=k)return T975[k];return 1.962;}
@@ -861,34 +893,49 @@ function renderInspect(){
 }
 // ---- screening record browser (Included / Excluded / All), every record linked ----
 let _screenTab='included';
-function incRec(t){const reg=regUrl(t.nct),pub=pmUrl(t.name+' '+t.journal+' '+t.year);
-  return `<div class="rec inc"><span class="dec">Included</span>`+
-    `<div><div class="ttl">${esc(t.name)}</div><div class="meta">${esc(t.agent)} · ${esc(String(t.year))} · ${esc(t.journal)} · ${esc(t.nct)}</div></div>`+
-    `<div class="links">${reg?`<a class="srclink" href="${reg}" target="_blank" rel="noopener">Registry</a>`:''}<a class="srclink" href="${pub}" target="_blank" rel="noopener">PubMed</a></div></div>`;}
-function excRec(e){const reg=ctSearch(e.id),pub=pmUrl(e.title);
-  return `<div class="rec exc"><span class="dec">Excluded</span>`+
-    `<div><div class="ttl">${esc(e.title)}</div><div class="meta">${esc(e.source)} · excluded at ${esc(e.stage)} screening</div><div class="reason">Reason — ${esc(e.reason)}</div></div>`+
-    `<div class="links"><a class="srclink" href="${reg}" target="_blank" rel="noopener">CT.gov</a><a class="srclink" href="${pub}" target="_blank" rel="noopener">PubMed</a></div></div>`;}
+let confirms=loadConfirms();
+function loadConfirms(){try{const r=localStorage.getItem(LSKEY+':confirms');if(r){const s=JSON.parse(r);if(s&&typeof s==='object')return s;}}catch(e){}return {};}
+function persistConfirms(){try{localStorage.setItem(LSKEY+':confirms',JSON.stringify(confirms));}catch(e){}}
+// One screening record card: AI auto-decision + confidence, abstract (publication) or CT.gov summary (registry), reviewer confirm/flag.
+function recCard(o){const st=confirms[o.id];
+  const conf=st==='confirmed'?'<span class="confstate ok">✓ reviewer-confirmed</span>':st==='flagged'?'<span class="confstate pend">⚑ flagged for review</span>':'<span class="confstate pend">awaiting confirmation</span>';
+  const ai=o.decision==='include'?'<span class="aitag">AI: include</span>':'<span class="aitag" style="background:color-mix(in srgb,var(--bad) 12%,transparent);color:var(--bad)">AI: exclude</span>';
+  let detail='';
+  if(o.type==='registry'&&o.reg){detail='<details class="recdetail"><summary>Registry summary — ClinicalTrials.gov (no abstract)</summary><div class="ctsum">'+
+    `<b>Condition</b><span>${esc(o.reg.condition||'—')}</span><b>Intervention</b><span>${esc(o.reg.intervention||'—')}</span><b>Comparator</b><span>${esc(o.reg.comparator||'—')}</span><b>Design</b><span>${esc(o.reg.design||'—')}</span><b>Primary outcome</b><span>${esc(o.reg.primary||'—')}</span><b>Enrolment</b><span>${o.reg.enrollment?o.reg.enrollment.toLocaleString('en-GB'):'—'}</span><b>Status</b><span>${esc(o.reg.status||'—')}</span></div>`+
+    '<p class="note" style="margin:.2rem .5rem 0">Registry records have no abstract — this is the structured summary you need to decide; open the record to verify. <span class="illus">illustrative</span></p></details>';}
+  else if(o.abstract){detail=`<details class="recdetail"><summary>Abstract</summary><div class="abstract">${esc(o.abstract)} <span class="illus">illustrative excerpt</span></div></details>`;}
+  return `<div class="rec ${o.decision==='include'?'inc':'exc'}"><span class="dec">${o.decision==='include'?'Included':'Excluded'}</span>`+
+    `<div><div class="ttl">${esc(o.title)}</div><div class="meta">${esc(o.sub)} · ${o.type==='registry'?'registry record':'publication'}</div>`+
+    `<div class="airec">${ai}${o.conf?`<span class="aiconf">AI confidence ${(o.conf*100).toFixed(0)}%</span>`:''} ${conf}</div>`+
+    `<div class="reason">${esc(o.reason)}</div>`+detail+
+    `<div class="cbtns"><button class="cbtn${st==='confirmed'?' act':''}" data-confirm="${esc(o.id)}">✓ Confirm</button><button class="cbtn${st==='flagged'?' act':''}" data-flag="${esc(o.id)}">⚑ Flag for review</button></div></div>`+
+    `<div class="links">${o.regHref?`<a class="srclink" href="${o.regHref}" target="_blank" rel="noopener">${o.type==='registry'?'CT.gov':'Registry'}</a>`:''}<a class="srclink" href="${o.pubHref}" target="_blank" rel="noopener">PubMed</a></div></div>`;}
+function incCard(t){const m=RECMETA[t.nct]||{};return recCard({id:t.nct,type:m.type||'publication',title:t.name,sub:`${esc(t.agent)} · ${esc(String(t.year))} · ${esc(t.journal)} · ${esc(t.nct)}`,decision:'include',reason:m.reason||'Meets the eligibility criteria.',conf:m.conf,abstract:m.abstract,reg:m.reg,regHref:regUrl(t.nct),pubHref:pmUrl(t.name+' '+t.journal+' '+t.year)});}
+function excCard(e){const m=RECMETA[e.id]||{};return recCard({id:e.id,type:m.type||'publication',title:e.title,sub:`${esc(e.source)} · excluded at ${esc(e.stage)} screening`,decision:'exclude',reason:m.reason||e.reason,conf:m.conf,abstract:m.abstract,reg:m.reg,regHref:ctSearch(e.id),pubHref:pmUrl(e.title)});}
 function renderScreening(){
-  const inc=model,nInc=inc.length,nExc=EXCLUDED.length;
+  const inc=model,nInc=inc.length,nExc=EXCLUDED.length,total=nInc+nExc;
   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  set('tabInc',nInc);set('tabExc',nExc);set('tabAll',nInc+nExc);
+  set('tabInc',nInc);set('tabExc',nExc);set('tabAll',total);
   document.querySelectorAll('#screenTabs .tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===_screenTab?'true':'false'));
-  let list=[];
-  if(_screenTab==='included')list=inc.map(incRec);
-  else if(_screenTab==='excluded')list=EXCLUDED.map(excRec);
-  else list=inc.map(incRec).concat(EXCLUDED.map(excRec));
-  const el=document.getElementById('recList');if(el)el.innerHTML=list.join('')||'<p class="note">No records.</p>';}
-// ---- full data provenance — every extracted point traced to a clickable source ----
+  const list=_screenTab==='included'?inc.map(incCard):_screenTab==='excluded'?EXCLUDED.map(excCard):inc.map(incCard).concat(EXCLUDED.map(excCard));
+  const el=document.getElementById('recList');if(el)el.innerHTML=list.join('')||'<p class="note">No records.</p>';
+  const ids=inc.map(t=>t.nct).concat(EXCLUDED.map(e=>e.id));
+  const cf=ids.filter(id=>confirms[id]==='confirmed').length,fl=ids.filter(id=>confirms[id]==='flagged').length;
+  const tl=document.getElementById('screenTally');if(tl)tl.innerHTML=`<b class="num">${cf}</b> of ${total} records reviewer-confirmed`+(fl?` · <span class="warnf">${fl} flagged for review</span>`:'')+(cf>=total?' · <span class="good">screening sign-off complete</span>':'');}
+// ---- auto-extraction with verbatim source excerpts + reviewer confirmation ----
 function renderProvenance(){const el=document.getElementById('provList');if(!el)return;
   el.innerHTML=model.map(t=>{const reg=regUrl(t.nct),pub=pmUrl(t.name+' '+t.journal+' '+t.year);
+    const eid='ex:'+t.nct,ec=confirms[eid]==='confirmed';
+    const snip=`“The primary outcome occurred in ${t.tE} of ${t.tN} patients in the ${esc(t.agent)} group and ${t.cE} of ${t.cN} in the placebo group (hazard ratio ${f(t.hr)}; 95% CI ${f(t.lci)}–${f(t.uci)}).”`;
     const pt=(k,v)=>`<div class="traceitem"><div class="pt">${k}</div><div class="pv">${v}</div></div>`;
     return `<div class="card" style="margin:.5rem 0;padding:.7rem .9rem;box-shadow:none">`+
       `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem"><b>${esc(t.name)} <span class="note" style="font-weight:400">(${esc(t.agent)}, ${esc(String(t.year))})</span></b>`+
-      `<span class="links" style="display:flex;gap:.3rem">${reg?`<a class="srclink" href="${reg}" target="_blank" rel="noopener">Registry ${esc(t.nct)}</a>`:''}<a class="srclink" href="${pub}" target="_blank" rel="noopener">Publication · ${esc(t.journal)}</a></span></div>`+
+      `<span class="links" style="display:flex;gap:.4rem;align-items:center">${ec?'<span class="confstate ok">✓ extraction confirmed</span>':'<span class="confstate pend">auto-extracted</span>'}<a class="srclink" href="${reg}" target="_blank" rel="noopener">Registry ${esc(t.nct)}</a><a class="srclink" href="${pub}" target="_blank" rel="noopener">Publication</a></span></div>`+
+      `<div class="snippet">${snip} <span class="illus">source excerpt — primary-outcome statement</span></div>`+
       `<div class="trace">`+pt('Treatment events / N',`${t.tE} / ${t.tN}`)+pt('Control events / N',`${t.cE} / ${t.cN}`)+
-      pt('Hazard ratio',f(t.hr))+pt('95% confidence interval',`${f(t.lci)} – ${f(t.uci)}`)+
-      pt('RoB 2 (D1–D5)',esc(t.rob.join(' ')))+pt('Registry ID',esc(t.nct))+`</div></div>`;}).join('');}
+      pt('Hazard ratio (95% CI)',`${f(t.hr)} (${f(t.lci)}–${f(t.uci)})`)+pt('RoB 2 (D1–D5) — human-adjudicated',esc(t.rob.join(' ')))+`</div>`+
+      `<div class="cbtns"><button class="cbtn${ec?' act':''}" data-extract="${esc(t.nct)}">✓ Confirm extraction</button></div></div>`;}).join('');}
 // ---- mini log-HR forest (shared by cumulative + benchmark) ----
 function miniForest(svgId,rows,opts){const svg=document.getElementById(svgId);if(!svg)return;
   const vb=svg.getAttribute('viewBox').split(' ').map(Number),W=vb[2];const padL=opts.padL||120,padR=14,top=14,rowH=opts.rowH||26;
@@ -1040,6 +1087,10 @@ async function runWebRSel(){
 }
 function renderAll(){renderTable();renderRob();renderScreening();renderProvenance();renderConcordance();renderTimeline();renderReferences();renderOutputs();}
 const _st=document.getElementById('screenTabs');if(_st)_st.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;_screenTab=b.dataset.tab;renderScreening();});
+function _toggleConfirm(id,state){confirms[id]=confirms[id]===state?undefined:state;if(confirms[id]===undefined)delete confirms[id];persistConfirms();}
+const _rl=document.getElementById('recList');if(_rl)_rl.addEventListener('click',e=>{const c=e.target.closest('[data-confirm]'),fl=e.target.closest('[data-flag]');
+  if(c){_toggleConfirm(c.dataset.confirm,'confirmed');renderScreening();}else if(fl){_toggleConfirm(fl.dataset.flag,'flagged');renderScreening();}});
+const _pl=document.getElementById('provList');if(_pl)_pl.addEventListener('click',e=>{const x=e.target.closest('[data-extract]');if(x){_toggleConfirm('ex:'+x.dataset.extract,'confirmed');renderProvenance();}});
 ['kBB','kAB','kBA','kAA'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',e=>{const key={kBB:'bothIn',kAB:'aInBOut',kBA:'aOutBIn',kAA:'bothOut'}[id];concord[key]=Math.max(0,+e.target.value||0);renderConcordance();renderQA();persistConcord();});});
 
 // events
@@ -1061,7 +1112,7 @@ document.getElementById('addStudy').addEventListener('click',()=>{
   model.push(clean({nct:'NCT00000000',name:'New study',year:new Date().getFullYear(),agent:'',journal:'(add source)',tE:0,tN:100,cE:0,cN:100,hr:1.0,lci:0.8,uci:1.25,rob:['L','L','L','L','L'],inc:true}));
   renderAll();persist();
 });
-document.getElementById('resetData').addEventListener('click',()=>{model=PUBLISHED.map(t=>({...t,rob:[...t.rob]}));concord={...CONCORD_DEFAULT};try{localStorage.removeItem(LSKEY);localStorage.removeItem(LSKEY+':concord');}catch(e){}renderAll();persist();persistConcord();});
+document.getElementById('resetData').addEventListener('click',()=>{model=PUBLISHED.map(t=>({...t,rob:[...t.rob]}));concord={...CONCORD_DEFAULT};confirms={};try{localStorage.removeItem(LSKEY);localStorage.removeItem(LSKEY+':concord');localStorage.removeItem(LSKEY+':confirms');}catch(e){}renderAll();persist();persistConcord();persistConfirms();});
 document.getElementById('exportData').addEventListener('click',()=>{
   const blob=new Blob([JSON.stringify(model,null,2)],{type:'application/json'});const u=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=u;a.download=SLUG+'-data.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);
