@@ -84,11 +84,17 @@
   .lay{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.7rem 1rem;margin:1rem 0 .2rem}
   .lay h2{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-strong);font-weight:700;margin:0 0 .35rem}
   .lay p{margin:0;max-width:44rem}
+  .qagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.35rem;margin-top:.5rem}
+  .qacheck{display:flex;align-items:center;gap:.45rem;font-size:.8rem;border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem;background:var(--card)}
+  .qacheck .qd{width:.55rem;height:.55rem;border-radius:50%;flex:none} .qd.pass{background:var(--good)} .qd.warn{background:var(--warn)} .qd.fail{background:var(--bad)}
+  .qacheck .qx{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--ink-soft)}
+  .qabar{font-family:var(--mono);font-weight:700;font-size:1rem;margin:.2rem 0}
+  .limts{font-size:.84rem;color:var(--ink-soft);border-left:3px solid var(--warn);padding:.4rem .8rem;margin:.5rem 0;background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:0 8px 8px 0;max-width:44rem}
 </style>
 </head>
 <body>
 <div class="ribbon"><div class="inner" aria-label="Assurance status">
-  <span class="tier">SILVER</span>
+  <span class="tier" id="tier">SILVER</span>
   <span class="chk"><span class="dot ok"></span>effect-modifier SMDs</span>
   <span class="chk"><span class="dot ok"></span>re-standardised effect</span>
   <span class="chk"><span class="dot" id="dotTr">—</span>transportable</span>
@@ -180,6 +186,10 @@
   <section class="stage" id="assurance">
     <div class="stagehdr"><span class="stagenum">08</span><h2>Assurance</h2></div>
     <div class="card"><p>Same self-auditing trust layer: effect-modifier overlap is judged by standardized mean differences against the 0.1 threshold, the transported effect is re-standardised on the log scale (not a naïve copy of the trial number), and the assumption of measured-only modifiers is stated. Accent is seeded from this capsule's slug. Tier reaches <b>Gold</b> only on independent reproduction.</p></div>
+    <div class="card"><h3>Self-audit — internal-consistency checks</h3>
+      <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
+      <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> Transporting a trial's effect to a target population assumes the trial measured every effect-modifier that differs between the two and that the effect is constant within strata; large standardised differences on key modifiers warn that the result may not carry over. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -277,7 +287,21 @@ function renderTable(){let h='';model.mods.forEach((r,i)=>{const smd=r.sd>0?((r.
     `<td><button class="btn x" data-rm="${i}" title="remove">✕</button></td></tr>`;});
   document.getElementById('cBody').innerHTML=h;}
 function syncOpts(){['rrP','rrA','prevT','prevG'].forEach(k=>{const el=document.getElementById(k);if(el)el.value=model[k];});}
-function renderOutputs(){const res=transport(model);renderSMD(res);renderEff(res);renderReadouts(res);rcode();renderInspect();
+function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
+  var pass=0,warn=0,fail=0;
+  grid.innerHTML=checks.map(function(c){var s=c[1],cl=s===true?'pass':s==='warn'?'warn':'fail';if(cl==='pass')pass++;else if(cl==='warn')warn++;else fail++;
+    return '<div class="qacheck"><span class="qd '+cl+'"></span><span>'+c[0]+'</span><span class="qx">'+(cl==='pass'?'PASS':cl==='warn'?'N/A':'FAIL')+'</span></div>';}).join('');
+  var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
+  var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
+function renderQA(){var res=transport(model),inc=model.mods.filter(function(m){return m.inc;});
+QA_RENDER([
+['Every included effect modifier has SD > 0', inc.every(function(m){return m.sd>0;})],
+['≥ 1 modifier compared (trial vs target)', !!(res&&res.smds&&res.smds.length>=1)],
+['Max |SMD| is finite and ≥ 0', !!(res&&isFinite(res.maxSMD)&&res.maxSMD>=0)],
+['Count of large imbalances ≥ 0 (integer)', !!(res&&res.nBig>=0&&res.nBig===Math.round(res.nBig))],
+['Transportability verdict derived', !!(res&&typeof res.transportable==='boolean')]
+]);}
+function renderOutputs(){const res=transport(model);renderSMD(res);renderEff(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeT').textContent=res.trans?`RR ${res.trans.trialRR.toFixed(2)}→${res.trans.transRR.toFixed(2)}`:'—';
   const v=document.getElementById('verify');if(res.trans){v.textContent=`trial RR ${res.trans.trialRR.toFixed(2)} → transported ${res.trans.transRR.toFixed(2)} · max|SMD| ${res.maxSMD.toFixed(2)} ${res.transportable?'✓':'⚠'}`;v.style.color=res.transportable?'var(--good)':'var(--warn)';}else{v.textContent='enter subgroup RRs';v.style.color='var(--warn)';}}
 function renderAll(){renderTable();syncOpts();renderOutputs();}
