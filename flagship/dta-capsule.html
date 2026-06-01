@@ -138,7 +138,7 @@
     <div class="card">
       <p>TP = true positives, FP = false positives, FN = false negatives, TN = true negatives. Edit any cell, add or remove studies — the SROC, summary point and threshold check re-run live. A 0.5 continuity correction is applied only when a cell is zero.</p>
       <div class="tablewrap"><table id="cTable">
-        <thead><tr><th>Inc.</th><th>Study</th><th class="n">Year</th><th class="n">TP</th><th class="n">FP</th><th class="n">FN</th><th class="n">TN</th><th class="n">Sens</th><th class="n">Spec</th><th></th></tr></thead>
+        <thead><tr><th>Inc.</th><th>Study</th><th class="n">Year</th><th class="n">TP</th><th class="n">FP</th><th class="n">FN</th><th class="n">TN</th><th class="n" title="covariate (e.g. mean age) for meta-regression">Age</th><th class="n">Sens</th><th class="n">Spec</th><th></th></tr></thead>
         <tbody id="cBody"></tbody></table></div>
       <div class="toolbar"><button class="btn" id="addRow">+ add study</button><button class="btn" id="resetData">Reset</button><button class="btn" id="exportData">Export JSON</button><span class="livetag" id="liveTag">illustrative demo</span></div>
     </div>
@@ -176,6 +176,9 @@
         <svg id="deekssvg" viewBox="0 0 360 300" role="group" aria-label="Deeks funnel plot of ln diagnostic odds ratio against inverse root effective sample size"></svg>
         <p class="note" id="deeksNote">The DTA-appropriate publication-bias check.</p></div>
     </div>
+    <div class="card"><h3>Covariate meta-regression — does the modifier change accuracy?</h3>
+      <p class="note" id="dtaMrOut" style="margin-top:.2rem">—</p>
+      <p class="note" style="margin-top:.5rem;color:var(--ink-soft)">Random-effects meta-regression of logit-sensitivity and logit-specificity on a study-level covariate (the <b>Age</b> column), each margin fit separately with a moment-estimated residual τ² and a t<sub>k−2</sub> test. A significant slope means accuracy varies with the covariate — a source of the heterogeneity behind the SROC spread. (Margin-wise; it does not borrow the between-margin correlation that the bivariate summary uses.)</p></div>
   </section>
 
   <section class="stage" id="paired">
@@ -200,7 +203,7 @@
     <div class="card"><h3>Self-audit — internal-consistency checks</h3>
       <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
       <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
-    <div class="limts" id="limts"><b>How to read this · limitations.</b> This capsule fits the bivariate (Reitsma) random-effects model by REML maximum likelihood — the proper joint model — and draws the 95% confidence and prediction regions in-capsule (validated against <code>mada::reitsma</code> to &lt; 1e-5). With few or homogeneous studies the between-study correlation can reach the ±1 boundary; it then falls back to independent margins (flagged). A strong threshold effect (Spearman ρ &gt; 0.6) means the SROC curve, not a single point, is the honest summary. Likelihood ratios carry delta-method CIs; Deeks' funnel and its asymmetry test have low power below ~10 studies. Demo data are illustrative.</div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> This capsule fits the bivariate (Reitsma) random-effects model by REML maximum likelihood — the proper joint model — and draws the 95% confidence and prediction regions in-capsule (validated against <code>mada::reitsma</code> to &lt; 1e-5). With few or homogeneous studies the between-study correlation can reach the ±1 boundary; it then falls back to independent margins (flagged). A strong threshold effect (Spearman ρ &gt; 0.6) means the SROC curve, not a single point, is the honest summary. Likelihood ratios carry delta-method CIs; Deeks' funnel and its asymmetry test have low power below ~10 studies. The covariate meta-regression fits each logit margin separately (it does not borrow the between-margin correlation) and uses a t<sub>k−2</sub> test — low power with few studies. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -211,18 +214,18 @@
 "use strict";
 const SLUG="dta-demo", LSKEY="e156:"+SLUG, Z=1.959963984540054;
 const PUBLISHED=[
-  {study:'STUDY-1',year:2017,tp:45, fp:10,fn:5, tn:40, inc:true},
-  {study:'STUDY-2',year:2018,tp:85, fp:25,fn:15,tn:75, inc:true},
-  {study:'STUDY-3',year:2019,tp:132,fp:27,fn:18,tn:123,inc:true},
-  {study:'STUDY-4',year:2020,tp:40, fp:15,fn:10,tn:35, inc:true},
-  {study:'STUDY-5',year:2021,tp:138,fp:33,fn:12,tn:117,inc:true},
-  {study:'STUDY-6',year:2022,tp:62, fp:12,fn:18,tn:68, inc:true}
+  {study:'STUDY-1',year:2017,tp:45, fp:10,fn:5, tn:40, cov:62,inc:true},
+  {study:'STUDY-2',year:2018,tp:85, fp:25,fn:15,tn:75, cov:68,inc:true},
+  {study:'STUDY-3',year:2019,tp:132,fp:27,fn:18,tn:123,cov:64,inc:true},
+  {study:'STUDY-4',year:2020,tp:40, fp:15,fn:10,tn:35, cov:70,inc:true},
+  {study:'STUDY-5',year:2021,tp:138,fp:33,fn:12,tn:117,cov:66,inc:true},
+  {study:'STUDY-6',year:2022,tp:62, fp:12,fn:18,tn:68, cov:65,inc:true}
 ];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pct=x=>(x*100).toFixed(1)+'%';
 let model=load();
 function load(){try{const r=localStorage.getItem(LSKEY);if(r){const s=JSON.parse(r);if(Array.isArray(s)&&s.length)return s.map(clean);}}catch(e){}return PUBLISHED.map(o=>({...o}));}
-function clean(o){return {study:String(o.study||'study'),year:+o.year||0,tp:+o.tp||0,fp:+o.fp||0,fn:+o.fn||0,tn:+o.tn||0,inc:o.inc!==false};}
+function clean(o){return {study:String(o.study||'study'),year:+o.year||0,tp:+o.tp||0,fp:+o.fp||0,fn:+o.fn||0,tn:+o.tn||0,cov:(o.cov==null||o.cov==='')?null:+o.cov,inc:o.inc!==false};}
 function persist(){try{localStorage.setItem(LSKEY,JSON.stringify(model));}catch(e){}
   const ed=JSON.stringify(model)!==JSON.stringify(PUBLISHED.map(o=>({...o})));document.getElementById('liveTag').textContent=ed?'edited — live re-run':'illustrative demo';}
 const validRow=r=>r.tp>=0&&r.fp>=0&&r.fn>=0&&r.tn>=0&&(r.tp+r.fn)>0&&(r.tn+r.fp)>0;
@@ -413,8 +416,44 @@ function renderDeeks(res){
     `The DTA-appropriate small-study check (Egger's test is invalid for DTA): weighted regression of lnDOR on 1/√(effective sample size). <span class="illus">Study sizes here are too similar to assess funnel asymmetry — vary the sample sizes to use this test.</span>`:
     `The DTA-appropriate small-study check (Egger's test is invalid for DTA): weighted regression of lnDOR on 1/√(effective sample size). Asymmetry slope p = <b class="num">${isFinite(d.p)?(d.p<0.001?'<0.001':d.p.toFixed(3)):'—'}</b> on ${d.df} df — ${isFinite(d.p)&&d.p<0.10?'<span style="color:var(--warn)">possible small-study effects (p &lt; 0.10)</span>':'no strong asymmetry'}. Low power below ~10 studies.`;
 }
+// ---- covariate meta-regression: RE meta-regression of each logit margin on a study-level covariate ----
+function metaregMargin(yv,vv,zv){
+  const k=yv.length;if(k<3)return null;
+  const wls=W=>{let S00=0,S01=0,S11=0,Sy0=0,Sy1=0;for(let i=0;i<k;i++){const w=W[i],z=zv[i];S00+=w;S01+=w*z;S11+=w*z*z;Sy0+=w*yv[i];Sy1+=w*z*yv[i];}
+    const det=S00*S11-S01*S01;if(Math.abs(det)<1e-12)return null;const i00=S11/det,i01=-S01/det,i11=S00/det;
+    return {b0:i00*Sy0+i01*Sy1,b1:i01*Sy0+i11*Sy1,vB1:i11};};
+  const W0=vv.map(v=>1/v),f0=wls(W0);if(!f0)return null;
+  let Q=0;for(let i=0;i<k;i++){const r=yv[i]-(f0.b0+f0.b1*zv[i]);Q+=W0[i]*r*r;}
+  // DerSimonian–Laird residual tau2 for meta-regression: C = Σw0 − tr((X'W0X)⁻¹ X'W0²X)
+  let S00=0,S01=0,S11=0,T00=0,T01=0,T11=0,sw=0;
+  for(let i=0;i<k;i++){const w=W0[i],z=zv[i];sw+=w;S00+=w;S01+=w*z;S11+=w*z*z;T00+=w*w;T01+=w*w*z;T11+=w*w*z*z;}
+  const det=S00*S11-S01*S01,i00=S11/det,i01=-S01/det,i11=S00/det,tr=i00*T00+2*i01*T01+i11*T11;
+  const df=k-2,C=sw-tr,tau2=(C>0&&df>0)?Math.max(0,(Q-df)/C):0;
+  const fr=wls(vv.map(v=>1/(v+tau2)))||f0,seB1=Math.sqrt(Math.max(0,fr.vB1)),t=fr.b1/seB1;
+  return {b1:fr.b1,seB1,tau2,t,df,p:isFinite(t)?tP(t,df):NaN};
+}
+function dtaMetaReg(res){
+  if(!res)return null;
+  const use=res.use,st=res.st,idx=[];use.forEach((r,i)=>{if(r.cov!=null&&isFinite(r.cov)&&r.cov>0)idx.push(i);});
+  if(idx.length<3)return {insufficient:true};
+  const xv=idx.map(i=>use[i].cov),xbar=xv.reduce((a,b)=>a+b,0)/xv.length,zv=xv.map(x=>x-xbar);
+  const se=metaregMargin(idx.map(i=>st[i].lSe),idx.map(i=>st[i].vSe),zv);
+  const fpr=metaregMargin(idx.map(i=>st[i].lFpr),idx.map(i=>st[i].vSp),zv);
+  if(!se||!fpr)return {insufficient:true};
+  return {se,sp:{b1:-fpr.b1,seB1:fpr.seB1,t:-fpr.t,df:fpr.df,p:fpr.p},xbar,k:idx.length}; // logit Sp slope = −(logit FPR slope)
+}
+function renderMetaReg(res){
+  const el=document.getElementById('dtaMrOut');if(!el)return;
+  const m=res?dtaMetaReg(res):null;
+  if(!m||m.insufficient){el.innerHTML='Enter the covariate (the <b>Age</b> column) for ≥ 3 studies to fit a meta-regression of accuracy on it.';return;}
+  const per=10,pf=p=>isNaN(p)?'—':(p<0.001?'&lt; 0.001':p.toFixed(3));
+  const line=(lab,s)=>`${lab}: slope <b class="num">${(s.b1*per>=0?'+':'')}${(s.b1*per).toFixed(3)}</b> logit per ${per} units (p ${pf(s.p)})`;
+  const sig=(m.se.p<0.05)||(m.sp.p<0.05);
+  el.innerHTML=line('Sensitivity',m.se)+'; '+line('Specificity',m.sp)+'. '+
+    (sig?'<span style="color:var(--bad)">The covariate significantly modifies test accuracy</span> — a single pooled Se/Sp across its range is misleading; report accuracy at clinically relevant values.':'<span class="good">No significant effect modification by this covariate</span> — accuracy is stable across its observed range.');
+}
 function renderInspect(){const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model,null,2);
-  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[studyStats,bivariate,dta,deeks].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
+  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[studyStats,bivariate,dta,deeks,dtaMetaReg].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
 function renderTable(){let h='';model.forEach((r,i)=>{const ok=validRow(r),bad=ok?'':' bad';const s=ok?studyStats(r):null;
   h+=`<tr data-i="${i}"><td><input type="checkbox" class="inc" ${r.inc?'checked':''}></td>`+
     `<td><input class="ed t" data-k="study" value="${esc(r.study)}"></td>`+
@@ -423,6 +462,7 @@ function renderTable(){let h='';model.forEach((r,i)=>{const ok=validRow(r),bad=o
     `<td class="n"><input class="ed${bad}" data-k="fp" type="number" value="${r.fp}"></td>`+
     `<td class="n"><input class="ed${bad}" data-k="fn" type="number" value="${r.fn}"></td>`+
     `<td class="n"><input class="ed${bad}" data-k="tn" type="number" value="${r.tn}"></td>`+
+    `<td class="n"><input class="ed" data-k="cov" type="number" step="1" value="${r.cov==null?'':r.cov}" style="width:3.4rem"></td>`+
     `<td class="n">${s?pct(s.se):'—'}</td><td class="n">${s?pct(s.sp):'—'}</td>`+
     `<td><button class="btn x" data-rm="${i}" title="remove">✕</button></td></tr>`;});
   document.getElementById('cBody').innerHTML=h;}
@@ -442,10 +482,11 @@ QA_RENDER([
 ['Between-study correlation ρ within (−1, 1)', (res&&res.biv)?(res.biv.rho>-1&&res.biv.rho<1):'warn'],
 ['Between-study variances τ² ≥ 0', (res&&res.biv)?(res.biv.t1sq>=0&&res.biv.t2sq>=0):'warn'],
 ['Prediction region ⊇ confidence region', (res&&res.ellipse)?(res.ellipse.pred[0]*res.ellipse.pred[3]>=res.ellipse.conf[0]*res.ellipse.conf[3]-1e-9):'warn'],
-['DOR = LR+ / LR− reconciles', (res&&res.lrp&&res.lrn)?(Math.abs(res.DOR-res.lrp.est/res.lrn.est)<1e-6):'warn']
+['DOR = LR+ / LR− reconciles', (res&&res.lrp&&res.lrn)?(Math.abs(res.DOR-res.lrp.est/res.lrn.est)<1e-6):'warn'],
+['Meta-regression slope SEs positive (when estimable)', (function(){var m=res?dtaMetaReg(res):null;return (m&&!m.insufficient)?(m.se.seB1>0&&m.sp.seB1>0):'warn';})()]
 ]);}
 function renderOutputs(){const res=dta(model);
-  renderSROC(res);renderReadouts(res);renderFagan(res);renderDeeks(res);renderPaired(res);rcode();renderInspect();renderQA();
+  renderSROC(res);renderReadouts(res);renderFagan(res);renderDeeks(res);renderMetaReg(res);renderPaired(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeK').textContent=res?`${res.use.length} studies`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`SROC fit · AUC ${res.auc.toFixed(3)} · summary Se ${pct(res.sumSe)}/Sp ${pct(res.sumSp)} ✓`;v.style.color='var(--good)';}
   else{v.textContent='no valid 2×2 studies';v.style.color='var(--warn)';}}
