@@ -139,7 +139,7 @@
     <div class="card">
       <p>Each row is a randomized two-arm comparison (odds ratio of arm 2 vs arm 1, with 95% CI). Edit any value, add or remove studies and arms — the network, ranking and league re-estimate live.</p>
       <div class="tablewrap"><table id="cTable">
-        <thead><tr><th>Inc.</th><th>Study</th><th class="n">Year</th><th>Arm 1</th><th>Arm 2</th><th class="n">OR</th><th class="n">LCI</th><th class="n">UCI</th><th></th></tr></thead>
+        <thead><tr><th>Inc.</th><th>Study</th><th class="n">Year</th><th>Arm 1</th><th>Arm 2</th><th class="n">OR</th><th class="n">LCI</th><th class="n">UCI</th><th class="n" title="effect modifier (e.g. mean age) for transitivity">Age</th><th></th></tr></thead>
         <tbody id="cBody"></tbody></table></div>
       <div class="toolbar">
         <button class="btn" id="addRow">+ add study</button>
@@ -159,6 +159,9 @@
         <p class="note">Random-effects inverse-variance network meta-analysis (consistency model), reference = <b id="refName">—</b>. Between-study variance τ² estimated by a network method-of-moments (DerSimonian–Laird style); rankings by Monte-Carlo SUCRA with a fixed seed (deterministic).</p>
         <div style="font-family:var(--mono);font-size:.84rem;margin-top:.4rem" id="estReadout">—</div></div>
     </div>
+    <div class="card tablewrap"><h3>Transitivity — effect-modifier balance across comparisons</h3>
+      <table class="league" id="transTbl"></table>
+      <p class="note" id="transNote" style="margin-top:.6rem">—</p></div>
   </section>
 
   <section class="stage" id="ranking">
@@ -204,7 +207,7 @@
     <div class="card"><h3>Self-audit — internal-consistency checks</h3>
       <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
       <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
-    <div class="limts" id="limts"><b>How to read this · limitations.</b> A network meta-analysis is valid only if the network is connected and consistent. This capsule tests consistency directly — node-splitting (SIDE) on every comparison with both direct and indirect evidence, and the global design-by-treatment Q<sub>inc</sub> (Jackson decomposition); when they disagree, the network estimates and ranking are unreliable. Node-splitting needs closed loops, and both tests have low power with few studies, so a non-significant result is not proof of consistency. Never rank on SUCRA alone — read the credible intervals and the rankogram. Demo data are illustrative.</div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> A network meta-analysis is valid only if the network is connected and consistent. This capsule tests consistency directly — node-splitting (SIDE) on every comparison with both direct and indirect evidence, and the global design-by-treatment Q<sub>inc</sub> (Jackson decomposition); when they disagree, the network estimates and ranking are unreliable. Node-splitting needs closed loops, and both tests have low power with few studies, so a non-significant result is not proof of consistency. Never rank on SUCRA alone — read the credible intervals and the rankogram. Indirect comparisons also assume transitivity (effect modifiers balanced across comparisons) — the transitivity panel is a descriptive check on one modifier, not a formal test. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -215,17 +218,17 @@
 "use strict";
 const SLUG="nma-t2d-mace", LSKEY="e156:"+SLUG, Z=1.959963984540054;
 const PUBLISHED=[
-  {study:'TRIAL-1',year:2018,t1:'Placebo',t2:'Drug A',or:0.82,lci:0.73,uci:0.92,inc:true},
-  {study:'TRIAL-2',year:2019,t1:'Placebo',t2:'Drug B',or:0.88,lci:0.77,uci:1.00,inc:true},
-  {study:'TRIAL-3',year:2020,t1:'Placebo',t2:'Drug C',or:0.79,lci:0.68,uci:0.92,inc:true},
-  {study:'TRIAL-4',year:2021,t1:'Drug A', t2:'Drug B',or:1.07,lci:0.90,uci:1.27,inc:true},
-  {study:'TRIAL-5',year:2022,t1:'Drug B', t2:'Drug C',or:0.90,lci:0.74,uci:1.10,inc:true}
+  {study:'TRIAL-1',year:2018,t1:'Placebo',t2:'Drug A',or:0.82,lci:0.73,uci:0.92,cov:64,inc:true},
+  {study:'TRIAL-2',year:2019,t1:'Placebo',t2:'Drug B',or:0.88,lci:0.77,uci:1.00,cov:66,inc:true},
+  {study:'TRIAL-3',year:2020,t1:'Placebo',t2:'Drug C',or:0.79,lci:0.68,uci:0.92,cov:63,inc:true},
+  {study:'TRIAL-4',year:2021,t1:'Drug A', t2:'Drug B',or:1.07,lci:0.90,uci:1.27,cov:65,inc:true},
+  {study:'TRIAL-5',year:2022,t1:'Drug B', t2:'Drug C',or:0.90,lci:0.74,uci:1.10,cov:64,inc:true}
 ];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const f=x=>x.toFixed(2);
 let model=load();
 function load(){try{const r=localStorage.getItem(LSKEY);if(r){const s=JSON.parse(r);if(Array.isArray(s)&&s.length)return s.map(clean);}}catch(e){}return PUBLISHED.map(o=>({...o}));}
-function clean(o){return {study:String(o.study||'study'),year:+o.year||0,t1:String(o.t1||'A'),t2:String(o.t2||'B'),or:+o.or||0,lci:+o.lci||0,uci:+o.uci||0,inc:o.inc!==false};}
+function clean(o){return {study:String(o.study||'study'),year:+o.year||0,t1:String(o.t1||'A'),t2:String(o.t2||'B'),or:+o.or||0,lci:+o.lci||0,uci:+o.uci||0,cov:(o.cov==null||o.cov==='')?null:+o.cov,inc:o.inc!==false};}
 function persist(){try{localStorage.setItem(LSKEY,JSON.stringify(model));}catch(e){}
   const ed=JSON.stringify(model)!==JSON.stringify(PUBLISHED.map(o=>({...o})));document.getElementById('liveTag').textContent=ed?'edited — live re-run':'illustrative demo';}
 const validRow=r=>r.or>0&&r.lci>0&&r.uci>0&&r.lci<=r.or&&r.or<=r.uci&&r.t1!==r.t2;
@@ -383,6 +386,31 @@ function contributionMatrix(res){
   const overall=designs.map((d,j)=>rows.reduce((a,row)=>a+row.contrib[j],0)/(rows.length||1));
   return {designs:designs.map(d=>dseen[d]),rows,overall};
 }
+// ---- transitivity: distribution of an effect modifier across the direct comparisons ----
+function transitivity(res){
+  if(!res)return null;
+  const use=res.use.filter(r=>r.cov!=null&&isFinite(r.cov)&&r.cov>0);
+  if(use.length<2)return {insufficient:true};
+  const dkey=r=>{const s=[r.t1,r.t2].sort();return s[0]+' vs '+s[1];};
+  const byD={};use.forEach(r=>{(byD[dkey(r)]=byD[dkey(r)]||[]).push(r.cov);});
+  const designs=Object.keys(byD).sort().map(d=>{const v=byD[d],m=v.reduce((a,b)=>a+b,0)/v.length;return {d,n:v.length,mean:m,min:Math.min(...v),max:Math.max(...v)};});
+  const all=use.map(r=>r.cov),allMean=all.reduce((a,b)=>a+b,0)/all.length;
+  const allSD=Math.sqrt(all.reduce((a,b)=>a+(b-allMean)**2,0)/Math.max(1,all.length-1));
+  const dm=designs.map(d=>d.mean),dmMean=dm.reduce((a,b)=>a+b,0)/dm.length;
+  const betweenSD=dm.length>1?Math.sqrt(dm.reduce((a,b)=>a+(b-dmMean)**2,0)/(dm.length-1)):0;
+  const cv=dmMean!==0?betweenSD/Math.abs(dmMean):0; // scale-free: spread of comparison means relative to their level
+  return {designs,allMean,allSD,betweenSD,cv,balanced:cv<0.10,covered:use.length,total:res.use.length};
+}
+function transitivityPanel(res){
+  const tbl=document.getElementById('transTbl'),note=document.getElementById('transNote');if(!tbl)return;
+  const t=transitivity(res);
+  if(!t||t.insufficient){tbl.innerHTML='';if(note)note.innerHTML='Enter an effect modifier (the <b>Age</b> column in Extraction) for ≥ 2 studies to assess transitivity.';return;}
+  tbl.innerHTML='<thead><tr><th>direct comparison</th><th class="n">studies</th><th class="n">mean</th><th class="n">range</th></tr></thead><tbody>'+
+    t.designs.map(d=>`<tr><td>${esc(d.d)}</td><td class="n">${d.n}</td><td class="n">${d.mean.toFixed(1)}</td><td class="n">${d.min.toFixed(0)}–${d.max.toFixed(0)}</td></tr>`).join('')+
+    `<tr style="font-weight:700"><td>all comparisons</td><td class="n">${t.covered}</td><td class="n">${t.allMean.toFixed(1)}</td><td class="n">SD ${t.allSD.toFixed(1)}</td></tr></tbody>`;
+  if(note)note.innerHTML=`The transitivity assumption requires effect modifiers to be similarly distributed across the comparisons being combined. Between-comparison SD of the modifier = <b class="num">${t.betweenSD.toFixed(1)}</b> (CV <b class="num">${(t.cv*100).toFixed(0)}%</b>). `+
+    (t.balanced?'<span class="good">Comparisons are reasonably balanced on this modifier</span> — transitivity is supported. This is a descriptive check, not a formal test; transitivity ultimately rests on clinical judgement across all effect modifiers.':'<span style="color:var(--bad)">Comparisons differ substantially on this modifier</span> — indirect comparisons may be confounded by it; transitivity is questionable.');
+}
 function netGraph(res){
   const svg=document.getElementById('netsvg');if(!res){svg.innerHTML='<text x="12" y="24" class="nm">no valid studies</text>';return;}
   const cx=260,cy=180,R=120,T=res.treats.length;const pos={};
@@ -498,7 +526,7 @@ netrank(nm, small.values = "good")            # SUCRA
 netsplit(nm)                                  # node-splitting (consistency)`;
 }
 function renderInspect(){const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model,null,2);
-  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[nma,glsNet,nodeSplit,inconsistencyQ,contributionMatrix].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
+  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[nma,glsNet,nodeSplit,inconsistencyQ,contributionMatrix,transitivity].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
 function renderTable(){let h='';model.forEach((r,i)=>{const er=!validRow(r)?' style="outline:1px solid var(--bad)"':'';
   h+=`<tr data-i="${i}"><td><input type="checkbox" class="inc" ${r.inc?'checked':''}></td>`+
     `<td><input class="ed t" data-k="study" value="${esc(r.study)}"></td>`+
@@ -508,6 +536,7 @@ function renderTable(){let h='';model.forEach((r,i)=>{const er=!validRow(r)?' st
     `<td class="n"><input class="ed"${er} data-k="or" type="number" step="0.01" value="${r.or}"></td>`+
     `<td class="n"><input class="ed" data-k="lci" type="number" step="0.01" value="${r.lci}"></td>`+
     `<td class="n"><input class="ed" data-k="uci" type="number" step="0.01" value="${r.uci}"></td>`+
+    `<td class="n"><input class="ed" data-k="cov" type="number" step="1" value="${r.cov==null?'':r.cov}" style="width:3.4rem"></td>`+
     `<td><button class="btn x" data-rm="${i}" title="remove">✕</button></td></tr>`;});
   document.getElementById('cBody').innerHTML=h;}
 function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)return;
@@ -527,10 +556,11 @@ QA_RENDER([
 ['Rank probabilities sum to 1 for every treatment', res?res.treats.every(function(t){return Math.abs(res.rankProb[t].reduce(function(a,b){return a+b;},0)-1)<1e-9;}):'warn'],
 ['Q decomposition reconciles (Q_total = Q_het + Q_inc)', (function(){var g=res?inconsistencyQ(res):null;return g?Math.abs(g.Qtot-(g.Qhet+g.Qinc))<1e-6:'warn';})()],
 ['Node-split standard errors positive where indirect exists', res?nodeSplit(res).every(function(s){return s.indirect==null||(s.se>0);}):'warn'],
-['Contribution rows sum to 100%', (function(){var cm=res?contributionMatrix(res):null;return cm?cm.rows.every(function(r){return Math.abs(r.contrib.reduce(function(a,b){return a+b;},0)-1)<1e-9;}):'warn';})()]
+['Contribution rows sum to 100%', (function(){var cm=res?contributionMatrix(res):null;return cm?cm.rows.every(function(r){return Math.abs(r.contrib.reduce(function(a,b){return a+b;},0)-1)<1e-9;}):'warn';})()],
+['Effect-modifier values valid where entered', res?res.use.every(function(r){return r.cov==null||isFinite(r.cov);}):'warn']
 ]);}
 function renderOutputs(){const res=nma(model);
-  netGraph(res);rankPlot(res);rankogram(res);leagueTable(res);contribMatrix(res);consistency(res);rcode(res);renderInspect();renderQA();
+  netGraph(res);transitivityPanel(res);rankPlot(res);rankogram(res);leagueTable(res);contribMatrix(res);consistency(res);rcode(res);renderInspect();renderQA();
   document.getElementById('refName').textContent=res?res.ref:'—';
   document.getElementById('badgeNet').textContent=res?`${res.treats.length} treatments · ${res.m} studies`:'—';
   document.getElementById('dotConn').className='dot '+(res&&res.connected?'ok':'warn');
