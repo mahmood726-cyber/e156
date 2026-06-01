@@ -422,7 +422,7 @@ function transitivityPanel(res){
 // ---- network meta-regression: common effect-modification coefficient (Cooper 2009 / NICE TSD3) ----
 function metaReg(res){
   if(!res)return null;
-  const use=res.use.filter(r=>r.cov!=null&&isFinite(r.cov));
+  const use=res.use.filter(r=>r.cov!=null&&isFinite(r.cov)&&r.cov>0);
   const ref=res.ref,pidx=res.pidx,p=res.p,tau2=res.tau2;
   if(use.length<p+2)return {insufficient:true}; // need >=1 residual df with the extra interaction term
   const xbar=use.reduce((a,r)=>a+r.cov,0)/use.length;
@@ -646,7 +646,7 @@ function renderAll(){renderTable();renderOutputs();}
 
 document.getElementById('cBody').addEventListener('input',e=>{const tr=e.target.closest('tr');if(!tr)return;const i=+tr.dataset.i;
   if(e.target.classList.contains('inc')){model[i].inc=e.target.checked;renderTable();renderOutputs();persist();return;}
-  const k=e.target.dataset.k;if(!k)return;model[i][k]=(k==='study'||k==='t1'||k==='t2')?e.target.value:(+e.target.value||0);renderOutputs();persist();});
+  const k=e.target.dataset.k;if(!k)return;model[i][k]=(k==='study'||k==='t1'||k==='t2')?e.target.value:(k==='cov'?(e.target.value===''?null:+e.target.value):(+e.target.value||0));renderOutputs();persist();});
 document.getElementById('cBody').addEventListener('click',e=>{const rm=e.target.closest('[data-rm]');if(rm){model.splice(+rm.dataset.rm,1);renderAll();persist();}});
 document.getElementById('addRow').addEventListener('click',()=>{model.push(clean({study:'NEW',year:new Date().getFullYear(),t1:'Placebo',t2:'Drug A',or:0.9,lci:0.8,uci:1.02,inc:true}));renderAll();persist();});
 document.getElementById('resetData').addEventListener('click',()=>{model=PUBLISHED.map(o=>({...o}));try{localStorage.removeItem(LSKEY);}catch(e){}renderAll();persist();});

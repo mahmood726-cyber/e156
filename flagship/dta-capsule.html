@@ -494,7 +494,7 @@ function renderAll(){renderTable();renderOutputs();}
 
 document.getElementById('cBody').addEventListener('input',e=>{const tr=e.target.closest('tr');if(!tr)return;const i=+tr.dataset.i;
   if(e.target.classList.contains('inc')){model[i].inc=e.target.checked;renderTable();renderOutputs();persist();return;}
-  const k=e.target.dataset.k;if(!k)return;model[i][k]=(k==='study')?e.target.value:(+e.target.value||0);renderTable();renderOutputs();persist();
+  const k=e.target.dataset.k;if(!k)return;model[i][k]=(k==='study')?e.target.value:(k==='cov'?(e.target.value===''?null:+e.target.value):(+e.target.value||0));renderTable();renderOutputs();persist();
   const inp=document.querySelector(`#cBody tr[data-i="${i}"] [data-k="${k}"]`);if(inp){inp.focus();}});
 document.getElementById('cBody').addEventListener('click',e=>{const rm=e.target.closest('[data-rm]');if(rm){model.splice(+rm.dataset.rm,1);renderAll();persist();}});
 document.getElementById('addRow').addEventListener('click',()=>{model.push(clean({study:'NEW',year:new Date().getFullYear(),tp:50,fp:10,fn:10,tn:50,inc:true}));renderAll();persist();});
