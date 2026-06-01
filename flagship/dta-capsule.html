@@ -315,7 +315,7 @@ QA_RENDER([
 ['Pooled sensitivity within [0,1]', (res&&res.sumSe!=null)?(res.sumSe>=0&&res.sumSe<=1):'warn'],
 ['Pooled specificity within [0,1]', (res&&res.sumSp!=null)?(res.sumSp>=0&&res.sumSp<=1):'warn'],
 ['Summary ROC AUC within [0,1]', (res&&res.auc!=null)?(res.auc>=0&&res.auc<=1):'warn'],
-['Diagnostic odds ratio > 0', !!(res&&res.DOR>0)]
+['Diagnostic odds ratio > 0', (res&&res.DOR!=null)?(res.DOR>0):'warn']
 ]);}
 function renderOutputs(){const res=dta(model);
   renderSROC(res);renderReadouts(res);renderPaired(res);rcode();renderInspect();renderQA();

@@ -271,7 +271,7 @@ QA_RENDER([
 ['Pre- and post-intervention periods both present', !!(res&&res.nPre>=1&&res.nPost>=1)],
 ['Segmented-regression coefficients finite', fin(res&&res.beta)],
 ['Coefficient standard errors > 0', pos(res&&res.se)],
-['Intervention point partitions the series (nPre+nPost = n)', !!(res&&(res.nPre+res.nPost===res.n))]
+['Intervention point is a valid split (1 ≤ t0 ≤ n, series length = n)', !!(res&&res.t0>=1&&res.t0<=res.n&&Array.isArray(res.y)&&res.y.length===res.n)]
 ]);}
 function renderOutputs(){const res=its(model);renderPlot(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeN').textContent=res?`${res.n} periods`:'—';

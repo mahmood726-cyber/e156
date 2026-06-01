@@ -305,10 +305,10 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
 function renderQA(){var inc=included();var y=inc.map(function(r){return r.yi;}),v=inc.map(function(r){return r.sei*r.sei;}),s=inc.map(function(r){return r.sei;});
 var m=inc.length?pool(y,v):null,eg=inc.length>=3?egger(y,s):null,tf=inc.length?trimfill(y,v):null;
 QA_RENDER([
-['Every included study has SE > 0', inc.length?inc.every(function(r){return r.sei>0;}):'warn'],
-['Pooled τ² ≥ 0', !!(m&&m.tau2>=0)],
+['Every included study has SE > 0', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.sei>0;}):'warn'],
+['Pooled τ² finite & ≥ 0', !!(m&&isFinite(m.tau2)&&m.tau2>=0)],
 ['I² within [0,100]', (m&&m.I2!=null)?(m.I2>=0&&m.I2<=100):'warn'],
-['Egger test p-value (t-distribution) in [0,1]', (eg&&isFinite(eg.p))?(eg.p>=0&&eg.p<=1):'warn'],
+['Egger regression on k−2 df with finite p', eg?(isFinite(eg.p)&&eg.df===inc.length-2):'warn'],
 ['Trim-and-fill imputes k₀ ≥ 0 studies', !!(tf&&tf.k0>=0)],
 ['≥ 10 studies for adequate funnel power', inc.length>=10?true:'warn']
 ]);}

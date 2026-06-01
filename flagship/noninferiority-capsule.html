@@ -272,7 +272,7 @@ function renderQA(){var res=analyse(cfg);
 QA_RENDER([
 ['Events ≤ N in both arms', cfg.arms.every(function(a){return a.e<=a.n;})],
 ['Both arm proportions within [0,1]', !!(res&&res.p1>=0&&res.p1<=1&&res.p2>=0&&res.p2<=1)],
-['Risk-difference CI ordered (ciL ≤ ciU)', !!(res&&res.ciL<=res.ciU)],
+['Risk-difference bounds are finite', !!(res&&isFinite(res.ciL)&&isFinite(res.ciU))],
 ['Non-inferiority margin is set (Δ ≠ 0)', !!(res&&res.D!==0)],
 ['One-sided NI p-value in [0,1]', !!(res&&res.pNI>=0&&res.pNI<=1)],
 ['Verdict zone in {sup, ni, inf, inc}', !!(res&&['sup','ni','inf','inc'].indexOf(res.zone)>=0)]

@@ -260,7 +260,7 @@ QA_RENDER([
 ['Mean cluster size m̄ ≥ 1', !!(res&&res.mbar>=1)],
 ['Design effect D = 1+(m̄−1)·ICC ≥ 1', !!(res&&res.deff>=1)],
 ['Effective N = N / D ≤ N (clustering costs, not gains)', !!(res&&res.neff<=res.N+1e-9)],
-['Cluster-adjusted CI wider than naïve CI', !!(res&&(res.ciA[1]-res.ciA[0])>=(res.ciN[1]-res.ciN[0])-1e-9)],
+['Cluster SE inflated by √D (seCl = seInd·√D)', !!(res&&Math.abs(res.seCl-res.seInd*Math.sqrt(res.deff))<1e-9)],
 ['Cluster analysis uses K−2 df (dfCl ≥ 1)', !!(res&&res.dfCl>=1)]
 ]);}
 function renderOutputs(){const r=analyse(cfg);renderCI(r);

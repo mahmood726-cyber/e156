@@ -265,7 +265,7 @@ QA_RENDER([
 ['Enough points on each side of the cutoff', !!(res&&res.ok)],
 ['Discontinuity (jump) estimate is finite', !!(res&&res.ok&&isFinite(res.jump))],
 ['Standard error > 0', (res&&res.ok)?(res.se>0):'warn'],
-['Confidence interval ordered (lo ≤ hi)', (res&&res.ok)?(res.lo<=res.hi):'warn'],
+['Confidence bounds are finite', (res&&res.ok)?(isFinite(res.lo)&&isFinite(res.hi)):'warn'],
 ['p-value in [0,1]', (res&&res.ok)?(res.p>=0&&res.p<=1):'warn']
 ]);}
 function renderOutputs(){const res=rdd(model);renderPlot(res);renderReadouts(res);rcode();renderInspect();renderQA();

@@ -270,7 +270,7 @@ function renderQA(){var res=balance(model),inc=model.filter(function(r){return r
 QA_RENDER([
 ['Every covariate has pooled SD > 0', inc.every(function(r){return r.sd>0;})],
 ['≥ 1 covariate assessed', (res&&res.k>=1)?true:'warn'],
-['Max |SMD| ≥ 0 before and after', !!(res&&res.maxB>=0&&res.maxA>=0)],
+['Max |SMD| before & after are finite', !!(res&&isFinite(res.maxB)&&isFinite(res.maxA))],
 ['Worst imbalance not made worse by matching', !!(res&&res.maxA<=res.maxB+1e-9)],
 ['Post-match imbalance count ≤ pre-match', !!(res&&res.imbA<=res.imbB)],
 ['Balance verdict derived (all |SMD| < 0.1 ⇒ balanced)', !!(res&&typeof res.balanced==='boolean')]

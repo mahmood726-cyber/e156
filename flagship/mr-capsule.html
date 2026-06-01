@@ -205,6 +205,10 @@ const erf=x=>{const s=x<0?-1:1;x=Math.abs(x);const t=1/(1+0.3275911*x);
   const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y;};
 const Phi=z=>0.5*(1+erf(z/Math.SQRT2));
 const pz=z=>2*(1-Phi(Math.abs(z)));
+function gammaln(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,tmp=x+5.5;tmp-=(x+0.5)*Math.log(tmp);let ser=1.000000000190015;for(let j=0;j<6;j++){y++;ser+=c[j]/y;}return -tmp+Math.log(2.5066282746310005*ser/x);}
+function betacf(a,b,x){const FPMIN=1e-300,EPS=3e-12;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=200;m++){let m2=2*m,aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;let del=d*c;h*=del;if(Math.abs(del-1)<EPS)break;}return h;}
+function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const lb=gammaln(a)+gammaln(b)-gammaln(a+b);const front=Math.exp(a*Math.log(x)+b*Math.log(1-x)-lb);return x<(a+1)/(a+b+2)?front*betacf(a,b,x)/a:1-front*betacf(b,a,1-x)/b;}
+function tP(t,df){if(df<=0||!isFinite(t))return NaN;const x=df/(df+t*t);return ibeta(x,df/2,0.5);} // two-tailed Student-t
 let model=load();
 function load(){try{const r=localStorage.getItem(LSKEY);if(r){const s=JSON.parse(r);if(Array.isArray(s)&&s.length)return s.map(clean);}}catch(e){}return PUBLISHED.map(o=>({...o}));}
 function clean(o){return {snp:String(o.snp||'snp'),bx:+o.bx||0,sx:+o.sx||0,by:+o.by||0,sy:+o.sy||0,inc:o.inc!==false};}
@@ -230,7 +234,7 @@ function mr(rows){
   const rss=use.reduce((a,r,i)=>a+wi[i]*(by[i]-(eInt+eSlope*bx[i]))**2,0);
   const sigma2=Math.max(1,rss/(k-2));         // multiplicative dispersion (>=1, per MR-Egger default)
   const slSE=Math.sqrt(sigma2*Sw/D),inSE=Math.sqrt(sigma2*Swxx/D);
-  const intP=pz(eInt/inSE);
+  const intP=tP(eInt/inSE,k-2);  // MR-Egger intercept: Student-t on k-2 df
   // weighted median of Wald ratios, weights ~ 1/var(ratio)=bx^2/sy^2 (=IVW weights)
   const order=wald.map((r,i)=>({r,w:w[i]})).sort((a,b)=>a.r-b.r);
   const tot=order.reduce((a,o)=>a+o.w,0);let cum=0,wm=order[0].r;
@@ -304,7 +308,7 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var res=mr(model),inc=model.filter(function(r){return r.inc;});
 QA_RENDER([
-['Every instrument has exposure SE & outcome SE > 0', inc.every(function(r){return r.sx>0&&r.sy>0;})],
+['Every instrument has exposure SE & outcome SE > 0 (bx ≠ 0)', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.sx>0&&r.sy>0&&r.bx!==0;}):'warn'],
 ['≥ 1 instrument used', (res&&res.k>=1)?true:'warn'],
 ['IVW causal estimate is finite', !!(res&&isFinite(res.ivw))],
 ['IVW standard error > 0', !!(res&&res.ivwSE>0)],

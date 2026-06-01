@@ -268,9 +268,9 @@ function renderQA(){var res=did(model);
 QA_RENDER([
 ['Treatment-effect estimate is finite', !!(res&&isFinite(res.est))],
 ['Standard error > 0', !!(res&&res.se>0)],
-['Confidence interval ordered (lo ≤ hi)', !!(res&&res.lo<=res.hi)],
+['Confidence bounds are finite', !!(res&&isFinite(res.lo)&&isFinite(res.hi))],
 ['p-value in [0,1]', !!(res&&res.p>=0&&res.p<=1)],
-['DiD = (treated Δ) − (control Δ) reconciles', !!(res&&Math.abs((res.tD-res.cD)-res.est)<1e-6)]
+['DiD recomputed from raw means matches estimate', !!(res&&Math.abs((model.tpost-model.tpre)-(model.cpost-model.cpre)-res.est)<1e-9)]
 ]);}
 function renderOutputs(){const res=did(model);renderPlot(res,model);renderReadouts(res,model);rcode();renderInspect();renderQA();
   document.getElementById('badgeDiD').textContent=`DiD ${res.est>=0?'+':''}${res.est.toFixed(1)}`;

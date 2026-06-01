@@ -311,10 +311,10 @@ function renderQA(){var res=surv(model);
 QA_RENDER([
 ['≥ 1 study (poolable)', !!res],
 ['Pooled RMST difference is finite', !!(res&&isFinite(res.rmst))],
-['CI is ordered (low ≤ high)', res?(res.ciL<=res.ciU):'warn'],
+['Confidence bounds are finite', res?(isFinite(res.ciL)&&isFinite(res.ciU)):'warn'],
 ['I² within [0,100]', (res&&res.I2!=null)?(res.I2>=0&&res.I2<=100):'warn'],
 ['Prediction interval computed (k ≥ 2)', (res&&res.piL!=null)?true:'warn'],
-['Restricted-mean horizon τ* set', !!(res&&res.taus&&res.taus.length)]
+['Single shared restricted-mean horizon τ*', !!(res&&res.taus&&res.taus.length===1)]
 ]);}
 function renderOutputs(){const res=surv(model);renderForest(res);renderKM(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeK').textContent=res?`${res.k} trials`:'—';

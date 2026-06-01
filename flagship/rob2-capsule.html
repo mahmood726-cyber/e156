@@ -310,9 +310,9 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
 function renderQA(){var res=summarise(model);
 QA_RENDER([
 ['≥ 1 study assessed', (res&&res.k>=1)?true:'warn'],
-['Five RoB 2 domains present', (res&&res.cols&&res.cols.length>=5)?true:'warn'],
+['All five domains tallied for every study', !!(res&&res.cnt&&['d1','d2','d3','d4','d5'].every(function(d){return res.cnt[d]&&(res.cnt[d].low+res.cnt[d].some+res.cnt[d].high)===res.k;}))],
 ['Per-domain tallies computed', !!(res&&res.cnt)],
-['Every study has an overall judgement', !!(res&&res.use&&res.use.length===res.k)]
+['Every study has an overall judgement', !!(res&&res.cnt&&res.cnt.overall&&(res.cnt.overall.low+res.cnt.overall.some+res.cnt.overall.high)===res.k)]
 ]);}
 function renderOutputs(){const res=summarise(model);renderMatrix(res);renderBars(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeK').textContent=res?`${res.k} studies`:'—';

@@ -267,8 +267,8 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var res=eval2(model);
 QA_RENDER([
-['Crude estimate CI ordered (cL ≤ cE ≤ cU)', model.cL<=model.cE&&model.cE<=model.cU],
-['Adjusted estimate CI ordered (aL ≤ aE ≤ aU)', model.aL<=model.aE&&model.aE<=model.aU],
+['Crude estimate CI valid (0 < cL ≤ cE ≤ cU)', model.cL>0&&model.cL<=model.cE&&model.cE<=model.cU],
+['Adjusted estimate CI valid (0 < aL ≤ aE ≤ aU)', model.aL>0&&model.aL<=model.aE&&model.aE<=model.aU],
 ['Effect point estimate is finite', !!(res&&isFinite(res.ePt))],
 ['Confounders listed for adjustment', !!(model.covs&&model.covs.trim().length>0)],
 ['Crude→adjusted attenuation computed', !!(res&&isFinite(res.attenuationPct))]

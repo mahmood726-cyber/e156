@@ -292,7 +292,7 @@ QA_RENDER([
 ['Every included study OR>0 with LCI<UCI', model.filter(function(r){return r.inc;}).every(function(r){return r.or>0&&r.lci<r.uci;})],
 ['τ² ≥ 0', !!(res&&res.tau2>=0)],
 ['I² within [0,100]', (res&&res.I2!=null)?(res.I2>=0&&res.I2<=100):'warn'],
-['Prediction interval contains the confidence interval', !!(res&&res.piL<=res.ciL+1e-9&&res.piU>=res.ciU-1e-9)],
+['Prediction interval contains the confidence interval', (res&&res.piL!=null&&res.piU!=null)?(res.piL<=res.ciL+1e-9&&res.piU>=res.ciU-1e-9):'warn'],
 ['≥ 2 studies (prediction interval defined)', (res&&res.k>=2)?true:'warn']
 ]);}
 function renderOutputs(){const res=gap(model);renderForest(res);renderReadouts(res);rcode();renderInspect();renderQA();

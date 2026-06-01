@@ -270,8 +270,8 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var res=pool(model),inc=model.filter(function(r){return r.inc&&validRow(r);});
 QA_RENDER([
-['Every study has n > 3 (Fisher z needs n−3)', inc.length?inc.every(function(r){return r.n>3;}):'warn'],
-['|r| ≤ 1 in every study', inc.every(function(r){return Math.abs(r.r)<=1;})],
+['Every study has n > 3 (Fisher z needs n−3)', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.n>3;}):'warn'],
+['|r| ≤ 1 in every study', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return Math.abs(r.r)<=1;}):'warn'],
 ['≥ 1 valid study (poolable)', !!res],
 ['I² within [0,100]', (res&&res.I2!=null)?(res.I2>=0&&res.I2<=100):'warn'],
 ['τ² ≥ 0 (Fisher z scale)', !!(res&&res.tau2>=0)],

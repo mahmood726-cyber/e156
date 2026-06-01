@@ -326,7 +326,7 @@ QA_RENDER([
 ['Every study OR > 0 with LCI ≤ OR ≤ UCI', inc.every(function(r){return r.or>0&&r.lci<=r.or&&r.or<=r.uci;})],
 ['Moderator value is finite', inc.every(function(r){return isFinite(r.mod);})],
 ['≥ 2 studies (regression estimable)', (res&&res.k>=2)?true:'warn'],
-['Residual τ² ≥ 0', !!(res&&res.tau2res>=0)],
+['Residual τ² ≤ total τ² (moderator cannot add heterogeneity)', !!(res&&res.tau2res>=0&&res.tau2res<=res.tau2tot+1e-9)],
 ['R² within [0,1]', (res&&res.R2!=null)?(res.R2>=0&&res.R2<=1):'warn'],
 ['Slope standard error > 0', !!(res&&res.seB1>0)],
 ['Residual I² within [0,100]', (res&&res.I2res!=null)?(res.I2res>=0&&res.I2res<=100):'warn']

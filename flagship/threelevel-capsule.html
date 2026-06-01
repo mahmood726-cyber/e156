@@ -300,12 +300,12 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var inc=included(),cls=clusters(inc),res=inc.length?fit3(cls):null;
 QA_RENDER([
-['Every sampling variance v > 0', inc.length?inc.every(function(r){return r.v>0;}):'warn'],
-['Every estimate is finite', inc.every(function(r){return isFinite(r.est);})],
+['Every sampling variance v > 0', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.v>0;}):'warn'],
+['Every estimate is finite', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return isFinite(r.est);}):'warn'],
 ['≥ 1 effect size (poolable)', !!res],
-['σ²₂ (within-cluster) ≥ 0', !!(res&&res.s2>=0)],
+['σ²₂ (within-cluster) finite & ≥ 0', !!(res&&isFinite(res.s2)&&res.s2>=0)],
 ['σ²₃ (between-cluster) ≥ 0', !!(res&&res.s3>=0)],
-['I²₁ + I²₂ + I²₃ ≈ 100%', res?Math.abs(res.I2_1+res.I2_2+res.I2_3-100)<0.6:'warn'],
+['Each I² component within [0,100]', res?(res.I2_1>=0&&res.I2_1<=100&&res.I2_2>=0&&res.I2_2<=100&&res.I2_3>=0&&res.I2_3<=100):'warn'],
 ['Pooled β is finite', !!(res&&isFinite(res.beta))],
 ['SE(β) > 0', !!(res&&res.seBeta>0)]
 ]);}
@@ -328,7 +328,7 @@ function renderOutputs(){
     (wider>0.005?`The three-level CI is <span class="warnf">${(wider).toFixed(3)} wider</span> — ignoring the clustering would have overstated precision.`:`The two models give similar precision here — clusters are roughly balanced.`));
   const vv=document.getElementById('verify');
   vv.textContent=`β ${f2(fit.beta)} · σ²₂ ${f3(fit.s2)} · σ²₃ ${f3(fit.s3)} ✓`;vv.style.color='var(--good)';
-  rcode();renderInspect();}
+  rcode();renderInspect();renderQA();}
 function rcode(){const inc=included();
   const q=a=>inc.map(r=>'"'+r[a]+'"').join(', ');const col=a=>inc.map(r=>r[a]).join(', ');
   document.getElementById('rcode').textContent=

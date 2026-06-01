@@ -336,8 +336,8 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var res=tsa(model,alpha,power,RRR),inc=model.filter(function(r){return r.inc&&valid(r);});
 QA_RENDER([
-['Events ≤ N in both arms', inc.every(function(r){return r.eT<=r.nT&&r.eC<=r.nC;})],
-['All arm sizes > 0', inc.length?inc.every(function(r){return r.nT>0&&r.nC>0;}):'warn'],
+['Events ≤ N in both arms', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.eT<=r.nT&&r.eC<=r.nC;}):'warn'],
+['All arm sizes > 0', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.nT>0&&r.nC>0;}):'warn'],
 ['≥ 1 study (cumulative Z estimable)', (res&&res.k>=1)?true:'warn'],
 ['Design effect D ≥ 1', !!(res&&res.D>=1)],
 ['Adjusted RIS ≥ naïve RIS', (res&&res.RISadj!=null&&res.RISnaive!=null)?(res.RISadj>=res.RISnaive-1e-6):'warn'],

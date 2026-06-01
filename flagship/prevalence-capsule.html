@@ -272,8 +272,8 @@ function renderQA(){const grid=document.getElementById('qaGrid');if(!grid)return
   const res=pool(model),inc=model.filter(r=>r.inc&&validRow(r));
   const checks=[
     ['Events ≤ N in every study', !model.some(r=>r.inc&&r.events>r.n)],
-    ['All sample sizes N > 0', inc.length?inc.every(r=>r.n>0):'warn'],
-    ['Every count is non-negative', inc.every(r=>r.events>=0)],
+    ['All sample sizes N > 0', model.some(r=>r.inc)?model.filter(r=>r.inc).every(r=>r.n>0):'warn'],
+    ['Every count is non-negative', !model.some(r=>r.inc&&r.events<0)],
     ['≥1 valid study (poolable)', !!res],
     ['I² within [0,100]', (res&&res.I2!=null)?(res.I2>=0&&res.I2<=100):'warn'],
     ['τ² ≥ 0 (logit scale)', !!(res&&res.tau2>=0)],

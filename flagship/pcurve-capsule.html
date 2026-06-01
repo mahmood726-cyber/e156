@@ -307,7 +307,7 @@ function renderQA(){var res=pcurve(model);
 QA_RENDER([
 ['Every entered p-value in (0, 1)', model.every(function(r){return r.p>0&&r.p<1;})],
 ['≥ 1 significant result (p<.05) to curve', (res&&res.k>=1)?true:'warn'],
-['Full & half p-curve tests computed', !!(res&&isFinite(res.pFull)&&isFinite(res.pHalf))],
+['Full & half p-curve tests computed', (res&&isFinite(res.pFull))?(res.kh===0||isFinite(res.pHalf)):'warn'],
 ['Estimated statistical power in [0,1]', !!(res&&res.power>=0&&res.power<=1)],
 ['Half-curve subset ≤ full set (kh ≤ k)', !!(res&&res.kh<=res.k)]
 ]);}

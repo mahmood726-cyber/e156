@@ -299,7 +299,7 @@ QA_RENDER([
 ['≥ 1 modifier compared (trial vs target)', !!(res&&res.smds&&res.smds.length>=1)],
 ['Max |SMD| is finite and ≥ 0', !!(res&&isFinite(res.maxSMD)&&res.maxSMD>=0)],
 ['Count of large imbalances ≥ 0 (integer)', !!(res&&res.nBig>=0&&res.nBig===Math.round(res.nBig))],
-['Transportability verdict derived', !!(res&&typeof res.transportable==='boolean')]
+['Transported effect computed (subgroup RRs entered)', !!(res&&res.trans!=null)]
 ]);}
 function renderOutputs(){const res=transport(model);renderSMD(res);renderEff(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeT').textContent=res.trans?`RR ${res.trans.trialRR.toFixed(2)}→${res.trans.transRR.toFixed(2)}`:'—';

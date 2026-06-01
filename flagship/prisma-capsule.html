@@ -296,8 +296,8 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
 function renderQA(){var f=computeFlow(model);
 QA_RENDER([
 ['Flow diagram reconciles (no box goes negative)', !!(f&&f.allOk)],
-['Included ≤ reports assessed for eligibility', !!(f&&f.included<=f.assessed)],
-['Assessed ≤ reports sought for retrieval', !!(f&&f.assessed<=f.sought)],
+['Reports-sought stage reconciles (sought ≥ 0)', !!(f&&f.checks&&f.checks[1]&&f.checks[1].ok)],
+['Studies-included stage reconciles (included ≥ 0)', !!(f&&f.checks&&f.checks[3]&&f.checks[3].ok)],
 ['Exclusion reasons are tallied', !!(f&&f.reasonsTotal!=null)]
 ]);}
 function renderOutputs(){const f=computeFlow(model);renderFlow(f,model);renderChecks(f);renderReadouts(f);rcode();renderInspect();renderQA();

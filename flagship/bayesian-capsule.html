@@ -389,7 +389,7 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var res=bayes(model,priorScale),inc=model.filter(function(r){return r.inc&&valid(r);});
 QA_RENDER([
-['Every study OR > 0 with LCI < UCI', inc.every(function(r){return r.or>0&&r.lci<r.uci;})],
+['Every study OR > 0 with LCI < UCI', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return r.or>0&&r.lci<r.uci;}):'warn'],
 ['≥ 1 study (posterior estimable)', (res&&res.k>=1)?true:'warn'],
 ['Posterior density over μ computed', !!(res&&Array.isArray(res.pMu)&&res.pMu.length>0)],
 ['Prior SD on μ > 0', !!(res&&res.priorMuSd>0)],

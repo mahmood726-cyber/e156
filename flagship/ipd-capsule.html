@@ -294,7 +294,7 @@ function renderQA(){var inc=included();var y=inc.map(function(r){return r.eff;})
 var res=inc.length?pool(y,v):null,within=inc.length?pool(inc.map(function(r){return r.bw;}),inc.map(function(r){return r.sw*r.sw;})):null;
 QA_RENDER([
 ['Every trial SE > 0 (effect & slope)', inc.length?inc.every(function(r){return r.se>0&&r.sw>0;}):'warn'],
-['Effects & within-trial slopes finite', inc.every(function(r){return isFinite(r.eff)&&isFinite(r.bw);})],
+['Effects & within-trial slopes finite', model.some(function(r){return r.inc;})?model.filter(function(r){return r.inc;}).every(function(r){return isFinite(r.eff)&&isFinite(r.bw);}):'warn'],
 ['≥ 1 valid trial (poolable)', !!res],
 ['Main-effect I² within [0,100]', (res&&res.I2!=null)?(res.I2>=0&&res.I2<=100):'warn'],
 ['τ² ≥ 0', !!(res&&res.tau2>=0)],
@@ -322,7 +322,7 @@ function renderOutputs(){
   else setT('biasOut','Need ≥2 trials for the across-trial slope.');
   const vv=document.getElementById('verify');
   vv.textContent=`pooled ${f2(res.mu)} · within ${within?f3(within.mu):'—'} · across ${across?f3(across.b1):'—'} ✓`;vv.style.color='var(--good)';
-  rcode();renderInspect();}
+  rcode();renderInspect();renderQA();}
 function rcode(){const inc=included(),col=k=>inc.map(r=>r[k]).join(', ');
   document.getElementById('rcode').textContent=
 `library(metafor)

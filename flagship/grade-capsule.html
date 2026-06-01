@@ -300,7 +300,7 @@ QA_RENDER([
 ['Every outcome RR > 0 with LCI ≤ RR ≤ UCI', inc.every(function(r){return r.rr>0&&r.lci<=r.rr&&r.rr<=r.uci;})],
 ['≥ 1 outcome', (res&&res.k>=1)?true:'warn'],
 ['Certainty level derived', !!(res&&res.lv!=null)],
-['Absolute effect computed from baseline risk', !!(res&&res.use)]
+['Absolute effect derivable (baseline risk set per outcome)', !!(res&&res.use.every(function(r){return isFinite(r.base)&&r.base>=0;}))]
 ]);}
 function renderOutputs(){const res=summarise(model);renderSoF(res);renderDerive(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeK').textContent=res?`${res.k} outcomes`:'—';

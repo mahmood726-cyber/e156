@@ -218,7 +218,7 @@ function cox(rows){const ets=[...new Set(rows.filter(r=>r.e===1).map(r=>r.t))].s
     const mt=ts.reduce((a,x)=>a+x,0)/n,mr=rs.reduce((a,x)=>a+x,0)/n;let sxy=0,sxx=0,syy=0;
     for(let i=0;i<n;i++){sxy+=(ts[i]-mt)*(rs[i]-mr);sxx+=(ts[i]-mt)**2;syy+=(rs[i]-mr)**2;}
     const corr=(sxx>0&&syy>0)?sxy/Math.sqrt(sxx*syy):0;phChi=corr*corr*n;phP=chi1p(phChi);}
-  return {b,hr,se,z,p:pz(z),lo:Math.exp(b-1.959963984540054*se),hi:Math.exp(b+1.959963984540054*se),phChi,phP};
+  return {b,hr,se,z,p:pz(z),lo:Math.exp(b-1.959963984540054*se),hi:Math.exp(b+1.959963984540054*se),phChi,phP,phTested:sch.length>2};
 }
 function survAll(rows){if(rows.length<3)return null;const g1=rows.filter(r=>r.g===1),g0=rows.filter(r=>r.g===0);
   if(g1.length<1||g0.length<1)return null;
@@ -273,8 +273,8 @@ QA_RENDER([
 ['Cox hazard ratio > 0', !!(res&&res.cox&&res.cox.hr>0)],
 ['Cox CI ordered (lo ≤ hi)', !!(res&&res.cox&&res.cox.lo<=res.cox.hi)],
 ['Log-rank χ² ≥ 0 with p in [0,1]', !!(res&&res.lr&&res.lr.chi>=0&&res.lr.p>=0&&res.lr.p<=1)],
-['Proportional-hazards test reported', (res&&res.cox&&isFinite(res.cox.phP))?true:'warn'],
-['PH holds (Schoenfeld p > 0.05) — else read HR with caution', (res&&res.cox&&isFinite(res.cox.phP))?(res.cox.phP>0.05):'warn']
+['Proportional-hazards test computed (>2 events)', (res&&res.cox&&res.cox.phTested)?true:'warn'],
+['PH holds (Schoenfeld p > 0.05) — else read HR with caution', (res&&res.cox&&res.cox.phTested)?(res.cox.phP>0.05):'warn']
 ]);}
 function renderOutputs(){const rows=parse(text),res=survAll(rows);renderKM(res);renderReadouts(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeN').textContent=rows.length?`${rows.length} subjects`:'—';

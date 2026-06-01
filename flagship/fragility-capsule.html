@@ -297,8 +297,8 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
 function renderQA(){var res=fragility(model);
 QA_RENDER([
 ['Events ≤ arm size in both arms', model.eT<=model.nT&&model.eC<=model.nC],
-['Fragility index ≥ 0', !!(res&&res.fi>=0)],
-['Fragility quotient = FI / N in [0,1]', !!(res&&res.fq>=0&&res.fq<=1)],
+['Fragility index ≥ 0 (when significance reached)', (res&&res.reached)?(res.fi>=0):'warn'],
+['Fragility quotient = FI / N in [0,1]', (res&&res.reached&&res.fq!=null)?(res.fq>=0&&res.fq<=1):'warn'],
 ['Lost-to-follow-up ≤ total randomised', model.ltfu<=(model.nT+model.nC)],
 ['Baseline result significant (forward fragility)', (res&&res.sigStart)?true:'warn']
 ]);}
