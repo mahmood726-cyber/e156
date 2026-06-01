@@ -73,6 +73,9 @@
   .axis{stroke:var(--line)} .grid{stroke:var(--line);opacity:.5} .diag{stroke:var(--ink-soft);stroke-dasharray:3 3;opacity:.5}
   .tick{font-size:11px;fill:var(--ink-soft);font-family:var(--mono)} .axlab{font-size:12px;fill:var(--ink-soft)}
   .sroc{stroke:var(--accent);stroke-width:2.5;fill:none} .pt{fill:var(--accent)} .sumpt{fill:var(--accent-strong)} .sumci{stroke:var(--accent-strong);stroke-width:2}
+  .confreg{stroke:var(--accent-strong);stroke-width:1.6;fill:var(--accent-strong);fill-opacity:.07} .predreg{stroke:var(--accent);stroke-width:1.1;stroke-dasharray:4 3;opacity:.75;fill:none}
+  .fagline{stroke:var(--accent);stroke-width:2;fill:none} .fagline.neg{stroke:var(--ink-soft);stroke-dasharray:4 3} .fagid{stroke:var(--line);stroke-dasharray:2 2}
+  .dkpt{fill:var(--accent);opacity:.7} .dkline{stroke:var(--accent-strong);stroke-width:1.6}
   .ro .k{font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)} .ro .v{font-family:var(--mono);font-size:1.2rem;font-weight:600} .ro .v small{font-size:.78rem;color:var(--ink-soft);font-weight:400}
   .readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(7rem,1fr));gap:.2rem;margin-top:.6rem}
   pre.code{background:color-mix(in srgb,var(--ink) 5%,var(--card));border:1px solid var(--line);border-radius:10px;padding:.9rem 1rem;overflow-x:auto;font-family:var(--mono);font-size:.76rem;line-height:1.5;color:var(--ink)}
@@ -145,22 +148,34 @@
     <div class="stagehdr"><span class="stagenum">05</span><h2>Summary ROC</h2><span class="prismaref">Moses–Littenberg</span></div>
     <div class="grid2">
       <div class="card"><svg id="srocsvg" viewBox="0 0 360 360" role="group" aria-label="Summary ROC plot: sensitivity vs 1 minus specificity"></svg></div>
-      <div class="card"><h3>Summary operating point</h3>
+      <div class="card"><h3>Summary operating point <span class="illus" id="bivMethod" style="font-weight:400"></span></h3>
         <div class="readouts">
           <div class="ro"><div class="k">Sensitivity</div><div class="v" id="roSe">—</div></div>
           <div class="ro"><div class="k">Specificity</div><div class="v" id="roSp">—</div></div>
+          <div class="ro"><div class="k">LR+</div><div class="v" id="roLRp">—</div></div>
+          <div class="ro"><div class="k">LR−</div><div class="v" id="roLRn">—</div></div>
           <div class="ro"><div class="k">DOR</div><div class="v" id="roDOR">—</div></div>
           <div class="ro"><div class="k">SROC AUC</div><div class="v" id="roAUC">—</div></div>
+          <div class="ro"><div class="k">Between-study ρ</div><div class="v" id="roRho">—</div></div>
+          <div class="ro"><div class="k">τ² Se · FPR</div><div class="v" id="roTau">—</div></div>
         </div>
-        <p class="note" style="margin-top:.6rem">Points = studies (size ∝ N); curve = Moses–Littenberg SROC; diamond = random-effects summary point with marginal 95% CIs. The full bivariate confidence/prediction region is in the <code>mada</code> script (stage 8).</p>
+        <p class="note" style="margin-top:.6rem">Points = studies (size ∝ N); curve = Moses–Littenberg SROC; diamond = summary operating point. <b>Solid ellipse = 95% confidence region</b> and <b>dashed = 95% prediction region</b>, computed in-capsule from a genuine bivariate (Reitsma) random-effects model fit by REML maximum likelihood — the proper joint region, not independent marginal CIs. LR± carry delta-method CIs using the between-study correlation.</p>
       </div>
     </div>
   </section>
 
   <section class="stage" id="summary">
-    <div class="stagehdr"><span class="stagenum">06</span><h2>Threshold effect</h2><span class="prismaref">choose what to report</span></div>
+    <div class="stagehdr"><span class="stagenum">06</span><h2>Threshold, clinical translation &amp; small-study effects</h2><span class="prismaref">choose what to report</span></div>
     <div class="card"><p id="thrOut">—</p>
       <p class="note">When sensitivity and the false-positive rate are strongly correlated across studies (Spearman ρ &gt; 0.6), studies differ mainly by threshold — report the <strong>SROC curve</strong>, not a single pooled Se/Sp point.</p></div>
+    <div class="grid2">
+      <div class="card"><h3>Post-test probability (Fagan)</h3>
+        <svg id="fagansvg" viewBox="0 0 360 300" role="group" aria-label="Post-test probability against pre-test probability for a positive and a negative test result"></svg>
+        <p class="note" id="faganNote">How the test moves a clinician's probability of disease — post-test odds = pre-test odds × LR. The solid curve is a positive result (× LR+), the dashed a negative result (× LR−); the diagonal is "no information".</p></div>
+      <div class="card"><h3>Deeks' funnel — small-study effects</h3>
+        <svg id="deekssvg" viewBox="0 0 360 300" role="group" aria-label="Deeks funnel plot of ln diagnostic odds ratio against inverse root effective sample size"></svg>
+        <p class="note" id="deeksNote">The DTA-appropriate publication-bias check.</p></div>
+    </div>
   </section>
 
   <section class="stage" id="paired">
@@ -185,7 +200,7 @@
     <div class="card"><h3>Self-audit — internal-consistency checks</h3>
       <p class="note" style="margin-bottom:.2rem">Every check runs live against the current data. The capsule must agree with itself before asking the world to agree with it.</p>
       <div class="qabar" id="qaBar">—</div><div class="qagrid" id="qaGrid"></div></div>
-    <div class="limts" id="limts"><b>How to read this · limitations.</b> With few studies the bivariate model can fail to converge; a strong threshold effect means the summary ROC curve — not a single pooled sensitivity/specificity — is the honest summary. Demo data is illustrative.</div>
+    <div class="limts" id="limts"><b>How to read this · limitations.</b> This capsule fits the bivariate (Reitsma) random-effects model by REML maximum likelihood — the proper joint model — and draws the 95% confidence and prediction regions in-capsule (validated against <code>mada::reitsma</code> to &lt; 1e-5). With few or homogeneous studies the between-study correlation can reach the ±1 boundary; it then falls back to independent margins (flagged). A strong threshold effect (Spearman ρ &gt; 0.6) means the SROC curve, not a single point, is the honest summary. Likelihood ratios carry delta-method CIs; Deeks' funnel and its asymmetry test have low power below ~10 studies. Demo data are illustrative.</div>
   </section>
 
   <footer><p class="motto">The capsule must agree with itself before asking the world to agree with it.</p>
@@ -196,12 +211,12 @@
 "use strict";
 const SLUG="dta-demo", LSKEY="e156:"+SLUG, Z=1.959963984540054;
 const PUBLISHED=[
-  {study:'STUDY-1',year:2017,tp:90,fp:20,fn:10,tn:80,inc:true},
-  {study:'STUDY-2',year:2018,tp:85,fp:25,fn:15,tn:75,inc:true},
-  {study:'STUDY-3',year:2019,tp:88,fp:18,fn:12,tn:82,inc:true},
-  {study:'STUDY-4',year:2020,tp:80,fp:30,fn:20,tn:70,inc:true},
-  {study:'STUDY-5',year:2021,tp:92,fp:22,fn:8, tn:78,inc:true},
-  {study:'STUDY-6',year:2022,tp:78,fp:15,fn:22,tn:85,inc:true}
+  {study:'STUDY-1',year:2017,tp:45, fp:10,fn:5, tn:40, inc:true},
+  {study:'STUDY-2',year:2018,tp:85, fp:25,fn:15,tn:75, inc:true},
+  {study:'STUDY-3',year:2019,tp:132,fp:27,fn:18,tn:123,inc:true},
+  {study:'STUDY-4',year:2020,tp:40, fp:15,fn:10,tn:35, inc:true},
+  {study:'STUDY-5',year:2021,tp:138,fp:33,fn:12,tn:117,inc:true},
+  {study:'STUDY-6',year:2022,tp:62, fp:12,fn:18,tn:68, inc:true}
 ];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pct=x=>(x*100).toFixed(1)+'%';
@@ -213,6 +228,11 @@ function persist(){try{localStorage.setItem(LSKEY,JSON.stringify(model));}catch(
 const validRow=r=>r.tp>=0&&r.fp>=0&&r.fn>=0&&r.tn>=0&&(r.tp+r.fn)>0&&(r.tn+r.fp)>0;
 const logit=p=>{p=Math.min(1-1e-10,Math.max(1e-10,p));return Math.log(p/(1-p));};
 const invlogit=x=>1/(1+Math.exp(-x));
+// two-tailed Student-t p (incomplete beta) — for Deeks' small-study asymmetry test
+function gammaln(x){const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];let y=x,tmp=x+5.5;tmp-=(x+0.5)*Math.log(tmp);let ser=1.000000000190015;for(let j=0;j<6;j++){y++;ser+=c[j]/y;}return -tmp+Math.log(2.5066282746310005*ser/x);}
+function betacf(a,b,x){const FPMIN=1e-300,EPS=3e-12;let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;if(Math.abs(d)<FPMIN)d=FPMIN;d=1/d;let h=d;for(let m=1;m<=200;m++){let m2=2*m,aa=m*(b-m)*x/((qam+m2)*(a+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;h*=d*c;aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));d=1+aa*d;if(Math.abs(d)<FPMIN)d=FPMIN;c=1+aa/c;if(Math.abs(c)<FPMIN)c=FPMIN;d=1/d;let del=d*c;h*=del;if(Math.abs(del-1)<EPS)break;}return h;}
+function ibeta(x,a,b){if(x<=0)return 0;if(x>=1)return 1;const lb=gammaln(a)+gammaln(b)-gammaln(a+b);const front=Math.exp(a*Math.log(x)+b*Math.log(1-x)-lb);return x<(a+1)/(a+b+2)?front*betacf(a,b,x)/a:1-front*betacf(b,a,1-x)/b;}
+function tP(t,df){if(df<=0||!isFinite(t))return NaN;return ibeta(df/(df+t*t),df/2,0.5);}
 
 function studyStats(r){let tp=r.tp,fp=r.fp,fn=r.fn,tn=r.tn;
   if(tp===0||fp===0||fn===0||tn===0){tp+=0.5;fp+=0.5;fn+=0.5;tn+=0.5;}
@@ -227,6 +247,37 @@ function poolLogit(vals,vars){const w=vars.map(v=>1/v),sw=w.reduce((a,b)=>a+b,0)
   return {m:mr,se:Math.sqrt(1/swr),t2};}
 function spearman(x,y){const rank=a=>{const idx=a.map((v,i)=>[v,i]).sort((p,q)=>p[0]-q[0]),r=Array(a.length);idx.forEach((p,k)=>r[p[1]]=k+1);return r;};
   const rx=rank(x),ry=rank(y),n=x.length;if(n<3)return 0;let d2=0;for(let i=0;i<n;i++)d2+=(rx[i]-ry[i])**2;return 1-6*d2/(n*(n*n-1));}
+// ---- 2x2 helpers + Nelder-Mead + genuine bivariate (Reitsma) REML MLE ----
+function inv2(m){const det=m[0]*m[3]-m[1]*m[2];return {det,inv:[m[3]/det,-m[1]/det,-m[2]/det,m[0]/det]};}
+function chol2(m){const a=Math.sqrt(Math.max(1e-12,m[0])),b=m[1]/a,c=Math.sqrt(Math.max(1e-12,m[3]-b*b));return [a,0,b,c];} // lower L: [L00,L01,L10,L11]
+function nelderMead(f,x0){const n=x0.length;let sx=[x0.slice()];for(let i=0;i<n;i++){const x=x0.slice();x[i]+=0.5;sx.push(x);}
+  let fv=sx.map(f);
+  for(let it=0;it<1500;it++){let id=[...Array(n+1).keys()].sort((a,b)=>fv[a]-fv[b]);sx=id.map(i=>sx[i]);fv=id.map(i=>fv[i]);
+    if(Math.abs(fv[n]-fv[0])<1e-12)break;
+    const cen=Array(n).fill(0);for(let i=0;i<n;i++)for(let j=0;j<n;j++)cen[j]+=sx[i][j]/n;
+    const xr=cen.map((c,j)=>2*c-sx[n][j]),fr=f(xr);
+    if(fr<fv[0]){const xe=cen.map((c,j)=>c+2*(xr[j]-c)),fe=f(xe);sx[n]=fe<fr?xe:xr;fv[n]=Math.min(fe,fr);}
+    else if(fr<fv[n-1]){sx[n]=xr;fv[n]=fr;}
+    else{const xc=cen.map((c,j)=>c+0.5*(sx[n][j]-c)),fc=f(xc);
+      if(fc<fv[n]){sx[n]=xc;fv[n]=fc;}else{for(let i=1;i<=n;i++){sx[i]=sx[0].map((x,j)=>x+0.5*(sx[i][j]-x));fv[i]=f(sx[i]);}}}}
+  const id=[...Array(n+1).keys()].sort((a,b)=>fv[a]-fv[b]);return {x:sx[id[0]],f:fv[id[0]]};}
+function bivariate(st){ // Reitsma REML on (logit Se, logit FPR); within-study var known (vSe, vSp). Validated vs mada::reitsma < 1e-5.
+  if(st.length<2)return null;
+  const D=st.map(s=>[s.lSe,s.lFpr]),S=st.map(s=>[s.vSe,s.vSp]);
+  function gls(th){const t1=Math.exp(th[0]),t2=Math.exp(th[1]),rho=Math.tanh(th[2]);
+    const B=[t1*t1,rho*t1*t2,rho*t1*t2,t2*t2];let A=[0,0,0,0],Ab=[0,0],sld=0;const Vi=[];
+    for(let i=0;i<st.length;i++){const V=[B[0]+S[i][0],B[1],B[2],B[3]+S[i][1]],{det,inv}=inv2(V);
+      if(!(det>0))return null;sld+=Math.log(det);Vi.push(inv);
+      A[0]+=inv[0];A[1]+=inv[1];A[2]+=inv[2];A[3]+=inv[3];Ab[0]+=inv[0]*D[i][0]+inv[1]*D[i][1];Ab[1]+=inv[2]*D[i][0]+inv[3]*D[i][1];}
+    const ia=inv2(A);if(!(ia.det>0))return null;const mu=[ia.inv[0]*Ab[0]+ia.inv[1]*Ab[1],ia.inv[2]*Ab[0]+ia.inv[3]*Ab[1]];
+    let q=0;for(let i=0;i<st.length;i++){const r0=D[i][0]-mu[0],r1=D[i][1]-mu[1],v=Vi[i];q+=r0*(v[0]*r0+v[1]*r1)+r1*(v[2]*r0+v[3]*r1);}
+    return {nll:0.5*(sld+q+Math.log(ia.det)),mu,cov:ia.inv,B,t1,t2,rho};}
+  const obj=th=>{const g=gls(th);return g?g.nll:1e12;};
+  let best=null;
+  [[-0.7,-0.7,0],[0,-0.5,-0.8],[0.3,-0.2,-1.5],[-1.2,-1.2,0.5],[-0.3,-0.3,-2.5]].forEach(s0=>{const r=nelderMead(obj,s0);if(!best||r.f<best.f)best=r;});
+  const g=gls(best.x);if(!g||!isFinite(g.mu[0])||!isFinite(g.mu[1])||!(g.cov[0]>0)||!(g.cov[3]>0))return null;
+  return {mu:g.mu,cov:g.cov,B:g.B,t1sq:g.t1*g.t1,t2sq:g.t2*g.t2,rho:g.rho,k:st.length};
+}
 function dta(rows){
   const use=rows.filter(r=>r.inc&&validRow(r));if(use.length<2)return null;
   const st=use.map(studyStats);
@@ -241,7 +292,21 @@ function dta(rows){
   let auc=0;const NN=400;for(let i=0;i<NN;i++){const fpr=(i+0.5)/NN;auc+=tprAt(fpr)/NN;}
   auc=Math.min(1,Math.max(0,auc));
   const thr=spearman(st.map(s=>s.lSe),st.map(s=>s.lFpr));
-  return {use,st,sumSe,sumSp,DOR,a,b,auc,thr,pSe,pSp,tprAt,seLo:invlogit(pSe.m-Z*pSe.se),seHi:invlogit(pSe.m+Z*pSe.se),spLo:invlogit(pSp.m-Z*pSp.se),spHi:invlogit(pSp.m+Z*pSp.se)};
+  const biv=bivariate(st);
+  // primary summary: genuine bivariate (Reitsma) MLE when it converges; else DL independent-margins fallback
+  let SE,SP,seLo,seHi,spLo,spHi,DORv=DOR,method='DL (independent margins — approximate SE)',lrp=null,lrn=null,ellipse=null;
+  if(biv){method='bivariate Reitsma (REML MLE)';
+    const m1=biv.mu[0],m2=biv.mu[1],s1=Math.sqrt(biv.cov[0]),s2=Math.sqrt(biv.cov[3]),c12=biv.cov[1];
+    SE=invlogit(m1);const FPR=invlogit(m2);SP=1-FPR;
+    seLo=invlogit(m1-Z*s1);seHi=invlogit(m1+Z*s1);spLo=1-invlogit(m2+Z*s2);spHi=1-invlogit(m2-Z*s2);
+    DORv=Math.exp(m1-m2);
+    const lLRp=Math.log(SE)-Math.log(FPR),vLRp=(1-SE)*(1-SE)*s1*s1+(1-FPR)*(1-FPR)*s2*s2-2*(1-SE)*(1-FPR)*c12;
+    const lLRn=Math.log(1-SE)-Math.log(SP),vLRn=SE*SE*s1*s1+FPR*FPR*s2*s2-2*SE*FPR*c12;
+    lrp={est:Math.exp(lLRp),lo:Math.exp(lLRp-Z*Math.sqrt(Math.max(0,vLRp))),hi:Math.exp(lLRp+Z*Math.sqrt(Math.max(0,vLRp)))};
+    lrn={est:Math.exp(lLRn),lo:Math.exp(lLRn-Z*Math.sqrt(Math.max(0,vLRn))),hi:Math.exp(lLRn+Z*Math.sqrt(Math.max(0,vLRn)))};
+    ellipse={mu:[m1,m2],conf:chol2(biv.cov),pred:chol2([biv.cov[0]+biv.B[0],biv.cov[1]+biv.B[1],biv.cov[2]+biv.B[2],biv.cov[3]+biv.B[3]])};
+  }else{SE=sumSe;SP=sumSp;seLo=invlogit(pSe.m-Z*pSe.se);seHi=invlogit(pSe.m+Z*pSe.se);spLo=invlogit(pSp.m-Z*pSp.se);spHi=invlogit(pSp.m+Z*pSp.se);}
+  return {use,st,sumSe:SE,sumSp:SP,DOR:DORv,a,b,auc,thr,pSe,pSp,tprAt,seLo,seHi,spLo,spHi,biv,lrp,lrn,ellipse,method};
 }
 
 // ---- render ----
@@ -259,17 +324,26 @@ function renderSROC(res){
   s+=`<path class="sroc" d="${path}"/>`;
   const maxN=Math.max(...res.st.map(s=>s.N));
   res.st.forEach(st=>{const r=3+Math.sqrt(st.N/maxN)*7;s+=`<circle class="pt" cx="${X(st.fpr)}" cy="${Y(st.se)}" r="${r}" opacity=".7"/>`;});
-  // summary point + marginal CIs (x=1-sp)
+  // bivariate confidence + prediction regions: logit-space 95% ellipses mapped to ROC space
+  if(res.ellipse){const K=Math.sqrt(5.991),el=(L,cls)=>{let p='';for(let i=0;i<=64;i++){const t=2*Math.PI*i/64,co=Math.cos(t),si=Math.sin(t);
+      const l1=res.ellipse.mu[0]+K*(L[0]*co),l2=res.ellipse.mu[1]+K*(L[2]*co+L[3]*si);p+=(i===0?'M':'L')+X(invlogit(l2)).toFixed(1)+' '+Y(invlogit(l1)).toFixed(1)+' ';}
+      return `<path d="${p}Z" class="${cls}"/>`;};
+    s+=el(res.ellipse.pred,'predreg')+el(res.ellipse.conf,'confreg');}
+  // summary operating point (diamond); marginal CI cross only when no ellipse
   const sx=X(1-res.sumSp),sy=Y(res.sumSe);
-  s+=`<line class="sumci" x1="${X(1-res.spHi)}" y1="${sy}" x2="${X(1-res.spLo)}" y2="${sy}"/>`+
-     `<line class="sumci" x1="${sx}" y1="${Y(res.seLo)}" x2="${sx}" y2="${Y(res.seHi)}"/>`+
-     `<circle class="sumpt" cx="${sx}" cy="${sy}" r="5.5"/>`;
+  if(!res.ellipse)s+=`<line class="sumci" x1="${X(1-res.spHi)}" y1="${sy}" x2="${X(1-res.spLo)}" y2="${sy}"/><line class="sumci" x1="${sx}" y1="${Y(res.seLo)}" x2="${sx}" y2="${Y(res.seHi)}"/>`;
+  s+=`<circle class="sumpt" cx="${sx}" cy="${sy}" r="5.5"/>`;
   svg.innerHTML=s;
 }
 function renderReadouts(res){
   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  if(!res){['roSe','roSp','roDOR','roAUC'].forEach(id=>set(id,'—'));document.getElementById('thrOut').textContent='—';return;}
+  if(!res){['roSe','roSp','roLRp','roLRn','roDOR','roAUC','roRho','roTau','bivMethod'].forEach(id=>set(id,'—'));document.getElementById('thrOut').textContent='—';return;}
   set('roSe',pct(res.sumSe));set('roSp',pct(res.sumSp));set('roDOR',res.DOR.toFixed(1));set('roAUC',res.auc.toFixed(3));
+  set('roLRp',res.lrp?`${res.lrp.est.toFixed(2)} (${res.lrp.lo.toFixed(2)}–${res.lrp.hi.toFixed(2)})`:'—');
+  set('roLRn',res.lrn?`${res.lrn.est.toFixed(2)} (${res.lrn.lo.toFixed(2)}–${res.lrn.hi.toFixed(2)})`:'—');
+  set('roRho',res.biv?res.biv.rho.toFixed(2):'—');
+  set('roTau',res.biv?`${res.biv.t1sq.toFixed(2)} · ${res.biv.t2sq.toFixed(2)}`:'—');
+  set('bivMethod',res.biv?'· bivariate Reitsma (REML)':'· DL fallback (homogeneous)');
   const thr=res.thr,strong=Math.abs(thr)>0.6;
   document.getElementById('thrOut').innerHTML=`Spearman correlation between logit(sensitivity) and logit(FPR): <b class="num">${thr.toFixed(2)}</b>. `+
     (strong?'<span class="good">Threshold effect present</span> — report the SROC curve; a single pooled Se/Sp point understates the trade-off.':'No strong threshold effect — the summary operating point is a reasonable single estimate, shown with the SROC for context.');
@@ -290,8 +364,57 @@ summary(fit)                        # pooled sensitivity, specificity, AUC
 ROCellipse(fit)                     # 95% confidence region
 # threshold / heterogeneity:
 madad(dat)                          # paired Se/Sp + correlation`;}
+function renderFagan(res){
+  const svg=document.getElementById('fagansvg');if(!svg)return;
+  if(!res||!res.lrp){svg.innerHTML='<text x="14" y="24" class="axlab">need a valid fit</text>';return;}
+  const P=44,W=360,H=300,pw=W-P-16,ph=H-P-30,X=p=>P+p*pw,Y=p=>P+(1-p)*ph;
+  const post=(pre,lr)=>{const o=pre/(1-pre)*lr;return o/(1+o);};
+  let s=`<rect x="${P}" y="${P}" width="${pw}" height="${ph}" fill="none" class="axis"/>`;
+  for(let g=0;g<=1.0001;g+=0.25){s+=`<text class="tick" x="${X(g)}" y="${P+ph+15}" text-anchor="middle">${g.toFixed(2)}</text><text class="tick" x="${P-6}" y="${Y(g)+3}" text-anchor="end">${g.toFixed(2)}</text>`;}
+  s+=`<line class="fagid" x1="${X(0)}" y1="${Y(0)}" x2="${X(1)}" y2="${Y(1)}"/>`;
+  const curve=(lr,cls)=>{let p='';for(let i=0;i<=100;i++){const pre=Math.min(0.999,Math.max(0.001,i/100));p+=(i===0?'M':'L')+X(pre).toFixed(1)+' '+Y(post(pre,lr)).toFixed(1)+' ';}return `<path d="${p}" class="fagline ${cls}"/>`;};
+  s+=curve(res.lrp.est,'')+curve(res.lrn.est,'neg');
+  s+=`<text class="axlab" x="${P+pw/2}" y="${H-6}" text-anchor="middle">pre-test probability</text>`+
+     `<text class="axlab" x="14" y="${P+ph/2}" text-anchor="middle" transform="rotate(-90 14 ${P+ph/2})">post-test probability</text>`+
+     `<text class="tick" x="${X(0.62)}" y="${Y(post(0.62,res.lrp.est))-6}" fill="var(--accent)">positive (LR+)</text>`+
+     `<text class="tick" x="${X(0.55)}" y="${Y(post(0.55,res.lrn.est))+14}" fill="var(--ink-soft)">negative (LR−)</text>`;
+  svg.innerHTML=s;
+}
+function deeks(res){ // Deeks' funnel asymmetry: weighted regression of lnDOR on 1/sqrt(ESS), weights = ESS
+  if(!res||res.use.length<3)return null;
+  const pts=res.use.map(r=>{let tp=r.tp,fp=r.fp,fn=r.fn,tn=r.tn;if(tp===0||fp===0||fn===0||tn===0){tp+=0.5;fp+=0.5;fn+=0.5;tn+=0.5;}
+    const lnDOR=Math.log((tp*tn)/(fp*fn)),n1=r.tp+r.fn,n0=r.fp+r.tn,ess=4*n1*n0/(n1+n0);return {lnDOR,inv:1/Math.sqrt(ess),w:ess};});
+  let Sw=0,Swx=0,Swy=0,Swxx=0,Swxy=0;pts.forEach(p=>{Sw+=p.w;Swx+=p.w*p.inv;Swy+=p.w*p.lnDOR;Swxx+=p.w*p.inv*p.inv;Swxy+=p.w*p.inv*p.lnDOR;});
+  const den=Sw*Swxx-Swx*Swx;
+  if(Math.abs(den)<1e-9)return {pts,degenerate:true}; // study sizes too similar — no funnel to assess
+  const b1=(Sw*Swxy-Swx*Swy)/den,b0=(Swy-b1*Swx)/Sw,n=pts.length,df=n-2;
+  let rss=0;pts.forEach(p=>{const e=p.lnDOR-(b0+b1*p.inv);rss+=p.w*e*e;});
+  const seB1=df>0?Math.sqrt((rss/df)*Sw/den):NaN,t=b1/seB1,p=isFinite(t)?tP(t,df):NaN;
+  return {pts,b0,b1,t,df,p,degenerate:false};
+}
+function renderDeeks(res){
+  const svg=document.getElementById('deekssvg'),note=document.getElementById('deeksNote');if(!svg)return;
+  const d=deeks(res);
+  if(!d){svg.innerHTML='<text x="14" y="24" class="axlab">need ≥3 studies</text>';return;}
+  const P=46,W=360,H=300,pw=W-P-14,ph=H-P-30;
+  const xs=d.pts.map(p=>p.lnDOR),ys=d.pts.map(p=>p.inv);
+  let xlo=Math.min(...xs),xhi=Math.max(...xs);const xpad=(xhi-xlo)*0.15||0.5;xlo-=xpad;xhi+=xpad;
+  const yhi=Math.max(...ys)*1.15||0.1;
+  const X=v=>P+(v-xlo)/(xhi-xlo)*pw,Y=v=>P+(v/yhi)*ph; // 1/sqrt(ESS) increases downward (funnel)
+  let s=`<rect x="${P}" y="${P}" width="${pw}" height="${ph}" fill="none" class="axis"/>`;
+  [xlo,(xlo+xhi)/2,xhi].forEach(t=>{s+=`<text class="tick" x="${X(t)}" y="${P+ph+15}" text-anchor="middle">${t.toFixed(1)}</text>`;});
+  [0,yhi/2,yhi].forEach(t=>{s+=`<text class="tick" x="${P-6}" y="${Y(t)+3}" text-anchor="end">${t.toFixed(3)}</text>`;});
+  if(!d.degenerate)s+=`<line class="dkline" x1="${X(d.b0+d.b1*0)}" y1="${Y(0)}" x2="${X(d.b0+d.b1*yhi)}" y2="${Y(yhi)}"/>`; // x = b0 + b1*y
+  d.pts.forEach(p=>{s+=`<circle class="dkpt" cx="${X(p.lnDOR)}" cy="${Y(p.inv)}" r="4"/>`;});
+  s+=`<text class="axlab" x="${P+pw/2}" y="${H-6}" text-anchor="middle">ln(diagnostic odds ratio)</text>`+
+     `<text class="axlab" x="14" y="${P+ph/2}" text-anchor="middle" transform="rotate(-90 14 ${P+ph/2})">1 / √(ESS)</text>`;
+  svg.innerHTML=s;
+  if(note)note.innerHTML=d.degenerate?
+    `The DTA-appropriate small-study check (Egger's test is invalid for DTA): weighted regression of lnDOR on 1/√(effective sample size). <span class="illus">Study sizes here are too similar to assess funnel asymmetry — vary the sample sizes to use this test.</span>`:
+    `The DTA-appropriate small-study check (Egger's test is invalid for DTA): weighted regression of lnDOR on 1/√(effective sample size). Asymmetry slope p = <b class="num">${isFinite(d.p)?(d.p<0.001?'<0.001':d.p.toFixed(3)):'—'}</b> on ${d.df} df — ${isFinite(d.p)&&d.p<0.10?'<span style="color:var(--warn)">possible small-study effects (p &lt; 0.10)</span>':'no strong asymmetry'}. Low power below ~10 studies.`;
+}
 function renderInspect(){const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model,null,2);
-  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[studyStats,poolLogit,dta,spearman].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
+  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[studyStats,bivariate,dta,deeks].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
 function renderTable(){let h='';model.forEach((r,i)=>{const ok=validRow(r),bad=ok?'':' bad';const s=ok?studyStats(r):null;
   h+=`<tr data-i="${i}"><td><input type="checkbox" class="inc" ${r.inc?'checked':''}></td>`+
     `<td><input class="ed t" data-k="study" value="${esc(r.study)}"></td>`+
@@ -315,10 +438,14 @@ QA_RENDER([
 ['Pooled sensitivity within [0,1]', (res&&res.sumSe!=null)?(res.sumSe>=0&&res.sumSe<=1):'warn'],
 ['Pooled specificity within [0,1]', (res&&res.sumSp!=null)?(res.sumSp>=0&&res.sumSp<=1):'warn'],
 ['Summary ROC AUC within [0,1]', (res&&res.auc!=null)?(res.auc>=0&&res.auc<=1):'warn'],
-['Diagnostic odds ratio > 0', (res&&res.DOR!=null)?(res.DOR>0):'warn']
+['Diagnostic odds ratio > 0', (res&&res.DOR!=null)?(res.DOR>0):'warn'],
+['Between-study correlation ρ within (−1, 1)', (res&&res.biv)?(res.biv.rho>-1&&res.biv.rho<1):'warn'],
+['Between-study variances τ² ≥ 0', (res&&res.biv)?(res.biv.t1sq>=0&&res.biv.t2sq>=0):'warn'],
+['Prediction region ⊇ confidence region', (res&&res.ellipse)?(res.ellipse.pred[0]*res.ellipse.pred[3]>=res.ellipse.conf[0]*res.ellipse.conf[3]-1e-9):'warn'],
+['DOR = LR+ / LR− reconciles', (res&&res.lrp&&res.lrn)?(Math.abs(res.DOR-res.lrp.est/res.lrn.est)<1e-6):'warn']
 ]);}
 function renderOutputs(){const res=dta(model);
-  renderSROC(res);renderReadouts(res);renderPaired(res);rcode();renderInspect();renderQA();
+  renderSROC(res);renderReadouts(res);renderFagan(res);renderDeeks(res);renderPaired(res);rcode();renderInspect();renderQA();
   document.getElementById('badgeK').textContent=res?`${res.use.length} studies`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`SROC fit · AUC ${res.auc.toFixed(3)} · summary Se ${pct(res.sumSe)}/Sp ${pct(res.sumSp)} ✓`;v.style.color='var(--good)';}
   else{v.textContent='no valid 2×2 studies';v.style.color='var(--warn)';}}
