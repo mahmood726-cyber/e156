@@ -162,6 +162,9 @@
     <div class="card tablewrap"><h3>Transitivity — effect-modifier balance across comparisons</h3>
       <table class="league" id="transTbl"></table>
       <p class="note" id="transNote" style="margin-top:.6rem">—</p></div>
+    <div class="card"><h3>Network meta-regression — does the modifier change effects?</h3>
+      <p class="note" id="metaRegOut" style="margin-top:.2rem">—</p>
+      <p class="note" style="margin-top:.5rem;color:var(--ink-soft)">Common-coefficient model (Cooper 2009 / NICE TSD3): one shared interaction term for the effect modifier across all active-vs-reference contrasts, fit by GLS at the network τ². It complements the transitivity check above — transitivity asks whether the modifier is balanced; this asks whether it matters.</p></div>
   </section>
 
   <section class="stage" id="ranking">
@@ -411,6 +414,34 @@ function transitivityPanel(res){
   if(note)note.innerHTML=`The transitivity assumption requires effect modifiers to be similarly distributed across the comparisons being combined. Between-comparison SD of the modifier = <b class="num">${t.betweenSD.toFixed(1)}</b> (CV <b class="num">${(t.cv*100).toFixed(0)}%</b>). `+
     (t.balanced?'<span class="good">Comparisons are reasonably balanced on this modifier</span> — transitivity is supported. This is a descriptive check, not a formal test; transitivity ultimately rests on clinical judgement across all effect modifiers.':'<span style="color:var(--bad)">Comparisons differ substantially on this modifier</span> — indirect comparisons may be confounded by it; transitivity is questionable.');
 }
+// ---- network meta-regression: common effect-modification coefficient (Cooper 2009 / NICE TSD3) ----
+function metaReg(res){
+  if(!res)return null;
+  const use=res.use.filter(r=>r.cov!=null&&isFinite(r.cov));
+  const ref=res.ref,pidx=res.pidx,p=res.p,tau2=res.tau2;
+  if(use.length<p+2)return {insufficient:true}; // need >=1 residual df with the extra interaction term
+  const xbar=use.reduce((a,r)=>a+r.cov,0)/use.length;
+  const y=use.map(r=>Math.log(r.or)),va=use.map(r=>((Math.log(r.uci)-Math.log(r.lci))/(2*Z))**2),Wv=va.map(v=>1/(v+tau2));
+  // augmented design: p basic contrasts + 1 shared interaction column z = (x-xbar)*(active-vs-reference direction)
+  const X=use.map(r=>{const row=Array(p+1).fill(0);if(r.t2!==ref)row[pidx[r.t2]]+=1;if(r.t1!==ref)row[pidx[r.t1]]-=1;
+    row[p]=(r.cov-xbar)*((r.t2!==ref?1:0)-(r.t1!==ref?1:0));return row;});
+  const XtW=mTpose(X).map(col=>col.map((e,i)=>e*Wv[i]));
+  const XtWX=mMul(XtW,X),inv=mInv(XtWX);if(!inv)return {insufficient:true};
+  const XtWy=XtW.map(rw=>rw.reduce((a,e,i)=>a+e*y[i],0));
+  const beta=inv.map(rw=>rw.reduce((a,e,i)=>a+e*XtWy[i],0));
+  const b=beta[p],seB=Math.sqrt(Math.max(0,inv[p][p]));
+  if(!(seB>0))return {insufficient:true};
+  const z=b/seB;return {b,seB,z,pv:2*(1-pnorm(Math.abs(z))),xbar,k:use.length};
+}
+function metaRegPanel(res){
+  const el=document.getElementById('metaRegOut');if(!el)return;
+  const m=res?metaReg(res):null;
+  if(!m||m.insufficient){el.innerHTML='Enter the effect modifier (the <b>Age</b> column) for more studies than there are treatments to fit a network meta-regression.';return;}
+  const per=10,b=m.b*per,lo=(m.b-Z*m.seB)*per,hi=(m.b+Z*m.seB)*per,sig=m.pv<0.05;
+  el.innerHTML=`Shared effect-modification coefficient, per ${per} units of the modifier: <b class="num">${b>=0?'+':''}${b.toFixed(3)}</b> log-OR `+
+    `(ratio of ORs <b class="num">${Math.exp(b).toFixed(2)}</b>, 95% CI ${Math.exp(lo).toFixed(2)}–${Math.exp(hi).toFixed(2)}; p ${m.pv<0.001?'&lt; 0.001':'= '+m.pv.toFixed(3)}). `+
+    (sig?'<span style="color:var(--bad)">The modifier significantly changes treatment effects</span> — a single estimate pooled across its range is misleading; report effects at clinically relevant values.':'<span class="good">No significant effect modification by this covariate</span> — the network estimates are stable across its observed range.');
+}
 function netGraph(res){
   const svg=document.getElementById('netsvg');if(!res){svg.innerHTML='<text x="12" y="24" class="nm">no valid studies</text>';return;}
   const cx=260,cy=180,R=120,T=res.treats.length;const pos={};
@@ -526,7 +557,7 @@ netrank(nm, small.values = "good")            # SUCRA
 netsplit(nm)                                  # node-splitting (consistency)`;
 }
 function renderInspect(){const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model,null,2);
-  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[nma,glsNet,nodeSplit,inconsistencyQ,contributionMatrix,transitivity].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
+  const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[nma,glsNet,nodeSplit,inconsistencyQ,contributionMatrix,transitivity,metaReg].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
 function renderTable(){let h='';model.forEach((r,i)=>{const er=!validRow(r)?' style="outline:1px solid var(--bad)"':'';
   h+=`<tr data-i="${i}"><td><input type="checkbox" class="inc" ${r.inc?'checked':''}></td>`+
     `<td><input class="ed t" data-k="study" value="${esc(r.study)}"></td>`+
@@ -557,10 +588,11 @@ QA_RENDER([
 ['Q decomposition reconciles (Q_total = Q_het + Q_inc)', (function(){var g=res?inconsistencyQ(res):null;return g?Math.abs(g.Qtot-(g.Qhet+g.Qinc))<1e-6:'warn';})()],
 ['Node-split standard errors positive where indirect exists', res?nodeSplit(res).every(function(s){return s.indirect==null||(s.se>0);}):'warn'],
 ['Contribution rows sum to 100%', (function(){var cm=res?contributionMatrix(res):null;return cm?cm.rows.every(function(r){return Math.abs(r.contrib.reduce(function(a,b){return a+b;},0)-1)<1e-9;}):'warn';})()],
-['Effect-modifier values valid where entered', res?res.use.every(function(r){return r.cov==null||isFinite(r.cov);}):'warn']
+['Effect-modifier values valid where entered', res?res.use.every(function(r){return r.cov==null||isFinite(r.cov);}):'warn'],
+['Meta-regression interaction SE positive (when estimable)', (function(){var m=res?metaReg(res):null;return (m&&!m.insufficient)?(m.seB>0):'warn';})()]
 ]);}
 function renderOutputs(){const res=nma(model);
-  netGraph(res);transitivityPanel(res);rankPlot(res);rankogram(res);leagueTable(res);contribMatrix(res);consistency(res);rcode(res);renderInspect();renderQA();
+  netGraph(res);transitivityPanel(res);metaRegPanel(res);rankPlot(res);rankogram(res);leagueTable(res);contribMatrix(res);consistency(res);rcode(res);renderInspect();renderQA();
   document.getElementById('refName').textContent=res?res.ref:'—';
   document.getElementById('badgeNet').textContent=res?`${res.treats.length} treatments · ${res.m} studies`:'—';
   document.getElementById('dotConn').className='dot '+(res&&res.connected?'ok':'warn');
