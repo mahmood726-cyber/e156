@@ -118760,3 +118760,30 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
+
+======================================================================
+
+[1721/1720] HR_FOR_ALL_CAUSE_MORTALITY_IN_HEART_FAILURE
+TITLE: AACTCockpit | HR for all-cause mortality in heart failure — pairwise meta-analysis (ClinicalTrials.gov/AACT)
+TYPE: pairwise  |  ESTIMAND: hazard ratio for all-cause mortality
+DATA: ClinicalTrials.gov via AACT snapshot 2026-04-12 · 25 randomized trials · trial-level aggregate
+PATH: (browser-native capsule — see Code/Dashboard URL; no local path)
+
+CURRENT BODY (auto-drafted; <=156 words, 7 sentences):
+In heart failure, does the intervention compared with control change all-cause mortality? This synthesis aggregates 25 randomized trials drawn from the ClinicalTrials.gov AACT snapshot dated 2026-04-12. Trial-reported effect estimates were pooled on the log scale using a Paule-Mandel random-effects model with a prediction interval based on the t-distribution. The pooled HR for all-cause mortality was 0.95 (95% CI 0.92 to 0.98). Between-trial heterogeneity was I-squared 11 percent and the 95% prediction interval spanned 0.89 to 1.01. These registry-derived data are consistent with a modest association, though the certainty remains uncertain and warrants cautious reading. Interpretation is limited by reliance on a single registry snapshot and by the small number of contributing trials, and does not generalise beyond them.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/aact-cockpit
+
+Data availability: No patient-level data used. Analysis derived exclusively
+  from publicly available trial-level aggregate records in ClinicalTrials.gov/AACT.
+Ethics: Not required. Secondary methodological analysis of public aggregate data.
+Funding: None.
