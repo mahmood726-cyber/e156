@@ -341,9 +341,114 @@
     }));
   }
 
+  /**
+   * renderBubble(svgEl, points, opts) — meta-regression bubble plot.
+   * points: [{ label, x (moderator), y (effect, natural scale), weight }]
+   * opts: { measure, log, null, xlabel, claim, estimand,
+   *         fit:{ b0, b1, xm, v00, v01, v11, slope, p } }  (coeffs on log/effect scale)
+   */
+  function renderBubble(svgEl, points, opts) {
+    opts = opts || {};
+    var o = Object.assign({ log: false, measure: 'effect', null: 1, xlabel: 'moderator',
+      width: 640, height: 392, padL: 64, padR: 26, padT: 58, padB: 50 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'),
+      est: tok('--c-estimate', '#1a1a1a'), line: tok('--cat-1', '#0072B2'), band: tok('--seq-2', '#cfe0ec') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+    var ly = function (e) { return o.log ? Math.log(e) : e; };
+    var fit = o.fit;
+    function pred(xv) { var c = xv - (fit.xm || 0), mu = fit.b0 + fit.b1 * c,
+      vp = Math.max(0, (fit.v00 || 0) + 2 * c * (fit.v01 || 0) + c * c * (fit.v11 || 0)), se = Math.sqrt(vp);
+      return { mu: mu, lo: mu - 1.96 * se, hi: mu + 1.96 * se }; }
+
+    var xs = points.map(function (p) { return p.x; });
+    var xmin = Math.min.apply(null, xs), xmax = Math.max.apply(null, xs);
+    var xpad = (xmax - xmin) * 0.08 || 1; xmin -= xpad; xmax += xpad;
+    var evals = points.map(function (p) { return ly(p.y); }).concat([ly(o.null)]);
+    if (fit) { var e0 = pred(xmin), e1 = pred(xmax); evals.push(e0.lo, e0.hi, e1.lo, e1.hi); }
+    var ymin = Math.min.apply(null, evals), ymax = Math.max.apply(null, evals);
+    var yp = (ymax - ymin) * 0.08 || 0.1; ymin -= yp; ymax += yp;
+    var sx = function (x) { return x0 + (x - xmin) / (xmax - xmin) * (x1 - x0); };
+    var sy = function (e) { return yT + (1 - (e - ymin) / (ymax - ymin)) * (yB - yT); };
+    var wmax = Math.max.apply(null, points.map(function (p) { return p.weight || 1; }));
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Meta-regression bubble plot. ' + (o.claim || '') + ' ' + points.length + ' studies.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    function addTip(g, html) {
+      g.addEventListener('mouseenter', function (e) { showTip(e, html); }); g.addEventListener('mousemove', moveTip);
+      g.addEventListener('mouseleave', hideTip); g.addEventListener('focus', function (e) { showTip(e, html); }); g.addEventListener('blur', hideTip);
+    }
+
+    // title + subtitle
+    txt(x0, 24, o.claim || ('Meta-regression · ' + o.measure), { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(x0, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    var cid = 'ck-bb-' + (svgEl.id || 'x');
+    var defs = el('defs'); var cp = el('clipPath', { id: cid }, defs); el('rect', { x: x0, y: yT, width: (x1 - x0), height: (yB - yT) }, cp);
+    var plot = el('g', { 'clip-path': 'url(#' + cid + ')' });
+
+    // y gridlines + ticks (effect, back-transformed for ratios)
+    var yt = niceForestTicks(o.log ? Math.exp(ymin) : ymin, o.log ? Math.exp(ymax) : ymax, o.log);
+    yt.forEach(function (v) { var e = ly(v), y = sy(e); if (y < yT - 1 || y > yB + 1) return;
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) }, plot);
+      txt(x0 - 8, y + 3.5, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' });
+    });
+    // null reference (horizontal, dashed)
+    var yn = sy(ly(o.null));
+    el('line', { x1: x0, x2: x1, y1: yn, y2: yn, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' }, plot);
+
+    // fitted line + 95% CI band
+    if (fit) {
+      var N = 28, up = [], dn = [], mid = [];
+      for (var i = 0; i <= N; i++) { var xv = xmin + (xmax - xmin) * i / N, pr = pred(xv);
+        up.push(sx(xv) + ',' + sy(pr.hi)); dn.push(sx(xv) + ',' + sy(pr.lo)); mid.push(sx(xv) + ',' + sy(pr.mu)); }
+      el('polygon', { points: up.concat(dn.reverse()).join(' '), fill: C.band, 'fill-opacity': '0.5' }, plot);
+      el('polyline', { points: mid.join(' '), fill: 'none', stroke: C.line, 'stroke-width': '2' }, plot);
+    }
+
+    // bubbles (area proportional to weight)
+    points.forEach(function (p) {
+      var r = 4 + Math.sqrt((p.weight || 1) / wmax) * 11;
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': p.label + ': ' + o.xlabel + ' ' + p.x + ', ' + o.measure + ' ' + fmt(p.y) }, plot);
+      addTip(g, '<b>' + p.label + '</b><br>' + o.xlabel + ': ' + p.x + '<br>' + o.measure + ' ' + fmt(p.y));
+      el('circle', { cx: sx(p.x), cy: sy(ly(p.y)), r: r, fill: C.line, 'fill-opacity': '0.5', stroke: C.line, 'stroke-width': '1' }, g);
+    });
+
+    // x ticks + label (integer-aware for integer moderators like year — avoids
+    // half-step ticks that round to duplicate labels)
+    var span = xmax - xmin, allInt = points.every(function (p) { return p.x === Math.round(p.x); });
+    var xt, xv;
+    if (allInt && span <= 14) { xt = []; for (xv = Math.ceil(xmin); xv <= xmax; xv++) xt.push(xv); }
+    else xt = niceForestTicks(xmin, xmax, false).filter(function (v) { return v >= xmin && v <= xmax; });
+    xt.forEach(function (v) { txt(sx(v), yB + 16, allInt ? String(Math.round(v)) : fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    txt((x0 + x1) / 2, yB + 36, o.xlabel, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yTitle = txt(15, (yT + yB) / 2, o.measure + (o.log ? ' (log)' : ''), { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    yTitle.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
+
+    // slope + p annotation (in situ, top-right)
+    if (fit && fit.slope != null) {
+      var sl = 'slope ' + fit.slope.toFixed(3) + (fit.p != null ? ' · p ' + (fit.p < 0.001 ? '<.001' : fit.p.toFixed(3)) : '');
+      txt(x1, 24, sl, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: (fit.p != null && fit.p < 0.05) ? tok('--c-verdict-warn', '#E69F00') : C.ink2, 'text-anchor': 'end' });
+      if (points.length < 10) txt(x1, 40, '(exploratory, k<10)', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot, 'text-anchor': 'end' });
+    }
+
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    el('line', { x1: x0, x2: x0, y1: yT, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
+  global.ChartKit.renderBubble = renderBubble;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);

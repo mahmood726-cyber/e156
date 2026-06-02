@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit meta-regression bubble — reference exemplar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:760px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderBubble — meta-regression</h1>
+  <figure class="figcard">
+    <svg id="bubble"></svg>
+    <figcaption id="cap"></figcaption>
+  </figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  var Z=1.959964;
+  var trials=[
+    {label:'DAPA-HF',year:2019,hr:0.74,lo:0.65,hi:0.85},
+    {label:'EMPEROR-Reduced',year:2020,hr:0.75,lo:0.65,hi:0.86},
+    {label:'EMPEROR-Preserved',year:2021,hr:0.79,lo:0.69,hi:0.90},
+    {label:'DELIVER',year:2022,hr:0.82,lo:0.73,hi:0.92},
+    {label:'SOLOIST-WHF',year:2021,hr:0.67,lo:0.52,hi:0.85}
+  ];
+  function normcdf(z){var t=1/(1+0.2316419*Math.abs(z));var d=0.3989423*Math.exp(-z*z/2);
+    var p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return z>0?1-p:p;}
+  var y=trials.map(function(t){return Math.log(t.hr);});
+  var v=trials.map(function(t){return Math.pow((Math.log(t.hi)-Math.log(t.lo))/(2*Z),2);});
+  var years=trials.map(function(t){return t.year;});
+  var xm=years.reduce(function(a,b){return a+b;},0)/years.length;
+  var x=years.map(function(yr){return yr-xm;});
+  // WLS meta-regression (FE weights; capsule uses residual tau^2 — illustrative here)
+  var k=y.length, w=v.map(function(vi){return 1/vi;});
+  var Sw=0,Swx=0,Swxx=0,Swy=0,Swxy=0;
+  for(var i=0;i<k;i++){Sw+=w[i];Swx+=w[i]*x[i];Swxx+=w[i]*x[i]*x[i];Swy+=w[i]*y[i];Swxy+=w[i]*x[i]*y[i];}
+  var det=Sw*Swxx-Swx*Swx;
+  var b0=(Swxx*Swy-Swx*Swxy)/det, b1=(Sw*Swxy-Swx*Swy)/det;
+  var v00=Swxx/det, v01=-Swx/det, v11=Sw/det;
+  var se=Math.sqrt(v11), p=2*(1-normcdf(Math.abs(b1/se)));
+  var points=trials.map(function(t,i){return {label:t.label,x:t.year,y:t.hr,weight:w[i]};});
+  ChartKit.renderBubble(document.getElementById('bubble'), points, {
+    measure:'HR', log:true, null:1, xlabel:'Trial year',
+    fit:{b0:b0,b1:b1,xm:xm,v00:v00,v01:v01,v11:v11,slope:b1,p:p},
+    claim:'No trend in effect by publication year',
+    estimand:'HR vs trial year · WLS meta-regression · 5 RCTs'
+  });
+  document.getElementById('cap').innerHTML =
+    'Bubble area &prop; study weight; the blue line is the WLS fit with its 95% CI band; '+
+    'the dashed line is the null (HR&nbsp;1). Slope/yr on log-HR '+b1.toFixed(3)+', p&nbsp;'+
+    (p<0.001?'<0.001':p.toFixed(3))+' (exploratory at k&lt;10). Hover a bubble for detail.';
+})();
+</script>
+</body>
+</html>
