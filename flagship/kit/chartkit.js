@@ -736,12 +736,95 @@
     return svgEl;
   }
 
+  /**
+   * renderDensity(svgEl, data, opts) — posterior/prior density.
+   * data: { grid:[x..], density:[y..], cri:{lo,hi}|null, median:number|null,
+   *         prior:[{x,y}]|null }
+   * opts: { measure, log, null, xlabel, claim, estimand }
+   */
+  function renderDensity(svgEl, data, opts) {
+    opts = opts || {};
+    var o = Object.assign({ log: false, measure: 'value', width: 460, height: 250, padL: 26, padR: 18, padT: 56, padB: 42 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'),
+      fill: tok('--seq-2', '#cfe0ec'), cri: tok('--cat-1', '#0072B2'), line: tok('--cat-1', '#0072B2'), prior: tok('--c-annot', '#7a8086'), med: tok('--c-estimate', '#1a1a1a') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+    var g = data.grid, dn = data.density, n = g.length;
+    var maxD = Math.max.apply(null, dn) || 1;
+    // trim x-domain to where density is non-negligible (+ pad)
+    var lo = g[0], hi = g[n - 1];
+    for (var i = 0; i < n; i++) { if (dn[i] > maxD * 1e-3) { lo = g[i]; break; } }
+    for (var j = n - 1; j >= 0; j--) { if (dn[j] > maxD * 1e-3) { hi = g[j]; break; } }
+    var pad = (hi - lo) * 0.12 || 0.3; lo -= pad; hi += pad;
+    if (opts.null != null && opts.null < lo) lo = opts.null - pad * 0.5;
+    if (opts.null != null && opts.null > hi) hi = opts.null + pad * 0.5;
+    var X = function (v) { return x0 + (v - lo) / (hi - lo) * (x1 - x0); }, Y = function (d) { return yB - d / maxD * (yB - yT); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Density. ' + (o.claim || ''));
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    var clipId = 'ck-de-' + (svgEl.id || 'x');
+    var defs = el('defs'); var cp = el('clipPath', { id: clipId }, defs); el('rect', { x: x0, y: yT - 6, width: (x1 - x0), height: (yB - yT + 6) }, cp);
+    var plot = el('g', { 'clip-path': 'url(#' + clipId + ')' });
+
+    txt(20, 24, o.claim || 'Posterior density', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // density area (light) + 95% CrI region (darker) + outline
+    var areaPts = 'M ' + X(g[0]).toFixed(1) + ' ' + yB.toFixed(1) + ' ';
+    var linePts = '';
+    g.forEach(function (v, k) { areaPts += 'L ' + X(v).toFixed(1) + ' ' + Y(dn[k]).toFixed(1) + ' '; linePts += (k === 0 ? 'M ' : 'L ') + X(v).toFixed(1) + ' ' + Y(dn[k]).toFixed(1) + ' '; });
+    areaPts += 'L ' + X(g[n - 1]).toFixed(1) + ' ' + yB.toFixed(1) + ' Z';
+    el('path', { d: areaPts, fill: C.fill, 'fill-opacity': '0.55' }, plot);
+    if (data.cri) {
+      var cf = 'M ' + X(data.cri.lo).toFixed(1) + ' ' + yB.toFixed(1) + ' ';
+      g.forEach(function (v, k) { if (v >= data.cri.lo && v <= data.cri.hi) cf += 'L ' + X(v).toFixed(1) + ' ' + Y(dn[k]).toFixed(1) + ' '; });
+      cf += 'L ' + X(data.cri.hi).toFixed(1) + ' ' + yB.toFixed(1) + ' Z';
+      el('path', { d: cf, fill: C.cri, 'fill-opacity': '0.28' }, plot);
+    }
+    el('path', { d: linePts, fill: 'none', stroke: C.line, 'stroke-width': '2' }, plot);
+
+    // prior overlay (dashed), normalised to its own peak
+    if (data.prior && data.prior.length) {
+      var pmax = Math.max.apply(null, data.prior.map(function (p) { return p.y; })) || 1;
+      var pp = data.prior.map(function (p) { return X(p.x).toFixed(1) + ',' + (yB - p.y / pmax * (yB - yT)).toFixed(1); }).join(' ');
+      el('polyline', { points: pp, fill: 'none', stroke: C.prior, 'stroke-width': '1.5', 'stroke-dasharray': '4 3' }, plot);
+    }
+    // null + median verticals
+    if (opts.null != null) { el('line', { x1: X(opts.null), x2: X(opts.null), y1: yT - 4, y2: yB, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' }, plot);
+      txt(X(opts.null) + 4, yT + 6, o.log ? (o.measure + '=1') : (o.measure + '=0'), { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot }); }
+    if (data.median != null) el('line', { x1: X(data.median), x2: X(data.median), y1: Y(maxD) - 2, y2: yB, stroke: C.med, 'stroke-width': '1.25' }, plot);
+
+    // x ticks (back-transformed for ratio measures) + label
+    var ticks = o.log ? [0.25, 0.33, 0.5, 0.67, 0.8, 1, 1.25, 1.5, 2].map(function (v) { return { v: Math.log(v), lab: String(v) }; })
+      : niceForestTicks(lo, hi, false).map(function (v) { return { v: v, lab: fmt(v) }; });
+    ticks.forEach(function (t) { var x = X(t.v); if (x < x0 - 1 || x > x1 + 1) return; txt(x, yB + 15, t.lab, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    txt((x0 + x1) / 2, yB + 33, o.xlabel || o.measure, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+
+    // legend (posterior solid / prior dashed) when a prior is overlaid
+    if (data.prior && data.prior.length) {
+      var lx = x1 - 92, lyy = yT + 6;
+      el('line', { x1: lx, x2: lx + 16, y1: lyy, y2: lyy, stroke: C.line, 'stroke-width': '2' }); txt(lx + 21, lyy + 3.5, 'posterior', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2 });
+      el('line', { x1: lx, x2: lx + 16, y1: lyy + 14, y2: lyy + 14, stroke: C.prior, 'stroke-width': '1.5', 'stroke-dasharray': '4 3' }); txt(lx + 21, lyy + 17.5, 'prior', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2 });
+    }
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
   global.ChartKit.renderRanking = renderRanking;
   global.ChartKit.renderRankogram = renderRankogram;
   global.ChartKit.renderSROC = renderSROC;
+  global.ChartKit.renderDensity = renderDensity;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;

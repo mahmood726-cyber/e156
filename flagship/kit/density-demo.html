@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit density — reference exemplar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:560px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); margin-bottom:22px; }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style></head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderDensity — posterior &amp; prior</h1>
+  <figure class="figcard"><svg id="post"></svg><figcaption id="cap1"></figcaption></figure>
+  <figure class="figcard"><svg id="tau"></svg><figcaption id="cap2"></figcaption></figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  // 1) posterior of the pooled log-OR ~ Normal(-0.20, 0.085)
+  var mu=-0.20, sd=0.085, grid=[], dens=[];
+  for(var i=0;i<=200;i++){var x=-0.7+i/200*0.9; grid.push(x); dens.push(Math.exp(-(x-mu)*(x-mu)/(2*sd*sd)));}
+  ChartKit.renderDensity(document.getElementById('post'),
+    {grid:grid,density:dens,cri:{lo:mu-1.96*sd,hi:mu+1.96*sd},median:mu},
+    {log:true,"null":0,measure:'OR',xlabel:'odds ratio (log scale)',width:500,
+     claim:'Posterior OR 0.82 (95% CrI 0.69–0.97) · P(benefit) 99%',
+     estimand:'Posterior of the pooled effect · 95% credible interval shaded'});
+  document.getElementById('cap1').innerHTML='The shaded band is the 95% credible interval; the vertical line is the posterior median; the dashed line is the null (OR 1). P(benefit) is the posterior mass below OR 1.';
+
+  // 2) posterior of tau (half-normal-ish) with the half-normal prior overlaid
+  var A=0.25, tg=[], tp=[], pri=[];
+  for(var k=0;k<=160;k++){var t=k/160*0.8; tg.push(t);
+    tp.push(Math.exp(-(t-0.18)*(t-0.18)/(2*0.07*0.07)));          // posterior ~ peaked at 0.18
+    pri.push({x:t,y:Math.exp(-t*t/(2*A*A))});}                    // half-normal(0,0.25) prior
+  ChartKit.renderDensity(document.getElementById('tau'),
+    {grid:tg,density:tp,median:0.18,prior:pri},
+    {measure:'tau',xlabel:'between-study SD (τ)',width:500,
+     claim:'Heterogeneity τ 0.18',
+     estimand:'Posterior of τ with the half-normal prior overlaid'});
+  document.getElementById('cap2').innerHTML='Solid = posterior, dashed = the half-normal prior. The data have updated the prior toward τ ≈ 0.18.';
+})();
+</script>
+</body></html>
