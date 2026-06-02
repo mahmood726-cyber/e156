@@ -396,6 +396,35 @@ def compute_tier(checks: dict) -> str:
 ASSURANCE_CACHE = E156 / "assurance-cache"
 _NULL_OVERMIND = {"data_file_present": "not-run", "code_runs": "not-run", "bundle_path": ""}
 
+_DATA_SUFFIXES = (".csv", ".parquet", ".json", ".tsv")
+_DATA_SKIP_DIRS = (".git", "node_modules", "__pycache__")
+_DATA_SKIP_NAMES = ("assurance.json", "doi-cache.json")
+
+
+def _local_data_present(root: Path) -> str:
+    """Return 'pass' if the repo holds a committed data file >1KB, else
+    'not-run'. Shared by build_assurance_here() and used as a fallback in
+    build_assurance_for() when no Overmind bundle resolves on this machine —
+    a capsule that genuinely ships its own data must not be denied
+    data_file_present just because the nightly bundle dir is absent here.
+    Honest semantics: only real on-disk data flips it to 'pass'."""
+    try:
+        for f in root.rglob("*"):
+            if any(d in _DATA_SKIP_DIRS for d in f.parts):
+                continue
+            if not f.is_file() or f.suffix.lower() not in _DATA_SUFFIXES:
+                continue
+            if f.name in _DATA_SKIP_NAMES:
+                continue
+            try:
+                if f.stat().st_size > 1024:
+                    return "pass"
+            except OSError:
+                continue
+    except OSError:
+        pass
+    return "not-run"
+
 # Inline claim_language patterns. Kept narrow to mirror the Sentinel rule's
 # detection set but with no per-entry override lookup (this is just a
 # rapidmeta-mode "fast check" — the real Sentinel rule runs on the
@@ -471,6 +500,12 @@ def build_assurance_for(entry: dict) -> dict | None:
     else:
         sent_checks = derive_sentinel_checks(local)
         overmind_checks = derive_overmind_checks(entry["name"])
+        # Fallback: the Overmind bundle scan only sees data when a nightly
+        # bundle resolves (it doesn't on a machine without the F:\ bundle
+        # dir). A released capsule that ships its own data on disk should
+        # still earn data_file_present — scan the repo directly.
+        if overmind_checks["data_file_present"] != "pass":
+            overmind_checks["data_file_present"] = _local_data_present(local)
 
     dashboard_match = derive_dashboard_match(entry, entry.get("pages_url") or "")
     # Phase-3 S + T: opt-in analysis-rerun and PDF-match checks. Default
@@ -538,19 +573,7 @@ def build_assurance_here(repo: Path, name: str) -> dict:
     """
     sent_checks = derive_sentinel_checks(repo)
 
-    data_file_present = "not-run"
-    for f in repo.rglob("*"):
-        if any(d in (".git", "node_modules", "__pycache__") for d in f.parts):
-            continue
-        if f.is_file() and f.suffix.lower() in (".csv", ".parquet", ".json", ".tsv"):
-            if f.name in ("assurance.json", "doi-cache.json"):
-                continue
-            try:
-                if f.stat().st_size > 1024:
-                    data_file_present = "pass"
-                    break
-            except OSError:
-                pass
+    data_file_present = _local_data_present(repo)
 
     try:
         from scripts.assurance.rerun_analysis import derive_analysis_rerun  # type: ignore

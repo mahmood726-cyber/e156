@@ -19,9 +19,23 @@ body {
   z-index: 100; transition: top 0.2s;
 }
 .skip-link:focus { top: 0; }
-.masthead, .argument, .examples, .rules, .prompt-shell, .cta {
+.masthead, .argument, .examples, .explore, .rules, .prompt-shell, .cta {
   max-width: 680px; margin: 0 auto; padding: 0 24px;
 }
+.explore { padding-top: 16px; padding-bottom: 8px; }
+.explore h2 { font-size: 1.5rem; margin-bottom: 16px; }
+.explore .explore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.explore a.explore-card {
+  display: block; border: 1px solid #e0ddd6; border-radius: 4px;
+  padding: 16px 20px; text-decoration: none; color: #1a1a1a;
+  transition: border-color 0.15s, background 0.15s;
+}
+.explore a.explore-card:hover { border-color: #1a1a1a; background: #f5f3ef; }
+.explore a.explore-card:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 2px; }
+.explore .explore-card strong { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+.explore .explore-card span { font-size: 0.9rem; color: #666; font-family: system-ui, sans-serif; line-height: 1.5; }
+.explore .releases-line { margin-top: 16px; font-size: 0.9rem; font-family: system-ui, sans-serif; color: #666; }
+.explore .releases-line a { color: #1a1a1a; }
 .masthead { text-align: center; padding-top: 80px; padding-bottom: 40px; }
 .masthead h1 { font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; }
 .masthead .subtitle { font-size: 1.25rem; color: #666; font-style: italic; margin-top: 8px; }
@@ -159,6 +173,7 @@ body {
   }
 }
 @media (max-width: 768px) {
+  .explore .explore-grid { grid-template-columns: 1fr; }
   .workshop-layout { flex-direction: column; }
   .validation-panel { position: static; }
   .masthead h1 { font-size: 2.5rem; }
@@ -197,6 +212,34 @@ body {
       <blockquote class="micro-paper-body"></blockquote>
       <div class="sentence-annotations"></div>
     </div>
+  </section>
+
+  <section class="explore" aria-label="Explore the e156 capsules">
+    <h2>Explore the capsules</h2>
+    <div class="explore-grid">
+      <a class="explore-card" href="flagship/index.html">
+        <strong>Flagship suite &rarr;</strong>
+        <span>40 living, self-checking method capsules — each computes live in the browser, fully offline.</span>
+      </a>
+      <a class="explore-card" href="e156-library.html">
+        <strong>Capsule library &rarr;</strong>
+        <span>Every released micro-paper, browsable alongside its assurance badge.</span>
+      </a>
+      <a class="explore-card" href="students.html">
+        <strong>Student board &rarr;</strong>
+        <span>Student-authored E156 micro-papers from the teaching cohorts.</span>
+      </a>
+      <a class="explore-card" href="releases/metarep/index.html">
+        <strong>Reference release &rarr;</strong>
+        <span>A full submission bundle: body, data, dashboard, protocol, and assurance.json.</span>
+      </a>
+    </div>
+    <p class="releases-line">Released capsules:
+      <a href="releases/clinical-ma/index.html">clinical-ma</a> &middot;
+      <a href="releases/fragility-atlas/index.html">fragility-atlas</a> &middot;
+      <a href="releases/metarep/index.html">metarep</a> &middot;
+      <a href="releases/reduced-dose-doacs-vte-demo/index.html">reduced-dose-doacs-vte-demo</a>
+    </p>
   </section>
 
   <section class="rules">

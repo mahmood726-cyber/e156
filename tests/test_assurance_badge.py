@@ -179,6 +179,31 @@ def test_build_assurance_here(tmp_path):
     assert blob["tier"] == "bronze"
 
 
+def test_local_data_present_helper(tmp_path):
+    # No data → not-run; a >1KB data file → pass; assurance.json itself is
+    # excluded so a badge can't bootstrap its own data_file_present.
+    assert baj._local_data_present(tmp_path) == "not-run"
+    (tmp_path / "assurance.json").write_text("{}" + " " * 2000, encoding="utf-8")
+    assert baj._local_data_present(tmp_path) == "not-run"
+    (tmp_path / "trials.csv").write_text("a,b\n" + "x,y\n" * 500, encoding="utf-8")
+    assert baj._local_data_present(tmp_path) == "pass"
+
+
+def test_build_assurance_for_local_data_without_bundle(tmp_path):
+    # A local capsule shipping its own data must earn data_file_present=pass
+    # (hence Bronze) even when no Overmind bundle resolves on this machine.
+    # Regression guard for the build_assurance_for() local-data fallback.
+    (tmp_path / "paper.json").write_text(
+        json.dumps({"body": "x"}) + " " * 2000, encoding="utf-8")
+    entry = {"num": 1, "name": "demo-capsule", "path": str(tmp_path),
+             "body": "", "pages_url": ""}
+    blob = baj.build_assurance_for(entry)
+    assert blob is not None
+    assert blob["checks"]["data_file_present"] == "pass"
+    assert "fail" not in blob["checks"].values()
+    assert blob["tier"] == "bronze"
+
+
 def test_existing_badges_are_self_consistent():
     badges = [p for p in ROOT.rglob("assurance.json") if ".git" not in p.parts]
     if not badges:
