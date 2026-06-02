@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit survival (RMST) — reference exemplar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:600px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style></head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderKM — survival &amp; RMST</h1>
+  <figure class="figcard"><svg id="km"></svg><figcaption id="cap"></figcaption></figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  var tau=24, lam=Math.log(2)/12, hr=0.70, control=[], treatment=[];
+  for(var i=0;i<=60;i++){var t=i/60*tau; control.push({t:t,s:Math.exp(-lam*t)}); treatment.push({t:t,s:Math.exp(-lam*hr*t)});}
+  function rmst(c){var r=0;for(var i=1;i<c.length;i++)r+=(c[i].t-c[i-1].t)*(c[i].s+c[i-1].s)/2;return r;}
+  var rc=rmst(control), rt=rmst(treatment), diff=rt-rc;
+  ChartKit.renderKM(document.getElementById('km'),
+    {control:control,treatment:treatment,tau:tau,rmst:{control:rc,treatment:rt,diff:diff}},
+    {width:520,
+     claim:'RMST gain '+diff.toFixed(1)+' months to τ*=24',
+     estimand:'Schematic survival from pooled HR 0.70 · shaded area = RMST difference',
+     timeLabel:'time (months, to τ*)'});
+  document.getElementById('cap').innerHTML='Two survival curves from the pooled HR; the shaded area between them is the restricted-mean-survival-time gain over [0, τ*]. Curves are direct-labelled at the right.';
+})();
+</script>
+</body></html>

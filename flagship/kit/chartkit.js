@@ -818,6 +818,62 @@
     return svgEl;
   }
 
+  /**
+   * renderKM(svgEl, data, opts) — survival (RMST) curves.
+   * data: { control:[{t,s}], treatment:[{t,s}], tau, rmst:{control,treatment,diff}|null }
+   * opts: { claim, estimand, timeLabel }. The area between the curves is the RMST gain.
+   */
+  function renderKM(svgEl, data, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 460, height: 264, padL: 42, padR: 86, padT: 56, padB: 44 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), control: tok('--c-ink-2', '#555a5f'), treatment: tok('--cat-1', '#0072B2'), area: tok('--seq-2', '#cfe0ec') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB, tau = data.tau || 1;
+    var X = function (t) { return x0 + t / tau * (x1 - x0); }, Y = function (s) { return yB - s * (yB - yT); };
+    var pts = function (arr) { return arr.map(function (p) { return X(p.t).toFixed(1) + ',' + Y(p.s).toFixed(1); }).join(' '); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Survival curves. ' + (o.claim || ''));
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+
+    txt(20, 24, o.claim || 'Survival to τ*', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // grid + ticks
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (sv) { var y = Y(sv);
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x0 - 6, y + 3, sv.toFixed(2), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' }); });
+    [0, tau / 2, tau].forEach(function (t) { txt(X(t), yB + 15, String(Math.round(t)), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    txt((x0 + x1) / 2, yB + 33, o.timeLabel || 'time (to τ*)', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yt = txt(15, (yT + yB) / 2, 'survival', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yt.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
+
+    // RMST area (between treatment[top] and control[bottom])
+    if (data.control && data.treatment) {
+      var area = pts(data.treatment).split(' ').map(function (p, i) { return (i === 0 ? 'M ' : 'L ') + p; }).join(' ');
+      var rev = data.control.slice().reverse();
+      area += ' ' + rev.map(function (p) { return 'L ' + X(p.t).toFixed(1) + ',' + Y(p.s).toFixed(1); }).join(' ') + ' Z';
+      el('path', { d: area, fill: C.area, 'fill-opacity': '0.6' });
+      el('polyline', { points: pts(data.control), fill: 'none', stroke: C.control, 'stroke-width': '1.75' });
+      el('polyline', { points: pts(data.treatment), fill: 'none', stroke: C.treatment, 'stroke-width': '2' });
+      // direct end labels
+      var te = data.treatment[data.treatment.length - 1], ce = data.control[data.control.length - 1];
+      txt(X(te.t) + 6, Y(te.s) + 3, 'treatment', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.treatment });
+      txt(X(ce.t) + 6, Y(ce.s) + 3, 'control', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.control });
+    }
+    // RMST annotation
+    if (data.rmst) txt(x1 - 4, yT + 14, 'ΔRMST ' + data.rmst.diff.toFixed(1), { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.treatment, 'text-anchor': 'end' });
+
+    el('rect', { x: x0, y: yT, width: (x1 - x0), height: (yB - yT), fill: 'none', stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -825,6 +881,7 @@
   global.ChartKit.renderRankogram = renderRankogram;
   global.ChartKit.renderSROC = renderSROC;
   global.ChartKit.renderDensity = renderDensity;
+  global.ChartKit.renderKM = renderKM;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
