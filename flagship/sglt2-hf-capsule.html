@@ -485,6 +485,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
       <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
         <div>
           <div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:.3rem">Subgroup by agent</div>
+          <svg id="subgsvg" class="forest" role="group" aria-label="Subgroup forest" style="margin-bottom:.4rem"></svg>
           <div class="tablewrap"><table id="subgTbl"></table></div>
           <p class="note" id="subgTest" style="margin-top:.3rem">—</p>
         </div>
@@ -740,6 +741,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';   // fill container; viewBox sets text scale
     svgEl.setAttribute('role', 'img');
     svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
     svgEl.setAttribute('aria-label', 'Forest plot, ' + o.measure + '. ' + (o.claim || '') + ' ' + n + ' studies.');
@@ -886,6 +888,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';   // fill container; viewBox sets text scale
     svgEl.setAttribute('role', 'img');
     svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
     svgEl.setAttribute('aria-label', 'Contour-enhanced funnel plot. ' + (o.claim || '') + ' ' + points.length + ' studies.');
@@ -984,6 +987,21 @@ WHERE s.study_type = 'INTERVENTIONAL'
   function renderCumulative(svgEl, rows, opts) { return renderLOO(svgEl, rows, opts); }
 
   /**
+   * renderSubgroup(svgEl, groups, opts) — subgroup summary forest.
+   * groups: [{ label, k, est, lo, hi, weight }] (one pooled estimate per subgroup)
+   * opts: { measure, log, null, overall:{est,lo,hi[,pi_lo,pi_hi]}, claim, estimand }
+   */
+  function renderSubgroup(svgEl, groups, opts) {
+    opts = opts || {};
+    var studies = groups.map(function (g) {
+      return { label: g.label + (g.k != null ? ' (k=' + g.k + ')' : ''), est: g.est, lo: g.lo, hi: g.hi, weight: g.weight || 1, included: true };
+    });
+    return renderForest(svgEl, studies, Object.assign({ measure: 'effect', rowH: 27 }, opts, {
+      pooled: opts.overall, pooledLabel: opts.overallLabel || 'Overall'
+    }));
+  }
+
+  /**
    * renderBubble(svgEl, points, opts) — meta-regression bubble plot.
    * points: [{ label, x (moderator), y (effect, natural scale), weight }]
    * opts: { measure, log, null, xlabel, claim, estimand,
@@ -1019,6 +1037,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';   // fill container; viewBox sets text scale
     svgEl.setAttribute('role', 'img');
     svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
     svgEl.setAttribute('aria-label', 'Meta-regression bubble plot. ' + (o.claim || '') + ' ' + points.length + ' studies.');
@@ -1092,6 +1111,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
   global.ChartKit.renderCumulative = renderCumulative;
+  global.ChartKit.renderSubgroup = renderSubgroup;
   global.ChartKit.renderBubble = renderBubble;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);
@@ -1439,7 +1459,7 @@ function renderLOO(){
   var rows=inc.map(function(o){var p=pooledSub(inc.filter(function(t){return t!==o;}));return p?{label:'– '+o.name,est:p.hr,lo:p.lo,hi:p.hi}:null;}).filter(Boolean);
   var all=pooledSub(inc);
   var robust=rows.every(function(r){return r.hi<1;});
-  ChartKit.renderLOO(svg,rows,{measure:'HR',log:true,null:1,
+  ChartKit.renderLOO(svg,rows,{width:460,measure:'HR',log:true,null:1,
     overall:all?{x:all.hr,label:'overall '+f(all.hr)}:null,
     claim:robust?'Robust: dropping any one trial keeps the benefit significant':'Sensitive: one trial flips significance',
     estimand:'Pooled HR omitting each trial · '+rows.length+' RCTs'});
@@ -1471,7 +1491,7 @@ function renderFunnelEgger(res){
   var inc=model.filter(function(t){return t.inc&&valid(t);});
   var points=res.y.map(function(yi,i){return {label:(inc[i]?inc[i].name+' ('+inc[i].year+')':'study '+(i+1)),x:yi,se:Math.sqrt(res.v[i])};});
   var eg=(typeof egger==='function')?egger(res):null;
-  ChartKit.renderFunnel(fs,points,{measure:'HR',log:true,pooled:res.re,
+  ChartKit.renderFunnel(fs,points,{width:460,measure:'HR',log:true,pooled:res.re,
     egger:eg?{p:eg.p,intercept:eg.intercept}:null,
     claim:'Funnel plot — small-study & publication bias',
     estimand:'Effect vs precision · '+res.k+' RCTs'});
@@ -1496,7 +1516,35 @@ function renderFunnelEggerLegacy(res){
   if(eg)eo.innerHTML=`Egger (radial) intercept ${eg.intercept.toFixed(2)} (SE ${eg.se.toFixed(2)}), t<sub>${eg.df}</sub>=${eg.t.toFixed(2)}, p≈${eg.p.toFixed(2)}. <span class="illus">low power for k&lt;10</span>`;
   else eo.textContent='Egger test unavailable.';
 }
+/* CK:renderSubgroup — table + between-group test + kit forest. Legacy below. */
 function renderSubgroup(){
+  var tbl=document.getElementById('subgTbl'),tst=document.getElementById('subgTest'),svg=document.getElementById('subgsvg');
+  var inc=model.filter(function(t){return t.inc&&valid(t);});
+  var groups={};inc.forEach(function(t){var g=t.agent||'(unspecified)';(groups[g]=groups[g]||[]).push(t);});
+  var keys=Object.keys(groups);
+  var h='<thead><tr><th>Agent</th><th class="n">k</th><th class="n">Pooled HR (95% CI)</th></tr></thead><tbody>';
+  keys.forEach(function(g){var p=pooledSub(groups[g]);h+='<tr><td>'+esc(g)+'</td><td class="n">'+groups[g].length+'</td><td class="n">'+(p?f(p.hr)+' ('+f(p.lo)+'–'+f(p.hi)+')':'—')+'</td></tr>';});
+  tbl.innerHTML=h+'</tbody>';
+  var testP=null,Qb=null,df=null;
+  if(keys.length>=2&&inc.length>=keys.length+1){
+    var yA=inc.map(function(t){return Math.log(t.hr);}),vA=inc.map(function(t){return Math.pow((Math.log(t.uci)-Math.log(t.lci))/(2*Z),2);});
+    var Qt=qFixed(yA,vA),Qw=0;
+    keys.forEach(function(g){var u=groups[g],y=u.map(function(t){return Math.log(t.hr);}),v=u.map(function(t){return Math.pow((Math.log(t.uci)-Math.log(t.lci))/(2*Z),2);});Qw+=qFixed(y,v);});
+    Qb=Math.max(0,Qt-Qw);df=keys.length-1;testP=1-chi2cdf(Qb,df);
+    tst.innerHTML='Between-group Q='+Qb.toFixed(2)+', df='+df+', p≈'+testP.toFixed(2)+' <span class="illus">underpowered with few studies</span>';
+  } else tst.textContent='Need ≥2 subgroups (and more studies than groups) for a between-group test.';
+  if(svg&&typeof ChartKit!=='undefined'&&ChartKit.renderSubgroup){
+    var grows=keys.map(function(g){var p=pooledSub(groups[g]);return p?{label:g,k:groups[g].length,est:p.hr,lo:p.lo,hi:p.hi,weight:1/Math.pow((Math.log(p.hi)-Math.log(p.lo))/(2*Z),2)}:null;}).filter(Boolean);
+    if(grows.length){
+      var all=pooledSub(inc);
+      var claim=testP==null?'Pooled effect by SGLT2 agent':(testP<0.05?'Effect differs across agents':'Effect consistent across agents');
+      ChartKit.renderSubgroup(svg,grows,{width:460,measure:'HR',log:true,null:1,
+        overall:all?{est:all.hr,lo:all.lo,hi:all.hi}:null,claim:claim,
+        estimand:'Pooled HR by SGLT2 agent · '+grows.length+' subgroups'+(Qb!=null?' · between-group Q='+Qb.toFixed(2)+', p≈'+testP.toFixed(2):'')});
+    }
+  }
+}
+function renderSubgroupLegacy(){
   const tbl=document.getElementById('subgTbl'),tst=document.getElementById('subgTest');
   const inc=model.filter(t=>t.inc&&valid(t));
   const groups={};inc.forEach(t=>{const g=t.agent||'(unspecified)';(groups[g]=groups[g]||[]).push(t);});
@@ -1523,7 +1571,7 @@ function renderMetaReg(res){
   var ws=res.v.map(function(vi){return 1/(vi+mr.tau2res);});
   var points=res.use.map(function(t,i){return {label:t.name,x:yr[i],y:Math.exp(res.y[i]),weight:ws[i]};});
   var sig=mr.p<0.05;
-  ChartKit.renderBubble(svg,points,{measure:'HR',log:true,null:1,xlabel:'Trial year',
+  ChartKit.renderBubble(svg,points,{width:460,measure:'HR',log:true,null:1,xlabel:'Trial year',
     fit:{b0:mr.b0,b1:mr.b1,xm:xm,v00:mr.v00,v01:mr.v01,v11:mr.v11,slope:mr.b1,p:mr.p},
     claim:sig?'Effect varies by publication year':'No trend in effect by publication year',
     estimand:'HR vs trial year · WLS meta-regression · '+res.k+' RCTs'});
@@ -1657,7 +1705,7 @@ function renderCumulative(){
   var firstSig=rows.findIndex(function(r){return r.hi<1;});
   var held=firstSig>=0 && rows.slice(firstSig).every(function(r){return r.hi<1;});
   var claim=firstSig<0?'Not yet significant across the accrued evidence':('Significance reached at trial '+(firstSig+1)+(held?' and held':''));
-  ChartKit.renderCumulative(svg,rows,{measure:'HR',log:true,null:1,
+  ChartKit.renderCumulative(svg,rows,{width:460,measure:'HR',log:true,null:1,
     overall:{x:fin.est,label:'final '+f(fin.est)},
     claim:claim,
     estimand:'Cumulative pooled HR by year added · '+rows.length+' RCTs'});

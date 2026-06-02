@@ -102,6 +102,7 @@
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';   // fill container; viewBox sets text scale
     svgEl.setAttribute('role', 'img');
     svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
     svgEl.setAttribute('aria-label', 'Forest plot, ' + o.measure + '. ' + (o.claim || '') + ' ' + n + ' studies.');
@@ -248,6 +249,7 @@
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';   // fill container; viewBox sets text scale
     svgEl.setAttribute('role', 'img');
     svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
     svgEl.setAttribute('aria-label', 'Contour-enhanced funnel plot. ' + (o.claim || '') + ' ' + points.length + ' studies.');
@@ -346,6 +348,21 @@
   function renderCumulative(svgEl, rows, opts) { return renderLOO(svgEl, rows, opts); }
 
   /**
+   * renderSubgroup(svgEl, groups, opts) — subgroup summary forest.
+   * groups: [{ label, k, est, lo, hi, weight }] (one pooled estimate per subgroup)
+   * opts: { measure, log, null, overall:{est,lo,hi[,pi_lo,pi_hi]}, claim, estimand }
+   */
+  function renderSubgroup(svgEl, groups, opts) {
+    opts = opts || {};
+    var studies = groups.map(function (g) {
+      return { label: g.label + (g.k != null ? ' (k=' + g.k + ')' : ''), est: g.est, lo: g.lo, hi: g.hi, weight: g.weight || 1, included: true };
+    });
+    return renderForest(svgEl, studies, Object.assign({ measure: 'effect', rowH: 27 }, opts, {
+      pooled: opts.overall, pooledLabel: opts.overallLabel || 'Overall'
+    }));
+  }
+
+  /**
    * renderBubble(svgEl, points, opts) — meta-regression bubble plot.
    * points: [{ label, x (moderator), y (effect, natural scale), weight }]
    * opts: { measure, log, null, xlabel, claim, estimand,
@@ -381,6 +398,7 @@
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';   // fill container; viewBox sets text scale
     svgEl.setAttribute('role', 'img');
     svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
     svgEl.setAttribute('aria-label', 'Meta-regression bubble plot. ' + (o.claim || '') + ' ' + points.length + ' studies.');
@@ -454,6 +472,7 @@
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
   global.ChartKit.renderCumulative = renderCumulative;
+  global.ChartKit.renderSubgroup = renderSubgroup;
   global.ChartKit.renderBubble = renderBubble;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);
