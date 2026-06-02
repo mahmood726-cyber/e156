@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit cost-effectiveness plane — reference exemplar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:520px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style></head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderCEplane — cost-effectiveness</h1>
+  <figure class="figcard"><svg id="ce"></svg><figcaption id="cap"></figcaption></figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  // deterministic PSA cloud (seeded) around the point estimate
+  var seed=12345; function rnd(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; }
+  function gauss(){ return Math.sqrt(-2*Math.log(rnd()+1e-9))*Math.cos(2*Math.PI*rnd()); }
+  var dE=0.15, dC=2400, wtp=20000, psa=[];
+  for(var i=0;i<220;i++) psa.push({dE:dE+gauss()*0.06, dC:dC+gauss()*1400});
+  var inmb=wtp*dE-dC, icer=dC/dE;
+  ChartKit.renderCEplane(document.getElementById('ce'),
+    {point:{dE:dE,dC:dC},wtp:wtp,psa:psa},
+    {width:440, effectLabel:'Δ QALYs', costLabel:'Δ cost (£)',
+     claim:'Cost-effective at λ=20,000',
+     estimand:'ICER £'+Math.round(icer).toLocaleString()+'/QALY · INMB £'+Math.round(inmb).toLocaleString()});
+  document.getElementById('cap').innerHTML='The black point is the ICER ('+(dC/dE).toFixed(0)+
+    ' per QALY); the cloud is the probabilistic sensitivity analysis. The dashed line is the willingness-to-pay '+
+    'threshold λ — points below it are cost-effective. INMB > 0 here, so the intervention is favoured at λ=20,000.';
+})();
+</script>
+</body></html>
