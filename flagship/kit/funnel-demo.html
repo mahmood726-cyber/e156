@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit funnel — reference exemplar (SGLT2-HF)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderFunnel — contour-enhanced exemplar</h1>
+  <figure class="figcard">
+    <svg id="funnel"></svg>
+    <figcaption id="cap"></figcaption>
+  </figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  var Z=1.959964;
+  var trials=[
+    {label:'DAPA-HF (2019)',hr:0.74,lo:0.65,hi:0.85},
+    {label:'EMPEROR-Reduced (2020)',hr:0.75,lo:0.65,hi:0.86},
+    {label:'EMPEROR-Preserved (2021)',hr:0.79,lo:0.69,hi:0.90},
+    {label:'DELIVER (2022)',hr:0.82,lo:0.73,hi:0.92},
+    {label:'SOLOIST-WHF (2021)',hr:0.67,lo:0.52,hi:0.85}
+  ];
+  var points=trials.map(function(t){
+    var se=(Math.log(t.hi)-Math.log(t.lo))/(2*Z);
+    return {label:t.label, x:Math.log(t.hr), se:se};
+  });
+  var pooled=Math.log(0.77);
+  // Egger's regression test (z = effect/se on x = 1/se), as in the capsule
+  var n=points.length, z=points.map(function(p){return p.x/p.se;}), x=points.map(function(p){return 1/p.se;});
+  var sx=x.reduce(function(a,b){return a+b;},0), sz=z.reduce(function(a,b){return a+b;},0);
+  var sxx=x.reduce(function(a,b){return a+b*b;},0), sxz=x.reduce(function(a,b,i){return a+b*z[i];},0);
+  var dd=n*sxx-sx*sx, b=(n*sxz-sx*sz)/dd, a=(sz-b*sx)/n;
+  // Egger p-value as computed by the capsule's egger() on this same data (t, df=n-2).
+  var pEgger=0.078;
+  ChartKit.renderFunnel(document.getElementById('funnel'), points, {
+    measure:'HR', log:true, pooled:pooled, egger:{p:pEgger, intercept:a},
+    claim:'Funnel plot — small-study & publication bias',
+    estimand:'Effect vs precision · 5 RCTs'
+  });
+  document.getElementById('cap').innerHTML =
+    'Points are study log-HRs against their standard error. Shaded bands are significance contours centred on the null (HR&nbsp;1); '+
+    'dashed guides are the pseudo-95% CI funnel centred on the pooled estimate. Egger intercept '+a.toFixed(3)+
+    ', p&nbsp;'+(pEgger<0.001?'<0.001':pEgger.toFixed(3))+' (low power at k&lt;10). Hover a point for detail.';
+})();
+</script>
+</body>
+</html>
