@@ -979,6 +979,10 @@ WHERE s.study_type = 'INTERVENTIONAL'
     }));
   }
 
+  // Cumulative meta-analysis is structurally identical to LOO: a forest of
+  // sequential pooled rows with a null line and a reference at the final estimate.
+  function renderCumulative(svgEl, rows, opts) { return renderLOO(svgEl, rows, opts); }
+
   /**
    * renderBubble(svgEl, points, opts) — meta-regression bubble plot.
    * points: [{ label, x (moderator), y (effect, natural scale), weight }]
@@ -1087,6 +1091,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
+  global.ChartKit.renderCumulative = renderCumulative;
   global.ChartKit.renderBubble = renderBubble;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);
@@ -1640,7 +1645,24 @@ function miniForest(svgId,rows,opts){const svg=document.getElementById(svgId);if
       `<rect x="${x(r.hr)-3.5}" y="${y-3.5}" width="7" height="7" fill="${r.accent?'var(--accent-strong)':'var(--accent)'}"/>`+
       `<text class="val" x="${W-6}" y="${y+3}" text-anchor="end" style="font-size:10.5px">${f(r.hr)} (${f(r.lo)}–${f(r.hi)})</text>`;}});
   svg.setAttribute('viewBox',`0 0 ${W} ${top+rows.length*rowH+24}`);svg.innerHTML=s;}
-function renderCumulative(){const use=model.filter(t=>t.inc&&valid(t)).slice().sort((a,b)=>(a.year-b.year)||String(a.name).localeCompare(String(b.name)));
+/* CK:renderCumulative — delegates to ChartKit. Legacy below. */
+function renderCumulative(){
+  var svg=document.getElementById('cumsvg');
+  if(typeof ChartKit==='undefined'||!ChartKit.renderCumulative){return renderCumulativeLegacy();}
+  var use=model.filter(function(t){return t.inc&&valid(t);}).slice().sort(function(a,b){return (a.year-b.year)||String(a.name).localeCompare(String(b.name));});
+  if(use.length<2){svg.innerHTML='<text x="10" y="22" class="yr">need ≥2 included studies</text>';return;}
+  var rows=[];for(var i=1;i<=use.length;i++){var p=pooledSub(use.slice(0,i));if(p)rows.push({label:i+' trial'+(i>1?'s':'')+' · +'+use[i-1].name,est:p.hr,lo:p.lo,hi:p.hi});}
+  if(!rows.length){svg.innerHTML='<text x="10" y="22" class="yr">nothing to pool</text>';return;}
+  var fin=rows[rows.length-1];
+  var firstSig=rows.findIndex(function(r){return r.hi<1;});
+  var held=firstSig>=0 && rows.slice(firstSig).every(function(r){return r.hi<1;});
+  var claim=firstSig<0?'Not yet significant across the accrued evidence':('Significance reached at trial '+(firstSig+1)+(held?' and held':''));
+  ChartKit.renderCumulative(svg,rows,{measure:'HR',log:true,null:1,
+    overall:{x:fin.est,label:'final '+f(fin.est)},
+    claim:claim,
+    estimand:'Cumulative pooled HR by year added · '+rows.length+' RCTs'});
+}
+function renderCumulativeLegacy(){const use=model.filter(t=>t.inc&&valid(t)).slice().sort((a,b)=>(a.year-b.year)||String(a.name).localeCompare(String(b.name)));
   const rows=[];for(let i=1;i<=use.length;i++){const p=pooledSub(use.slice(0,i));if(p)rows.push({label:i+' trial'+(i>1?'s':'')+' · +'+use[i-1].name,hr:p.hr,lo:p.lo,hi:p.hi,accent:i===use.length});}
   miniForest('cumsvg',rows,{padL:188,rowH:24});}
 function renderBenchmark(res){const rows=[];

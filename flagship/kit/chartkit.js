@@ -341,6 +341,10 @@
     }));
   }
 
+  // Cumulative meta-analysis is structurally identical to LOO: a forest of
+  // sequential pooled rows with a null line and a reference at the final estimate.
+  function renderCumulative(svgEl, rows, opts) { return renderLOO(svgEl, rows, opts); }
+
   /**
    * renderBubble(svgEl, points, opts) — meta-regression bubble plot.
    * points: [{ label, x (moderator), y (effect, natural scale), weight }]
@@ -449,6 +453,7 @@
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
+  global.ChartKit.renderCumulative = renderCumulative;
   global.ChartKit.renderBubble = renderBubble;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);
