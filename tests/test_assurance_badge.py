@@ -156,6 +156,7 @@ def test_badge_integrity_rule_matches_compute_tier():
     keys = [
         "citation_cascade", "data_file_present", "code_runs", "dashboard_match",
         "claim_language", "analysis_rerun", "external_review", "pdf_match",
+        "publication_bias",
     ]
     states = ("pass", "warn", "fail", "not-run")
     for combo in itertools.product(states, repeat=len(keys)):
@@ -281,13 +282,26 @@ def test_derive_pub_bias_reads_sidecar(tmp_path):
     assert pub_bias.derive_pub_bias(tmp_path) == "pass"
 
 
-def test_publication_bias_is_advisory_not_tier_gating(tmp_path):
-    # A capsule with data + a 'strong' publication-bias artifact still earns
-    # Bronze: the advisory check is recorded but compute_tier ignores it.
+def test_publication_bias_warn_caps_at_bronze():
+    # publication_bias is now tier-gating: a 'warn' (strong/some bias) caps an
+    # otherwise-Gold badge at Bronze, but pass/not-run do not, and it never
+    # forces 'none' (it's never 'fail').
+    assert baj.compute_tier(_checks(publication_bias="warn")) == "bronze"
+    assert baj.compute_tier(_checks(publication_bias="pass")) == "gold"
+    assert baj.compute_tier(_checks(publication_bias="not-run")) == "gold"
+    # Backward-compat: a badge with no publication_bias key is unaffected.
+    base = _checks()
+    base.pop("publication_bias", None)
+    assert baj.compute_tier(base) == "gold"
+
+
+def test_publication_bias_strong_artifact_caps_silver(tmp_path):
+    # End-to-end through build_assurance_here: a 'strong' artifact records warn
+    # and never zeroes the badge (bias is informative, not a failure).
     (tmp_path / "paper.json").write_text(json.dumps({"b": "x"}) + " " * 2000, encoding="utf-8")
     (tmp_path / "pubbias.json").write_text(
         json.dumps({"verdict": "Strong evidence of publication bias."}), encoding="utf-8")
     blob = baj.build_assurance_here(tmp_path, "demo")
     assert blob["checks"]["publication_bias"] == "warn"
     assert "fail" not in blob["checks"].values()
-    assert blob["tier"] == "bronze"  # warn on publication_bias did NOT zero the tier
+    assert blob["tier"] == "bronze"  # warn never forces none

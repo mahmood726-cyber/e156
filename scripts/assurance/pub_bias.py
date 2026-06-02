@@ -16,12 +16,12 @@ running the audited PubBiasSuite app on the capsule's effect/SE data):
                                 strong|some|little>"}   (preferred)
   <repo>/pubbias-verdict.txt    the raw #verdictText string, copy-pasted
 
-Mapping (advisory — does NOT gate the tier; publication bias is informative,
-not a self-consistency failure, so it never emits 'fail' and never forces
-tier=none):
+Mapping (tier-gating: a 'warn' caps the badge at Bronze. publication bias is
+informative, not a self-consistency failure, so it never emits 'fail' and so
+never forces tier=none):
 
-  "Strong evidence of publication bias"  -> warn  (label: strong)
-  "Some evidence of publication bias"    -> warn  (label: some)
+  "Strong evidence of publication bias"  -> warn  (label: strong)  caps Silver
+  "Some evidence of publication bias"    -> warn  (label: some)    caps Silver
   "Little evidence of publication bias"  -> pass  (label: little)
   no artifact / unrecognised text        -> not-run
 
@@ -106,6 +106,7 @@ def derive_pub_bias(local_path: Path | None) -> str:
     not-run — no PubBiasSuite artifact in the repo root, or it can't be parsed
               into a recognised verdict.
     warn    — PubBiasSuite reported strong/some evidence of publication bias.
+              (Tier-gating: caps the badge at Bronze.)
     pass    — PubBiasSuite reported little evidence of publication bias.
 
     Never returns 'fail': publication bias is informative, not a

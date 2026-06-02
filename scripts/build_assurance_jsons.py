@@ -359,9 +359,12 @@ def compute_tier(checks: dict) -> str:
     Bronze = citation_cascade != fail AND data_file_present == pass
              AND code_runs in (pass, not-run)
     Silver = Bronze + dashboard_match == pass AND claim_language == pass
+             AND publication_bias in (pass, not-run)
     Gold   = Silver + analysis_rerun == pass AND external_review == pass
     Any single 'fail' in a contributing check forces tier=none
-    (honest under-claiming is the safer error).
+    (honest under-claiming is the safer error). publication_bias never emits
+    'fail' (bias is informative, not a self-consistency failure); a 'warn'
+    caps the badge at Bronze.
     """
     if "fail" in checks.values():
         return "none"
@@ -376,6 +379,7 @@ def compute_tier(checks: dict) -> str:
     silver_ok = (
         checks.get("dashboard_match") == "pass"
         and checks.get("claim_language") == "pass"
+        and checks.get("publication_bias", "not-run") in PASS_OR_NOT_RUN
     )
     if not silver_ok:
         return "bronze"
@@ -539,9 +543,9 @@ def build_assurance_for(entry: dict) -> dict | None:
         "dashboard_match": dashboard_match,
         "analysis_rerun": analysis_rerun,
         "pdf_match": pdf_match,
-        # Advisory: machine-derived from a PubBiasSuite artifact when present.
-        # Does NOT gate the tier (compute_tier ignores it) — publication bias
-        # is informative, not a self-consistency failure.
+        # Machine-derived from a PubBiasSuite artifact when present. A 'warn'
+        # (strong/some evidence of bias) caps the badge at Bronze; it never
+        # emits 'fail' (bias is informative, not a self-consistency failure).
         "publication_bias": publication_bias,
         "external_review": "not-run",
     }
@@ -562,8 +566,8 @@ def build_assurance_for(entry: dict) -> dict | None:
         "evidence": evidence,
         "tier_rule": ("bronze = citation_cascade != fail AND data_file_present == pass "
                       "AND code_runs in (pass, not-run); silver = + dashboard_match == pass "
-                      "AND claim_language == pass; gold = + analysis_rerun == pass "
-                      "AND external_review == pass"),
+                      "AND claim_language == pass AND publication_bias in (pass, not-run); "
+                      "gold = + analysis_rerun == pass AND external_review == pass"),
         "issued_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "issued_by": ISSUED_BY,
         "version": SCHEMA_VERSION,
@@ -608,8 +612,7 @@ def build_assurance_here(repo: Path, name: str) -> dict:
         "dashboard_match": "not-run",
         "analysis_rerun": derive_analysis_rerun(repo),
         "pdf_match": derive_pdf_match(repo, ""),
-        # Advisory: machine-derived from a PubBiasSuite artifact when present;
-        # does NOT gate the tier.
+        # Machine-derived from a PubBiasSuite artifact; a 'warn' caps Silver.
         "publication_bias": derive_pub_bias(repo),
         "external_review": "not-run",
     }
@@ -627,8 +630,8 @@ def build_assurance_here(repo: Path, name: str) -> dict:
         "evidence": evidence,
         "tier_rule": ("bronze = citation_cascade != fail AND data_file_present == pass "
                       "AND code_runs in (pass, not-run); silver = + dashboard_match == pass "
-                      "AND claim_language == pass; gold = + analysis_rerun == pass "
-                      "AND external_review == pass"),
+                      "AND claim_language == pass AND publication_bias in (pass, not-run); "
+                      "gold = + analysis_rerun == pass AND external_review == pass"),
         "issued_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "issued_by": ISSUED_BY,
         "version": SCHEMA_VERSION,

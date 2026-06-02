@@ -126,7 +126,7 @@ Every e156 submission folder may contain an `assurance.json` file that drives th
     "overmind_bundle":   "path/to/<id>.json",
     "reviewer_note":     "optional free-text or path to a markdown attestation"
   },
-  "tier_rule": "bronze = (citation_cascade != fail) AND data_file_present == pass AND code_runs in (pass, not-run); silver = bronze + dashboard_match == pass AND claim_language == pass; gold = silver + analysis_rerun == pass AND external_review == pass",
+  "tier_rule": "bronze = (citation_cascade != fail) AND data_file_present == pass AND code_runs in (pass, not-run); silver = bronze + dashboard_match == pass AND claim_language == pass AND publication_bias in (pass, not-run); gold = silver + analysis_rerun == pass AND external_review == pass",
   "issued_at": "ISO-8601 timestamp",
   "issued_by": "operator email or agent ID",
   "version": 1
@@ -136,7 +136,7 @@ Every e156 submission folder may contain an `assurance.json` file that drives th
 ### Tier-derivation rules
 
 - **Bronze** requires the first four checks to pass (or be `not-run` only if `code_runs` is `not-run`).
-- **Silver** additionally requires `dashboard_match == pass` and `claim_language == pass`.
+- **Silver** additionally requires `dashboard_match == pass`, `claim_language == pass`, and `publication_bias in (pass, not-run)` (a publication-bias `warn` caps the badge at Bronze).
 - **Gold** additionally requires `analysis_rerun == pass` and `external_review == pass`.
 - Any single `fail` in a contributing check forces the tier to `none` regardless of other check states. Honest under-claiming is the safer error.
 
@@ -293,15 +293,16 @@ capsule version, and the DOI version agree.
   - `pubbias-verdict.txt` → the raw verdict string.
 
   `scripts/assurance/pub_bias.py` then maps it: *Strong/Some evidence* → `warn`,
-  *Little evidence* → `pass`, no artifact → `not-run`. This check is **advisory
-  only — it does not gate the tier**: publication bias is informative, not a
-  self-consistency failure, so it never emits `fail` and `compute_tier` ignores
-  it. Promoting it to a tier-affecting check (e.g. `warn` caps Silver) is a
-  future step that must update `compute_tier`, the Sentinel mirror
-  `assurance_badge_integrity.py`, and the `4^7` grid test in one commit. A
-  selenium-gated headless extractor (`extract_verdict_headless`) ships for a
-  future fully-automated path but is not wired into the pipeline (keeps it
-  browser-free).
+  *Little evidence* → `pass`, no artifact → `not-run`. This check is
+  **tier-gating: a `warn` caps the badge at Bronze** (Silver requires
+  `publication_bias in (pass, not-run)`). It never emits `fail` — publication
+  bias is informative, not a self-consistency failure, so it cannot force
+  tier=`none`. The tier logic lives in two places kept in lockstep
+  (`build_assurance_jsons.compute_tier` and the Sentinel mirror
+  `assurance_badge_integrity.py`), with the `4^n` grid contract test asserting
+  they never drift. A selenium-gated headless extractor
+  (`extract_verdict_headless`) ships for a future fully-automated path but is
+  not wired into the pipeline (keeps it browser-free).
 
 ## Provenance
 
