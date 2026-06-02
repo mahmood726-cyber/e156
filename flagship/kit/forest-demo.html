@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit forest — reference exemplar (SGLT2-HF)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif);
+        margin:0; padding:48px 24px; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:920px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em;
+            text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.6rem; font-weight:700; margin:6px 0 4px; letter-spacing:-.01em; }
+  .sub{ color:var(--c-ink-2); font-size:1rem; margin-bottom:28px; }
+  .figcard{ background:var(--c-paper); border:1px solid #ece9e3; border-radius:6px;
+            padding:20px 24px 14px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2);
+              line-height:1.5; margin-top:10px; border-top:1px solid var(--c-grid); padding-top:10px; }
+  svg{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderForest — NYT-grade exemplar</h1>
+  <p class="sub">Real SGLT2-inhibitor heart-failure data from the <code>sglt2-hf</code> capsule, drawn by the shared kit.</p>
+  <figure class="figcard">
+    <svg id="forest" aria-label="loading"></svg>
+    <figcaption id="cap"></figcaption>
+  </figure>
+</div>
+
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  // Real included trials from sglt2-hf-capsule.html (HR for HF-hospitalisation / CV death).
+  var trials = [
+    {label:'DAPA-HF (2019)',          hr:0.74, lo:0.65, hi:0.85},
+    {label:'EMPEROR-Reduced (2020)',  hr:0.75, lo:0.65, hi:0.86},
+    {label:'EMPEROR-Preserved (2021)',hr:0.79, lo:0.69, hi:0.90},
+    {label:'DELIVER (2022)',          hr:0.82, lo:0.73, hi:0.92},
+    {label:'SOLOIST-WHF (2021)',      hr:0.67, lo:0.52, hi:0.85}
+  ];
+  var Z = 1.959964;
+  // inverse-variance weights (for box area) from each CI — purely visual encoding
+  trials.forEach(function(t){
+    t.se = (Math.log(t.hi) - Math.log(t.lo)) / (2*Z);
+    t.w  = 1 / (t.se*t.se);
+  });
+
+  // Pooled estimate = the capsule's PUBLISHED random-effects value (REML/PM engine),
+  // NOT recomputed here (DL is biased for k<10 per house rules). PI computed illustratively.
+  var pooled = { est:0.77, lo:0.72, hi:0.83 };
+  var muRE = Math.log(pooled.est);
+  var seRE = (Math.log(pooled.hi) - Math.log(pooled.lo)) / (2*Z);
+  var I2 = 0.18;                                   // reported in the capsule
+  var sTyp = trials.map(function(t){return t.se*t.se;}).sort(function(a,b){return a-b;})[2]; // median within-var
+  var tau2 = I2/(1-I2) * sTyp;                     // back out tau^2 from I^2
+  var tdf = 2.776;                                 // t_{0.975, k-1=4}
+  var piHalf = tdf * Math.sqrt(tau2 + seRE*seRE);
+  pooled.pi_lo = Math.exp(muRE - piHalf);
+  pooled.pi_hi = Math.exp(muRE + piHalf);
+
+  var studies = trials.map(function(t){ return {label:t.label, est:t.hr, lo:t.lo, hi:t.hi, weight:t.w}; });
+
+  ChartKit.renderForest(document.getElementById('forest'), studies, {
+    measure:'HR', log:true, null:1, pooled:pooled, width:840,
+    claim:'SGLT2 inhibitors cut HF hospitalisation or CV death by 23%',
+    estimand:'Hazard ratio · random-effects (REML) · 5 RCTs, 71,553 patients',
+    favoursLow:'favours SGLT2i', favoursHigh:'favours placebo',
+    flag:{label:'SOLOIST-WHF (2021)', note:'smallest trial — widest CI, highest leverage'}
+  });
+
+  document.getElementById('cap').innerHTML =
+    'Pooled HR 0.77 (95% CI 0.72&ndash;0.83); 95% prediction interval ' +
+    pooled.pi_lo.toFixed(2) + '&ndash;' + pooled.pi_hi.toFixed(2) +
+    ' &mdash; benefit is consistent but the PI shows the plausible range for a new setting. ' +
+    'I&sup2;&nbsp;18%. Box area &prop; inverse-variance weight. Hover a row for detail.';
+})();
+</script>
+</body>
+</html>
