@@ -141,12 +141,32 @@
     var xn = sx(o.null);
     el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
 
-    // study rows
+    // study rows. Interactive mode: pass opts.onToggle(index, study) and each
+    // study's `included` flag — excluded studies render muted and rows become
+    // toggle buttons (click / Enter / Space), a superset of a display forest.
+    var interactive = typeof o.onToggle === 'function';
     studies.forEach(function (s, i) {
       var cy = yTop + i * o.rowH + o.rowH / 2;
-      var g = el('g', { tabindex: '0', role: 'listitem',
-        'aria-label': s.label + ': ' + o.measure + ' ' + fmt(s.est) + ' (' + fmt(s.lo) + ' to ' + fmt(s.hi) + '), weight ' + pct(s.weight) });
-      addTip(g, '<b>' + s.label + '</b><br>' + o.measure + ' ' + fmt(s.est) + ' (' + fmt(s.lo) + '–' + fmt(s.hi) + ')<br>weight ' + pct(s.weight));
+      var inc = s.included !== false;
+      var ga = { tabindex: '0', 'data-i': String(i) };
+      if (interactive) {
+        ga.role = 'button'; ga['aria-pressed'] = String(inc);
+        ga['aria-label'] = s.label + ': ' + o.measure + ' ' + fmt(s.est) + ' (' + fmt(s.lo) + ' to ' + fmt(s.hi) + '). ' +
+          (inc ? 'Included — activate to exclude.' : 'Excluded — activate to include.');
+      } else {
+        ga.role = 'listitem';
+        ga['aria-label'] = s.label + ': ' + o.measure + ' ' + fmt(s.est) + ' (' + fmt(s.lo) + ' to ' + fmt(s.hi) + '), weight ' + pct(s.weight);
+      }
+      var g = el('g', ga);
+      if (!inc) g.setAttribute('opacity', '0.36');
+      if (interactive) {
+        g.style.cursor = 'pointer';
+        g.addEventListener('click', function () { o.onToggle(i, s); });
+        g.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); o.onToggle(i, s); }
+        });
+      }
+      addTip(g, '<b>' + s.label + '</b><br>' + o.measure + ' ' + fmt(s.est) + ' (' + fmt(s.lo) + '–' + fmt(s.hi) + ')<br>weight ' + pct(s.weight) + (interactive ? '<br><i>' + (inc ? 'click to exclude' : 'click to include') + '</i>' : ''));
       txt(x0 - 10, cy + 3.5, s.label, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink, 'text-anchor': 'end' }, g);
       el('line', { x1: sx(s.lo), x2: sx(s.hi), y1: cy, y2: cy, stroke: C.ink, 'stroke-width': ntok('--whisker-w', 1.25) }, g);
       var sd = boxSide(s.weight);
