@@ -1,7 +1,7 @@
 """publication_bias check (advisory, opt-in per project).
 
 A fifth, machine-derived assurance signal sourced from the **PubBiasSuite**
-browser app (C:\\Projects\\pubbiassuite\\pub-bias-suite.html). PubBiasSuite runs
+browser app (the ``pubbiassuite`` repo's ``pub-bias-suite.html``). PubBiasSuite runs
 a 6+-method funnel-asymmetry / selection consensus (Egger, Begg, Peters,
 PET-PEESE, Trim-Fill, 3PSM, p-curve, p-uniform*, WAAP-WLS, limit-MA) entirely
 in client-side JavaScript and renders a 3-level Overall Verdict. Its engine is

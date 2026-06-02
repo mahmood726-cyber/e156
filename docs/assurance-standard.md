@@ -280,9 +280,9 @@ capsule version, and the DOI version agree.
   `realData` so directionality and certainty checks can reference them.
 - **PROSPERO**: a registered protocol id is recorded as a preregistration
   signal (an orthogonal practice badge, like COS "Preregistered").
-- **Publication bias** (`publication_bias`, *advisory — added 2026-06-02*): a
+- **Publication bias** (`publication_bias`, *added 2026-06-02*): a
   fifth, machine-derived signal sourced from the **PubBiasSuite** app
-  (`C:\Projects\pubbiassuite\pub-bias-suite.html`), which runs a 6+-method
+  (the `pubbiassuite` repo's `pub-bias-suite.html`), which runs a 6+-method
   funnel-asymmetry / selection consensus (Egger, Begg, Peters, PET-PEESE,
   Trim-Fill, 3PSM, p-curve, p-uniform*, WAAP-WLS, limit-MA) and renders a
   3-level verdict. The assurance pipeline does **not** re-derive these
