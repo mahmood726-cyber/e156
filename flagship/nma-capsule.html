@@ -877,10 +877,66 @@
     return renderForest(svgEl, studies, Object.assign({ measure: 'effect', rowH: 30 }, opts, { pooled: null }));
   }
 
+  /**
+   * renderRankogram(svgEl, items, opts) — NMA rank-probability matrix.
+   * items: [{ label, prob:[P(rank1)..P(rankT)], pBest, sucra }] (sorted best-first)
+   * opts: { claim, estimand }. Height-ONLY encoding (no opacity doubling).
+   */
+  function renderRankogram(svgEl, items, opts) {
+    opts = opts || {};
+    var T = items.length ? items[0].prob.length : 0;
+    var o = Object.assign({ width: 720, padL: 130, padR: 116, padT: 58, padB: 30, rowH: 36 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), bar: tok('--cat-1', '#0072B2') };
+    var W = o.width, x0 = o.padL, x1 = W - o.padR, yT = o.padT;
+    var H = yT + items.length * o.rowH + o.padB;
+    var cellW = (x1 - x0) / Math.max(1, T);
+    var barMax = o.rowH - 13;
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Rankogram. ' + (o.claim || '') + ' ' + items.length + ' treatments.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+
+    txt(20, 24, o.claim || 'Rank probabilities', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    txt(20, 43, o.estimand || 'P(rank) per treatment · rank 1 = best (left)', { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // rank column headers + faint separators
+    for (var r = 0; r < T; r++) {
+      var cxh = x0 + r * cellW + cellW / 2;
+      txt(cxh, yT - 6, String(r + 1), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
+      if (r > 0) el('line', { x1: x0 + r * cellW, x2: x0 + r * cellW, y1: yT, y2: yT + items.length * o.rowH, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+    }
+
+    items.forEach(function (it, i) {
+      var yBase = yT + i * o.rowH + o.rowH - 6;
+      txt(16, yT + i * o.rowH + o.rowH / 2 + 4, it.label, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink });
+      el('line', { x1: x0, x2: x1, y1: yBase, y2: yBase, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      it.prob.forEach(function (pr, r) {
+        var hgt = Math.max(0.4, pr * barMax), bx = x0 + r * cellW + 1.5;
+        var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': it.label + ' rank ' + (r + 1) + ': ' + (pr * 100).toFixed(1) + '%' });
+        g.addEventListener('mouseenter', function (e) { showTip(e, '<b>' + it.label + '</b><br>rank ' + (r + 1) + ': ' + (pr * 100).toFixed(1) + '%'); });
+        g.addEventListener('mousemove', moveTip); g.addEventListener('mouseleave', hideTip);
+        el('rect', { x: bx.toFixed(1), y: (yBase - hgt).toFixed(1), width: (cellW - 3).toFixed(1), height: hgt.toFixed(1), fill: C.bar, 'fill-opacity': '0.62' }, g);
+      });
+      if (it.pBest != null) txt(W - 6, yT + i * o.rowH + o.rowH / 2 + 4, 'P(best) ' + Math.round(it.pBest * 100) + '%', { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' });
+    });
+    el('line', { x1: x0, x2: x1, y1: yT, y2: yT, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
   global.ChartKit.renderRanking = renderRanking;
+  global.ChartKit.renderRankogram = renderRankogram;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
@@ -1209,7 +1265,15 @@ function rankPlotLegacy(res){
     `<text class="sucbadge" x="${W-12}" y="${y+13}" text-anchor="end">SUCRA ${(it.sucra*100).toFixed(0)}%</text>`;});
   svg.innerHTML=s;
 }
+/* CK:renderRankogram — delegates to ChartKit. Legacy below. */
 function rankogram(res){
+  var svg=document.getElementById('rankogram');if(!svg)return;
+  if(typeof ChartKit==='undefined'||!ChartKit.renderRankogram){return rankogramLegacy(res);}
+  if(!res){svg.innerHTML='<text x="12" y="24" class="nm">-</text>';return;}
+  var items=res.treats.map(function(t){return {label:t,prob:res.rankProb[t],pBest:res.pBest[t],sucra:res.sucra[t]};}).sort(function(a,b){return b.sucra-a.sucra;});
+  ChartKit.renderRankogram(svg,items,{claim:'Rank-probability distribution',estimand:'P(rank) across treatments · rank 1 = best'});
+}
+function rankogramLegacy(res){
   const svg=document.getElementById('rankogram');if(!svg)return;
   if(!res){svg.innerHTML='<text x="12" y="24" class="nm">—</text>';return;}
   const T=res.treats.length;

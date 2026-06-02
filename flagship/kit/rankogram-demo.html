@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit rankogram — reference exemplar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:820px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style></head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderRankogram — rank probabilities</h1>
+  <figure class="figcard"><svg id="rk"></svg><figcaption id="cap"></figcaption></figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  // P(rank) rows (each sums to 1), sorted best-first
+  var items=[
+    {label:'Drug A + B', prob:[0.62,0.26,0.08,0.03,0.01], pBest:0.62, sucra:0.88},
+    {label:'Drug A',     prob:[0.22,0.40,0.24,0.10,0.04], pBest:0.22, sucra:0.69},
+    {label:'Drug B',     prob:[0.10,0.22,0.38,0.22,0.08], pBest:0.10, sucra:0.55},
+    {label:'Drug C',     prob:[0.05,0.10,0.22,0.43,0.20], pBest:0.05, sucra:0.34},
+    {label:'Placebo',    prob:[0.01,0.02,0.08,0.22,0.67], pBest:0.01, sucra:0.14}
+  ];
+  ChartKit.renderRankogram(document.getElementById('rk'), items, {
+    claim:'Drug A + B is most likely the best treatment',
+    estimand:'P(rank) per treatment · rank 1 = best (left) · 5 treatments'
+  });
+  document.getElementById('cap').innerHTML =
+    'Each row is a treatment; each column is a rank (1 = best, at left). Bar height is the probability '+
+    'that the treatment holds that rank (height-only — no opacity doubling). P(best) is shown at right. '+
+    'Drug A + B holds rank 1 in 62% of draws.';
+})();
+</script>
+</body></html>
