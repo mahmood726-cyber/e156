@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit evidence network — reference exemplar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:620px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderNetwork — NMA evidence network</h1>
+  <figure class="figcard">
+    <svg id="net"></svg>
+    <figcaption id="cap"></figcaption>
+  </figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  var nodes=[
+    {id:'Placebo',label:'Placebo',n:9,isRef:true},
+    {id:'Drug A',label:'Drug A',n:6},
+    {id:'Drug B',label:'Drug B',n:5},
+    {id:'Drug A + B',label:'Drug A + B',n:3},
+    {id:'Drug C',label:'Drug C',n:4}
+  ];
+  var edges=[
+    {a:'Placebo',b:'Drug A',n:4},
+    {a:'Placebo',b:'Drug B',n:3},
+    {a:'Placebo',b:'Drug C',n:3},
+    {a:'Drug A',b:'Drug B',n:2},
+    {a:'Drug A',b:'Drug A + B',n:2},
+    {a:'Drug B',b:'Drug A + B',n:1},
+    {a:'Drug A',b:'Drug C',n:1}
+  ];
+  ChartKit.renderNetwork(document.getElementById('net'), nodes, edges, {
+    width:520, height:420,
+    claim:'Evidence network · 5 treatments',
+    estimand:'Node ∝ studies · edge ∝ direct trials · 11 studies'
+  });
+  document.getElementById('cap').innerHTML =
+    'Each node is a treatment (area &prop; number of studies); each edge is a direct head-to-head comparison '+
+    '(width &prop; number of trials). Placebo is the reference (heavier outline). Hover a node or edge for counts. '+
+    'Drug A + B is informed only indirectly through A and B.';
+})();
+</script>
+</body>
+</html>

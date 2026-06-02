@@ -538,8 +538,75 @@
     return svgEl;
   }
 
+  /**
+   * renderNetwork(svgEl, nodes, edges, opts) — NMA evidence network.
+   * nodes: [{ id, label, n, isRef }] ; edges: [{ a, b, n }] (a/b = node ids)
+   * opts: { claim, estimand }. Circular layout; node radius proportional to n,
+   * edge width proportional to #trials; direct node labels.
+   */
+  function renderNetwork(svgEl, nodes, edges, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 480, height: 400, padT: 56, margin: 64 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      edge: tok('--c-axis', '#c2c6cb'), node: tok('--seq-2', '#cfe0ec'), nodeStroke: tok('--cat-1', '#0072B2'), ref: tok('--c-estimate', '#1a1a1a') };
+    var W = o.width, H = o.height;
+    var cx = W / 2, cy = o.padT + (H - o.padT) / 2, R = Math.min(W, H - o.padT) / 2 - o.margin;
+    var T = nodes.length, pos = {};
+    nodes.forEach(function (nd, i) { var a = -Math.PI / 2 + i * 2 * Math.PI / T; pos[nd.id] = { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) }; });
+    var maxN = Math.max.apply(null, nodes.map(function (n) { return n.n || 1; })) || 1;
+    var maxE = Math.max.apply(null, edges.map(function (e) { return e.n || 1; })) || 1;
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Evidence network. ' + (o.claim || '') + ' ' + T + ' treatments, ' + edges.length + ' direct comparisons.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    function addTip(g, html) { g.addEventListener('mouseenter', function (e) { showTip(e, html); }); g.addEventListener('mousemove', moveTip); g.addEventListener('mouseleave', hideTip); g.addEventListener('focus', function (e) { showTip(e, html); }); g.addEventListener('blur', hideTip); }
+
+    txt(20, 24, o.claim || 'Evidence network', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // edges (width = #trials), drawn first (behind nodes)
+    edges.forEach(function (e) { var A = pos[e.a], B = pos[e.b]; if (!A || !B) return;
+      var ln = el('line', { x1: A.x, y1: A.y, x2: B.x, y2: B.y, stroke: C.edge, 'stroke-width': (1 + (e.n || 1) / maxE * 6).toFixed(1), 'stroke-linecap': 'round' });
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e.a + ' vs ' + e.b + ': ' + (e.n || 0) + ' trials' });
+      g.appendChild(ln); addTip(g, '<b>' + e.a + ' vs ' + e.b + '</b><br>' + (e.n || 0) + ' direct trial' + ((e.n || 0) === 1 ? '' : 's'));
+    });
+
+    // nodes (radius = study count), direct labels
+    nodes.forEach(function (nd) { var p = pos[nd.id]; var r = 13 + Math.sqrt((nd.n || 0) / maxN) * 15;
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': nd.label + (nd.isRef ? ' (reference)' : '') + ': ' + (nd.n || 0) + ' studies' });
+      addTip(g, '<b>' + nd.label + '</b>' + (nd.isRef ? ' (reference)' : '') + '<br>' + (nd.n || 0) + ' studies');
+      el('circle', { cx: p.x, cy: p.y, r: r, fill: C.node, stroke: nd.isRef ? C.ref : C.nodeStroke, 'stroke-width': nd.isRef ? '2.5' : '1.5' }, g);
+      var below = p.y > cy;
+      txt(p.x, p.y < o.padT + 40 || !below ? p.y - r - 6 : p.y + r + 14, nd.label + (nd.isRef ? ' (ref)' : ''),
+        { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink, 'text-anchor': 'middle' }, g);
+    });
+    return svgEl;
+  }
+
+  /**
+   * renderRanking(svgEl, items, opts) — NMA treatment ranking (forest + SUCRA).
+   * items: [{ label, est, lo, hi, sucra }] (effect vs reference); opts: { measure, log, null, claim, estimand }
+   */
+  function renderRanking(svgEl, items, opts) {
+    opts = opts || {};
+    var studies = items.map(function (it) {
+      return { label: it.label + (it.sucra != null ? ' · SUCRA ' + Math.round(it.sucra * 100) + '%' : ''), est: it.est, lo: it.lo, hi: it.hi, weight: 1, included: true };
+    });
+    return renderForest(svgEl, studies, Object.assign({ measure: 'effect', rowH: 30 }, opts, { pooled: null }));
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
+  global.ChartKit.renderNetwork = renderNetwork;
+  global.ChartKit.renderRanking = renderRanking;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
