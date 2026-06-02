@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit leave-one-out — reference exemplar (SGLT2-HF)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:820px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderLOO — leave-one-out stability</h1>
+  <figure class="figcard">
+    <svg id="loo"></svg>
+    <figcaption id="cap"></figcaption>
+  </figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  var Z=1.959964;
+  var trials=[
+    {label:'DAPA-HF (2019)',hr:0.74,lo:0.65,hi:0.85},
+    {label:'EMPEROR-Reduced (2020)',hr:0.75,lo:0.65,hi:0.86},
+    {label:'EMPEROR-Preserved (2021)',hr:0.79,lo:0.69,hi:0.90},
+    {label:'DELIVER (2022)',hr:0.82,lo:0.73,hi:0.92},
+    {label:'SOLOIST-WHF (2021)',hr:0.67,lo:0.52,hi:0.85}
+  ];
+  // DerSimonian–Laird random-effects pool of a subset (illustrative; capsule uses PM)
+  function pool(ts){
+    var y=ts.map(function(t){return Math.log(t.hr);});
+    var v=ts.map(function(t){return Math.pow((Math.log(t.hi)-Math.log(t.lo))/(2*Z),2);});
+    var w=v.map(function(vi){return 1/vi;}), sw=w.reduce(function(a,b){return a+b;},0);
+    var mFE=y.reduce(function(a,e,i){return a+w[i]*e;},0)/sw;
+    var Q=y.reduce(function(a,e,i){return a+w[i]*Math.pow(e-mFE,2);},0);
+    var C=sw-w.reduce(function(a,b){return a+b*b;},0)/sw;
+    var t2=Math.max(0,(Q-(ts.length-1))/C);
+    var wr=v.map(function(vi){return 1/(vi+t2);}), swr=wr.reduce(function(a,b){return a+b;},0);
+    var m=y.reduce(function(a,e,i){return a+wr[i]*e;},0)/swr, se=Math.sqrt(1/swr);
+    return {hr:Math.exp(m),lo:Math.exp(m-Z*se),hi:Math.exp(m+Z*se)};
+  }
+  var rows=trials.map(function(_,i){
+    var p=pool(trials.filter(function(__,j){return j!==i;}));
+    return {label:'– '+trials[i].label, est:p.hr, lo:p.lo, hi:p.hi};
+  });
+  var all=pool(trials);
+  var robust=rows.every(function(r){return r.hi<1;});
+  ChartKit.renderLOO(document.getElementById('loo'), rows, {
+    measure:'HR', log:true, null:1,
+    overall:{x:all.hr, label:'overall '+all.hr.toFixed(2)},
+    claim: robust?'Robust: dropping any one trial keeps the benefit significant':'Sensitive: one trial flips significance',
+    estimand:'Pooled HR omitting each trial · 5 RCTs'
+  });
+  document.getElementById('cap').innerHTML =
+    'Each row is the pooled HR with that trial removed. The dashed grey line is the null (HR&nbsp;1); '+
+    'the italic line is the overall estimate ('+all.hr.toFixed(2)+'). All leave-one-out intervals stay below 1, '+
+    'so no single trial drives the result. Hover a row for detail.';
+})();
+</script>
+</body>
+</html>

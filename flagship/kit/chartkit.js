@@ -88,6 +88,7 @@
     var all = [];
     studies.forEach(function (s) { all.push(s.lo, s.hi); });
     if (o.pooled) all.push(o.pooled.lo, o.pooled.hi, o.pooled.pi_lo, o.pooled.pi_hi);
+    if (o.refLine && o.refLine.x != null) all.push(o.refLine.x);
     all.push(o.null);
     all = all.filter(function (v) { return v != null && isFinite(v) && (!o.log || v > 0); }).map(tx);
     var dmin = Math.min.apply(null, all), dmax = Math.max.apply(null, all);
@@ -141,6 +142,15 @@
     // null reference (dashed, eye-distinct)
     var xn = sx(o.null);
     el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+    // optional secondary reference line (e.g. overall pooled, for LOO / cumulative)
+    if (o.refLine && o.refLine.x != null) {
+      var rx = sx(o.refLine.x);
+      el('line', { x1: rx, x2: rx, y1: yTop, y2: yBot, stroke: C.est, 'stroke-width': '1', 'stroke-dasharray': '2 3', opacity: '0.5' });
+      if (o.refLine.label) {
+        var rl = txt(rx, yTop - 5, o.refLine.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot, 'text-anchor': 'middle' });
+        rl.setAttribute('font-style', 'italic');
+      }
+    }
 
     // study rows. Interactive mode: pass opts.onToggle(index, study) and each
     // study's `included` flag — excluded studies render muted and rows become
@@ -317,8 +327,23 @@
     return svgEl;
   }
 
+  /**
+   * renderLOO(svgEl, rows, opts) — leave-one-out (or cumulative) stability forest.
+   * rows: [{ label, est, lo, hi }] ; opts: { measure, log, null, overall:{x,label}, claim, estimand }
+   * A thin specialisation of renderForest: uniform markers, a null line, and a
+   * secondary reference line at the overall pooled estimate.
+   */
+  function renderLOO(svgEl, rows, opts) {
+    opts = opts || {};
+    var studies = rows.map(function (r) { return { label: r.label, est: r.est, lo: r.lo, hi: r.hi, weight: 1, included: true }; });
+    return renderForest(svgEl, studies, Object.assign({ measure: 'effect', rowH: 24 }, opts, {
+      pooled: null, refLine: opts.overall
+    }));
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderFunnel = renderFunnel;
+  global.ChartKit.renderLOO = renderLOO;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);

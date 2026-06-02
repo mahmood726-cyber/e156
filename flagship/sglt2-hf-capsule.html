@@ -726,6 +726,7 @@ WHERE s.study_type = 'INTERVENTIONAL'
     var all = [];
     studies.forEach(function (s) { all.push(s.lo, s.hi); });
     if (o.pooled) all.push(o.pooled.lo, o.pooled.hi, o.pooled.pi_lo, o.pooled.pi_hi);
+    if (o.refLine && o.refLine.x != null) all.push(o.refLine.x);
     all.push(o.null);
     all = all.filter(function (v) { return v != null && isFinite(v) && (!o.log || v > 0); }).map(tx);
     var dmin = Math.min.apply(null, all), dmax = Math.max.apply(null, all);
@@ -779,6 +780,15 @@ WHERE s.study_type = 'INTERVENTIONAL'
     // null reference (dashed, eye-distinct)
     var xn = sx(o.null);
     el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+    // optional secondary reference line (e.g. overall pooled, for LOO / cumulative)
+    if (o.refLine && o.refLine.x != null) {
+      var rx = sx(o.refLine.x);
+      el('line', { x1: rx, x2: rx, y1: yTop, y2: yBot, stroke: C.est, 'stroke-width': '1', 'stroke-dasharray': '2 3', opacity: '0.5' });
+      if (o.refLine.label) {
+        var rl = txt(rx, yTop - 5, o.refLine.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot, 'text-anchor': 'middle' });
+        rl.setAttribute('font-style', 'italic');
+      }
+    }
 
     // study rows. Interactive mode: pass opts.onToggle(index, study) and each
     // study's `included` flag — excluded studies render muted and rows become
@@ -955,9 +965,24 @@ WHERE s.study_type = 'INTERVENTIONAL'
     return svgEl;
   }
 
+  /**
+   * renderLOO(svgEl, rows, opts) — leave-one-out (or cumulative) stability forest.
+   * rows: [{ label, est, lo, hi }] ; opts: { measure, log, null, overall:{x,label}, claim, estimand }
+   * A thin specialisation of renderForest: uniform markers, a null line, and a
+   * secondary reference line at the overall pooled estimate.
+   */
+  function renderLOO(svgEl, rows, opts) {
+    opts = opts || {};
+    var studies = rows.map(function (r) { return { label: r.label, est: r.est, lo: r.lo, hi: r.hi, weight: 1, included: true }; });
+    return renderForest(svgEl, studies, Object.assign({ measure: 'effect', rowH: 24 }, opts, {
+      pooled: null, refLine: opts.overall
+    }));
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderFunnel = renderFunnel;
+  global.ChartKit.renderLOO = renderLOO;
   global.ChartKit.niceForestTicks = niceForestTicks;
 })(window);
 
@@ -1295,7 +1320,21 @@ function renderRob(){
 }
 function badgeCounts(){const inc=model.filter(t=>t.inc&&valid(t)).length;document.getElementById('badgeN').textContent=inc+' RCTs';document.getElementById('prismaIncl').innerHTML=inc+' ✓';}
 
+/* CK:renderLOO — delegates to ChartKit. Legacy below. */
 function renderLOO(){
+  var svg=document.getElementById('loosvg');
+  if(typeof ChartKit==='undefined'||!ChartKit.renderLOO){return renderLOOLegacy();}
+  var inc=model.filter(function(t){return t.inc&&valid(t);});
+  if(inc.length<3){svg.innerHTML='<text x="10" y="22" class="yr">need ≥3 included studies</text>';return;}
+  var rows=inc.map(function(o){var p=pooledSub(inc.filter(function(t){return t!==o;}));return p?{label:'– '+o.name,est:p.hr,lo:p.lo,hi:p.hi}:null;}).filter(Boolean);
+  var all=pooledSub(inc);
+  var robust=rows.every(function(r){return r.hi<1;});
+  ChartKit.renderLOO(svg,rows,{measure:'HR',log:true,null:1,
+    overall:all?{x:all.hr,label:'overall '+f(all.hr)}:null,
+    claim:robust?'Robust: dropping any one trial keeps the benefit significant':'Sensitive: one trial flips significance',
+    estimand:'Pooled HR omitting each trial · '+rows.length+' RCTs'});
+}
+function renderLOOLegacy(){
   const svg=document.getElementById('loosvg');const inc=model.filter(t=>t.inc&&valid(t));
   if(inc.length<3){svg.innerHTML='<text x="10" y="22" class="yr">need ≥3 included studies</text>';return;}
   const rows=inc.map(o=>{const p=pooledSub(inc.filter(t=>t!==o));return p?{name:o.name,...p}:null;}).filter(Boolean);
