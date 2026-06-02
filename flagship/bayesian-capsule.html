@@ -1204,7 +1204,7 @@ function renderPost(res){
   var pben=sa>0?Math.round(sb/sa*100):null;
   var data={grid:res.muG,density:res.pMu,cri:{lo:res.muLo,hi:res.muHi},median:res.muMed};
   ChartKit.renderDensity(svg,data,{log:true,"null":0,measure:'OR',xlabel:'odds ratio (log scale)',width:460,
-    claim:'Posterior OR '+Math.exp(res.muMed).toFixed(2)+' (95% CrI '+Math.exp(res.muLo).toFixed(2)+'-'+Math.exp(res.muHi).toFixed(2)+')'+,
+    claim:'Posterior OR '+Math.exp(res.muMed).toFixed(2)+' (95% CrI '+Math.exp(res.muLo).toFixed(2)+'-'+Math.exp(res.muHi).toFixed(2)+')',
     estimand:'Posterior of the pooled effect'+(pben!=null?' · P(benefit) '+pben+'%':'')+' · 95% CrI shaded'});
 }
 function renderPostLegacy(res){
