@@ -280,6 +280,28 @@ capsule version, and the DOI version agree.
   `realData` so directionality and certainty checks can reference them.
 - **PROSPERO**: a registered protocol id is recorded as a preregistration
   signal (an orthogonal practice badge, like COS "Preregistered").
+- **Publication bias** (`publication_bias`, *advisory — added 2026-06-02*): a
+  fifth, machine-derived signal sourced from the **PubBiasSuite** app
+  (`C:\Projects\pubbiassuite\pub-bias-suite.html`), which runs a 6+-method
+  funnel-asymmetry / selection consensus (Egger, Begg, Peters, PET-PEESE,
+  Trim-Fill, 3PSM, p-curve, p-uniform*, WAAP-WLS, limit-MA) and renders a
+  3-level verdict. The assurance pipeline does **not** re-derive these
+  statistics (re-implementing six estimators in Python would be a fresh
+  correctness liability); instead the capsule author runs the audited app once
+  on the capsule's effect/SE data and drops the result in the repo root:
+  - `pubbias.json` → `{"verdict": "<PubBiasSuite verdict text or strong|some|little>"}` *(preferred)*, **or**
+  - `pubbias-verdict.txt` → the raw verdict string.
+
+  `scripts/assurance/pub_bias.py` then maps it: *Strong/Some evidence* → `warn`,
+  *Little evidence* → `pass`, no artifact → `not-run`. This check is **advisory
+  only — it does not gate the tier**: publication bias is informative, not a
+  self-consistency failure, so it never emits `fail` and `compute_tier` ignores
+  it. Promoting it to a tier-affecting check (e.g. `warn` caps Silver) is a
+  future step that must update `compute_tier`, the Sentinel mirror
+  `assurance_badge_integrity.py`, and the `4^7` grid test in one commit. A
+  selenium-gated headless extractor (`extract_verdict_headless`) ships for a
+  future fully-automated path but is not wired into the pipeline (keeps it
+  browser-free).
 
 ## Provenance
 

@@ -227,3 +227,67 @@ def test_existing_badges_are_self_consistent():
         "assurance.json tier disagrees with its own checks (forged or stale "
         "badge):\n" + "\n".join(mismatches)
     )
+
+
+# ---------------------------------------------------------------------------
+# publication_bias advisory check (PubBiasSuite artifact -> assurance status)
+# ---------------------------------------------------------------------------
+
+import importlib.util as _ilu  # noqa: E402
+
+_PB = _ilu.spec_from_file_location(
+    "pub_bias", str(ROOT / "scripts" / "assurance" / "pub_bias.py"))
+pub_bias = _ilu.module_from_spec(_PB)
+_PB.loader.exec_module(pub_bias)
+
+
+def test_classify_verdict_against_exact_pubbiassuite_literals():
+    # The three literals are copied from pub-bias-suite.html (~line 2149-2155).
+    # If PubBiasSuite changes its wording, this test must be updated in lockstep.
+    strong = "Strong evidence of publication bias. Multiple methods indicate funnel asymmetry."
+    some = "Some evidence of publication bias. At least one method flags concern."
+    little = "Little evidence of publication bias across methods. The pooled estimate appears robust."
+    assert pub_bias.classify_verdict(strong) == ("warn", "strong")
+    assert pub_bias.classify_verdict(some) == ("warn", "some")
+    assert pub_bias.classify_verdict(little) == ("pass", "little")
+    # Empty / unrecognised -> not-run (fail-closed, never fabricates a verdict).
+    assert pub_bias.classify_verdict("") == ("not-run", None)
+    assert pub_bias.classify_verdict(None) == ("not-run", None)
+    assert pub_bias.classify_verdict("totally unrelated text") == ("not-run", None)
+    # Short labels also accepted.
+    assert pub_bias.classify_verdict("strong")[0] == "warn"
+    assert pub_bias.classify_verdict("little")[0] == "pass"
+
+
+def test_pub_bias_never_emits_fail():
+    # Publication bias is advisory: it must never return 'fail' (which would
+    # force tier=none via compute_tier's blanket fail check).
+    for v in ("Strong evidence of publication bias.", "Some evidence of publication bias.",
+              "Little evidence of publication bias.", "", "garbage", "confirmed", "clean"):
+        assert pub_bias.classify_verdict(v)[0] in ("pass", "warn", "not-run")
+
+
+def test_derive_pub_bias_reads_sidecar(tmp_path):
+    # No artifact -> not-run.
+    assert pub_bias.derive_pub_bias(tmp_path) == "not-run"
+    # pubbias.json with a strong verdict -> warn.
+    (tmp_path / "pubbias.json").write_text(
+        json.dumps({"verdict": "Strong evidence of publication bias."}), encoding="utf-8")
+    assert pub_bias.derive_pub_bias(tmp_path) == "warn"
+    # pubbias-verdict.txt takes effect too (remove json first).
+    (tmp_path / "pubbias.json").unlink()
+    (tmp_path / "pubbias-verdict.txt").write_text(
+        "Little evidence of publication bias across methods.", encoding="utf-8")
+    assert pub_bias.derive_pub_bias(tmp_path) == "pass"
+
+
+def test_publication_bias_is_advisory_not_tier_gating(tmp_path):
+    # A capsule with data + a 'strong' publication-bias artifact still earns
+    # Bronze: the advisory check is recorded but compute_tier ignores it.
+    (tmp_path / "paper.json").write_text(json.dumps({"b": "x"}) + " " * 2000, encoding="utf-8")
+    (tmp_path / "pubbias.json").write_text(
+        json.dumps({"verdict": "Strong evidence of publication bias."}), encoding="utf-8")
+    blob = baj.build_assurance_here(tmp_path, "demo")
+    assert blob["checks"]["publication_bias"] == "warn"
+    assert "fail" not in blob["checks"].values()
+    assert blob["tier"] == "bronze"  # warn on publication_bias did NOT zero the tier

@@ -514,6 +514,7 @@ def build_assurance_for(entry: dict) -> dict | None:
     try:
         from scripts.assurance.rerun_analysis import derive_analysis_rerun  # type: ignore
         from scripts.assurance.pdf_match import derive_pdf_match  # type: ignore
+        from scripts.assurance.pub_bias import derive_pub_bias  # type: ignore
     except ImportError:
         # Fallback: import via path (script-relative)
         import importlib.util as _ilu
@@ -524,10 +525,13 @@ def build_assurance_for(entry: dict) -> dict | None:
             return mod
         _ra = _load("rerun_analysis", _here / "assurance" / "rerun_analysis.py")
         _pm = _load("pdf_match", _here / "assurance" / "pdf_match.py")
+        _pb = _load("pub_bias", _here / "assurance" / "pub_bias.py")
         derive_analysis_rerun = _ra.derive_analysis_rerun
         derive_pdf_match = _pm.derive_pdf_match
+        derive_pub_bias = _pb.derive_pub_bias
     analysis_rerun = derive_analysis_rerun(local) if local else "not-run"
     pdf_match = derive_pdf_match(local, entry.get("body") or "") if local else "not-run"
+    publication_bias = derive_pub_bias(local) if local else "not-run"
     all_checks = {
         **sent_checks,
         "data_file_present": overmind_checks["data_file_present"],
@@ -535,6 +539,10 @@ def build_assurance_for(entry: dict) -> dict | None:
         "dashboard_match": dashboard_match,
         "analysis_rerun": analysis_rerun,
         "pdf_match": pdf_match,
+        # Advisory: machine-derived from a PubBiasSuite artifact when present.
+        # Does NOT gate the tier (compute_tier ignores it) — publication bias
+        # is informative, not a self-consistency failure.
+        "publication_bias": publication_bias,
         "external_review": "not-run",
     }
     tier = compute_tier(all_checks)
@@ -589,6 +597,9 @@ def build_assurance_here(repo: Path, name: str) -> dict:
 
         derive_analysis_rerun = _load("rerun_analysis", _here / "assurance" / "rerun_analysis.py").derive_analysis_rerun
         derive_pdf_match = _load("pdf_match", _here / "assurance" / "pdf_match.py").derive_pdf_match
+        derive_pub_bias = _load("pub_bias", _here / "assurance" / "pub_bias.py").derive_pub_bias
+    else:
+        from scripts.assurance.pub_bias import derive_pub_bias  # type: ignore
 
     all_checks = {
         **sent_checks,
@@ -597,6 +608,9 @@ def build_assurance_here(repo: Path, name: str) -> dict:
         "dashboard_match": "not-run",
         "analysis_rerun": derive_analysis_rerun(repo),
         "pdf_match": derive_pdf_match(repo, ""),
+        # Advisory: machine-derived from a PubBiasSuite artifact when present;
+        # does NOT gate the tier.
+        "publication_bias": derive_pub_bias(repo),
         "external_review": "not-run",
     }
     tier = compute_tier(all_checks)
