@@ -164,10 +164,17 @@ def extract_verdict_headless(app_html: Path, csv_text: str, timeout: int = 60) -
         csv_el = wait.until(EC.presence_of_element_located((By.ID, "csvInput")))
         csv_el.clear()
         csv_el.send_keys(csv_text)
-        driver.find_element(By.ID, "btnParseCsv").click()
-        driver.find_element(By.ID, "btnRunAll").click()
-        wait.until(lambda d: "evidence" in d.find_element(By.ID, "verdictText").text.lower())
-        return driver.find_element(By.ID, "verdictText").text
+        driver.execute_script(
+            "arguments[0].click()", driver.find_element(By.ID, "btnParseCsv"))
+        driver.execute_script(
+            "arguments[0].click()", driver.find_element(By.ID, "btnRunAll"))
+        # The verdict lives on a tab panel that may be inactive (hidden) in
+        # headless mode, so element.text returns ''. Read textContent via the
+        # DOM, which is populated regardless of visibility.
+        def _verdict(d):
+            return (d.find_element(By.ID, "verdictText").get_attribute("textContent") or "")
+        wait.until(lambda d: "evidence" in _verdict(d).lower())
+        return _verdict(driver).strip()
     except Exception:
         return None
     finally:
