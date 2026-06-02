@@ -658,11 +658,90 @@
     return svgEl;
   }
 
+  /**
+   * renderSROC(svgEl, data, opts) — summary ROC for diagnostic test accuracy.
+   * data: { studies:[{fpr,se,N}], curve:[{fpr,tpr}], confEllipse:[{fpr,se}]|null,
+   *         predEllipse:[{fpr,se}]|null, summary:{se,sp},
+   *         marginalCI:{seLo,seHi,spLo,spHi}|null }
+   * opts: { claim, estimand }
+   */
+  function renderSROC(svgEl, data, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 400, height: 400, padL: 52, padR: 18, padT: 58, padB: 46 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), curve: tok('--cat-1', '#0072B2'),
+      conf: tok('--c-estimate', '#1a1a1a'), pred: tok('--c-annot', '#7a8086'), pt: tok('--cat-1', '#0072B2'), sum: tok('--c-estimate', '#1a1a1a') };
+    var W = o.width, H = o.height, x0 = o.padL, yB = H - o.padB;
+    var plot = Math.min(W - o.padR - x0, yB - o.padT);
+    var x1 = x0 + plot, yT = yB - plot;
+    var X = function (fpr) { return x0 + fpr * plot; }, Y = function (se) { return yB - se * plot; };
+    var path = function (pts, mapy) { return pts.map(function (p) { return X(p.fpr).toFixed(1) + ',' + Y(mapy ? p[mapy] : p.se).toFixed(1); }).join(' '); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Summary ROC. ' + (o.claim || '') + ' ' + data.studies.length + ' studies.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+
+    txt(20, 24, o.claim || 'Summary ROC', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // grid + ticks + diagonal + axis box
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (g) {
+      el('line', { x1: X(g), x2: X(g), y1: yT, y2: yB, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      el('line', { x1: x0, x2: x1, y1: Y(g), y2: Y(g), stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(X(g), yB + 15, g.toFixed(2), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
+      txt(x0 - 7, Y(g) + 3, g.toFixed(2), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' });
+    });
+    el('line', { x1: X(0), y1: Y(0), x2: X(1), y2: Y(1), stroke: C.grid, 'stroke-width': '1', 'stroke-dasharray': '3 3' });
+    txt((x0 + x1) / 2, yB + 34, '1 − specificity (FPR)', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yt = txt(15, (yT + yB) / 2, 'sensitivity', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yt.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
+
+    // prediction ellipse (dashed) BEHIND, confidence ellipse (solid)
+    if (data.predEllipse) el('polygon', { points: path(data.predEllipse), fill: 'none', stroke: C.pred, 'stroke-width': '1.25', 'stroke-dasharray': '4 3' });
+    if (data.confEllipse) el('polygon', { points: path(data.confEllipse), fill: 'none', stroke: C.conf, 'stroke-width': '1.5' });
+
+    // SROC curve
+    if (data.curve) el('polyline', { points: path(data.curve, 'tpr'), fill: 'none', stroke: C.curve, 'stroke-width': '2' });
+
+    // study points (sized by N)
+    var maxN = Math.max.apply(null, data.studies.map(function (s) { return s.N || 1; })) || 1;
+    data.studies.forEach(function (st) { var r = 3 + Math.sqrt((st.N || 1) / maxN) * 7;
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': 'study: Se ' + (st.se * 100).toFixed(0) + '%, Sp ' + ((1 - st.fpr) * 100).toFixed(0) + '%, n=' + (st.N || 0) });
+      g.addEventListener('mouseenter', function (e) { showTip(e, 'Se ' + (st.se * 100).toFixed(0) + '% · Sp ' + ((1 - st.fpr) * 100).toFixed(0) + '%<br>n=' + (st.N || 0)); });
+      g.addEventListener('mousemove', moveTip); g.addEventListener('mouseleave', hideTip);
+      el('circle', { cx: X(st.fpr), cy: Y(st.se), r: r, fill: C.pt, 'fill-opacity': '0.5', stroke: C.pt, 'stroke-width': '1' }, g);
+    });
+    // marginal CI cross (only when no ellipse)
+    if (data.marginalCI && !data.confEllipse) { var m = data.marginalCI, sx = X(1 - data.summary.sp), sy = Y(data.summary.se);
+      el('line', { x1: X(1 - m.spHi), x2: X(1 - m.spLo), y1: sy, y2: sy, stroke: C.sum, 'stroke-width': '1.25' });
+      el('line', { x1: sx, x2: sx, y1: Y(m.seLo), y2: Y(m.seHi), stroke: C.sum, 'stroke-width': '1.25' });
+    }
+    // summary operating point (diamond)
+    var ssx = X(1 - data.summary.sp), ssy = Y(data.summary.se), dh = 6;
+    el('polygon', { points: (ssx - dh) + ',' + ssy + ' ' + ssx + ',' + (ssy - dh) + ' ' + (ssx + dh) + ',' + ssy + ' ' + ssx + ',' + (ssy + dh), fill: C.sum });
+
+    // in-plot legend (bottom-right inside the unit square)
+    var lx = x1 - 96, lyy = yB - 30;
+    if (data.confEllipse) { el('line', { x1: lx, x2: lx + 18, y1: lyy, y2: lyy, stroke: C.conf, 'stroke-width': '1.5' }); txt(lx + 23, lyy + 3.5, '95% CI', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2 }); }
+    if (data.predEllipse) { el('line', { x1: lx, x2: lx + 18, y1: lyy + 14, y2: lyy + 14, stroke: C.pred, 'stroke-width': '1.25', 'stroke-dasharray': '4 3' }); txt(lx + 23, lyy + 17.5, '95% PI', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2 }); }
+
+    el('rect', { x: x0, y: yT, width: plot, height: plot, fill: 'none', stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
   global.ChartKit.renderRanking = renderRanking;
   global.ChartKit.renderRankogram = renderRankogram;
+  global.ChartKit.renderSROC = renderSROC;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
