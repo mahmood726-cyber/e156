@@ -841,9 +841,11 @@
   }
 
   /**
-   * renderKM(svgEl, data, opts) — survival (RMST) curves.
-   * data: { control:[{t,s}], treatment:[{t,s}], tau, rmst:{control,treatment,diff}|null }
-   * opts: { claim, estimand, timeLabel }. The area between the curves is the RMST gain.
+   * renderKM(svgEl, data, opts) — survival curves (RMST schematic or real KM).
+   * data: { control:[{t,s}], treatment:[{t,s}], tau, rmst:{control,treatment,diff}|null,
+   *         censored:{control:[{t,s}],treatment:[{t,s}]}|null, median:{control,treatment}|null }
+   * opts: { claim, estimand, timeLabel, step (true = KM step function),
+   *         area (false = suppress RMST fill), annotation (top-right text, e.g. HR + p) }
    */
   function renderKM(svgEl, data, opts) {
     opts = opts || {};
@@ -855,6 +857,14 @@
     var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB, tau = data.tau || 1;
     var X = function (t) { return x0 + t / tau * (x1 - x0); }, Y = function (s) { return yB - s * (yB - yT); };
     var pts = function (arr) { return arr.map(function (p) { return X(p.t).toFixed(1) + ',' + Y(p.s).toFixed(1); }).join(' '); };
+    // path 'd' for a curve — true step function (KM) when opts.step, else straight segments (schematic)
+    var curveD = function (arr) {
+      return arr.map(function (p, i) {
+        if (i === 0) return 'M ' + X(p.t).toFixed(1) + ' ' + Y(p.s).toFixed(1);
+        if (o.step) return 'L ' + X(p.t).toFixed(1) + ' ' + Y(arr[i - 1].s).toFixed(1) + ' L ' + X(p.t).toFixed(1) + ' ' + Y(p.s).toFixed(1);
+        return 'L ' + X(p.t).toFixed(1) + ' ' + Y(p.s).toFixed(1);
+      }).join(' ');
+    };
 
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
@@ -876,21 +886,36 @@
     txt((x0 + x1) / 2, yB + 33, o.timeLabel || 'time (to τ*)', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
     var yt = txt(15, (yT + yB) / 2, 'survival', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yt.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
 
-    // RMST area (between treatment[top] and control[bottom])
     if (data.control && data.treatment) {
-      var area = pts(data.treatment).split(' ').map(function (p, i) { return (i === 0 ? 'M ' : 'L ') + p; }).join(' ');
-      var rev = data.control.slice().reverse();
-      area += ' ' + rev.map(function (p) { return 'L ' + X(p.t).toFixed(1) + ',' + Y(p.s).toFixed(1); }).join(' ') + ' Z';
-      el('path', { d: area, fill: C.area, 'fill-opacity': '0.6' });
-      el('polyline', { points: pts(data.control), fill: 'none', stroke: C.control, 'stroke-width': '1.75' });
-      el('polyline', { points: pts(data.treatment), fill: 'none', stroke: C.treatment, 'stroke-width': '2' });
+      // RMST area (between treatment[top] and control[bottom]) — opts.area=false suppresses it
+      if (o.area !== false) {
+        var area = pts(data.treatment).split(' ').map(function (p, i) { return (i === 0 ? 'M ' : 'L ') + p; }).join(' ');
+        var rev = data.control.slice().reverse();
+        area += ' ' + rev.map(function (p) { return 'L ' + X(p.t).toFixed(1) + ',' + Y(p.s).toFixed(1); }).join(' ') + ' Z';
+        el('path', { d: area, fill: C.area, 'fill-opacity': '0.6' });
+      }
+      el('path', { d: curveD(data.control), fill: 'none', stroke: C.control, 'stroke-width': '1.75' });
+      el('path', { d: curveD(data.treatment), fill: 'none', stroke: C.treatment, 'stroke-width': '2' });
+      // median guide lines (vertical, from S=0.5 down) when provided
+      if (data.median) {
+        [['control', C.control], ['treatment', C.treatment]].forEach(function (pr) {
+          var mt = data.median[pr[0]];
+          if (mt != null && isFinite(mt)) el('line', { x1: X(mt), x2: X(mt), y1: Y(0.5), y2: Y(0), stroke: pr[1], 'stroke-width': '1', 'stroke-dasharray': '2 3', opacity: '0.6' });
+        });
+      }
+      // censoring ticks when provided
+      if (data.censored) {
+        (data.censored.control || []).forEach(function (c) { el('line', { x1: X(c.t), x2: X(c.t), y1: Y(c.s) - 3, y2: Y(c.s) + 3, stroke: C.control, 'stroke-width': '1' }); });
+        (data.censored.treatment || []).forEach(function (c) { el('line', { x1: X(c.t), x2: X(c.t), y1: Y(c.s) - 3, y2: Y(c.s) + 3, stroke: C.treatment, 'stroke-width': '1' }); });
+      }
       // direct end labels
       var te = data.treatment[data.treatment.length - 1], ce = data.control[data.control.length - 1];
       txt(X(te.t) + 6, Y(te.s) + 3, 'treatment', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.treatment });
       txt(X(ce.t) + 6, Y(ce.s) + 3, 'control', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.control });
     }
-    // RMST annotation
-    if (data.rmst) txt(x1 - 4, yT + 14, 'ΔRMST ' + data.rmst.diff.toFixed(1), { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.treatment, 'text-anchor': 'end' });
+    // top-right annotation: custom (opts.annotation, e.g. HR + logrank p) else ΔRMST
+    if (o.annotation) txt(x1 - 4, yT + 14, o.annotation, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.treatment, 'text-anchor': 'end' });
+    else if (data.rmst) txt(x1 - 4, yT + 14, 'ΔRMST ' + data.rmst.diff.toFixed(1), { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.treatment, 'text-anchor': 'end' });
 
     el('rect', { x: x0, y: yT, width: (x1 - x0), height: (yB - yT), fill: 'none', stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
     return svgEl;
