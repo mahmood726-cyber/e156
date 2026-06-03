@@ -1140,6 +1140,72 @@
     return svgEl;
   }
 
+  /**
+   * renderLovePlot(svgEl, rows, opts) — covariate-balance love plot.
+   * rows: [{ label, before, after }] (SMDs; plotted as |value| when opts.abs)
+   * opts: { threshold (default 0.1), abs (default true), xLabel, claim, estimand }
+   */
+  function renderLovePlot(svgEl, rows, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 520, padL: 150, padR: 96, padT: 58, padB: 42, rowH: 30, threshold: 0.1, abs: true }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'),
+      before: tok('--c-ink-2', '#555a5f'), after: tok('--cat-1', '#0072B2'), bad: tok('--c-against', '#D55E00'), warn: tok('--c-verdict-warn', '#E69F00') };
+    var n = rows.length, W = o.width, x0 = o.padL, x1 = W - o.padR, yT = o.padT;
+    var plotH = n * o.rowH, yB = yT + plotH, H = yB + o.padB;
+    var th = o.threshold;
+    var V = function (v) { return o.abs ? Math.abs(v) : v; };
+    var allv = []; rows.forEach(function (r) { allv.push(V(r.before), V(r.after)); }); allv.push(th, o.abs ? 0 : -th);
+    var dmax = Math.max.apply(null, allv) * 1.12 || 1, dmin = o.abs ? 0 : -dmax;
+    var sx = function (v) { return x0 + (v - dmin) / (dmax - dmin) * (x1 - x0); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Covariate balance love plot. ' + (o.claim || '') + ' ' + n + ' covariates.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    function addTip(g, html) {
+      g.addEventListener('mouseenter', function (e) { showTip(e, html); }); g.addEventListener('mousemove', moveTip);
+      g.addEventListener('mouseleave', hideTip); g.addEventListener('focus', function (e) { showTip(e, html); }); g.addEventListener('blur', hideTip);
+    }
+
+    txt(x0 - 120 < 0 ? 8 : x0 - 120, 24, o.claim || 'Covariate balance', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(x0 - 120 < 0 ? 8 : x0 - 120, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // x gridlines + ticks
+    niceForestTicks(dmin, dmax, false).forEach(function (v) { if (v < dmin || v > dmax) return; var x = sx(v);
+      el('line', { x1: x, x2: x, y1: yT, y2: yB, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x, yB + 16, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    // threshold line(s)
+    [th].concat(o.abs ? [] : [-th]).forEach(function (t) {
+      el('line', { x1: sx(t), x2: sx(t), y1: yT, y2: yB, stroke: C.warn, 'stroke-width': '1.25', 'stroke-dasharray': '4 3' });
+    });
+    txt(sx(th), yT - 4, '|SMD| ' + th, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.warn, 'text-anchor': 'middle' });
+
+    rows.forEach(function (r, i) {
+      var y = yT + i * o.rowH + o.rowH / 2, xb = sx(V(r.before)), xa = sx(V(r.after)), bad = Math.abs(r.after) > th;
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': r.label + ': SMD before ' + fmt(r.before) + ', after ' + fmt(r.after) });
+      addTip(g, '<b>' + r.label + '</b><br>before ' + fmt(r.before) + '<br>after ' + fmt(r.after));
+      txt(x0 - 10, y + 3.5, r.label, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink, 'text-anchor': 'end' }, g);
+      el('line', { x1: Math.min(xb, xa), x2: Math.max(xb, xa), y1: y, y2: y, stroke: C.grid, 'stroke-width': '1.5' }, g);
+      el('circle', { cx: xb, cy: y, r: 4.5, fill: 'none', stroke: C.before, 'stroke-width': '1.5' }, g);    // before = hollow
+      el('circle', { cx: xa, cy: y, r: 4.5, fill: bad ? C.bad : C.after }, g);                              // after = filled (red if > threshold)
+    });
+
+    // legend + axis label
+    txt(x1, yT - 4, '○ before  ● after', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2, 'text-anchor': 'end' });
+    txt((x0 + x1) / 2, yB + 34, o.xLabel || (o.abs ? '|standardized mean difference|' : 'standardized mean difference'), { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    el('line', { x1: x0, x2: x0, y1: yT, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1151,6 +1217,7 @@
   global.ChartKit.renderCEplane = renderCEplane;
   global.ChartKit.renderScatter = renderScatter;
   global.ChartKit.renderBars = renderBars;
+  global.ChartKit.renderLovePlot = renderLovePlot;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
