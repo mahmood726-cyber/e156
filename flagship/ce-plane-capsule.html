@@ -1687,6 +1687,65 @@
     return svgEl;
   }
 
+  /**
+   * renderStackedArea(svgEl, series, opts) — stacked-area trace (e.g. Markov cohort).
+   * series: [{ label, values:[...], color }]  (bands stack bottom->top in array order)
+   * opts: { xLabel, yLabel, claim, estimand, yMax, xValues:[...] (else index) }
+   */
+  function renderStackedArea(svgEl, series, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 560, height: 300, padL: 48, padR: 120, padT: 56, padB: 44 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb') };
+    var W = o.width, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = o.height - o.padB, H = o.height;
+    var n = series.length ? series[0].values.length : 0;
+    var xv = o.xValues || null;
+    var xmin = xv ? xv[0] : 0, xmax = xv ? xv[n - 1] : (n - 1);
+    var totals = []; for (var i = 0; i < n; i++) { var s = 0; series.forEach(function (se) { s += se.values[i] || 0; }); totals.push(s); }
+    var yMax = o.yMax || (Math.max.apply(null, totals) || 1);
+    var X = function (i) { return x0 + (xmax === xmin ? 0 : ((xv ? xv[i] : i) - xmin) / (xmax - xmin)) * (x1 - x0); };
+    var Y = function (v) { return yB - v / yMax * (yB - yT); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Stacked-area trace. ' + (o.claim || '') + ' ' + series.length + ' states.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    txt(20, 24, o.claim || 'Cohort trace', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // y gridlines + ticks
+    niceForestTicks(0, yMax, false).forEach(function (v) { if (v < 0 || v > yMax) return; var y = Y(v);
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x0 - 6, y + 3, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' }); });
+
+    // stacked bands (cumulative bottom->top)
+    var cum = []; for (i = 0; i < n; i++) cum.push(0);
+    series.forEach(function (se, si) {
+      var upper = cum.map(function (c, i) { return c + (se.values[i] || 0); });
+      var top = []; for (i = 0; i < n; i++) top.push(X(i).toFixed(1) + ' ' + Y(upper[i]).toFixed(1));
+      var bot = []; for (i = n - 1; i >= 0; i--) bot.push(X(i).toFixed(1) + ' ' + Y(cum[i]).toFixed(1));
+      el('path', { d: 'M ' + top.join(' L ') + ' L ' + bot.join(' L ') + ' Z', fill: se.color || '#888', 'fill-opacity': '0.85' });
+      // direct end label at the band's right-edge midpoint
+      var midY = (Y(upper[n - 1]) + Y(cum[n - 1])) / 2;
+      if (se.label && (Y(cum[n - 1]) - Y(upper[n - 1])) > 8) txt(x1 + 6, midY + 3.5, se.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: se.color || C.ink2 });
+      cum = upper;
+    });
+
+    // x ticks
+    var step = Math.max(1, Math.ceil((n - 1) / 6));
+    for (i = 0; i < n; i += step) txt(X(i), yB + 16, String(xv ? xv[i] : i), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
+    txt((x0 + x1) / 2, yB + 34, o.xLabel || 'step', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yl = txt(14, (yT + yB) / 2, o.yLabel || 'proportion', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yl.setAttribute('transform', 'rotate(-90 14 ' + ((yT + yB) / 2) + ')');
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    el('line', { x1: x0, x2: x0, y1: yT, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1704,6 +1763,7 @@
   global.ChartKit.renderCalibration = renderCalibration;
   global.ChartKit.renderTrafficLight = renderTrafficLight;
   global.ChartKit.renderStackedBar = renderStackedBar;
+  global.ChartKit.renderStackedArea = renderStackedArea;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
