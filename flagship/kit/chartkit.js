@@ -243,8 +243,12 @@
       est: tok('--c-estimate', '#1a1a1a'), s1: tok('--seq-1', '#f0f4f8'), s2: tok('--seq-2', '#cfe0ec') };
     var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
     var pooled = (o.pooled != null) ? o.pooled : 0, NULLE = 0;
-    var maxSE = Math.max.apply(null, points.map(function (p) { return p.se; })) * 1.14 || 1;
-    var effs = points.map(function (p) { return p.x; }).concat([pooled - 1.96 * maxSE, pooled + 1.96 * maxSE, NULLE]);
+    var imputed = o.imputed || [];                 // trim-and-fill imputed studies [{x,se}]
+    var seVals = points.map(function (p) { return p.se; }).concat(imputed.map(function (p) { return p.se; }));
+    var maxSE = Math.max.apply(null, seVals) * 1.14 || 1;
+    var effs = points.map(function (p) { return p.x; }).concat(imputed.map(function (p) { return p.x; }))
+      .concat([pooled - 1.96 * maxSE, pooled + 1.96 * maxSE, NULLE]);
+    if (o.adjusted != null) effs.push(o.adjusted);
     var dmin = Math.min.apply(null, effs) - 0.04, dmax = Math.max.apply(null, effs) + 0.04;
     var sx = function (e) { return x0 + (e - dmin) / (dmax - dmin) * (x1 - x0); };
     var sy = function (se) { return yT + (se / maxSE) * (yB - yT); };
@@ -306,6 +310,11 @@
     });
     txt((x0 + x1) / 2, yB + 36, o.measure + (o.log ? ' (log scale)' : ''), { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
 
+    // trim-and-fill adjusted estimate (distinct dashed line, drawn behind points)
+    if (o.adjusted != null) {
+      el('line', { x1: sx(o.adjusted), x2: sx(o.adjusted), y1: yT, y2: yB, stroke: tok('--c-against', '#D55E00'), 'stroke-width': '1.5', 'stroke-dasharray': '5 3' }, plot);
+    }
+
     // study points (flag the least-precise / highest-leverage one)
     var flagIdx = points.reduce(function (m, p, i, a) { return p.se > a[m].se ? i : m; }, 0);
     points.forEach(function (p, i) {
@@ -317,6 +326,16 @@
     if (points.length) {
       var fp = points[flagIdx];
       txt(sx(fp.x) + 9, sy(fp.se) + 3.5, 'least precise', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot }, plot).setAttribute('font-style', 'italic');
+    }
+
+    // trim-and-fill imputed studies (hollow circles — "what symmetry would require")
+    imputed.forEach(function (p) {
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': 'imputed (trim-and-fill): ' + o.measure + ' ' + fmt(o.log ? Math.exp(p.x) : p.x) + ', SE ' + p.se.toFixed(2) }, plot);
+      addTip(g, '<b>imputed (trim-and-fill)</b><br>' + o.measure + ' ' + fmt(o.log ? Math.exp(p.x) : p.x) + '<br>SE ' + p.se.toFixed(3));
+      el('circle', { cx: sx(p.x), cy: sy(p.se), r: 4, fill: 'none', stroke: tok('--c-against', '#D55E00'), 'stroke-width': '1.25' }, g);
+    });
+    if (imputed.length) {
+      txt(x1 - 6, yB - 6, imputed.length + ' imputed', { 'font-size': tok('--t-fs-annot', '11px'), fill: tok('--c-against', '#D55E00'), 'text-anchor': 'end' }, plot);
     }
 
     // Egger annotation — inside the plot, top-right (never collides with the title)
