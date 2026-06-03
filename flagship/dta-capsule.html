@@ -1551,6 +1551,79 @@
     return svgEl;
   }
 
+  // shared unit-square shell for ROC / calibration (axes 0..1 + diagonal reference)
+  function unitSquare(svgEl, o) {
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'), accent: tok('--cat-1', '#0072B2') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+    var X = function (v) { return x0 + v * (x1 - x0); }, Y = function (v) { return yB - v * (yB - yT); };
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', (o.aria || 'Unit-square plot') + '. ' + (o.claim || ''));
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    txt(20, 24, o.claim || '', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+    [0, 0.5, 1].forEach(function (v) {
+      el('line', { x1: X(v), x2: X(v), y1: yT, y2: yB, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      el('line', { x1: x0, x2: x1, y1: Y(v), y2: Y(v), stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(X(v), yB + 15, String(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
+      txt(x0 - 6, Y(v) + 3, String(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' });
+    });
+    el('line', { x1: X(0), y1: Y(0), x2: X(1), y2: Y(1), stroke: C.nul, 'stroke-width': '1.25', 'stroke-dasharray': '4 3' });
+    txt((x0 + x1) / 2, yB + 34, o.xLabel || 'x', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yl = txt(14, (yT + yB) / 2, o.yLabel || 'y', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yl.setAttribute('transform', 'rotate(-90 14 ' + ((yT + yB) / 2) + ')');
+    el('rect', { x: x0, y: yT, width: (x1 - x0), height: (yB - yT), fill: 'none', stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return { el: el, txt: txt, X: X, Y: Y, C: C, tok: tok, x0: x0, x1: x1, yT: yT, yB: yB };
+  }
+
+  /**
+   * renderROC(svgEl, roc, opts) — ROC curve. roc:[{f,t}] (FPR, TPR). opts:{auc, claim, estimand}.
+   */
+  function renderROC(svgEl, roc, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 300, height: 300, padL: 44, padR: 18, padT: 56, padB: 42,
+      xLabel: '1 − specificity', yLabel: 'sensitivity', aria: 'ROC curve',
+      claim: opts.auc != null ? 'AUC ' + opts.auc.toFixed(3) : 'ROC curve' }, opts);
+    var u = unitSquare(svgEl, o);
+    var pts = roc.map(function (p) { return u.X(p.f).toFixed(1) + ' ' + u.Y(p.t).toFixed(1); });
+    var fill = 'M ' + u.X(0) + ' ' + u.Y(0) + ' ' + pts.map(function (p) { return 'L ' + p; }).join(' ') + ' L ' + u.X(1) + ' ' + u.Y(0) + ' Z';
+    u.el('path', { d: fill, fill: u.C.accent, 'fill-opacity': '0.12' });
+    u.el('path', { d: 'M ' + pts.join(' L '), fill: 'none', stroke: u.C.accent, 'stroke-width': '2' });
+    if (o.auc != null) u.txt(u.X(0.6), u.Y(0.28), 'AUC ' + o.auc.toFixed(3), { 'font-size': tok2('--t-fs-fig-sub', '14px'), fill: u.C.accent });
+    return svgEl;
+  }
+
+  /**
+   * renderCalibration(svgEl, bins, opts) — calibration plot. bins:[{pred,obs,n}].
+   * opts:{ slope, brier, claim, estimand }
+   */
+  function renderCalibration(svgEl, bins, opts) {
+    opts = opts || {};
+    var note = (opts.slope != null ? 'slope ' + opts.slope.toFixed(2) : '') + (opts.brier != null ? (opts.slope != null ? ' · ' : '') + 'Brier ' + opts.brier.toFixed(3) : '');
+    var o = Object.assign({ width: 300, height: 300, padL: 44, padR: 18, padT: 56, padB: 42,
+      xLabel: 'predicted', yLabel: 'observed', aria: 'Calibration plot',
+      claim: opts.claim || (note || 'Calibration') }, opts);
+    var u = unitSquare(svgEl, o);
+    var nmax = Math.max.apply(null, bins.map(function (b) { return b.n || 1; }));
+    u.el('path', { d: 'M ' + bins.map(function (b) { return u.X(b.pred).toFixed(1) + ' ' + u.Y(b.obs).toFixed(1); }).join(' L '), fill: 'none', stroke: u.C.accent, 'stroke-width': '2' });
+    bins.forEach(function (b) {
+      var g = u.el('g', { tabindex: '0', role: 'listitem', 'aria-label': 'predicted ' + (b.pred * 100).toFixed(0) + '%, observed ' + (b.obs * 100).toFixed(0) + '%, n ' + (b.n || 0) });
+      g.addEventListener('mouseenter', function (e) { showTip(e, '<b>bin</b><br>pred ' + (b.pred * 100).toFixed(0) + '%<br>obs ' + (b.obs * 100).toFixed(0) + '%<br>n ' + (b.n || 0)); });
+      g.addEventListener('mousemove', moveTip); g.addEventListener('mouseleave', hideTip);
+      u.el('circle', { cx: u.X(b.pred), cy: u.Y(b.obs), r: 3 + Math.sqrt((b.n || 1) / nmax) * 4, fill: u.C.accent }, g);
+    });
+    if (note) u.txt(u.x1 - 4, u.yT + 14, note, { 'font-size': tok2('--t-fs-fig-sub', '14px'), fill: u.C.ink2, 'text-anchor': 'end' });
+    return svgEl;
+  }
+
+  function tok2(n, f) { return tokGetter()(n, f); }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1564,6 +1637,8 @@
   global.ChartKit.renderBars = renderBars;
   global.ChartKit.renderLovePlot = renderLovePlot;
   global.ChartKit.renderCurve = renderCurve;
+  global.ChartKit.renderROC = renderROC;
+  global.ChartKit.renderCalibration = renderCalibration;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
