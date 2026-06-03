@@ -1595,6 +1595,94 @@
 
   function tok2(n, f) { return tokGetter()(n, f); }
 
+  /**
+   * renderTrafficLight(svgEl, data, opts) — ordinal-judgment matrix (RoB2, ROBINS, QUADAS).
+   * data: { rows:[{label, cells:[lvlKey,...]}], cols:[colLabel,...],
+   *         levels:{ lvlKey:{ color, symbol, dark } } }
+   * opts: { claim, estimand, separatorBeforeLast }
+   */
+  function renderTrafficLight(svgEl, data, opts) {
+    opts = opts || {};
+    var o = Object.assign({ padL: 156, padR: 18, padT: 56, headerH: 26, rowH: 34, cw: 80, R: 12, padB: 14, separatorBeforeLast: false }, opts);
+    var tok = tokGetter();
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb') };
+    var rows = data.rows, cols = data.cols, lv = data.levels;
+    var x0 = o.padL, gridTop = o.padT + o.headerH, n = rows.length;
+    var W = x0 + cols.length * o.cw + 20, H = gridTop + n * o.rowH + o.padB;
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Risk-of-bias traffic-light matrix. ' + (o.claim || '') + ' ' + n + ' studies.');
+    txt(14, 24, o.claim || 'Risk-of-bias judgments', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(14, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+    var cx = function (j) { return x0 + j * o.cw + o.cw / 2; };
+    cols.forEach(function (c, j) { txt(cx(j), gridTop - 8, c, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    if (o.separatorBeforeLast && cols.length > 1) { var sxp = x0 + (cols.length - 1) * o.cw; el('line', { x1: sxp, x2: sxp, y1: gridTop - 22, y2: gridTop + n * o.rowH, stroke: C.axis, 'stroke-width': '1' }); }
+    rows.forEach(function (r, i) {
+      var cy = gridTop + i * o.rowH + o.rowH / 2;
+      txt(14, cy + 4, r.label, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink });
+      r.cells.forEach(function (lvlKey, j) {
+        var L = lv[lvlKey] || { color: '#ccc', symbol: '?' };
+        var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': r.label + ' ' + cols[j] + ': ' + (L.label || lvlKey) });
+        g.addEventListener('mouseenter', function (e) { showTip(e, '<b>' + r.label + '</b><br>' + cols[j] + ': ' + (L.label || lvlKey)); });
+        g.addEventListener('mousemove', moveTip); g.addEventListener('mouseleave', hideTip);
+        el('circle', { cx: cx(j), cy: cy, r: o.R, fill: L.color }, g);
+        txt(cx(j), cy + 4, L.symbol, { 'font-size': '13px', 'font-weight': '700', fill: L.dark ? C.ink : '#fff', 'text-anchor': 'middle' }, g);
+      });
+    });
+    return svgEl;
+  }
+
+  /**
+   * renderStackedBar(svgEl, rows, opts) — horizontal stacked bars (e.g. RoB summary %).
+   * rows: [{ label, segments:[{ value, color, key }] }]  (values share opts.total)
+   * opts: { claim, estimand, total (default 100), percent (default true), minLabelPct, legend:[{label,color}] }
+   */
+  function renderStackedBar(svgEl, rows, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 520, padL: 130, padR: 46, padT: 56, padB: 30, bh: 26, gap: 9, total: 100, percent: true, minLabelPct: 13, legend: [] }, opts);
+    var tok = tokGetter();
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f') };
+    var W = o.width, x0 = o.padL, x1 = W - o.padR, plotW = x1 - x0;
+    var top = o.padT, n = rows.length, H = top + n * (o.bh + o.gap) + (o.legend.length ? 24 : 0) + o.padB;
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Stacked bar summary. ' + (o.claim || '') + ' ' + n + ' rows.');
+    txt(14, 24, o.claim || 'Summary', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(14, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+    rows.forEach(function (r, i) {
+      var y = top + i * (o.bh + o.gap);
+      txt(x0 - 8, y + o.bh / 2 + 4, r.label, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' });
+      var x = x0;
+      r.segments.forEach(function (seg) {
+        var w = (seg.value / o.total) * plotW;
+        if (w > 0.5) {
+          var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': r.label + ' ' + (seg.key || '') + ' ' + seg.value.toFixed(0) + (o.percent ? '%' : '') });
+          g.addEventListener('mouseenter', function (e) { showTip(e, '<b>' + r.label + '</b><br>' + (seg.key || '') + ': ' + seg.value.toFixed(0) + (o.percent ? '%' : '')); });
+          g.addEventListener('mousemove', moveTip); g.addEventListener('mouseleave', hideTip);
+          el('rect', { x: x.toFixed(1), y: y, width: w.toFixed(1), height: o.bh, fill: seg.color }, g);
+          var pctv = (seg.value / o.total) * 100;
+          if (pctv >= o.minLabelPct) txt(x + w / 2, y + o.bh / 2 + 4, seg.value.toFixed(0) + (o.percent ? '%' : ''), { 'font-size': '11px', fill: seg.dark ? C.ink : '#fff', 'text-anchor': 'middle' });
+        }
+        x += w;
+      });
+    });
+    if (o.legend.length) {
+      var ly = H - 10, lx = x0;
+      o.legend.forEach(function (g) { el('rect', { x: lx, y: ly - 10, width: 11, height: 11, fill: g.color }); txt(lx + 16, ly, g.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2 }); lx += 30 + g.label.length * 6.6; });
+    }
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1610,6 +1698,8 @@
   global.ChartKit.renderCurve = renderCurve;
   global.ChartKit.renderROC = renderROC;
   global.ChartKit.renderCalibration = renderCalibration;
+  global.ChartKit.renderTrafficLight = renderTrafficLight;
+  global.ChartKit.renderStackedBar = renderStackedBar;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
