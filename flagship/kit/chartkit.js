@@ -985,6 +985,91 @@
     return svgEl;
   }
 
+  /**
+   * renderScatter(svgEl, points, opts) — scatter with fitted lines (e.g. MR).
+   * points: [{ label, x, y, ySE, weight }]
+   * opts: { xLabel, yLabel, claim, estimand, xFrom0,
+   *         lines:[{ slope, intercept, label, dash }] }  (lines drawn in order; first 4 get a palette colour)
+   */
+  function renderScatter(svgEl, points, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 520, height: 384, padL: 60, padR: 124, padT: 58, padB: 50, xFrom0: false, lines: [] }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'), pt: tok('--cat-1', '#0072B2') };
+    var palette = [tok('--cat-1', '#0072B2'), tok('--c-against', '#D55E00'), tok('--cat-3', '#009E73'), tok('--cat-4', '#CC79A7')];
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+
+    var xs = points.map(function (p) { return p.x; });
+    var xmin = o.xFrom0 ? 0 : Math.min.apply(null, xs), xmax = Math.max.apply(null, xs);
+    var xpad = (xmax - xmin) * 0.08 || 1; if (!o.xFrom0) xmin -= xpad; xmax += xpad;
+    var yv = [0];
+    points.forEach(function (p) { var e = p.ySE || 0; yv.push(p.y - 1.96 * e, p.y + 1.96 * e); });
+    o.lines.forEach(function (L) { var b = L.intercept || 0; yv.push(b + L.slope * xmin, b + L.slope * xmax); });
+    var ymin = Math.min.apply(null, yv), ymax = Math.max.apply(null, yv);
+    var ypad = (ymax - ymin) * 0.08 || 0.1; ymin -= ypad; ymax += ypad;
+    var sx = function (x) { return x0 + (x - xmin) / (xmax - xmin) * (x1 - x0); };
+    var sy = function (y) { return yT + (1 - (y - ymin) / (ymax - ymin)) * (yB - yT); };
+    var wmax = Math.max.apply(null, points.map(function (p) { return p.weight || 1; }));
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Scatter plot with fitted lines. ' + (o.claim || '') + ' ' + points.length + ' points.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    function addTip(g, html) {
+      g.addEventListener('mouseenter', function (e) { showTip(e, html); }); g.addEventListener('mousemove', moveTip);
+      g.addEventListener('mouseleave', hideTip); g.addEventListener('focus', function (e) { showTip(e, html); }); g.addEventListener('blur', hideTip);
+    }
+
+    txt(20, 24, o.claim || 'Scatter', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    var cid = 'ck-sc-' + (svgEl.id || 'x');
+    var defs = el('defs'); var cp = el('clipPath', { id: cid }, defs); el('rect', { x: x0, y: yT, width: (x1 - x0), height: (yB - yT) }, cp);
+    var plot = el('g', { 'clip-path': 'url(#' + cid + ')' });
+
+    // gridlines + ticks
+    niceForestTicks(ymin, ymax, false).forEach(function (v) { if (v < ymin || v > ymax) return; var y = sy(v);
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x0 - 7, y + 3.5, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' }); });
+    niceForestTicks(xmin, xmax, false).forEach(function (v) { if (v < xmin || v > xmax) return;
+      txt(sx(v), yB + 16, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    // zero reference (y=0) when in range
+    if (ymin <= 0 && ymax >= 0) el('line', { x1: x0, x2: x1, y1: sy(0), y2: sy(0), stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' }, plot);
+
+    // fitted lines + direct labels
+    o.lines.forEach(function (L, i) {
+      var col = L.color || palette[i % palette.length], b = L.intercept || 0;
+      var a = { x1: sx(xmin), y1: sy(b + L.slope * xmin), x2: sx(xmax), y2: sy(b + L.slope * xmax), stroke: col, 'stroke-width': '2' };
+      if (L.dash) a['stroke-dasharray'] = '6 4';
+      el('line', a, plot);
+      if (L.label) txt(x1 + 6, sy(b + L.slope * xmax) + 3.5, L.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: col });
+    });
+
+    // points with y-error whiskers, weight-scaled radius
+    points.forEach(function (p) {
+      var cx = sx(p.x), cy = sy(p.y), r = 3 + Math.sqrt((p.weight || 1) / wmax) * 7;
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': (p.label || '') + ': x ' + fmt(p.x) + ', y ' + fmt(p.y) }, plot);
+      addTip(g, '<b>' + (p.label || '') + '</b><br>x ' + fmt(p.x) + '<br>y ' + fmt(p.y));
+      if (p.ySE) el('line', { x1: cx, x2: cx, y1: sy(p.y - 1.96 * p.ySE), y2: sy(p.y + 1.96 * p.ySE), stroke: C.nul, 'stroke-width': '1' }, g);
+      el('circle', { cx: cx, cy: cy, r: r, fill: C.pt, 'fill-opacity': '0.6', stroke: C.pt, 'stroke-width': '1' }, g);
+    });
+
+    // axis labels
+    txt((x0 + x1) / 2, yB + 36, o.xLabel || 'x', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yt = txt(15, (yT + yB) / 2, o.yLabel || 'y', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yt.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
+
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    el('line', { x1: x0, x2: x0, y1: yT, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -994,6 +1079,7 @@
   global.ChartKit.renderDensity = renderDensity;
   global.ChartKit.renderKM = renderKM;
   global.ChartKit.renderCEplane = renderCEplane;
+  global.ChartKit.renderScatter = renderScatter;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
