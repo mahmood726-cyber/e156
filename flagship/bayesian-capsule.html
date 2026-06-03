@@ -1803,6 +1803,74 @@
     return svgEl;
   }
 
+  /**
+   * renderGroupedForest(svgEl, groups, opts) — forest with group headers + nested rows.
+   * groups: [{ label, rows:[{ label, est, lo, hi, weight }] }]
+   * opts: { measure, log, null, pooled:{est,lo,hi,pi_lo,pi_hi}, pooledLabel, claim, estimand }
+   */
+  function renderGroupedForest(svgEl, groups, opts) {
+    opts = opts || {};
+    var o = Object.assign({ log: false, null: 0, measure: 'effect', width: 760, padL: 180, padR: 120, padT: 62, padB: 52, rowH: 25, headerH: 24 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'), est: tok('--c-estimate', '#1a1a1a'), pi: tok('--c-pi', '#b9c2cb') };
+    var allRows = []; groups.forEach(function (g) { g.rows.forEach(function (r) { allRows.push(r); }); });
+    var tx = function (v) { return o.log ? Math.log(v) : v; };
+    var all = []; allRows.forEach(function (r) { all.push(r.lo, r.hi); });
+    if (o.pooled) all.push(o.pooled.lo, o.pooled.hi, o.pooled.pi_lo, o.pooled.pi_hi);
+    all.push(o.null);
+    all = all.filter(function (v) { return v != null && isFinite(v) && (!o.log || v > 0); }).map(tx);
+    var dmin = Math.min.apply(null, all), dmax = Math.max.apply(null, all), pad = (dmax - dmin) * 0.06 || 0.1; dmin -= pad; dmax += pad;
+    var W = o.width, x0 = o.padL, x1 = W - o.padR;
+    var sx = function (v) { return x0 + (tx(v) - dmin) / (dmax - dmin) * (x1 - x0); };
+    var wmax = Math.max.apply(null, allRows.map(function (r) { return r.weight || 1; }));
+    var bmin = ntok('--box-min', 6), bmax = ntok('--box-max', 22);
+    // layout: each group = header + its rows
+    var yTop = o.padT, y = yTop, layout = [];
+    groups.forEach(function (g) { layout.push({ type: 'h', label: g.label, y: y + o.headerH / 2 }); y += o.headerH;
+      g.rows.forEach(function (r) { layout.push({ type: 'e', r: r, y: y + o.rowH / 2 }); y += o.rowH; }); });
+    var gridBot = y, pooledCy = gridBot + 22, H = pooledCy + (o.pooled ? 22 : 0) + o.padB;
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Grouped forest plot, ' + o.measure + '. ' + (o.claim || '') + ' ' + groups.length + ' groups.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, yy, s, a, p) { var e = el('text', Object.assign({ x: x, y: yy }, a || {}), p); e.textContent = s; return e; }
+
+    txt(x0, 24, o.claim || ('Forest of ' + o.measure), { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(x0, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    var ticks = niceForestTicks(o.log ? Math.exp(dmin) : dmin, o.log ? Math.exp(dmax) : dmax, o.log);
+    ticks.forEach(function (v) { var x = sx(v);
+      el('line', { x1: x, x2: x, y1: yTop, y2: gridBot, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x, gridBot + 15, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    if (o.null != null && isFinite(o.null)) { var xn = sx(o.null); el('line', { x1: xn, x2: xn, y1: yTop, y2: gridBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' }); }
+
+    layout.forEach(function (it) {
+      if (it.type === 'h') { txt(14, it.y + 4, it.label, { 'font-size': tok('--t-fs-axis', '12px'), 'font-weight': '600', fill: C.ink }); return; }
+      var r = it.r, cy = it.y, sd = bmin + Math.sqrt((r.weight || 1) / wmax) * (bmax - bmin);
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': (r.label || 'effect') + ': ' + o.measure + ' ' + fmt(r.est) + ' (' + fmt(r.lo) + ' to ' + fmt(r.hi) + ')' });
+      if (r.label) txt(28, cy + 3.5, r.label, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2 }, g);
+      el('line', { x1: sx(r.lo), x2: sx(r.hi), y1: cy, y2: cy, stroke: C.ink, 'stroke-width': ntok('--whisker-w', 1.25) }, g);
+      el('rect', { x: sx(r.est) - sd / 2, y: cy - sd / 2, width: sd, height: sd, fill: C.est }, g);
+      txt(x1 + 12, cy + 3.5, fmt(r.est) + ' (' + fmt(r.lo) + '–' + fmt(r.hi) + ')', { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2 }, g);
+    });
+
+    if (o.pooled) {
+      var p = o.pooled, dh = ntok('--diamond-h', 16) / 2, xe = sx(p.est);
+      if (p.pi_lo != null && p.pi_hi != null) el('line', { x1: sx(p.pi_lo), x2: sx(p.pi_hi), y1: pooledCy, y2: pooledCy, stroke: C.pi, 'stroke-width': '7', 'stroke-linecap': 'round' });
+      el('polygon', { points: sx(p.lo) + ',' + pooledCy + ' ' + xe + ',' + (pooledCy - dh) + ' ' + sx(p.hi) + ',' + pooledCy + ' ' + xe + ',' + (pooledCy + dh), fill: C.est });
+      txt(14, pooledCy + 4, o.pooledLabel || 'Overall', { 'font-size': tok('--t-fs-axis', '12px'), 'font-weight': '600', fill: C.ink });
+      txt(x1 + 12, pooledCy + 4, fmt(p.est) + ' (' + fmt(p.lo) + '–' + fmt(p.hi) + ')', { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2 });
+    }
+    el('line', { x1: x0, x2: x1, y1: gridBot, y2: gridBot, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1822,6 +1890,7 @@
   global.ChartKit.renderStackedBar = renderStackedBar;
   global.ChartKit.renderStackedArea = renderStackedArea;
   global.ChartKit.renderGauge = renderGauge;
+  global.ChartKit.renderGroupedForest = renderGroupedForest;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
