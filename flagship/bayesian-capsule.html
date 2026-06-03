@@ -1471,6 +1471,87 @@
     return svgEl;
   }
 
+  /**
+   * renderCurve(svgEl, series, opts) — multi-line x–y chart (CEAC, DCA, EVPI, PV-vs-prevalence, ITS).
+   * series: [{ label, points:[{x,y}], color, dash }]
+   * opts: { xLabel, yLabel, claim, estimand, xFrom0, yFrom0,
+   *         xTickFmt(v), yTickFmt(v), xMarker:{x,label}, yRef:[{y,label}], scatter:[{x,y}] }
+   */
+  function renderCurve(svgEl, series, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 600, height: 380, padL: 66, padR: 120, padT: 58, padB: 48, xFrom0: false, yFrom0: false, yRef: [], scatter: [] }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'), warn: tok('--c-verdict-warn', '#E69F00') };
+    var palette = [tok('--cat-1', '#0072B2'), tok('--c-against', '#D55E00'), tok('--cat-3', '#009E73'), tok('--cat-4', '#CC79A7'), tok('--cat-5', '#56B4E9')];
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+    var xf = o.xTickFmt || fmt, yf = o.yTickFmt || fmt;
+
+    var xs = [], ys = [];
+    series.forEach(function (s) { s.points.forEach(function (p) { xs.push(p.x); ys.push(p.y); }); });
+    o.scatter.forEach(function (p) { xs.push(p.x); ys.push(p.y); });
+    if (o.xMarker) xs.push(o.xMarker.x);
+    o.yRef.forEach(function (r) { ys.push(r.y); });
+    var xmin = o.xFrom0 ? 0 : Math.min.apply(null, xs), xmax = Math.max.apply(null, xs);
+    var ymin = o.yFrom0 ? 0 : Math.min.apply(null, ys), ymax = Math.max.apply(null, ys);
+    var xp = (xmax - xmin) * 0.04 || 1; if (!o.xFrom0) xmin -= xp; xmax += xp;
+    var yp = (ymax - ymin) * 0.06 || 0.1; if (!o.yFrom0) ymin -= yp; ymax += yp;
+    var sx = function (x) { return x0 + (x - xmin) / (xmax - xmin) * (x1 - x0); };
+    var sy = function (y) { return yT + (1 - (y - ymin) / (ymax - ymin)) * (yB - yT); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Line chart. ' + (o.claim || '') + ' ' + series.length + ' series.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+
+    txt(20, 24, o.claim || 'Curve', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    var cid = 'ck-cv-' + (svgEl.id || 'x');
+    var defs = el('defs'); var cp = el('clipPath', { id: cid }, defs); el('rect', { x: x0, y: yT, width: (x1 - x0), height: (yB - yT) }, cp);
+    var plot = el('g', { 'clip-path': 'url(#' + cid + ')' });
+
+    // gridlines + ticks
+    niceForestTicks(ymin, ymax, false).forEach(function (v) { if (v < ymin || v > ymax) return; var y = sy(v);
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x0 - 7, y + 3.5, yf(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' }); });
+    niceForestTicks(xmin, xmax, false).forEach(function (v) { if (v < xmin || v > xmax) return;
+      txt(sx(v), yB + 16, xf(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+
+    // y reference lines (e.g. net-benefit 0)
+    o.yRef.forEach(function (r) { var y = sy(r.y);
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' }, plot);
+      if (r.label) txt(x0 + 4, y - 4, r.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot }); });
+    // x marker (e.g. WTP threshold, intervention time)
+    if (o.xMarker) { var xm = sx(o.xMarker.x);
+      el('line', { x1: xm, x2: xm, y1: yT, y2: yB, stroke: C.warn, 'stroke-width': '1.25', 'stroke-dasharray': '4 3' }, plot);
+      if (o.xMarker.label) txt(xm, yT - 4, o.xMarker.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.warn, 'text-anchor': 'middle' }); }
+
+    // scatter overlay (e.g. ITS observed points)
+    o.scatter.forEach(function (p) { el('circle', { cx: sx(p.x), cy: sy(p.y), r: 2.6, fill: C.ink2, 'fill-opacity': '0.55' }, plot); });
+
+    // series lines + direct end labels
+    series.forEach(function (s, i) {
+      var col = s.color || palette[i % palette.length];
+      var d = s.points.map(function (p, j) { return (j === 0 ? 'M ' : 'L ') + sx(p.x).toFixed(1) + ' ' + sy(p.y).toFixed(1); }).join(' ');
+      var a = { d: d, fill: 'none', stroke: col, 'stroke-width': '2' }; if (s.dash) a['stroke-dasharray'] = '6 4';
+      el('path', a, plot);
+      if (s.label) { var lp = s.points[s.points.length - 1]; txt(x1 + 6, sy(lp.y) + 3.5, s.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: col }); }
+    });
+
+    txt((x0 + x1) / 2, yB + 36, o.xLabel || 'x', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var ytl = txt(15, (yT + yB) / 2, o.yLabel || 'y', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); ytl.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    el('line', { x1: x0, x2: x0, y1: yT, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1483,6 +1564,7 @@
   global.ChartKit.renderScatter = renderScatter;
   global.ChartKit.renderBars = renderBars;
   global.ChartKit.renderLovePlot = renderLovePlot;
+  global.ChartKit.renderCurve = renderCurve;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
