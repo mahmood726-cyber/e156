@@ -1070,6 +1070,76 @@
     return svgEl;
   }
 
+  /**
+   * renderBars(svgEl, bars, opts) — categorical bar chart with optional reference overlay.
+   * bars: [{ label, value, color }]
+   * opts: { yLabel, claim, estimand, percent (format y as %), valueLabels (default true),
+   *         overlay:[{label,value}] (reference line+dots, same categories), overlayLabel }
+   */
+  function renderBars(svgEl, bars, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 480, height: 300, padL: 50, padR: 22, padT: 56, padB: 46, percent: false, valueLabels: true }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), bar: tok('--cat-1', '#0072B2'), ref: tok('--c-against', '#D55E00') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+    var overlay = o.overlay || [];
+    var vals = bars.map(function (b) { return b.value; }).concat(overlay.map(function (r) { return r.value; })).concat([0]);
+    var vmax = Math.max.apply(null, vals); if (!(vmax > 0)) vmax = 1; vmax *= 1.12;
+    var n = bars.length, slot = (x1 - x0) / n, bw = slot * 0.62;
+    var cx = function (i) { return x0 + i * slot + slot / 2; };
+    var sy = function (v) { return yB - (v / vmax) * (yB - yT); };
+    var fmtV = function (v) { return o.percent ? (v * 100).toFixed(1) + '%' : (v % 1 === 0 ? String(v) : v.toFixed(1)); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img');
+    svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Bar chart. ' + (o.claim || '') + ' ' + n + ' categories.');
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    function addTip(g, html) {
+      g.addEventListener('mouseenter', function (e) { showTip(e, html); }); g.addEventListener('mousemove', moveTip);
+      g.addEventListener('mouseleave', hideTip); g.addEventListener('focus', function (e) { showTip(e, html); }); g.addEventListener('blur', hideTip);
+    }
+
+    txt(20, 24, o.claim || 'Bar chart', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // y gridlines + ticks
+    var yt = niceForestTicks(0, vmax, false).filter(function (v) { return v >= 0 && v <= vmax; });
+    yt.forEach(function (v) { var y = sy(v);
+      el('line', { x1: x0, x2: x1, y1: y, y2: y, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
+      txt(x0 - 6, y + 3.5, o.percent ? (v * 100).toFixed(0) + '%' : fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'end' }); });
+
+    // bars + category labels + value labels
+    bars.forEach(function (b, i) {
+      var x = cx(i), y = sy(b.value);
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': b.label + ': ' + fmtV(b.value) });
+      addTip(g, '<b>' + b.label + '</b><br>' + fmtV(b.value));
+      el('rect', { x: x - bw / 2, y: y, width: bw, height: Math.max(0, yB - y), fill: b.color || C.bar, 'fill-opacity': '0.85' }, g);
+      txt(x, yB + 16, b.label, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
+      if (o.valueLabels) txt(x, y - 5, fmtV(b.value), { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2, 'text-anchor': 'middle' });
+    });
+
+    // reference overlay (line + dots), e.g. Benford expected
+    if (overlay.length) {
+      var d = overlay.map(function (r, i) { return (i === 0 ? 'M ' : 'L ') + cx(i).toFixed(1) + ' ' + sy(r.value).toFixed(1); }).join(' ');
+      el('path', { d: d, fill: 'none', stroke: C.ref, 'stroke-width': '2' });
+      overlay.forEach(function (r, i) { el('circle', { cx: cx(i), cy: sy(r.value), r: 3.2, fill: C.ref }); });
+      if (o.overlayLabel) txt(x1, yT + 12, o.overlayLabel, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ref, 'text-anchor': 'end' });
+    }
+
+    if (o.yLabel) { var ytl = txt(15, (yT + yB) / 2, o.yLabel, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); ytl.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')'); }
+    if (o.xLabel) txt((x0 + x1) / 2, yB + 36, o.xLabel, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+
+    el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1080,6 +1150,7 @@
   global.ChartKit.renderKM = renderKM;
   global.ChartKit.renderCEplane = renderCEplane;
   global.ChartKit.renderScatter = renderScatter;
+  global.ChartKit.renderBars = renderBars;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
