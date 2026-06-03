@@ -379,9 +379,12 @@
       el('line', { x1: x, x2: x, y1: yTop, y2: yBot, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
       txt(x, yBot + 16, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
     });
-    // null reference (dashed, eye-distinct)
-    var xn = sx(o.null);
-    el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+    // null reference (dashed, eye-distinct) — pass opts.null=null to suppress
+    // (e.g. single-proportion / single-mean forests have no meaningful null)
+    if (o.null != null && isFinite(o.null)) {
+      var xn = sx(o.null);
+      el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+    }
     // optional secondary reference line (e.g. overall pooled, for LOO / cumulative)
     if (o.refLine && o.refLine.x != null) {
       var rx = sx(o.refLine.x);

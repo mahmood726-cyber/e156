@@ -383,9 +383,12 @@
       el('line', { x1: x, x2: x, y1: yTop, y2: yBot, stroke: C.grid, 'stroke-width': ntok('--hair-grid', 1) });
       txt(x, yBot + 16, fmt(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' });
     });
-    // null reference (dashed, eye-distinct)
-    var xn = sx(o.null);
-    el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+    // null reference (dashed, eye-distinct) — pass opts.null=null to suppress
+    // (e.g. single-proportion / single-mean forests have no meaningful null)
+    if (o.null != null && isFinite(o.null)) {
+      var xn = sx(o.null);
+      el('line', { x1: xn, x2: xn, y1: yTop, y2: yBot, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+    }
     // optional secondary reference line (e.g. overall pooled, for LOO / cumulative)
     if (o.refLine && o.refLine.x != null) {
       var rx = sx(o.refLine.x);
@@ -1117,6 +1120,70 @@
     return svgEl;
   }
 
+  /**
+   * renderCEplane(svgEl, data, opts) — cost-effectiveness plane.
+   * data: { point:{dE,dC}, wtp, psa:[{dE,dC}]|null }
+   * opts: { claim, estimand, effectLabel, costLabel }
+   */
+  function renderCEplane(svgEl, data, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 400, height: 384, padL: 54, padR: 18, padT: 58, padB: 46 }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'),
+      grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), zero: tok('--c-null', '#9aa0a6'),
+      wtp: tok('--c-verdict-warn', '#E69F00'), pt: tok('--c-estimate', '#1a1a1a'), psa: tok('--cat-1', '#0072B2') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB;
+    var plot = Math.min(x1 - x0, yB - yT); x1 = x0 + plot; yT = yB - plot;
+    var cx = (x0 + x1) / 2, cy = (yT + yB) / 2;
+    var pt = data.point, wtp = data.wtp, psa = data.psa || [];
+    var es = [Math.abs(pt.dE)].concat(psa.map(function (p) { return Math.abs(p.dE); }));
+    var cs = [Math.abs(pt.dC)].concat(psa.map(function (p) { return Math.abs(p.dC); }));
+    var eMax = Math.max.apply(null, es.concat([0.5])) * 1.55;
+    var cMax = Math.max.apply(null, cs.concat([wtp * eMax * 0.6, 1000])) * 1.4;
+    var X = function (e) { return cx + e / eMax * (plot / 2); }, Y = function (c) { return cy - c / cMax * (plot / 2); };
+    var clamp = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Cost-effectiveness plane. ' + (o.claim || ''));
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+    var clipId = 'ck-ce-' + (svgEl.id || 'x');
+    var defs = el('defs'); var cp = el('clipPath', { id: clipId }, defs); el('rect', { x: x0, y: yT, width: plot, height: plot }, cp);
+    var pl = el('g', { 'clip-path': 'url(#' + clipId + ')' });
+
+    txt(20, 24, o.claim || 'Cost-effectiveness plane', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(20, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // WTP line through origin (slope = wtp), clipped to plot
+    el('line', { x1: X(-eMax), y1: Y(clamp(wtp * -eMax, -cMax, cMax)), x2: X(eMax), y2: Y(clamp(wtp * eMax, -cMax, cMax)), stroke: C.wtp, 'stroke-width': '1.5', 'stroke-dasharray': '5 3' }, pl);
+    // zero axes through origin
+    el('line', { x1: x0, x2: x1, y1: cy, y2: cy, stroke: C.zero, 'stroke-width': '1' }, pl);
+    el('line', { x1: cx, x2: cx, y1: yT, y2: yB, stroke: C.zero, 'stroke-width': '1' }, pl);
+
+    // PSA cloud
+    psa.forEach(function (p) { el('circle', { cx: X(p.dE), cy: Y(clamp(p.dC, -cMax, cMax)), r: 2, fill: C.psa, 'fill-opacity': '0.28' }, pl); });
+
+    // ICER point + ray from origin
+    var px = X(pt.dE), py = Y(clamp(pt.dC, -cMax, cMax));
+    el('line', { x1: cx, y1: cy, x2: px, y2: py, stroke: C.pt, 'stroke-width': '1', opacity: '0.5' }, pl);
+    el('circle', { cx: px, cy: py, r: 6, fill: C.pt }, pl);
+
+    // quadrant + axis labels
+    txt(x1 - 4, yT + 12, 'more costly', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot, 'text-anchor': 'end' });
+    txt(x1 - 4, yB - 5, 'more effective →', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot, 'text-anchor': 'end' });
+    txt((x0 + x1) / 2, yB + 30, o.effectLabel || 'Δ effect', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+    var yt = txt(15, (yT + yB) / 2, o.costLabel || 'Δ cost', { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' }); yt.setAttribute('transform', 'rotate(-90 15 ' + ((yT + yB) / 2) + ')');
+    txt(X(eMax * 0.5), Y(clamp(wtp * eMax * 0.5, -cMax, cMax)) - 4, 'λ', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.wtp });
+
+    el('rect', { x: x0, y: yT, width: plot, height: plot, fill: 'none', stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1125,6 +1192,7 @@
   global.ChartKit.renderSROC = renderSROC;
   global.ChartKit.renderDensity = renderDensity;
   global.ChartKit.renderKM = renderKM;
+  global.ChartKit.renderCEplane = renderCEplane;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
