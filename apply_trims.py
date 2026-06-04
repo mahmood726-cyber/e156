@@ -22,7 +22,7 @@ SENT = re.compile(r"[.?!](?:\s|$)")
 def main():
     trims = json.load(open(TRIMS, encoding="utf-8"))
     orig = json.load(open(ORIG, encoding="utf-8"))
-    t = open(WB, encoding="utf-8", errors="replace").read()
+    t = open(WB, "rb").read().decode("utf-8", "replace")  # binary: preserve LF
     parts = re.split(r"(\n\[\d+/\d+\]\s)", t)
     applied, rejected = [], []
     marker_idx = {parts[i - 1].strip(): i for i in range(2, len(parts), 2)}
@@ -54,7 +54,7 @@ def main():
         for mk, pr in rejected:
             print(f"  {mk}: {pr}")
     if applied and not rejected:
-        open(WB, "w", encoding="utf-8").write("".join(parts))
+        open(WB, "wb").write("".join(parts).encode("utf-8"))
         print(f"APPLIED {len(applied)} trims.")
         for mk, a, b in applied:
             print(f"  {mk}: {a} -> {b}")
