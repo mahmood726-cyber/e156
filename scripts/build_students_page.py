@@ -207,18 +207,19 @@ HTML_TEMPLATE = r"""<!doctype html>
 
 <style>
 :root {
-  --bg: #0b1120;
-  --bg-elev: #111827;
-  --bg-card: #1a2236;
-  --border: #2a3244;
-  --text: #e5e7eb;
-  --text-dim: #9ca3af;
-  --text-faint: #6b7280;
-  --accent: #22c55e;
-  --warn: #eab308;
-  --claimed: #3b82f6;
+  --bg: #ffffff;
+  --bg-elev: #f6f6f2;
+  --bg-card: #ffffff;
+  --border: #e4e4df;
+  --text: #141414;
+  --text-dim: #5c5c5c;
+  --text-faint: #8c8c8c;
+  --accent: #15803d;
+  --warn: #b45309;
+  --claimed: #1d4ed8;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -402,6 +403,32 @@ dialog#kbd-help button { margin-top: 1.2rem; background: var(--bg-elev); color: 
 .instructions-wrap[open] summary::before { transform: rotate(90deg); }
 
 footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; text-align: center; }
+
+/* === NYT-editorial light theme (overrides) === */
+body { font-size: 16px; }
+.container { max-width: 1080px; }
+header { padding: 4.5rem 0 2.25rem; background: #fff; border-bottom: 1px solid var(--text); }
+header h1 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.015em; font-size: clamp(2rem,4.5vw,2.9rem); }
+header h1 .accent { color: var(--accent); }
+header h1 .journal-mark { font-family: var(--sans); color: var(--text-faint); }
+header p.tagline { font-family: var(--serif); font-size: clamp(1.08rem,2vw,1.28rem); line-height: 1.52; color: #333; max-width: 66ch; }
+h2, .card-title { font-family: var(--serif); }
+.instructions h2 { font-family: var(--sans); color: var(--text-dim); }
+.instructions-wrap summary { color: var(--accent); }
+.card { border-radius: 4px; }
+.card-title { font-weight: 700; font-size: 1.1rem; }
+.card:hover { border-color: var(--text-faint); box-shadow: 0 1px 10px rgba(0,0,0,0.05); }
+.btn.primary { color: #fff; }
+.btn.primary:hover { background: #166534; }
+.stat { background: var(--bg-elev); }
+/* fix status colours that were light-on-dark (would vanish on white) */
+.days-left.urgent { color: #dc2626; }
+.days-left.expired { color: #b91c1c; }
+.claims-error { color: #991b1b; }
+.series-badge { color: #6d28d9; background: rgba(124,58,237,0.10); border-color: rgba(124,58,237,0.35); }
+.series-badge:hover { background: rgba(124,58,237,0.18); }
+dialog#kbd-help::backdrop { background: rgba(0,0,0,0.35); }
+footer { color: var(--text-dim); border-top-color: var(--border); }
 </style>
 </head>
 <body>
@@ -409,7 +436,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 <header>
   <div class="container">
     <h1><span class="accent">E156</span> Student Board <span class="journal-mark" title="Target journal: Synthēsis (synthesis-medicine.org)">◆ Synthēsis</span></h1>
-    <p class="tagline">Pick a paper, rewrite the 156-word body, submit to <strong>◆ Synthēsis</strong> (Methods Note section, ≤400 words). Open to Ugandan medical students and anyone else interested in evidence-synthesis co-authorship. — Mahmood Ahmad, Tahir Heart Institute.</p>
+    <p class="tagline">Every paper on this board is a complete, machine-drafted meta-analysis &mdash; rigorous, but unwritten. Claim one, rewrite the 156-word body in your own voice and judgement, and submit it to <strong>◆ Synthēsis</strong> under your name. Real authorship, in a real journal &mdash; open to Ugandan medical students and anyone learning evidence synthesis. <span style="white-space:nowrap">&mdash; Mahmood Ahmad, Tahir Heart Institute.</span></p>
 
     <details class="instructions-wrap instructions" open>
       <summary>How this works (click to collapse)</summary>
