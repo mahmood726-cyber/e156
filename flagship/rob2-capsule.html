@@ -1866,6 +1866,54 @@
     return svgEl;
   }
 
+  /**
+   * renderInterval(svgEl, opts) — single estimate + CI on a zoned axis (non-inferiority / equivalence / MID).
+   * opts: { est, lo, hi, min, max, zones:[{from,to,fill,label}], refs:[{x,label}],
+   *         xLabel, claim, estimand, valueFmt(v) }
+   */
+  function renderInterval(svgEl, opts) {
+    opts = opts || {};
+    var o = Object.assign({ width: 640, height: 200, padL: 34, padR: 34, padT: 58, padB: 46, zones: [], refs: [] }, opts);
+    var tok = tokGetter();
+    var ntok = function (n, f) { var v = parseFloat(tok(n, '')); return isFinite(v) ? v : f; };
+    var C = { ink: tok('--c-ink', '#1a1a1a'), ink2: tok('--c-ink-2', '#555a5f'), annot: tok('--c-annot', '#7a8086'), grid: tok('--c-grid', '#e7e9ec'), axis: tok('--c-axis', '#c2c6cb'), nul: tok('--c-null', '#9aa0a6'), est: tok('--c-estimate', '#1a1a1a') };
+    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yT = o.padT, yB = H - o.padB, midY = (yT + yB) / 2;
+    var min = o.min, max = o.max, vf = o.valueFmt || fmt;
+    var sx = function (v) { return x0 + (Math.max(min, Math.min(max, v)) - min) / (max - min) * (x1 - x0); };
+
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+    svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    if (!svgEl.style.width) svgEl.style.width = '100%';
+    svgEl.setAttribute('role', 'img'); svgEl.setAttribute('font-family', tok('--t-font-serif', 'Georgia,serif'));
+    svgEl.setAttribute('aria-label', 'Interval estimate on a zoned axis. ' + (o.claim || ''));
+    function el(t, a, p) { var e = document.createElementNS(NS, t); a = a || {}; for (var k in a) e.setAttribute(k, a[k]); (p || svgEl).appendChild(e); return e; }
+    function txt(x, y, s, a, p) { var e = el('text', Object.assign({ x: x, y: y }, a || {}), p); e.textContent = s; return e; }
+
+    txt(x0, 24, o.claim || 'Interval estimate', { 'font-size': tok('--t-fs-fig-title', '19px'), 'font-weight': tok('--t-fw-title', '600'), fill: C.ink });
+    if (o.estimand) txt(x0, 43, o.estimand, { 'font-size': tok('--t-fs-fig-sub', '14px'), fill: C.ink2 });
+
+    // shaded zones (background) + their labels
+    o.zones.forEach(function (z) { var xa = sx(z.from), xb = sx(z.to);
+      el('rect', { x: Math.min(xa, xb), y: yT, width: Math.abs(xb - xa), height: yB - yT, fill: z.fill, 'fill-opacity': '0.13' });
+      if (z.label) txt((xa + xb) / 2, yB - 6, z.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    // reference lines (null, margin) + labels
+    o.refs.forEach(function (r) { var x = sx(r.x);
+      el('line', { x1: x, x2: x, y1: yT - 8, y2: yB + 6, stroke: C.nul, 'stroke-width': ntok('--hair-null', 1.25), 'stroke-dasharray': '4 3' });
+      if (r.label) txt(x, yT - 11, r.label, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.annot, 'text-anchor': 'middle' }); });
+    // x ticks
+    niceForestTicks(min, max, false).forEach(function (v) { if (v < min || v > max) return; txt(sx(v), yB + 18, vf(v), { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2, 'text-anchor': 'middle' }); });
+    if (o.xLabel) txt((x0 + x1) / 2, H - 6, o.xLabel, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
+
+    // estimate + CI
+    el('line', { x1: sx(o.lo), x2: sx(o.hi), y1: midY, y2: midY, stroke: C.est, 'stroke-width': ntok('--whisker-w', 1.25) });
+    el('line', { x1: sx(o.lo), x2: sx(o.lo), y1: midY - 6, y2: midY + 6, stroke: C.est, 'stroke-width': ntok('--whisker-w', 1.25) });
+    el('line', { x1: sx(o.hi), x2: sx(o.hi), y1: midY - 6, y2: midY + 6, stroke: C.est, 'stroke-width': ntok('--whisker-w', 1.25) });
+    el('circle', { cx: sx(o.est), cy: midY, r: 5, fill: C.est });
+    txt(sx(o.hi) + 8, midY + 3.5, vf(o.est) + ' (' + vf(o.lo) + '–' + vf(o.hi) + ')', { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.ink2 });
+    return svgEl;
+  }
+
   global.ChartKit = global.ChartKit || {};
   global.ChartKit.renderForest = renderForest;
   global.ChartKit.renderNetwork = renderNetwork;
@@ -1886,6 +1934,7 @@
   global.ChartKit.renderStackedArea = renderStackedArea;
   global.ChartKit.renderGauge = renderGauge;
   global.ChartKit.renderGroupedForest = renderGroupedForest;
+  global.ChartKit.renderInterval = renderInterval;
   global.ChartKit.renderGOSH = renderGOSH;
   global.ChartKit.renderFunnel = renderFunnel;
   global.ChartKit.renderLOO = renderLOO;
