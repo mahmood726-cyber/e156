@@ -215,13 +215,15 @@
 
   <section class="stage" id="eventstudy">
     <div class="stagehdr"><span class="stagenum">06</span><h2>Event study &amp; placebo</h2><span class="prismaref">multi-period · parallel-trends + timing checks</span></div>
-    <div class="card"><p>The 2×2 above can't test parallel trends. Paste a multi-period panel (<code>period, treated, control</code> means; the intervention takes effect at the first period&nbsp;≥&nbsp;0). The <b>event study</b> plots the period-by-period DiD relative to the last pre-period (event time −1): pre-period coefficients near zero support parallel trends. The <b>placebo-in-time</b> curve recomputes the DiD for every assumed onset — a genuine effect should peak at the true date. Cell SE σ is taken from the 2×2 means above (independent-homoscedastic approximation; clustered SEs are usually larger).</p>
-      <textarea id="panel" class="ed" rows="4" style="width:100%;font-family:var(--mono,monospace);font-size:.8rem" aria-label="multi-period panel"></textarea>
+    <div class="card"><p>The 2×2 above can't test parallel trends. Paste a multi-period panel — <code>period, treated, control₁, control₂, …</code> means (one treated column, one or more control/donor columns; the intervention takes effect at the first period&nbsp;≥&nbsp;0). The main DiD and event study use the <b>donor-pool mean</b> as the control. Three falsification checks: the <b>event study</b> plots the period-by-period DiD relative to the last pre-period (event time −1) — pre-period coefficients near zero support parallel trends; the <b>placebo-in-time</b> curve recomputes the DiD for every assumed onset (a real effect peaks at the true date); the <b>in-space placebo</b> re-estimates the effect treating each donor as if it were treated — randomization inference asks how the real treated effect ranks among these placebos. Cell SE σ is taken from the 2×2 means above (independent-homoscedastic approximation; clustered SEs are usually larger).</p>
+      <textarea id="panel" class="ed" rows="5" style="width:100%;font-family:var(--mono,monospace);font-size:.8rem" aria-label="multi-period panel"></textarea>
       <div class="grid2" style="margin-top:.6rem">
         <div><svg id="eventsvg" viewBox="0 0 520 320" role="group" aria-label="event-study coefficients"></svg>
           <p class="note" id="roPretrend">—</p></div>
         <div><svg id="placebosvg" viewBox="0 0 520 320" role="group" aria-label="placebo-in-time DiD by assumed onset"></svg>
           <p class="note" id="roPlacebo">—</p></div>
+        <div><svg id="inspacesvg" viewBox="0 0 520 320" role="group" aria-label="in-space placebo effects"></svg>
+          <p class="note" id="roInspace">—</p></div>
       </div>
       <div class="toolbar"><button class="btn" id="resetPanel">Reset panel</button><span class="livetag" id="panelTag">illustrative demo</span></div>
     </div>
@@ -2047,24 +2049,48 @@ QA_RENDER([
 ['DiD recomputed from raw means matches estimate', !!(res&&Math.abs((model.tpost-model.tpre)-(model.cpost-model.cpre)-res.est)<1e-9)]
 ]);}
 // ---- multi-period panel: event study + placebo-in-time ----
-const PANEL_DEFAULT=`period,treated,control
--6,18.6,15.6
--5,19.0,16.0
--4,19.4,16.4
--3,19.8,16.8
--2,20.2,17.2
--1,20.6,17.6
-0,26.0,18.0
-1,26.4,18.4
-2,26.8,18.8
-3,27.2,19.2
-4,27.6,19.6
-5,28.0,20.0`;
+const PANEL_DEFAULT=`period,treated,control1,control2,control3,control4
+-6,18.1,13.6,14.6,15.6,16.6
+-5,18.5,14,15,16,17
+-4,18.9,14.4,15.4,16.4,17.4
+-3,19.3,14.8,15.8,16.8,17.8
+-2,19.7,15.2,16.2,17.2,18.2
+-1,20.1,15.6,16.6,17.6,18.6
+0,25.5,16,17,18,19
+1,25.9,16.4,17.4,18.4,19.4
+2,26.3,16.8,17.8,18.8,19.8
+3,26.7,17.2,18.2,19.2,20.2
+4,27.1,17.6,18.6,19.6,20.6
+5,27.5,18,19,20,21`;
 let panelText=loadPanel();
 function loadPanel(){try{const r=localStorage.getItem(LSKEY+':panel');if(r)return r;}catch(e){}return PANEL_DEFAULT;}
 function persistPanel(){try{localStorage.setItem(LSKEY+':panel',panelText);}catch(e){}
   const tag=document.getElementById('panelTag');if(tag)tag.textContent=(panelText!==PANEL_DEFAULT)?'edited — live re-run':'illustrative demo';}
-function parsePanel(t){const rows=[];String(t).split(/\n/).forEach(line=>{const m=line.split(',');if(m.length<3)return;const p=parseFloat(m[0]),tr=parseFloat(m[1]),c=parseFloat(m[2]);if(isFinite(p)&&isFinite(tr)&&isFinite(c))rows.push({period:p,treated:tr,control:c});});rows.sort((a,b)=>a.period-b.period);return rows;}
+function parsePanel(t){const rows=[];String(t).split(/\n/).forEach(line=>{const m=line.split(',');if(m.length<3)return;const p=parseFloat(m[0]),tr=parseFloat(m[1]);
+  const donors=m.slice(2).map(parseFloat).filter(isFinite);
+  if(isFinite(p)&&isFinite(tr)&&donors.length){const control=donors.reduce((a,b)=>a+b,0)/donors.length;rows.push({period:p,treated:tr,control,donors});}});
+  rows.sort((a,b)=>a.period-b.period);return rows;}
+// in-space placebo: treat each donor as if it were the treated unit (vs the mean of the OTHER donors),
+// then rank the REAL treated effect among these placebo effects (randomization inference).
+function inSpacePlacebo(rows){
+  if(rows.length<3)return null;const onsetRow=rows.find(r=>r.period>=0);if(!onsetRow)return null;
+  const onset=onsetRow.period,nD=rows[0].donors.length;if(nD<2)return null;   // need >=2 donors for any placebo
+  const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+  const did=(tr,co)=>{const pre=rows.filter(r=>r.period<onset),post=rows.filter(r=>r.period>=onset);
+    return (mean(post.map(tr))-mean(pre.map(tr)))-(mean(post.map(co))-mean(pre.map(co)));};
+  const real=did(r=>r.treated,r=>mean(r.donors));
+  const placebos=[];for(let j=0;j<nD;j++)placebos.push(did(r=>r.donors[j],r=>mean(r.donors.filter((_,k)=>k!==j))));
+  const all=[Math.abs(real)].concat(placebos.map(Math.abs));
+  const p=all.filter(x=>x>=Math.abs(real)-1e-9).length/all.length;   // randomization-inference p (incl. treated)
+  return {real,placebos,p,nUnits:placebos.length+1};
+}
+function renderInspace(ip){const svg=document.getElementById('inspacesvg');if(!svg)return;
+  if(typeof ChartKit==='undefined'||!ChartKit.renderBars||!ip){svg.innerHTML='<text x="14" y="24" class="tick">add ≥2 control columns for in-space placebo</text>';return;}
+  const bars=[{label:'Treated',value:ip.real,color:'#0072B2'}].concat(ip.placebos.map((e,i)=>({label:'donor '+(i+1),value:e,color:'#9aa0a6'})));
+  ChartKit.renderBars(svg,bars,{yLabel:'estimated effect (DiD)',
+    claim:'Treated effect '+ip.real.toFixed(1)+' vs placebo donors · randomization p '+ip.p.toFixed(2),
+    estimand:'In-space placebo · each donor re-estimated as pseudo-treated · '+ip.nUnits+' units'});
+}
 function sigmaFrom(m){const s=[m.tpreSE,m.tpostSE,m.cpreSE,m.cpostSE].filter(x=>x>0);return s.length?s.reduce((a,b)=>a+b,0)/s.length:1;}
 // event study: coef_t = (T_t - C_t) - (T_ref - C_ref); ref = last pre-period (period just before the first >=0 onset)
 function eventStudy(rows,sigma){
@@ -2111,9 +2137,11 @@ function renderPanel(){
   const rows=parsePanel(panelText),sigma=sigmaFrom(model);
   const es=eventStudy(rows,sigma);renderEvent(es);
   const pt=placeboTiming(rows);renderPlacebo(pt);
+  const ip=inSpacePlacebo(rows);renderInspace(ip);
   const setH=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
   setH('roPretrend',es?(es.preSig?`<b style="color:var(--warn)">Parallel-trends doubt:</b> ${es.preSig} pre-period coefficient(s) differ from 0 (|max| ${es.maxPre.toFixed(2)}) — the DiD's causal reading is weakened.`:`<b style="color:var(--good)">Parallel trends plausible:</b> every pre-period coefficient is within sampling error of 0 (|max| ${es.maxPre.toFixed(2)}).`):'Add ≥1 pre-period (period &lt; 0) and an onset (period ≥ 0).');
   setH('roPlacebo',(pt&&pt.trueDiD!=null)?`True-onset DiD <b>${pt.trueDiD.toFixed(2)}</b>; it exceeds <b>${(pt.frac*100).toFixed(0)}%</b> of placebo-onset DiDs. A genuine level shift should peak at the true date.`:'Add ≥4 periods for the placebo-in-time curve.');
+  setH('roInspace',ip?`Treated effect <b>${ip.real.toFixed(2)}</b> vs ${ip.nUnits-1} donor placebo(s); randomization-inference <b>p = ${ip.p.toFixed(2)}</b> (floor 1/${ip.nUnits} with this pool — more donors give smaller attainable p).`:'Add ≥2 control columns (control1,control2,…) to run the in-space placebo.');
 }
 function renderOutputs(){const res=did(model);renderPlot(res,model);renderReadouts(res,model);renderPanel();rcode();renderInspect();renderQA();
   document.getElementById('badgeDiD').textContent=`DiD ${res.est>=0?'+':''}${res.est.toFixed(1)}`;
