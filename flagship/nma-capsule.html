@@ -1937,6 +1937,10 @@
    * stages: [{ label, n, exits? }] — stages[0].n is the entry cohort; each later stage's
    *   n is the count retained into it. exits (optional): [{ label, n }] losses leaving the
    *   PREVIOUS stage; if omitted, a single derived loss (prev.n − n) is drawn unlabeled.
+   *   A stage with ≥2 exits FANS them out horizontally — side-by-side proportional sinks,
+   *   each with a count + rotated reason label (the SVG auto-grows taller). 1 exit is the
+   *   classic single downward arm (unchanged). Use the fan for itemised loss breakdowns
+   *   (e.g. PRISMA exclusion reasons, CONSORT loss categories).
    * Retained-flow and exit-ribbon widths are ∝ count (relative to the entry cohort).
    * Deterministic — no RNG. opts: { width, height, unit, claim, estimand,
    *   retainColor, finalColor, exitColor }
@@ -1949,8 +1953,9 @@
       retain: o.retainColor || tok('--cat-1', '#0072B2'),
       fin: o.finalColor || '#1f9d57',
       exit: o.exitColor || tok('--c-annot', '#7a8086') };
-    var W = o.width, H = o.height, x0 = o.padL, x1 = W - o.padR, yTop = 84;
     var k = stages.length;
+    var fanActive = stages.some(function (s) { return s.exits && s.exits.length >= 2; });
+    var W = o.width, H = fanActive ? Math.max(o.height, 392) : o.height, x0 = o.padL, x1 = W - o.padR, yTop = 84;
     var fmtN = function (v) { return Math.round(v).toLocaleString(); };
 
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
@@ -1988,27 +1993,53 @@
         fill: C.retain, 'fill-opacity': '0.30' });
     }
 
-    // exit ribbons (losses leaving each stage) — peel from the bottom wedge down to a sink
+    // exit ribbons (losses leaving each stage) — peel from the bottom wedge down to a sink.
+    // 1 exit  → a single ribbon to one labelled sink (the classic attrition arm).
+    // ≥2 exits → the sinks FAN OUT horizontally, side by side, each a proportional band
+    //            ending in a crisp magnitude cap with a count + rotated reason label, so a
+    //            stage's loss breakdown (e.g. PRISMA exclusion reasons) reads at a glance.
+    var fmtExit = function (g, e) { addTip(g, '<b>' + e.label + '</b><br>−' + fmtN(e.n) + (o.unit ? ' ' + o.unit : '')); };
+    var ribbon = function (xSrc, srcTop, srcBot, xSink, sTop, sBot, op, p) {
+      var cx = (xSrc + xSink) / 2;
+      el('path', { d: 'M ' + xSrc + ' ' + srcTop +
+        ' C ' + cx + ' ' + srcTop + ' ' + cx + ' ' + sTop + ' ' + xSink + ' ' + sTop +
+        ' L ' + xSink + ' ' + sBot +
+        ' C ' + cx + ' ' + sBot + ' ' + cx + ' ' + srcBot + ' ' + xSrc + ' ' + srcBot + ' Z',
+        fill: C.exit, 'fill-opacity': op }, p);
+    };
     for (i = 0; i < k - 1; i++) {
       var lossTotal = Math.max(0, stages[i].n - stages[i + 1].n);
       var exits = (stages[i + 1].exits && stages[i + 1].exits.length) ? stages[i + 1].exits
         : (lossTotal > 0 ? [{ label: 'removed', n: lossTotal }] : []);
+      if (!exits.length) continue;
       var wedgeTop = yTop + t(stages[i + 1].n);
-      var xSrc = nodeX(i) + nodeW, xSink = nodeX(i) + nodeW + span * 0.46;
-      var cx = (xSrc + xSink) / 2, cum = 0, sinkY = sinkBase;
-      exits.forEach(function (e) {
-        var eThk = t(e.n); if (eThk < 0.5) return;
-        var srcTop = wedgeTop + cum, srcBot = srcTop + eThk; cum += eThk;
-        var sTop = sinkY, sBot = sinkY + eThk; sinkY = sBot + 6;
-        var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e.label + ': ' + fmtN(e.n) });
-        addTip(g, '<b>' + e.label + '</b><br>−' + fmtN(e.n) + (o.unit ? ' ' + o.unit : ''));
-        el('path', { d: 'M ' + xSrc + ' ' + srcTop +
-          ' C ' + cx + ' ' + srcTop + ' ' + cx + ' ' + sTop + ' ' + xSink + ' ' + sTop +
-          ' L ' + xSink + ' ' + sBot +
-          ' C ' + cx + ' ' + sBot + ' ' + cx + ' ' + srcBot + ' ' + xSrc + ' ' + srcBot + ' Z',
-          fill: C.exit, 'fill-opacity': '0.34' }, g);
-        txt(xSink, sBot + 13, '−' + fmtN(e.n), { 'font-size': tok('--t-fs-annot', '11px'), fill: C.exit, 'text-anchor': 'middle' }, g);
-      });
+      var xSrc = nodeX(i) + nodeW;
+      if (exits.length < 2) {
+        var e0 = exits[0], eThk0 = t(e0.n); if (eThk0 < 0.5) eThk0 = 0.5;
+        var xSink0 = xSrc + span * 0.46;
+        var g0 = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e0.label + ': ' + fmtN(e0.n) });
+        fmtExit(g0, e0);
+        ribbon(xSrc, wedgeTop, wedgeTop + eThk0, xSink0, sinkBase, sinkBase + eThk0, '0.34', g0);
+        txt(xSink0, sinkBase + eThk0 + 13, '−' + fmtN(e0.n), { 'font-size': tok('--t-fs-annot', '11px'), fill: C.exit, 'text-anchor': 'middle' }, g0);
+      } else {
+        var m = exits.length, fanL = xSrc + span * 0.16, fanR = nodeX(i + 1) - 5;
+        var slot = (fanR - fanL) / m, cum = 0, capMin = 3;
+        // shared label baseline below the tallest cap → reasons read as a neat aligned row.
+        // count + reason fold into ONE rotated label, so narrow slots never collide.
+        var maxThk = Math.max.apply(null, exits.map(function (e) { return Math.max(t(e.n), capMin); }));
+        var labelY = sinkBase + maxThk + 8;
+        exits.forEach(function (e, idx) {
+          var eThk = t(e.n); if (eThk < 0.6) eThk = 0.6;
+          var srcTop = wedgeTop + cum, srcBot = srcTop + eThk; cum += eThk;
+          var xC = fanL + slot * (idx + 0.5);
+          var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e.label + ': ' + fmtN(e.n) });
+          fmtExit(g, e);
+          ribbon(xSrc, srcTop, srcBot, xC, sinkBase, sinkBase + eThk, '0.30', g);
+          el('rect', { x: xC - 1.6, y: sinkBase, width: 3.2, height: Math.max(capMin, eThk), fill: C.exit, 'fill-opacity': '0.85' }, g);
+          var rl = txt(xC, labelY, '−' + fmtN(e.n) + '  ' + e.label, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.exit, 'text-anchor': 'end' }, g);
+          rl.setAttribute('transform', 'rotate(-90 ' + xC + ' ' + labelY + ')');
+        });
+      }
     }
 
     // nodes (vertical bars) + stage labels + retained counts
