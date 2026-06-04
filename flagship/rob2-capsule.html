@@ -1413,7 +1413,8 @@
     var plotH = n * o.rowH, yB = yT + plotH, H = yB + o.padB;
     var th = o.threshold;
     var V = function (v) { return o.abs ? Math.abs(v) : v; };
-    var allv = []; rows.forEach(function (r) { allv.push(V(r.before), V(r.after)); }); allv.push(th, o.abs ? 0 : -th);
+    var hasBefore = rows.some(function (r) { return r.before != null; });   // single-series when no before
+    var allv = []; rows.forEach(function (r) { if (r.before != null) allv.push(V(r.before)); allv.push(V(r.after)); }); allv.push(th, o.abs ? 0 : -th);
     var dmax = Math.max.apply(null, allv) * 1.12 || 1, dmin = o.abs ? 0 : -dmax;
     var sx = function (v) { return x0 + (v - dmin) / (dmax - dmin) * (x1 - x0); };
 
@@ -1445,17 +1446,20 @@
     txt(sx(th), yT - 4, '|SMD| ' + th, { 'font-size': tok('--t-fs-annot', '11px'), fill: C.warn, 'text-anchor': 'middle' });
 
     rows.forEach(function (r, i) {
-      var y = yT + i * o.rowH + o.rowH / 2, xb = sx(V(r.before)), xa = sx(V(r.after)), bad = Math.abs(r.after) > th;
-      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': r.label + ': SMD before ' + fmt(r.before) + ', after ' + fmt(r.after) });
-      addTip(g, '<b>' + r.label + '</b><br>before ' + fmt(r.before) + '<br>after ' + fmt(r.after));
+      var y = yT + i * o.rowH + o.rowH / 2, hasB = r.before != null, xb = hasB ? sx(V(r.before)) : null, xa = sx(V(r.after)), bad = Math.abs(r.after) > th;
+      var lab = hasB ? ('before ' + fmt(r.before) + ', after ' + fmt(r.after)) : fmt(r.after);
+      var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': r.label + ': ' + lab });
+      addTip(g, '<b>' + r.label + '</b><br>' + (hasB ? 'before ' + fmt(r.before) + '<br>after ' + fmt(r.after) : fmt(r.after)));
       txt(x0 - 10, y + 3.5, r.label, { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink, 'text-anchor': 'end' }, g);
-      el('line', { x1: Math.min(xb, xa), x2: Math.max(xb, xa), y1: y, y2: y, stroke: C.grid, 'stroke-width': '1.5' }, g);
-      el('circle', { cx: xb, cy: y, r: 4.5, fill: 'none', stroke: C.before, 'stroke-width': '1.5' }, g);    // before = hollow
+      if (hasB) {
+        el('line', { x1: Math.min(xb, xa), x2: Math.max(xb, xa), y1: y, y2: y, stroke: C.grid, 'stroke-width': '1.5' }, g);
+        el('circle', { cx: xb, cy: y, r: 4.5, fill: 'none', stroke: C.before, 'stroke-width': '1.5' }, g);    // before = hollow
+      }
       el('circle', { cx: xa, cy: y, r: 4.5, fill: bad ? C.bad : C.after }, g);                              // after = filled (red if > threshold)
     });
 
-    // legend + axis label
-    txt(x1, yT - 4, '○ before  ● after', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2, 'text-anchor': 'end' });
+    // legend (only meaningful with a before/after pair) + axis label
+    if (hasBefore) txt(x1, yT - 4, '○ before  ● after', { 'font-size': tok('--t-fs-annot', '11px'), fill: C.ink2, 'text-anchor': 'end' });
     txt((x0 + x1) / 2, yB + 34, o.xLabel || (o.abs ? '|standardized mean difference|' : 'standardized mean difference'), { 'font-size': tok('--t-fs-axis', '12px'), fill: C.ink2, 'text-anchor': 'middle' });
     el('line', { x1: x0, x2: x1, y1: yB, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
     el('line', { x1: x0, x2: x0, y1: yT, y2: yB, stroke: C.axis, 'stroke-width': ntok('--hair-axis', 1) });
