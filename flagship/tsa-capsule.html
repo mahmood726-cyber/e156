@@ -1918,10 +1918,13 @@
    * stages: [{ label, n, exits? }] — stages[0].n is the entry cohort; each later stage's
    *   n is the count retained into it. exits (optional): [{ label, n }] losses leaving the
    *   PREVIOUS stage; if omitted, a single derived loss (prev.n − n) is drawn unlabeled.
-   *   A stage with ≥2 exits FANS them out horizontally — side-by-side proportional sinks,
-   *   each with a count + rotated reason label (the SVG auto-grows taller). 1 exit is the
-   *   classic single downward arm (unchanged). Use the fan for itemised loss breakdowns
-   *   (e.g. PRISMA exclusion reasons, CONSORT loss categories).
+   *   A stage with ≥2 POSITIVE exits FANS them out horizontally — side-by-side proportional
+   *   sinks, each with a count + rotated reason label; the SVG auto-grows tall enough for the
+   *   longest label. The fan font shrinks with the per-exit slot, and once slots would be too
+   *   tight to read (very many reasons) the stage aggregates to a single "N reasons" arm with
+   *   the breakdown in its tooltip. 1 exit is the classic single downward arm (unchanged;
+   *   sub-0.5px losses skipped as before). Zero-count exits are dropped. Use the fan for
+   *   itemised loss breakdowns (e.g. PRISMA exclusion reasons, CONSORT loss categories).
    * Retained-flow and exit-ribbon widths are ∝ count (relative to the entry cohort).
    * Deterministic — no RNG. opts: { width, height, unit, claim, estimand,
    *   retainColor, finalColor, exitColor }
@@ -1935,9 +1938,22 @@
       fin: o.finalColor || '#1f9d57',
       exit: o.exitColor || tok('--c-annot', '#7a8086') };
     var k = stages.length;
-    var fanActive = stages.some(function (s) { return s.exits && s.exits.length >= 2; });
-    var W = o.width, H = fanActive ? Math.max(o.height, 392) : o.height, x0 = o.padL, x1 = W - o.padR, yTop = 84;
     var fmtN = function (v) { return Math.round(v).toLocaleString(); };
+    // a stage "fans" only when it has >=2 POSITIVE exits (zero-count reasons are dropped below)
+    var fanStages = stages.filter(function (s) { return s.exits && s.exits.filter(function (e) { return e.n > 0; }).length >= 2; });
+    var fanActive = fanStages.length > 0;
+    // grow H to fit the fan's rotated reason labels (length-aware, NOT a fixed floor) so long
+    // reason names never clip below the viewBox. bandH caps at 96 once the canvas is this tall,
+    // so sinkBase/labelY are stable constants here; 6px/char is a generous upper bound at 10.5px.
+    var fanH = 0;
+    if (fanActive && k >= 2) {
+      var nMaxE = stages[0].n > 0 ? stages[0].n : 1, bandHE = 96, sinkBaseE = 84 + bandHE + 30, maxThkE = 0, maxCharsE = 0;
+      fanStages.forEach(function (s) { s.exits.forEach(function (e) { if (!(e.n > 0)) return;
+        maxThkE = Math.max(maxThkE, Math.max(3, e.n / nMaxE * bandHE));
+        maxCharsE = Math.max(maxCharsE, ('−' + fmtN(e.n) + '  ' + String(e.label)).length); }); });
+      fanH = Math.ceil(sinkBaseE + maxThkE + 10 + maxCharsE * 6.0 + (o.padB || 18));
+    }
+    var W = o.width, H = fanActive ? Math.max(o.height, 392, fanH) : o.height, x0 = o.padL, x1 = W - o.padR, yTop = 84;
 
     while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
     svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
@@ -1992,35 +2008,46 @@
       var lossTotal = Math.max(0, stages[i].n - stages[i + 1].n);
       var exits = (stages[i + 1].exits && stages[i + 1].exits.length) ? stages[i + 1].exits
         : (lossTotal > 0 ? [{ label: 'removed', n: lossTotal }] : []);
+      exits = exits.filter(function (e) { return e.n > 0; });   // drop zero-count reasons (no "−0" caps)
       if (!exits.length) continue;
       var wedgeTop = yTop + t(stages[i + 1].n);
-      var xSrc = nodeX(i) + nodeW;
-      if (exits.length < 2) {
-        var e0 = exits[0], eThk0 = t(e0.n); if (eThk0 < 0.5) eThk0 = 0.5;
+      var xSrc = nodeX(i) + nodeW, m = exits.length;
+      var fanL = xSrc + span * 0.16, fanR = nodeX(i + 1) - 5, slot = (fanR - fanL) / m;
+      var canFan = m >= 2 && slot >= 7;   // below ~7px/slot the rotated labels would overlap — aggregate instead
+      if (!canFan) {
+        // single arm — OR, when there are too many exits to fan legibly, ONE aggregated arm
+        // ("m reasons") whose per-reason breakdown stays in the tooltip. Sub-0.5px losses are
+        // skipped exactly as the legacy single-exit path did (so existing diagrams are unchanged).
+        var aggN = exits.reduce(function (a, e) { return a + e.n; }, 0);
+        var single = (m < 2) ? exits[0] : { label: m + ' reasons', n: aggN };
+        var eThk0 = t(single.n); if (eThk0 < 0.5) continue;
         var xSink0 = xSrc + span * 0.46;
-        var g0 = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e0.label + ': ' + fmtN(e0.n) });
-        fmtExit(g0, e0);
+        var g0 = el('g', { tabindex: '0', role: 'listitem', 'aria-label': single.label + ': ' + fmtN(single.n) });
+        addTip(g0, (m < 2) ? ('<b>' + single.label + '</b><br>−' + fmtN(single.n) + (o.unit ? ' ' + o.unit : ''))
+          : ('<b>' + m + ' loss reasons</b><br>' + exits.map(function (e) { return e.label + ' −' + fmtN(e.n); }).join('<br>')));
         ribbon(xSrc, wedgeTop, wedgeTop + eThk0, xSink0, sinkBase, sinkBase + eThk0, '0.34', g0);
-        txt(xSink0, sinkBase + eThk0 + 13, '−' + fmtN(e0.n), { 'font-size': tok('--t-fs-annot', '11px'), fill: C.exit, 'text-anchor': 'middle' }, g0);
-      } else {
-        var m = exits.length, fanL = xSrc + span * 0.16, fanR = nodeX(i + 1) - 5;
-        var slot = (fanR - fanL) / m, cum = 0, capMin = 3;
-        // shared label baseline below the tallest cap → reasons read as a neat aligned row.
-        // count + reason fold into ONE rotated label, so narrow slots never collide.
-        var maxThk = Math.max.apply(null, exits.map(function (e) { return Math.max(t(e.n), capMin); }));
-        var labelY = sinkBase + maxThk + 8;
-        exits.forEach(function (e, idx) {
-          var eThk = t(e.n); if (eThk < 0.6) eThk = 0.6;
-          var srcTop = wedgeTop + cum, srcBot = srcTop + eThk; cum += eThk;
-          var xC = fanL + slot * (idx + 0.5);
-          var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e.label + ': ' + fmtN(e.n) });
-          fmtExit(g, e);
-          ribbon(xSrc, srcTop, srcBot, xC, sinkBase, sinkBase + eThk, '0.30', g);
-          el('rect', { x: xC - 1.6, y: sinkBase, width: 3.2, height: Math.max(capMin, eThk), fill: C.exit, 'fill-opacity': '0.85' }, g);
-          var rl = txt(xC, labelY, '−' + fmtN(e.n) + '  ' + e.label, { 'font-size': tok('--t-fs-tick', '10.5px'), fill: C.exit, 'text-anchor': 'end' }, g);
-          rl.setAttribute('transform', 'rotate(-90 ' + xC + ' ' + labelY + ')');
-        });
+        txt(xSink0, sinkBase + eThk0 + 13, '−' + fmtN(single.n), { 'font-size': tok('--t-fs-annot', '11px'), fill: C.exit, 'text-anchor': 'middle' }, g0);
+        continue;
       }
+      // ≥2 positive exits WITH room → fan out horizontally. Count+reason fold into ONE rotated
+      // label so the two parts never collide with EACH OTHER; adjacent-label overlap is avoided
+      // by shrinking the font with the slot and aggregating (above) once slots get too tight.
+      var capMin = 3, cum = 0;
+      var fontPx = Math.max(7, Math.min(10.5, slot * 0.85));
+      var capW = Math.min(3.2, Math.max(1.4, slot * 0.4));
+      var maxThk = Math.max.apply(null, exits.map(function (e) { return Math.max(t(e.n), capMin); }));
+      var labelY = sinkBase + maxThk + 8;   // shared baseline below the tallest cap → labels read as a neat row
+      exits.forEach(function (e, idx) {
+        var eThk = t(e.n); if (eThk < 0.6) eThk = 0.6;
+        var srcTop = wedgeTop + cum, srcBot = srcTop + eThk; cum += eThk;
+        var xC = fanL + slot * (idx + 0.5);
+        var g = el('g', { tabindex: '0', role: 'listitem', 'aria-label': e.label + ': ' + fmtN(e.n) });
+        fmtExit(g, e);
+        ribbon(xSrc, srcTop, srcBot, xC, sinkBase, sinkBase + eThk, '0.30', g);
+        el('rect', { x: xC - capW / 2, y: sinkBase, width: capW, height: Math.max(capMin, eThk), fill: C.exit, 'fill-opacity': '0.85' }, g);
+        var rl = txt(xC, labelY, '−' + fmtN(e.n) + '  ' + e.label, { 'font-size': fontPx.toFixed(1) + 'px', fill: C.exit, 'text-anchor': 'end' }, g);
+        rl.setAttribute('transform', 'rotate(-90 ' + xC + ' ' + labelY + ')');
+      });
     }
 
     // nodes (vertical bars) + stage labels + retained counts
