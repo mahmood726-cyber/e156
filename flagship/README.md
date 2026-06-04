@@ -3,8 +3,8 @@
 Forty self-contained HTML files spanning five method families — meta-analysis,
 meta-research, causal inference, primary study designs, and health economics. Every
 estimate is computed live in the browser, the data is editable, the engine is
-reader-inspectable, and each result ships with a copy-paste R script that reproduces it in
-the standard package. No server, no build step, no external dependencies — open any file
+reader-inspectable, and each result ships with a copy-paste R or formula script that
+reproduces the calculation in the standard package where applicable. No server, no build step, no external dependencies — open any file
 and it runs offline. `index.html` links all 40.
 
 **Live:** https://mahmood726-cyber.github.io/e156/flagship/
@@ -83,7 +83,7 @@ and it runs offline. `index.html` links all 40.
 - **Self-auditing assurance ribbon** (Bronze / Silver / Gold) that turns green only when the numbers reconcile; Gold is reserved for independent reproduction.
 - **Editable data** that re-runs the analysis on every keystroke and persists in `localStorage`.
 - **Reader-inspectable engine** — an "inspect the computation" panel prints the exact JavaScript via `Function.toString()`.
-- **R cross-validation** — a copy-paste script for `metafor`, `meta`, `bayesmeta`, `mada`, `robvis`, `RTSA`, or GRADEpro.
+- **R reproducibility** — a copy-paste script for `metafor`, `meta`, `bayesmeta`, `mada`, `robvis`, `RTSA`, GRADEpro, or method-specific formula checks.
 - **Seeded accent** — each capsule's colour is hashed from its slug, so the suite is visually distinct but coherent.
 
 ## Status & honesty

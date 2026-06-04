@@ -2,16 +2,19 @@
 
 > Source: multi-agent visual audit (2026-06-02) of 12 rendered capsules + RapidMeta + allmeta
 > benchmarks, scored against an NYT/OWID/FT-and-beyond dataviz rubric. Mean 57.1/100.
+> Status note (2026-06-04): the suite now has assurance ribbons and inlined ChartKit/tokens
+> across all 40 capsule files; the remaining gaps below are visual-density and communication
+> targets to remeasure, not runtime blockers.
 
 ## 1. Verdict
 
-**Not best-in-class yet.** Mean score **57.1/100** across 12 capsules (range 38–79; only `sglt2-hf` clears 75). Median capsule shows 5 plots and carries 6 defects. The top scorer (`sglt2-hf`, 79) still logs 5 defects, so even the best is a B-minus. Three systemic gaps — present in nearly every defect line — hold the set down:
+**Runtime-consistent; visual standard still not fully closed.** Initial audit: Mean score **57.1/100** across 12 capsules (range 38–79; only `sglt2-hf` clears 75). Median capsule shows 5 plots and carries 6 defects. The top scorer (`sglt2-hf`, 79) still logs 5 defects, so even the best is a B-minus. Three systemic gaps — present in nearly every defect line — hold the set down:
 
 - **G1 — Titles are labels, not claims.** Every capsule audited (`sglt2-hf`, `nma`, `dta`, …) titles figures structurally ("Forest plot", "Summary ROC", "The evidence network") instead of asserting the finding. A figure-only reader cannot reconstruct the argument. This is the single most repeated major defect.
 - **G2 — Uncertainty is hidden or understated.** Prediction intervals missing on forests/ranking; CrIs stored only in `title` tooltips (vanish on print/screenshot — `nma` league table); τ²/I² shown as bare numbers with no CI; pooled diamonds without PI. The capsules overstate precision exactly where their own thesis warns against it.
 - **G3 — Axes and legends are unreadable / encodings undocumented.** Funnel y-axes with 1–3 unlabeled ticks and no axis title (`sglt2-hf`, `dta` Deeks); LOO/ranking x-axes with only `[lo,1,hi]` or `[lo,hi]` ticks and no null line; bubble-size = weight, rankogram opacity×height, GOSH clouds — all unlabeled. Robustness asserted in prose, not drawn (`dta` per-study table instead of paired forest; `dta` meta-reg text-only).
 
-Secondary structural gap vs benchmarks: **no top trust ribbon, no at-a-glance verdict object, no live re-parameterization** (CI/estimand toggles) — provenance is buried at the bottom in prose.
+Resolved since audit: the top assurance ribbon and live re-run pattern are now suite-level requirements. Still open against benchmarks: more at-a-glance verdict objects and live re-parameterization controls (CI/estimand toggles), with provenance surfaced close to each result rather than only in prose.
 
 ---
 
@@ -120,7 +123,7 @@ Target **8–15 distinct analyses** (each changes a belief; restyled duplicates 
 - **Cost-effectiveness** (`ce-plane`,`markov`): + CE-plane with PSA cloud, + CEAC, + tornado/one-way sensitivity, + Markov trace. Target 8–11.
 - **DiD / causal** (`did`): + event-study plot with pre-trend, + parallel-trends check, + placebo/permutation. Target 7–10.
 
-Current shortfalls to close first: `fragility` (1 plot → ≥8), `did` (2 → ≥7), `ce-plane`/`rct` (4 → ≥8).
+Audit-era shortfalls to remeasure and close first: `fragility` (1 plot → ≥8), `did` (2 → ≥7), `ce-plane`/`rct` (4 → ≥8).
 
 ---
 
@@ -271,7 +274,7 @@ Properties met: assertive title from `opts.claim`; weight-scaled `√`-area boxe
 
 ## 6. Rollout — 40 capsules onto the shared kit
 
-**Constraint-safe mechanism (stays 100% offline / no CDN):** `chartkit.js` + `tokens.css` are **inlined at build time**, not linked. Each capsule is a single self-contained HTML file today; a 30-line Node build step (`inline-kit.js`) reads the two source files and injects them between sentinel comments `<!-- CHARTKIT:BEGIN -->…<!-- CHARTKIT:END -->`. Re-running replaces only that block (idempotent — grep for the sentinel before inserting, per the idempotent-edits lesson). No runtime fetch, no external `<script src>`.
+**Constraint-safe mechanism (stays 100% offline / no CDN):** `chartkit.js` + `tokens.css` are **inlined**, not linked. As of 2026-06-04, all 40 capsule files include the inlined token and ChartKit blocks. Each capsule remains a single self-contained HTML file; future build automation should read the two source files and inject them between sentinel comments `<!-- CHARTKIT:BEGIN -->...<!-- CHARTKIT:END -->`. Re-running should replace only that block (idempotent: grep for the sentinel before inserting, per the idempotent-edits lesson). No runtime fetch, no external `<script src>`.
 
 **Per-capsule refactor (mechanical, low-risk):**
 1. Inline the kit block (build step).

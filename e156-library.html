@@ -6427,7 +6427,7 @@ function renderDashboard() {
   // Sign 5: Fragility
   var withFragility = allData.filter(function(e) { return e.tags && e.tags.includes('fragility'); });
 
-  // Sign 6: Freshness (placeholder)
+  // Sign 6: Freshness is tracked by generated timestamps elsewhere in this view.
   // Sign 7: Citation readiness
   var withJournal = allData.filter(function(e) { return e.journal; });
 

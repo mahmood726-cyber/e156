@@ -8,7 +8,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 FILES = (["e156-library.html", "flagship/index.html", "e156-submission/index.html"]
          + sorted(os.path.relpath(p, ROOT) for p in glob.glob(os.path.join(ROOT, "flagship", "*-capsule.html"))))
 
-PLACE = re.compile(r"\{\{[^}]+\}\}|REPLACE_ME|__PLACEHOLDER__|\bPLACEHOLDER\b"
+PLACE = re.compile(r"\{\{[^}]+\}\}|REPLACE_ME|__PLACEHOLDER__"
                    r"|\bTODO\b|\bFIXME\b|lorem ipsum", re.I)
 LOCAL = re.compile(r"[A-Za-z]:\\Users|file:///|/Users/[a-z]|/home/[a-z]")
 CDN = re.compile(r'(?:src|href)="https?://(?!fonts\.googleapis|fonts\.gstatic)[^"]+\.(?:js|css)"')

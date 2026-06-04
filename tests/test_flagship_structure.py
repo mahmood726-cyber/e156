@@ -2,10 +2,11 @@
 
 Every flagship `*-capsule.html` is a self-contained, offline single-file app.
 These checks guard the invariants that have historically broken capsules:
-div balance, a single real </script>, no Python->JS placeholder leaks, the
-seeded-accent / localStorage / inspect-panel plumbing, the self-auditing
-assurance ribbon, and full linkage from index.html. See rules/lessons.md
-("Placeholder leaks", "</script> in template literals", "Div balance").
+div balance, balanced real script blocks with no embedded </script> closers,
+no Python->JS placeholder leaks, the seeded-accent / localStorage /
+inspect-panel plumbing, the self-auditing assurance ribbon, and full linkage
+from index.html. See rules/lessons.md ("Placeholder leaks", "</script> in
+template literals", "Div balance").
 """
 import re
 import shutil
@@ -17,6 +18,7 @@ import pytest
 
 FLAGSHIP = Path(__file__).resolve().parent.parent / "flagship"
 CAPSULES = sorted(FLAGSHIP.glob("*-capsule.html"))
+SCRIPT_RE = re.compile(r"<script\b[^>]*>(.*?)</script>", re.IGNORECASE | re.DOTALL)
 
 # Patterns that signal an unfilled template or a Python None leaking into JS/HTML.
 LEAK_PATTERNS = [
@@ -45,10 +47,18 @@ def test_div_balance(path):
 
 
 @pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
-def test_single_script_closer(path):
-    # A literal </script> inside a template literal would break the parser.
+def test_script_blocks_are_balanced_and_unbroken(path):
+    # A literal </script> inside a script string/template would close the
+    # script early. The suite now has an inlined ChartKit block plus capsule
+    # logic, so the invariant is balanced script blocks, not exactly one block.
     html = path.read_text(encoding="utf-8")
-    assert html.count("</script>") == 1, f"{path.name}: unexpected </script> count"
+    opens = len(re.findall(r"<script\b", html, flags=re.IGNORECASE))
+    closes = len(re.findall(r"</script>", html, flags=re.IGNORECASE))
+    blocks = list(SCRIPT_RE.finditer(html))
+    assert opens == closes == len(blocks), (
+        f"{path.name}: script block mismatch "
+        f"open={opens} close={closes} parsed={len(blocks)}"
+    )
 
 
 @pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
@@ -81,10 +91,16 @@ def test_capsule_plumbing(path):
     assert "agree with itself" in html, f"{path.name}: missing capsule motto"
 
 
-def _extract_script(html):
-    # The capsule's single inline <script> body (between the opening tag and
-    # the lone real </script>).
-    return html.split("<script>", 1)[1].rsplit("</script>", 1)[0]
+@pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
+def test_capsule_inlines_shared_chartkit(path):
+    html = path.read_text(encoding="utf-8")
+    assert 'data-ck="CK:tokens"' in html, f"{path.name}: missing inlined design tokens"
+    assert 'data-ck="CK:chartkit"' in html, f"{path.name}: missing inlined ChartKit"
+    assert "window.ChartKit" in html, f"{path.name}: ChartKit global not exposed"
+
+
+def _extract_scripts(html):
+    return [m.group(1) for m in SCRIPT_RE.finditer(html)]
 
 
 @pytest.mark.skipif(shutil.which("node") is None, reason="node not available")
@@ -93,17 +109,21 @@ def test_capsule_js_parses(path):
     """The inline engine must parse. A missing paren in a setH(...) ternary
     silently bricks the whole capsule (script never runs); see voi/cluster,
     fixed 2026-05-29. `node --check` is the guard the structural checks miss."""
-    js = _extract_script(path.read_text(encoding="utf-8"))
-    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as fh:
-        fh.write(js)
-        tmp = fh.name
-    try:
-        proc = subprocess.run(
-            ["node", "--check", tmp], capture_output=True, text=True, timeout=30
-        )
-        assert proc.returncode == 0, f"{path.name}: JS syntax error\n{proc.stderr}"
-    finally:
-        Path(tmp).unlink(missing_ok=True)
+    scripts = _extract_scripts(path.read_text(encoding="utf-8"))
+    assert scripts, f"{path.name}: no inline scripts found"
+    for i, js in enumerate(scripts, start=1):
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as fh:
+            fh.write(js)
+            tmp = fh.name
+        try:
+            proc = subprocess.run(
+                ["node", "--check", tmp], capture_output=True, text=True, timeout=30
+            )
+            assert proc.returncode == 0, (
+                f"{path.name}: JS syntax error in script block {i}\n{proc.stderr}"
+            )
+        finally:
+            Path(tmp).unlink(missing_ok=True)
 
 
 # Identifiers that are predefined properties of the browser global (window).
@@ -119,7 +139,7 @@ WINDOW_GLOBALS = {
 
 @pytest.mark.parametrize("path", CAPSULES, ids=lambda p: p.name)
 def test_no_toplevel_window_global_shadowing(path):
-    js = _extract_script(path.read_text(encoding="utf-8"))
+    js = "\n".join(_extract_scripts(path.read_text(encoding="utf-8")))
     offenders = []
     for line in js.splitlines():
         # Top-level declarations in these capsules sit at column 0; anything
