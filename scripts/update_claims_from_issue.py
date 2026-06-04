@@ -95,6 +95,16 @@ def main() -> int:
         labels = [lab["name"] for lab in json.loads(labels_json)]
     except Exception:
         labels = []
+    label_names = {str(label).lower() for label in labels}
+    # GitHub issue forms sometimes arrive without the template labels applied.
+    # Treat the generated title prefix as an equivalent state signal so claims
+    # still update the public board.
+    title_is_claim = bool(re.search(r"\[\s*claim\s*#\d+\s*\]", title, re.IGNORECASE))
+    title_is_submitted = bool(re.search(r"\[\s*submitted\s*#\d+\s*\]", title, re.IGNORECASE))
+    title_is_extension = bool(re.search(r"\[\s*extension\s*#\d+\s*\]", title, re.IGNORECASE))
+    is_claim = "claim" in label_names or title_is_claim
+    is_submitted = "submitted" in label_names or title_is_submitted
+    is_extension = "extension" in label_names or title_is_extension
 
     parsed = parse_form_body(body)
     paper_num = find_label_value(parsed, "paper_number", "paper_no", "paper")
@@ -108,6 +118,10 @@ def main() -> int:
 
     if not paper_num:
         print(f"[warn] no paper_number parseable from issue #{issue_num}; skipping")
+        return 0
+
+    if not (is_claim or is_submitted or is_extension):
+        print(f"[info] issue #{issue_num} is not a claim/submission/extension issue; ignoring")
         return 0
 
     # P2-6 — bound paper_num to the real workbook range. Rejects spoofed
@@ -149,10 +163,10 @@ def main() -> int:
     # the closer to be the same github_user that originally claimed it.
     # If the user differs, we IGNORE the close and log a warning so the
     # board owner can investigate.
-    # P1-14 — single write path: branches below only mutate `claims` (or
-    # return early on spoof detection). The file is written once at the
-    # end of main().
-    if state == "closed" and "submitted" not in labels:
+    # P1-14 — most branches write once at the end of main(). Closed-claim
+    # cancellation writes and returns here so it cannot fall through and
+    # recreate the claim it just removed.
+    if state == "closed" and not is_submitted:
         existing_claim = claims.get(paper_num)
         if existing_claim is None:
             print(f"[info] issue #{issue_num} closed but no claim for #{paper_num}")
@@ -166,10 +180,27 @@ def main() -> int:
                     f"their own issue."
                 )
                 return 2
+            existing_issue = existing_claim.get("issue_number")
+            try:
+                closing_issue = int(issue_num) if issue_num else None
+            except ValueError:
+                closing_issue = None
+            if existing_issue and closing_issue and existing_issue != closing_issue:
+                print(
+                    f"[info] issue #{issue_num} closed for #{paper_num}, but "
+                    f"active claim belongs to issue #{existing_issue}; ignoring "
+                    f"stale duplicate close."
+                )
+                CLAIMS.write_text(json.dumps(claims, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+                print(f"[info] wrote {CLAIMS} ({len(claims)} total claims)")
+                return 0
             print(f"[info] issue #{issue_num} closed → removing claim #{paper_num}")
             del claims[paper_num]
+        CLAIMS.write_text(json.dumps(claims, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"[info] wrote {CLAIMS} ({len(claims)} total claims)")
+        return 0
 
-    if "submitted" in labels:
+    if is_submitted:
         # Update existing claim (if any) to submitted status.
         # Same spoofing guard: if a different user adds the 'submitted' label
         # to someone else's claim, refuse the update.
@@ -241,7 +272,7 @@ def main() -> int:
             claims[paper_num]["claim_date"] = claim_date
         print(f"[info] marked #{paper_num} SUBMITTED by {name}, senior: {senior_final!r} (issue #{issue_num})")
 
-    elif "extension" in labels:
+    elif is_extension:
         # 10-day auto-approved extension.
         # Must reference an existing claim owned by this user.
         existing = claims.get(paper_num, {})
@@ -267,7 +298,7 @@ def main() -> int:
         claims[paper_num] = {**existing, "extended": True}
         print(f"[info] granted 10-day auto-extension for #{paper_num} (now 40-day window)")
 
-    elif "claim" in labels:
+    elif is_claim:
         # New or updated claim.
         # Spoofing guard: if this paper is ALREADY claimed by a different
         # github_user, refuse the new claim. Same user re-opening / editing
@@ -283,21 +314,33 @@ def main() -> int:
         prior_status = prior.get("status", "")
         EXPIRY_GRACE_DAYS = 2
 
-        def _claim_is_within_grace(claim: dict) -> bool:
-            """True if expired but still within grace window."""
+        def _claim_age_and_window(claim: dict) -> tuple[int, int] | None:
+            """Return (age_days, active_window_days), or None for malformed dates."""
             if claim.get("status") != "claimed":
-                return False
+                return None
             cd_str = claim.get("claim_date", "")
             try:
                 cd = dt.date.fromisoformat(cd_str)
             except ValueError:
-                return False
+                return None
             win = 40 if claim.get("extended") else 30
             age = (dt.date.today() - cd).days
+            return age, win
+
+        def _claim_is_active(claim: dict) -> bool:
+            state = _claim_age_and_window(claim)
+            return bool(state and state[0] <= state[1])
+
+        def _claim_is_within_grace(claim: dict) -> bool:
+            """True if expired but still within grace window."""
+            state = _claim_age_and_window(claim)
+            if not state:
+                return False
+            age, win = state
             return win < age <= win + EXPIRY_GRACE_DAYS
 
         if prior_owner and user and prior_owner != user:
-            if prior_status == "claimed" or _claim_is_within_grace(prior):
+            if prior_status == "claimed" and (_claim_is_active(prior) or _claim_is_within_grace(prior)):
                 print(
                     f"[warn] issue #{issue_num} attempted CLAIM of #{paper_num} by "
                     f"'{user}', but paper is still owned by '{prior_owner}' "

@@ -213,6 +213,27 @@ def test_new_claim_writes_expected_record(tmp_path, monkeypatch):
     assert result["claims"]["101"]["status"] == "claimed"
 
 
+def test_unlabeled_claim_title_writes_expected_record(tmp_path, monkeypatch):
+    body = ("### Paper number\n\n101\n\n### Your name\n\nAsha\n\n"
+            "### Your affiliation / university\n\nMakerere\n\n"
+            "### Your email\n\nasha@x\n\n"
+            "### Senior / last author (faculty supervisor)\n\nDr. Jane Okello\n")
+    result = _run_pipeline(tmp_path, monkeypatch, {
+        "ISSUE_NUMBER": "5",
+        "ISSUE_TITLE": "[CLAIM #101] foo",
+        "ISSUE_BODY": body,
+        "ISSUE_USER": "ashabint",
+        "ISSUE_LABELS": "[]",
+        "ISSUE_STATE": "open",
+        "ISSUE_CREATED_AT": "2026-04-19T10:00:00Z",
+    })
+    assert result["rc"] == 0
+    assert "101" in result["claims"]
+    assert result["claims"]["101"]["name"] == "Asha"
+    assert result["claims"]["101"]["github_user"] == "ashabint"
+    assert result["claims"]["101"]["status"] == "claimed"
+
+
 def test_one_at_a_time_refuses_second_claim(tmp_path, monkeypatch):
     today = dt.date.today().isoformat()
     prior = {
@@ -239,6 +260,32 @@ def test_one_at_a_time_refuses_second_claim(tmp_path, monkeypatch):
     assert "50" in result["claims"]  # prior preserved
 
 
+def test_expired_claim_can_be_reclaimed_by_different_user(tmp_path, monkeypatch):
+    old = (dt.date.today() - dt.timedelta(days=45)).isoformat()
+    prior = {
+        "50": {
+            "name": "Asha", "github_user": "ashabint",
+            "claim_date": old, "status": "claimed",
+            "submit_date": None, "submission_id": None,
+            "issue_number": 10,
+        }
+    }
+    body = ("### Paper number\n\n50\n\n### Your name\n\nBrian\n\n"
+            "### Your affiliation / university\n\nMakerere\n\n"
+            "### Your email\n\nbrian@x\n\n"
+            "### Senior / last author (faculty supervisor)\n\nDr Jane\n")
+    result = _run_pipeline(tmp_path, monkeypatch, {
+        "_PREEXISTING_CLAIMS": prior,
+        "ISSUE_NUMBER": "9", "ISSUE_TITLE": "[CLAIM #50] bar",
+        "ISSUE_BODY": body, "ISSUE_USER": "brian",
+        "ISSUE_LABELS": "[]", "ISSUE_STATE": "open",
+        "ISSUE_CREATED_AT": "2026-06-01T10:00:00Z",
+    })
+    assert result["rc"] == 0
+    assert result["claims"]["50"]["name"] == "Brian"
+    assert result["claims"]["50"]["github_user"] == "brian"
+
+
 def test_spoof_close_by_different_user_rejected(tmp_path, monkeypatch):
     today = dt.date.today().isoformat()
     prior = {
@@ -258,6 +305,48 @@ def test_spoof_close_by_different_user_rejected(tmp_path, monkeypatch):
     })
     assert result["rc"] == 2
     assert "50" in result["claims"]  # not deleted
+
+
+def test_unlabeled_closed_claim_removes_existing_claim(tmp_path, monkeypatch):
+    today = dt.date.today().isoformat()
+    prior = {
+        "50": {
+            "name": "Asha", "github_user": "ashabint",
+            "claim_date": today, "status": "claimed",
+            "submit_date": None, "submission_id": None,
+            "issue_number": 10,
+        }
+    }
+    result = _run_pipeline(tmp_path, monkeypatch, {
+        "_PREEXISTING_CLAIMS": prior,
+        "ISSUE_NUMBER": "10", "ISSUE_TITLE": "[CLAIM #50] x",
+        "ISSUE_BODY": "### Paper number\n\n50\n", "ISSUE_USER": "ashabint",
+        "ISSUE_LABELS": "[]", "ISSUE_STATE": "closed",
+        "ISSUE_CREATED_AT": "2026-04-19T10:00:00Z",
+    })
+    assert result["rc"] == 0
+    assert "50" not in result["claims"]
+
+
+def test_closing_stale_duplicate_issue_preserves_newer_claim(tmp_path, monkeypatch):
+    today = dt.date.today().isoformat()
+    prior = {
+        "50": {
+            "name": "Asha", "github_user": "ashabint",
+            "claim_date": today, "status": "claimed",
+            "submit_date": None, "submission_id": None,
+            "issue_number": 11,
+        }
+    }
+    result = _run_pipeline(tmp_path, monkeypatch, {
+        "_PREEXISTING_CLAIMS": prior,
+        "ISSUE_NUMBER": "10", "ISSUE_TITLE": "[CLAIM #50] x",
+        "ISSUE_BODY": "### Paper number\n\n50\n", "ISSUE_USER": "ashabint",
+        "ISSUE_LABELS": "[]", "ISSUE_STATE": "closed",
+        "ISSUE_CREATED_AT": "2026-04-19T10:00:00Z",
+    })
+    assert result["rc"] == 0
+    assert result["claims"]["50"]["issue_number"] == 11
 
 
 def test_submitted_format_violation_is_rejected(tmp_path, monkeypatch):

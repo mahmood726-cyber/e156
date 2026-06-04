@@ -18,8 +18,16 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    # Only run on claim / submitted / extension issues
-    if: contains(github.event.issue.labels.*.name, 'claim') || contains(github.event.issue.labels.*.name, 'submitted') || contains(github.event.issue.labels.*.name, 'extension')
+    # Only run on claim / submitted / extension issues. The title-prefix
+    # fallback covers GitHub issue-form submissions where template labels were
+    # not applied by GitHub, which would otherwise leave claims.json unchanged.
+    if: >-
+      contains(github.event.issue.labels.*.name, 'claim') ||
+      contains(github.event.issue.labels.*.name, 'submitted') ||
+      contains(github.event.issue.labels.*.name, 'extension') ||
+      contains(github.event.issue.title, '[CLAIM #') ||
+      contains(github.event.issue.title, '[SUBMITTED #') ||
+      contains(github.event.issue.title, '[EXTENSION #')
     steps:
       - uses: actions/checkout@v4
         with:

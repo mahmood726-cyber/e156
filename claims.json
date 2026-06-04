@@ -1,1 +1,67 @@
-{}
+{
+  "23": {
+    "name": "Maheen Akbar",
+    "affiliation": "Ayub Medical College, Abbottabad",
+    "email": "maheenakbar128@gmail.com",
+    "orcid": "",
+    "senior_author": "DR KANE OKELLO",
+    "claim_date": "2026-05-06",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 23,
+    "github_user": "maheen128"
+  },
+  "371": {
+    "name": "Sara Ahmed",
+    "affiliation": "University College London",
+    "email": "zchahmj@ucl.ac.uk",
+    "orcid": "",
+    "senior_author": "TBD-request mentor",
+    "claim_date": "2026-05-13",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 24,
+    "github_user": "saraahmed707"
+  },
+  "418": {
+    "name": "Fathima Shahana Sumi",
+    "affiliation": "Kerala Medical College Hospital",
+    "email": "drfshahana@gmail.com",
+    "orcid": "0009-0002-3397-7400",
+    "senior_author": "Dr Ranjit Narayanan",
+    "claim_date": "2026-05-18",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 25,
+    "github_user": "drfshahana"
+  },
+  "345": {
+    "name": "Nakhabi Annah",
+    "affiliation": "Makerere University School of Public Health",
+    "email": "annahnakhabi058@gmail.com",
+    "orcid": "0000-0003-2957-3104",
+    "senior_author": "TBD-request mentor",
+    "claim_date": "2026-06-01",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 34,
+    "github_user": "annahnakhabi058-wq"
+  },
+  "225": {
+    "name": "Mahmood ahmad",
+    "affiliation": "Royal free hospital",
+    "email": "mahmood726@gmail.com",
+    "orcid": "",
+    "senior_author": "Mahmood ahmad",
+    "claim_date": "2026-06-04",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 36,
+    "github_user": "mahmood726-cyber"
+  }
+}
