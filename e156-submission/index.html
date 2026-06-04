@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Untitled E156 — E156</title>
+<title>E156 — Interactive Micro-Paper</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -345,8 +345,8 @@ const ROLES = [
 function esc(s){const d=document.createElement("div");d.textContent=String(s??"");return d.innerHTML}
 
 // ── Title + byline ──
-document.getElementById("title").textContent = D.title || "Untitled";
-document.title = (D.title||"E156") + " \u2014 E156 Interactive Paper";
+document.getElementById("title").textContent = (D.title && D.title !== "Untitled E156") ? D.title : "E156 \u2014 Interactive Micro-Paper";
+document.title = (D.title && D.title !== "Untitled E156") ? (D.title + " \u2014 E156 Interactive Paper") : "E156 \u2014 Interactive Micro-Paper";
 
 const parts = [];
 if(D.author) parts.push(esc(D.author));
