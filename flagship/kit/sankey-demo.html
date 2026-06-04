@@ -32,7 +32,13 @@
   var stages=[
     {label:'Identified', n:2480},
     {label:'Screened',   n:1990, exits:[{label:'Duplicates / auto-removed', n:490}]},
-    {label:'Sought',     n:312,  exits:[{label:'Screened out (title/abstract)', n:1678}]},
+    // ≥2 exits → this stage's loss fans out horizontally into its title/abstract reasons
+    {label:'Sought',     n:312,  exits:[
+      {label:'Off-topic',        n:980},
+      {label:'Wrong design',     n:402},
+      {label:'Wrong population', n:201},
+      {label:'Wrong outcome',    n:95}
+    ]},
     {label:'Assessed',   n:284,  exits:[{label:'Reports not retrieved', n:28}]},
     {label:'Included',   n:41,   exits:[{label:'Excluded with reasons', n:243}]}
   ];
@@ -45,7 +51,9 @@
   document.getElementById('cap').innerHTML =
     'The blue ribbon is the cohort surviving each stage; its thickness is proportional to the '+
     'entry count. Grey ribbons peel off downward to show where records were lost, sized by the '+
-    'same scale. The final node (Included) is green. Hover any node or exit for the exact count.';
+    'same scale. A stage with several loss reasons (here Sought, title/abstract screening) fans '+
+    'them out horizontally into side-by-side proportional sinks. The final node (Included) is '+
+    'green. Hover any node or exit for the exact count.';
 })();
 </script>
 </body>
