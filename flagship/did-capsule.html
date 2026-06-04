@@ -214,8 +214,8 @@
   </section>
 
   <section class="stage" id="eventstudy">
-    <div class="stagehdr"><span class="stagenum">06</span><h2>Event study &amp; placebo</h2><span class="prismaref">multi-period · parallel-trends + timing checks</span></div>
-    <div class="card"><p>The 2×2 above can't test parallel trends. Paste a multi-period panel — <code>period, treated, control₁, control₂, …</code> means (one treated column, one or more control/donor columns; the intervention takes effect at the first period&nbsp;≥&nbsp;0). The main DiD and event study use the <b>donor-pool mean</b> as the control. Three falsification checks: the <b>event study</b> plots the period-by-period DiD relative to the last pre-period (event time −1) — pre-period coefficients near zero support parallel trends; the <b>placebo-in-time</b> curve recomputes the DiD for every assumed onset (a real effect peaks at the true date); the <b>in-space placebo</b> re-estimates the effect treating each donor as if it were treated — randomization inference asks how the real treated effect ranks among these placebos. Cell SE σ is taken from the 2×2 means above (independent-homoscedastic approximation; clustered SEs are usually larger).</p>
+    <div class="stagehdr"><span class="stagenum">06</span><h2>Event study, placebo &amp; synthetic control</h2><span class="prismaref">multi-period · parallel-trends + timing + synthetic-control checks</span></div>
+    <div class="card"><p>The 2×2 above can't test parallel trends. Paste a multi-period panel — <code>period, treated, control₁, control₂, …</code> means (one treated column, one or more control/donor columns; the intervention takes effect at the first period&nbsp;≥&nbsp;0). The main DiD and event study use the <b>donor-pool mean</b> as the control. Four checks: the <b>event study</b> plots the period-by-period DiD relative to the last pre-period (event time −1) — pre-period coefficients near zero support parallel trends; the <b>placebo-in-time</b> curve recomputes the DiD for every assumed onset (a real effect peaks at the true date); the <b>in-space placebo</b> re-estimates the effect treating each donor as if it were treated — randomization inference asks how the real treated effect ranks among these placebos; the <b>synthetic-control gap</b> replaces the equal-weight mean with <i>convex donor weights</i> (each ≥ 0, summing to 1) fitted to match the treated unit's de-meaned pre-trajectory — the gap (treated − synthetic) should sit near zero before the intervention and jump to the effect after. Cell SE σ is taken from the 2×2 means above (independent-homoscedastic approximation; clustered SEs are usually larger).</p>
       <textarea id="panel" class="ed" rows="5" style="width:100%;font-family:var(--mono,monospace);font-size:.8rem" aria-label="multi-period panel"></textarea>
       <div class="grid2" style="margin-top:.6rem">
         <div><svg id="eventsvg" viewBox="0 0 520 320" role="group" aria-label="event-study coefficients"></svg>
@@ -224,6 +224,8 @@
           <p class="note" id="roPlacebo">—</p></div>
         <div><svg id="inspacesvg" viewBox="0 0 520 320" role="group" aria-label="in-space placebo effects"></svg>
           <p class="note" id="roInspace">—</p></div>
+        <div><svg id="synthsvg" viewBox="0 0 520 320" role="group" aria-label="synthetic-control gap by period"></svg>
+          <p class="note" id="roSynth">—</p></div>
       </div>
       <div class="toolbar"><button class="btn" id="resetPanel">Reset panel</button><span class="livetag" id="panelTag">illustrative demo</span></div>
     </div>
@@ -2134,12 +2136,15 @@ function QA_RENDER(checks){var grid=document.getElementById('qaGrid');if(!grid)r
   var bar=document.getElementById('qaBar');if(bar)bar.innerHTML='<span style="color:var(--good)">'+pass+' passed</span>'+(warn?' \u00b7 <span style="color:var(--warn)">'+warn+' n/a</span>':'')+(fail?' \u00b7 <span style="color:var(--bad)">'+fail+' failed</span>':'')+' of '+checks.length;
   var tier=document.getElementById('tier');if(tier)tier.textContent=fail>0?'BRONZE':'SILVER';}
 function renderQA(){var res=did(model);
+var sc=(typeof synthControl==='function')?synthControl(parsePanel(panelText)):null;
 QA_RENDER([
 ['Treatment-effect estimate is finite', !!(res&&isFinite(res.est))],
 ['Standard error > 0', !!(res&&res.se>0)],
 ['Confidence bounds are finite', !!(res&&isFinite(res.lo)&&isFinite(res.hi))],
 ['p-value in [0,1]', !!(res&&res.p>=0&&res.p<=1)],
-['DiD recomputed from raw means matches estimate', !!(res&&Math.abs((model.tpost-model.tpre)-(model.cpost-model.cpre)-res.est)<1e-9)]
+['DiD recomputed from raw means matches estimate', !!(res&&Math.abs((model.tpost-model.tpre)-(model.cpost-model.cpre)-res.est)<1e-9)],
+['Synthetic-control weights are convex (≥0, sum 1)', sc?(Math.abs(sc.sumW-1)<1e-6&&sc.minW>=-1e-9):'warn'],
+['Synthetic-control pre-fit RMSE is finite', sc?isFinite(sc.preRMSE):'warn']
 ]);}
 // ---- multi-period panel: event study + placebo-in-time ----
 const PANEL_DEFAULT=`period,treated,control1,control2,control3,control4
@@ -2225,16 +2230,55 @@ function renderPlacebo(pt){const svg=document.getElementById('placebosvg');if(!s
      claim:pt.trueDiD!=null?'True-onset DiD '+pt.trueDiD.toFixed(1)+(pt.frac!=null?' — exceeds '+(pt.frac*100).toFixed(0)+'% of placebo onsets':''):'placebo-in-time',
      estimand:'Placebo-in-time falsification · DiD recomputed at every assumed onset'});
 }
+// project a vector onto the probability simplex {w>=0, sum w = 1} (Duchi et al. 2008, O(J log J))
+function projSimplex(v){const u=v.slice().sort((a,b)=>b-a);let css=0,theta=0;
+  for(let i=0;i<u.length;i++){css+=u[i];const t=(css-1)/(i+1);if(u[i]-t>0)theta=t;}
+  return v.map(x=>Math.max(0,x-theta));}
+// synthetic control: convex donor weights (w>=0, sum=1) fitting the treated unit's DE-MEANED pre-trajectory
+// (Doudchenko–Imbens intercept variant — allows a level offset, so it works when the treated unit sits
+//  outside the donors' level hull). gap_t = treated_t - synth_t; synth_t = tBar + Σ w_j (donor_{t,j} - dBar_j).
+function synthControl(rows){
+  if(rows.length<3)return null;const onsetRow=rows.find(r=>r.period>=0);if(!onsetRow)return null;
+  const onset=onsetRow.period,J=rows[0].donors.length;if(J<1)return null;
+  const pre=rows.filter(r=>r.period<onset);if(pre.length<2)return null;   // need >=2 pre-periods to fit a trajectory
+  const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+  const tBar=mean(pre.map(r=>r.treated)),dBar=[];for(let j=0;j<J;j++)dBar.push(mean(pre.map(r=>r.donors[j])));
+  const y=pre.map(r=>r.treated-tBar),X=pre.map(r=>r.donors.map((d,j)=>d-dBar[j]));   // de-meaned pre matrices
+  let L=0;for(let t=0;t<X.length;t++)for(let j=0;j<J;j++)L+=X[t][j]*X[t][j];          // sum of squares ~ Lipschitz
+  const step=L>0?1/(2*L):0.1;let w=new Array(J).fill(1/J);
+  for(let it=0;it<800;it++){                                                          // projected gradient descent
+    const g=new Array(J).fill(0);
+    for(let t=0;t<X.length;t++){let r=-y[t];for(let j=0;j<J;j++)r+=X[t][j]*w[j];for(let j=0;j<J;j++)g[j]+=2*X[t][j]*r;}
+    for(let j=0;j<J;j++)w[j]-=step*g[j];w=projSimplex(w);}
+  const series=rows.map(r=>{const synth=tBar+r.donors.reduce((s,d,j)=>s+w[j]*(d-dBar[j]),0);
+    return {period:r.period,treated:r.treated,synth,gap:r.treated-synth,pre:r.period<onset};});
+  const preRMSE=Math.sqrt(mean(series.filter(s=>s.pre).map(s=>s.gap*s.gap)));
+  const postRows=series.filter(s=>!s.pre),postGap=postRows.length?mean(postRows.map(s=>s.gap)):NaN;
+  const weights=w.map((wj,j)=>({donor:j+1,w:wj})).sort((a,b)=>b.w-a.w);
+  const sumW=w.reduce((a,b)=>a+b,0),minW=Math.min.apply(null,w);
+  return {onset,series,weights,preRMSE,postGap,J,sumW,minW};
+}
+function renderSynth(sc){const svg=document.getElementById('synthsvg');if(!svg)return;
+  if(typeof ChartKit==='undefined'||!ChartKit.renderCurve||!sc){svg.innerHTML='<text x="14" y="24" class="tick">need ≥2 pre-periods + an onset (period ≥ 0)</text>';return;}
+  const gap=sc.series.map(s=>({x:s.period,y:s.gap}));
+  ChartKit.renderCurve(svg,[{label:'gap',points:gap,color:'#0072B2'}],
+    {xLabel:'period',yLabel:'treated − synthetic control',
+     yRef:[{y:0,label:'perfect synthetic'}],xMarker:{x:sc.onset,label:'onset'},scatter:gap,
+     claim:'Post-onset gap '+sc.postGap.toFixed(1)+' · pre-fit RMSE '+sc.preRMSE.toFixed(2),
+     estimand:'Synthetic-control gap · convex donor weights fit on de-meaned pre-periods'});
+}
 function renderPanel(){
   const pe=document.getElementById('panel');if(pe&&pe.value!==panelText)pe.value=panelText;
   const rows=parsePanel(panelText),sigma=sigmaFrom(model);
   const es=eventStudy(rows,sigma);renderEvent(es);
   const pt=placeboTiming(rows);renderPlacebo(pt);
   const ip=inSpacePlacebo(rows);renderInspace(ip);
+  const sc=synthControl(rows);renderSynth(sc);
   const setH=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
   setH('roPretrend',es?(es.preSig?`<b style="color:var(--warn)">Parallel-trends doubt:</b> ${es.preSig} pre-period coefficient(s) differ from 0 (|max| ${es.maxPre.toFixed(2)}) — the DiD's causal reading is weakened.`:`<b style="color:var(--good)">Parallel trends plausible:</b> every pre-period coefficient is within sampling error of 0 (|max| ${es.maxPre.toFixed(2)}).`):'Add ≥1 pre-period (period &lt; 0) and an onset (period ≥ 0).');
   setH('roPlacebo',(pt&&pt.trueDiD!=null)?`True-onset DiD <b>${pt.trueDiD.toFixed(2)}</b>; it exceeds <b>${(pt.frac*100).toFixed(0)}%</b> of placebo-onset DiDs. A genuine level shift should peak at the true date.`:'Add ≥4 periods for the placebo-in-time curve.');
   setH('roInspace',ip?`Treated effect <b>${ip.real.toFixed(2)}</b> vs ${ip.nUnits-1} donor placebo(s); randomization-inference <b>p = ${ip.p.toFixed(2)}</b> (floor 1/${ip.nUnits} with this pool — more donors give smaller attainable p).`:'Add ≥2 control columns (control1,control2,…) to run the in-space placebo.');
+  setH('roSynth',sc?`Synthetic control = ${sc.weights.filter(x=>x.w>0.005).map(x=>`${(x.w*100).toFixed(0)}%·donor ${x.donor}`).join(' + ')||'(degenerate)'}; pre-fit RMSE <b>${sc.preRMSE.toFixed(2)}</b>, post-onset gap <b>${sc.postGap.toFixed(2)}</b> (≈ ATT). A flat pre-period gap validates the synthetic; the post-onset jump is the effect. Convex weights avoid the extrapolation a free regression would allow.`:'Add ≥2 pre-periods (period &lt; 0) and ≥1 donor for the synthetic-control gap.');
 }
 function renderOutputs(){const res=did(model);renderPlot(res,model);renderReadouts(res,model);renderPanel();rcode();renderInspect();renderQA();
   document.getElementById('badgeDiD').textContent=`DiD ${res.est>=0?'+':''}${res.est.toFixed(1)}`;
