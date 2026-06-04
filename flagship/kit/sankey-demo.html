@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChartKit sankey — attrition flow exemplar (PRISMA)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body{ background:#faf9f6; color:var(--c-ink); font-family:var(--t-font-serif); margin:0; padding:48px 24px; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .eyebrow{ font-family:system-ui,sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--c-ink-2); }
+  h1{ font-size:1.5rem; font-weight:700; margin:6px 0 22px; }
+  .figcard{ background:#fff; border:1px solid #ece9e3; border-radius:6px; padding:18px 22px 12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  figcaption{ font-family:system-ui,sans-serif; font-size:.78rem; color:var(--c-ink-2); line-height:1.5; margin-top:8px; border-top:1px solid var(--c-grid); padding-top:9px; }
+  svg{ width:100%; height:auto; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">e156 chart-kit · reference component</div>
+  <h1>renderSankey — proportional attrition flow</h1>
+  <figure class="figcard">
+    <svg id="sankey"></svg>
+    <figcaption id="cap"></figcaption>
+  </figure>
+</div>
+<script src="chartkit.js"></script>
+<script>
+(function(){
+  // A PRISMA-style record flow: each stage's retained count, with the loss that
+  // peels off entering it. Ribbon widths are proportional to the entry cohort.
+  var stages=[
+    {label:'Identified', n:2480},
+    {label:'Screened',   n:1990, exits:[{label:'Duplicates / auto-removed', n:490}]},
+    {label:'Sought',     n:312,  exits:[{label:'Screened out (title/abstract)', n:1678}]},
+    {label:'Assessed',   n:284,  exits:[{label:'Reports not retrieved', n:28}]},
+    {label:'Included',   n:41,   exits:[{label:'Excluded with reasons', n:243}]}
+  ];
+  var kept=(stages[stages.length-1].n/stages[0].n*100);
+  ChartKit.renderSankey(document.getElementById('sankey'), stages, {
+    unit:'records',
+    claim:stages[4].n.toLocaleString()+' of '+stages[0].n.toLocaleString()+' records retained ('+kept.toFixed(1)+'%)',
+    estimand:'Records surviving each PRISMA stage · '+(100-kept).toFixed(1)+'% removed end-to-end'
+  });
+  document.getElementById('cap').innerHTML =
+    'The blue ribbon is the cohort surviving each stage; its thickness is proportional to the '+
+    'entry count. Grey ribbons peel off downward to show where records were lost, sized by the '+
+    'same scale. The final node (Included) is green. Hover any node or exit for the exact count.';
+})();
+</script>
+</body>
+</html>
