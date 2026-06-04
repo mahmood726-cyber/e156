@@ -47,7 +47,7 @@ section h2{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-s
 .btn:hover{background:var(--border);text-decoration:none}
 .btn.primary{background:var(--accent);color:#052e16;border-color:var(--accent);font-weight:600}
 .btn.primary:hover{background:#16a34a}
-/* E156 Assurance Standard pill — see F:\e156\docs\assurance-standard.md */
+/* E156 Assurance Standard pill */
 .assurance-pill{display:inline-flex;align-items:center;gap:0.4rem;padding:0.2em 0.65em;border-radius:99px;font-size:0.75rem;font-family:var(--mono);font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
 .assurance-pill.bronze{background:rgba(180,83,9,0.18);color:#fdba74;border:1px solid rgba(180,83,9,0.4)}
 .assurance-pill.silver{background:rgba(148,163,184,0.18);color:#e2e8f0;border:1px solid rgba(148,163,184,0.4)}
@@ -64,7 +64,7 @@ footer a{color:var(--text-dim);text-decoration:underline}
 <header>
   <div class="breadcrumb"><a href="../students.html" aria-label="Back to the E156 student board listing all papers">← E156 Student Board</a></div>
   <h1><span class="num">#351</span>E156: A Compact Evidence-Synthesis Micro-Paper Format for Standardized Reporting of Meta-Analytic Results</h1>
-  <div class="badges"><span class="badge topic">methods</span><span class="badge">estimand: Format compliance rate (proportion meeting 7-sentence 156-word constraint)</span></div>
+  <div class="badges"><span class="assurance-pill none" title="Unassured — issued 2026-05-25T08:33:50Z by build_assurance_jsons.p">e156 NONE</span><span class="badge topic">methods</span><span class="badge">estimand: Format compliance rate (proportion meeting 7-sentence 156-word constraint)</span></div>
 </header>
 
 <section><h2>156-word body (current version)</h2><div class="body-text">Can a fixed 7-sentence, 156-word micro-paper format standardize the reporting of meta-analytic results while preserving essential information for clinical decision-making? We developed the E156 specification requiring exactly seven sentences covering question, dataset, method, result, robustness, interpretation, and limitation within a maximum of 156 words. The format was applied to 339 meta-analysis projects spanning pairwise, network, diagnostic accuracy, and prevalence synthesis types. All 339 entries achieved full compliance with the 7-sentence constraint, and mean word count was 152.4 (range 138 to 156) demonstrating the format accommodates diverse study designs. An interactive library dashboard and batch validation pipeline enforce compliance automatically, with scripts for workbook management, GitHub deployment, and protocol timestamping. The E156 format enables rapid editorial triage, systematic comparison across evidence syntheses, and machine-readable extraction of key results. The format cannot capture nuanced subgroup analyses or complex network geometries that require extended narrative.</div><p style="font-size:0.82rem;color:var(--text-faint);margin-top:0.8rem;">Your rewrite should preserve all numbers, CIs, and percentages exactly — rephrase the surrounding prose in 7 sentences, ≤156 words.</p></section>
@@ -105,7 +105,7 @@ footer a{color:var(--text-dim);text-decoration:underline}
 
 <section>
   <h2>At a glance</h2>
-  <dl class="meta-grid"><dt>Dataset</dt><dd>339 meta-analysis projects converted to E156 format</dd><dt>Corresponding author</dt><dd><em style='color:var(--text-dim)'>the student who claims this paper — they fill this in on the OJS submission form</em></dd><dt>First author</dt><dd><em style='color:var(--text-dim)'>the student who claims this paper</em></dd><dt>Middle author (fixed)</dt><dd>Mahmood Ahmad &lt;mahmood.ahmad2@nhs.net&gt; · ORCID 0000-0001-9107-3704<br><span style='color:var(--text-dim)'>Tahir Heart Institute, Rabwah, Pakistan</span></dd><dt>Senior / last author</dt><dd><em style='color:var(--text-dim)'>the student's faculty supervisor — named on their claim form</em></dd><dt>Target journal</dt><dd>◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)</dd></dl>
+  <dl class="meta-grid"><dt>Dataset</dt><dd>339 meta-analysis projects converted to E156 format</dd><dt>Corresponding author</dt><dd><em style='color:var(--text-dim)'>the student who claims this paper — they fill this in on the OJS submission form</em></dd><dt>First author</dt><dd><em style='color:var(--text-dim)'>the student who claims this paper</em></dd><dt>Mahmood Ahmad (non-corresponding co-author)</dt><dd>Mahmood Ahmad &lt;mahmood.ahmad2@nhs.net&gt; · ORCID 0000-0001-9107-3704<br><span style='color:var(--text-dim)'>Tahir Heart Institute, Rabwah, Pakistan</span></dd><dt>Optional mentor/co-author</dt><dd><em style='color:var(--text-dim)'>optional; include a supervisor, mentor, or co-investigator if you have one</em></dd><dt>Target journal</dt><dd>◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)</dd></dl>
 </section>
 
 
@@ -124,8 +124,8 @@ footer a{color:var(--text-dim);text-decoration:underline}
   <code>rewrite-workbook.txt</code>. Target journal:
   <a href="https://www.synthesis-medicine.org/" target="_blank">Synthēsis</a>
   (Methods Note, ≤400 words).
-  First author: the student who claims this paper. Middle author: Mahmood Ahmad.
-  Senior author: the student's faculty supervisor.
+  First and corresponding author: the student who claims this paper.
+  Mahmood Ahmad: non-corresponding co-author. Mentor/co-author: optional.
 </footer>
 </div>
 </body>

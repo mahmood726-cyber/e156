@@ -2,7 +2,7 @@
 
 Covers the four state-machine branches of update_claims_from_issue.py:
   1. new CLAIM
-  2. SUBMITTED (with format + TBD guards)
+  2. SUBMITTED (with format validation + optional mentor/co-author handling)
   3. EXTENSION
   4. closed issue (cancellation)
 
@@ -128,6 +128,27 @@ PATH: C:\\Projects\\Dup
     assert "duplicate paper_num 2" in out
 
 
+def test_public_text_helpers_remove_legacy_author_and_local_paths():
+    bsp = importlib.import_module("build_students_page")
+    credit = (
+        "[SUPERVISING FACULTY, last/senior author] - Supervision, "
+        "Validation, Writing - review & editing. "
+        "Mahmood Ahmad (middle author, NOT first or last) - Methodology."
+    )
+    normalized = bsp.normalize_credit(credit)
+    assert "last/senior author" not in normalized
+    assert "middle author" not in normalized
+    assert "[OPTIONAL MENTOR/CO-AUTHOR, if included]" in normalized
+
+    public = bsp.sanitize_public_text(
+        "AACT snapshot at D:\\AACT-storage\\AACT\\2026-04-12; "
+        "audit output C:\\Projects\\mahmood789\\_audit\\_audit.json"
+    )
+    assert "D:\\" not in public
+    assert "C:\\" not in public
+    assert public.count("[local path redacted]") == 2
+
+
 # --------------------------------------------------------------------------
 # parse_form_body
 # --------------------------------------------------------------------------
@@ -150,7 +171,7 @@ Makerere University
 
 asha@example.edu
 
-### Senior / last author (faculty supervisor)
+### Optional mentor / co-author
 
 Dr. Jane Okello, Makerere
 """
@@ -196,7 +217,7 @@ def test_new_claim_writes_expected_record(tmp_path, monkeypatch):
     body = ("### Paper number\n\n101\n\n### Your name\n\nAsha\n\n"
             "### Your affiliation / university\n\nMakerere\n\n"
             "### Your email\n\nasha@x\n\n"
-            "### Senior / last author (faculty supervisor)\n\nDr. Jane Okello\n")
+            "### Optional mentor / co-author\n\nDr. Jane Okello\n")
     result = _run_pipeline(tmp_path, monkeypatch, {
         "ISSUE_NUMBER": "5",
         "ISSUE_TITLE": "[CLAIM #101] foo",
@@ -211,13 +232,14 @@ def test_new_claim_writes_expected_record(tmp_path, monkeypatch):
     assert result["claims"]["101"]["name"] == "Asha"
     assert result["claims"]["101"]["github_user"] == "ashabint"
     assert result["claims"]["101"]["status"] == "claimed"
+    assert result["claims"]["101"]["mentor_coauthor"] == "Dr. Jane Okello"
 
 
 def test_unlabeled_claim_title_writes_expected_record(tmp_path, monkeypatch):
     body = ("### Paper number\n\n101\n\n### Your name\n\nAsha\n\n"
             "### Your affiliation / university\n\nMakerere\n\n"
             "### Your email\n\nasha@x\n\n"
-            "### Senior / last author (faculty supervisor)\n\nDr. Jane Okello\n")
+            "### Optional mentor / co-author\n\n\n")
     result = _run_pipeline(tmp_path, monkeypatch, {
         "ISSUE_NUMBER": "5",
         "ISSUE_TITLE": "[CLAIM #101] foo",
@@ -232,6 +254,7 @@ def test_unlabeled_claim_title_writes_expected_record(tmp_path, monkeypatch):
     assert result["claims"]["101"]["name"] == "Asha"
     assert result["claims"]["101"]["github_user"] == "ashabint"
     assert result["claims"]["101"]["status"] == "claimed"
+    assert result["claims"]["101"]["mentor_coauthor"] == ""
 
 
 def test_one_at_a_time_refuses_second_claim(tmp_path, monkeypatch):
@@ -247,7 +270,7 @@ def test_one_at_a_time_refuses_second_claim(tmp_path, monkeypatch):
     body = ("### Paper number\n\n60\n\n### Your name\n\nAsha\n\n"
             "### Your affiliation / university\n\nMakerere\n\n"
             "### Your email\n\na@x\n\n"
-            "### Senior / last author (faculty supervisor)\n\nDr Jane\n")
+            "### Optional mentor / co-author\n\nDr Jane\n")
     result = _run_pipeline(tmp_path, monkeypatch, {
         "_PREEXISTING_CLAIMS": prior,
         "ISSUE_NUMBER": "9", "ISSUE_TITLE": "[CLAIM #60] bar",
@@ -273,7 +296,7 @@ def test_expired_claim_can_be_reclaimed_by_different_user(tmp_path, monkeypatch)
     body = ("### Paper number\n\n50\n\n### Your name\n\nBrian\n\n"
             "### Your affiliation / university\n\nMakerere\n\n"
             "### Your email\n\nbrian@x\n\n"
-            "### Senior / last author (faculty supervisor)\n\nDr Jane\n")
+            "### Optional mentor / co-author\n\n\n")
     result = _run_pipeline(tmp_path, monkeypatch, {
         "_PREEXISTING_CLAIMS": prior,
         "ISSUE_NUMBER": "9", "ISSUE_TITLE": "[CLAIM #50] bar",
@@ -363,7 +386,7 @@ def test_submitted_format_violation_is_rejected(tmp_path, monkeypatch):
     body = ("### Paper number\n\n50\n\n### Your name\n\nAsha\n\n"
             "### Submission confirmation / manuscript ID / DOI\n\nX\n\n"
             "### Date of submission (YYYY-MM-DD)\n\n2026-05-01\n\n"
-            "### Senior / last author on the submitted manuscript\n\nDr Jane Okello\n\n"
+            "### Optional mentor / co-author on the submitted manuscript\n\nDr Jane Okello\n\n"
             "### Final 156-word body as submitted\n\n"
             + ("word " * 300) + "\n")
     result = _run_pipeline(tmp_path, monkeypatch, {
@@ -377,7 +400,7 @@ def test_submitted_format_violation_is_rejected(tmp_path, monkeypatch):
     assert result["claims"]["50"]["status"] == "claimed"  # unchanged
 
 
-def test_submitted_tbd_sentinel_is_rejected(tmp_path, monkeypatch):
+def test_submitted_without_mentor_is_allowed(tmp_path, monkeypatch):
     today = dt.date.today().isoformat()
     prior = {
         "50": {
@@ -385,13 +408,11 @@ def test_submitted_tbd_sentinel_is_rejected(tmp_path, monkeypatch):
             "claim_date": today, "status": "claimed",
             "submit_date": None, "submission_id": None,
             "issue_number": 3,
-            "senior_author": "TBD - request mentor",
         }
     }
     body = ("### Paper number\n\n50\n\n### Your name\n\nAsha\n\n"
             "### Submission confirmation / manuscript ID / DOI\n\nX\n\n"
             "### Date of submission (YYYY-MM-DD)\n\n2026-05-01\n\n"
-            "### Senior / last author on the submitted manuscript\n\nTBD - request mentor\n\n"
             "### Final 156-word body as submitted\n\n"
             "Question. Dataset. Method. Result. Robustness. Interpretation. Boundary.\n")
     result = _run_pipeline(tmp_path, monkeypatch, {
@@ -401,7 +422,9 @@ def test_submitted_tbd_sentinel_is_rejected(tmp_path, monkeypatch):
         "ISSUE_LABELS": '[{"name":"submitted"}]', "ISSUE_STATE": "open",
         "ISSUE_CREATED_AT": "2026-04-19T10:00:00Z",
     })
-    assert result["rc"] == 2
+    assert result["rc"] == 0
+    assert result["claims"]["50"]["status"] == "submitted"
+    assert result["claims"]["50"]["mentor_coauthor_final"] == ""
 
 
 def test_extension_grants_40_day_window(tmp_path, monkeypatch):

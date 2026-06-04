@@ -9,8 +9,8 @@ The user (mahmood) updates claims.json manually after receiving claim
 emails. The page shows the current claim state live.
 
 Outputs:
-  - C:\\E156\\students.html        (single-file, no external deps)
-  - C:\\E156\\claims.json          (initialized empty if missing)
+  - students.html        (single-file, no external deps)
+  - claims.json          (initialized empty if missing)
 
 Single file, dark-mode, system fonts, WCAG-AA contrast. No CDN.
 """
@@ -35,6 +35,7 @@ GH_REPO = "mahmood726-cyber/e156"
 GH_ISSUE_BASE = f"https://github.com/{GH_REPO}/issues/new"
 
 ENTRY_HEAD_RE = re.compile(r"^\[(\d+)/\d+\]\s+(.+?)\s*$", re.MULTILINE)
+LOCAL_PATH_RE = re.compile(r"\b[A-Za-z]:\\[^\s<>'\"),;]+")
 
 
 def parse_entries(text: str) -> list[dict]:
@@ -169,6 +170,30 @@ def parse_entries(text: str) -> list[dict]:
 
         out.append(data)
     return out
+
+
+def normalize_credit(text: str) -> str:
+    """Adapt legacy workbook CRediT placeholders to current optional-mentor policy."""
+    if not text:
+        return ""
+    text = re.sub(
+        r"\[SUPERVISING FACULTY,\s*last/senior author\]\s*[—-]\s*"
+        r"Supervision,\s*Validation,\s*Writing\s*[–-]\s*review\s*&\s*editing\.?",
+        "[OPTIONAL MENTOR/CO-AUTHOR, if included] — Supervision, Validation, Writing – review & editing.",
+        text,
+    )
+    text = text.replace(
+        "Mahmood Ahmad (middle author, NOT first or last)",
+        "Mahmood Ahmad (non-corresponding co-author)",
+    )
+    return text
+
+
+def sanitize_public_text(text: str) -> str:
+    """Remove workstation-local paths before embedding workbook prose in public HTML."""
+    if not text:
+        return ""
+    return LOCAL_PATH_RE.sub("[local path redacted]", text)
 
 
 HTML_TEMPLATE = r"""<!doctype html>
@@ -392,7 +417,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
       <ol>
         <li><strong>You need a GitHub account</strong> (free, 2-minute signup at <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>). If you're a researcher you'll want one anyway.</li>
         <li>Browse the list. Search by topic (e.g. "heart failure", "network meta-analysis", "diagnostic").</li>
-        <li>Click <strong>▶ Claim this paper</strong> on the card you want. A GitHub form opens pre-filled with the paper number — fill in your name, affiliation, email, <strong>nominate a senior / last author (your faculty supervisor)</strong>, tick the agreements, click "Submit new issue". <strong>Within ~60 seconds this board updates automatically</strong> showing your name and a 30-day countdown (extendable to 40).</li>
+        <li>Click <strong>▶ Claim this paper</strong> on the card you want. A GitHub form opens pre-filled with the paper number — fill in your name, affiliation, email, and optional mentor/co-author details if you already have them, tick the agreements, click "Submit new issue". <strong>Within ~60 seconds this board updates automatically</strong> showing your name and a 30-day countdown (extendable to 40).</li>
         <li>Copy the <span class="mono">Current body</span> on your card. Rewrite it in your own words: 156 words, 7 sentences (Question · Dataset · Method · Result · Robustness · Interpretation · Boundary).</li>
         <li>Submit your rewrite to <strong>Synthēsis</strong> (<a href="https://www.synthesis-medicine.org/index.php/journal" target="_blank">synthesis-medicine.org</a>). The journal mints DOIs on acceptance; no Zenodo step needed.</li>
         <li>Once submitted, click <strong>✓ Confirm submission</strong> on your card. A second GitHub form opens — paste your submission ID / DOI, submit. Board updates to show SUBMITTED. You are listed as first author.</li>
@@ -402,9 +427,9 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
 
       <h2>Authorship rules (read before claiming)</h2>
       <ul>
-        <li><strong>You are first author AND corresponding author</strong> on the submission you claim. You fill in the corresponding-author fields (name, email, affiliation) on the OJS submission form yourself — Mahmood is a middle author only, not the contact for the journal.</li>
-        <li>You must nominate a <strong>senior / last author</strong> — typically your faculty supervisor or a co-investigator from your institution. The claim form has a required field for this. <strong>No supervisor available yet?</strong> Type exactly <span class="mono">TBD - request mentor</span> in that field and Mahmood will help nominate a faculty co-investigator from the E156 advisory pool before you submit.</li>
-        <li><strong>Mahmood Ahmad will appear as a middle author only</strong> — never first, never last. This is a fixed workbook-wide rule (his role: Conceptualization, Methodology, Software, Data curation; not original drafting).</li>
+        <li><strong>You are first author AND corresponding author</strong> on the submission you claim. You fill in the corresponding-author fields (name, email, affiliation) on the OJS submission form yourself — Mahmood is not the contact for the journal.</li>
+        <li><strong>A mentor/co-author is optional, not required.</strong> If you already have a supervisor, mentor, or co-investigator, include them. If you do not, leave that field blank and submit without one.</li>
+        <li><strong>Mahmood Ahmad must not be first author or corresponding author.</strong> His role, where included, is Conceptualization, Methodology, Software, Data curation; not original drafting.</li>
         <li><strong>Competing interests:</strong> none declared. (Mahmood is not on the Synthēsis editorial board; there's no COI to disclose.)</li>
       </ul>
 
@@ -418,7 +443,7 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li>Order: Title · Authors + ORCIDs + affiliations · Body · References · Data availability · Ethics · Funding · Competing interests · CRediT · AI disclosure · Copyright line.</li>
         <li><strong>Body length:</strong> paste your 156-word, 7-sentence E156 rewrite verbatim — that <em>is</em> the submission. The journal caps main text at ≤400 words, but the E156 format deliberately targets 156 words; do <strong>NOT</strong> pad to 400. References, tables, figures, and captions don't count against the 400 ceiling anyway.</li>
         <li><strong>References:</strong> Vancouver / numeric, NLM journal abbreviations, DOI without URL prefix; up to 6 authors then "et al.". Two starter refs are already in your card's SUBMISSION METADATA — keep them, add more as needed.</li>
-        <li><strong>Copy/paste these blocks unchanged from the SUBMISSION METADATA on your card:</strong> Data availability, Ethics, Funding, Competing interests ("None declared."), CRediT (3-actor template), AI disclosure.</li>
+        <li><strong>Copy/paste these blocks unchanged from the SUBMISSION METADATA on your card:</strong> Data availability, Ethics, Funding, Competing interests ("None declared."), CRediT, AI disclosure. If the CRediT block mentions a supervising faculty author and you are submitting without one, remove that placeholder line.</li>
         <li><strong>Copyright line at the very bottom:</strong> <span class="mono">© The Author(s) 2026. CC BY 4.0.</span></li>
       </ul>
 
@@ -435,8 +460,8 @@ footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--text
         <li><strong>Enter Metadata</strong> — paste the title; paste YOUR REWRITE (the 156-word body) verbatim as the abstract — the E156 7-sentence structure <em>is</em> the abstract, no shortening needed; add 4-6 keywords; <strong>add ALL contributors with ORCIDs and affiliations IN ORDER</strong>:
           <ul>
             <li>1st = <strong>YOU</strong> (first author + <strong>corresponding author</strong> — enter your email as the contact address)</li>
-            <li>middle = <strong>Mahmood Ahmad</strong> · ORCID 0000-0001-9107-3704 · <a href="mailto:mahmood.ahmad2@nhs.net">mahmood.ahmad2@nhs.net</a> · Tahir Heart Institute, Rabwah, Pakistan. <em>Do NOT tick "corresponding author" on this row.</em></li>
-            <li>last = your <strong>faculty supervisor</strong> (the senior author you named on the claim form)</li>
+            <li><strong>Mahmood Ahmad</strong> · ORCID 0000-0001-9107-3704 · <a href="mailto:mahmood.ahmad2@nhs.net">mahmood.ahmad2@nhs.net</a> · Tahir Heart Institute, Rabwah, Pakistan. <em>Do NOT tick "corresponding author" on this row.</em></li>
+            <li>Optional: your mentor, supervisor, or co-investigator if you have one. This is not required.</li>
           </ul>
           Then paste the Vancouver references.</li>
         <li><strong>Confirmation</strong> — review and click <strong>"Finish Submission"</strong>.</li>
@@ -1205,32 +1230,32 @@ def main() -> int:
         {
             # Card head / filter
             "num": e["num"],
-            "name": e.get("name", ""),
-            "title": e.get("title", ""),
-            "type": e.get("type", ""),
-            "data": e.get("data", ""),
-            "body": e.get("body", ""),
-            "topic": e.get("topic", "unknown"),
+            "name": sanitize_public_text(e.get("name", "")),
+            "title": sanitize_public_text(e.get("title", "")),
+            "type": sanitize_public_text(e.get("type", "")),
+            "data": sanitize_public_text(e.get("data", "")),
+            "body": sanitize_public_text(e.get("body", "")),
+            "topic": sanitize_public_text(e.get("topic", "unknown")),
             "submitted_head": e.get("submitted_head", False),
             # Links
             "code_url": e.get("code_url", ""),
             "protocol_url": e.get("protocol_url", ""),
             "pages_url": e.get("pages_url", ""),
             # Expanded-details block
-            "target_journal": e.get("target_journal", ""),
-            "section": e.get("section", ""),
-            "corresponding_author": e.get("corresponding_author", ""),
-            "orcid": e.get("orcid", ""),
-            "affiliation": e.get("affiliation", ""),
-            "references": e.get("references", []),
-            "data_availability": e.get("data_availability", ""),
-            "ethics": e.get("ethics", ""),
-            "funding": e.get("funding", ""),
-            "competing_interests": e.get("competing_interests", ""),
-            "credit": e.get("credit", ""),
-            "ai_disclosure": e.get("ai_disclosure", ""),
-            "reporting_checklist": e.get("reporting_checklist", ""),
-            "preprint": e.get("preprint", ""),
+            "target_journal": sanitize_public_text(e.get("target_journal", "")),
+            "section": sanitize_public_text(e.get("section", "")),
+            "corresponding_author": sanitize_public_text(e.get("corresponding_author", "")),
+            "orcid": sanitize_public_text(e.get("orcid", "")),
+            "affiliation": sanitize_public_text(e.get("affiliation", "")),
+            "references": [sanitize_public_text(ref) for ref in e.get("references", [])],
+            "data_availability": sanitize_public_text(e.get("data_availability", "")),
+            "ethics": sanitize_public_text(e.get("ethics", "")),
+            "funding": sanitize_public_text(e.get("funding", "")),
+            "competing_interests": sanitize_public_text(e.get("competing_interests", "")),
+            "credit": sanitize_public_text(normalize_credit(e.get("credit", ""))),
+            "ai_disclosure": sanitize_public_text(e.get("ai_disclosure", "")),
+            "reporting_checklist": sanitize_public_text(e.get("reporting_checklist", "")),
+            "preprint": sanitize_public_text(e.get("preprint", "")),
         }
         for e in entries
     ]

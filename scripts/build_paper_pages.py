@@ -1,5 +1,5 @@
 """Generate a unique per-paper HTML info dashboard for every visible E156
-entry. Writes to C:/E156/paper/<num>.html, served at
+entry. Writes to paper/<num>.html, served at
 `https://mahmood726-cyber.github.io/e156/paper/<num>.html`.
 
 Fields rendered:
@@ -21,6 +21,7 @@ if sys.platform == "win32" and "pytest" not in sys.modules:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_students_page import sanitize_public_text  # noqa: E402
 from paper_charts import render_all_charts  # noqa: E402
 
 E156 = Path(__file__).resolve().parents[1]
@@ -52,24 +53,24 @@ def parse_entries() -> list[dict]:
         if num in seen:
             continue
         seen.add(num)
-        name = m.group(2).strip()
+        name = sanitize_public_text(m.group(2).strip())
         entry = {"num": num, "name": name}
         for line in block.splitlines():
             if line.startswith("TITLE:"):
-                entry["title"] = line[6:].strip()
+                entry["title"] = sanitize_public_text(line[6:].strip())
             elif line.startswith("TYPE:"):
                 typ = line[5:].strip()
                 # "methods  |  ESTIMAND: SMD"
                 if "|" in typ:
                     parts = [p.strip() for p in typ.split("|")]
-                    entry["type"] = parts[0]
+                    entry["type"] = sanitize_public_text(parts[0])
                     for p in parts[1:]:
                         if p.upper().startswith("ESTIMAND:"):
-                            entry["estimand"] = p.split(":", 1)[1].strip()
+                            entry["estimand"] = sanitize_public_text(p.split(":", 1)[1].strip())
                 else:
-                    entry["type"] = typ
+                    entry["type"] = sanitize_public_text(typ)
             elif line.startswith("DATA:"):
-                entry["data"] = line[5:].strip()
+                entry["data"] = sanitize_public_text(line[5:].strip())
             elif line.startswith("PATH:"):
                 entry["path"] = line[5:].strip()
 
@@ -78,7 +79,7 @@ def parse_entries() -> list[dict]:
             r"CURRENT BODY[^\n]*\n\n?(.+?)\n\n",
             block, re.DOTALL,
         )
-        entry["body"] = body_m.group(1).strip() if body_m else ""
+        entry["body"] = sanitize_public_text(body_m.group(1).strip()) if body_m else ""
 
         # Links block — require line-start + http(s) prefix to avoid
         # matching colon-terminated words inside titles (e.g. "Everything
@@ -98,22 +99,22 @@ def parse_entries() -> list[dict]:
         # backwards-compat in case an entry hasn't been migrated yet.
         mid_m = (re.search(r"Middle author:\s*(.+)", sub_text)
                  or re.search(r"Corresponding author:\s*(.+)", sub_text))
-        entry["middle_author"] = mid_m.group(1).strip() if mid_m else ""
+        entry["middle_author"] = sanitize_public_text(mid_m.group(1).strip()) if mid_m else ""
         orcid_m = re.search(r"^ORCID:\s*(\S.+)", sub_text, re.MULTILINE)
-        entry["orcid"] = orcid_m.group(1).strip() if orcid_m else ""
+        entry["orcid"] = sanitize_public_text(orcid_m.group(1).strip()) if orcid_m else ""
         aff_m = re.search(r"Affiliation:\s*(.+)", sub_text)
-        entry["affiliation"] = aff_m.group(1).strip() if aff_m else ""
+        entry["affiliation"] = sanitize_public_text(aff_m.group(1).strip()) if aff_m else ""
         tj_m = re.search(r"Target journal:\s*(.+)", sub_text)
-        entry["target_journal"] = tj_m.group(1).strip() if tj_m else ""
+        entry["target_journal"] = sanitize_public_text(tj_m.group(1).strip()) if tj_m else ""
         # Competing-interests block: multi-line, terminated by next 'Author' or 'AI' header
         ci_m = re.search(r"Competing interests:\s*(.+?)(?=\n\s*\n\S|\nAuthor contributions|\nAI disclosure|\Z)",
                          sub_text, re.DOTALL)
-        entry["competing_interests"] = re.sub(r"\s+", " ", ci_m.group(1)).strip() if ci_m else ""
+        entry["competing_interests"] = sanitize_public_text(re.sub(r"\s+", " ", ci_m.group(1)).strip()) if ci_m else ""
         refs = []
         ref_match = re.search(r"References\s*\([^)]*\):\s*\n((?:\s*\d+\.\s.+\n?)+)", sub_text)
         if ref_match:
             for rm in re.finditer(r"^\s*\d+\.\s*(.+)$", ref_match.group(1), re.MULTILINE):
-                refs.append(rm.group(1).strip())
+                refs.append(sanitize_public_text(rm.group(1).strip()))
         entry["references"] = refs
 
         out.append(entry)
@@ -169,7 +170,7 @@ section h2{{margin:0 0 0.6rem;font-size:0.78rem;text-transform:uppercase;letter-
 .btn:hover{{background:var(--border);text-decoration:none}}
 .btn.primary{{background:var(--accent);color:#052e16;border-color:var(--accent);font-weight:600}}
 .btn.primary:hover{{background:#16a34a}}
-/* E156 Assurance Standard pill — see F:\\e156\\docs\\assurance-standard.md */
+/* E156 Assurance Standard pill */
 .assurance-pill{{display:inline-flex;align-items:center;gap:0.4rem;padding:0.2em 0.65em;border-radius:99px;font-size:0.75rem;font-family:var(--mono);font-weight:600;letter-spacing:0.04em;text-transform:uppercase}}
 .assurance-pill.bronze{{background:rgba(180,83,9,0.18);color:#fdba74;border:1px solid rgba(180,83,9,0.4)}}
 .assurance-pill.silver{{background:rgba(148,163,184,0.18);color:#e2e8f0;border:1px solid rgba(148,163,184,0.4)}}
@@ -214,8 +215,8 @@ footer a{{color:var(--text-dim);text-decoration:underline}}
   <code>rewrite-workbook.txt</code>. Target journal:
   <a href="https://www.synthesis-medicine.org/" target="_blank">Synthēsis</a>
   (Methods Note, ≤400 words).
-  First author: the student who claims this paper. Middle author: Mahmood Ahmad.
-  Senior author: the student's faculty supervisor.
+  First and corresponding author: the student who claims this paper.
+  Mahmood Ahmad: non-corresponding co-author. Mentor/co-author: optional.
 </footer>
 </div>
 </body>
@@ -338,10 +339,10 @@ def render_page(entry: dict) -> str:
             ma_line += " · ORCID " + esc(entry["orcid"])
         if entry.get("affiliation"):
             ma_line += "<br><span style='color:var(--text-dim)'>" + esc(entry["affiliation"]) + "</span>"
-        rows.append(("Middle author (fixed)", ma_line))
+        rows.append(("Mahmood Ahmad (non-corresponding co-author)", ma_line))
     rows.append((
-        "Senior / last author",
-        "<em style='color:var(--text-dim)'>the student's faculty supervisor — named on their claim form</em>"
+        "Optional mentor/co-author",
+        "<em style='color:var(--text-dim)'>optional; include a supervisor, mentor, or co-investigator if you have one</em>"
     ))
     if entry.get("target_journal"):
         rows.append(("Target journal", esc(entry["target_journal"])))

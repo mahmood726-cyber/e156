@@ -217,20 +217,14 @@ def main() -> int:
         submission_id = find_label_value(parsed, "submission_confirmation", "submission_id", "manuscript_id", "doi")
         name = find_label_value(parsed, "your_name") or existing.get("name", "")
 
-        # P0-7 — reject "TBD - request mentor" sentinel on submission. Claim
-        # allows TBD as a placeholder; submission must have a real senior
-        # author or the "never first/last" rule can't hold on the OJS manuscript.
-        senior_final = find_label_value(
-            parsed, "senior_last_author_on_the_submitted_manuscript",
+        # Optional mentor/co-author field. Older issue templates used the
+        # senior_author_* ids, so keep reading those aliases for compatibility.
+        mentor_final = find_label_value(
+            parsed, "optional_mentor_co_author_on_the_submitted_manuscript",
+            "mentor_coauthor_final", "mentor_co_author_final", "mentor_coauthor",
+            "senior_last_author_on_the_submitted_manuscript",
             "senior_author_final", "senior_last_author", "senior_author", "senior"
         )
-        if not senior_final or "tbd" in senior_final.lower():
-            print(
-                f"[warn] issue #{issue_num} SUBMITTED for #{paper_num} by '{user}' "
-                f"but senior_author_final is {senior_final!r}. The 'TBD - request "
-                f"mentor' sentinel may not carry into submission. Refusing update."
-            )
-            return 2
 
         # P0-6 — validate the pasted final body against the E156 contract:
         # ≤ 156 words AND exactly 7 sentences. If either fails, return 2 so
@@ -264,13 +258,14 @@ def main() -> int:
             "status": "submitted",
             "submit_date": submit_date,
             "submission_id": submission_id,
-            "senior_author_final": senior_final,
+            "mentor_coauthor_final": mentor_final,
+            "senior_author_final": mentor_final,
             "issue_number": int(issue_num) if issue_num else None,
             "github_user": user,
         }
         if "claim_date" not in claims[paper_num]:
             claims[paper_num]["claim_date"] = claim_date
-        print(f"[info] marked #{paper_num} SUBMITTED by {name}, senior: {senior_final!r} (issue #{issue_num})")
+        print(f"[info] marked #{paper_num} SUBMITTED by {name}, mentor/co-author: {mentor_final!r} (issue #{issue_num})")
 
     elif is_extension:
         # 10-day auto-approved extension.
@@ -383,13 +378,17 @@ def main() -> int:
         affiliation = find_label_value(parsed, "your_affiliation_university", "affiliation", "your_affiliation")
         email = find_label_value(parsed, "your_email", "email")
         orcid = find_label_value(parsed, "your_orcid", "orcid")
-        senior_author = find_label_value(parsed, "senior_last_author_faculty_supervisor", "senior_author", "senior")
+        mentor_coauthor = find_label_value(
+            parsed, "optional_mentor_co_author", "mentor_coauthor", "mentor_co_author",
+            "senior_last_author_faculty_supervisor", "senior_author", "senior"
+        )
         claims[paper_num] = {
             "name": name,
             "affiliation": affiliation,
             "email": email,
             "orcid": orcid,
-            "senior_author": senior_author,
+            "mentor_coauthor": mentor_coauthor,
+            "senior_author": mentor_coauthor,
             "claim_date": claim_date,
             "status": "claimed",
             "submit_date": None,
@@ -397,7 +396,7 @@ def main() -> int:
             "issue_number": int(issue_num) if issue_num else None,
             "github_user": user,
         }
-        print(f"[info] marked #{paper_num} CLAIMED by {name} ({affiliation}), senior author: {senior_author or 'NONE'} (issue #{issue_num})")
+        print(f"[info] marked #{paper_num} CLAIMED by {name} ({affiliation}), mentor/co-author: {mentor_coauthor or 'NONE'} (issue #{issue_num})")
 
     else:
         print(f"[info] issue #{issue_num} has neither 'claim' nor 'submitted' label; ignoring")

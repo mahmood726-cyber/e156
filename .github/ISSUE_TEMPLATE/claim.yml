@@ -14,10 +14,10 @@ body:
 
         > Full step-by-step OJS submission instructions are on the [student board](https://mahmood726-cyber.github.io/e156/students.html#how-to-submit) and in the SUBMISSION METADATA block of your paper's workbook entry.
 
-        ### Authorship (mandatory)
+        ### Authorship
         - **You are first author AND corresponding author** on your submission.
-        - You must nominate a **senior / last author** — typically your faculty supervisor or a co-investigator from your institution.
-        - **Mahmood Ahmad will appear as a middle author only — never first, never last.** This is a fixed workbook-wide rule (his CRediT contribution is Conceptualization, Methodology, Software, Data curation; not original drafting).
+        - A **mentor/co-author is optional, not required.** If you already have a supervisor, mentor, or co-investigator, add them; otherwise leave the optional mentor field blank.
+        - **Mahmood Ahmad must not be first author or corresponding author.** His CRediT contribution is Conceptualization, Methodology, Software, Data curation; not original drafting.
         - **Competing interests:** None declared. (The workbook previously carried an editorial-board statement for Synthēsis; Mahmood is no longer on the board, so no COI disclosure is required.)
 
   - type: input
@@ -72,14 +72,12 @@ body:
   - type: input
     id: senior_author
     attributes:
-      label: Senior / last author (faculty supervisor)
+      label: Optional mentor / co-author
       description: |
-        Name + affiliation of the faculty supervisor who will be your senior author. Mahmood Ahmad cannot fill this role — must be someone else.
-
-        **No supervisor available yet?** Type exactly `TBD - request mentor` and Mahmood will help nominate a faculty co-investigator from the E156 advisory pool before you submit. You can still claim the paper now; just don't submit to the journal until the senior author is filled in.
-      placeholder: "e.g. Dr. Jane Okello, Makerere University  (or  TBD - request mentor)"
+        Optional. Add a supervisor, mentor, or co-investigator if you already have one. Leave blank if you are submitting without an additional senior author.
+      placeholder: "e.g. Dr. Jane Okello, Makerere University"
     validations:
-      required: true
+      required: false
 
   - type: checkboxes
     id: agreements
@@ -96,5 +94,5 @@ body:
           required: true
         - label: I will be listed as first author on the submission
           required: true
-        - label: I have nominated a senior / last author (faculty supervisor) above. Mahmood Ahmad will be a middle author only — never first, never last.
+        - label: I understand a mentor/co-author is optional, and Mahmood Ahmad must not be first author or corresponding author.
           required: true
