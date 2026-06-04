@@ -93,7 +93,7 @@ Step 4 — Confirm submission on the student board
 Fallback: if OJS is down, email submissions@synthes.is with the .docx
 attached and the line "RE: E156 Methods Note submission, paper #N".
 
-Total projects: 1874 (+1 spec-collapse-atlas 2026-06-04 [v0.1.0; weighted-likelihood multiverse aggregator; 40.8% false-robustness across 473 Cochrane MAs]; 6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15, +1 ARAC 2026-04-28 [v0.9.0; 5/5 RGS metrics + 3 user-facing artifacts], +1 outcome-switching-ma-hf 2026-04-30 [v0.2.1; n=22, 21/22 drift, DIAMOND outcome-content change is headline], +1 Tiba 2026-05-06 [v0.1.0; Pan-African federation; diagnostic Methods Note + constructive companion]) [see --- ENTRY N --- blocks for entries 473-478]
+Total projects: 1874 (+1 spec-collapse-atlas 2026-06-04 [v0.2.0; weighted-likelihood multiverse aggregator, 36-spec grid; 55% false-robustness across 473 Cochrane MAs, stable 52-55% across weighting]; 6 duplicate pairs deduplicated, 5 gap-filling projects 2026-04-09, 13 portfolio gap projects 2026-04-10, +1 GuidelineLag 2026-04-14, +1 SGLT2i-HFpEF benchmark demo 2026-04-15 [FAIL branch], +1 precision-sweep E156 2026-04-15, +1 dissonance-field-synthesis 2026-04-15, +1 ARAC 2026-04-28 [v0.9.0; 5/5 RGS metrics + 3 user-facing artifacts], +1 outcome-switching-ma-hf 2026-04-30 [v0.2.1; n=22, 21/22 drift, DIAMOND outcome-content change is headline], +1 Tiba 2026-05-06 [v0.1.0; Pan-African federation; diagnostic Methods Note + constructive companion]) [see --- ENTRY N --- blocks for entries 473-478]
 
 SUBMITTED: [ ]
 
@@ -122887,13 +122887,13 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 ======================================================================
 [1874/1874] spec-collapse-atlas
-TITLE: Spec-Collapse Atlas: Pooling Specifications Manufactures False Robustness in 40.8% of 473 Cochrane Meta-Analyses
+TITLE: Spec-Collapse Atlas: Pooling Specifications Manufactures False Robustness in 55% of 473 Cochrane Meta-Analyses
 TYPE: methods  |  ESTIMAND: False-robustness rate
 DATA: Pairwise70 corpus of 473 Cochrane intervention meta-analyses (k>=3); multiverse spec-curves summarised by naive inverse-variance pooling versus a coverage-calibrated weighted-likelihood interval.
 PATH: C:\Projects\spec-collapse-atlas
 
 CURRENT BODY (156 words):
-When a multiverse meta-analysis is summarised by pooling its specifications, does that summary overstate how robust the underlying conclusion actually is? We analysed 473 Cochrane intervention meta-analyses, each with at least three studies, drawn from the Pairwise70 corpus of binary and continuous outcomes. Every review was re-analysed across eighteen specifications and then summarised two ways: naive inverse-variance pooling versus a coverage-calibrated weighted-likelihood interval. The naive pool called 83 percent of conclusions robust versus 42 percent for the calibrated interval, reversing 193 reviews (40.8 percent) from robust to fragile and compressing intervals to one-fifth their calibrated width. Under simulated null effects, the naive pool's false-positive rate reached 60 to 74 percent, whereas the weighted-likelihood interval held near-nominal 95 percent coverage. Inverse-variance pooling across specifications treats re-analyses of one dataset as independent evidence, manufacturing precision the data do not support. This analysis covers binary significance agreement and one weighting scheme, not effect-magnitude shifts or alternative specification weights.
+When a multiverse meta-analysis is summarised by pooling its specifications, does that summary overstate how robust the underlying conclusion actually is? We analysed 473 Cochrane intervention meta-analyses, each with at least three studies, drawn from the Pairwise70 corpus of binary and continuous outcomes. Every review was re-analysed across thirty-six specifications spanning estimator, interval, outlier, and publication-bias choices, then summarised by naive inverse-variance pooling versus a calibrated weighted-likelihood interval. The naive pool called 88 percent of conclusions robust versus 33 percent for the calibrated interval, reversing 260 reviews (55 percent) from robust to fragile and compressing intervals to one-eighth their calibrated width. This reversal stayed between 52 and 55 percent across four weighting schemes, while under simulated null effects the naive pool's false-positive rate reached 70 to 81 percent. Inverse-variance pooling across specifications treats re-analyses of one dataset as independent evidence, manufacturing precision the data do not support. This analysis covers binary significance agreement, not effect-magnitude shifts.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
