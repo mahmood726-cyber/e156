@@ -15,7 +15,7 @@ WB = os.path.join(ROOT, "rewrite-workbook.txt")
 TRIMS = os.path.join(ROOT, "outputs", "trimmed_bodies.json")
 ORIG = os.path.join(ROOT, "outputs", "overlimit_bodies.json")
 
-NUMS = re.compile(r"\d[\d.,]*")
+NUMS = re.compile(r"\d[\d.,]*\d|\d")  # number tokens ending in a digit (no trailing , or .)
 SENT = re.compile(r"[.?!](?:\s|$)")
 
 
