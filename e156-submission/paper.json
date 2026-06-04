@@ -3,14 +3,14 @@
   "slug": "e156",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "body": "Can a fixed 7-sentence, 156-word micro-paper format standardize the reporting of meta-analytic results while preserving essential information for clinical decision-making? We developed the E156 specification requiring exactly seven sentences covering question, dataset, method, result, robustness, interpretation, and limitation within a maximum of 156 words. The format was applied to 339 meta-analysis projects spanning pairwise, network, diagnostic accuracy, and prevalence synthesis types. All 339 entries achieved full compliance with the 7-sentence constraint, and mean word count was 152.4 (range 138 to 156) demonstrating the format accommodates diverse study designs. An interactive library dashboard and batch validation pipeline enforce compliance automatically, with scripts for workbook management, GitHub deployment, and protocol timestamping. The E156 format enables rapid editorial triage, systematic comparison across evidence syntheses, and machine-readable extraction of key results. The format cannot capture nuanced subgroup analyses or complex network geometries that require extended narrative.",
+  "body": "Can a fixed 7-sentence, 156-word micro-paper format standardize the reporting of meta-analytic results while preserving essential information for clinical decision-making? We developed the E156 specification requiring exactly seven sentences covering question, dataset, method, result, robustness, interpretation, and limitation within a maximum of 156 words. The format was applied to 1312 meta-analysis projects spanning pairwise, network, diagnostic accuracy, and prevalence synthesis types. All 1312 entries achieved full compliance with the 7-sentence constraint, and mean word count was 155.5 (range 118 to 156) demonstrating the format accommodates diverse study designs. An interactive library dashboard and batch validation pipeline enforce compliance automatically, with scripts for workbook management, GitHub deployment, and protocol timestamping. The E156 format enables rapid editorial triage, systematic comparison across evidence syntheses, and machine-readable extraction of key results. The format cannot capture nuanced subgroup analyses or complex network geometries that require extended narrative.",
   "word_count": 142,
   "sentence_count": 7,
   "sentences": [
     "Can a fixed 7-sentence, 156-word micro-paper format standardize the reporting of meta-analytic results while preserving essential information for clinical decision-making?",
     "We developed the E156 specification requiring exactly seven sentences covering question, dataset, method, result, robustness, interpretation, and limitation within a maximum of 156 words.",
-    "The format was applied to 339 meta-analysis projects spanning pairwise, network, diagnostic accuracy, and prevalence synthesis types.",
-    "All 339 entries achieved full compliance with the 7-sentence constraint, and mean word count was 152.4 (range 138 to 156) demonstrating the format accommodates diverse study designs.",
+    "The format was applied to 1312 meta-analysis projects spanning pairwise, network, diagnostic accuracy, and prevalence synthesis types.",
+    "All 1312 entries achieved full compliance with the 7-sentence constraint, and mean word count was 155.5 (range 118 to 156) demonstrating the format accommodates diverse study designs.",
     "An interactive library dashboard and batch validation pipeline enforce compliance automatically, with scripts for workbook management, GitHub deployment, and protocol timestamping.",
     "The E156 format enables rapid editorial triage, systematic comparison across evidence syntheses, and machine-readable extraction of key results.",
     "The format cannot capture nuanced subgroup analyses or complex network geometries that require extended narrative."
@@ -67,5 +67,5 @@
   },
   "schema": "e156-v0.2",
   "summary": "A fixed 7-sentence, 156-word reporting format for evidence syntheses, applied to 339 meta-analyses with full compliance.",
-  "study_count": 339
+  "study_count": 1312
 }
