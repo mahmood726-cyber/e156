@@ -6,10 +6,14 @@ Usage: python docs/benchmark/extract.py [capsule.html]   (default: flagship/sglt
 Requires: selenium + Chrome (Selenium Manager auto-resolves the driver).
 """
 import sys, time
+from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-CAP = sys.argv[1] if len(sys.argv) > 1 else r"C:/Projects/e156/flagship/sglt2-hf-capsule.html"
+# Default to the repo's own flagship capsule, resolved relative to this file
+# (docs/benchmark/extract.py -> repo root is two levels up). No hardcoded drive.
+_DEFAULT_CAP = Path(__file__).resolve().parents[2] / "flagship" / "sglt2-hf-capsule.html"
+CAP = sys.argv[1] if len(sys.argv) > 1 else str(_DEFAULT_CAP)
 # Dataset A is the capsule's shipped data; pass Dataset B to test heterogeneity.
 HET = [(0.55,0.45,0.67),(0.72,0.62,0.84),(0.88,0.77,1.00),(1.05,0.92,1.20),(0.63,0.51,0.78)]
 
