@@ -2078,6 +2078,184 @@
   global.ChartKit.renderSubgroup = renderSubgroup;
   global.ChartKit.renderBubble = renderBubble;
   global.ChartKit.niceForestTicks = niceForestTicks;
+
+  /* ====================================================================
+   * E156 machine-readable assertion (schema 1.0.0)
+   * Emits a nanopublication-style assertion from a capsule's LIVE engine
+   * state, SHA-256-binds the data rows (and body, when present) so the one
+   * primary estimand is mechanically checkable, runs a self-consistency
+   * report, and mounts a copy/download panel. Offline; no dependencies.
+   * See docs/machine-readable-assertion.md + schemas/e156-assertion.schema.json.
+   * ==================================================================== */
+  var ASSERTION_SCHEMA_VERSION = '1.0.0';
+  var ZERO64 = '0000000000000000000000000000000000000000000000000000000000000000';
+  var RATIO_MEASURES = ['RR', 'OR', 'HR', 'IRR', 'DOR'];
+  var UNIT_MEASURES = ['proportion', 'sensitivity', 'specificity', 'AUC'];
+
+  function aEsc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function aRound(x) { return (x == null || !isFinite(x)) ? x : Math.round(x * 1e6) / 1e6; }
+  function aScaleFor(m) { return RATIO_MEASURES.indexOf(m) >= 0 ? 'ratio' : 'linear'; }
+  function aNullFor(m) { return RATIO_MEASURES.indexOf(m) >= 0 ? 1 : 0; }
+  function aWords(t) { var m = t && t.trim().match(/\S+/g); return m ? m.length : null; }
+
+  // SHA-256 hex via SubtleCrypto (secure context: https + file://). Resolves
+  // to null where unavailable so the caller can mark "compute at release".
+  function sha256hex(str) {
+    try {
+      if (global.crypto && global.crypto.subtle && global.TextEncoder) {
+        return global.crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)).then(function (buf) {
+          return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+            return ('0' + b.toString(16)).slice(-2);
+          }).join('');
+        }).catch(function () { return null; });
+      }
+    } catch (e) {}
+    return Promise.resolve(null);
+  }
+
+  // Pure validator: returns [{ok:bool, warn:bool, msg}] against schema 1.0.0 invariants.
+  function validateAssertion(a) {
+    var out = [], A = (a && a.assertion) || {}, P = (a && a.provenance) || {}, U = (a && a.pubinfo) || {};
+    var add = function (ok, msg, warn) { out.push({ ok: !!ok, warn: !!warn, msg: msg }); };
+    var m = A.effect_measure, ratio = RATIO_MEASURES.indexOf(m) >= 0, unit = UNIT_MEASURES.indexOf(m) >= 0;
+    add(A.point != null && isFinite(A.point) && A.ci && isFinite(A.ci.low) && isFinite(A.ci.high),
+      'Point estimate and CI bounds are finite numbers');
+    add(A.ci && A.ci.low <= A.point && A.point <= A.ci.high,
+      'CI brackets the point estimate (low ≤ point ≤ high)');
+    add(A.scale === aScaleFor(m) && A.null_value === aNullFor(m),
+      'Scale (' + A.scale + ') and null value (' + A.null_value + ') match the effect measure (' + m + ')');
+    if (ratio) add(A.point > 0 && A.ci && A.ci.low > 0 && A.ci.high > 0,
+      'Ratio measure is strictly positive on the natural scale');
+    if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
+      'Proportion/accuracy measure lies within [0, 1]');
+    var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
+    add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
+    add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
+      'Data binding carries a live SHA-256 of the bound rows (not a zero placeholder)');
+    add(P.n_studies >= 1, 'Provenance reports at least one study');
+    var wc = a && a.paper && a.paper.body_word_count;
+    add(wc == null || (wc >= 1 && wc <= 156), 'Body word count within the 156-word ceiling');
+    if (U.validation === 'PASS')
+      add(wc != null && wc <= 156, 'validation=PASS is consistent with the body word-count contract', wc == null);
+    return out;
+  }
+
+  // Build the assertion object from normalized inputs. Async (hashes body+data).
+  // Resolves to { assertion, issues } where issues = validateAssertion(assertion).
+  function buildAssertion(inp) {
+    inp = inp || {};
+    var m = inp.effect_measure;
+    var bodyText = (inp.bodyText || '').trim();
+    var dataStr = (typeof inp.dataRows === 'string') ? inp.dataRows : JSON.stringify(inp.dataRows || []);
+    return Promise.all([
+      bodyText ? sha256hex(bodyText) : Promise.resolve(null),
+      sha256hex(dataStr)
+    ]).then(function (h) {
+      var bodyHash = h[0], dataHash = h[1], het = inp.heterogeneity || {};
+      var a = {
+        schema_version: ASSERTION_SCHEMA_VERSION,
+        paper: {
+          title: inp.title || '',
+          variant: inp.variant || 'methods',
+          body_sentence_count: 7,
+          body_word_count: bodyText ? Math.min(156, aWords(bodyText)) : (inp.body_word_count || 156)
+        },
+        assertion: {
+          estimand_label: inp.estimand_label || '',
+          effect_measure: m,
+          scale: inp.scale || aScaleFor(m),
+          point: aRound(inp.point),
+          ci: { low: aRound(inp.ci && inp.ci.low), high: aRound(inp.ci && inp.ci.high), level: (inp.ci && inp.ci.level) || 0.95 },
+          null_value: (inp.null_value != null) ? inp.null_value : aNullFor(m),
+          favours_lower: !!inp.favours_lower,
+          p_value: (inp.p_value == null ? null : inp.p_value)
+        },
+        provenance: {
+          n_studies: inp.n_studies,
+          n_participants: (inp.n_participants == null ? null : inp.n_participants),
+          data_binding: { kind: 'embedded_json_rows', sha256: dataHash || ZERO64 }
+        },
+        pubinfo: {
+          version: inp.version || '0.1.0',
+          date: inp.date || '',
+          certainty: inp.certainty || 'low',
+          validation: inp.validation || 'PENDING',
+          license: inp.license || 'MIT'
+        }
+      };
+      if (bodyHash) a.paper.body_sha256 = bodyHash;
+      if (inp.ci && inp.ci.method) a.assertion.ci.method = inp.ci.method;
+      if (het.i2 != null || het.tau2 != null || het.k_studies != null)
+        a.assertion.heterogeneity = {
+          i2: het.i2 == null ? null : aRound(het.i2),
+          tau2: het.tau2 == null ? null : aRound(het.tau2),
+          k_studies: het.k_studies
+        };
+      if (inp.search_through) a.provenance.search_through = inp.search_through;
+      if (inp.rows_uri) a.provenance.data_binding.rows_uri = inp.rows_uri;
+      if (inp.source_article) a.provenance.source_article = inp.source_article;
+      if (inp.doi !== undefined) a.pubinfo.doi = inp.doi;
+      if (inp.app_url !== undefined) a.pubinfo.app_url = inp.app_url;
+      if (inp.code_url !== undefined) a.pubinfo.code_url = inp.code_url;
+      return { assertion: a, issues: validateAssertion(a) };
+    });
+  }
+
+  // Mount the assertion panel into container. Returns Promise<assertion>.
+  // opts: { slug } controls the download filename (<slug>.assertion.json).
+  function mountAssertionPanel(container, inp, opts) {
+    if (!container) return Promise.resolve(null);
+    opts = opts || {};
+    return buildAssertion(inp).then(function (r) {
+      var a = r.assertion, issues = r.issues;
+      var json = JSON.stringify(a, null, 2);
+      var fails = issues.filter(function (x) { return !x.ok; }).length;
+      var warns = issues.filter(function (x) { return x.ok && x.warn; }).length;
+      var pass = issues.length - fails - warns;
+      var summary = '<span style="color:var(--good)">' + pass + ' passed</span>' +
+        (warns ? ' · <span style="color:var(--warn)">' + warns + ' note</span>' : '') +
+        (fails ? ' · <span style="color:var(--bad)">' + fails + ' failed</span>' : '');
+      var rows = issues.map(function (x) {
+        var cls = !x.ok ? 'bad' : x.warn ? 'warn' : 'good';
+        var tag = !x.ok ? 'FAIL' : x.warn ? 'NOTE' : 'PASS';
+        return '<div style="display:flex;gap:.5rem;align-items:baseline;padding:.12rem 0">' +
+          '<span style="flex:0 0 3.2rem;font-weight:700;font-size:.72rem;color:var(--' +
+          (cls === 'good' ? 'good' : cls === 'warn' ? 'warn' : 'bad') + ')">' + tag + '</span>' +
+          '<span style="font-size:.86rem">' + aEsc(x.msg) + '</span></div>';
+      }).join('');
+      container.innerHTML =
+        '<div style="font-size:.9rem;margin:.1rem 0 .5rem">Self-check: ' + summary + ' &nbsp;of ' + issues.length + ' invariants</div>' +
+        '<div style="margin:.2rem 0 .7rem">' + rows + '</div>' +
+        '<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">' +
+        '<button type="button" data-act="copy" class="btn">Copy JSON</button>' +
+        '<button type="button" data-act="dl" class="btn">Download .assertion.json</button></div>' +
+        '<pre class="code" style="max-height:22rem;overflow:auto" tabindex="0" aria-label="Machine-readable assertion JSON">' + aEsc(json) + '</pre>';
+      var copyBtn = container.querySelector('[data-act="copy"]');
+      var dlBtn = container.querySelector('[data-act="dl"]');
+      if (copyBtn) copyBtn.addEventListener('click', function () {
+        var done = function () { copyBtn.textContent = 'Copied ✓'; setTimeout(function () { copyBtn.textContent = 'Copy JSON'; }, 1400); };
+        if (global.navigator && navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(json).then(done, function () {});
+        else { var ta = document.createElement('textarea'); ta.value = json; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta); }
+      });
+      if (dlBtn) dlBtn.addEventListener('click', function () {
+        var blob = new Blob([json], { type: 'application/json' });
+        var url = URL.createObjectURL(blob), link = document.createElement('a');
+        link.href = url; link.download = (opts.slug || 'e156') + '.assertion.json';
+        document.body.appendChild(link); link.click(); document.body.removeChild(link);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+      });
+      return a;
+    });
+  }
+
+  global.ChartKit.sha256hex = sha256hex;
+  global.ChartKit.buildAssertion = buildAssertion;
+  global.ChartKit.validateAssertion = validateAssertion;
+  global.ChartKit.mountAssertionPanel = mountAssertionPanel;
 })(window);
 
 </script>

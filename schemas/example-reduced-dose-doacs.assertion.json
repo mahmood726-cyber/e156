@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "paper": {
+    "title": "Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention",
+    "variant": "pairwise",
+    "body_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "body_sentence_count": 7,
+    "body_word_count": 156
+  },
+  "assertion": {
+    "estimand_label": "Risk ratio for major bleeding",
+    "effect_measure": "RR",
+    "scale": "ratio",
+    "point": 0.49,
+    "ci": { "low": 0.29, "high": 0.81, "level": 0.95, "method": "HKSJ-t" },
+    "null_value": 1,
+    "favours_lower": true,
+    "p_value": null,
+    "heterogeneity": { "i2": null, "tau2": null, "k_studies": 3 }
+  },
+  "provenance": {
+    "n_studies": 3,
+    "n_participants": 8615,
+    "search_through": "2025-03-20",
+    "data_binding": {
+      "kind": "embedded_json_rows",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "rows_uri": "./data/major_bleeding_rows.json"
+    },
+    "source_article": { "pmid": "41210567", "doi": null, "nct": null }
+  },
+  "pubinfo": {
+    "version": "0.1.0",
+    "date": "2026-06-04",
+    "certainty": "moderate",
+    "validation": "PENDING",
+    "doi": null,
+    "app_url": null,
+    "code_url": "https://github.com/mahmood726-cyber/e156",
+    "license": "MIT"
+  }
+}

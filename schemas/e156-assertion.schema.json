@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mahmood726-cyber.github.io/e156/schemas/e156-assertion.schema.json",
+  "title": "E156 Machine-Readable Assertion",
+  "description": "A nanopublication-style structured assertion paired with an E156 micro-paper. Carries the single named primary estimand as machine-checkable data so the central claim can be verified against the bound dataset independently of the prose body. Three parts mirror the nanopublication model: assertion (the claim), provenance (where it came from), pubinfo (who minted it and under what version).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "paper", "assertion", "provenance", "pubinfo"],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "description": "Version of THIS schema the instance targets."
+    },
+
+    "paper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "variant", "body_sentence_count", "body_word_count"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "variant": {
+          "enum": ["pairwise", "network", "diagnostic", "prevalence", "methods"],
+          "description": "E156 variant type; must match the Outside Note 'Type'."
+        },
+        "body_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "SHA-256 of the exact 7-sentence body the assertion describes. Binds the assertion to one immutable body; if the body is edited, this no longer matches and the assertion is known-stale."
+        },
+        "body_sentence_count": { "const": 7 },
+        "body_word_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 156,
+          "description": "Release mode is exactly 156; drafts may be lower."
+        }
+      }
+    },
+
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The single primary estimand, as data. Exactly one estimand per E156 (the format's hard rule).",
+      "required": ["estimand_label", "effect_measure", "scale", "point", "ci", "favours_lower", "null_value"],
+      "properties": {
+        "estimand_label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable name; must equal Outside Note 'Primary estimand' (e.g. 'Risk ratio for major bleeding')."
+        },
+        "effect_measure": {
+          "enum": ["RR", "OR", "HR", "RD", "SMD", "MD", "IRR", "proportion", "AUC", "sensitivity", "specificity", "DOR"],
+          "description": "Canonical effect-measure code. Diagnostic variants use sensitivity/specificity/DOR/AUC; prevalence uses proportion."
+        },
+        "scale": {
+          "enum": ["ratio", "linear"],
+          "description": "Pooling/back-transform scale. Ratio measures (RR/OR/HR/IRR/DOR) are pooled on the log scale; point/ci here are reported on the NATURAL scale after back-transform."
+        },
+        "point": {
+          "type": "number",
+          "description": "Back-transformed primary estimate, on the natural scale (e.g. RR 0.49, not log RR)."
+        },
+        "ci": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["low", "high", "level"],
+          "properties": {
+            "low": { "type": "number" },
+            "high": { "type": "number" },
+            "level": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1, "default": 0.95 },
+            "method": {
+              "type": "string",
+              "description": "CI method (e.g. 'HKSJ-t', 'Wald', 'profile-likelihood'). Optional but recommended for reproducibility."
+            }
+          }
+        },
+        "null_value": {
+          "type": "number",
+          "description": "Value of no effect on the natural scale: 1 for ratio measures, 0 for linear. Used to auto-derive 'significant'."
+        },
+        "favours_lower": {
+          "type": "boolean",
+          "description": "TRUE if a lower value favours the intervention (e.g. RR<1 = less bleeding). Forces the author to state direction explicitly rather than leaving it to prose."
+        },
+        "p_value": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "heterogeneity": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Reported alongside point estimate (advanced-stats.md: I^2 is a proportion, never magnitude — carry tau^2 too).",
+          "properties": {
+            "i2": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+            "tau2": { "type": ["number", "null"], "minimum": 0 },
+            "k_studies": { "type": "integer", "minimum": 1 }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "Ratio measures live on the ratio scale, are strictly positive, and have null value 1.",
+          "if": { "properties": { "effect_measure": { "enum": ["RR", "OR", "HR", "IRR", "DOR"] } } },
+          "then": {
+            "properties": {
+              "scale": { "const": "ratio" },
+              "point": { "exclusiveMinimum": 0 },
+              "ci": { "properties": { "low": { "exclusiveMinimum": 0 }, "high": { "exclusiveMinimum": 0 } } },
+              "null_value": { "const": 1 }
+            }
+          }
+        },
+        {
+          "$comment": "Linear measures live on the linear scale with null value 0.",
+          "if": { "properties": { "effect_measure": { "enum": ["RD", "SMD", "MD"] } } },
+          "then": { "properties": { "scale": { "const": "linear" }, "null_value": { "const": 0 } } }
+        },
+        {
+          "$comment": "proportion/sensitivity/specificity/AUC are bounded in [0,1].",
+          "if": { "properties": { "effect_measure": { "enum": ["proportion", "sensitivity", "specificity", "AUC"] } } },
+          "then": {
+            "properties": {
+              "scale": { "const": "linear" },
+              "point": { "minimum": 0, "maximum": 1 },
+              "ci": { "properties": { "low": { "minimum": 0 }, "high": { "maximum": 1 } } }
+            }
+          }
+        }
+      ]
+    },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Where the number came from. The data binding is what makes the assertion falsifiable.",
+      "required": ["n_studies", "data_binding"],
+      "properties": {
+        "n_studies": { "type": "integer", "minimum": 1 },
+        "n_participants": { "type": ["integer", "null"], "minimum": 0 },
+        "search_through": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Last search date, ISO 8601 (YYYY-MM-DD). Treat as a typed date, not approximate text (rules.md identifier discipline)."
+        },
+        "data_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "sha256"],
+          "description": "Hash of the exact study-level rows (yi/sei or 2x2 cells) the estimand was computed from. An auditor recomputes the pool from these rows and checks point/ci match. This is the verifiability layer.",
+          "properties": {
+            "kind": {
+              "enum": ["embedded_json_rows", "csv", "rda", "external_url"],
+              "description": "What the hash covers."
+            },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "rows_uri": {
+              "type": ["string", "null"],
+              "description": "Relative path or URL to the bound rows. Relative paths preferred (no hardcoded local paths in shipped assets — rules.md)."
+            }
+          }
+        },
+        "source_article": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "description": "Underlying primary publication, when the E156 recasts one. Identifiers are typed and must be DOI/PMID-resolvable before publish (lessons.md citation rule).",
+          "properties": {
+            "pmid": { "type": ["string", "null"], "pattern": "^[1-9][0-9]{0,8}$" },
+            "doi": { "type": ["string", "null"], "pattern": "^10\\.[0-9]{4,9}/[-._;()/:A-Za-z0-9]+$" },
+            "nct": { "type": ["string", "null"], "pattern": "^NCT[0-9]{8}$" }
+          }
+        }
+      }
+    },
+
+    "pubinfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "date", "certainty", "validation"],
+      "properties": {
+        "version": { "type": "string", "description": "E156 release version (semver), matches Outside Note 'Version'." },
+        "date": { "type": "string", "format": "date" },
+        "certainty": {
+          "enum": ["very low", "low", "moderate", "high"],
+          "description": "GRADE certainty for the primary estimand. Maps to Outside Note 'Certainty'."
+        },
+        "validation": {
+          "enum": ["PASS", "FAIL", "PENDING", "NOT_RUN"],
+          "description": "Body/format validator state. PASS asserts the 7-sentence / <=156-word contract held."
+        },
+        "doi": { "type": ["string", "null"], "description": "DOI of the E156 itself, or null/'pending' if not yet minted." },
+        "app_url": { "type": ["string", "null"], "description": "Interactive HTML companion." },
+        "code_url": { "type": ["string", "null"] },
+        "license": { "type": "string", "default": "MIT" }
+      }
+    }
+  }
+}
