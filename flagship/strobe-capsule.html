@@ -219,6 +219,11 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation (EValue)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">nanopublication · schema 1.0.0</span></h3>
+      <p class="note" style="margin-bottom:.2rem">The one primary estimand, emitted as data from the <em>live</em> engine and SHA-256-bound to the exact rows it was computed from — so the central claim can be re-checked mechanically, not just read. Edit the data above and this regenerates; the data hash changes with it. <span class="illus">schema: <a class="srclink" href="../schemas/e156-assertion.schema.json" target="_blank" rel="noopener">e156-assertion.schema.json</a></span></p>
+      <div id="assertionPanel">computing…</div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced the E-value, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2133,6 +2138,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2358,7 +2365,28 @@ QA_RENDER([
 ['Confounders listed for adjustment', !!(model.covs&&model.covs.trim().length>0)],
 ['Crude→adjusted attenuation computed', !!(res&&isFinite(res.attenuationPct))]
 ]);}
-function renderOutputs(){const e=eval2(model);renderForest(model);renderDAG();renderReadouts(model,e);rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion (schema 1.0.0) — emitted from live engine state ----
+function renderAssertion(m){
+  const host=document.getElementById('assertionPanel');
+  if(!host||!(window.ChartKit&&ChartKit.mountAssertionPanel))return;
+  if(!m||!valid(m)){host.innerHTML='<p class="note">No valid estimate — assertion unavailable.</p>';return;}
+  ChartKit.mountAssertionPanel(host,{
+    title:'Observational exposure–outcome study (STROBE)',
+    variant:'pairwise',
+    estimand_label:'Confounder-adjusted odds ratio for the exposure–outcome association',
+    effect_measure:'OR',
+    point:m.aE,
+    ci:{low:m.aL,high:m.aU,level:0.95,method:'Wald-log (adjusted)'},
+    favours_lower:true,
+    p_value:null,
+    n_studies:1, n_participants:null,
+    dataRows:[{crude_OR:m.cE,crude_lo:m.cL,crude_hi:m.cU,adjusted_OR:m.aE,adjusted_lo:m.aL,adjusted_hi:m.aU,covariates:m.covs}],
+    certainty:'low',
+    validation:'PASS', version:'1.0', date:'2026-06-05',
+    code_url:'https://github.com/mahmood726-cyber/e156', app_url:null, doi:null, source_article:null
+  },{slug:'strobe'});
+}
+function renderOutputs(){const e=eval2(model);renderForest(model);renderDAG();renderReadouts(model,e);rcode();renderInspect();renderQA();renderAssertion(model);
   document.getElementById('badgeE').textContent=e?`E-value ${e.ePt.toFixed(2)}`:'—';
   const v=document.getElementById('verify');if(e){v.textContent=`adjusted ${model.aE.toFixed(2)} · E-value ${e.ePt.toFixed(2)} (CI ${e.eCi.toFixed(2)}) ✓`;v.style.color='var(--good)';}else{v.textContent='enter valid estimates';v.style.color='var(--warn)';}}
 function renderAll(){syncInputs();renderOutputs();}

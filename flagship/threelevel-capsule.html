@@ -229,6 +229,11 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">06</span><h2>R cross-validation (metafor rma.mv)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">nanopublication · schema 1.0.0</span></h3>
+      <p class="note" style="margin-bottom:.2rem">The one primary estimand, emitted as data from the <em>live</em> engine and SHA-256-bound to the exact rows it was computed from — so the central claim can be re-checked mechanically, not just read. Edit the data above and this regenerates; the data hash changes with it. <span class="illus">schema: <a class="srclink" href="../schemas/e156-assertion.schema.json" target="_blank" rel="noopener">e156-assertion.schema.json</a></span></p>
+      <div id="assertionPanel">computing…</div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced every estimate, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2143,6 +2148,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2392,12 +2399,35 @@ QA_RENDER([
 ['Pooled β is finite', !!(res&&isFinite(res.beta))],
 ['SE(β) > 0', !!(res&&res.seBeta>0)]
 ]);}
+// ---- Machine-readable assertion (schema 1.0.0) — emitted from live engine state ----
+function renderAssertion(fit){
+  const host=document.getElementById('assertionPanel');
+  if(!host||!(window.ChartKit&&ChartKit.mountAssertionPanel))return;
+  if(!fit){host.innerHTML='<p class="note">No valid pooled estimate — assertion unavailable.</p>';return;}
+  const inc=included(),cls=clusters(inc);
+  ChartKit.mountAssertionPanel(host,{
+    title:'Three-level random-effects meta-analysis',
+    variant:'pairwise',
+    estimand_label:'Pooled standardised mean difference (3-level REML, effect sizes nested within clusters)',
+    effect_measure:'SMD',
+    point:fit.beta,
+    ci:{low:fit.ciL,high:fit.ciU,level:0.95,method:'REML-Wald'},
+    favours_lower:false,
+    p_value:null,
+    heterogeneity:{i2:(fit.I2_2+fit.I2_3),tau2:(fit.s2+fit.s3),k_studies:inc.length},
+    n_studies:inc.length,n_participants:null,
+    dataRows:inc.map(r=>({cluster:r.cluster,eff:r.eff,est:r.est,v:r.v})),
+    certainty:'low',
+    validation:'PASS',version:'1.0',date:'2026-06-05',
+    code_url:'https://github.com/mahmood726-cyber/e156',app_url:null,doi:null,source_article:null
+  },{slug:'threelevel'});
+}
 function renderOutputs(){
   const inc=included();const cls=clusters(inc);
   const fit=inc.length?fit3(cls):null;renderForest(cls,fit);renderVbar(fit);
   if(!fit){['roMu','roCI','roS2','roS3','roI22','roI23'].forEach(id=>setT(id,'—'));setT('roK','0');setT('roC','0');
     setT('vNote','need ≥1 valid effect size');setT('cmpOut','—');setT('badgeK','—');
-    const vv=document.getElementById('verify');vv.textContent='no valid effect sizes';vv.style.color='var(--warn)';rcode();renderInspect();renderQA();return;}
+    const vv=document.getElementById('verify');vv.textContent='no valid effect sizes';vv.style.color='var(--warn)';rcode();renderInspect();renderQA();renderAssertion(null);return;}
   setT('roMu',f2(fit.beta));setH('roCI',`${f2(fit.ciL)} <small>to</small> ${f2(fit.ciU)}`);
   setT('roK',inc.length+'');setT('roC',cls.length+'');setT('badgeK',inc.length+' ES · '+cls.length+' clusters');
   setT('roS2',f3(fit.s2));setT('roS3',f3(fit.s3));
@@ -2411,7 +2441,7 @@ function renderOutputs(){
     (wider>0.005?`The three-level CI is <span class="warnf">${(wider).toFixed(3)} wider</span> — ignoring the clustering would have overstated precision.`:`The two models give similar precision here — clusters are roughly balanced.`));
   const vv=document.getElementById('verify');
   vv.textContent=`β ${f2(fit.beta)} · σ²₂ ${f3(fit.s2)} · σ²₃ ${f3(fit.s3)} ✓`;vv.style.color='var(--good)';
-  rcode();renderInspect();renderQA();}
+  rcode();renderInspect();renderQA();renderAssertion(fit);}
 function rcode(){const inc=included();
   const q=a=>inc.map(r=>'"'+r[a]+'"').join(', ');const col=a=>inc.map(r=>r[a]).join(', ');
   document.getElementById('rcode').textContent=

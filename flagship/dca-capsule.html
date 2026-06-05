@@ -218,6 +218,10 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">06</span><h2>R cross-validation (dcurves)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">schema 1.0.0</span></h3>
+      <div id="assertionPanel"></div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced every estimate, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2132,6 +2136,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2376,7 +2382,12 @@ dca(outcome ~ risk, data = dat,
 function renderInspect(){const dd=document.getElementById('dataDump');if(dd)dd.textContent=JSON.stringify(model.map(r=>[r.p,r.y]));
   const cd=document.getElementById('codeDump');if(cd&&!cd.dataset.done){cd.textContent=[nbAt,curve,usefulRange].map(fn=>fn.toString()).join('\n\n');cd.dataset.done='1';}}
 function syncText(){const ta=document.getElementById('ta');if(ta&&document.activeElement!==ta)ta.value=toText(model);}
-function renderAll(){syncText();document.getElementById('ptIn').value=pt;renderOutputs();renderQA();}
+// ---- Machine-readable assertion: not applicable (no single effect estimand) ----
+function renderAssertion(){
+  const host=document.getElementById('assertionPanel');if(!host)return;
+  host.innerHTML='<p class="note">This capsule reports a <b>net-benefit decision curve (net benefit across threshold probabilities)</b>, not a single effect estimand. The machine-readable assertion format (one named estimand bound to its data) does not apply here; the live self-checks above are this capsule\'s machine-checkable layer.</p>';
+}
+function renderAll(){syncText();document.getElementById('ptIn').value=pt;renderOutputs();renderQA();renderAssertion();}
 
 document.getElementById('ta').addEventListener('input',e=>{model=parse(e.target.value);renderOutputs();persist();});
 document.getElementById('ptIn').addEventListener('input',e=>{pt=clamp(+e.target.value||0.2,0.01,0.95);renderOutputs();persist();});

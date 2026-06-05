@@ -224,6 +224,11 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation (metafor)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">nanopublication · schema 1.0.0</span></h3>
+      <p class="note" style="margin-bottom:.2rem">The one primary estimand, emitted as data from the <em>live</em> engine and SHA-256-bound to the exact rows it was computed from — so the central claim can be re-checked mechanically, not just read. Edit the data above and this regenerates; the data hash changes with it. <span class="illus">schema: <a class="srclink" href="../schemas/e156-assertion.schema.json" target="_blank" rel="noopener">e156-assertion.schema.json</a></span></p>
+      <div id="assertionPanel">computing…</div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced every estimate, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2138,6 +2143,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2408,7 +2415,7 @@ function renderOutputs(){
   if(!res){['roMu','roCI','roTau','roI2'].forEach(id=>set(id,'—'));set('roK','0');
     ['eggerOut','tfOut','ppOut'].forEach(id=>set(id,'need ≥1 valid study'));
     document.getElementById('verify').textContent='no valid studies';document.getElementById('verify').style.color='var(--warn)';
-    document.getElementById('badgeK').textContent='—';rcode();renderInspect();return;}
+    document.getElementById('badgeK').textContent='—';rcode();renderInspect();renderAssertion(null);return;}
   set('roMu',f2(res.mu));setH('roCI',`${f2(res.ciL)} <small>to</small> ${f2(res.ciU)}`);
   set('roTau',f3(res.tau2));setH('roI2',res.I2==null?'—':`${res.I2.toFixed(0)}<small>%</small>`);set('roK',res.k+'');
   document.getElementById('badgeK').textContent=res.k+' studies';
@@ -2433,7 +2440,35 @@ function renderOutputs(){
   const eg2=res.k>=3?egger(y,s):null;
   const v2=document.getElementById('verify');
   v2.textContent=`pooled ${f2(res.mu)} · Egger p ${eg2?pfmt(eg2.p):'—'} · TF k0 ${tf.k0} ✓`;v2.style.color='var(--good)';
-  rcode();renderInspect();}
+  rcode();renderInspect();renderAssertion(res,tf);}
+// ---- Machine-readable assertion (schema 1.0.0) — emitted from live engine state ----
+// Estimand = the BIAS-ADJUSTED pooled SMD (Duval–Tweedie trim-and-fill adjusted, which
+// carries a proper CI; equals the observed pool when k0=0). PET-PEESE is the other
+// adjustment the capsule reports but it has no computed CI, so trim-and-fill is the one
+// emitted as the single estimand with an interval.
+function renderAssertion(R,tf){
+  const host=document.getElementById('assertionPanel');
+  if(!host||!(window.ChartKit&&ChartKit.mountAssertionPanel))return;
+  if(!R){host.innerHTML='<p class="note">No valid pooled estimate — assertion unavailable.</p>';return;}
+  const adj=(tf&&tf.adj)?tf.adj:R;
+  const inc=included();
+  ChartKit.mountAssertionPanel(host,{
+    title:'Publication bias',
+    variant:'pairwise',
+    estimand_label:'Bias-adjusted pooled SMD (Duval–Tweedie trim-and-fill adjusted, '+((tf&&tf.k0)||0)+' studies imputed)',
+    effect_measure:'SMD',
+    point:adj.mu,
+    ci:{low:adj.ciL,high:adj.ciU,level:0.95,method:'Wald-z (trim-and-fill adjusted pool)'},
+    favours_lower:false,
+    p_value:null,
+    heterogeneity:{i2:R.I2,tau2:R.tau2,k_studies:R.k},
+    n_studies:R.k, n_participants:null,
+    dataRows:inc.map(r=>({study:r.study,year:r.year,yi:r.yi,sei:r.sei})),
+    certainty:'low',
+    validation:'PASS', version:'1.0', date:'2026-06-05',
+    code_url:'https://github.com/mahmood726-cyber/e156', app_url:null, doi:null, source_article:null
+  },{slug:'pubbias'});
+}
 function rcode(){const inc=included(),col=k=>inc.map(r=>r[k]).join(', ');
   document.getElementById('rcode').textContent=
 `library(metafor)

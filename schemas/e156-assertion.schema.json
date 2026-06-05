@@ -49,8 +49,8 @@
           "description": "Human-readable name; must equal Outside Note 'Primary estimand' (e.g. 'Risk ratio for major bleeding')."
         },
         "effect_measure": {
-          "enum": ["RR", "OR", "HR", "RD", "SMD", "MD", "IRR", "proportion", "AUC", "sensitivity", "specificity", "DOR"],
-          "description": "Canonical effect-measure code. Diagnostic variants use sensitivity/specificity/DOR/AUC; prevalence uses proportion."
+          "enum": ["RR", "OR", "HR", "RD", "SMD", "MD", "IRR", "proportion", "AUC", "sensitivity", "specificity", "DOR", "r"],
+          "description": "Canonical effect-measure code. Diagnostic variants use sensitivity/specificity/DOR/AUC; prevalence uses proportion; correlation pooling uses r (Fisher-z pooled, back-transformed)."
         },
         "scale": {
           "enum": ["ratio", "linear"],
@@ -111,6 +111,18 @@
           "$comment": "Linear measures live on the linear scale with null value 0.",
           "if": { "properties": { "effect_measure": { "enum": ["RD", "SMD", "MD"] } } },
           "then": { "properties": { "scale": { "const": "linear" }, "null_value": { "const": 0 } } }
+        },
+        {
+          "$comment": "Correlation r is bounded in [-1,1] on a linear scale with null value 0 (pooled on Fisher-z, reported back-transformed).",
+          "if": { "properties": { "effect_measure": { "const": "r" } } },
+          "then": {
+            "properties": {
+              "scale": { "const": "linear" },
+              "point": { "minimum": -1, "maximum": 1 },
+              "null_value": { "const": 0 },
+              "ci": { "properties": { "low": { "minimum": -1 }, "high": { "maximum": 1 } } }
+            }
+          }
         },
         {
           "$comment": "proportion/sensitivity/specificity/AUC are bounded in [0,1].",

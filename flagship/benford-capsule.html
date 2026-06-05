@@ -206,6 +206,10 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation (benford.analysis)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">schema 1.0.0</span></h3>
+      <div id="assertionPanel"></div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced the digit counts and tests, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Engine</h3><pre class="code" id="codeDump"></pre>
@@ -2119,6 +2123,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2333,7 +2339,12 @@ QA_RENDER([
 ['χ² ≥ 0 with p in [0,1]', !!(res&&res.chi>=0&&res.p>=0&&res.p<=1)],
 ['MAD ≥ 0 and conformity level assigned', !!(res&&res.mad>=0&&res.level)]
 ]);}
-function renderOutputs(){const res=benford(text);renderBars(res);renderReadouts(res);rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion: not applicable (no single effect estimand) ----
+function renderAssertion(){
+  const host=document.getElementById('assertionPanel');if(!host)return;
+  host.innerHTML='<p class="note">This capsule reports <b>a first-digit (Benford) integrity screen</b>, not a single effect estimand. The machine-readable assertion format (one named estimand bound to its data) does not apply here; the live self-checks above are this capsule\'s machine-checkable layer.</p>';
+}
+function renderOutputs(){const res=benford(text);renderBars(res);renderReadouts(res);rcode();renderInspect();renderQA();renderAssertion();
   document.getElementById('badgeN').textContent=res?`${res.n} numbers`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`${res.n} numbers · MAD ${res.mad.toFixed(4)} · ${res.level.t} ✓`;v.style.color=res.level.k==='bad'?'var(--warn)':'var(--good)';}else{v.textContent='no numbers parsed';v.style.color='var(--warn)';}}
 function renderAll(){document.getElementById('nums').value=text;renderOutputs();}

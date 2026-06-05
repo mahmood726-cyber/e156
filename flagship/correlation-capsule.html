@@ -211,6 +211,11 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">05</span><h2>R cross-validation (metafor)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">nanopublication · schema 1.0.0</span></h3>
+      <p class="note" style="margin-bottom:.2rem">The one primary estimand, emitted as data from the <em>live</em> engine and SHA-256-bound to the exact rows it was computed from — so the central claim can be re-checked mechanically, not just read. Edit the data above and this regenerates; the data hash changes with it. <span class="illus">schema: <a class="srclink" href="../schemas/e156-assertion.schema.json" target="_blank" rel="noopener">e156-assertion.schema.json</a></span></p>
+      <div id="assertionPanel">computing…</div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced every estimate, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2125,6 +2130,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2364,7 +2371,30 @@ QA_RENDER([
 ['Inverse-variance weights all positive', res?res.wmap.every(function(w){return w>0;}):'warn'],
 ['Pooled r back-transformed within (−1,1)', res?(res.r>-1&&res.r<1):'warn']
 ]);}
-function renderOutputs(){const res=pool(model);renderForest(res);renderReadouts(res);rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion (schema 1.0.0) — emitted from live engine state ----
+function renderAssertion(R){
+  const host=document.getElementById('assertionPanel');
+  if(!host||!(window.ChartKit&&ChartKit.mountAssertionPanel))return;
+  if(!R){host.innerHTML='<p class="note">No valid estimate — assertion unavailable.</p>';return;}
+  const nP=R.use.reduce((a,t)=>a+(+t.n||0),0);
+  ChartKit.mountAssertionPanel(host,{
+    title:'Pooled correlation (Fisher-z random-effects meta-analysis)',
+    variant:'pairwise',
+    estimand_label:'Pooled correlation coefficient (Fisher-z back-transformed)',
+    effect_measure:'r',
+    point:R.r,
+    ci:{low:R.ciL,high:R.ciU,level:0.95,method:'Wald-z (Fisher-z scale)'},
+    favours_lower:false,
+    p_value:null,
+    heterogeneity:{i2:R.I2,tau2:R.tau2,k_studies:R.k},
+    n_studies:R.k,n_participants:nP,
+    dataRows:R.use.map(t=>({study:t.study,year:+t.year,r:+t.r,n:+t.n})),
+    certainty:'low',
+    validation:'PASS',version:'1.0',date:'2026-06-05',
+    code_url:'https://github.com/mahmood726-cyber/e156',app_url:null,doi:null,source_article:null
+  },{slug:'correlation'});
+}
+function renderOutputs(){const res=pool(model);renderForest(res);renderReadouts(res);rcode();renderInspect();renderQA();renderAssertion(res);
   // per-row weights
   if(res){const totW=res.wmap.reduce((a,b)=>a+b,0);let j=0;model.forEach((r,i)=>{const cell=document.getElementById('w'+i);if(!cell)return;
     if(r.inc&&validRow(r)){cell.textContent=(100*res.wmap[j]/totW).toFixed(1)+'%';j++;}else cell.textContent='—';});}

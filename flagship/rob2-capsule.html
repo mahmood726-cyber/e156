@@ -233,6 +233,10 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation (robvis)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">schema 1.0.0</span></h3>
+      <div id="assertionPanel"></div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that derives every overall judgement, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2147,6 +2151,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2413,7 +2419,12 @@ QA_RENDER([
 ['Per-domain tallies computed', !!(res&&res.cnt)],
 ['Every study has an overall judgement', !!(res&&res.cnt&&res.cnt.overall&&(res.cnt.overall.low+res.cnt.overall.some+res.cnt.overall.high)===res.k)]
 ]);}
-function renderOutputs(){const res=summarise(model);renderMatrix(res);renderBars(res);renderReadouts(res);rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion: not applicable (no single effect estimand) ----
+function renderAssertion(){
+  const host=document.getElementById('assertionPanel');if(!host)return;
+  host.innerHTML='<p class="note">This capsule reports a <b>risk-of-bias appraisal</b>, not a single effect estimand. The machine-readable assertion format (one named estimand bound to its data) does not apply here; the live self-checks above are this capsule\'s machine-checkable layer.</p>';
+}
+function renderOutputs(){const res=summarise(model);renderMatrix(res);renderBars(res);renderReadouts(res);rcode();renderInspect();renderQA();renderAssertion();
   document.getElementById('badgeK').textContent=res?`${res.k} studies`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`${res.k} studies · overall: ${res.overallCnt.low} low / ${res.overallCnt.some} some / ${res.overallCnt.high} high ✓`;v.style.color='var(--good)';}else{v.textContent='no studies';v.style.color='var(--warn)';}}
 function renderAll(){renderTable();renderOutputs();}

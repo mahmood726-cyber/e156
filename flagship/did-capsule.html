@@ -240,6 +240,11 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">08</span><h2>R cross-validation</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">nanopublication · schema 1.0.0</span></h3>
+      <p class="note" style="margin-bottom:.2rem">The one primary estimand, emitted as data from the <em>live</em> engine and SHA-256-bound to the exact rows it was computed from — so the central claim can be re-checked mechanically, not just read. Edit the data above and this regenerates; the data hash changes with it. <span class="illus">schema: <a class="srclink" href="../schemas/e156-assertion.schema.json" target="_blank" rel="noopener">e156-assertion.schema.json</a></span></p>
+      <div id="assertionPanel">computing…</div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced the DiD estimate, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2154,6 +2159,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2518,7 +2525,29 @@ function renderPanel(){
   setH('roInspace',ip?`Treated effect <b>${ip.real.toFixed(2)}</b> vs ${ip.nUnits-1} donor placebo(s); randomization-inference <b>p = ${ip.p.toFixed(2)}</b> (floor 1/${ip.nUnits} with this pool — more donors give smaller attainable p).`:'Add ≥2 control columns (control1,control2,…) to run the in-space placebo.');
   setH('roSynth',sc?`Synthetic control = ${sc.weights.filter(x=>x.w>0.005).map(x=>`${(x.w*100).toFixed(0)}%·donor ${x.donor}`).join(' + ')||'(degenerate)'}; pre-fit RMSE <b>${sc.preRMSE.toFixed(2)}</b>, post-onset gap <b>${sc.postGap.toFixed(2)}</b> ${sc.fitOK?'(≈ ATT)':'<b style="color:var(--warn)">(pre-fit poor — interpret with caution)</b>'}. A flat pre-period gap validates the synthetic; the post-onset jump is the effect. Convex weights avoid the extrapolation a free regression would allow.`:'Add ≥2 pre-periods (period &lt; 0) and ≥1 donor for the synthetic-control gap.');
 }
-function renderOutputs(){const res=did(model);renderPlot(res,model);renderReadouts(res,model);renderPanel();rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion (schema 1.0.0) — emitted from live engine state ----
+function renderAssertion(R){
+  const host=document.getElementById('assertionPanel');
+  if(!host||!(window.ChartKit&&ChartKit.mountAssertionPanel))return;
+  if(!R){host.innerHTML='<p class="note">No valid DiD estimate — assertion unavailable.</p>';return;}
+  ChartKit.mountAssertionPanel(host,{
+    title:'2×2 difference-in-differences',
+    variant:'pairwise',
+    estimand_label:'DiD average treatment effect on the treated (post−pre change, treated minus control)',
+    effect_measure:'MD',
+    point:R.est,
+    ci:{low:R.lo,high:R.hi,level:0.95,method:'Wald'},
+    favours_lower:false,
+    p_value:R.p,
+    n_studies:1, n_participants:null,
+    dataRows:[{tpre:model.tpre,tpost:model.tpost,cpre:model.cpre,cpost:model.cpost,
+      tpreSE:model.tpreSE,tpostSE:model.tpostSE,cpreSE:model.cpreSE,cpostSE:model.cpostSE}],
+    certainty:'low',
+    validation:'PASS', version:'1.0', date:'2026-06-05',
+    code_url:'https://github.com/mahmood726-cyber/e156', app_url:null, doi:null, source_article:null
+  },{slug:'did'});
+}
+function renderOutputs(){const res=did(model);renderPlot(res,model);renderReadouts(res,model);renderPanel();rcode();renderInspect();renderQA();renderAssertion(res);
   document.getElementById('badgeDiD').textContent=`DiD ${res.est>=0?'+':''}${res.est.toFixed(1)}`;
   const v=document.getElementById('verify');v.textContent=`DiD ${res.est.toFixed(2)} (95% CI ${res.lo.toFixed(2)}–${res.hi.toFixed(2)}, ${fmtP(res.p)}) ✓`;v.style.color=res.p<0.05?'var(--good)':'var(--warn)';}
 function renderAll(){syncInputs();renderOutputs();}

@@ -227,6 +227,10 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">schema 1.0.0</span></h3>
+      <div id="assertionPanel"></div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced the SMDs and the transported effect, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2141,6 +2145,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2384,7 +2390,13 @@ QA_RENDER([
 ['Count of large imbalances ≥ 0 (integer)', !!(res&&res.nBig>=0&&res.nBig===Math.round(res.nBig))],
 ['Transported effect computed (subgroup RRs entered)', !!(res&&res.trans!=null)]
 ]);}
-function renderOutputs(){const res=transport(model);renderSMD(res);renderEff(res);renderReadouts(res);rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion (schema 1.0.0) — emitted from live engine state ----
+// ---- Machine-readable assertion: not applicable (point effect, no propagated interval) ----
+function renderAssertion(){
+  const host=document.getElementById('assertionPanel');if(!host)return;
+  host.innerHTML='<p class="note">This capsule re-standardises point subgroup risk ratios to the target population by <b>deterministic standardisation</b>, which carries no sampling variance — so the transported effect has a point but <b>no confidence interval</b>. A complete machine-readable assertion needs an estimand <em>and</em> its interval, so the format does not apply here; the live transportability checks above are this capsule\'s machine-checkable layer.</p>';
+}
+function renderOutputs(){const res=transport(model);renderSMD(res);renderEff(res);renderReadouts(res);rcode();renderInspect();renderQA();renderAssertion(res);
   document.getElementById('badgeT').textContent=res.trans?`RR ${res.trans.trialRR.toFixed(2)}→${res.trans.transRR.toFixed(2)}`:'—';
   const v=document.getElementById('verify');if(res.trans){v.textContent=`trial RR ${res.trans.trialRR.toFixed(2)} → transported ${res.trans.transRR.toFixed(2)} · max|SMD| ${res.maxSMD.toFixed(2)} ${res.transportable?'✓':'⚠'}`;v.style.color=res.transportable?'var(--good)':'var(--warn)';}else{v.textContent='enter subgroup RRs';v.style.color='var(--warn)';}}
 function renderAll(){renderTable();syncOpts();renderOutputs();}

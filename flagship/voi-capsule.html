@@ -231,6 +231,10 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">06</span><h2>R cross-validation (voi / BCEA)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">schema 1.0.0</span></h3>
+      <div id="assertionPanel"></div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced every estimate, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live inputs</h3><pre class="code" id="dataDump"></pre>
@@ -2145,6 +2149,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2371,7 +2377,12 @@ function renderOutputs(){
   const pop=cfg.pop*at.evpi;setT('roPopEvpi',money(pop));
   setH('roWorth',pop>1e6?'<span class="warnf">maybe</span>':(pop<1e5?'<span class="good">unlikely</span>':'borderline'));
   const vv=document.getElementById('verify');vv.textContent=`EVPI@${(cfg.lambda/1000).toFixed(0)}k ${money(at.evpi)} · peak ${money(peak.evpi)} ✓`;vv.style.color='var(--good)';
-  rcode();renderInspect();renderQA();}
+  rcode();renderInspect();renderQA();renderAssertion();}
+// ---- Machine-readable assertion: not applicable (no single effect estimand) ----
+function renderAssertion(){
+  const host=document.getElementById('assertionPanel');if(!host)return;
+  host.innerHTML='<p class="note">This capsule reports an expected-value-of-information (EVPI) quantity, not a single effect estimand. The machine-readable assertion format (one named estimand bound to its data) does not apply here; the live self-checks above are this capsule\'s machine-checkable layer.</p>';
+}
 function rcode(){const a=cfg.strats[0],b=cfg.strats[1];
   document.getElementById('rcode').textContent=
 `# voi package; PSA matrices e (effects/QALYs) and c (costs), columns = strategies

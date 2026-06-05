@@ -217,6 +217,10 @@
   <section class="stage" id="xval">
     <div class="stagehdr"><span class="stagenum">07</span><h2>R cross-validation (cobalt / MatchIt)</h2></div>
     <pre class="code" id="rcode"></pre>
+    <div class="card">
+      <h3>Machine-readable assertion <span class="prismaref">schema 1.0.0</span></h3>
+      <div id="assertionPanel"></div>
+    </div>
     <details class="card" id="inspect"><summary style="cursor:pointer;font-weight:600">Inspect the computation (reader) — data + the exact engine code</summary>
       <p class="note" style="margin-top:.6rem">The actual JavaScript that produced the SMDs, via <code>Function.toString()</code>.</p>
       <h3 style="margin-top:.8rem">Live data</h3><pre class="code" id="dataDump"></pre>
@@ -2131,6 +2135,8 @@
       'Ratio measure is strictly positive on the natural scale');
     if (unit) add(A.point >= 0 && A.point <= 1 && A.ci && A.ci.low >= 0 && A.ci.high <= 1,
       'Proportion/accuracy measure lies within [0, 1]');
+    if (m === 'r') add(A.point >= -1 && A.point <= 1 && A.ci && A.ci.low >= -1 && A.ci.high <= 1,
+      'Correlation r lies within [-1, 1]');
     var sig = A.ci && (A.ci.low > A.null_value || A.ci.high < A.null_value);
     add(true, 'Significance auto-derived from CI vs null: ' + (sig ? 'CI excludes the null' : 'CI includes the null'), !sig);
     add(P.data_binding && /^[a-f0-9]{64}$/.test(P.data_binding.sha256) && P.data_binding.sha256 !== ZERO64,
@@ -2357,7 +2363,12 @@ QA_RENDER([
 ['Post-match imbalance count ≤ pre-match', !!(res&&res.imbA<=res.imbB)],
 ['Balance verdict derived (all |SMD| < 0.1 ⇒ balanced)', !!(res&&typeof res.balanced==='boolean')]
 ]);}
-function renderOutputs(){const res=balance(model);renderLove(res);renderReadouts(res);renderTable();rcode();renderInspect();renderQA();
+// ---- Machine-readable assertion: not applicable (no single effect estimand) ----
+function renderAssertion(){
+  const host=document.getElementById('assertionPanel');if(!host)return;
+  host.innerHTML='<p class="note">This capsule reports a <b>covariate-balance diagnostic (Love plot of SMDs)</b>, not a single effect estimand. The machine-readable assertion format (one named estimand bound to its data) does not apply here; the live self-checks above are this capsule\'s machine-checkable layer.</p>';
+}
+function renderOutputs(){const res=balance(model);renderLove(res);renderReadouts(res);renderTable();rcode();renderInspect();renderQA();renderAssertion();
   document.getElementById('badgeK').textContent=res?`${res.k} covariates`:'—';
   const v=document.getElementById('verify');if(res){v.textContent=`max |SMD| ${res.maxB.toFixed(2)} → ${res.maxA.toFixed(2)} after · ${res.balanced?'balanced':res.imbA+' imbalanced'} ✓`;v.style.color=res.balanced?'var(--good)':'var(--warn)';}else{v.textContent='need ≥1 covariate';v.style.color='var(--warn)';}}
 function renderAll(){renderOutputs();}
