@@ -81,6 +81,7 @@ and it runs offline. `index.html` links all 40.
 ## What every capsule shares
 
 - **Self-auditing assurance ribbon** (Bronze / Silver / Gold) that turns green only when the numbers reconcile; Gold is reserved for independent reproduction.
+- **Machine-readable assertion** ([schema 1.0.0](../schemas/e156-assertion.schema.json)) — the one primary estimand emitted as nanopublication-style JSON from the *live* engine and SHA-256-bound to the exact rows it was computed from, with a self-consistency report and copy/download. The central claim is re-checkable mechanically, not just by eye. Designs with no single effect estimand (PRISMA flow, RoB2, p-curve, Benford, decision-analytic HTA, etc.) carry an honest *not-applicable* panel rather than a fabricated number.
 - **Editable data** that re-runs the analysis on every keystroke and persists in `localStorage`.
 - **Reader-inspectable engine** — an "inspect the computation" panel prints the exact JavaScript via `Function.toString()`.
 - **R reproducibility** — a copy-paste script for `metafor`, `meta`, `bayesmeta`, `mada`, `robvis`, `RTSA`, GRADEpro, or method-specific formula checks.
