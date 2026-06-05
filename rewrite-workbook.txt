@@ -30443,11 +30443,11 @@ SUBMITTED: [ ]
 [404/1873] TezepelumabLivingMA
 TITLE: Tezepelumab in Severe Asthma: Living Meta-Analysis of Randomized Trials
 TYPE: living-ma  |  ESTIMAND: RR for annualized asthma exacerbation rate
-DATA: 3 RCTs (NAVIGATOR, PATHWAY, SOURCE), 1,395 patients, CT.gov sourced
+DATA: 3 RCTs (NAVIGATOR, PATHWAY, SOURCE), 1,504 patients, CT.gov sourced
 PATH: C:\Projects\Tezepelumab_Asthma_LivingMeta
 
 CURRENT BODY (155 words):
-Does tezepelumab, an anti-thymic stromal lymphopoietin monoclonal antibody, reduce exacerbation rates in adults with severe uncontrolled asthma irrespective of baseline eosinophil count? Three randomized placebo-controlled trials enrolling 1,395 patients with severe asthma evaluated subcutaneous tezepelumab 210 mg every four weeks over 28 to 52 weeks. DerSimonian-Laird random-effects meta-analysis pooled risk ratios on the log scale with HKSJ adjustment. The pooled risk ratio for annualized asthma exacerbations was 0.44 (95% CI 0.35-0.54), with negligible heterogeneity (I-squared 0%). Subgroup analyses by baseline blood eosinophil count showed consistent benefit across low, medium, and high eosinophil strata, distinguishing tezepelumab from eosinophil-selective biologics. Tezepelumab reduces severe asthma exacerbations by 56 percent regardless of inflammatory phenotype, supporting its role as a broad-acting upstream biologic. Follow-up is limited to one year, no head-to-head trials against existing biologics exist, and cost-effectiveness data outside the United States remain sparse.
+Does tezepelumab, an anti-thymic stromal lymphopoietin monoclonal antibody, reduce exacerbation rates in adults with severe uncontrolled asthma irrespective of baseline eosinophil count? Three randomized placebo-controlled trials enrolling 1,504 patients with severe asthma evaluated subcutaneous tezepelumab 210 mg every four weeks over 28 to 52 weeks. DerSimonian-Laird random-effects meta-analysis pooled risk ratios on the log scale with HKSJ adjustment. The pooled risk ratio for annualized asthma exacerbations was 0.44 (95% CI 0.35-0.54), with negligible heterogeneity (I-squared 0%). Subgroup analyses by baseline blood eosinophil count showed consistent benefit across low, medium, and high eosinophil strata, distinguishing tezepelumab from eosinophil-selective biologics. Tezepelumab reduces severe asthma exacerbations by 56 percent regardless of inflammatory phenotype, supporting its role as a broad-acting upstream biologic. Follow-up is limited to one year, no head-to-head trials against existing biologics exist, and cost-effectiveness data outside the United States remain sparse.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
