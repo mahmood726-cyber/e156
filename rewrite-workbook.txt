@@ -133616,3 +133616,71 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
+[2044/2044] ALLMETA_REVIEW_STUDIO
+TITLE: allmeta Review Studio (Story mode) — teaching artifact reproducing canonical evidence histories
+TYPE: tool / methods-note  |  ESTIMAND: fixed-effect pooled odds ratio with 95% CI
+DATA: Embedded verified trial-level data · streptokinase (10 trials), magnesium (9 trials), Turner 2008 antidepressants · public aggregate records
+PATH: C:\Projects\allmeta\review-project\index.html
+
+CURRENT BODY (156 words):
+Can one offline studio make each stage's purpose legible by replaying canonical evidence histories beside the live tools producing them? Three verified datasets are embedded: streptokinase (ten trials) and magnesium (nine trials) for myocardial infarction, plus Turner's antidepressant publication-bias figures. A Story mode weaves a true beat into all nine stages and loads each case's real two-by-two tables onto the shared workspace bus. Loading magnesium reproduces the collapse: a fixed-effect odds ratio of 1.03 (95% CI 0.97 to 1.10) once ISIS-4's 58,050 patients join the seven trials that alone implied halved mortality. Streptokinase reproduces benefit (fixed-effect odds ratio 0.77), every embedded count was checked against primary sources, and the paywalled corticosteroid trials were left unembedded. Because the pooling engine also narrates, learners meet publication bias and specification collapse as movements in a real story, not abstractions. The studio reproduces published syntheses but cannot establish new causal effects and embeds only openly verifiable aggregate counts.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/allmeta
+  Protocol:  https://github.com/mahmood726-cyber/allmeta/blob/main/review-project/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/allmeta/review-project/
+
+References (topic pack: teaching reproduction / cumulative meta-analysis / publication bias):
+  1. Lau J, Antman EM, Jimenez-Silva J, Kupelnick B, Mosteller F, Chalmers TC.
+     1992. Cumulative meta-analysis of therapeutic trials for myocardial
+     infarction. N Engl J Med. 327(4):248-254. doi:10.1056/NEJM199207233270406
+  2. Turner EH, Matthews AM, Linardatos E, Tell RA, Rosenthal R. 2008.
+     Selective publication of antidepressant trials and its influence on
+     apparent efficacy. N Engl J Med. 358(3):252-260. doi:10.1056/NEJMsa065779
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records
+  (per-trial 2x2 counts as cited; embedded verbatim in the studio).
+
+Ethics: Not required. Secondary methodological reproduction of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
