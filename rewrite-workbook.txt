@@ -133895,3 +133895,79 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
+
+[2048/2048] TOPO_TRANSPORT_MA
+TITLE: Synthesis Methods | A topological positivity certificate for transportability in meta-analysis
+TYPE: methods-note  |  ESTIMAND: support grade (GOLD/SILVER/BRONZE/GAP/NONE) of a transported effect, from persistent homology of the effect-modifier space
+DATA: BCG tuberculosis-vaccine meta-analysis (Colditz 1994, 13 trials; absolute latitude and baseline control risk as effect modifiers) plus known-truth simulations
+PATH: C:/Projects/topo-transport-ma
+
+CURRENT BODY (E156 - 7 sentences):
+When a meta-analysis is generalized to a target population, does that population actually lie inside the evidence base, and can topology reveal coverage gaps that a convex-hull overlap check waves through? We study the thirteen-trial BCG tuberculosis-vaccine meta-analysis (Colditz 1994), in which absolute latitude is the canonical effect modifier, alongside known-truth simulations. We estimate the transported effect by random-effects meta-regression on study-level effect modifiers and, independently, compute the Vietoris-Rips persistent homology of the modifier point cloud, grading a target by whether it sits inside a confirmed homological hole. On BCG our REML meta-regression reproduces metafor to four decimals (latitude slope -0.0292, tau-squared 0.076), while in simulation a target inside an annulus's hole is correctly graded unsupported even though it lies within the convex hull. The homology engine matches GUDHI to machine precision, holes are confirmed against sampling noise by a subsampling-bottleneck band, and odds-ratio transport is refused as non-collapsible. Persistent homology thus turns transportability positivity from an untested assumption into a computable, geometry-aware certificate that separates interpolation, extrapolation, and interpolation-into-a-gap. The H1 hole signal requires at least two effect modifiers and an adequate study count; with a single modifier only H0 structure and interval coverage apply.
+
+YOUR REWRITE (E156 - condense to a claim-disciplined Methods Note; keep the metafor parity number and the honest two-modifier boundary):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/topo-transport-ma
+  Dashboard: https://mahmood726-cyber.github.io/topo-transport-ma/
+  Spec:      https://github.com/mahmood726-cyber/topo-transport-ma/blob/master/docs/SPEC.md
+
+References (topic pack: topological data analysis + causal transportability):
+  1. Viechtbauer W. 2010. Conducting meta-analyses in R with the metafor
+     package. J Stat Softw. 36(3):1-48. doi:10.18637/jss.v036.i03
+  2. Fasy BT, Lecci F, Rinaldo A, Wasserman L, Balakrishnan S, Singh A. 2014.
+     Confidence sets for persistence diagrams. Ann Statist. 42(6):2301-2339.
+     doi:10.1214/14-AOS1252
+  3. Edelsbrunner H, Harer J. 2010. Computational Topology: An Introduction.
+     American Mathematical Society. ISBN 978-0-8218-4925-5
+  4. Dahabreh IJ, Robertson SE, Steingrimsson JA, Stuart EA, Hernan MA. 2020.
+     Extending inferences from a randomized trial to a new target population.
+     Stat Med. 39(14):1999-2014. doi:10.1002/sim.8426
+  5. Colditz GA, Brewer TF, Berkey CS, et al. 1994. Efficacy of BCG vaccine in
+     the prevention of tuberculosis. JAMA. 271(9):698-702.
+     doi:10.1001/jama.1994.03510330076038
+
+Data availability: No patient-level data. The BCG dataset is the published
+  Colditz (1994) example (also distributed with metafor as dat.bcg);
+  simulations are reproducible from seeded generators in the repository.
+
+Ethics: Not required. Secondary methodological analysis of publicly available
+  aggregate data; no human participants; no patient-identifiable information.
+
+Funding: None.
+
+Competing interests: DECLARED - Mahmood Ahmad develops the software described
+  here; read the validation with that in mind. No financial interest.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] - Writing - original draft,
+    Writing - review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] - Supervision, Validation,
+    Writing - review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) - Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop and validate the analysis
+  pipeline. Final manuscript is human-written, reviewed, and approved by
+  the author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: Methods note (PRISMA 2020 where applicable).
+
+Target journal: Synthesis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note - submit the E156 body as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
