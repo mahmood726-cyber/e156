@@ -133971,3 +133971,79 @@ Code license: MIT.
 SUBMITTED: [ ]
 
 ======================================================================
+
+[2049/2049] COMPLEX_EVIDENCE_SYNTHESIS_NMA
+TITLE: Synthesis Methods | Verifiability-first network meta-analysis: self-audit, honest coverage, and a specification multiverse
+TYPE: methods-note  |  ESTIMAND: number of active-vs-placebo contrasts statistically robust under correct (weighted-likelihood) multiverse aggregation
+DATA: aact NMA-MACE-in-T2D 10-study star network (DPP-4i, GLP-1 RA, SGLT2i vs placebo; ClinicalTrials.gov via AACT) plus seeded known-truth simulations
+PATH: C:/Projects/complex-evidence-synthesis-map
+
+CURRENT BODY (E156 - 7 sentences):
+Does a significant cardiovascular-safety network meta-analysis across three diabetes drug classes survive a verifiability-first re-analysis adding self-audit, honest coverage, and a multiverse? We re-analysed a ten-study network comparing DPP-4 inhibitors, GLP-1 agonists, and SGLT2 inhibitors versus placebo for cardiovascular events, via AACT. Each contrast was pooled under eight specifications (fixed-effect, DerSimonian-Laird, Paule-Mandel, REML, with Wald or HKSJ intervals) and aggregated by weighted-likelihood. The primary estimand, the number of contrasts statistically robust under correct aggregation, was zero of three, whereas inverse-variance pooling labelled two of three robust by narrowing intervals roughly sixfold. Leave-one-out prediction intervals covered ninety percent versus a nominal ninety-five, and the treatment-hierarchy probability POTH was 0.21, below the 0.5 informativeness threshold. The headline cardiovascular signal and apparent best-drug ranking are artefacts of analytic choices and rank uncertainty that verifiability-first synthesis exposes and reverses. This demonstrates the method on one small network with unassessed risk-of-bias and reporting domains, so larger, loop-containing networks remain untested.
+
+YOUR REWRITE (E156 - condense to a claim-disciplined Methods Note; keep the metafor parity (7e-07), the 0-of-3 vs 2-of-3 robustness contrast, the POTH=0.21 gate, and the honest small-star-network boundary):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/complex-evidence-synthesis-map
+  Dashboard: https://mahmood726-cyber.github.io/complex-evidence-synthesis-map/
+  Spec:      https://github.com/mahmood726-cyber/complex-evidence-synthesis-map/blob/main/docs/INTEGRATION-MAP.md
+
+References (topic pack: network meta-analysis robustness + multiverse + verifiable synthesis):
+  1. Viechtbauer W. 2010. Conducting meta-analyses in R with the metafor
+     package. J Stat Softw. 36(3):1-48. doi:10.18637/jss.v036.i03
+  2. Salanti G, Ades AE, Ioannidis JPA. 2011. Graphical methods and numerical
+     summaries for presenting results from multiple-treatment meta-analysis.
+     J Clin Epidemiol. 64(2):163-171. doi:10.1016/j.jclinepi.2010.03.016
+  3. Nikolakopoulou A, Higgins JPT, Papakonstantinou T, et al. 2020. CINeMA: An
+     approach for assessing confidence in the results of a network meta-analysis.
+     PLoS Med. 17(4):e1003082. doi:10.1371/journal.pmed.1003082
+  4. Wigle A, Beliveau A, Salanti G, et al. 2025. POTH: the probability of the
+     treatment hierarchy for summarising rank uncertainty in network
+     meta-analysis. arXiv:2501.11596.
+  5. Single-dataset meta-analysis for many-analysts and multiverse studies. 2025.
+     arXiv:2511.17064. (Weighted-likelihood, not inverse-variance, aggregation.)
+
+Data availability: No patient-level data. The network is derived from public
+  ClinicalTrials.gov results via AACT and vendored in the repository;
+  simulations are reproducible from seeded generators in the repository.
+
+Ethics: Not required. Secondary methodological analysis of publicly available
+  aggregate data; no human participants; no patient-identifiable information.
+
+Funding: None.
+
+Competing interests: DECLARED - Mahmood Ahmad develops the software described
+  here; read the validation with that in mind. No financial interest.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] - Writing - original draft,
+    Writing - review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] - Supervision, Validation,
+    Writing - review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) - Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop and validate the analysis
+  pipeline. Final manuscript is human-written, reviewed, and approved by
+  the author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: Methods note (PRISMA-NMA where applicable).
+
+Target journal: Synthesis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note - submit the E156 body as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
