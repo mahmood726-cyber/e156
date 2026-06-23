@@ -19,6 +19,20 @@ scripts/_batch_all.json
 
 # run_full_cycle.py event log (local observability only)
 .run-cycle/
+
+# Local analysis outputs (contain hardcoded local paths; never commit)
+outputs/
+E156_top12_for_rewrite.md
+_cands.json
+_parse_results.json
+_strong.json
+_three.json
+fix_pdf_*.py
+pub_batch2.py
+pub_combined.py
+publish_e156.php
+publish_e156_direct.py
+rewrite-workbook.bak-*
 # === Sentinel hook output (auto-added by install) ===
 STUCK_FAILURES.md
 STUCK_FAILURES.jsonl
