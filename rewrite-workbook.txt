@@ -3970,7 +3970,7 @@ DATA: Six built-in landmark RCT datasets
 PATH: C:\Models\FragilityIndex
 
 CURRENT BODY (156 words):
-Can a browser-based tool compute the Fragility Index and Fragility Quotient for randomized trials with binary outcomes without any software installation? We implemented the Walsh et al. (2014) algorithm, which iteratively modifies the contingency table by adding one event to the group with fewer events until the Fisher exact p-value crosses 0.05, applied to six landmark trial datasets. The calculator uses exact Fisher tests with automatic direction detection, supporting significant and non-significant trials through standard and reverse fragility indices. For DAPA-HF, the Fragility Index is 29 with a 95% CI p-value trajectory from 0.04 to 0.07 and Fragility Quotient of 0.61 percent in under 50 milliseconds. Sensitivity analysis across multiple significance thresholds confirms monotonic index behavior across all six embedded trial datasets. Browser-based fragility computation achieves identical outputs to dedicated R packages while eliminating all installation barriers. The limitation is that fragility indices apply only to binary outcomes analyzed with Fisher exact tests, excluding continuous endpoints.
+Can a browser-based tool compute the Fragility Index and Fragility Quotient for randomized trials with binary outcomes without any software installation? We implemented the Walsh et al. (2014) algorithm, iteratively adding one event to the lower-rate arm until the two-sided Fisher exact p-value crosses 0.05, across six landmark datasets. The calculator uses exact Fisher tests with automatic direction detection, handling significant and non-significant trials through standard and reverse fragility indices. For DAPA-HF the Fragility Index is 62 and Fragility Quotient 1.31 percent, the two-sided Fisher p rising past 0.05 only at the sixty-second reassignment, computed in under 50 milliseconds. Sensitivity analysis across multiple thresholds confirmed the fragility index rose monotonically with the threshold across all six datasets wherever each trial remained significant. Browser-based fragility computation achieves outputs identical to dedicated R packages while eliminating every installation barrier. The limitation is that fragility indices apply only to binary outcomes analyzed with Fisher exact tests, excluding continuous endpoints.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -4121,9 +4121,11 @@ TITLE: GWAM: Ghost-Weighted Aggregate Meta-Analysis for Registry-Based Publicati
 TYPE: methods  |  ESTIMAND: Integrity ratio (lambda)
 DATA: ClinicalTrials.gov registry + 398 Cochrane reviews (Pairwise70)
 PATH: C:\Models\GWAM
+OJS: https://synthesis-medicine.org/index.php/gnosis/article/view/gwam-ghost-weighted-meta-analysis
+      Gnosis Vol. 2 No. 1 | Jun 16 2026
 
 CURRENT BODY (156 words):
-Can trial registry data provide a quantitative sensitivity framework for publication bias in meta-analysis? GWAM classifies ClinicalTrials.gov records as published, results-posted, or ghost protocols across 7,467 meta-analyses from 398 Cochrane reviews, computing enrollment-weighted integrity ratios for each drug-condition pair. The method scales published pooled estimates by the integrity ratio lambda, with simulation and hierarchical variance-propagation extensions quantifying uncertainty about unobserved effects. For escitalopram in depression, the adjusted OR on the log scale fell to 0.025 (95% CI negative 0.041 to 0.087) versus the published random-effects estimate of 0.255, with lambda of 0.096. Simulation at 2,000 replications confirmed minimal bias at the null and near-nominal hierarchical coverage, while across the Pairwise70 benchmark 7.9 percent of meta-analyses with effects exceeding 0.10 were attenuated below that threshold. GWAM provides transparent registry-anchored sensitivity analysis that complements existing statistical bias corrections. A limitation is that incomplete ClinicalTrials.gov publication linkage inflates ghost classification, making lambda a lower bound on true publication fraction.
+Can trial registry data provide a quantitative sensitivity framework for publication bias in meta-analysis? GWAM classifies ClinicalTrials.gov records as published, results-posted, or ghost protocols across 7,467 meta-analyses from 398 Cochrane reviews, computing enrollment-weighted integrity ratios for each drug-condition pair. The method scales published pooled estimates by the integrity ratio lambda, with simulation and hierarchical variance-propagation extensions quantifying uncertainty about unobserved effects. For escitalopram in depression, the adjusted OR on the log scale fell to 0.025 (95% SI −0.041 to 0.087) versus the published random-effects estimate of 0.255, with lambda of 0.096. Simulation at 2,000 replications confirmed minimal bias at the null and near-nominal hierarchical coverage, while across the Pairwise70 benchmark 7.9 percent of meta-analyses with effects exceeding 0.10 were attenuated below that threshold. GWAM provides transparent registry-anchored sensitivity analysis that complements existing statistical bias corrections. A limitation is that incomplete ClinicalTrials.gov publication linkage inflates ghost classification, making lambda a lower bound on true publication fraction.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -4188,7 +4190,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -6253,9 +6255,11 @@ TITLE: Meta-Analytic Entropy: Information-Theoretic Heterogeneity Beyond I-Squar
 TYPE: empirical  |  ESTIMAND: Normalized Entropy Index (NEI, 0-1)
 DATA: 403 Cochrane reviews from Pairwise70 dataset
 PATH: C:\Models\MetaEntropy
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/meta-entropy-e156
+      Synthesis Vol. 2 No. 4 | Jun 20 2026
 
-CURRENT BODY (156 words):
-Can information-theoretic metrics detect heterogeneity features that I-squared is blind to, including multimodality, skewness, and distributional shape? We computed Shannon entropy, Kullback-Leibler divergence, mutual information between effects and precision, Fisher information, and normalized entropy index for 403 Cochrane reviews from the Pairwise70 dataset using Monte Carlo estimation with 10000 samples per review. The normalized entropy index compares observed mixture entropy against theoretical bounds, while Silverman kernel density estimation detects multimodality through mode counting on precision-weighted distributions. Across 403 reviews, the median normalized entropy was 0.41 with IQR 0.28 to 0.58, and 23 percent showed multimodal distributions despite moderate I-squared below 60 percent. Mutual information between effect and precision was significantly positive in 31 percent of reviews, suggesting precision-dependent reporting consistent with small-study effects. Entropy metrics capture distributional shape that complements but does not replace variance-based heterogeneity measures. The limitation is that Monte Carlo entropy estimation introduces sampling variability increasing for reviews with fewer than 10 studies.
+CURRENT BODY (155 words):
+Can information-theoretic metrics detect heterogeneity features that I-squared is blind to, namely multimodality, skewness, and distributional shape? We computed Shannon entropy, Kullback-Leibler divergence, mutual information between effects and precision, Fisher information, and normalized entropy index for 403 Cochrane reviews from the Pairwise70 dataset using Monte Carlo estimation with 10,000 samples per review. The normalized entropy index compares observed mixture entropy against theoretical bounds, while Silverman kernel density estimation detects multimodality through mode counting on precision-weighted distributions. Across 403 reviews, the median normalized entropy index was 0.151 (IQR 0.109–0.229; 95% bootstrap CI 0.143–0.163), and 44.7 percent showed multimodal distributions despite moderate I-squared below 60 percent, with prevalence rising from 33 percent (k<10) to 62 percent (k≥10). Mutual information between effect and precision was positive in every computable review and significant by permutation in 21.5 percent, suggesting precision-dependent reporting consistent with small-study effects. Entropy metrics capture distributional shape that complements but does not replace variance-based heterogeneity measures. The limitation is that Monte Carlo entropy estimation introduces sampling variability increasing for reviews with fewer than 10 studies.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -6320,7 +6324,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -11451,9 +11455,11 @@ TITLE: UBCMA: Unified Bias-Calibrated Meta-Analysis via Joint Heterogeneity-Sele
 TYPE: methods  |  ESTIMAND: Mean absolute error reduction
 DATA: Simulated and empirical meta-analysis datasets
 PATH: C:\ubcma
+OJS: https://synthesis-medicine.org/index.php/insight/article/view/ubcma-unified-bias-calibrated-meta-analysis
+      Insight | Jun 16 2026
 
-CURRENT BODY (156 words):
-Can a unified model jointly correct for heterogeneity, publication selection, and study quality bias within a single meta-analytic framework? We built a mixture normal likelihood with a logistic selection function and quality bias-shift covariates, evaluated against five comparator methods on simulated and empirical datasets. Estimation used multi-start L-BFGS-B with Latin hypercube sampling, profile likelihood confidence intervals, and BCa bootstrap, with optional Bayesian inference via PyMC. The unified model reduced mean difference in absolute error by 38% (95% CI 31-45%) over DerSimonian-Laird and by 21% over trim-and-fill while maintaining nominal coverage across scenarios. AIC, BIC, leave-one-out influence, and Cook distance confirmed stability, and profile likelihood intervals showed appropriate width calibration across all tested scenarios. Joint modeling of heterogeneity and selection bias yields substantially less biased pooled estimates than sequential application of separate correction methods. However, the model is limited by its parametric selection function, which may not capture all plausible publication bias mechanisms in complex review contexts.
+CURRENT BODY (148 words):
+Can a single meta-analytic model jointly correct heterogeneity, publication selection, and study-quality bias, rather than applying separate sequential corrections? We tested a unified mixture-normal selection likelihood against eight comparators on twelve simulated scenarios and a real six-trial aspirin secondary-prevention dataset. Estimation used multi-start L-BFGS-B optimisation with profile-likelihood confidence intervals and BCa bootstrap, optionally with Bayesian inference via PyMC. Across twelve scenarios (50 replicates, k=30) the unified model attained the highest coverage, 88.8% at RMSE 0.070, versus 59.7% (DerSimonian-Laird), 63.8% (REML-HKSJ), and 39.0% (trim-and-fill). With selection and quality bias combined, coverage held at 90.3% versus 31.3% for DerSimonian-Laird; on the aspirin data the model gave a pooled log-odds-ratio of +0.011 (95% CI −0.125 to 0.117), versus −0.07 uncorrected. Jointly modelling heterogeneity and selection bias yields less biased, better-calibrated pooled estimates than applying separate corrections sequentially. However, the model is limited by its parametric selection function, which may not capture all plausible publication bias mechanisms in complex review contexts.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -11517,7 +11523,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -25455,7 +25461,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/163
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -25753,7 +25760,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/160
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -25826,7 +25834,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/164
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -27466,7 +27475,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 
 ======================================================================
@@ -27541,7 +27550,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 
 ======================================================================
@@ -27551,9 +27560,11 @@ TITLE: Prediction Model Validation Meta-Analysis with PROBAST Risk of Bias
 TYPE: methodological  |  ESTIMAND: Pooled c-statistic (logit) and O:E ratio (log)
 DATA: Framingham (10 validations), SCORE2 (7), QRISK3 (6)
 PATH: C:\PredModelMA
+OJS: https://synthesis-medicine.org/index.php/sapience/article/view/predmodelma-e156
+      Sapience Vol. 1 No. 1 | Jun 20 2026
 
-CURRENT BODY (153 words):
-Can prediction model validation studies be synthesized in a browser with the same statistical rigor as R packages like metamisc? We implemented c-statistic pooling via logit transformation (logit(c) = log(c/(1-c))) with delta-method standard errors (SE(logit) = SE(c)/(c(1-c))), and O:E ratio pooling on the natural log scale, both using REML or DerSimonian-Laird random effects. PROBAST risk-of-bias assessment covers four domains (Participants, Predictors, Outcome, Analysis) with traffic-light visualization and domain-level bar charts. Applied to 10 Framingham Risk Score external validations, the tool yields pooled c = 0.742 (95% CI 0.731-0.753) and pooled O:E = 1.09 (1.03-1.16), indicating moderate discrimination with slight underprediction -- consistent with published systematic reviews. Forest plots display study-level estimates with weight-proportional symbols and pooled diamonds for both discrimination and calibration. The tool enables rapid prediction model evidence synthesis without software installation or programming. This implementation does not support calibration-in-the-large meta-regression or net benefit decision curve pooling.
+CURRENT BODY (155 words):
+Can prediction-model external-validation studies be synthesised in a browser with the rigour of R packages such as metamisc? PredModelMA reanalyses twelve published external validations of the original Framingham Risk Score (Wilson 1998) in men, taken from Damen and colleagues' open meta-analysis dataset. It pools the c-statistic on the logit scale and the observed-to-expected ratio on the log scale (delta-method standard errors), under REML or DerSimonian–Laird random effects. The pooled c-statistic was 0.68 (95% CI 0.66–0.70, I²=67%) and the pooled O:E ratio 0.54 (0.40–0.74, I²=98%), indicating moderate discrimination but substantial over-prediction of coronary risk. Estimates reproduced metafor and an independent re-implementation to four decimal places, and the fourteen-validation calibration set matched the source review's published pooled O:E of 0.58. PROBAST charts flagged high risk of bias in most validations, while wide prediction intervals (O:E 0.16–1.87) confirm the heterogeneity is genuine, not a forced-to-zero artefact. The tool pools neither calibration-in-the-large by meta-regression nor net-benefit and decision-curve measures.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -27616,7 +27627,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 
 ======================================================================
@@ -28727,9 +28738,11 @@ TITLE: ProportionMA: Browser-Based Proportion and Prevalence Meta-Analysis
 TYPE: methods  |  ESTIMAND: Pooled Proportion
 DATA: User-supplied study-level event counts and sample sizes
 PATH: C:\Models\ProportionMA
+OJS: https://synthesis-medicine.org/index.php/sapience/article/view/proportionma-e156
+      Sapience Vol. 1 No. 1 | Jun 20 2026
 
 CURRENT BODY (148 words):
-Can a single browser tool pool disease prevalence or event proportions from heterogeneous studies using all standard transformations and modern variance adjustments? We accept study-level event counts and denominators via CSV paste or manual entry, supporting any clinical domain requiring proportion synthesis. The engine implements Freeman-Tukey double arcsine, logit, and raw proportion transformations with DerSimonian-Laird and REML pooling, applying Hartung-Knapp-Sidik-Jonkman adjustment with a variance floor of max(1, Q/(k-1)) and prediction intervals on t_{k-2} degrees of freedom. Validation against R metaprop on an 8-study prevalence dataset showed pooled estimates within 0.02 absolute tolerance for both FT and logit transforms, with correct I-squared and tau-squared. Back-transformation uses the harmonic mean denominator with Miller 1978 correction, and per-study Clopper-Pearson exact intervals use the alpha/2 beta quantile. The tool generates interactive forest and funnel plot SVGs with subgroup stratification. Results depend on the chosen transformation, which should be pre-specified in the protocol.
+Can a single-file browser tool pool prevalence from study-level event counts and denominators as faithfully as a dedicated R package? We implemented three transformations — Freeman–Tukey double-arcsine, logit, and raw proportion — with DerSimonian–Laird and REML pooling in one HTML file. Each was coded from first principles: Hartung–Knapp–Sidik–Jonkman with a max(1, Q/(k−1)) variance floor, prediction intervals on t with k−1 df, Miller's 1978 harmonic-mean back-transform, and Clopper–Pearson exact intervals. Applied to a published dataset (neurological improvement after cerebral vasospasm; 14 studies, 326 patients), it pools a Freeman–Tukey prevalence of 0.802 (95% CI 0.705–0.887; I²=68%). Against R's metafor and metaprop, closed-form estimators agreed to 4×10⁻¹³ and Clopper–Pearson bounds to 5×10⁻¹⁴, independently reproduced. Forest and funnel plots with subgroup stratification show the pooled proportion depends on the transform — logit pools 0.757 — so it must be pre-specified. The tool fills a gap in browser-based prevalence synthesis but is limited to single-group proportions, without within-study clustering or meta-regression.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -28792,7 +28805,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -29310,7 +29323,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -35356,9 +35369,11 @@ TITLE: The Meta-Analysis Ecosystem Model: Evidence Velocity, Effect Decay, and a
 TYPE: methods  |  ESTIMAND: Decay ratio
 DATA: A composite Future-Proof Index integrating evidence velocity, effect decay, and publication bias across 3,651 trajectories from 501 Cochrane reviews.
 PATH: C:\Models\mem-ecosystem-model
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/mem-ecosystem-model-e156
+      Synthesis Vol. 2 No. 4 | Jun 20 2026
 
-CURRENT BODY (156 words):
-Does the magnitude of early meta-analytic effects systematically decay as new evidence accumulates across the Cochrane Library? The Meta-Analysis Ecosystem Model analysed 3,651 trajectories from 501 Cochrane reviews with at least five studies each, using cumulative fixed-effect meta-analysis on binary outcomes over a median span of 16 years. MEM computes evidence velocity, effect decay ratios, and trajectory stability, integrating them with publication bias scores into a composite Future-Proof Index scored zero to 100. Among 2,817 analyses, the median decay ratio was 0.66 (IQR 0.32 to 1.23), with 67.3 percent showing shrinkage and 25.1 percent exhibiting sign reversals, though only 3.4 percent were clinically meaningful. Velocity, decay, and bias showed negligible correlations with all absolute Pearson r below 0.02, confirming these are independent dimensions. Two-thirds of pooled effects shrank over time, underscoring the danger of treating early meta-analytic results as definitive. A limitation is that FPI component weights were expert-assigned rather than empirically optimised from calibration data.
+CURRENT BODY (150 words):
+Does the magnitude of early meta-analytic effects systematically decay as evidence accumulates across the Cochrane Library? The Meta-Analysis Ecosystem Model analysed 3,651 trajectories from 501 Cochrane reviews (≥5 studies each) over a median 16-year span; 2,817 of 3,062 computable trajectories gave a finite, in-range decay ratio (834 excluded as undefined or >10). It applies cumulative fixed-effect meta-analysis to binary outcomes, which understates heterogeneity, and integrates velocity, decay, and stability with publication-bias scores into a Future-Proof Index (0–100). Among the 2,817 the median decay ratio was 0.66 (IQR 0.32–1.23), 67.3% shrinking; of 3,062, 25.1% reversed sign but only 3.4% meaningfully. Decay was independent of velocity (r=−0.002) and bias (r=+0.001)—not a scaling artefact—though velocity and bias correlated weakly (r=−0.19). Two-thirds of pooled effects shrank as evidence matured, so early meta-analytic results should not be treated as definitive. The decay ratio is sensitive to the fixed-effect choice, and the Future-Proof Index is an expert-weighted heuristic, not a validated instrument.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -35422,6 +35437,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
+
+SUBMITTED: [x]
 
 ======================================================================
 [478/1873] nma-pro-v2
@@ -35885,9 +35902,11 @@ TITLE: ImpossibleMA: Bounded Synthesis of Cochrane Meta-Analyses Declared Unpool
 TYPE: methods  |  ESTIMAND: Possibility Envelope on log-effect scale
 DATA: 6,229 MetaAudit meta-analyses (68,519 audit rows across 11 diagnostic modules); 444 flagged CRITICAL for prediction_gap converted to bounded adversarial envelopes.
 PATH: C:\Models\ImpossibleMA
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/impossible-ma
+      Synthesis Vol. 2 No. 4 | Jun 20 2026
 
-CURRENT BODY (156 words):
-Cochrane meta-analyses with prediction intervals crossing the null are conventionally deemed to have no defensible pooled estimate, leaving guideline panels with narrative synthesis. We screened 6,229 meta-analyses in the MetaAudit corpus (68,519 audit rows, 11 diagnostic modules) for any module flagged CRITICAL. The Possibility Envelope — `(lower, upper, point|None, min_info, assumptions)` — is computed by an adversarial engine enumerating inclusion-rule combinations and reporting REML+HKSJ extremes. 444 of 6,229 meta-analyses (7.13%) carried at least one CRITICAL flag; the priority classifier converted all 444 to bounded adversarial envelopes via `prediction_gap`, zero unclassified. REML matches `metafor::rma` to 1e-4; envelope monotonicity and full-data containment are property-tested across 23 inputs; 88 automated tests gate every commit. The envelope bounds defensible pooled effects under stated inclusion rules; one named datum (e.g., a pre-registered protocol) collapses it to a point. v1 covers k=1, missing-SE, and adversarial cases; figure-extraction, incommensurable outcomes, and per-MA runs are deferred; only `prediction_gap` fires CRITICAL in the current snapshot.
+CURRENT BODY (155 words):
+Cochrane meta-analyses whose prediction intervals cross the null are conventionally deemed unpoolable, leaving guideline panels with narrative synthesis. Screening 6,229 MetaAudit meta-analyses (68,519 audit rows) for any CRITICAL flag, only prediction_gap fires CRITICAL, so the contribution is the envelope construction, not multi-module triage. The Possibility Envelope—(lower, upper, point|None, min_info, assumptions)—is computed by an adversarial engine enumerating inclusion-rule combinations and reporting REML+HKSJ extremes. 444 of 6,229 (7.13%) carried a CRITICAL flag, all converted to bounded adversarial envelopes, zero unclassified. REML matches metafor::rma below 1e-6 (our house ideal; τ≈1e-7 except the degenerate τ²=0 boundary); monotonicity and full-data containment property-tested across 23 inputs, 182 tests gating every commit. The envelope bounds defensible pooled effects under stated rules, and one named datum—a pre-registered protocol—collapses it to a point; since the bounded set is defined by the same prediction_gap criterion, “unpoolable” is definitional, not external. v1 covers adversarial, k=1, and missing-SE cases; figure-extraction, incommensurable outcomes, and per-MA runs are deferred.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
@@ -35952,7 +35971,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 [485/1873] repro-floor-atlas
@@ -39916,6 +39935,8 @@ TITLE: Modern Random-Effects Methods Change the Significance Judgement of Cochra
 TYPE: methods  |  ESTIMAND: Tier-1 significance-flip rate (DL → REML+HKSJ+PI) across Cochrane pairwise MAs
 DATA: Pairwise70 corpus (582 Cochrane reviews; 6,386 loadable pairwise meta-analyses; reproducibility status merged from repro-floor-atlas atlas.csv)
 PATH: C:\Projects\cochrane-modern-re
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/cochrane-modern-re
+      Synthesis Vol. 2 No. 4 | Jun 20 2026
 
 CURRENT BODY (156 words):
 Does modernising RevMan's random-effects defaults from DL to REML+HKSJ with a prediction interval change the significance judgement of Cochrane pairwise meta-analyses? We re-analysed 6,386 loadable pairwise meta-analyses from 582 Cochrane reviews in the Pairwise70 corpus via the MetaAudit loader. For each meta-analysis we compared DL against REML+HKSJ+PI with a Q/(k-1) floor and classified three flip tiers (significance, direction, clinically-important). Across the full corpus 8.2% of comparable meta-analyses flipped significance, 0.6% flipped direction, and 3.9% of the MID-available subset exceeded the clinically-important threshold. The effect concentrated in small-k and non-reproducible reviews; non-reproducible meta-analyses were approximately twice as method-sensitive as reproducible ones at every stratum examined. Method choice alone changes the significance judgement in roughly one in twelve Cochrane pairwise reviews, with the largest effect in continuous small-k analyses. Findings apply to aggregate pairwise data only; network meta-analyses, IPD reanalysis, and publication-bias methods are out of scope for v0.1.
@@ -39991,7 +40012,7 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -48302,7 +48323,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/162
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -48390,7 +48412,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/161
+SUBMITTED: [x]
 
 ================================================================
 [679/1873] tiba (2026-05-06)
@@ -121178,13 +121201,17 @@ TITLE: GWAM: Ghost-Weighted Aggregate Meta-Analysis for Registry-Based Publicati
 TYPE: methods  |  ESTIMAND: Integrity ratio (lambda)
 DATA: A registry-based sensitivity framework using ClinicalTrials.gov ghost protocol rates to reweight published meta-analytic estimates for publication bias.
 PATH: C:\Projects\gwam
+OJS: https://synthesis-medicine.org/index.php/gnosis/article/view/gwam-ghost-weighted-meta-analysis
+      Gnosis Vol. 2 No. 1 | Jun 16 2026
 
 CURRENT BODY (156 words):
-Can trial registry data provide a quantitative sensitivity framework for publication bias in meta-analysis? GWAM classifies ClinicalTrials.gov records as published, results-posted, or ghost protocols across 7,467 meta-analyses from 398 Cochrane reviews, computing enrollment-weighted integrity ratios for each drug-condition pair. The method scales published pooled estimates by the integrity ratio lambda, with simulation and hierarchical variance-propagation extensions quantifying uncertainty about unobserved effects. For escitalopram in depression, the adjusted OR on the log scale fell to 0.025 (95% CI negative 0.041 to 0.087) versus the published random-effects estimate of 0.255, with lambda of 0.096. Simulation at 2,000 replications confirmed minimal bias at the null and near-nominal hierarchical coverage, while across the Pairwise70 benchmark 7.9 percent of meta-analyses with effects exceeding 0.10 were attenuated below that threshold. GWAM provides transparent registry-anchored sensitivity analysis that complements existing statistical bias corrections. A limitation is that incomplete ClinicalTrials.gov publication linkage inflates ghost classification, making lambda a lower bound on true publication fraction.
+Can trial registry data provide a quantitative sensitivity framework for publication bias in meta-analysis? GWAM classifies ClinicalTrials.gov records as published, results-posted, or ghost protocols across 7,467 meta-analyses from 398 Cochrane reviews, computing enrollment-weighted integrity ratios for each drug-condition pair. The method scales published pooled estimates by the integrity ratio lambda, with simulation and hierarchical variance-propagation extensions quantifying uncertainty about unobserved effects. For escitalopram in depression, the adjusted OR on the log scale fell to 0.025 (95% SI −0.041 to 0.087) versus the published random-effects estimate of 0.255, with lambda of 0.096. Simulation at 2,000 replications confirmed minimal bias at the null and near-nominal hierarchical coverage, while across the Pairwise70 benchmark 7.9 percent of meta-analyses with effects exceeding 0.10 were attenuated below that threshold. GWAM provides transparent registry-anchored sensitivity analysis that complements existing statistical bias corrections. A limitation is that incomplete ClinicalTrials.gov publication linkage inflates ghost classification, making lambda a lower bound on true publication fraction.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
 
+
+SUBMITTED: [x]
 
 ======================================================================
 [1796/1873] hfpef-registry-synth
@@ -121402,13 +121429,17 @@ TITLE: The Meta-Analysis Ecosystem Model: Evidence Velocity, Effect Decay, and a
 TYPE: methods  |  ESTIMAND: Decay ratio
 DATA: A composite Future-Proof Index integrating evidence velocity, effect decay, and publication bias across 3,651 trajectories from 501 Cochrane reviews.
 PATH: C:\Projects\mem-ecosystem-model
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/mem-ecosystem-model-e156
+      Journal Vol. 2 No. 1 | Jun 16 2026
 
 CURRENT BODY (156 words):
-Does the magnitude of early meta-analytic effects systematically decay as new evidence accumulates across the Cochrane Library? The Meta-Analysis Ecosystem Model analysed 3,651 trajectories from 501 Cochrane reviews with at least five studies each, using cumulative fixed-effect meta-analysis on binary outcomes over a median span of 16 years. MEM computes evidence velocity, effect decay ratios, and trajectory stability, integrating them with publication bias scores into a composite Future-Proof Index scored zero to 100. Among 2,817 analyses, the median decay ratio was 0.66 (IQR 0.32 to 1.23), with 67.3 percent showing shrinkage and 25.1 percent exhibiting sign reversals, though only 3.4 percent were clinically meaningful. Velocity, decay, and bias showed negligible correlations with all absolute Pearson r below 0.02, confirming these are independent dimensions. Two-thirds of pooled effects shrank over time, underscoring the danger of treating early meta-analytic results as definitive. A limitation is that FPI component weights were expert-assigned rather than empirically optimised from calibration data.
+Does the magnitude of early meta-analytic effects systematically decay as evidence accumulates across the Cochrane Library? The Meta-Analysis Ecosystem Model analysed 3,651 trajectories from 501 Cochrane reviews (≥5 studies each) over a median 16-year span; 2,817 of 3,062 computable trajectories gave a finite, in-range decay ratio (834 excluded as undefined or >10). It applies cumulative fixed-effect meta-analysis to binary outcomes, which understates heterogeneity, and integrates velocity, decay, and stability with publication-bias scores into a Future-Proof Index (0–100). Among the 2,817 the median decay ratio was 0.66 (IQR 0.32–1.23), 67.3% shrinking; of 3,062, 25.1% reversed sign but only 3.4% meaningfully. Decay was independent of velocity (r=−0.002) and bias (r=+0.001)—not a scaling artefact—though velocity and bias correlated weakly (r=−0.19). Two-thirds of pooled effects shrank as evidence matured, so early meta-analytic results should not be treated as definitive. The decay ratio is sensitive to the fixed-effect choice, and the Future-Proof Index is an expert-weighted heuristic, not a validated instrument.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
 
+
+SUBMITTED: [x]
 
 ======================================================================
 [1812/1873] mes
@@ -121430,13 +121461,17 @@ TITLE: Meta-Analytic Entropy: Information-Theoretic Heterogeneity Beyond I-Squar
 TYPE: empirical  |  ESTIMAND: Normalized Entropy Index (NEI, 0-1)
 DATA: Information-theoretic heterogeneity metrics detecting multimodality and distributional shape in 403 Cochrane reviews.
 PATH: C:\Projects\meta-entropy
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/meta-entropy-e156
+      Journal Vol. 2 No. 1 | Jun 16 2026
 
 CURRENT BODY (156 words):
-Can information-theoretic metrics detect heterogeneity features that I-squared is blind to, including multimodality, skewness, and distributional shape? We computed Shannon entropy, Kullback-Leibler divergence, mutual information between effects and precision, Fisher information, and normalized entropy index for 403 Cochrane reviews from the Pairwise70 dataset using Monte Carlo estimation with 10000 samples per review. The normalized entropy index compares observed mixture entropy against theoretical bounds, while Silverman kernel density estimation detects multimodality through mode counting on precision-weighted distributions. Across 403 reviews, the median normalized entropy was 0.41 with IQR 0.28 to 0.58, and 23 percent showed multimodal distributions despite moderate I-squared below 60 percent. Mutual information between effect and precision was significantly positive in 31 percent of reviews, suggesting precision-dependent reporting consistent with small-study effects. Entropy metrics capture distributional shape that complements but does not replace variance-based heterogeneity measures. The limitation is that Monte Carlo entropy estimation introduces sampling variability increasing for reviews with fewer than 10 studies.
+Can information-theoretic metrics detect heterogeneity features that I-squared is blind to, namely multimodality, skewness, and distributional shape? We computed Shannon entropy, Kullback-Leibler divergence, mutual information between effects and precision, Fisher information, and normalized entropy index for 403 Cochrane reviews from the Pairwise70 dataset using Monte Carlo estimation with 10,000 samples per review. The normalized entropy index compares observed mixture entropy against theoretical bounds, while Silverman kernel density estimation detects multimodality through mode counting on precision-weighted distributions. Across 403 reviews, the median normalized entropy index was 0.151 (IQR 0.109–0.229; 95% bootstrap CI 0.143–0.163), and 44.7 percent showed multimodal distributions despite moderate I-squared below 60 percent, with prevalence rising from 33 percent (k<10) to 62 percent (k≥10). Mutual information between effect and precision was positive in every computable review and significant by permutation in 21.5 percent, suggesting precision-dependent reporting consistent with small-study effects. Entropy metrics capture distributional shape that complements but does not replace variance-based heterogeneity measures. The limitation is that Monte Carlo entropy estimation introduces sampling variability increasing for reviews with fewer than 10 studies.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
 
+
+SUBMITTED: [x]
 
 ======================================================================
 [1814/1873] meta-genome
@@ -122228,13 +122263,17 @@ TITLE: UBCMA: Unified Bias-Calibrated Meta-Analysis via Joint Heterogeneity-Sele
 TYPE: methods  |  ESTIMAND: Mean absolute error reduction
 DATA: A unified model jointly correcting heterogeneity, selection bias, and quality bias reduces MAE by 38% over standard methods.
 PATH: C:\Projects\ubcma
+OJS: https://synthesis-medicine.org/index.php/insight/article/view/ubcma-unified-bias-calibrated-meta-analysis
+      Insight Vol. 2 No. 1 | Jun 16 2026
 
 CURRENT BODY (156 words):
-Can a unified model jointly correct for heterogeneity, publication selection, and study quality bias within a single meta-analytic framework? We built a mixture normal likelihood with a logistic selection function and quality bias-shift covariates, evaluated against five comparator methods on simulated and empirical datasets. Estimation used multi-start L-BFGS-B with Latin hypercube sampling, profile likelihood confidence intervals, and BCa bootstrap, with optional Bayesian inference via PyMC. The unified model reduced mean difference in absolute error by 38% (95% CI 31-45%) over DerSimonian-Laird and by 21% over trim-and-fill while maintaining nominal coverage across scenarios. AIC, BIC, leave-one-out influence, and Cook distance confirmed stability, and profile likelihood intervals showed appropriate width calibration across all tested scenarios. Joint modeling of heterogeneity and selection bias yields substantially less biased pooled estimates than sequential application of separate correction methods. However, the model is limited by its parametric selection function, which may not capture all plausible publication bias mechanisms in complex review contexts.
+Can a single meta-analytic model jointly correct heterogeneity, publication selection, and study-quality bias, rather than applying separate sequential corrections? We tested a unified mixture-normal selection likelihood against eight comparators on twelve simulated scenarios and a real six-trial aspirin secondary-prevention dataset. Estimation used multi-start L-BFGS-B optimisation with profile-likelihood confidence intervals and BCa bootstrap, optionally with Bayesian inference via PyMC. Across twelve scenarios (50 replicates, k=30) the unified model attained the highest coverage, 88.8% at RMSE 0.070, versus 59.7% (DerSimonian-Laird), 63.8% (REML-HKSJ), and 39.0% (trim-and-fill). With selection and quality bias combined, coverage held at 90.3% versus 31.3% for DerSimonian-Laird; on the aspirin data the model gave a pooled log-odds-ratio of +0.011 (95% CI −0.125 to 0.117), versus −0.07 uncorrected. Jointly modelling heterogeneity and selection bias yields less biased, better-calibrated pooled estimates than applying separate corrections sequentially. However, the model is limited by its parametric selection function, which may not capture all plausible publication bias mechanisms in complex review contexts.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
 
+
+SUBMITTED: [x]
 
 ======================================================================
 [1871/1873] umbrellareview
@@ -122291,3 +122330,22 @@ YOUR REWRITE (at most 156 words, 7 sentences):
 
 
 SUBMITTED: [ ]
+
+
+======================================================================
+[1875/1875] seqnma-e156
+TITLE: SeqNMA: sequential network meta-analysis with monitoring boundaries — a methods and software demonstration on a synthetic network
+TYPE: methods  |  ESTIMAND: Cumulative NMA z-score vs O'Brien-Fleming monitoring boundary
+DATA: A synthetic, reproducibly seeded 12-study network of four treatments (A, B, C, D), simulated on the log-odds-ratio scale; no real patient or trial data.
+PATH: C:\Projects\seqnma-e156
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/seqnma-e156
+      sub=146 pub=297 PDF galley=510 JATS galley=511 | Synthesis J1 | Tool Paper | Issue 9 Jun 2026
+
+CURRENT BODY (156 words):
+Can trial sequential analysis extend to network meta-analysis, giving formal stopping rules as evidence accumulates across a treatment network? We demonstrate on a synthetic, reproducibly seeded example: twelve chronologically ordered studies reporting pairwise comparisons among four treatments. An in-browser engine rebuilds a cumulative contrast-based NMA at each addition, computing required information from the heterogeneity-adjusted diversity design effect D². The estimand, the cumulative NMA z-score against the O’Brien-Fleming boundary (z_k=z_α/√(information fraction)) Bonferroni-corrected across six comparisons, shows A-versus-C crossing after study 10 while A-versus-D inconclusive at 66 percent of required information. Futility boundaries are non-binding by convention; the boundary mathematics (diversity adjustment, required information, spending function) were independently re-derived and numerically confirmed. Crucially, the method assumes but does not test consistency, with no design-by-treatment interaction or node-splitting, so crossings hold only if direct and indirect evidence agree. The twelve-study example is synthetic and cannot support any clinical claim, a software demonstration, not an empirical finding.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+
+
+SUBMITTED: [x]
