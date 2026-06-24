@@ -24,6 +24,30 @@ $branch = (& git rev-parse --abbrev-ref HEAD).Trim()
 $wb = 'rewrite-workbook.txt'
 Write-Host "e156-sync on '$branch'  ($root)" -ForegroundColor Cyan
 
+function Invoke-GitNative {
+  param(
+    [Parameter(Mandatory)][string[]]$GitArgs,
+    [switch]$AllowFailure
+  )
+  # Git writes normal progress/status messages to stderr. Under Stop semantics,
+  # PowerShell can promote those messages to errors even when Git exits 0.
+  $prevEAP = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try {
+    $output = @(& git @GitArgs 2>&1 | ForEach-Object { $_.ToString() })
+    $exitCode = $LASTEXITCODE
+  } finally {
+    $ErrorActionPreference = $prevEAP
+  }
+  $global:LASTEXITCODE = 0
+  if (($exitCode -ne 0) -and (-not $AllowFailure)) {
+    if ($output) { $output | ForEach-Object { Write-Host "  $_" } }
+    Write-Host "git $($GitArgs -join ' ') failed ($exitCode)" -ForegroundColor Red
+    exit 1
+  }
+  [pscustomobject]@{ ExitCode = $exitCode; Lines = $output }
+}
+
 # 1) Stage + commit local edits FIRST so the rebase can replay them cleanly.
 if ($All) { & git add -A } else { & git add -- $wb }
 $staged = (& git diff --cached --name-only)
@@ -31,7 +55,7 @@ if ($staged) {
   if (-not $Message) {
     $Message = "workbook: sync from $env:COMPUTERNAME " + (Get-Date -Format 'yyyy-MM-dd HH:mm')
   }
-  & git commit -q -m $Message
+  Invoke-GitNative -GitArgs @('commit','-q','-m',$Message) | Out-Null
   Write-Host "  committed: $Message" -ForegroundColor Green
   Write-Host ("  files: " + ($staged -join ', '))
 } else {
@@ -39,10 +63,10 @@ if ($staged) {
 }
 
 # 2) Bring in remote work (rebase keeps history linear; autostash protects stray edits).
-& git fetch -q origin
-& git rebase --autostash "origin/$branch" 2>$null | Out-Null
-if ($LASTEXITCODE -ne 0) {
-  & git rebase --abort 2>$null | Out-Null
+Invoke-GitNative -GitArgs @('fetch','-q','origin') | Out-Null
+$rebase = Invoke-GitNative -GitArgs @('rebase','--autostash',"origin/$branch") -AllowFailure
+if ($rebase.ExitCode -ne 0) {
+  Invoke-GitNative -GitArgs @('rebase','--abort') -AllowFailure | Out-Null
   Write-Host ""
   Write-Host "CONFLICT: the same lines were edited elsewhere (another PC or a cloud agent)." -ForegroundColor Yellow
   Write-Host "Your edits are committed locally and SAFE." -ForegroundColor Yellow
@@ -56,8 +80,8 @@ if ($LASTEXITCODE -ne 0) {
 # 3) Push whatever is ahead of the remote.
 $ahead = [int](& git rev-list --count "origin/$branch..HEAD")
 if ($ahead -gt 0) {
-  & git push -q origin $branch
-  if ($LASTEXITCODE -ne 0) { Write-Host "push failed - run 'git push' to see the error." -ForegroundColor Red; exit 1 }
+  $push = Invoke-GitNative -GitArgs @('push','-q','origin',$branch) -AllowFailure
+  if ($push.ExitCode -ne 0) { Write-Host "push failed - run 'git push' to see the error." -ForegroundColor Red; exit 1 }
   Write-Host "  pushed $ahead commit(s) to origin/$branch" -ForegroundColor Green
 } else {
   Write-Host "  nothing to push"
