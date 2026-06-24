@@ -3278,13 +3278,13 @@ SUBMITTED: [ ]
 ======================================================================
 
 [52/1873] EvidenceHalfLife
-TITLE: The Evidence Half-Life: 53.4% of Meta-Analyses Never Reach Analytical Stability
+TITLE: The Evidence Half-Life: 52.1% of Meta-Analyses Never Reach Analytical Stability
 TYPE: methods  |  ESTIMAND: Never-stabilized rate
-DATA: Pairwise70 dataset (365 analyzable Cochrane reviews, k>=5)
-PATH: C:\EvidenceHalfLife
+DATA: Pairwise70 dataset (365 reviews downloaded from Cochrane; 307 analyzable, k>=5)
+PATH: F:\EvidenceHalfLife
 
 CURRENT BODY (156 words):
-When does a cumulative meta-analysis conclusion become stable across reasonable specifications, and what proportion of reviews never stabilize? We applied eight multiverse specifications combining four variance estimators with two CI methods to 365 eligible Cochrane reviews from the Pairwise70 dataset. Studies were ordered by publication year and robustness scores computed cumulatively from k equals three onward, with stabilization defined as sustained robustness above seventy percent. Only 170 of 365 reviews achieved sustained stabilization, leaving 195 reviews (53.4 percent) that never stabilized, with a median half-life of six studies among stabilizers. Mean conclusion volatility was 8.0 robustness percentage points per added study, and 72 reviews were early stabilizers reaching robust conclusions by k equals five. More than half of Cochrane meta-analyses therefore never produce conclusions that are analytically robust even after all currently available studies are accumulated. Nonetheless, this analysis is limited to eight specifications and cannot capture sensitivity to outcome definitions, risk-of-bias exclusions, or subgroup choices.
+When does a cumulative meta-analysis conclusion become stable across reasonable specifications, and what proportion of reviews never stabilize? We applied eight multiverse specifications combining four variance estimators with two confidence-interval methods to 307 eligible Cochrane reviews from the Pairwise70 dataset. Studies were ordered by publication year and robustness scores computed cumulatively from k equals three onward, with stabilization defined as sustained robustness above seventy percent. Only 147 of 307 reviews achieved sustained stabilization, leaving 160 (52.1 percent, 95% CI 46.4 to 57.7) that never stabilized, with a median half-life of six studies among stabilizers. Mean conclusion volatility was 8.2 robustness percentage points per added study, and 63 were early stabilizers reaching robust conclusions by k equals five. More than half of Cochrane meta-analyses never produce conclusions that are analytically robust even after all available studies are accumulated. This analysis is limited to eight specifications and cannot capture sensitivity to outcome definitions, risk-of-bias exclusions, or subgroup choices.
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
