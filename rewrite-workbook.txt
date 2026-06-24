@@ -1903,7 +1903,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -1979,7 +1980,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -2055,7 +2057,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -2131,7 +2134,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -2207,7 +2211,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -2436,7 +2441,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -2512,7 +2518,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -12960,7 +12967,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -13035,7 +13043,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -13260,7 +13269,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -14910,7 +14920,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -15435,7 +15446,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -15810,7 +15822,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -15885,7 +15898,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -15960,7 +15974,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -16035,7 +16050,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -17160,7 +17176,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
@@ -17310,7 +17327,8 @@ Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/jou
 Manuscript license: CC-BY-4.0.
 Code license: MIT.
 
-SUBMITTED: [ ]
+OJS: https://synthesis-medicine.org/index.php/journal/article/view/172
+SUBMITTED: [x]
 
 ======================================================================
 
