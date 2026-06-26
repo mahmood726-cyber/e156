@@ -38,5 +38,19 @@
     "submission_id": null,
     "issue_number": 43,
     "github_user": "mtaresearch20"
+  },
+  "417": {
+    "name": "David Izataku",
+    "affiliation": "Makerere University",
+    "email": "davidizataku2011@gmail.com",
+    "orcid": "",
+    "mentor_coauthor": "",
+    "senior_author": "",
+    "claim_date": "2026-06-26",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 47,
+    "github_user": "dizataku"
   }
 }
