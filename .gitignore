@@ -29,10 +29,18 @@ _strong.json
 _three.json
 fix_pdf_*.py
 pub_batch2.py
+pub_batch3.py
 pub_combined.py
 publish_e156.php
 publish_e156_direct.py
+redirect_laiba.py
 rewrite-workbook.bak-*
+
+# Sentinel/STUCK rotation backups (base names ignored above; also ignore *.N rotations)
+STUCK_FAILURES.md.*
+STUCK_FAILURES.jsonl.*
+sentinel-findings.md.*
+sentinel-findings.jsonl.*
 # === Sentinel hook output (auto-added by install) ===
 STUCK_FAILURES.md
 STUCK_FAILURES.jsonl
