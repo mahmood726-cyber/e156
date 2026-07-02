@@ -1,0 +1,469 @@
+idx,name,title,cluster_id,cluster_title
+1,501MLM,MLM501: Cochrane Multilevel Meta-Analysis Effects Table from 501 Reviews,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+2,501MLM_Submission,MLM501 Software Article: Building Large-Scale Meta-Analytic Datasets from Cochrane Reviews,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+3,AdaptSim,AdaptSim: A Browser-Based Simulator for Adaptive Group-Sequential Trial Design Matching rpact to Four Decimal Places,C17,"Sequential Evidence, TSA & Adaptive Design"
+4,advanced-nma-pooling,Advanced NMA Pooling Toolkit with Bias Adjustment and Survival Extensions,C05,Network Meta-Analysis Statistical Methods
+5,AfricaRCT,AfricaRCT Observatory: Causal Transportability Index for African HTA Sovereignty,C21,"Transportability, Equity & External Validity"
+6,AlMizan,Al-Mizan: An Evidence Equipoise Monitor for Detecting When the Balance of Evidence Has Tipped,C17,"Sequential Evidence, TSA & Adaptive Design"
+7,Asa,Asa: A Seven-Method Forensic Data Integrity Screener for Clinical Trial Datasets,C16,"Reproducibility, Forensics & Data Integrity"
+9,AutoGRADE,AutoGRADE: Browser-Based Automated GRADE Certainty Assessment,C23,"GRADE, PRISMA & Systematic Review Reporting"
+10,BayesianMA,BayesianMA: Browser-Based Bayesian Random-Effects Meta-Analysis with Prior Sensitivity Analysis,C08,Bayesian & Shrinkage Meta-Analysis
+12,BiasForensics,The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses,C09,"Publication Bias, Correction & Fragility"
+13,Burhan,TruthCert: A Fail-Closed Certification Protocol for LLM Outputs in Evidence Synthesis,C16,"Reproducibility, Forensics & Data Integrity"
+14,CardioOracle,CardioOracle: Predicting Cardiovascular Trial Outcomes Using Bayesian Historical Borrowing and Design Feature Analysis (AUC 0.787),C26,"Research Automation, AI Tools & Infrastructure"
+15,CardioTrialAudit,"Structural Flaw Prevalence in 52,765 Cardiology Trials: An Automated Registry Audit",C24,Clinical Trial Registry Audit & Surveillance
+17,CausalSynth,CausalSynth: Browser-Based Causal Evidence Triangulation Engine,C21,"Transportability, Equity & External Validity"
+18,chat2,CBAMM-Chat2: Automated Meta-Overfitting Detection via Cross-Validated Diagnostics,C14,"Meta-Regression, Overfitting & Precision Methods"
+19,chatpaper,MA4 vs HKSJ: Complementarity of Analytic Stability and Small-Sample Robustness Metrics,C14,"Meta-Regression, Overfitting & Precision Methods"
+20,claude2,Weighted vs Unweighted CV in Meta-Regression: Reproducibility Capsule,C14,"Meta-Regression, Overfitting & Precision Methods"
+21,clauderepo,clauderepo: Reproducibility Capsule for an Advanced Meta-Analysis Compendium,C15,Multiverse & Specification-Robustness Analysis
+25,ComponentNMA,Component NMA: A Browser-Based Tool for Additive Component Network Meta-Analysis,C05,Network Meta-Analysis Statistical Methods
+26,ConformalMA,Conformal Prediction Intervals for Meta-Analysis: Distribution-Free Coverage Across 307 Cochrane Reviews,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+27,CRES,CRES: Browser-Based Cardiorenal Evidence Synthesis with Integrated Meta-Analysis and Health-Economic Modelling,C20,"HTA, Clinical Significance & Evidence Translation"
+38,ctgov-rule-era-reporting-gap,CT.gov Rule-Era Reporting Gap,C04,"CT.gov Registry Structure, Design & Black-Box"
+39,ctgov-search-strategies,CT.gov Search Strategy Tool: Systematic Review Search Validation with 99 Percent API Recall,C04,"CT.gov Registry Structure, Design & Black-Box"
+43,cv-rct-analysis,CV-RCT Analysis: Cardiovascular Trial Landscape Dashboard Integrating Registry and Publication Data,C24,Clinical Trial Registry Audit & Surveillance
+44,Dataextractor,RCTExtractor: AI-Powered Clinical Trial Data Extraction with 100% Accuracy,C26,"Research Automation, AI Tools & Infrastructure"
+45,dosehtml,Dose Response Pro: Browser-Based Dose-Response Meta-Analysis Matching R Accuracy,C31,Specialized Browser Tools & Research Productivity
+46,DPMA,Dirichlet Process Meta-Analysis,C08,Bayesian & Shrinkage Meta-Analysis
+47,DTA70,DTA70: An R Package of 76 Diagnostic Test Accuracy Datasets for Methods Research,C06,Diagnostic Test Accuracy Evidence Synthesis
+48,DTA_Pro_Review,DTA Meta-Analysis Pro: A Browser-Based Tool for Diagnostic Test Accuracy Evidence Synthesis,C06,Diagnostic Test Accuracy Evidence Synthesis
+49,everything-claude-code,Everything Claude Code: Modular AI-Assisted Evidence Synthesis Plugin Framework,C26,"Research Automation, AI Tools & Infrastructure"
+50,evidence-board,Evidence Board: A Browser-Based Structured Note System for Systematic Review Screening,C23,"GRADE, PRISMA & Systematic Review Reporting"
+51,evidence-inference,Evidence Inference: Machine Learning Extraction of Treatment Effects from Clinical Trial Reports,C26,"Research Automation, AI Tools & Infrastructure"
+52,EvidenceHalfLife,The Evidence Half-Life: 53.4% of Meta-Analyses Never Reach Analytical Stability,C17,"Sequential Evidence, TSA & Adaptive Design"
+53,EvidenceQuality,The Cochrane Quality Concordance: Six Orthogonal Dimensions of Evidence Reliability,C19,Empirical Cochrane Corpus Studies
+54,EvidenceTribunal,The Evidence Tribunal: Adversarial Specification Search Across 403 Cochrane Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis
+55,Fatiha-course-github-v2,FATIHA: A Multilingual Evidence Synthesis Course Platform with 26 Interactive Modules,C15,Multiverse & Specification-Robustness Analysis
+56,FATIHA_Project,SYNTHESIS: A 7-Layer Verification Framework for Detecting Fragile Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis
+58,focus-studio,Focus Studio: A Browser-Based Pomodoro Timer with Task Management and Session Logging,C31,Specialized Browser Tools & Research Productivity
+59,fragility-atlas,Fragility of Cochrane Cardiovascular Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis
+60,FragilityAtlas,The Fragility Atlas: Multiverse Analysis of 473 Cochrane Meta-Analyses Reveals 56% Are Sensitive to Analyst Choices,C15,Multiverse & Specification-Robustness Analysis
+61,FragilityIndex,Fragility Index Calculator: Browser-Based Statistical Fragility for RCTs,C09,"Publication Bias, Correction & Fragility"
+62,GRMA_paper,Grey Relational Meta-Analysis: A Robust Pooling Method with Redescending Effect Guard,C09,"Publication Bias, Correction & Fragility"
+64,hfpef_registry_synth,Registry-First Transparency-Adjusted Synthesis for HFpEF Clinical Trials,C21,"Transportability, Equity & External Validity"
+65,HTA,HTA Artifact Standard: An Open-Source Platform with 41 Analytical Engines for Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+66,HTA-oman,HTA-Oman: Open-Source Browser-Based Health Technology Assessment Economic Modeling,C20,"HTA, Clinical Significance & Evidence Translation"
+67,HTA_Evidence_Integrity_Suite,Evidence Integrity Suite for Multi-Layered Health Technology Assessment of Cochrane Reviews,C20,"HTA, Clinical Significance & Evidence Translation"
+68,HTA_Transportability_Engine,Clinical Transportability Engine for Quantifying Efficacy Leakage in Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+69,HTA_Unified_Intelligence_System,HTA Unified Intelligence System: Self-Correcting Evidence Synthesis with Triple-Guard Ensemble Pooling,C20,"HTA, Clinical Significance & Evidence Translation"
+70,idea12,Network Meta-Regression with Forensic Bias Detection for Observational-RCT Discordance,C14,"Meta-Regression, Overfitting & Precision Methods"
+71,IndirectComparison,Indirect Treatment Comparison Calculator: Browser-Based Bucher Method with Coherence Testing,C05,Network Meta-Analysis Statistical Methods
+72,IPD-Meta-Pro,IPD Meta-Analysis Pro: A Browser-Based Platform for Individual Participant Data Evidence Synthesis,C12,IPD & Survival Meta-Analysis
+73,IPD_QMA,IPD-QMA: Detecting Heterogeneous Treatment Effects via Quantile Meta-Analysis of Individual Participant Data,C12,IPD & Survival Meta-Analysis
+74,kanban-lab,Kanban Lab: A Persistent Browser-Based Drag-and-Drop Board for Research Task Management,C31,Specialized Browser Tools & Research Productivity
+75,KMcurve,Fully Automated Kaplan-Meier Curve Extraction via Neural OCR and Mathematical Survival Constraints,C12,IPD & Survival Meta-Analysis
+76,KMDigitizer,KMDigitizer: Browser-Based IPD Reconstruction from Published Kaplan-Meier Curves,C12,IPD & Survival Meta-Analysis
+77,LFA,CBAMM: Collaborative Bayesian Adaptive Meta-Analysis with Population Transportability and Sequential Monitoring,C08,Bayesian & Shrinkage Meta-Analysis
+78,living-meta,Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis,C18,Living Evidence Synthesis Infrastructure
+79,living-meta-engine,Living Meta-Analysis Engine: Config-Driven Browser Dashboard for Cardiology Evidence Synthesis,C18,Living Evidence Synthesis Infrastructure
+80,llm-meta-analysis,LLM-Driven Meta-Analysis: Automated Extraction and Synthesis from Clinical Trials,C26,"Research Automation, AI Tools & Infrastructure"
+81,mahmood726-cyber.github.io,Evidence Synthesis Portfolio Site: Living Validation Status Dashboard for 101 Projects,C26,"Research Automation, AI Tools & Infrastructure"
+82,MAPowerCalc,MA Power: A Browser-Based Power and Sample Size Calculator for Random-Effects Meta-Analysis,C20,"HTA, Clinical Significance & Evidence Translation"
+83,MAPriors,MAPriors: Browser-Based Meta-Analytic Predictive Priors and Dynamic Borrowing Engine,C08,Bayesian & Shrinkage Meta-Analysis
+84,MAWorkbench,Meta-Analysis Workbench: A Central Hub for 49 Evidence Synthesis Tools,C27,Comprehensive MA Platforms & Integrated Suites
+85,maxent-reconstructor,MaxEnt IPD Reconstructor: Maximum Entropy Recovery of Individual Patient Data,C12,IPD & Survival Meta-Analysis
+86,MCIDMapper,MCID Mapper: Clinical Significance Assessment for Meta-Analytic Effect Estimates,C20,"HTA, Clinical Significance & Evidence Translation"
+87,MES,Multiverse Evidence Synthesis: Robustness Classification of 403 Cochrane Meta-Analyses Across 648 Analytical Specifications,C15,Multiverse & Specification-Robustness Analysis
+89,Meta_Ecosystem_Model,"The Meta-Analysis Ecosystem Model: Evidence Velocity, Effect Decay, and a Future-Proof Index Across 501 Cochrane Reviews",C19,Empirical Cochrane Corpus Studies
+90,MetaAudit,MetaAudit: Reproducibility Capsule for Automated Meta-Analytic Quality Audits,C15,Multiverse & Specification-Robustness Analysis
+92,MetaExtract,MetaExtract: Browser-Based Effect Estimate Extraction from Clinical Trial Abstracts via Deterministic Pattern Matching,C26,"Research Automation, AI Tools & Infrastructure"
+93,MetaFolio,MetaFolio: Efficiency Frontier Subset Enumeration for Meta-Analysis Heterogeneity Decomposition,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+94,MetaFusion-Lab,MetaFusion Lab: Certainty-Weighted Random-Effects Meta-Analysis,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+96,MetaGuard,MetaGuard: A Browser-Based Robust and Forensic Meta-Analysis Toolkit,C27,Comprehensive MA Platforms & Integrated Suites
+97,MetaMethods,MetaMethods: Six Advanced Statistical Methods for Meta-Analysis in a Dependency-Free Python Module,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+98,Metanew,EvidenceOS PRIME: Integrated Meta-Analysis and Health Technology Assessment Platform,C27,Comprehensive MA Platforms & Integrated Suites
+99,metaoverfit,metaoverfit: Optimism-Corrected Heterogeneity Assessment for Meta-Regression,C14,"Meta-Regression, Overfitting & Precision Methods"
+100,metaoverfit-paper,Overfitting in Published Meta-Regressions: Simulation and Empirical Survey,C14,"Meta-Regression, Overfitting & Precision Methods"
+101,MetaRegression,MetaRegression Workbench: Browser-Based Mixed-Effects Meta-Regression with Permutation Tests,C14,"Meta-Regression, Overfitting & Precision Methods"
+102,metarep,Replication Probability in Meta-Analysis,C19,Empirical Cochrane Corpus Studies
+103,MetaRep,MetaRep: Most Significant Cochrane Meta-Analyses Predict Only 32% Replication Probability When Heterogeneity Is Accounted For,C19,Empirical Cochrane Corpus Studies
+106,MetaReproducer,Computational Reproducibility Audit of 501 Cochrane Meta-Analyses,C16,"Reproducibility, Forensics & Data Integrity"
+107,MetaShift,MetaShift: Changepoint Detection Reveals Hidden Regime Shifts in Cumulative Meta-Analysis,C17,"Sequential Evidence, TSA & Adaptive Design"
+108,metasprint-autopilot,MetaSprint Autopilot: Zero-Install Browser Platform for Systematic Review and Meta-Analysis,C31,Specialized Browser Tools & Research Productivity
+109,metasprint-cardio-universe,MetaSprint Cardio Universe: Provenance-First Discovery for Living Evidence Synthesis,C24,Clinical Trial Registry Audit & Surveillance
+110,metasprint-dose-response,MetaSprint Dose-Response: Browser-Based Nonlinear Dose-Response Meta-Analysis with R Cross-Validation,C31,Specialized Browser Tools & Research Productivity
+111,metasprint-dta,MetaSprint DTA: Automated Open-Access Discovery for Diagnostic Test Accuracy Meta-Analysis,C06,Diagnostic Test Accuracy Evidence Synthesis
+112,metasprintnma,MetaSprint NMA: Zero-Install Browser Network Meta-Analysis with In-Browser R Cross-Validation,C31,Specialized Browser Tools & Research Productivity
+113,metaverse-robust-MA,metaverse: Robust Meta-Analysis with Outlier-Resistant Estimation and Variable Selection,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+114,MethodsSuite,Methods Suite: Eight Interoperable Browser-Based Meta-Analysis Tools with MAIF,C27,Comprehensive MA Platforms & Integrated Suites
+116,MLMResearch,MLMResearch: Empirical Stress-Testing and Adaptive Correction for Multilevel Meta-Analysis Methods,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+117,Multilevelerror,Multilevelerror: Influence Diagnostics for Three-Level Meta-Analysis,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+118,Multipledatameta,Multiple Data Source Meta-Analysis: Pooling Mixed-Format Study Results,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+119,MultiverseMA,MultiverseMA: Browser-Based Multiverse Meta-Analysis Engine,C15,Multiverse & Specification-Robustness Analysis
+120,my-python-project,IPDAnalysis: Unified Python Interface for Individual Patient Data Meta-Analysis,C12,IPD & Survival Meta-Analysis
+121,New_Heterogeneity_Model,Adaptive Shrinkage Estimator for Heterogeneity in Small-Sample Meta-Analysis,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+122,nma-dose-response-app,NMA Dose-Response Studio: Browser-Based Network Meta-Analysis with Dose-Response Modeling,C31,Specialized Browser Tools & Research Productivity
+123,NMAhtml,NMA Pro: A Browser-Based Network Meta-Analysis Platform with Integrated Rapid Review,C31,Specialized Browser Tools & Research Productivity
+124,nmapaper111025,nmatransport: Population-Transported Network Meta-Analysis with Entropy Balancing,C05,Network Meta-Analysis Statistical Methods
+125,NNTMapper,NNTMapper: Converting Meta-Analytic Effects into Population-Specific Number Needed to Treat with Heterogeneity Propagation,C20,"HTA, Clinical Significance & Evidence Translation"
+128,OverlapMatrix,Overlap Matrix and Corrected Covered Area Calculator for Umbrella Reviews,C19,Empirical Cochrane Corpus Studies
+131,Pairwiseai,TruthCert PairwisePro: Browser-Based Pairwise Meta-Analysis with Regional Health-Economic Overlays,C18,Living Evidence Synthesis Infrastructure
+132,Paper1,Bootstrap-Aggregated Penalized Meta-Regression for Small-Sample Evidence Synthesis,C14,"Meta-Regression, Overfitting & Precision Methods"
+133,Paper2.111025,Precision-Weighted Cross-Validation for Unbiased Meta-Regression R-Squared Estimation,C14,"Meta-Regression, Overfitting & Precision Methods"
+134,PoolingSuite,Pooling Suite: Browser-Based Meta-Analysis Engine with Ten Heterogeneity Estimators,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+136,PredictionGap,The Prediction Gap: 72% of Significant Meta-Analyses Have Null-Spanning Prediction Intervals,C19,Empirical Cochrane Corpus Studies
+137,PRISMAChecker,PRISMA 2020 Compliance Checker: An Interactive Browser Tool for Systematic Review Reporting Assessment,C23,"GRADE, PRISMA & Systematic Review Reporting"
+138,PRISMAFlow,PRISMA 2020 Flow Diagram Generator for Systematic Reviews,C23,"GRADE, PRISMA & Systematic Review Reporting"
+140,prognostic-meta,PrognosisMeta: Browser-Based Prognostic Meta-Analysis Engine,C12,IPD & Survival Meta-Analysis
+141,pub-bias-simulation,Publication Bias Adjustment Methods: A 135-Scenario Simulation Comparison,C09,"Publication Bias, Correction & Fragility"
+142,PubBiasSuite,PubBias Suite: Comprehensive Publication Bias Assessment with 12 Methods and 3 Funnel Plot Variants,C09,"Publication Bias, Correction & Fragility"
+143,rct-extractor-v2,Deterministic Effect Estimate Extraction from RCT PDFs,C26,"Research Automation, AI Tools & Infrastructure"
+145,registry_first_rct_meta,Registry-First Meta-Analysis: Quantifying Missing Cardiovascular Trial Evidence,C21,"Transportability, Equity & External Validity"
+146,repo100,repo100: A Curated Collection of 137 Meta-Regression Benchmark Datasets,C14,"Meta-Regression, Overfitting & Precision Methods"
+147,repo300-ENMA-SNMA,Ensemble and Spectral Network Meta-Analysis: Novel Inconsistency-Robust Methods,C05,Network Meta-Analysis Statistical Methods
+148,RMSTmeta,RMST Meta: A Browser Tool for Meta-Analysis of Restricted Mean Survival Time Beyond the Hazard Ratio,C12,IPD & Survival Meta-Analysis
+149,rmstnma,Bayesian RMST Network Meta-Analysis: The rmstnma R Package,C12,IPD & Survival Meta-Analysis
+150,RoBAssessor,RoB Assessor: A Browser-Based Risk of Bias Assessment Tool Implementing RoB 2 and ROBINS-I,C23,"GRADE, PRISMA & Systematic Review Reporting"
+151,ROBMA,ROBMA Reproducibility Capsule for Reviewer-Auditable Bayesian Model Averaging,C08,Bayesian & Shrinkage Meta-Analysis
+152,shahzaib-icu-landscape,ICU Hemodynamic Trial Landscape: A Living Evidence Map,C24,Clinical Trial Registry Audit & Surveillance
+153,SheafNMA,Sheaf-Theoretic Consistency Analysis for Network Meta-Analysis,C05,Network Meta-Analysis Statistical Methods
+154,SoFTable,GRADE Summary of Findings Table Generator for Systematic Reviews,C23,"GRADE, PRISMA & Systematic Review Reporting"
+155,TDA_MA,Topological Data Analysis for Meta-Analytic Heterogeneity Exploration,C22,Advanced Mathematical & Geometric Evidence Methods
+156,TGEP_Development,Triple-Guard Ensemble Pooling for Bias-Sensitive Meta-Analysis,C09,"Publication Bias, Correction & Fragility"
+157,TransportabilityCalc,Clinical Transportability Engine: A Composite Penalty Index for Meta-Analysis Generalizability,C21,"Transportability, Equity & External Validity"
+158,TrialRadar,TrialRadar: Living Clinical Trial Surveillance Dashboard for Ghost Protocol Detection,C24,Clinical Trial Registry Audit & Surveillance
+159,truthcert-denominator-phase1,Denominator-First Bayesian Meta-Analysis Engine for Registry-Aware Evidence Synthesis,C08,Bayesian & Shrinkage Meta-Analysis
+160,truthcert-meta2-prototype,TruthCert Meta2: Governance Overlay for Denominator-First Meta-Analysis,C08,Bayesian & Shrinkage Meta-Analysis
+161,Truthcert1,TruthCert-MA: A Cross-Platform JavaScript Meta-Analysis Engine Validated Against R,C27,Comprehensive MA Platforms & Integrated Suites
+162,Truthcert1_work,TruthCert-PairwisePro: A Browser-Based Pairwise Meta-Analysis Engine with Seven Heterogeneity Estimators,C27,Comprehensive MA Platforms & Integrated Suites
+164,UmbrellaReview,Umbrella Review Evidence Classifier with Credibility Grading,C23,"GRADE, PRISMA & Systematic Review Reporting"
+165,Value_Based_HTA_Engine,Multi-Criteria Evidence Synthesizer for Automated Benefit-Harm Trade-Off in Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+166,VOICalculator,Value of Information Calculator for Meta-Analysis Decision Support,C20,"HTA, Clinical Significance & Evidence Translation"
+167,wasserstein,Automated Kaplan-Meier Digitization for Hazard Ratio Extraction,C12,IPD & Survival Meta-Analysis
+168,WorldIPD,WorldIPD: An Open Individual Participant Data Hub with Standardized Schema and Provenance,C12,IPD & Survival Meta-Analysis
+169,WorldIPD-private,WorldIPD-Private: Secure Scaffold for Non-Redistributable Individual Participant Data,C12,IPD & Survival Meta-Analysis
+170,3dvitreous-grapher,3D Vitreous Grapher: Interactive Three-Dimensional Visualization of Ophthalmic Surgical Anatomy,C06,Diagnostic Test Accuracy Evidence Synthesis
+172,area1_small_sample_analysis,Small-Sample Meta-Analysis Methods: Characterization and Performance Under k < 100,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+173,asreview_5star,"ASReview 5-Star: Enhanced Systematic Review Screening with Stopping Rules, IRR, and Meta-Analysis Integration",C23,"GRADE, PRISMA & Systematic Review Reporting"
+174,AsSirat,As-Sirat: The Evidence Passport for Navigating Meta-Analytic Uncertainty,C23,"GRADE, PRISMA & Systematic Review Reporting"
+175,cardio-ctgov-living-meta-portfolio,Cardio CT.gov Living Meta Portfolio: Automated Generation of 27 Topic-Specific Cardiovascular Evidence Reviews,C18,Living Evidence Synthesis Infrastructure
+176,cbamm-project2,CBAMM Phase 2: Cochrane Bias-Adjusted Meta-Model Development,C08,Bayesian & Shrinkage Meta-Analysis
+178,CINeMA,CINeMA: Browser-Based Confidence in Network Meta-Analysis Across Six Domains,C05,Network Meta-Analysis Statistical Methods
+179,claude-rct-work,Claude-RCT-Work: LLM-Assisted Randomised Controlled Trial Data Extraction Workflow,C26,"Research Automation, AI Tools & Infrastructure"
+180,ctgov-actual-discipline-repeaters,CT.gov Actual-Discipline Repeaters,C03,CT.gov Sponsor & Industry Repeaters
+181,ctgov-actual-field-discipline,CT.gov Actual-Field Discipline,C03,CT.gov Sponsor & Industry Repeaters
+182,ctgov-black-box-sponsor-repeaters,CT.gov Black-Box Sponsor Repeaters,C04,"CT.gov Registry Structure, Design & Black-Box"
+185,ctgov-completion-timing-repeaters,CT.gov Completion-Timing Repeaters,C04,"CT.gov Registry Structure, Design & Black-Box"
+186,ctgov-condition-ancient-backlog,CT.gov Condition Ancient Backlog,C01,CT.gov Condition-Dimension Hiddenness
+188,ctgov-condition-detailed-description-gap,CT.gov Condition Detailed-Description Gap,C01,CT.gov Condition-Dimension Hiddenness
+189,ctgov-condition-enrollment-gap,CT.gov Condition Enrollment Gap,C01,CT.gov Condition-Dimension Hiddenness
+190,ctgov-condition-excess-watchlist,CT.gov Condition Excess Watchlist,C01,CT.gov Condition-Dimension Hiddenness
+191,ctgov-condition-ghost-watchlist,CT.gov Condition Ghost Watchlist,C01,CT.gov Condition-Dimension Hiddenness
+192,ctgov-condition-narrative-gap,CT.gov Condition Narrative Gap,C01,CT.gov Condition-Dimension Hiddenness
+193,ctgov-condition-overdue-debt,CT.gov Condition Overdue Debt,C01,CT.gov Condition-Dimension Hiddenness
+194,ctgov-condition-primary-only-gap,CT.gov Condition Primary-Only Gap,C01,CT.gov Condition-Dimension Hiddenness
+195,ctgov-condition-primary-outcome-gap,CT.gov Condition Primary-Outcome Gap,C01,CT.gov Condition-Dimension Hiddenness
+196,ctgov-condition-sponsor-repeaters,CT.gov Condition Sponsor Repeaters,C01,CT.gov Condition-Dimension Hiddenness
+197,ctgov-condition-text-asymmetry,CT.gov Condition Text Asymmetry,C01,CT.gov Condition-Dimension Hiddenness
+198,ctgov-country-ancient-backlog,CT.gov Country Ancient Backlog,C02,CT.gov Country-Dimension Hiddenness
+199,ctgov-country-condition-hiddenness,CT.gov Country-Condition Hiddenness,C02,CT.gov Country-Dimension Hiddenness
+200,ctgov-country-description-black-box,CT.gov Country Description Black-Box,C02,CT.gov Country-Dimension Hiddenness
+201,ctgov-country-detailed-description-gap,CT.gov Country Detailed-Description Gap,C02,CT.gov Country-Dimension Hiddenness
+202,ctgov-country-enrollment-gap,CT.gov Country Enrollment Gap,C02,CT.gov Country-Dimension Hiddenness
+203,ctgov-country-excess-watchlist,CT.gov Country Excess Watchlist,C02,CT.gov Country-Dimension Hiddenness
+204,ctgov-country-ghost-watchlist,CT.gov Country Ghost Watchlist,C02,CT.gov Country-Dimension Hiddenness
+205,ctgov-country-narrative-gap,CT.gov Country Narrative Gap,C02,CT.gov Country-Dimension Hiddenness
+206,ctgov-country-overdue-debt,CT.gov Country Overdue Debt,C02,CT.gov Country-Dimension Hiddenness
+207,ctgov-country-primary-only-gap,CT.gov Country Primary-Only Gap,C02,CT.gov Country-Dimension Hiddenness
+208,ctgov-country-primary-outcome-gap,CT.gov Country Primary-Outcome Gap,C02,CT.gov Country-Dimension Hiddenness
+210,ctgov-country-sponsor-repeaters,CT.gov Country Sponsor Repeaters,C02,CT.gov Country-Dimension Hiddenness
+211,ctgov-country-text-asymmetry,CT.gov Country Text Asymmetry,C02,CT.gov Country-Dimension Hiddenness
+212,ctgov-description-black-box-repeaters,CT.gov Description-Black-Box Repeaters,C04,"CT.gov Registry Structure, Design & Black-Box"
+213,ctgov-design-purpose-hiddenness,CT.gov Design-Purpose Hiddenness,C04,"CT.gov Registry Structure, Design & Black-Box"
+214,ctgov-disease-geography-gap,CT.gov Disease Geography Gap,C01,CT.gov Condition-Dimension Hiddenness
+215,ctgov-enrollment-size-gap,CT.gov Enrollment-Size Gap,C04,"CT.gov Registry Structure, Design & Black-Box"
+217,ctgov-industry-family-repeaters,CT.gov Industry Family Repeaters,C03,CT.gov Sponsor & Industry Repeaters
+218,ctgov-intervention-type-gap,CT.gov Intervention-Type Gap,C04,"CT.gov Registry Structure, Design & Black-Box"
+219,ctgov-modality-sponsor-repeaters,CT.gov Modality Sponsor Repeaters,C03,CT.gov Sponsor & Industry Repeaters
+220,ctgov-narrative-gap-repeaters,CT.gov Narrative Gap Repeaters,C03,CT.gov Sponsor & Industry Repeaters
+225,ctgov-risk-adjusted-hiddenness,CT.gov Risk-Adjusted Hiddenness,C04,"CT.gov Registry Structure, Design & Black-Box"
+226,ctgov-sponsor-ancient-backlog,CT.gov Sponsor Ancient Backlog,C03,CT.gov Sponsor & Industry Repeaters
+227,ctgov-sponsor-class-primary-only-gap,CT.gov Sponsor-Class Primary-Only Gap,C03,CT.gov Sponsor & Industry Repeaters
+228,ctgov-sponsor-detailed-description-gap,CT.gov Sponsor Detailed-Description Gap,C03,CT.gov Sponsor & Industry Repeaters
+229,ctgov-sponsor-enrollment-gap-repeaters,CT.gov Sponsor Enrollment-Gap Repeaters,C03,CT.gov Sponsor & Industry Repeaters
+230,ctgov-sponsor-excess-watchlist,CT.gov Sponsor Excess Watchlist,C03,CT.gov Sponsor & Industry Repeaters
+231,ctgov-sponsor-ghost-repeaters,CT.gov Sponsor Ghost Repeaters,C03,CT.gov Sponsor & Industry Repeaters
+232,ctgov-sponsor-overdue-debt,CT.gov Sponsor Overdue Debt,C03,CT.gov Sponsor & Industry Repeaters
+233,ctgov-sponsor-primary-only-gap,CT.gov Sponsor Primary-Only Gap,C03,CT.gov Sponsor & Industry Repeaters
+234,ctgov-sponsor-primary-outcome-gap,CT.gov Sponsor Primary-Outcome Gap,C03,CT.gov Sponsor & Industry Repeaters
+235,ctgov-sponsor-text-asymmetry,CT.gov Sponsor Text Asymmetry,C03,CT.gov Sponsor & Industry Repeaters
+236,ctgov-stopped-trial-disclosure-gap,CT.gov Stopped-Trial Disclosure Gap,C04,"CT.gov Registry Structure, Design & Black-Box"
+237,ctgov-strict-core-black-box,CT.gov Strict-Core Black-Box,C04,"CT.gov Registry Structure, Design & Black-Box"
+238,ctgov-strict-proxy-repeaters,CT.gov Strict-Proxy Repeaters,C04,"CT.gov Registry Structure, Design & Black-Box"
+240,ctgov-us-vs-exus-sponsor-classes,CT.gov U.S. Versus Ex-U.S. Sponsor Classes,C02,CT.gov Country-Dimension Hiddenness
+242,Denominator_Calibrated_Living_NMA,Denominator-Calibrated Living NMA: Registry-First Network Meta-Analysis with Sample Size Adjustment,C05,Network Meta-Analysis Statistical Methods
+243,esc-acs-living-meta,ESC ACS Living Meta: Shared Cardiovascular Living Meta-Analysis Engine with GRADE Assessment and Topic-Context Validation,C24,Clinical Trial Registry Audit & Surveillance
+244,EvidenceGapMap,Evidence Gap Map: Interactive Bubble-Chart Visualisation of Research Coverage Across Clinical Domains,C19,Empirical Cochrane Corpus Studies
+246,EvidenceOracle,EvidenceOracle: Machine Learning Prediction of Meta-Analytic Result Instability,C26,"Research Automation, AI Tools & Infrastructure"
+247,experimental-meta-analysis,Experimental Meta-Analysis Framework: 300+ Methods with Simulation Infrastructure,C27,Comprehensive MA Platforms & Integrated Suites
+248,Fatiha-Course,Advanced Meta-Analysis Course: A 25-Module Interactive Educational Platform,C23,"GRADE, PRISMA & Systematic Review Reporting"
+249,finalpaper,Final Paper Compilation: Meta-Analytic Evidence Synthesis Manuscript Assembly,C26,"Research Automation, AI Tools & Infrastructure"
+250,GRADEPro,GRADEPro: Browser-Based GRADE Evidence Profile and Summary of Findings Generator,C23,"GRADE, PRISMA & Systematic Review Reporting"
+251,HFN786,HFN786: Component Network Meta-Analysis R Package for Multi-Component Interventions,C05,Network Meta-Analysis Statistical Methods
+252,hfpef_registry_calibration,HFpEF Registry Calibration: When Registry-First Synthesis Should Replace Literature-Based Meta-Analysis,C21,"Transportability, Equity & External Validity"
+253,HTML-Misc,HTML-Misc: Collection of Utility Browser Tools Including 3D Graphing Calculator,C31,Specialized Browser Tools & Research Productivity
+254,hub,Hub: Central Navigation Portal for the Evidence Synthesis Tool Portfolio,C26,"Research Automation, AI Tools & Infrastructure"
+256,ipd-meta-pro-link,IPD Meta-Analysis Pro: A Browser-Based Platform for Individual Participant Data Evidence Synthesis,C12,IPD & Survival Meta-Analysis
+257,ipd_qma_project,IPD-QMA: Quantile Meta-Analysis for Detecting Heterogeneous Treatment Effects Across Patient Severity,C12,IPD & Survival Meta-Analysis
+258,IPDSimulator,IPD Simulator: Browser-Based Reconstruction of Individual Participant Data from Published Summaries,C12,IPD & Survival Meta-Analysis
+259,KMextract,KMextract: Automated Kaplan-Meier Curve Digitisation and Data Extraction,C12,IPD & Survival Meta-Analysis
+260,lec_phase0_bundle,LEC Phase 0 Bundle: London Evidence Clinic Reproducibility Package,C18,Living Evidence Synthesis Infrastructure
+261,lec_phase0_project,LEC Phase 0 Project: London Evidence Clinic Initial Evidence Synthesis Infrastructure,C18,Living Evidence Synthesis Infrastructure
+264,LivingMA,LivingMA: Living Meta-Analysis Dashboard Framework with Timeline and What-If Analysis,C18,Living Evidence Synthesis Infrastructure
+266,MAConverter,MA Converter: Universal Effect Size Translator for Meta-Analytic Inputs,C20,"HTA, Clinical Significance & Evidence Translation"
+267,MAFI,MAFI: Meta-Analysis Fragility Index with Eight-Signal Publication Bias Calibration,C09,"Publication Bias, Correction & Fragility"
+268,MAFI-Continuation,MAFI Calculator Complete Edition: Fragility Analysis with GRADE Integration,C09,"Publication Bias, Correction & Fragility"
+269,MASampleSize,MA Sample Size Calculator: Prospective Meta-Analysis Planning with Information Size and Power Curves,C20,"HTA, Clinical Significance & Evidence Translation"
+270,meta-frontier-bibliography,Meta-Frontier Annotated Bibliography: Curated Reference Collection for Methods Innovation in Evidence Synthesis,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+271,meta-frontier-readiness-atlas,Meta-Frontier Readiness Atlas: Implementation Maturity Assessment Across Evidence Synthesis Methods,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+273,new-app,Meta-Analysis Platform v2.0: Comprehensive Browser-Based Evidence Synthesis,C31,Specialized Browser Tools & Research Productivity
+274,NMA,NMA: Surrogate-Assisted Network Meta-Analysis Package,C05,Network Meta-Analysis Statistical Methods
+275,oman,Oman Evidence OS: Comprehensive Health Technology Assessment Platform for the Sultanate of Oman,C20,"HTA, Clinical Significance & Evidence Translation"
+276,Pairwise humble,"Pairwise Pro v2.2: Decision-Driven Meta-Analysis Platform with 19,584 Lines of Interactive Evidence Synthesis",C27,Comprehensive MA Platforms & Integrated Suites
+278,rayyanreplacement,Screenr v11.0: World-Class Offline-First Systematic Review Platform Replacing Rayyan and Covidence,C23,"GRADE, PRISMA & Systematic Review Reporting"
+279,research-orbit-control,Research Orbit Control: Portfolio Management Dashboard for Evidence Synthesis Projects,C26,"Research Automation, AI Tools & Infrastructure"
+280,Scripts,Scripts: Utility Script Collection for Evidence Synthesis Pipeline Automation,C26,"Research Automation, AI Tools & Infrastructure"
+281,Stories,When Certainty Kills: The CAST Story and Narrative Evidence Communication,C31,Specialized Browser Tools & Research Productivity
+282,superapp,Living Meta-Analysis Starter: Lightweight Template for Rapid Living Evidence Applications,C31,Specialized Browser Tools & Research Productivity
+283,tower,Tower: Multi-Language Build and Deployment Infrastructure for Evidence Synthesis Projects,C26,"Research Automation, AI Tools & Infrastructure"
+284,tower_js,Tower JS: JavaScript Runtime for Evidence Synthesis Pipeline Orchestration,C26,"Research Automation, AI Tools & Infrastructure"
+286,truthcert-openclaw-supermemory-stack,TruthCert-OpenClaw-Supermemory Stack: Fail-Closed Certifier Architecture with Local-First Memory,C16,"Reproducibility, Forensics & Data Integrity"
+287,TruthCert-Validation-Papers,TruthCert Validation Papers: Comprehensive Validation Studies for Fail-Closed Certification v3.1.0,C16,"Reproducibility, Forensics & Data Integrity"
+288,TruthCert_v3.1.0_modeling,TruthCert v3.1.0 Modeling Pack: Statistical Models for Certification Threshold Calibration,C16,"Reproducibility, Forensics & Data Integrity"
+289,TSA,TSA Pro: World-First Browser-Based Trial Sequential Analysis with Alpha-Spending and Futility Boundaries,C17,"Sequential Evidence, TSA & Adaptive Design"
+290,waternajia,WaterNajia: A Bayesian Water Safety Risk Engine with Monte Carlo Simulation and Regional Bacteria Prevalence,C08,Bayesian & Shrinkage Meta-Analysis
+291,AuthorshipLedger,AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+292,CitationWorkbench,CitationWorkbench: Citation Packet Generation for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+293,DrivePulse,DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+294,EvidenceBridgeFHIR,EvidenceBridgeFHIR: Exporting the C Drive Evidence Portfolio into Citation and ArtifactAssessment Bundles,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+295,EvidenceCrate,EvidenceCrate: Packaging the C Drive Research Portfolio as a Static Metadata Crate,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+296,FAIRPortfolio,FAIRPortfolio: Proxy Maturity Scoring for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+297,PortfolioCatalog,PortfolioCatalog: Public Discovery Layer for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+298,PortfolioOps,PortfolioOps: Operational Fusion for the C Drive Evidence Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+299,ProvenanceAtlas,ProvenanceAtlas: Static Lineage Graphing for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+300,ResearchConstellation,Research Constellation: A Live Portfolio Status Atlas for the C Drive Evidence Stack,C29,"Portfolio Governance, Submission & Discovery"
+301,SubmissionCockpit,SubmissionCockpit: Editorial Release Control for the C Drive Research Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+302,TriageWorkbench,TriageWorkbench: Rule-Based Lifecycle Freezing for the Unresolved Portfolio Queue,C29,"Portfolio Governance, Submission & Discovery"
+303,ActionableEvidence,ActionableEvidence: GO/NO-GO Verdicts for Cochrane Meta-Analyses Using Six-Criterion Actionability,C19,Empirical Cochrane Corpus Studies
+304,AutoReview,AutoReview: Automated Systematic Review Quality Assessment from Manuscript Text,C23,"GRADE, PRISMA & Systematic Review Reporting"
+305,ContradictionMap,ContradictionMap: Detecting Where Cochrane Evidence Contradicts Itself Across Shared Primary Studies,C19,Empirical Cochrane Corpus Studies
+306,EquityMA,EquityMA: PROGRESS-Plus Equity-Stratified Meta-Analysis Tool,C20,"HTA, Clinical Significance & Evidence Translation"
+307,EvidenceAtlas,EvidenceAtlas: Cochrane Evidence Network of 501 Interconnected Reviews,C19,Empirical Cochrane Corpus Studies
+308,EvidenceCopula,EvidenceCopula: Copula-Based Dependence Modelling for Multivariate Meta-Analysis,C22,Advanced Mathematical & Geometric Evidence Methods
+309,EvidenceEntropy,EvidenceEntropy: Information-Theoretic Heterogeneity Assessment for Meta-Analysis,C22,Advanced Mathematical & Geometric Evidence Methods
+310,EvidenceExtremes,EvidenceExtremes: Extreme Value Analysis for Meta-Analytic Outlier Detection,C22,Advanced Mathematical & Geometric Evidence Methods
+311,EvidenceKM,EvidenceKM: Survival of Statistical Significance in Cochrane Meta-Analyses,C17,"Sequential Evidence, TSA & Adaptive Design"
+312,EvidenceMap,EvidenceMap: Rapid Evidence Gap Map Generator with Bubble-Chart Visualisation,C19,Empirical Cochrane Corpus Studies
+313,EvidenceScore,EvidenceScore: Composite Evidence Quality Scoring Across Multiple Assessment Dimensions,C19,Empirical Cochrane Corpus Studies
+314,EvidenceSpectral,EvidenceSpectral: Spectral Analysis of Meta-Analytic Heterogeneity Patterns,C22,Advanced Mathematical & Geometric Evidence Methods
+315,EvidenceTopology,EvidenceTopology: Topological Data Analysis for Meta-Analytic Clustering,C22,Advanced Mathematical & Geometric Evidence Methods
+316,HyperMeta,HyperMeta: Evidence Geometry Engine with Seven Mathematical Modules,C22,Advanced Mathematical & Geometric Evidence Methods
+317,InfoGeoMA,InfoGeoMA: Information-Geometric Meta-Analysis on Statistical Manifolds,C22,Advanced Mathematical & Geometric Evidence Methods
+318,Integrity-Guard-Forensics,Integrity Guard Forensics: Automated Quality Assurance for Clinical Trial Reporting,C16,"Reproducibility, Forensics & Data Integrity"
+319,MetaFrontierLab,MetaFrontierLab: Prototype Meta-Analysis Framework for Frontier Methods Development,C27,Comprehensive MA Platforms & Integrated Suites
+320,MetaVoI,MetaVoI: Value of Information Analysis from Meta-Analysis Output,C20,"HTA, Clinical Significance & Evidence Translation"
+321,MoneyTrail,MoneyTrail: Financial Conflict of Interest Detection in Clinical Trial Networks,C09,"Publication Bias, Correction & Fragility"
+322,PatientMA,"PatientMA: Patient-Centred Meta-Analysis with OutcomeGap, TrialFit, and CardioEvidence Pilots",C20,"HTA, Clinical Significance & Evidence Translation"
+323,PriorLab,PriorLab: Interactive Bayesian Prior Elicitation Using SHELF Methods,C08,Bayesian & Shrinkage Meta-Analysis
+324,QualSynth,QualSynth: Browser-Based Qualitative Evidence Synthesis with Meta-Ethnography and CERQual,C06,Diagnostic Test Accuracy Evidence Synthesis
+325,SROCPlotter,SROCPlotter: Summary Receiver Operating Characteristic Curve Generator,C06,Diagnostic Test Accuracy Evidence Synthesis
+326,SafeMA,SafeMA: Anytime-Valid Sequential Meta-Analysis with E-Values,C17,"Sequential Evidence, TSA & Adaptive Design"
+328,TransportMA,TransportMA: Causal Transportability Meta-Analysis for External Validity Assessment,C21,"Transportability, Equity & External Validity"
+329,TrustGate,TrustGate: Trust-Weighted Meta-Meta-Analysis with Evidence Erosion Detection,C19,Empirical Cochrane Corpus Studies
+330,ctgov-registry-survival,CT.gov Registry Survival: Kaplan-Meier Analysis of Trial Registration to Completion,C04,"CT.gov Registry Structure, Design & Black-Box"
+331,surroNMA,SurroNMA: Surrogate-Validated Network Meta-Analysis for Oncology and Cardiology,C05,Network Meta-Analysis Statistical Methods
+345,AfricaForecast,AfricaForecast: Causal Health Forecasting for 54 African Countries 2026-2036,C21,"Transportability, Equity & External Validity"
+346,EnrollmentOracle,EnrollmentOracle: ML Prediction of Clinical Trial Enrollment Speed from ClinicalTrials.gov Metadata,C24,Clinical Trial Registry Audit & Surveillance
+347,HTNPipeline,HyperAtlas: A Bayesian Hypertension Prevalence Pipeline with WHO and World Bank Data Integration,C24,Clinical Trial Registry Audit & Surveillance
+349,ProtocolEvolution,ProtocolEvolution: Mapping Temporal Patterns of Clinical Trial Protocol Amendments Across Therapeutic Areas,C24,Clinical Trial Registry Audit & Surveillance
+350,TrialAtlas,"TrialAtlas: A Network Visualization of Global Clinical Trial Connectivity Across Sites, Sponsors, and Conditions",C24,Clinical Trial Registry Audit & Surveillance
+351,E156,E156: A Compact Evidence-Synthesis Micro-Paper Format for Standardized Reporting of Meta-Analytic Results,C23,"GRADE, PRISMA & Systematic Review Reporting"
+355,SAARCe156Students,SAARC Clinical Trial Equity: 190 E156 Micro-Papers for Ziauddin Medical University,C18,Living Evidence Synthesis Infrastructure
+356,IHMEDataLakehouse,IHME Data Lakehouse: Registry-Driven GBD Pipeline for 6 Domains,C24,Clinical Trial Registry Audit & Surveillance
+357,CardioSynth,CardioSynth: Living Cardiology Evidence Synthesis Engine,C24,Clinical Trial Registry Audit & Surveillance
+358,SuperTransportabilityMap,SuperTransportabilityMap: Global Generalization of ClinicalTrials.gov Evidence via Multi-Lake Demographic Calibration,C21,"Transportability, Equity & External Validity"
+359,LivingMA-PFA-AF,PFA in AF: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+360,LivingMA-Watchman-Amulet,Watchman vs Amulet LAAO: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+361,LivingMA-Tricuspid-TEER,Tricuspid TEER: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+362,LivingMA-Inclisiran,Inclisiran siRNA PCSK9: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+364,LivingMA-Semaglutide-HFpEF,Semaglutide in HFpEF: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+365,LivingMA-Leadless-Pacing,Leadless Cardiac Pacing: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+366,LivingMA-CSP,CSP vs BiV-CRT: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+367,LivingMA-Coronary-IVL,Coronary IVL: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+369,LivingMA-CTFFR,CT-FFR Guided Revasc: A Transparent Living Meta-Analysis v13,C18,Living Evidence Synthesis Infrastructure
+373,modern-stats-global-health,"Modern Non-Parametrics in Global Health: Integrating IHME, WHO, World Bank, and ClinicalTrials.gov Data",C24,Clinical Trial Registry Audit & Surveillance
+378,LivingNMA,Browser-Based Living Network Meta-Analysis with Consistency Assessment and P-Scores,C05,Network Meta-Analysis Statistical Methods
+379,EvidenceBridgeFHIR,EvidenceBridgeFHIR: Exporting the C Drive Evidence Portfolio into Citation and ArtifactAssessment Bundles,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+380,EvidenceCrate,EvidenceCrate: Packaging the C Drive Research Portfolio as a Static Metadata Crate,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+381,FAIRPortfolio,FAIRPortfolio: Proxy Maturity Scoring for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+382,PortfolioCatalog,PortfolioCatalog: Public Discovery Layer for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+383,PortfolioOps,PortfolioOps: Operational Fusion for the C Drive Evidence Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+384,ProvenanceAtlas,ProvenanceAtlas: Static Lineage Graphing for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+385,ResearchConstellation,Research Constellation: A Live Portfolio Status Atlas for the C Drive Evidence Stack,C29,"Portfolio Governance, Submission & Discovery"
+386,SubmissionCockpit,SubmissionCockpit: Editorial Release Control for the C Drive Research Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+387,TriageWorkbench,TriageWorkbench: Rule-Based Lifecycle Freezing for the Unresolved Portfolio Queue,C29,"Portfolio Governance, Submission & Discovery"
+390,EvidenceMapPro,EvidenceMapPro: Interactive Evidence Gap Matrix and Bubble Chart Generator,C19,Empirical Cochrane Corpus Studies
+391,MultivarMA,MultivarMA: Browser Multivariate Meta-Analysis for Correlated Outcomes,C22,Advanced Mathematical & Geometric Evidence Methods
+392,CostEffMA,CostEffMA: Browser Cost-Effectiveness Meta-Analysis with CEAC and NMB Pooling,C20,"HTA, Clinical Significance & Evidence Translation"
+393,EcoBiasMA,EcoBiasMA: Browser Ecological Bias Detection and Correction in Meta-Analysis,C22,Advanced Mathematical & Geometric Evidence Methods
+394,TargetTrialMA,TargetTrialMA: Browser Meta-Analysis of RCTs and Target Trial Emulations,C21,"Transportability, Equity & External Validity"
+395,PlatformTrialMA,PlatformTrialMA: Browser Meta-Analysis for Adaptive Platform Trials with Shared Controls,C21,"Transportability, Equity & External Validity"
+397,IPDNMA,IPDNMA: Browser Individual Patient Data Network Meta-Analysis,C05,Network Meta-Analysis Statistical Methods
+398,FederatedMA,FederatedMA: Browser Privacy-Preserving Federated Meta-Analysis,C12,IPD & Survival Meta-Analysis
+450,meta-paradigm-shift,Meta-Paradigm Shift: The Omega-Tier Evidence Operating System,C06,Diagnostic Test Accuracy Evidence Synthesis
+452,ems-dta,Evidence Manifold Spline (EMS): A Geometric Alternative to Hierarchical Synthesis,C06,Diagnostic Test Accuracy Evidence Synthesis
+453,gds-dta,Grand Diagnostic Synthēsis (GDS): Integrating Archaic-Future DTA Inventions,C06,Diagnostic Test Accuracy Evidence Synthesis
+454,paradigm-battle-dta,Paradigm Battle: Comparing Modern Hierarchical Models with Archaic-Future Inventions,C06,Diagnostic Test Accuracy Evidence Synthesis
+455,mpet-dta,Multi-Persona Evidence Tribunal (MPET): A Cross-Paradigm Review Methodology,C06,Diagnostic Test Accuracy Evidence Synthesis
+456,eh-dta,Evidence Horizon (EH-DTA): An Autonomous 'Omega-Tier' Operating System,C06,Diagnostic Test Accuracy Evidence Synthesis
+457,sl12-dta,Stat-Lab Twelve (SL12-DTA): Evaluating Journal-Sourced Statistical Probes,C06,Diagnostic Test Accuracy Evidence Synthesis
+458,aleph-point-synthesis,Aleph-Point Synthēsis (APS): The Definitive Diagnostic Meta-Analysis Methodology,C06,Diagnostic Test Accuracy Evidence Synthesis
+459,aps-methodologist-review,APS Methodologist Review (APS-MR): A Multi-Persona Architectural Audit,C06,Diagnostic Test Accuracy Evidence Synthesis
+460,gma-dta,Global Manifold Audit (GMA-DTA): Massive-Scale Validation of APS v2,C06,Diagnostic Test Accuracy Evidence Synthesis
+461,pem-dta,Petabyte Evidence Manifold (PEM-DTA): Ultra-Scale Evidence Stress-Testing,C06,Diagnostic Test Accuracy Evidence Synthesis
+462,pem-methodologist-review,PEM Methodologist Review (PEM-MR): The 'End-of-History' Architectural Audit,C06,Diagnostic Test Accuracy Evidence Synthesis
+463,ees-dta,Exascale Evidence Singularity (EES-DTA): Reaching the Absolute Limit,C06,Diagnostic Test Accuracy Evidence Synthesis
+464,ees-methodologist-review,EES Methodologist Review (EES-MR): The 'Omega-Point' Architectural Audit,C06,Diagnostic Test Accuracy Evidence Synthesis
+465,aleph-point-synthesis-final,Aleph-Point Synthēsis (APS): Reaching the Singularity of Evidence,C06,Diagnostic Test Accuracy Evidence Synthesis
+473,DTA_Pro_v2,DTA Meta-Analysis Pro: A Browser-Based Tool for Diagnostic Test Accuracy Evidence Synthesis,C06,Diagnostic Test Accuracy Evidence Synthesis
+474,Fatiha,SYNTHESIS: A 7-Layer Verification Framework for Detecting Fragile Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis
+475,HTA_Artifact_Standard_v2,HTA Artifact Standard: An Open-Source Platform with 41 Analytical Engines for Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+476,ma-workbench,MA Workbench: A Browser-Native Meta-Analysis Suite with Optional WebR Validation Against metafor,C27,Comprehensive MA Platforms & Integrated Suites
+478,nma-pro-v2,NMA Pro: A Browser-Based Network Meta-Analysis Platform with Integrated Rapid Review,C31,Specialized Browser Tools & Research Productivity
+479,shahzaib-icu-landscape,ICU Hemodynamic Trial Landscape: A Living Evidence Map,C24,Clinical Trial Registry Audit & Surveillance
+480,TruthCert_PairwisePro_v2,TruthCert-PairwisePro: A Browser-Based Pairwise Meta-Analysis Engine with Seven Heterogeneity Estimators,C27,Comprehensive MA Platforms & Integrated Suites
+481,sglt2i-hfpef-demo,SGLT2i in HFpEF: a browser-native benchmark reproduction,C14,"Meta-Regression, Overfitting & Precision Methods"
+482,precision-sweep-e156,Precision floor for aggregate-data reproduction of fixed-effects 2-trial pools,C14,"Meta-Regression, Overfitting & Precision Methods"
+483,dissonance-field-synthesis,Dissonance Field Synthesis: A Non-Pooling Evidence-Synthesis Technique with Pharmacology Conservation Laws (POC in MRA-HFpEF),C08,Bayesian & Shrinkage Meta-Analysis
+486,advanced-nma-pooling,Advanced NMA Pooling Toolkit with Bias Adjustment and Survival Extensions,C05,Network Meta-Analysis Statistical Methods
+486,arac,ARAC: An End-to-End African Representation Atlas of Cochrane with Per-Trial Verification UI,C21,"Transportability, Equity & External Validity"
+487,Pairwise70,MAFI: Meta-Analytic Fragility Index Across 501 Cochrane Pairwise Reviews,C09,"Publication Bias, Correction & Fragility"
+490,AuthorshipLedger,AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+491,CitationWorkbench,CitationWorkbench: Citation Packet Generation for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+492,DrivePulse,DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+493,EvidenceCollapsar,The Evidence Collapsar: A Quantum Meta-Analysis Engine,C22,Advanced Mathematical & Geometric Evidence Methods
+494,TDA-Meta,Topological Evidence Gaps: Identifying Structural Voids in Global Medical Research,C22,Advanced Mathematical & Geometric Evidence Methods
+495,RetractionGravity,Retraction Gravity: Portfolio Impact Mapping of Clinical Evidence Failures,C17,"Sequential Evidence, TSA & Adaptive Design"
+496,TheAlephEngine,The Aleph Engine: A Grand Unified Meta-Analysis Equation (GUME),C22,Advanced Mathematical & Geometric Evidence Methods
+549,mahmood726-cyber.github.io,Evidence Synthesis Portfolio Site: Reproducibility Capsule,C26,"Research Automation, AI Tools & Infrastructure"
+557,nur-pce,NUR-PCE — Personalised Counterfactual Engine for cardiorenal trials (POC v0.1),C08,Bayesian & Shrinkage Meta-Analysis
+558,responder-floor-atlas,Responder Floor Atlas: Implied Minimum Important Differences in Cochrane Responder-Rate Analyses Exceed Canonical Thresholds by 1.2- to 3.3-Fold,C14,"Meta-Regression, Overfitting & Precision Methods"
+559,trial-truthfulness-atlas,Trial Truthfulness Atlas: Five Upstream Integrity Flags Between CT.gov Registration and Cochrane Meta-Analysis Inputs,C16,"Reproducibility, Forensics & Data Integrity"
+560,outcome-switching-ma-hf,Outcome-Switching in Heart-Failure Phase 3 Trials: CT.gov v2 API Misses 100% of Initial-vs-Current Primary-Outcome Drift,C16,"Reproducibility, Forensics & Data Integrity"
+679,tiba (2026-05-06),African evidence is hidden from existing synthesis infrastructure: a calibration study and a proposed framework (Tiba),C21,"Transportability, Equity & External Validity"
+1747,adaptsim,AdaptSim: A Browser-Based Simulator for Adaptive Group-Sequential Trial Design Matching rpact to Four Decimal Places,C17,"Sequential Evidence, TSA & Adaptive Design"
+1748,africa-rct,AfricaRCT Observatory: Reproducibility Capsule for African Trial-Methods Audits,C21,"Transportability, Equity & External Validity"
+1749,al-mizan,Al-Mizan: An Evidence Equipoise Monitor for Detecting When the Balance of Evidence Has Tipped,C17,"Sequential Evidence, TSA & Adaptive Design"
+1751,asa,Asa: A Seven-Method Forensic Data Integrity Screener for Clinical Trial Datasets,C16,"Reproducibility, Forensics & Data Integrity"
+1752,authorship-ledger,AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+1753,autograde-tool,AutoGRADE: Algorithmic Certainty of Evidence Assessment for Meta-Analytic Outputs,C23,"GRADE, PRISMA & Systematic Review Reporting"
+1754,bayesianma,BayesianMA: Browser-Based Bayesian Random-Effects Meta-Analysis with Prior Sensitivity Analysis,C08,Bayesian & Shrinkage Meta-Analysis
+1755,benfordma,Benford Screening of 1.2 Million Meta-Analytic Values Finds No Corpus-Level Digit Anomaly,C16,"Reproducibility, Forensics & Data Integrity"
+1756,bias-forensics,The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses,C09,"Publication Bias, Correction & Fragility"
+1757,cardio-trial-audit,"Structural Flaw Prevalence in 52,765 Cardiology Trials: An Automated Registry Audit",C24,Clinical Trial Registry Audit & Surveillance
+1758,cardiooracle,CardioOracle: Predicting Cardiovascular Trial Outcomes Using Bayesian Historical Borrowing and Design Feature Analysis (AUC 0.787),C26,"Research Automation, AI Tools & Infrastructure"
+1759,cbamm-lfa,CBAMM: Collaborative Bayesian Adaptive Meta-Analysis with Population Transportability and Sequential Monitoring,C08,Bayesian & Shrinkage Meta-Analysis
+1760,citation-workbench,CitationWorkbench: Citation Packet Generation for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+1762,cochrane-data-extractor,Cochrane Data Extractor: Automated Dataset Harvesting from Cochrane Systematic Reviews,C26,"Research Automation, AI Tools & Infrastructure"
+1763,component-nma,Component NMA: A Browser-Based Tool for Additive Component Network Meta-Analysis,C05,Network Meta-Analysis Statistical Methods
+1764,conformal-ma,Conformal Prediction Intervals for Meta-Analysis: Distribution-Free Coverage Across 307 Cochrane Reviews,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+1765,cres,CRES: Browser-Based Cardiorenal Evidence Synthesis with Integrated Meta-Analysis and Health-Economic Modelling,C20,"HTA, Clinical Significance & Evidence Translation"
+1766,ctgov-black-box-sponsor-repeaters,CT.gov Black-Box Sponsor Repeaters,C04,"CT.gov Registry Structure, Design & Black-Box"
+1767,ctgov-black-box-trials,CT.gov Black-Box Trials,C04,"CT.gov Registry Structure, Design & Black-Box"
+1768,ctgov-condition-text-asymmetry,CT.gov Condition Text Asymmetry,C01,CT.gov Condition-Dimension Hiddenness
+1769,ctgov-country-excess-watchlist,CT.gov Country Excess Watchlist,C02,CT.gov Country-Dimension Hiddenness
+1770,ctgov-description-black-box-repeaters,CT.gov Description-Black-Box Repeaters,C04,"CT.gov Registry Structure, Design & Black-Box"
+1771,ctgov-publication-index-gap,CT.gov Publication Index Gap,C04,"CT.gov Registry Structure, Design & Black-Box"
+1772,ctgov-publication-undercount-audit,CT.gov Publication Undercount Audit,C04,"CT.gov Registry Structure, Design & Black-Box"
+1773,ctgov-search-strategies,CT.gov Search Strategy Tool: Systematic Review Search Validation with 99 Percent API Recall,C04,"CT.gov Registry Structure, Design & Black-Box"
+1774,ctgov-sponsor-ancient-backlog,CT.gov Sponsor Ancient Backlog,C03,CT.gov Sponsor & Industry Repeaters
+1775,ctgov-sponsor-backlog-concentration,CT.gov Sponsor Backlog Concentration,C03,CT.gov Sponsor & Industry Repeaters
+1776,dosehtml,Dose Response Pro: Browser-Based Dose-Response Meta-Analysis Matching R Accuracy,C31,Specialized Browser Tools & Research Productivity
+1777,dpma,Dirichlet Process Meta-Analysis,C08,Bayesian & Shrinkage Meta-Analysis
+1778,drive-pulse,DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+1779,dta-pro-v2,DTA Meta-Analysis Pro: A Browser-Based Tool for Diagnostic Test Accuracy Evidence Synthesis,C06,Diagnostic Test Accuracy Evidence Synthesis
+1780,enma-snma,Ensemble and Spectral Network Meta-Analysis: Novel Inconsistency-Robust Methods,C05,Network Meta-Analysis Statistical Methods
+1781,evidence-board,Evidence Board: A Browser-Based Structured Note System for Systematic Review Screening,C23,"GRADE, PRISMA & Systematic Review Reporting"
+1782,evidence-bridge-fhir,EvidenceBridgeFHIR: Exporting the C Drive Evidence Portfolio into Citation and ArtifactAssessment Bundles,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+1783,evidence-crate,EvidenceCrate: Packaging the C Drive Research Portfolio as a Static Metadata Crate,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+1784,evidence-half-life,The Evidence Half-Life: 52% of Meta-Analyses Never Reach Analytical Stability,C17,"Sequential Evidence, TSA & Adaptive Design"
+1785,evidence-quality-concordance,The Cochrane Quality Concordance: Six Orthogonal Dimensions of Evidence Reliability,C19,Empirical Cochrane Corpus Studies
+1786,evidence-tribunal,The Evidence Tribunal: Adversarial Specification Search Across 403 Cochrane Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis
+1787,evidencehalflife,The Evidence Half-Life: 52% of Meta-Analyses Never Reach Analytical Stability,C17,"Sequential Evidence, TSA & Adaptive Design"
+1788,fair-portfolio,FAIRPortfolio: Proxy Maturity Scoring for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+1789,fatiha,SYNTHESIS: A 7-Layer Verification Framework for Detecting Fragile Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis
+1790,focus-studio,Focus Studio: A Browser-Based Pomodoro Timer with Task Management and Session Logging,C31,Specialized Browser Tools & Research Productivity
+1791,fragility-atlas,The Fragility Atlas: Multiverse Analysis of 403 Cochrane Meta-Analyses Reveals 58% Are Sensitive to Analyst Choices,C15,Multiverse & Specification-Robustness Analysis
+1792,fragilityindex,Fragility Index Calculator: Browser-Based Statistical Fragility for RCTs,C09,"Publication Bias, Correction & Fragility"
+1793,global-transportability-atlas,Global Transportability Atlas,C21,"Transportability, Equity & External Validity"
+1794,grma,Grey Relational Meta-Analysis: A Robust Pooling Method with Redescending Effect Guard,C09,"Publication Bias, Correction & Fragility"
+1796,hfpef-registry-synth,Registry-First Transparency-Adjusted Synthesis for HFpEF Clinical Trials,C21,"Transportability, Equity & External Validity"
+1797,hta-artifact-standard-v2,HTA Artifact Standard: An Open-Source Platform with 41 Analytical Engines for Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+1798,hta-evidence-integrity,Evidence Integrity Suite for Multi-Layered Health Technology Assessment of Cochrane Reviews,C20,"HTA, Clinical Significance & Evidence Translation"
+1799,hta-transportability,Clinical Transportability Engine for Quantifying Efficacy Leakage in Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+1800,hta-unified-intelligence,HTA Unified Intelligence System: Self-Correcting Evidence Synthesis with Triple-Guard Ensemble Pooling,C20,"HTA, Clinical Significance & Evidence Translation"
+1801,indirectcomparison,Indirect Treatment Comparison Calculator: Browser-Based Bucher Method with Coherence Testing,C05,Network Meta-Analysis Statistical Methods
+1802,ipd-meta-pro,IPD Meta-Analysis Pro: A Browser-Based Platform for Individual Participant Data Evidence Synthesis,C12,IPD & Survival Meta-Analysis
+1803,ipd-qma,IPD-QMA: Detecting Heterogeneous Treatment Effects via Quantile Meta-Analysis of Individual Participant Data,C12,IPD & Survival Meta-Analysis
+1804,kanban-lab,Kanban Lab: A Persistent Browser-Based Drag-and-Drop Board for Research Task Management,C31,Specialized Browser Tools & Research Productivity
+1805,kmdigitizer,KMDigitizer: Browser-Based IPD Reconstruction from Published Kaplan-Meier Curves,C12,IPD & Survival Meta-Analysis
+1806,living-meta,Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis,C18,Living Evidence Synthesis Infrastructure
+1807,ma-power-calc,MA Power: A Browser-Based Power and Sample Size Calculator for Random-Effects Meta-Analysis,C20,"HTA, Clinical Significance & Evidence Translation"
+1808,ma-workbench,MA Workbench: A Browser-Native Meta-Analysis Suite with Optional WebR Validation Against metafor,C27,Comprehensive MA Platforms & Integrated Suites
+1809,maworkbench,Meta-Analysis Workbench: A Central Hub for 49 Evidence Synthesis Tools,C27,Comprehensive MA Platforms & Integrated Suites
+1810,mcidmapper,MCID Mapper: Clinical Significance Assessment for Meta-Analytic Effect Estimates,C20,"HTA, Clinical Significance & Evidence Translation"
+1812,mes,Multiverse Evidence Synthesis: Robustness Classification of 403 Cochrane Meta-Analyses Across 648 Analytical Specifications,C15,Multiverse & Specification-Robustness Analysis
+1816,meta-reproducer,Computational Reproducibility Audit of 501 Cochrane Meta-Analyses,C16,"Reproducibility, Forensics & Data Integrity"
+1817,metaaudit,MetaAudit: Reproducibility Capsule for Automated Meta-Analytic Quality Audits,C15,Multiverse & Specification-Robustness Analysis
+1818,metafolio,MetaFolio: Efficiency Frontier Subset Enumeration for Meta-Analysis Heterogeneity Decomposition,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+1819,metaguard,MetaGuard: A Browser-Based Robust and Forensic Meta-Analysis Toolkit,C27,Comprehensive MA Platforms & Integrated Suites
+1820,metamethods,MetaMethods: Six Advanced Statistical Methods for Meta-Analysis in a Dependency-Free Python Module,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+1821,metaregression,MetaRegression Workbench: Browser-Based Mixed-Effects Meta-Regression with Permutation Tests,C14,"Meta-Regression, Overfitting & Precision Methods"
+1822,metarep,MetaRep: Most Significant Cochrane Meta-Analyses Predict Only 32% Replication Probability When Heterogeneity Is Accounted For,C19,Empirical Cochrane Corpus Studies
+1823,metareproducer,MetaReproducer: Reproducibility Capsule for Cochrane Reproduction Audits,C16,"Reproducibility, Forensics & Data Integrity"
+1824,metashift,MetaShift: Changepoint Detection Reveals Hidden Regime Shifts in Cumulative Meta-Analysis,C17,"Sequential Evidence, TSA & Adaptive Design"
+1825,metasprint-nma,MetaSprint NMA: Zero-Install Browser Network Meta-Analysis with In-Browser R Cross-Validation,C31,Specialized Browser Tools & Research Productivity
+1826,metavoi,MetaVoI: Value of Information Analysis Directly from Meta-Analysis Output,C20,"HTA, Clinical Significance & Evidence Translation"
+1827,methodssuite,Methods Suite: Eight Interoperable Browser-Based Meta-Analysis Tools with MAIF,C27,Comprehensive MA Platforms & Integrated Suites
+1829,MultiverseMA,MultiverseMA: Browser-Based Multiverse Meta-Analysis Engine,C15,Multiverse & Specification-Robustness Analysis
+1830,lvad-reliability-growth-ma,Left Ventricular Assist Device (LVAD) Iterative Design Evolution: A Systematic Evidence Synthesis and Reliability Growth Meta-Analysis of Pump Thrombosis and Adverse Event Cascades,C12,IPD & Survival Meta-Analysis
+1831,nma-dose-response-app,NMA Dose-Response Studio: Browser-Based Network Meta-Analysis with Dose-Response Modeling,C31,Specialized Browser Tools & Research Productivity
+1832,nma-pro-v2,NMA Pro: A Browser-Based Network Meta-Analysis Platform with Integrated Rapid Review,C31,Specialized Browser Tools & Research Productivity
+1833,nmatransport,nmatransport: Reproducibility Capsule for Transported Network Meta-Analysis,C05,Network Meta-Analysis Statistical Methods
+1834,nntmapper,NNTMapper: Converting Meta-Analytic Effects into Population-Specific Number Needed to Treat with Heterogeneity Propagation,C20,"HTA, Clinical Significance & Evidence Translation"
+1837,overlapmatrix,Overlap Matrix and Corrected Covered Area Calculator for Umbrella Reviews,C19,Empirical Cochrane Corpus Studies
+1838,pairwiseai,TruthCert PairwisePro: Browser-Based Pairwise Meta-Analysis with Regional Health-Economic Overlays,C18,Living Evidence Synthesis Infrastructure
+1839,poolingsuite,Pooling Suite: Browser-Based Meta-Analysis Engine with Ten Heterogeneity Estimators,C10,"Heterogeneity, tau2 & Multilevel Meta-Analysis"
+1840,portfolio-catalog,PortfolioCatalog: Public Discovery Layer for the C Drive Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+1841,portfolio-ops,PortfolioOps: Operational Fusion for the C Drive Evidence Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+1842,prediction-gap,The Prediction Gap: 70% of Significant Meta-Analyses Have Null-Spanning Prediction Intervals,C19,Empirical Cochrane Corpus Studies
+1843,priorlab,PriorLab: Interactive Bayesian Prior Elicitation for Meta-Analysis Using SHELF Methods,C08,Bayesian & Shrinkage Meta-Analysis
+1844,prisma-checker,PRISMA 2020 Compliance Checker: An Interactive Browser Tool for Systematic Review Reporting Assessment,C23,"GRADE, PRISMA & Systematic Review Reporting"
+1845,prismaflow,PRISMA 2020 Flow Diagram Generator for Systematic Reviews,C23,"GRADE, PRISMA & Systematic Review Reporting"
+1846,provenance-atlas,ProvenanceAtlas: Static Lineage Graphing for the C Drive Evidence Portfolio,C28,"Portfolio FAIR, Provenance & Data Infrastructure"
+1847,pubbiassuite,PubBias Suite: Comprehensive Publication Bias Assessment with 12 Methods and 3 Funnel Plot Variants,C09,"Publication Bias, Correction & Fragility"
+1848,pwcvR2,Precision-Weighted Cross-Validation: Reproducibility Capsule for Meta-Regression R-Squared Evaluation,C14,"Meta-Regression, Overfitting & Precision Methods"
+1849,qualsynth,QualSynth: A Browser-Based Tool for Qualitative Evidence Synthesis with Meta-Ethnography and CERQual Assessment,C06,Diagnostic Test Accuracy Evidence Synthesis
+1852,registry-first-rct-meta,Registry-First Meta-Analysis: Quantifying Missing Cardiovascular Trial Evidence,C21,"Transportability, Equity & External Validity"
+1853,retraction-gravity,Retraction Gravity,C17,"Sequential Evidence, TSA & Adaptive Design"
+1854,rmst-meta,RMST Meta: A Browser Tool for Meta-Analysis of Restricted Mean Survival Time Beyond the Hazard Ratio,C12,IPD & Survival Meta-Analysis
+1855,rob-assessor,RoB Assessor: A Browser-Based Risk of Bias Assessment Tool Implementing RoB 2 and ROBINS-I,C23,"GRADE, PRISMA & Systematic Review Reporting"
+1856,robma,ROBMA Reproducibility Capsule for Reviewer-Auditable Bayesian Model Averaging,C08,Bayesian & Shrinkage Meta-Analysis
+1857,shahzaib-icu-landscape,ICU Hemodynamic Trial Landscape: A Living Evidence Map,C24,Clinical Trial Registry Audit & Surveillance
+1858,sheaf-nma,Sheaf-Theoretic Consistency Analysis for Network Meta-Analysis,C05,Network Meta-Analysis Statistical Methods
+1859,softable,GRADE Summary of Findings Table Generator for Systematic Reviews,C23,"GRADE, PRISMA & Systematic Review Reporting"
+1860,submission-cockpit,SubmissionCockpit: Editorial Release Control for the C Drive Research Portfolio,C29,"Portfolio Governance, Submission & Discovery"
+1861,tda-ma,Topological Data Analysis for Meta-Analytic Heterogeneity Exploration,C22,Advanced Mathematical & Geometric Evidence Methods
+1862,tda-meta,tda-meta,C22,Advanced Mathematical & Geometric Evidence Methods
+1863,tgep,Triple-Guard Ensemble Pooling for Bias-Sensitive Meta-Analysis,C09,"Publication Bias, Correction & Fragility"
+1864,transportabilitycalc,Clinical Transportability Engine: A Composite Penalty Index for Meta-Analysis Generalizability,C21,"Transportability, Equity & External Validity"
+1865,triage-workbench,TriageWorkbench: Rule-Based Lifecycle Freezing for the Unresolved Portfolio Queue,C29,"Portfolio Governance, Submission & Discovery"
+1866,truthcert-denominator,Denominator-First Bayesian Meta-Analysis Engine for Registry-Aware Evidence Synthesis,C08,Bayesian & Shrinkage Meta-Analysis
+1867,truthcert-meta2,TruthCert Meta2: Governance Overlay for Denominator-First Meta-Analysis,C08,Bayesian & Shrinkage Meta-Analysis
+1868,truthcert-pairwisepro-v2,TruthCert-PairwisePro: A Browser-Based Pairwise Meta-Analysis Engine with Seven Heterogeneity Estimators,C27,Comprehensive MA Platforms & Integrated Suites
+1869,truthcert1,TruthCert-MA: A Cross-Platform JavaScript Meta-Analysis Engine Validated Against R,C27,Comprehensive MA Platforms & Integrated Suites
+1871,umbrellareview,"UmbrellaEngine: Browser-Based Umbrella Review with Overlap Quantification, Quality Assessment, and Discordance Analysis",C23,"GRADE, PRISMA & Systematic Review Reporting"
+1872,value-based-hta,Multi-Criteria Evidence Synthesizer for Automated Benefit-Harm Trade-Off in Health Technology Assessment,C20,"HTA, Clinical Significance & Evidence Translation"
+1873,voicalculator,Value of Information Calculator for Meta-Analysis Decision Support,C20,"HTA, Clinical Significance & Evidence Translation"
+1874,spec-collapse-atlas,Spec-Collapse Atlas: Pooling Specifications Manufactures False Robustness in 55% of 473 Cochrane Meta-Analyses,C15,Multiverse & Specification-Robustness Analysis

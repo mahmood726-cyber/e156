@@ -1,0 +1,522 @@
+idx,name,title,type,category,pub_status
+1,501MLM,MLM501: Cochrane Multilevel Meta-Analysis Effects Table from 501 Reviews,methods  |  ESTIMAND: SMD,methods-paper,unpublished
+2,501MLM_Submission,MLM501 Software Article: Building Large-Scale Meta-Analytic Datasets from Cochrane Reviews,methods  |  ESTIMAND: OR,methods-paper,unpublished
+3,AdaptSim,AdaptSim: A Browser-Based Simulator for Adaptive Group-Sequential Trial Design Matching rpact to Four Decimal Places,methods  |  ESTIMAND: Boundary computation accuracy vs rpact (decimal places of agreement),methods-paper,unpublished
+4,advanced-nma-pooling,Advanced NMA Pooling Toolkit with Bias Adjustment and Survival Extensions,methods  |  ESTIMAND: Bias-adjusted treatment effect (log-odds),methods-paper,unpublished
+5,AfricaRCT,AfricaRCT Observatory: Causal Transportability Index for African HTA Sovereignty,methods  |  ESTIMAND: Causal Transportability Index (CTI),methods-paper,unpublished
+6,AlMizan,Al-Mizan: An Evidence Equipoise Monitor for Detecting When the Balance of Evidence Has Tipped,methods  |  ESTIMAND: Cumulative Z-statistic crossing Trial Sequential Analysis boundary,methods-paper,unpublished
+7,Asa,Asa: A Seven-Method Forensic Data Integrity Screener for Clinical Trial Datasets,methods  |  ESTIMAND: Composite forensic integrity score (0-100),methods-paper,unpublished
+9,AutoGRADE,AutoGRADE: Browser-Based Automated GRADE Certainty Assessment,methods  |  ESTIMAND: Risk ratio,methods-paper,unpublished
+10,BayesianMA,BayesianMA: Browser-Based Bayesian Random-Effects Meta-Analysis with Prior Sensitivity Analysis,methods  |  ESTIMAND: Posterior mean and 95% credible interval,methods-paper,unpublished
+12,BiasForensics,The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses,methods  |  ESTIMAND: Discordance rate,methods-paper,unpublished
+13,Burhan,TruthCert: A Fail-Closed Certification Protocol for LLM Outputs in Evidence Synthesis,methods  |  ESTIMAND: AUC,methods-paper,unpublished
+14,CardioOracle,CardioOracle: Predicting Cardiovascular Trial Outcomes Using Bayesian Historical Borrowing and Design Feature Analysis (AUC 0.787),methods  |  ESTIMAND: AUC for trial outcome prediction,methods-paper,unpublished
+15,CardioTrialAudit,"Structural Flaw Prevalence in 52,765 Cardiology Trials: An Automated Registry Audit",methods  |  ESTIMAND: Structural flaw prevalence,methods-paper,unpublished
+17,CausalSynth,CausalSynth: Browser-Based Causal Evidence Triangulation Engine,methods  |  ESTIMAND: Causal Evidence Score,methods-paper,unpublished
+18,chat2,CBAMM-Chat2: Automated Meta-Overfitting Detection via Cross-Validated Diagnostics,methods  |  ESTIMAND: Cross-validated R-squared gap (overfitting risk),methods-paper,unpublished
+19,chatpaper,MA4 vs HKSJ: Complementarity of Analytic Stability and Small-Sample Robustness Metrics,methods  |  ESTIMAND: OR for HKSJ-induced conclusion change,methods-paper,unpublished
+20,claude2,Weighted vs Unweighted CV in Meta-Regression: Reproducibility Capsule,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+21,clauderepo,clauderepo: Reproducibility Capsule for an Advanced Meta-Analysis Compendium,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+23,clinical-ma,SGLT2 Inhibitors and Heart Failure,pairwise  |  ESTIMAND: Hazard ratio for heart failure hospitalisation or cardiovascular death,clinical-meta-analysis,unpublished
+25,ComponentNMA,Component NMA: A Browser-Based Tool for Additive Component Network Meta-Analysis,methods  |  ESTIMAND: Component effect estimates (log-OR/SMD),methods-paper,unpublished
+26,ConformalMA,Conformal Prediction Intervals for Meta-Analysis: Distribution-Free Coverage Across 307 Cochrane Reviews,methods  |  ESTIMAND: Prediction interval coverage probability,methods-paper,unpublished
+27,CRES,CRES: Browser-Based Cardiorenal Evidence Synthesis with Integrated Meta-Analysis and Health-Economic Modelling,methods  |  ESTIMAND: Hazard ratio,methods-paper,unpublished
+38,ctgov-rule-era-reporting-gap,CT.gov Rule-Era Reporting Gap,methods  |  ESTIMAND: 2-year no-results rate across completion eras anchored to major U.S. reporting rules,methods-paper,unpublished
+39,ctgov-search-strategies,CT.gov Search Strategy Tool: Systematic Review Search Validation with 99 Percent API Recall,methods  |  ESTIMAND: API recall,methods-paper,unpublished
+43,cv-rct-analysis,CV-RCT Analysis: Cardiovascular Trial Landscape Dashboard Integrating Registry and Publication Data,methods  |  ESTIMAND: Publication rate,methods-paper,unpublished
+44,Dataextractor,RCTExtractor: AI-Powered Clinical Trial Data Extraction with 100% Accuracy,methods  |  ESTIMAND: HR,methods-paper,unpublished
+45,dosehtml,Dose Response Pro: Browser-Based Dose-Response Meta-Analysis Matching R Accuracy,methods  |  ESTIMAND: Dose-response trend coefficient,methods-paper,unpublished
+46,DPMA,Dirichlet Process Meta-Analysis,methods  |  ESTIMAND: summary effect,methods-paper,unpublished
+47,DTA70,DTA70: An R Package of 76 Diagnostic Test Accuracy Datasets for Methods Research,methods  |  ESTIMAND: Sensitivity,methods-paper,unpublished
+48,DTA_Pro_Review,DTA Meta-Analysis Pro: A Browser-Based Tool for Diagnostic Test Accuracy Evidence Synthesis,methods  |  ESTIMAND: Pooled sensitivity and specificity,methods-paper,unpublished
+49,everything-claude-code,Everything Claude Code: Modular AI-Assisted Evidence Synthesis Plugin Framework,methods  |  ESTIMAND: Documentation proportion across 101 projects,methods-paper,unpublished
+50,evidence-board,Evidence Board: A Browser-Based Structured Note System for Systematic Review Screening,methods  |  ESTIMAND: Proportion of high-confidence notes,methods-paper,unpublished
+51,evidence-inference,Evidence Inference: Machine Learning Extraction of Treatment Effects from Clinical Trial Reports,methods  |  ESTIMAND: Classification accuracy,methods-paper,unpublished
+52,EvidenceHalfLife,The Evidence Half-Life: 53.4% of Meta-Analyses Never Reach Analytical Stability,methods  |  ESTIMAND: Never-stabilized rate,methods-paper,unpublished
+53,EvidenceQuality,The Cochrane Quality Concordance: Six Orthogonal Dimensions of Evidence Reliability,methods  |  ESTIMAND: Mean absolute pairwise correlation,methods-paper,unpublished
+54,EvidenceTribunal,The Evidence Tribunal: Adversarial Specification Search Across 403 Cochrane Meta-Analyses,methods  |  ESTIMAND: Adversarial verdict (Unanimous/Split),methods-paper,unpublished
+55,Fatiha-course-github-v2,FATIHA: A Multilingual Evidence Synthesis Course Platform with 26 Interactive Modules,methods  |  ESTIMAND: Mean difference,methods-paper,unpublished
+56,FATIHA_Project,SYNTHESIS: A 7-Layer Verification Framework for Detecting Fragile Meta-Analyses,methods  |  ESTIMAND: Coverage probability,methods-paper,unpublished
+57,Finrenone,Browser-Based Finerenone Meta-Analysis Validated Against R metafor,pairwise  |  ESTIMAND: HR,clinical-meta-analysis,unpublished
+58,focus-studio,Focus Studio: A Browser-Based Pomodoro Timer with Task Management and Session Logging,methods  |  ESTIMAND: Median session length,methods-paper,unpublished
+59,fragility-atlas,Fragility of Cochrane Cardiovascular Meta-Analyses,methods  |  ESTIMAND: Fragility index,methods-paper,unpublished
+60,FragilityAtlas,The Fragility Atlas: Multiverse Analysis of 473 Cochrane Meta-Analyses Reveals 56% Are Sensitive to Analyst Choices,methods  |  ESTIMAND: Robustness score (percent agreement across specifications),methods-paper,unpublished
+61,FragilityIndex,Fragility Index Calculator: Browser-Based Statistical Fragility for RCTs,methods  |  ESTIMAND: Fragility Index (FI),methods-paper,unpublished
+62,GRMA_paper,Grey Relational Meta-Analysis: A Robust Pooling Method with Redescending Effect Guard,methods  |  ESTIMAND: Bias reduction (percent),methods-paper,unpublished
+64,hfpef_registry_synth,Registry-First Transparency-Adjusted Synthesis for HFpEF Clinical Trials,methods  |  ESTIMAND: Reporting debt proportion,methods-paper,unpublished
+65,HTA,HTA Artifact Standard: An Open-Source Platform with 41 Analytical Engines for Health Technology Assessment,"methods  |  ESTIMAND: ICER, NMB, and pooled treatment effects",methods-paper,unpublished
+66,HTA-oman,HTA-Oman: Open-Source Browser-Based Health Technology Assessment Economic Modeling,methods  |  ESTIMAND: Mean difference,methods-paper,unpublished
+67,HTA_Evidence_Integrity_Suite,Evidence Integrity Suite for Multi-Layered Health Technology Assessment of Cochrane Reviews,methods  |  ESTIMAND: Information Adequacy Index,methods-paper,unpublished
+68,HTA_Transportability_Engine,Clinical Transportability Engine for Quantifying Efficacy Leakage in Health Technology Assessment,methods  |  ESTIMAND: Transportability penalty,methods-paper,unpublished
+69,HTA_Unified_Intelligence_System,HTA Unified Intelligence System: Self-Correcting Evidence Synthesis with Triple-Guard Ensemble Pooling,"methods  |  ESTIMAND: Unified Decision Score (UDS, 0-100)",methods-paper,unpublished
+70,idea12,Network Meta-Regression with Forensic Bias Detection for Observational-RCT Discordance,methods  |  ESTIMAND: Discordance Index ROC AUC,methods-paper,unpublished
+71,IndirectComparison,Indirect Treatment Comparison Calculator: Browser-Based Bucher Method with Coherence Testing,methods  |  ESTIMAND: Indirect log odds ratio (OR),methods-paper,unpublished
+72,IPD-Meta-Pro,IPD Meta-Analysis Pro: A Browser-Based Platform for Individual Participant Data Evidence Synthesis,methods  |  ESTIMAND: Pooled IPD treatment effect,methods-paper,unpublished
+73,IPD_QMA,IPD-QMA: Detecting Heterogeneous Treatment Effects via Quantile Meta-Analysis of Individual Participant Data,methods  |  ESTIMAND: Quantile treatment effect,methods-paper,unpublished
+74,kanban-lab,Kanban Lab: A Persistent Browser-Based Drag-and-Drop Board for Research Task Management,methods  |  ESTIMAND: Median card transition time,methods-paper,unpublished
+75,KMcurve,Fully Automated Kaplan-Meier Curve Extraction via Neural OCR and Mathematical Survival Constraints,methods  |  ESTIMAND: Sensitivity of automated curve extraction (95% CI),methods-paper,unpublished
+76,KMDigitizer,KMDigitizer: Browser-Based IPD Reconstruction from Published Kaplan-Meier Curves,methods  |  ESTIMAND: Hazard ratio (HR),methods-paper,unpublished
+77,LFA,CBAMM: Collaborative Bayesian Adaptive Meta-Analysis with Population Transportability and Sequential Monitoring,methods  |  ESTIMAND: Transported risk ratio (95% CI),methods-paper,unpublished
+78,living-meta,Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis,methods  |  ESTIMAND: Pooled treatment effect with sequential monitoring,methods-paper,unpublished
+79,living-meta-engine,Living Meta-Analysis Engine: Config-Driven Browser Dashboard for Cardiology Evidence Synthesis,methods  |  ESTIMAND: Odds ratio,methods-paper,unpublished
+80,llm-meta-analysis,LLM-Driven Meta-Analysis: Automated Extraction and Synthesis from Clinical Trials,methods  |  ESTIMAND: Pooled effect size,methods-paper,unpublished
+81,mahmood726-cyber.github.io,Evidence Synthesis Portfolio Site: Living Validation Status Dashboard for 101 Projects,methods  |  ESTIMAND: Median tests per project,methods-paper,unpublished
+82,MAPowerCalc,MA Power: A Browser-Based Power and Sample Size Calculator for Random-Effects Meta-Analysis,methods  |  ESTIMAND: Statistical power for planned meta-analysis,methods-paper,unpublished
+83,MAPriors,MAPriors: Browser-Based Meta-Analytic Predictive Priors and Dynamic Borrowing Engine,methods  |  ESTIMAND: Effective sample size,methods-paper,unpublished
+84,MAWorkbench,Meta-Analysis Workbench: A Central Hub for 49 Evidence Synthesis Tools,methods  |  ESTIMAND: Tool count and coverage,methods-paper,unpublished
+85,maxent-reconstructor,MaxEnt IPD Reconstructor: Maximum Entropy Recovery of Individual Patient Data,methods  |  ESTIMAND: Win rate vs normal,methods-paper,unpublished
+86,MCIDMapper,MCID Mapper: Clinical Significance Assessment for Meta-Analytic Effect Estimates,methods  |  ESTIMAND: MCID classification zone,methods-paper,unpublished
+87,MES,Multiverse Evidence Synthesis: Robustness Classification of 403 Cochrane Meta-Analyses Across 648 Analytical Specifications,methods  |  ESTIMAND: Concordance score (C_sig) across specification multiverse,methods-paper,unpublished
+88,meta-epidemiology-bias-correction,Bias-Correction Methods Reveal Underestimation by Observational Studies,meta-epidemiology  |  ESTIMAND: Ratio of ratios,meta-research-empirical,unpublished
+89,Meta_Ecosystem_Model,"The Meta-Analysis Ecosystem Model: Evidence Velocity, Effect Decay, and a Future-Proof Index Across 501 Cochrane Reviews",methods  |  ESTIMAND: Decay ratio,methods-paper,unpublished
+90,MetaAudit,MetaAudit: Reproducibility Capsule for Automated Meta-Analytic Quality Audits,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+92,MetaExtract,MetaExtract: Browser-Based Effect Estimate Extraction from Clinical Trial Abstracts via Deterministic Pattern Matching,"methods  |  ESTIMAND: Extraction sensitivity for HR, OR, RR (95% CI)",methods-paper,unpublished
+93,MetaFolio,MetaFolio: Efficiency Frontier Subset Enumeration for Meta-Analysis Heterogeneity Decomposition,methods  |  ESTIMAND: I-squared reduction from dominated study exclusion,methods-paper,unpublished
+94,MetaFusion-Lab,MetaFusion Lab: Certainty-Weighted Random-Effects Meta-Analysis,"methods  |  ESTIMAND: Risk ratio (certainty-weighted, 95% CI)",methods-paper,unpublished
+95,MetaGenome,The Meta-Analysis Genome: Unsupervised Phenotyping of 307 Cochrane Reviews,empirical  |  ESTIMAND: Cluster archetype (4 types),meta-research-empirical,unpublished
+96,MetaGuard,MetaGuard: A Browser-Based Robust and Forensic Meta-Analysis Toolkit,methods  |  ESTIMAND: Outlier-adjusted pooled effect via DPD,methods-paper,unpublished
+97,MetaMethods,MetaMethods: Six Advanced Statistical Methods for Meta-Analysis in a Dependency-Free Python Module,methods  |  ESTIMAND: E-value for unmeasured confounding,methods-paper,unpublished
+98,Metanew,EvidenceOS PRIME: Integrated Meta-Analysis and Health Technology Assessment Platform,methods  |  ESTIMAND: Pooled OR (95% CI),methods-paper,unpublished
+99,metaoverfit,metaoverfit: Optimism-Corrected Heterogeneity Assessment for Meta-Regression,methods  |  ESTIMAND: Optimism-corrected R-squared,methods-paper,unpublished
+100,metaoverfit-paper,Overfitting in Published Meta-Regressions: Simulation and Empirical Survey,methods  |  ESTIMAND: R-squared optimism,methods-paper,unpublished
+101,MetaRegression,MetaRegression Workbench: Browser-Based Mixed-Effects Meta-Regression with Permutation Tests,methods  |  ESTIMAND: Regression slope (R-squared),methods-paper,unpublished
+102,metarep,Replication Probability in Meta-Analysis,methods  |  ESTIMAND: Calibration slope for replication probability,methods-paper,unpublished
+103,MetaRep,MetaRep: Most Significant Cochrane Meta-Analyses Predict Only 32% Replication Probability When Heterogeneity Is Accounted For,methods  |  ESTIMAND: Replication probability (heterogeneity-aware predictive power),methods-paper,unpublished
+104,MetaRepair,MetaRepair: Automated Diagnosis and Correction of Meta-Analysis Pathologies,empirical  |  ESTIMAND: Corrected pooled effect with uncertainty decomposition,meta-research-empirical,unpublished
+106,MetaReproducer,Computational Reproducibility Audit of 501 Cochrane Meta-Analyses,methods  |  ESTIMAND: Prevalence,methods-paper,unpublished
+107,MetaShift,MetaShift: Changepoint Detection Reveals Hidden Regime Shifts in Cumulative Meta-Analysis,methods  |  ESTIMAND: Changepoint detection rate,methods-paper,unpublished
+108,metasprint-autopilot,MetaSprint Autopilot: Zero-Install Browser Platform for Systematic Review and Meta-Analysis,methods  |  ESTIMAND: Engine accuracy vs Cochrane reviews,methods-paper,unpublished
+109,metasprint-cardio-universe,MetaSprint Cardio Universe: Provenance-First Discovery for Living Evidence Synthesis,methods  |  ESTIMAND: Ingestion recall,methods-paper,unpublished
+110,metasprint-dose-response,MetaSprint Dose-Response: Browser-Based Nonlinear Dose-Response Meta-Analysis with R Cross-Validation,methods  |  ESTIMAND: Dose-response coefficients,methods-paper,unpublished
+111,metasprint-dta,MetaSprint DTA: Automated Open-Access Discovery for Diagnostic Test Accuracy Meta-Analysis,methods  |  ESTIMAND: Pooled sensitivity and specificity,methods-paper,unpublished
+112,metasprintnma,MetaSprint NMA: Zero-Install Browser Network Meta-Analysis with In-Browser R Cross-Validation,methods  |  ESTIMAND: Treatment effect concordance,methods-paper,unpublished
+113,metaverse-robust-MA,metaverse: Robust Meta-Analysis with Outlier-Resistant Estimation and Variable Selection,methods  |  ESTIMAND: Pooled SMD bias,methods-paper,unpublished
+114,MethodsSuite,Methods Suite: Eight Interoperable Browser-Based Meta-Analysis Tools with MAIF,methods  |  ESTIMAND: Cross-tool MAIF round-trip fidelity,methods-paper,unpublished
+115,MLM501,MLM501: A Multilevel Effects Table from 501 Cochrane Pairwise Meta-Analysis Reviews,data  |  ESTIMAND: Median effects per analysis (IQR),data-paper,unpublished
+116,MLMResearch,MLMResearch: Empirical Stress-Testing and Adaptive Correction for Multilevel Meta-Analysis Methods,methods  |  ESTIMAND: Variance collapse rate with median degrees of freedom (IQR),methods-paper,unpublished
+117,Multilevelerror,Multilevelerror: Influence Diagnostics for Three-Level Meta-Analysis,methods  |  ESTIMAND: Median Cook distance (IQR),methods-paper,unpublished
+118,Multipledatameta,Multiple Data Source Meta-Analysis: Pooling Mixed-Format Study Results,methods  |  ESTIMAND: Standardized mean difference,methods-paper,unpublished
+119,MultiverseMA,MultiverseMA: Browser-Based Multiverse Meta-Analysis Engine,methods  |  ESTIMAND: Specification concordance,methods-paper,unpublished
+120,my-python-project,IPDAnalysis: Unified Python Interface for Individual Patient Data Meta-Analysis,"methods  |  ESTIMAND: Hazard ratio, odds ratio, mean difference",methods-paper,unpublished
+121,New_Heterogeneity_Model,Adaptive Shrinkage Estimator for Heterogeneity in Small-Sample Meta-Analysis,methods  |  ESTIMAND: Tau-squared MSE reduction,methods-paper,unpublished
+122,nma-dose-response-app,NMA Dose-Response Studio: Browser-Based Network Meta-Analysis with Dose-Response Modeling,methods  |  ESTIMAND: Pooled treatment effect with dose-response curve,methods-paper,unpublished
+123,NMAhtml,NMA Pro: A Browser-Based Network Meta-Analysis Platform with Integrated Rapid Review,methods  |  ESTIMAND: Pooled treatment effect (SMD/OR/RR),methods-paper,unpublished
+124,nmapaper111025,nmatransport: Population-Transported Network Meta-Analysis with Entropy Balancing,methods  |  ESTIMAND: P-score (treatment ranking probability),methods-paper,unpublished
+125,NNTMapper,NNTMapper: Converting Meta-Analytic Effects into Population-Specific Number Needed to Treat with Heterogeneity Propagation,methods  |  ESTIMAND: Number Needed to Treat across baseline risk range,methods-paper,unpublished
+126,OutcomeReportingBias,Outcome Reporting Bias Risk in 473 Cochrane Meta-Analyses: An Excess Significance Approach,meta-research  |  ESTIMAND: ORB risk prevalence,meta-research-empirical,unpublished
+127,OverlapDetector,Study Overlap Across 591 Cochrane Reviews: Quantifying Non-Independence for Meta-Research,meta-research  |  ESTIMAND: Corrected Covered Area (CCA),meta-research-empirical,unpublished
+128,OverlapMatrix,Overlap Matrix and Corrected Covered Area Calculator for Umbrella Reviews,methods  |  ESTIMAND: Corrected Covered Area (CCA),methods-paper,unpublished
+129,Pairwise70,Pairwise70: Standardized Dataset of 501 Cochrane Meta-Analyses,data  |  ESTIMAND: Fragility index,data-paper,unpublished
+131,Pairwiseai,TruthCert PairwisePro: Browser-Based Pairwise Meta-Analysis with Regional Health-Economic Overlays,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+132,Paper1,Bootstrap-Aggregated Penalized Meta-Regression for Small-Sample Evidence Synthesis,methods  |  ESTIMAND: R-squared heterogeneity,methods-paper,unpublished
+133,Paper2.111025,Precision-Weighted Cross-Validation for Unbiased Meta-Regression R-Squared Estimation,methods  |  ESTIMAND: Precision-weighted cross-validated R-squared,methods-paper,unpublished
+134,PoolingSuite,Pooling Suite: Browser-Based Meta-Analysis Engine with Ten Heterogeneity Estimators,methods  |  ESTIMAND: Pooled effect (tau-squared comparison),methods-paper,unpublished
+135,portfolio-site,Meta-Analysis Methods Lab: A Single-Page Portfolio for 101 Evidence Synthesis Projects,showcase  |  ESTIMAND: Project catalog completeness,tool-infrastructure,unpublished
+136,PredictionGap,The Prediction Gap: 72% of Significant Meta-Analyses Have Null-Spanning Prediction Intervals,methods  |  ESTIMAND: False reassurance rate,methods-paper,unpublished
+137,PRISMAChecker,PRISMA 2020 Compliance Checker: An Interactive Browser Tool for Systematic Review Reporting Assessment,methods  |  ESTIMAND: PRISMA 2020 compliance percentage,methods-paper,unpublished
+138,PRISMAFlow,PRISMA 2020 Flow Diagram Generator for Systematic Reviews,methods  |  ESTIMAND: PRISMA flow diagram compliance,methods-paper,unpublished
+140,prognostic-meta,PrognosisMeta: Browser-Based Prognostic Meta-Analysis Engine,methods  |  ESTIMAND: HR,methods-paper,unpublished
+141,pub-bias-simulation,Publication Bias Adjustment Methods: A 135-Scenario Simulation Comparison,methods  |  ESTIMAND: RMSE of bias-corrected pooled estimate,methods-paper,unpublished
+142,PubBiasSuite,PubBias Suite: Comprehensive Publication Bias Assessment with 12 Methods and 3 Funnel Plot Variants,methods  |  ESTIMAND: Bias-adjusted pooled effect estimates,methods-paper,unpublished
+143,rct-extractor-v2,Deterministic Effect Estimate Extraction from RCT PDFs,methods  |  ESTIMAND: Sensitivity,methods-paper,unpublished
+144,reduced-dose-doacs-vte-demo,Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention,pairwise  |  ESTIMAND: Risk ratio for major bleeding,clinical-meta-analysis,unpublished
+145,registry_first_rct_meta,Registry-First Meta-Analysis: Quantifying Missing Cardiovascular Trial Evidence,methods  |  ESTIMAND: Evidence Coverage Ratio (trial-level),methods-paper,unpublished
+146,repo100,repo100: A Curated Collection of 137 Meta-Regression Benchmark Datasets,methods  |  ESTIMAND: Dataset count and median study size,methods-paper,unpublished
+147,repo300-ENMA-SNMA,Ensemble and Spectral Network Meta-Analysis: Novel Inconsistency-Robust Methods,methods  |  ESTIMAND: Coverage improvement (percentage points),methods-paper,unpublished
+148,RMSTmeta,RMST Meta: A Browser Tool for Meta-Analysis of Restricted Mean Survival Time Beyond the Hazard Ratio,methods  |  ESTIMAND: Pooled RMST difference (months),methods-paper,unpublished
+149,rmstnma,Bayesian RMST Network Meta-Analysis: The rmstnma R Package,methods  |  ESTIMAND: RMST difference (months),methods-paper,unpublished
+150,RoBAssessor,RoB Assessor: A Browser-Based Risk of Bias Assessment Tool Implementing RoB 2 and ROBINS-I,methods  |  ESTIMAND: Domain-level and overall risk of bias judgments,methods-paper,unpublished
+151,ROBMA,ROBMA Reproducibility Capsule for Reviewer-Auditable Bayesian Model Averaging,methods  |  ESTIMAND: summary effect,methods-paper,unpublished
+152,shahzaib-icu-landscape,ICU Hemodynamic Trial Landscape: A Living Evidence Map,methods  |  ESTIMAND: Sensitivity,methods-paper,unpublished
+153,SheafNMA,Sheaf-Theoretic Consistency Analysis for Network Meta-Analysis,methods  |  ESTIMAND: Global Inconsistency Index (GII),methods-paper,unpublished
+154,SoFTable,GRADE Summary of Findings Table Generator for Systematic Reviews,methods  |  ESTIMAND: GRADE certainty rating,methods-paper,unpublished
+155,TDA_MA,Topological Data Analysis for Meta-Analytic Heterogeneity Exploration,methods  |  ESTIMAND: Persistent homology (Betti numbers),methods-paper,unpublished
+156,TGEP_Development,Triple-Guard Ensemble Pooling for Bias-Sensitive Meta-Analysis,methods  |  ESTIMAND: Ensemble pooled effect estimate (MAE),methods-paper,unpublished
+157,TransportabilityCalc,Clinical Transportability Engine: A Composite Penalty Index for Meta-Analysis Generalizability,methods  |  ESTIMAND: Median CTE penalty index,methods-paper,unpublished
+158,TrialRadar,TrialRadar: Living Clinical Trial Surveillance Dashboard for Ghost Protocol Detection,methods  |  ESTIMAND: Ghost protocol detection rate,methods-paper,unpublished
+159,truthcert-denominator-phase1,Denominator-First Bayesian Meta-Analysis Engine for Registry-Aware Evidence Synthesis,methods  |  ESTIMAND: False reassurance rate reduction,methods-paper,unpublished
+160,truthcert-meta2-prototype,TruthCert Meta2: Governance Overlay for Denominator-First Meta-Analysis,methods  |  ESTIMAND: Mean difference,methods-paper,unpublished
+161,Truthcert1,TruthCert-MA: A Cross-Platform JavaScript Meta-Analysis Engine Validated Against R,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+162,Truthcert1_work,TruthCert-PairwisePro: A Browser-Based Pairwise Meta-Analysis Engine with Seven Heterogeneity Estimators,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+164,UmbrellaReview,Umbrella Review Evidence Classifier with Credibility Grading,methods  |  ESTIMAND: Evidence conviction class,methods-paper,unpublished
+165,Value_Based_HTA_Engine,Multi-Criteria Evidence Synthesizer for Automated Benefit-Harm Trade-Off in Health Technology Assessment,methods  |  ESTIMAND: Net clinical benefit,methods-paper,unpublished
+166,VOICalculator,Value of Information Calculator for Meta-Analysis Decision Support,methods  |  ESTIMAND: EVPI and EVSI (dollars),methods-paper,unpublished
+167,wasserstein,Automated Kaplan-Meier Digitization for Hazard Ratio Extraction,methods  |  ESTIMAND: HR,methods-paper,unpublished
+168,WorldIPD,WorldIPD: An Open Individual Participant Data Hub with Standardized Schema and Provenance,methods  |  ESTIMAND: Dataset count,methods-paper,unpublished
+169,WorldIPD-private,WorldIPD-Private: Secure Scaffold for Non-Redistributable Individual Participant Data,methods  |  ESTIMAND: Schema compliance rate,methods-paper,unpublished
+170,3dvitreous-grapher,3D Vitreous Grapher: Interactive Three-Dimensional Visualization of Ophthalmic Surgical Anatomy,methods  |  ESTIMAND: Rendering accuracy and anatomical fidelity,methods-paper,unpublished
+172,area1_small_sample_analysis,Small-Sample Meta-Analysis Methods: Characterization and Performance Under k < 100,methods  |  ESTIMAND: Coverage probability and type I error rate,methods-paper,unpublished
+173,asreview_5star,"ASReview 5-Star: Enhanced Systematic Review Screening with Stopping Rules, IRR, and Meta-Analysis Integration",methods  |  ESTIMAND: Screening recall and work saved over sampling,methods-paper,unpublished
+174,AsSirat,As-Sirat: The Evidence Passport for Navigating Meta-Analytic Uncertainty,methods  |  ESTIMAND: Evidence navigation score,methods-paper,unpublished
+175,cardio-ctgov-living-meta-portfolio,Cardio CT.gov Living Meta Portfolio: Automated Generation of 27 Topic-Specific Cardiovascular Evidence Reviews,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+176,cbamm-project2,CBAMM Phase 2: Cochrane Bias-Adjusted Meta-Model Development,methods  |  ESTIMAND: Bias-adjusted pooled effect estimate,methods-paper,unpublished
+177,childnajia,HIDAYAH: A Clinical Danger Detection Engine for Paediatric Emergency Triage,clinical  |  ESTIMAND: Triage sensitivity and specificity,clinical-meta-analysis,unpublished
+178,CINeMA,CINeMA: Browser-Based Confidence in Network Meta-Analysis Across Six Domains,methods  |  ESTIMAND: NMA confidence rating (Very Low to High),methods-paper,unpublished
+179,claude-rct-work,Claude-RCT-Work: LLM-Assisted Randomised Controlled Trial Data Extraction Workflow,methods  |  ESTIMAND: Extraction accuracy and concordance with manual extraction,methods-paper,unpublished
+180,ctgov-actual-discipline-repeaters,CT.gov Actual-Discipline Repeaters,methods  |  ESTIMAND: Any actual-field gap stock and rate among named lead sponsors with at least 100 older studies,methods-paper,unpublished
+181,ctgov-actual-field-discipline,CT.gov Actual-Field Discipline,methods  |  ESTIMAND: 2-year no-results rate across actual-field discipline groups among eligible older CT.gov studies,methods-paper,unpublished
+182,ctgov-black-box-sponsor-repeaters,CT.gov Black-Box Sponsor Repeaters,methods  |  ESTIMAND: Black-box stock and rate among named lead sponsors in the older-study CT.gov universe,methods-paper,unpublished
+185,ctgov-completion-timing-repeaters,CT.gov Completion-Timing Repeaters,methods  |  ESTIMAND: Completion-timing gap stock among older studies missing actual primary completion or actual completion fields,methods-paper,unpublished
+186,ctgov-condition-ancient-backlog,CT.gov Condition Ancient Backlog,methods  |  ESTIMAND: Ancient-backlog stock among older closed interventional studies unresolved at least ten overdue years beyond the two-year mark,methods-paper,unpublished
+188,ctgov-condition-detailed-description-gap,CT.gov Condition Detailed-Description Gap,methods  |  ESTIMAND: Detailed-description-gap stock among older studies missing the detailed description field,methods-paper,unpublished
+189,ctgov-condition-enrollment-gap,CT.gov Condition Enrollment Gap,methods  |  ESTIMAND: Enrollment-gap stock among older studies missing actual enrollment,methods-paper,unpublished
+190,ctgov-condition-excess-watchlist,CT.gov Condition Excess Watchlist,methods  |  ESTIMAND: Adjusted excess no-results and ghost stock across CT.gov condition families,methods-paper,unpublished
+191,ctgov-condition-ghost-watchlist,CT.gov Condition Ghost Watchlist,methods  |  ESTIMAND: Excess ghost-protocol stock across condition families,methods-paper,unpublished
+192,ctgov-condition-narrative-gap,CT.gov Condition Narrative Gap,methods  |  ESTIMAND: Narrative-gap stock among older studies missing both detailed descriptions and primary outcome descriptions,methods-paper,unpublished
+193,ctgov-condition-overdue-debt,CT.gov Condition Overdue Debt,methods  |  ESTIMAND: Total unresolved years beyond the two-year results mark across CT.gov condition families,methods-paper,unpublished
+194,ctgov-condition-primary-only-gap,CT.gov Condition Primary-Only Gap,methods  |  ESTIMAND: Primary-only-gap stock among older studies missing the primary outcome description field while retaining the detailed description field,methods-paper,unpublished
+195,ctgov-condition-primary-outcome-gap,CT.gov Condition Primary-Outcome Gap,methods  |  ESTIMAND: Primary-outcome-gap stock among older studies missing the primary outcome description field,methods-paper,unpublished
+196,ctgov-condition-sponsor-repeaters,CT.gov Condition Sponsor Repeaters,methods  |  ESTIMAND: Sponsor-level 2-year no-results counts within selected disease families among eligible older CT.gov studies,methods-paper,unpublished
+197,ctgov-condition-text-asymmetry,CT.gov Condition Text Asymmetry,"methods  |  ESTIMAND: Condition-family text asymmetry, defined as description-only gaps minus primary-only gaps",methods-paper,unpublished
+198,ctgov-country-ancient-backlog,CT.gov Country Ancient Backlog,methods  |  ESTIMAND: Ancient-backlog stock among older closed interventional studies unresolved at least ten overdue years beyond the two-year mark,methods-paper,unpublished
+199,ctgov-country-condition-hiddenness,CT.gov Country-Condition Hiddenness,methods  |  ESTIMAND: 2-year no-results rate across selected country-by-condition cells among eligible older CT.gov studies,methods-paper,unpublished
+200,ctgov-country-description-black-box,CT.gov Country Description Black-Box,"methods  |  ESTIMAND: Description black-box stock among older studies with no results, no linked publication, no detailed description, and no primary outcome description",methods-paper,unpublished
+201,ctgov-country-detailed-description-gap,CT.gov Country Detailed-Description Gap,methods  |  ESTIMAND: Detailed-description-gap stock among older studies missing the detailed description field,methods-paper,unpublished
+202,ctgov-country-enrollment-gap,CT.gov Country Enrollment Gap,methods  |  ESTIMAND: Enrollment-gap stock among older studies missing actual enrollment,methods-paper,unpublished
+203,ctgov-country-excess-watchlist,CT.gov Country Excess Watchlist,methods  |  ESTIMAND: Adjusted excess no-results and ghost stock across country-linked study portfolios with at least 500 linked studies,methods-paper,unpublished
+204,ctgov-country-ghost-watchlist,CT.gov Country Ghost Watchlist,methods  |  ESTIMAND: Excess ghost-protocol stock across country-linked study portfolios,methods-paper,unpublished
+205,ctgov-country-narrative-gap,CT.gov Country Narrative Gap,methods  |  ESTIMAND: Narrative-gap stock among older studies missing both detailed descriptions and primary outcome descriptions,methods-paper,unpublished
+206,ctgov-country-overdue-debt,CT.gov Country Overdue Debt,methods  |  ESTIMAND: Total unresolved years beyond the two-year results mark across country-linked study portfolios with at least 500 studies,methods-paper,unpublished
+207,ctgov-country-primary-only-gap,CT.gov Country Primary-Only Gap,methods  |  ESTIMAND: Primary-only-gap stock among older studies missing the primary outcome description field while retaining the detailed description field,methods-paper,unpublished
+208,ctgov-country-primary-outcome-gap,CT.gov Country Primary-Outcome Gap,methods  |  ESTIMAND: Primary-outcome-gap stock among older studies missing the primary outcome description field,methods-paper,unpublished
+210,ctgov-country-sponsor-repeaters,CT.gov Country Sponsor Repeaters,methods  |  ESTIMAND: Sponsor-level missing-results counts within selected country-linked older CT.gov portfolios,methods-paper,unpublished
+211,ctgov-country-text-asymmetry,CT.gov Country Text Asymmetry,"methods  |  ESTIMAND: Net description-vs-endpoint asymmetry among older studies, defined as description-only gaps minus primary-only gaps",methods-paper,unpublished
+212,ctgov-description-black-box-repeaters,CT.gov Description-Black-Box Repeaters,"methods  |  ESTIMAND: Description black-box stock among older studies with no results, no linked publication, no detailed description, and no primary outcome description",methods-paper,unpublished
+213,ctgov-design-purpose-hiddenness,CT.gov Design-Purpose Hiddenness,methods  |  ESTIMAND: 2-year no-results rate across primary-purpose groups among eligible older CT.gov studies,methods-paper,unpublished
+214,ctgov-disease-geography-gap,CT.gov Disease Geography Gap,methods  |  ESTIMAND: 2-year no-results rate across geography buckets within selected disease families among eligible older CT.gov studies,methods-paper,unpublished
+215,ctgov-enrollment-size-gap,CT.gov Enrollment-Size Gap,methods  |  ESTIMAND: 2-year no-results rate across enrollment-size buckets among eligible older CT.gov studies,methods-paper,unpublished
+217,ctgov-industry-family-repeaters,CT.gov Industry Family Repeaters,methods  |  ESTIMAND: Industry sponsor missing-results counts within intervention families among eligible older CT.gov studies,methods-paper,unpublished
+218,ctgov-intervention-type-gap,CT.gov Intervention-Type Gap,methods  |  ESTIMAND: 2-year no-results rate across declared intervention families among eligible older CT.gov studies,methods-paper,unpublished
+219,ctgov-modality-sponsor-repeaters,CT.gov Modality Sponsor Repeaters,methods  |  ESTIMAND: Sponsor-level 2-year no-results counts within intervention families among eligible older CT.gov studies,methods-paper,unpublished
+220,ctgov-narrative-gap-repeaters,CT.gov Narrative Gap Repeaters,methods  |  ESTIMAND: Narrative-gap stock and rate among named lead sponsors with at least 100 older studies,methods-paper,unpublished
+225,ctgov-risk-adjusted-hiddenness,CT.gov Risk-Adjusted Hiddenness,methods  |  ESTIMAND: Excess missing-results stock over model-expected missing-results counts among eligible older CT.gov studies,methods-paper,unpublished
+226,ctgov-sponsor-ancient-backlog,CT.gov Sponsor Ancient Backlog,methods  |  ESTIMAND: Ancient-backlog stock among older closed interventional studies unresolved at least ten overdue years beyond the two-year mark,methods-paper,unpublished
+227,ctgov-sponsor-class-primary-only-gap,CT.gov Sponsor-Class Primary-Only Gap,methods  |  ESTIMAND: Primary-only-gap stock among older studies missing the primary outcome description field while retaining the detailed description field,methods-paper,unpublished
+228,ctgov-sponsor-detailed-description-gap,CT.gov Sponsor Detailed-Description Gap,methods  |  ESTIMAND: Detailed-description-gap stock among older studies missing the detailed description field,methods-paper,unpublished
+229,ctgov-sponsor-enrollment-gap-repeaters,CT.gov Sponsor Enrollment-Gap Repeaters,methods  |  ESTIMAND: Enrollment-gap stock among older studies missing actual enrollment,methods-paper,unpublished
+230,ctgov-sponsor-excess-watchlist,CT.gov Sponsor Excess Watchlist,methods  |  ESTIMAND: Adjusted excess no-results and ghost-protocol stock among named lead sponsors with at least 100 older studies,methods-paper,unpublished
+231,ctgov-sponsor-ghost-repeaters,CT.gov Sponsor Ghost Repeaters,methods  |  ESTIMAND: Excess ghost-protocol stock among named lead sponsors with at least 100 older studies,methods-paper,unpublished
+232,ctgov-sponsor-overdue-debt,CT.gov Sponsor Overdue Debt,methods  |  ESTIMAND: Total unresolved years beyond the two-year results mark among named lead sponsors with at least 100 older studies,methods-paper,unpublished
+233,ctgov-sponsor-primary-only-gap,CT.gov Sponsor Primary-Only Gap,methods  |  ESTIMAND: Primary-only-gap stock among older studies missing the primary outcome description field while retaining the detailed description field,methods-paper,unpublished
+234,ctgov-sponsor-primary-outcome-gap,CT.gov Sponsor Primary-Outcome Gap,methods  |  ESTIMAND: Primary-outcome-gap stock among older studies missing the primary outcome description field,methods-paper,unpublished
+235,ctgov-sponsor-text-asymmetry,CT.gov Sponsor Text Asymmetry,"methods  |  ESTIMAND: Net description-vs-endpoint asymmetry among older studies, defined as description-only gaps minus primary-only gaps",methods-paper,unpublished
+236,ctgov-stopped-trial-disclosure-gap,CT.gov Stopped-Trial Disclosure Gap,methods  |  ESTIMAND: 2-year no-results rate across final-status groups among eligible older CT.gov studies,methods-paper,unpublished
+237,ctgov-strict-core-black-box,CT.gov Strict-Core Black-Box,methods  |  ESTIMAND: Named-sponsor and sponsor-class black-box stock inside the strict U.S.-nexus proxy core,methods-paper,unpublished
+238,ctgov-strict-proxy-repeaters,CT.gov Strict-Proxy Repeaters,methods  |  ESTIMAND: Named-sponsor and sponsor-class missing-results stock inside the strict U.S.-nexus proxy core,methods-paper,unpublished
+240,ctgov-us-vs-exus-sponsor-classes,CT.gov U.S. Versus Ex-U.S. Sponsor Classes,"methods  |  ESTIMAND: 2-year no-results rate across sponsor classes within any-U.S., no-U.S., and no-country older CT.gov portfolios",methods-paper,unpublished
+242,Denominator_Calibrated_Living_NMA,Denominator-Calibrated Living NMA: Registry-First Network Meta-Analysis with Sample Size Adjustment,methods  |  ESTIMAND: Denominator-calibrated pooled treatment ranking,methods-paper,unpublished
+243,esc-acs-living-meta,ESC ACS Living Meta: Shared Cardiovascular Living Meta-Analysis Engine with GRADE Assessment and Topic-Context Validation,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+244,EvidenceGapMap,Evidence Gap Map: Interactive Bubble-Chart Visualisation of Research Coverage Across Clinical Domains,methods  |  ESTIMAND: Evidence coverage proportion by intervention-outcome cell,methods-paper,unpublished
+246,EvidenceOracle,EvidenceOracle: Machine Learning Prediction of Meta-Analytic Result Instability,methods  |  ESTIMAND: AUC for predicting meta-analysis instability,methods-paper,unpublished
+247,experimental-meta-analysis,Experimental Meta-Analysis Framework: 300+ Methods with Simulation Infrastructure,"methods  |  ESTIMAND: Method performance metrics (coverage, MSE, bias)",methods-paper,unpublished
+248,Fatiha-Course,Advanced Meta-Analysis Course: A 25-Module Interactive Educational Platform,methods  |  ESTIMAND: Module completion and quiz performance metrics,methods-paper,unpublished
+249,finalpaper,Final Paper Compilation: Meta-Analytic Evidence Synthesis Manuscript Assembly,methods  |  ESTIMAND: Manuscript completeness and reporting compliance,methods-paper,unpublished
+250,GRADEPro,GRADEPro: Browser-Based GRADE Evidence Profile and Summary of Findings Generator,methods  |  ESTIMAND: GRADE certainty rating concordance with expert consensus,methods-paper,unpublished
+251,HFN786,HFN786: Component Network Meta-Analysis R Package for Multi-Component Interventions,methods  |  ESTIMAND: Component-level treatment effect estimates,methods-paper,unpublished
+252,hfpef_registry_calibration,HFpEF Registry Calibration: When Registry-First Synthesis Should Replace Literature-Based Meta-Analysis,methods  |  ESTIMAND: Calibration slope for registry-first vs literature-based synthesis,methods-paper,unpublished
+253,HTML-Misc,HTML-Misc: Collection of Utility Browser Tools Including 3D Graphing Calculator,methods  |  ESTIMAND: Rendering accuracy for mathematical function visualisation,methods-paper,unpublished
+254,hub,Hub: Central Navigation Portal for the Evidence Synthesis Tool Portfolio,methods  |  ESTIMAND: Tool discoverability and navigation efficiency,methods-paper,unpublished
+255,IPD Zahid,IPD Zahid: Individual Participant Data Meta-Analysis of Cardiovascular Outcomes,clinical  |  ESTIMAND: Pooled hazard ratio from IPD meta-analysis,clinical-meta-analysis,unpublished
+256,ipd-meta-pro-link,IPD Meta-Analysis Pro: A Browser-Based Platform for Individual Participant Data Evidence Synthesis,methods  |  ESTIMAND: Pooled IPD treatment effect,methods-paper,unpublished
+257,ipd_qma_project,IPD-QMA: Quantile Meta-Analysis for Detecting Heterogeneous Treatment Effects Across Patient Severity,methods  |  ESTIMAND: Quantile-specific treatment effect with bootstrap CI,methods-paper,unpublished
+258,IPDSimulator,IPD Simulator: Browser-Based Reconstruction of Individual Participant Data from Published Summaries,methods  |  ESTIMAND: Reconstruction accuracy (KS statistic vs original IPD),methods-paper,unpublished
+259,KMextract,KMextract: Automated Kaplan-Meier Curve Digitisation and Data Extraction,methods  |  ESTIMAND: Digitisation accuracy (mean absolute error vs original coordinates),methods-paper,unpublished
+260,lec_phase0_bundle,LEC Phase 0 Bundle: London Evidence Clinic Reproducibility Package,methods  |  ESTIMAND: Bundle completeness and reproducibility score,methods-paper,unpublished
+261,lec_phase0_project,LEC Phase 0 Project: London Evidence Clinic Initial Evidence Synthesis Infrastructure,methods  |  ESTIMAND: Infrastructure readiness and pipeline validation pass rate,methods-paper,unpublished
+262,LFAHFN,LFAHFN: Left Atrial Appendage and Heart Failure Network Analysis,clinical  |  ESTIMAND: Pooled hazard ratio for stroke prevention outcomes,clinical-meta-analysis,unpublished
+263,Living metas,RapidMeta Cardiology: Finerenone Ultra-Precision Living Meta-Analysis Platform,clinical  |  ESTIMAND: Pooled hazard ratio for cardiovascular and renal outcomes,clinical-meta-analysis,unpublished
+264,LivingMA,LivingMA: Living Meta-Analysis Dashboard Framework with Timeline and What-If Analysis,methods  |  ESTIMAND: Cumulative pooled estimate with temporal change-point detection,methods-paper,unpublished
+265,LivingMeta_Watchman_Amulet,Watchman vs Amulet Living Meta-Analysis: Comparative Effectiveness of Left Atrial Appendage Closure Devices,clinical  |  ESTIMAND: Pooled risk ratio for device-related complications and stroke,clinical-meta-analysis,unpublished
+266,MAConverter,MA Converter: Universal Effect Size Translator for Meta-Analytic Inputs,methods  |  ESTIMAND: Converted effect size with propagated confidence interval,methods-paper,unpublished
+267,MAFI,MAFI: Meta-Analysis Fragility Index with Eight-Signal Publication Bias Calibration,methods  |  ESTIMAND: Calibrated publication bias probability (0-100),methods-paper,unpublished
+268,MAFI-Continuation,MAFI Calculator Complete Edition: Fragility Analysis with GRADE Integration,methods  |  ESTIMAND: Fragility index with GRADE-informed certainty adjustment,methods-paper,unpublished
+269,MASampleSize,MA Sample Size Calculator: Prospective Meta-Analysis Planning with Information Size and Power Curves,methods  |  ESTIMAND: Required number of studies and total sample size for target power,methods-paper,unpublished
+270,meta-frontier-bibliography,Meta-Frontier Annotated Bibliography: Curated Reference Collection for Methods Innovation in Evidence Synthesis,methods  |  ESTIMAND: Bibliographic coverage across methods frontiers,methods-paper,unpublished
+271,meta-frontier-readiness-atlas,Meta-Frontier Readiness Atlas: Implementation Maturity Assessment Across Evidence Synthesis Methods,methods  |  ESTIMAND: Readiness score per method frontier,methods-paper,unpublished
+272,minireview,CRES v4.0: CardioRenal Evidence Synthesizer with Multi-Endpoint Living Meta-Analysis,clinical  |  ESTIMAND: Pooled hazard ratio for cardiovascular and renal composite endpoints,clinical-meta-analysis,unpublished
+273,new-app,Meta-Analysis Platform v2.0: Comprehensive Browser-Based Evidence Synthesis,methods  |  ESTIMAND: Pooled effect estimate with heterogeneity statistics,methods-paper,unpublished
+274,NMA,NMA: Surrogate-Assisted Network Meta-Analysis Package,methods  |  ESTIMAND: Network pooled treatment effect with surrogate endpoint calibration,methods-paper,unpublished
+275,oman,Oman Evidence OS: Comprehensive Health Technology Assessment Platform for the Sultanate of Oman,methods  |  ESTIMAND: HTA recommendation concordance with established agencies,methods-paper,unpublished
+276,Pairwise humble,"Pairwise Pro v2.2: Decision-Driven Meta-Analysis Platform with 19,584 Lines of Interactive Evidence Synthesis",methods  |  ESTIMAND: Pooled effect estimate with 15+ heterogeneity estimators,methods-paper,unpublished
+277,PFA_AF_LivingMeta,PFA in AF Living Meta-Analysis: Pulsed Field Ablation for Atrial Fibrillation Evidence Surveillance,clinical  |  ESTIMAND: Pooled success rate and complication rate with monitoring boundaries,clinical-meta-analysis,unpublished
+278,rayyanreplacement,Screenr v11.0: World-Class Offline-First Systematic Review Platform Replacing Rayyan and Covidence,methods  |  ESTIMAND: Screening throughput and inter-rater agreement metrics,methods-paper,unpublished
+279,research-orbit-control,Research Orbit Control: Portfolio Management Dashboard for Evidence Synthesis Projects,methods  |  ESTIMAND: Portfolio completion rate and project status tracking,methods-paper,unpublished
+280,Scripts,Scripts: Utility Script Collection for Evidence Synthesis Pipeline Automation,methods  |  ESTIMAND: Pipeline automation coverage across evidence synthesis tasks,methods-paper,unpublished
+281,Stories,When Certainty Kills: The CAST Story and Narrative Evidence Communication,methods  |  ESTIMAND: Narrative engagement and evidence comprehension metrics,methods-paper,unpublished
+282,superapp,Living Meta-Analysis Starter: Lightweight Template for Rapid Living Evidence Applications,methods  |  ESTIMAND: Template deployment time and customisation effort,methods-paper,unpublished
+283,tower,Tower: Multi-Language Build and Deployment Infrastructure for Evidence Synthesis Projects,methods  |  ESTIMAND: Build success rate and deployment pipeline reliability,methods-paper,unpublished
+284,tower_js,Tower JS: JavaScript Runtime for Evidence Synthesis Pipeline Orchestration,methods  |  ESTIMAND: Pipeline execution reliability and task completion rate,methods-paper,unpublished
+285,Tricuspid_TEER_LivingMeta,Tricuspid TEER Living Meta-Analysis: Edge-Repair Evidence Surveillance for Severe Tricuspid Regurgitation,clinical  |  ESTIMAND: Pooled reduction in tricuspid regurgitation grade,clinical-meta-analysis,unpublished
+286,truthcert-openclaw-supermemory-stack,TruthCert-OpenClaw-Supermemory Stack: Fail-Closed Certifier Architecture with Local-First Memory,methods  |  ESTIMAND: Certification protocol compliance rate,methods-paper,unpublished
+287,TruthCert-Validation-Papers,TruthCert Validation Papers: Comprehensive Validation Studies for Fail-Closed Certification v3.1.0,methods  |  ESTIMAND: Validation pass rate across certification scenarios,methods-paper,unpublished
+288,TruthCert_v3.1.0_modeling,TruthCert v3.1.0 Modeling Pack: Statistical Models for Certification Threshold Calibration,methods  |  ESTIMAND: Optimal certification threshold (sensitivity-specificity trade-off),methods-paper,unpublished
+289,TSA,TSA Pro: World-First Browser-Based Trial Sequential Analysis with Alpha-Spending and Futility Boundaries,methods  |  ESTIMAND: Cumulative Z-statistic relative to monitoring boundaries,methods-paper,unpublished
+290,waternajia,WaterNajia: A Bayesian Water Safety Risk Engine with Monte Carlo Simulation and Regional Bacteria Prevalence,methods  |  ESTIMAND: Posterior risk probability with 95% credible interval,methods-paper,unpublished
+291,AuthorshipLedger,AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching full DOI-registrable state,methods-paper,unpublished
+292,CitationWorkbench,CitationWorkbench: Citation Packet Generation for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching high citation readiness,methods-paper,unpublished
+293,DrivePulse,DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of specific indexed paths exposing git repositories,methods-paper,unpublished
+294,EvidenceBridgeFHIR,EvidenceBridgeFHIR: Exporting the C Drive Evidence Portfolio into Citation and ArtifactAssessment Bundles,methods  |  ESTIMAND: ArtifactAssessment coverage across exported projects,methods-paper,unpublished
+295,EvidenceCrate,EvidenceCrate: Packaging the C Drive Research Portfolio as a Static Metadata Crate,methods  |  ESTIMAND: explicit lifecycle coverage in packaged entities,methods-paper,unpublished
+296,FAIRPortfolio,FAIRPortfolio: Proxy Maturity Scoring for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of projects scoring at least 70/100 on the FAIR-style proxy scale,methods-paper,unpublished
+297,PortfolioCatalog,PortfolioCatalog: Public Discovery Layer for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching high discoverability coverage,methods-paper,unpublished
+298,PortfolioOps,PortfolioOps: Operational Fusion for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of projects classified as operationally backed,methods-paper,unpublished
+299,ProvenanceAtlas,ProvenanceAtlas: Static Lineage Graphing for the C Drive Evidence Portfolio,methods  |  ESTIMAND: explicit lifecycle coverage in the provenance graph,methods-paper,unpublished
+300,ResearchConstellation,Research Constellation: A Live Portfolio Status Atlas for the C Drive Evidence Stack,methods  |  ESTIMAND: explicit status coverage,methods-paper,unpublished
+301,SubmissionCockpit,SubmissionCockpit: Editorial Release Control for the C Drive Research Portfolio,methods  |  ESTIMAND: proportion of indexed projects currently carrying resolved submission-ready status,methods-paper,unpublished
+302,TriageWorkbench,TriageWorkbench: Rule-Based Lifecycle Freezing for the Unresolved Portfolio Queue,methods  |  ESTIMAND: non-triage recommendation coverage across unresolved rows,methods-paper,unpublished
+303,ActionableEvidence,ActionableEvidence: GO/NO-GO Verdicts for Cochrane Meta-Analyses Using Six-Criterion Actionability,methods  |  ESTIMAND: Actionability classification (GO/CAUTION/NO-GO),methods-paper,unpublished
+304,AutoReview,AutoReview: Automated Systematic Review Quality Assessment from Manuscript Text,methods  |  ESTIMAND: Reporting quality score and AMSTAR-2 compliance rate,methods-paper,unpublished
+305,ContradictionMap,ContradictionMap: Detecting Where Cochrane Evidence Contradicts Itself Across Shared Primary Studies,methods  |  ESTIMAND: Contradiction rate across overlapping reviews,methods-paper,unpublished
+306,EquityMA,EquityMA: PROGRESS-Plus Equity-Stratified Meta-Analysis Tool,methods  |  ESTIMAND: Equity-stratified pooled effect with subgroup interaction test,methods-paper,unpublished
+307,EvidenceAtlas,EvidenceAtlas: Cochrane Evidence Network of 501 Interconnected Reviews,methods  |  ESTIMAND: Network connectivity and shared-study overlap metrics,methods-paper,unpublished
+308,EvidenceCopula,EvidenceCopula: Copula-Based Dependence Modelling for Multivariate Meta-Analysis,methods  |  ESTIMAND: Joint dependence structure between correlated meta-analytic outcomes,methods-paper,unpublished
+309,EvidenceEntropy,EvidenceEntropy: Information-Theoretic Heterogeneity Assessment for Meta-Analysis,methods  |  ESTIMAND: Shannon entropy and mutual information of study-level effects,methods-paper,unpublished
+310,EvidenceExtremes,EvidenceExtremes: Extreme Value Analysis for Meta-Analytic Outlier Detection,methods  |  ESTIMAND: Generalised extreme value distribution parameters for outlier classification,methods-paper,unpublished
+311,EvidenceKM,EvidenceKM: Survival of Statistical Significance in Cochrane Meta-Analyses,methods  |  ESTIMAND: Median time to loss of statistical significance,methods-paper,unpublished
+312,EvidenceMap,EvidenceMap: Rapid Evidence Gap Map Generator with Bubble-Chart Visualisation,methods  |  ESTIMAND: Evidence coverage proportion across intervention-outcome cells,methods-paper,unpublished
+313,EvidenceScore,EvidenceScore: Composite Evidence Quality Scoring Across Multiple Assessment Dimensions,methods  |  ESTIMAND: Composite evidence quality score (0-100),methods-paper,unpublished
+314,EvidenceSpectral,EvidenceSpectral: Spectral Analysis of Meta-Analytic Heterogeneity Patterns,methods  |  ESTIMAND: Spectral decomposition of between-study variance,methods-paper,unpublished
+315,EvidenceTopology,EvidenceTopology: Topological Data Analysis for Meta-Analytic Clustering,methods  |  ESTIMAND: Persistent homology features and Betti numbers,methods-paper,unpublished
+316,HyperMeta,HyperMeta: Evidence Geometry Engine with Seven Mathematical Modules,methods  |  ESTIMAND: Geometric and topological properties of meta-analytic evidence spaces,methods-paper,unpublished
+317,InfoGeoMA,InfoGeoMA: Information-Geometric Meta-Analysis on Statistical Manifolds,methods  |  ESTIMAND: Fisher information distance between study-level distributions,methods-paper,unpublished
+318,Integrity-Guard-Forensics,Integrity Guard Forensics: Automated Quality Assurance for Clinical Trial Reporting,methods  |  ESTIMAND: Reporting integrity score per trial,methods-paper,unpublished
+319,MetaFrontierLab,MetaFrontierLab: Prototype Meta-Analysis Framework for Frontier Methods Development,methods  |  ESTIMAND: Framework extensibility and method integration coverage,methods-paper,unpublished
+320,MetaVoI,MetaVoI: Value of Information Analysis from Meta-Analysis Output,methods  |  ESTIMAND: Expected value of perfect and partial information (EVPI/EVPPI),methods-paper,unpublished
+321,MoneyTrail,MoneyTrail: Financial Conflict of Interest Detection in Clinical Trial Networks,methods  |  ESTIMAND: Funding bias effect modification on pooled treatment estimates,methods-paper,unpublished
+322,PatientMA,"PatientMA: Patient-Centred Meta-Analysis with OutcomeGap, TrialFit, and CardioEvidence Pilots",methods  |  ESTIMAND: Patient-relevance score and outcome gap index,methods-paper,unpublished
+323,PriorLab,PriorLab: Interactive Bayesian Prior Elicitation Using SHELF Methods,"methods  |  ESTIMAND: Elicited prior distribution parameters (mean, variance, shape)",methods-paper,unpublished
+324,QualSynth,QualSynth: Browser-Based Qualitative Evidence Synthesis with Meta-Ethnography and CERQual,methods  |  ESTIMAND: CERQual confidence assessment for qualitative findings,methods-paper,unpublished
+325,SROCPlotter,SROCPlotter: Summary Receiver Operating Characteristic Curve Generator,methods  |  ESTIMAND: Summary sensitivity and specificity with SROC curve AUC,methods-paper,unpublished
+326,SafeMA,SafeMA: Anytime-Valid Sequential Meta-Analysis with E-Values,methods  |  ESTIMAND: E-value and anytime-valid confidence sequence,methods-paper,unpublished
+327,TherapyGraveyard,TherapyGraveyard: Cardiovascular Drug and Technique Attrition Map,clinical  |  ESTIMAND: Attrition rate and time-to-abandonment by therapeutic class,clinical-meta-analysis,unpublished
+328,TransportMA,TransportMA: Causal Transportability Meta-Analysis for External Validity Assessment,methods  |  ESTIMAND: Transportability-adjusted treatment effect,methods-paper,unpublished
+329,TrustGate,TrustGate: Trust-Weighted Meta-Meta-Analysis with Evidence Erosion Detection,methods  |  ESTIMAND: Trust-adjusted pooled estimate and evidence erosion rate,methods-paper,unpublished
+330,ctgov-registry-survival,CT.gov Registry Survival: Kaplan-Meier Analysis of Trial Registration to Completion,methods  |  ESTIMAND: Median time from registration to results posting,methods-paper,unpublished
+331,surroNMA,SurroNMA: Surrogate-Validated Network Meta-Analysis for Oncology and Cardiology,methods  |  ESTIMAND: Surrogate-calibrated treatment ranking,methods-paper,unpublished
+332,Reversal-CAST,"When Certainty Kills: The CAST Trial and 50,000 Deaths from Surrogate Endpoint Reliance",clinical  |  ESTIMAND: Relative risk of death with anti-arrhythmic drugs vs placebo,clinical-meta-analysis,unpublished
+333,Reversal-HRT-WHI,The WHI Reversal: How Confounding Created a 40-Year Illusion of Cardiac Protection from Hormone Therapy,clinical  |  ESTIMAND: Hazard ratio for cardiovascular events with HRT vs placebo,clinical-meta-analysis,unpublished
+334,Reversal-DECREASE,"The DECREASE Fraud: 800,000 Deaths from Fabricated Evidence for Perioperative Beta-Blockers",clinical  |  ESTIMAND: Estimated excess mortality from fraudulent guideline recommendations,clinical-meta-analysis,unpublished
+335,Reversal-Magnesium-ISIS4,Magnesium in Myocardial Infarction: When Seven Consistent Small Trials Were Contradicted by One Mega-Trial,clinical  |  ESTIMAND: Odds ratio for mortality with IV magnesium vs control in MI,clinical-meta-analysis,unpublished
+336,Reversal-Aprotinin-BART,"Aprotinin and the BART Trial: 15,000 Deaths from Ignoring Confounded Observational Evidence",clinical  |  ESTIMAND: Relative risk of mortality with aprotinin in cardiac surgery,clinical-meta-analysis,unpublished
+337,Reversal-Vioxx-VIGOR,"Vioxx and the VIGOR Trial: Selective Reporting, Hidden Heart Attacks, and the Post-Hoc Data Cutoff",clinical  |  ESTIMAND: Relative risk of myocardial infarction with rofecoxib vs naproxen,clinical-meta-analysis,unpublished
+338,Reversal-Rosiglitazone-RECORD,Rosiglitazone and RECORD: When a Safety Study Was Designed to Miss the Safety Signal,clinical  |  ESTIMAND: Odds ratio for myocardial infarction with rosiglitazone vs control,clinical-meta-analysis,unpublished
+339,Reversal-ACCORD,ACCORD: When Tighter Glucose Control Killed More Patients Than It Saved,clinical  |  ESTIMAND: Hazard ratio for mortality with intensive vs standard glucose control,clinical-meta-analysis,unpublished
+340,Reversal-Knee-Arthroscopy,Knee Arthroscopy for Osteoarthritis: A $3 Billion Placebo Unmasked by Sham Surgery Trials,clinical  |  ESTIMAND: Mean difference in pain and function scores between real and sham arthroscopy,clinical-meta-analysis,unpublished
+341,Reversal-Paroxetine-Study329,Study 329 and Paroxetine: How Ghost-Written Publications Manufactured Evidence for an Ineffective Drug,clinical  |  ESTIMAND: Efficacy of paroxetine vs placebo for adolescent depression,clinical-meta-analysis,unpublished
+342,Reversal-Reboxetine,Reboxetine: The Antidepressant Where 74 Percent of Patient Data Was Hidden from Publication,clinical  |  ESTIMAND: Treatment effect of reboxetine vs placebo when all trial data included,clinical-meta-analysis,unpublished
+343,Reversal-Albumin-SAFE,Albumin in Critical Care: When 28 Consistent Small Trials Showed 68 Percent Harm That a Mega-Trial Disproved,clinical  |  ESTIMAND: Relative risk of mortality with albumin vs saline in critical illness,clinical-meta-analysis,unpublished
+486,advanced-nma-pooling,Advanced NMA Pooling Toolkit with Bias Adjustment and Survival Extensions,methods  |  ESTIMAND: Bias-adjusted treatment effect (log-odds),methods-paper,unpublished
+487,Pairwise70,MAFI: Meta-Analytic Fragility Index Across 501 Cochrane Pairwise Reviews,methods  |  ESTIMAND: Median MAFI fragility index (IQR),methods-paper,unpublished
+344,AlBurhan,Al-Burhan — Universal Evidence Orchestrator,Meta-Analysis Pipeline | ESTIMAND: Multi-Engine Evidence Audit Quality,tool-infrastructure,unpublished
+345,AfricaForecast,AfricaForecast: Causal Health Forecasting for 54 African Countries 2026-2036,methods  |  ESTIMAND: Country-level health indicator forecast (BHVAR posterior mean and 95% credible interval),methods-paper,unpublished
+346,EnrollmentOracle,EnrollmentOracle: ML Prediction of Clinical Trial Enrollment Speed from ClinicalTrials.gov Metadata,"methods  |  ESTIMAND: Predicted enrollment duration (months, 95% prediction interval)",methods-paper,unpublished
+347,HTNPipeline,HyperAtlas: A Bayesian Hypertension Prevalence Pipeline with WHO and World Bank Data Integration,methods  |  ESTIMAND: National hypertension prevalence posterior mean and 95% credible interval,methods-paper,unpublished
+349,ProtocolEvolution,ProtocolEvolution: Mapping Temporal Patterns of Clinical Trial Protocol Amendments Across Therapeutic Areas,methods  |  ESTIMAND: Amendment rate per trial-year (count with 95% CI),methods-paper,unpublished
+350,TrialAtlas,"TrialAtlas: A Network Visualization of Global Clinical Trial Connectivity Across Sites, Sponsors, and Conditions",methods  |  ESTIMAND: Network centrality and community structure metrics,methods-paper,unpublished
+351,E156,E156: A Compact Evidence-Synthesis Micro-Paper Format for Standardized Reporting of Meta-Analytic Results,methods  |  ESTIMAND: Format compliance rate (proportion meeting 7-sentence 156-word constraint),methods-paper,unpublished
+354,ProtocolEvolutionDynamics,Protocol Evolution Dynamics: Tracking Adaptations in ClinicalTrials.gov,novel  |  ESTIMAND: Trial Adaptation Frequency (TAF),other,unpublished
+355,SAARCe156Students,SAARC Clinical Trial Equity: 190 E156 Micro-Papers for Ziauddin Medical University,methods  |  ESTIMAND: Gini coefficient of trial distribution,methods-paper,unpublished
+356,IHMEDataLakehouse,IHME Data Lakehouse: Registry-Driven GBD Pipeline for 6 Domains,methods  |  ESTIMAND: Dataset coverage (N parquet datasets),methods-paper,unpublished
+357,CardioSynth,CardioSynth: Living Cardiology Evidence Synthesis Engine,methods  |  ESTIMAND: Pooled risk ratio (MACE),methods-paper,unpublished
+358,SuperTransportabilityMap,SuperTransportabilityMap: Global Generalization of ClinicalTrials.gov Evidence via Multi-Lake Demographic Calibration,methods  |  ESTIMAND: Transportability Index (cross-regional generalization probability),methods-paper,unpublished
+359,LivingMA-PFA-AF,PFA in AF: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+360,LivingMA-Watchman-Amulet,Watchman vs Amulet LAAO: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+361,LivingMA-Tricuspid-TEER,Tricuspid TEER: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+362,LivingMA-Inclisiran,Inclisiran siRNA PCSK9: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+364,LivingMA-Semaglutide-HFpEF,Semaglutide in HFpEF: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+365,LivingMA-Leadless-Pacing,Leadless Cardiac Pacing: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: HR,methods-paper,unpublished
+366,LivingMA-CSP,CSP vs BiV-CRT: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+367,LivingMA-Coronary-IVL,Coronary IVL: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+369,LivingMA-CTFFR,CT-FFR Guided Revasc: A Transparent Living Meta-Analysis v13,methods  |  ESTIMAND: RR,methods-paper,unpublished
+373,modern-stats-global-health,"Modern Non-Parametrics in Global Health: Integrating IHME, WHO, World Bank, and ClinicalTrials.gov Data",methods  |  ESTIMAND: Non-parametric effect estimate (delta from linear baseline),methods-paper,unpublished
+488,DCB_PAD_LivingMeta,Drug-Coated Balloons for Femoropopliteal PAD: A Living Systematic Review,clinical  |  ESTIMAND: RR of primary patency at 12 months,clinical-meta-analysis,unpublished
+489,Orforglipron_LivingMeta,Orforglipron for Cardiometabolic Disease: A Living Systematic Review,clinical  |  ESTIMAND: HbA1c change and percent body weight change,clinical-meta-analysis,unpublished
+377,RetractionImpact,Retraction Fragility Index -- Quantifying Meta-Analysis Robustness to Study Retractions,meta-scientific  |  ESTIMAND: RFI (minimum retractions to reverse significance),meta-research-empirical,unpublished
+378,LivingNMA,Browser-Based Living Network Meta-Analysis with Consistency Assessment and P-Scores,methodological  |  ESTIMAND: Network treatment effects via graph-theoretic WLS,methods-paper,unpublished
+490,AuthorshipLedger,AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching full DOI-registrable state,methods-paper,unpublished
+491,CitationWorkbench,CitationWorkbench: Citation Packet Generation for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching high citation readiness,methods-paper,unpublished
+492,DrivePulse,DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of specific indexed paths exposing git repositories,methods-paper,unpublished
+379,EvidenceBridgeFHIR,EvidenceBridgeFHIR: Exporting the C Drive Evidence Portfolio into Citation and ArtifactAssessment Bundles,methods  |  ESTIMAND: ArtifactAssessment coverage across exported projects,methods-paper,unpublished
+380,EvidenceCrate,EvidenceCrate: Packaging the C Drive Research Portfolio as a Static Metadata Crate,methods  |  ESTIMAND: explicit lifecycle coverage in packaged entities,methods-paper,unpublished
+381,FAIRPortfolio,FAIRPortfolio: Proxy Maturity Scoring for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of projects scoring at least 70/100 on the FAIR-style proxy scale,methods-paper,unpublished
+382,PortfolioCatalog,PortfolioCatalog: Public Discovery Layer for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching high discoverability coverage,methods-paper,unpublished
+383,PortfolioOps,PortfolioOps: Operational Fusion for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of projects classified as operationally backed,methods-paper,unpublished
+384,ProvenanceAtlas,ProvenanceAtlas: Static Lineage Graphing for the C Drive Evidence Portfolio,methods  |  ESTIMAND: explicit lifecycle coverage in the provenance graph,methods-paper,unpublished
+385,ResearchConstellation,Research Constellation: A Live Portfolio Status Atlas for the C Drive Evidence Stack,methods  |  ESTIMAND: explicit status coverage,methods-paper,unpublished
+386,SubmissionCockpit,SubmissionCockpit: Editorial Release Control for the C Drive Research Portfolio,methods  |  ESTIMAND: proportion of indexed projects currently carrying resolved submission-ready status,methods-paper,unpublished
+387,TriageWorkbench,TriageWorkbench: Rule-Based Lifecycle Freezing for the Unresolved Portfolio Queue,methods  |  ESTIMAND: non-triage recommendation coverage across unresolved rows,methods-paper,unpublished
+388,GlobalTransportabilityAtlas,Global Transportability Atlas: Assessing Cardiovascular/Diabetes Prognostic Models using GBD 2023 Covariates,clinical/methods  |  ESTIMAND: O:E Ratio and Recalibrated HR,clinical-meta-analysis,unpublished
+390,EvidenceMapPro,EvidenceMapPro: Interactive Evidence Gap Matrix and Bubble Chart Generator,methods  |  ESTIMAND: Evidence Coverage Percentage,methods-paper,unpublished
+391,MultivarMA,MultivarMA: Browser Multivariate Meta-Analysis for Correlated Outcomes,methods  |  ESTIMAND: Pooled Effect Vector (2-3 outcomes),methods-paper,unpublished
+392,CostEffMA,CostEffMA: Browser Cost-Effectiveness Meta-Analysis with CEAC and NMB Pooling,methods  |  ESTIMAND: Pooled Net Monetary Benefit and ICER,methods-paper,unpublished
+393,EcoBiasMA,EcoBiasMA: Browser Ecological Bias Detection and Correction in Meta-Analysis,methods  |  ESTIMAND: Ecological Bias (beta_B - beta_W),methods-paper,unpublished
+394,TargetTrialMA,TargetTrialMA: Browser Meta-Analysis of RCTs and Target Trial Emulations,methods  |  ESTIMAND: Stratified Pooled HR (RCT vs TTE),methods-paper,unpublished
+395,PlatformTrialMA,PlatformTrialMA: Browser Meta-Analysis for Adaptive Platform Trials with Shared Controls,methods  |  ESTIMAND: Pooled HR with Shared-Control Covariance,methods-paper,unpublished
+397,IPDNMA,IPDNMA: Browser Individual Patient Data Network Meta-Analysis,methods  |  ESTIMAND: NMA Pooled Effect with Treatment-Covariate Interaction,methods-paper,unpublished
+398,FederatedMA,FederatedMA: Browser Privacy-Preserving Federated Meta-Analysis,methods  |  ESTIMAND: Differentially Private Pooled Effect,methods-paper,unpublished
+399,FigureEngine,FigureEngine: Publication-Quality Meta-Analysis Figure Generator,tool  |  ESTIMAND: N/A (visualization tool),tool-infrastructure,unpublished
+400,ZenodoPipeline,ZenodoPipeline: Automated Zenodo DOI Publishing for Research Repositories,tool  |  ESTIMAND: N/A (infrastructure tool),tool-infrastructure,unpublished
+401,WHODataLakehouse,WHO Data Lakehouse: Global Health Observatory and Expenditure Data Pipeline,tool  |  ESTIMAND: N/A (data pipeline),tool-infrastructure,unpublished
+414,LivingMAPortfolio,Living Evidence Portfolio: 57 Reproducible Single-File Meta-Analyses Across 12 Specialties,tool  |  ESTIMAND: N/A (portfolio benchmark validation),tool-infrastructure,unpublished
+493,EvidenceCollapsar,The Evidence Collapsar: A Quantum Meta-Analysis Engine,methods  |  ESTIMAND: Quantum-Collapsed Hazard Ratio and Von Neumann Entropy,methods-paper,unpublished
+494,TDA-Meta,Topological Evidence Gaps: Identifying Structural Voids in Global Medical Research,methods  |  ESTIMAND: Topological Isolation Score (0-100) via Persistent Homology,methods-paper,unpublished
+495,RetractionGravity,Retraction Gravity: Portfolio Impact Mapping of Clinical Evidence Failures,methods  |  ESTIMAND: Attenuated Reliability Score via DAG Propagation,methods-paper,unpublished
+496,TheAlephEngine,The Aleph Engine: A Grand Unified Meta-Analysis Equation (GUME),"methods  |  ESTIMAND: Aleph Score (Universal Truth Index, 0-100)",methods-paper,unpublished
+450,meta-paradigm-shift,Meta-Paradigm Shift: The Omega-Tier Evidence Operating System,methods  |  ESTIMAND: Manifold Integrity Score (0-1),methods-paper,unpublished
+451,archaic-dta,Archaic Diagnostic Accuracy: Evidence Synthesis in a Pre-Hierarchical World,simulation  |  ESTIMAND: SROC Area Under Curve (Archaic vs. Modern),other,unpublished
+452,ems-dta,Evidence Manifold Spline (EMS): A Geometric Alternative to Hierarchical Synthesis,methods  |  ESTIMAND: Local Curvature Barycenter (EMS AUC),methods-paper,unpublished
+453,gds-dta,Grand Diagnostic Synthēsis (GDS): Integrating Archaic-Future DTA Inventions,methods  |  ESTIMAND: Diagnostic Entropy Gain (GDS vs. Moses),methods-paper,unpublished
+454,paradigm-battle-dta,Paradigm Battle: Comparing Modern Hierarchical Models with Archaic-Future Inventions,methods  |  ESTIMAND: Robustness Premium (Inventions vs. Modern),methods-paper,unpublished
+455,mpet-dta,Multi-Persona Evidence Tribunal (MPET): A Cross-Paradigm Review Methodology,methods  |  ESTIMAND: Consensus Manifold Stability (0-1),methods-paper,unpublished
+456,eh-dta,Evidence Horizon (EH-DTA): An Autonomous 'Omega-Tier' Operating System,methods  |  ESTIMAND: Exergy Gain (EH-DTA vs. Unified Synthesis),methods-paper,unpublished
+457,sl12-dta,Stat-Lab Twelve (SL12-DTA): Evaluating Journal-Sourced Statistical Probes,methods  |  ESTIMAND: Statistical Information Gain (SL12 vs. Archaic/Modern),methods-paper,unpublished
+458,aleph-point-synthesis,Aleph-Point Synthēsis (APS): The Definitive Diagnostic Meta-Analysis Methodology,"methods  |  ESTIMAND: Aleph Score (Universal Truth Index, 0-100)",methods-paper,unpublished
+459,aps-methodologist-review,APS Methodologist Review (APS-MR): A Multi-Persona Architectural Audit,methods  |  ESTIMAND: Architectural Stability Index (0-1),methods-paper,unpublished
+460,gma-dta,Global Manifold Audit (GMA-DTA): Massive-Scale Validation of APS v2,methods  |  ESTIMAND: Mean Robustness Premium (APS vs. Modern),methods-paper,unpublished
+461,pem-dta,Petabyte Evidence Manifold (PEM-DTA): Ultra-Scale Evidence Stress-Testing,"methods  |  ESTIMAND: Temporal Robustness Index (TRI, 0-1)",methods-paper,unpublished
+462,pem-methodologist-review,PEM Methodologist Review (PEM-MR): The 'End-of-History' Architectural Audit,"methods  |  ESTIMAND: Temporal Stability Coefficient (TSC, 0-1)",methods-paper,unpublished
+463,ees-dta,Exascale Evidence Singularity (EES-DTA): Reaching the Absolute Limit,"methods  |  ESTIMAND: Singularity Convergence Rate (SCR, 0-1)",methods-paper,unpublished
+464,ees-methodologist-review,EES Methodologist Review (EES-MR): The 'Omega-Point' Architectural Audit,"methods  |  ESTIMAND: Singularity Integrity Index (SII, 0-1)",methods-paper,unpublished
+465,aleph-point-synthesis-final,Aleph-Point Synthēsis (APS): Reaching the Singularity of Evidence,methods  |  ESTIMAND: Theoretical Horizon Limit (SCR 0.6400),methods-paper,unpublished
+473,DTA_Pro_v2,DTA Meta-Analysis Pro: A Browser-Based Tool for Diagnostic Test Accuracy Evidence Synthesis,methods  |  ESTIMAND: Pooled sensitivity and specificity,methods-paper,unpublished
+474,Fatiha,SYNTHESIS: A 7-Layer Verification Framework for Detecting Fragile Meta-Analyses,methods  |  ESTIMAND: Coverage probability,methods-paper,unpublished
+475,HTA_Artifact_Standard_v2,HTA Artifact Standard: An Open-Source Platform with 41 Analytical Engines for Health Technology Assessment,"methods  |  ESTIMAND: ICER, NMB, and pooled treatment effects",methods-paper,unpublished
+476,ma-workbench,MA Workbench: A Browser-Native Meta-Analysis Suite with Optional WebR Validation Against metafor,"methods  |  ESTIMAND: Four-decimal-place parity of pooled estimate, SE, 95% CI, tau-squared, I-squared, and Q between browser and metafor",methods-paper,unpublished
+478,nma-pro-v2,NMA Pro: A Browser-Based Network Meta-Analysis Platform with Integrated Rapid Review,methods  |  ESTIMAND: Pooled treatment effect (SMD/OR/RR),methods-paper,unpublished
+479,shahzaib-icu-landscape,ICU Hemodynamic Trial Landscape: A Living Evidence Map,methods  |  ESTIMAND: Sensitivity,methods-paper,unpublished
+480,TruthCert_PairwisePro_v2,TruthCert-PairwisePro: A Browser-Based Pairwise Meta-Analysis Engine with Seven Heterogeneity Estimators,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+481,sglt2i-hfpef-demo,SGLT2i in HFpEF: a browser-native benchmark reproduction,"methods  |  ESTIMAND: pooled hazard ratio (primary composite, log-HR)",methods-paper,unpublished
+482,precision-sweep-e156,Precision floor for aggregate-data reproduction of fixed-effects 2-trial pools,methods  |  ESTIMAND: median |delta| (pooled-HR reproduction error per dp),methods-paper,unpublished
+483,dissonance-field-synthesis,Dissonance Field Synthesis: A Non-Pooling Evidence-Synthesis Technique with Pharmacology Conservation Laws (POC in MRA-HFpEF),methods  |  ESTIMAND: leave-one-out predicted log-hazard-ratio for FINEARTS-HF,methods-paper,unpublished
+557,nur-pce,NUR-PCE — Personalised Counterfactual Engine for cardiorenal trials (POC v0.1),methods-poc  |  ESTIMAND: patient-conditional posterior over hazard ratio for finerenone vs placebo on the composite cardiorenal endpoint,methods-paper,unpublished
+558,responder-floor-atlas,Responder Floor Atlas: Implied Minimum Important Differences in Cochrane Responder-Rate Analyses Exceed Canonical Thresholds by 1.2- to 3.3-Fold,methods  |  ESTIMAND: ratio of empirical to canonical MID per patient-reported-outcome instrument,methods-paper,unpublished
+486,arac,ARAC: An End-to-End African Representation Atlas of Cochrane with Per-Trial Verification UI,methods  |  ESTIMAND: Representation Gap Score per Cochrane MA × per Tier (S/A/P),methods-paper,unpublished
+549,mahmood726-cyber.github.io,Evidence Synthesis Portfolio Site: Reproducibility Capsule,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+559,trial-truthfulness-atlas,Trial Truthfulness Atlas: Five Upstream Integrity Flags Between CT.gov Registration and Cochrane Meta-Analysis Inputs,methods  |  ESTIMAND: per-trial integrity-flag rate inside cardiology Cochrane MAs,methods-paper,unpublished
+560,outcome-switching-ma-hf,Outcome-Switching in Heart-Failure Phase 3 Trials: CT.gov v2 API Misses 100% of Initial-vs-Current Primary-Outcome Drift,methods  |  ESTIMAND: per-trial primary-outcome-drift rate between v1 and current registration,methods-paper,unpublished
+679,tiba (2026-05-06),African evidence is hidden from existing synthesis infrastructure: a calibration study and a proposed framework (Tiba),methods note  |  ESTIMAND: Algorithm gate2 sensitivity (NCT-bridge) for PACTR-registered African trial publications; Cohen kappa for LLM-based geographic classifier agreement,methods-paper,unpublished
+680,legacy-mahmood789-archive (2026-05-09),"Consolidating a legacy GitHub portfolio: 66-repo audit, commit, and migration from mahmood789 to mahmood726-cyber",operations note (internal portfolio infrastructure; not intended for journal submission) | ESTIMAND: fraction of legacy 789 repos safely migratable to active cyber account,tool-infrastructure,unpublished
+1747,adaptsim,AdaptSim: A Browser-Based Simulator for Adaptive Group-Sequential Trial Design Matching rpact to Four Decimal Places,methods  |  ESTIMAND: Boundary computation accuracy vs rpact (decimal places of agreement),methods-paper,unpublished
+1748,africa-rct,AfricaRCT Observatory: Reproducibility Capsule for African Trial-Methods Audits,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+1749,al-mizan,Al-Mizan: An Evidence Equipoise Monitor for Detecting When the Balance of Evidence Has Tipped,methods  |  ESTIMAND: Cumulative Z-statistic crossing Trial Sequential Analysis boundary,methods-paper,unpublished
+1750,AlBurhan,Al-Burhan — Universal Evidence Orchestrator,Meta-Analysis Pipeline  |  ESTIMAND: Multi-Engine Evidence Audit Quality,tool-infrastructure,unpublished
+1751,asa,Asa: A Seven-Method Forensic Data Integrity Screener for Clinical Trial Datasets,methods  |  ESTIMAND: Composite forensic integrity score (0-100),methods-paper,unpublished
+1752,authorship-ledger,AuthorshipLedger: DOI Deposit and Contributor Resolution for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching full DOI-registrable state,methods-paper,unpublished
+1753,autograde-tool,AutoGRADE: Algorithmic Certainty of Evidence Assessment for Meta-Analytic Outputs,methods  |  ESTIMAND: GRADE certainty rating (High/Moderate/Low/Very Low),methods-paper,unpublished
+1754,bayesianma,BayesianMA: Browser-Based Bayesian Random-Effects Meta-Analysis with Prior Sensitivity Analysis,methods  |  ESTIMAND: Posterior mean and 95% credible interval,methods-paper,unpublished
+1755,benfordma,Benford Screening of 1.2 Million Meta-Analytic Values Finds No Corpus-Level Digit Anomaly,methods  |  ESTIMAND: Mean absolute deviation (MAD),methods-paper,unpublished
+1756,bias-forensics,The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses,methods  |  ESTIMAND: Discordance rate,methods-paper,unpublished
+1757,cardio-trial-audit,"Structural Flaw Prevalence in 52,765 Cardiology Trials: An Automated Registry Audit",methods  |  ESTIMAND: Structural flaw prevalence,methods-paper,unpublished
+1758,cardiooracle,CardioOracle: Predicting Cardiovascular Trial Outcomes Using Bayesian Historical Borrowing and Design Feature Analysis (AUC 0.787),methods  |  ESTIMAND: AUC for trial outcome prediction,methods-paper,unpublished
+1759,cbamm-lfa,CBAMM: Collaborative Bayesian Adaptive Meta-Analysis with Population Transportability and Sequential Monitoring,methods  |  ESTIMAND: Transported risk ratio (95% CI),methods-paper,unpublished
+1760,citation-workbench,CitationWorkbench: Citation Packet Generation for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching high citation readiness,methods-paper,unpublished
+1761,clinical-ma,SGLT2 Inhibitors and Heart Failure,pairwise  |  ESTIMAND: Hazard ratio for heart failure hospitalisation or cardiovascular death,clinical-meta-analysis,unpublished
+1762,cochrane-data-extractor,Cochrane Data Extractor: Automated Dataset Harvesting from Cochrane Systematic Reviews,methods  |  ESTIMAND: Risk ratio,methods-paper,unpublished
+1763,component-nma,Component NMA: A Browser-Based Tool for Additive Component Network Meta-Analysis,methods  |  ESTIMAND: Component effect estimates (log-OR/SMD),methods-paper,unpublished
+1764,conformal-ma,Conformal Prediction Intervals for Meta-Analysis: Distribution-Free Coverage Across 307 Cochrane Reviews,methods  |  ESTIMAND: Prediction interval coverage probability,methods-paper,unpublished
+1765,cres,CRES: Browser-Based Cardiorenal Evidence Synthesis with Integrated Meta-Analysis and Health-Economic Modelling,methods  |  ESTIMAND: Hazard ratio,methods-paper,unpublished
+1766,ctgov-black-box-sponsor-repeaters,CT.gov Black-Box Sponsor Repeaters,methods  |  ESTIMAND: Black-box stock and rate among named lead sponsors in the older-study CT.gov universe,methods-paper,unpublished
+1767,ctgov-black-box-trials,CT.gov Black-Box Trials,methods  |  ESTIMAND: Black-box trial stock and rate among eligible older CT.gov studies,methods-paper,unpublished
+1768,ctgov-condition-text-asymmetry,CT.gov Condition Text Asymmetry,"methods  |  ESTIMAND: Condition-family text asymmetry, defined as description-only gaps minus primary-only gaps",methods-paper,unpublished
+1769,ctgov-country-excess-watchlist,CT.gov Country Excess Watchlist,methods  |  ESTIMAND: Adjusted excess no-results and ghost stock across country-linked study portfolios with at least 500 linked studies,methods-paper,unpublished
+1770,ctgov-description-black-box-repeaters,CT.gov Description-Black-Box Repeaters,"methods  |  ESTIMAND: Description black-box stock among older studies with no results, no linked publication, no detailed description, and no primary outcome description",methods-paper,unpublished
+1771,ctgov-publication-index-gap,CT.gov Publication Index Gap,methods  |  ESTIMAND: Weighted exact-ID external publication rescue among older CT.gov no-link studies,methods-paper,unpublished
+1772,ctgov-publication-undercount-audit,CT.gov Publication Undercount Audit,methods  |  ESTIMAND: Weighted PubMed NCT-match rate among older CT.gov records lacking linked publications,methods-paper,unpublished
+1773,ctgov-search-strategies,CT.gov Search Strategy Tool: Systematic Review Search Validation with 99 Percent API Recall,methods  |  ESTIMAND: API recall,methods-paper,unpublished
+1774,ctgov-sponsor-ancient-backlog,CT.gov Sponsor Ancient Backlog,methods  |  ESTIMAND: Ancient-backlog stock among older closed interventional studies unresolved at least ten overdue years beyond the two-year mark,methods-paper,unpublished
+1775,ctgov-sponsor-backlog-concentration,CT.gov Sponsor Backlog Concentration,methods  |  ESTIMAND: Share of the 2-year missing-results backlog held by top sponsor slices,methods-paper,unpublished
+1776,dosehtml,Dose Response Pro: Browser-Based Dose-Response Meta-Analysis Matching R Accuracy,methods  |  ESTIMAND: Dose-response trend coefficient,methods-paper,unpublished
+1777,dpma,Dirichlet Process Meta-Analysis,methods  |  ESTIMAND: summary effect,methods-paper,unpublished
+1778,drive-pulse,DrivePulse: Live Folder Telemetry for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of specific indexed paths exposing git repositories,methods-paper,unpublished
+1779,dta-pro-v2,DTA Meta-Analysis Pro: A Browser-Based Tool for Diagnostic Test Accuracy Evidence Synthesis,methods  |  ESTIMAND: Pooled sensitivity and specificity,methods-paper,unpublished
+1780,enma-snma,Ensemble and Spectral Network Meta-Analysis: Novel Inconsistency-Robust Methods,methods  |  ESTIMAND: Coverage improvement (percentage points),methods-paper,unpublished
+1781,evidence-board,Evidence Board: A Browser-Based Structured Note System for Systematic Review Screening,methods  |  ESTIMAND: Proportion of high-confidence notes,methods-paper,unpublished
+1782,evidence-bridge-fhir,EvidenceBridgeFHIR: Exporting the C Drive Evidence Portfolio into Citation and ArtifactAssessment Bundles,methods  |  ESTIMAND: ArtifactAssessment coverage across exported projects,methods-paper,unpublished
+1783,evidence-crate,EvidenceCrate: Packaging the C Drive Research Portfolio as a Static Metadata Crate,methods  |  ESTIMAND: explicit lifecycle coverage in packaged entities,methods-paper,unpublished
+1784,evidence-half-life,The Evidence Half-Life: 52% of Meta-Analyses Never Reach Analytical Stability,methods  |  ESTIMAND: Never-stabilized rate,methods-paper,unpublished
+1785,evidence-quality-concordance,The Cochrane Quality Concordance: Six Orthogonal Dimensions of Evidence Reliability,methods  |  ESTIMAND: Mean absolute pairwise correlation,methods-paper,unpublished
+1786,evidence-tribunal,The Evidence Tribunal: Adversarial Specification Search Across 403 Cochrane Meta-Analyses,methods  |  ESTIMAND: Adversarial verdict (Unanimous/Split),methods-paper,unpublished
+1787,evidencehalflife,The Evidence Half-Life: 52% of Meta-Analyses Never Reach Analytical Stability,methods  |  ESTIMAND: Never-stabilized rate,methods-paper,unpublished
+1788,fair-portfolio,FAIRPortfolio: Proxy Maturity Scoring for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of projects scoring at least 70/100 on the FAIR-style proxy scale,methods-paper,unpublished
+1789,fatiha,SYNTHESIS: A 7-Layer Verification Framework for Detecting Fragile Meta-Analyses,methods  |  ESTIMAND: Coverage probability,methods-paper,unpublished
+1790,focus-studio,Focus Studio: A Browser-Based Pomodoro Timer with Task Management and Session Logging,methods  |  ESTIMAND: Median session length,methods-paper,unpublished
+1791,fragility-atlas,The Fragility Atlas: Multiverse Analysis of 403 Cochrane Meta-Analyses Reveals 58% Are Sensitive to Analyst Choices,methods  |  ESTIMAND: Robustness score (percent agreement across specifications),methods-paper,unpublished
+1792,fragilityindex,Fragility Index Calculator: Browser-Based Statistical Fragility for RCTs,methods  |  ESTIMAND: Fragility Index (FI),methods-paper,unpublished
+1793,global-transportability-atlas,Global Transportability Atlas,methods  |  ESTIMAND: Robustness Score,methods-paper,unpublished
+1794,grma,Grey Relational Meta-Analysis: A Robust Pooling Method with Redescending Effect Guard,methods  |  ESTIMAND: Bias reduction (percent),methods-paper,unpublished
+1796,hfpef-registry-synth,Registry-First Transparency-Adjusted Synthesis for HFpEF Clinical Trials,methods  |  ESTIMAND: Reporting debt proportion,methods-paper,unpublished
+1797,hta-artifact-standard-v2,HTA Artifact Standard: An Open-Source Platform with 41 Analytical Engines for Health Technology Assessment,"methods  |  ESTIMAND: ICER, NMB, and pooled treatment effects",methods-paper,unpublished
+1798,hta-evidence-integrity,Evidence Integrity Suite for Multi-Layered Health Technology Assessment of Cochrane Reviews,methods  |  ESTIMAND: Information Adequacy Index,methods-paper,unpublished
+1799,hta-transportability,Clinical Transportability Engine for Quantifying Efficacy Leakage in Health Technology Assessment,methods  |  ESTIMAND: Transportability penalty,methods-paper,unpublished
+1800,hta-unified-intelligence,HTA Unified Intelligence System: Self-Correcting Evidence Synthesis with Triple-Guard Ensemble Pooling,"methods  |  ESTIMAND: Unified Decision Score (UDS, 0-100)",methods-paper,unpublished
+1801,indirectcomparison,Indirect Treatment Comparison Calculator: Browser-Based Bucher Method with Coherence Testing,methods  |  ESTIMAND: Indirect log odds ratio (OR),methods-paper,unpublished
+1802,ipd-meta-pro,IPD Meta-Analysis Pro: A Browser-Based Platform for Individual Participant Data Evidence Synthesis,methods  |  ESTIMAND: Pooled IPD treatment effect,methods-paper,unpublished
+1803,ipd-qma,IPD-QMA: Detecting Heterogeneous Treatment Effects via Quantile Meta-Analysis of Individual Participant Data,methods  |  ESTIMAND: Quantile treatment effect,methods-paper,unpublished
+1804,kanban-lab,Kanban Lab: A Persistent Browser-Based Drag-and-Drop Board for Research Task Management,methods  |  ESTIMAND: Median card transition time,methods-paper,unpublished
+1805,kmdigitizer,KMDigitizer: Browser-Based IPD Reconstruction from Published Kaplan-Meier Curves,methods  |  ESTIMAND: Hazard ratio (HR),methods-paper,unpublished
+1806,living-meta,Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis,methods  |  ESTIMAND: Pooled treatment effect with sequential monitoring,methods-paper,unpublished
+1807,ma-power-calc,MA Power: A Browser-Based Power and Sample Size Calculator for Random-Effects Meta-Analysis,methods  |  ESTIMAND: Statistical power for planned meta-analysis,methods-paper,unpublished
+1808,ma-workbench,MA Workbench: A Browser-Native Meta-Analysis Suite with Optional WebR Validation Against metafor,"methods  |  ESTIMAND: Four-decimal-place parity of pooled estimate, SE, 95% CI, tau-squared, I-squared, and Q between browser and metafor",methods-paper,unpublished
+1809,maworkbench,Meta-Analysis Workbench: A Central Hub for 49 Evidence Synthesis Tools,methods  |  ESTIMAND: Tool count and coverage,methods-paper,unpublished
+1810,mcidmapper,MCID Mapper: Clinical Significance Assessment for Meta-Analytic Effect Estimates,methods  |  ESTIMAND: MCID classification zone,methods-paper,unpublished
+1812,mes,Multiverse Evidence Synthesis: Robustness Classification of 403 Cochrane Meta-Analyses Across 648 Analytical Specifications,methods  |  ESTIMAND: Concordance score (C_sig) across specification multiverse,methods-paper,unpublished
+1814,meta-genome,The Meta-Analysis Genome: Unsupervised Phenotyping of 307 Cochrane Reviews,empirical  |  ESTIMAND: Cluster archetype (4 types),meta-research-empirical,unpublished
+1815,meta-repair,MetaRepair: Automated Diagnosis and Correction of Meta-Analysis Pathologies,empirical  |  ESTIMAND: Corrected pooled effect with uncertainty decomposition,meta-research-empirical,unpublished
+1816,meta-reproducer,Computational Reproducibility Audit of 501 Cochrane Meta-Analyses,methods  |  ESTIMAND: Prevalence,methods-paper,unpublished
+1817,metaaudit,MetaAudit: Reproducibility Capsule for Automated Meta-Analytic Quality Audits,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+1818,metafolio,MetaFolio: Efficiency Frontier Subset Enumeration for Meta-Analysis Heterogeneity Decomposition,methods  |  ESTIMAND: I-squared reduction from dominated study exclusion,methods-paper,unpublished
+1819,metaguard,MetaGuard: A Browser-Based Robust and Forensic Meta-Analysis Toolkit,methods  |  ESTIMAND: Outlier-adjusted pooled effect via DPD,methods-paper,unpublished
+1820,metamethods,MetaMethods: Six Advanced Statistical Methods for Meta-Analysis in a Dependency-Free Python Module,methods  |  ESTIMAND: E-value for unmeasured confounding,methods-paper,unpublished
+1821,metaregression,MetaRegression Workbench: Browser-Based Mixed-Effects Meta-Regression with Permutation Tests,methods  |  ESTIMAND: Regression slope (R-squared),methods-paper,unpublished
+1822,metarep,MetaRep: Most Significant Cochrane Meta-Analyses Predict Only 32% Replication Probability When Heterogeneity Is Accounted For,methods  |  ESTIMAND: Replication probability (heterogeneity-aware predictive power),methods-paper,unpublished
+1823,metareproducer,MetaReproducer: Reproducibility Capsule for Cochrane Reproduction Audits,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+1824,metashift,MetaShift: Changepoint Detection Reveals Hidden Regime Shifts in Cumulative Meta-Analysis,methods  |  ESTIMAND: Changepoint detection rate,methods-paper,unpublished
+1825,metasprint-nma,MetaSprint NMA: Zero-Install Browser Network Meta-Analysis with In-Browser R Cross-Validation,methods  |  ESTIMAND: Treatment effect concordance,methods-paper,unpublished
+1826,metavoi,MetaVoI: Value of Information Analysis Directly from Meta-Analysis Output,methods  |  ESTIMAND: Expected Value of Perfect Information (EVPI),methods-paper,unpublished
+1827,methodssuite,Methods Suite: Eight Interoperable Browser-Based Meta-Analysis Tools with MAIF,methods  |  ESTIMAND: Cross-tool MAIF round-trip fidelity,methods-paper,unpublished
+1828,mlm501-submission,MLM501: A Multilevel Effects Table from 501 Cochrane Pairwise Meta-Analysis Reviews,data  |  ESTIMAND: Median effects per analysis (IQR),data-paper,unpublished
+1829,MultiverseMA,MultiverseMA: Browser-Based Multiverse Meta-Analysis Engine,methods  |  ESTIMAND: Specification concordance,methods-paper,unpublished
+1830,lvad-reliability-growth-ma,Left Ventricular Assist Device (LVAD) Iterative Design Evolution: A Systematic Evidence Synthesis and Reliability Growth Meta-Analysis of Pump Thrombosis and Adverse Event Cascades,methods  |  ESTIMAND: Adverse event growth exponent (Crow-AMSAA beta),methods-paper,unpublished
+1831,nma-dose-response-app,NMA Dose-Response Studio: Browser-Based Network Meta-Analysis with Dose-Response Modeling,methods  |  ESTIMAND: Pooled treatment effect with dose-response curve,methods-paper,unpublished
+1832,nma-pro-v2,NMA Pro: A Browser-Based Network Meta-Analysis Platform with Integrated Rapid Review,methods  |  ESTIMAND: Pooled treatment effect (SMD/OR/RR),methods-paper,unpublished
+1833,nmatransport,nmatransport: Reproducibility Capsule for Transported Network Meta-Analysis,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+1834,nntmapper,NNTMapper: Converting Meta-Analytic Effects into Population-Specific Number Needed to Treat with Heterogeneity Propagation,methods  |  ESTIMAND: Number Needed to Treat across baseline risk range,methods-paper,unpublished
+1835,outcome-reporting-bias,Outcome Reporting Bias Risk in 403 Cochrane Meta-Analyses: An Excess Significance Approach,meta-research  |  ESTIMAND: ORB risk prevalence,meta-research-empirical,unpublished
+1836,overlap-detector,Study Overlap Across 501 Cochrane Reviews: Quantifying Non-Independence for Meta-Research,meta-research  |  ESTIMAND: Corrected Covered Area (CCA),meta-research-empirical,unpublished
+1837,overlapmatrix,Overlap Matrix and Corrected Covered Area Calculator for Umbrella Reviews,methods  |  ESTIMAND: Corrected Covered Area (CCA),methods-paper,unpublished
+1838,pairwiseai,TruthCert PairwisePro: Browser-Based Pairwise Meta-Analysis with Regional Health-Economic Overlays,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+1839,poolingsuite,Pooling Suite: Browser-Based Meta-Analysis Engine with Ten Heterogeneity Estimators,methods  |  ESTIMAND: Pooled effect (tau-squared comparison),methods-paper,unpublished
+1840,portfolio-catalog,PortfolioCatalog: Public Discovery Layer for the C Drive Portfolio,methods  |  ESTIMAND: proportion of indexed projects reaching high discoverability coverage,methods-paper,unpublished
+1841,portfolio-ops,PortfolioOps: Operational Fusion for the C Drive Evidence Portfolio,methods  |  ESTIMAND: proportion of projects classified as operationally backed,methods-paper,unpublished
+1842,prediction-gap,The Prediction Gap: 70% of Significant Meta-Analyses Have Null-Spanning Prediction Intervals,methods  |  ESTIMAND: False reassurance rate,methods-paper,unpublished
+1843,priorlab,PriorLab: Interactive Bayesian Prior Elicitation for Meta-Analysis Using SHELF Methods,methods  |  ESTIMAND: Kolmogorov-Smirnov distance for distribution fit,methods-paper,unpublished
+1844,prisma-checker,PRISMA 2020 Compliance Checker: An Interactive Browser Tool for Systematic Review Reporting Assessment,methods  |  ESTIMAND: PRISMA 2020 compliance percentage,methods-paper,unpublished
+1845,prismaflow,PRISMA 2020 Flow Diagram Generator for Systematic Reviews,methods  |  ESTIMAND: PRISMA flow diagram compliance,methods-paper,unpublished
+1846,provenance-atlas,ProvenanceAtlas: Static Lineage Graphing for the C Drive Evidence Portfolio,methods  |  ESTIMAND: explicit lifecycle coverage in the provenance graph,methods-paper,unpublished
+1847,pubbiassuite,PubBias Suite: Comprehensive Publication Bias Assessment with 12 Methods and 3 Funnel Plot Variants,methods  |  ESTIMAND: Bias-adjusted pooled effect estimates,methods-paper,unpublished
+1848,pwcvR2,Precision-Weighted Cross-Validation: Reproducibility Capsule for Meta-Regression R-Squared Evaluation,methods  |  ESTIMAND: documentation proportion,methods-paper,unpublished
+1849,qualsynth,QualSynth: A Browser-Based Tool for Qualitative Evidence Synthesis with Meta-Ethnography and CERQual Assessment,methods  |  ESTIMAND: CERQual confidence rating,methods-paper,unpublished
+1850,rapidmeta-finerenone,Browser-Based Finerenone Meta-Analysis Validated Against R metafor,pairwise  |  ESTIMAND: HR,clinical-meta-analysis,unpublished
+1851,reduced-dose-doacs-vte-demo,Reduced-dose direct oral anticoagulants for extended venous thromboembolism prevention,pairwise  |  ESTIMAND: Risk ratio for major bleeding,clinical-meta-analysis,unpublished
+1852,registry-first-rct-meta,Registry-First Meta-Analysis: Quantifying Missing Cardiovascular Trial Evidence,methods  |  ESTIMAND: Evidence Coverage Ratio (trial-level),methods-paper,unpublished
+1853,retraction-gravity,Retraction Gravity,methods  |  ESTIMAND: Robustness Score,methods-paper,unpublished
+1854,rmst-meta,RMST Meta: A Browser Tool for Meta-Analysis of Restricted Mean Survival Time Beyond the Hazard Ratio,methods  |  ESTIMAND: Pooled RMST difference (months),methods-paper,unpublished
+1855,rob-assessor,RoB Assessor: A Browser-Based Risk of Bias Assessment Tool Implementing RoB 2 and ROBINS-I,methods  |  ESTIMAND: Domain-level and overall risk of bias judgments,methods-paper,unpublished
+1856,robma,ROBMA Reproducibility Capsule for Reviewer-Auditable Bayesian Model Averaging,methods  |  ESTIMAND: summary effect,methods-paper,unpublished
+1857,shahzaib-icu-landscape,ICU Hemodynamic Trial Landscape: A Living Evidence Map,methods  |  ESTIMAND: Sensitivity,methods-paper,unpublished
+1858,sheaf-nma,Sheaf-Theoretic Consistency Analysis for Network Meta-Analysis,methods  |  ESTIMAND: Global Inconsistency Index (GII),methods-paper,unpublished
+1859,softable,GRADE Summary of Findings Table Generator for Systematic Reviews,methods  |  ESTIMAND: GRADE certainty rating,methods-paper,unpublished
+1860,submission-cockpit,SubmissionCockpit: Editorial Release Control for the C Drive Research Portfolio,methods  |  ESTIMAND: proportion of indexed projects currently carrying resolved submission-ready status,methods-paper,unpublished
+1861,tda-ma,Topological Data Analysis for Meta-Analytic Heterogeneity Exploration,methods  |  ESTIMAND: Persistent homology (Betti numbers),methods-paper,unpublished
+1862,tda-meta,tda-meta,methods  |  ESTIMAND: Robustness Score,methods-paper,unpublished
+1863,tgep,Triple-Guard Ensemble Pooling for Bias-Sensitive Meta-Analysis,methods  |  ESTIMAND: Ensemble pooled effect estimate (MAE),methods-paper,unpublished
+1864,transportabilitycalc,Clinical Transportability Engine: A Composite Penalty Index for Meta-Analysis Generalizability,methods  |  ESTIMAND: Median CTE penalty index,methods-paper,unpublished
+1865,triage-workbench,TriageWorkbench: Rule-Based Lifecycle Freezing for the Unresolved Portfolio Queue,methods  |  ESTIMAND: non-triage recommendation coverage across unresolved rows,methods-paper,unpublished
+1866,truthcert-denominator,Denominator-First Bayesian Meta-Analysis Engine for Registry-Aware Evidence Synthesis,methods  |  ESTIMAND: False reassurance rate reduction,methods-paper,unpublished
+1867,truthcert-meta2,TruthCert Meta2: Governance Overlay for Denominator-First Meta-Analysis,methods  |  ESTIMAND: Mean difference,methods-paper,unpublished
+1868,truthcert-pairwisepro-v2,TruthCert-PairwisePro: A Browser-Based Pairwise Meta-Analysis Engine with Seven Heterogeneity Estimators,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+1869,truthcert1,TruthCert-MA: A Cross-Platform JavaScript Meta-Analysis Engine Validated Against R,methods  |  ESTIMAND: Pooled effect size (OR/RR/MD/SMD),methods-paper,unpublished
+1871,umbrellareview,"UmbrellaEngine: Browser-Based Umbrella Review with Overlap Quantification, Quality Assessment, and Discordance Analysis",methods  |  ESTIMAND: Corrected Covered Area (CCA) for study overlap,methods-paper,unpublished
+1872,value-based-hta,Multi-Criteria Evidence Synthesizer for Automated Benefit-Harm Trade-Off in Health Technology Assessment,methods  |  ESTIMAND: Net clinical benefit,methods-paper,unpublished
+1873,voicalculator,Value of Information Calculator for Meta-Analysis Decision Support,methods  |  ESTIMAND: EVPI and EVSI (dollars),methods-paper,unpublished
+1874,spec-collapse-atlas,Spec-Collapse Atlas: Pooling Specifications Manufactures False Robustness in 55% of 473 Cochrane Meta-Analyses,methods  |  ESTIMAND: False-robustness rate,methods-paper,unpublished
