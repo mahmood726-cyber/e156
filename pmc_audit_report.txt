@@ -1,0 +1,217 @@
+================================================================================
+PMC-READINESS AUDIT  —  synthesis-medicine.org  —  Five Journals
+Assessed: 2026-06-23   Total published: 114
+================================================================================
+
+UNIVERSAL PREREQUISITES (block ALL 114 articles from PMC deposit)
+--------------------------------------------------------------------------------
+  1. No registered ISSN for any of the five journals.
+     (Synthesis has a DOI prefix 10.66040 but DOI assignment is disabled.)
+  2. No DOI assigned to any article (doi_id = NULL across all 114 publications).
+  3. JATS XML files exist for every article but are skeleton-only:
+       - No <aff> tags in any file (even where OJS DB has affiliation text)
+       - No <ref-list> in any file (even where OJS DB has citation records)
+       - <issn> and <article-id pub-id-type="doi"> are comment placeholders
+
+  These are journal-infrastructure fixes, not per-article edits.
+  Grades below assume those three fixes are applied uniformly.
+
+OVERALL CONTENT GRADES  (post-infrastructure-fix readiness)
+--------------------------------------------------------------------------------
+  A  Content-complete — needs only JATS/infra fill-in:    12
+  B  Close — needs light editorial work beyond infra:     52
+  C  Not PMC-quality — substantive gaps remain:          50
+     TOTAL                                               114
+
+PER-JOURNAL BREAKDOWN
+--------------------------------------------------------------------------------
+  Journal      Total    A    B    C  Notes
+  Synthesis      100    7   46   47  100 articles; mostly E156 Research Letters
+  Insight          6    0    4    2  6 articles; mixed
+  Gnosis           4    2    1    1  4 articles; tool/methods papers
+  Sapience         3    3    0    0  3 articles; browser tool papers
+  Hikmah           1    0    1    0  1 article
+
+TIER A — Content-complete (7 articles; needs infra fill-in only)
+--------------------------------------------------------------------------------
+    ID  Journal     Section                 Refs  Aff  Title
+   114  Synthesis   Case Report               11    1  Disseminated Nocardiosis – A rare case of Nocardia kroppenstedtii
+   125  Synthesis   Research Article           9    1  Auditing the public clinical-trials record: a registry-integrity 
+   127  Synthesis   Short Meta-Analysis        5    1  Study overlap across 501 Cochrane reviews: quantifying non-indepe
+   135  Synthesis   Methods Note               9    1  Unmasking heterogeneous treatment effects in clinical trials: a l
+   136  Synthesis   Tool Paper                 8    1  Grey Relational Meta-Analysis: a robust pooling method with a red
+   137  Synthesis   Research Article           8    1  Alcohol consumption and cardiovascular disease: a two-sample Mend
+   146  Synthesis   Tool Paper                 9    1  SeqNMA: sequential network meta-analysis with monitoring boundari
+    26  Gnosis      Articles                   1    1  GLP-1 CVOT Evidence Synthesis Engine
+   131  Gnosis      Articles                   3    1  GWAM: Ghost-Weighted Aggregate Meta-Analysis for registry-based p
+   112  Sapience    Articles                   5    1  CT.gov Hiddenness Atlas: What Sponsors Still Do Not Show
+   142  Sapience    Articles                  10    1  ProportionMA: a single-file browser tool for meta-analysis of dis
+   144  Sapience    Articles                  10    1  PredModelMA: browser-based meta-analysis of prediction-model exte
+
+TIER B — Close / fixable  (light work beyond infrastructure)
+--------------------------------------------------------------------------------
+    ID  Journal     Section                 Refs  Aff  Gap(s)
+  ————  ——————————  ——————————————————————  ————  ———  ————————————————————————————————————————
+     4  Synthesis   E156 Research Letter       2    1  2 ref(s) — borderline
+     5  Synthesis   E156 Research Letter      14    0  affiliations absent from OJS — must be sourced
+     6  Synthesis   E156 Research Letter       4    1  (none beyond infra)
+     7  Synthesis   E468 Short Report         16    0  affiliations absent from OJS — must be sourced
+     8  Synthesis   E156 Research Letter      10    1  (none beyond infra)
+    10  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    11  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    12  Synthesis   E156 Research Letter       4    1  (none beyond infra)
+    13  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    14  Synthesis   E156 Research Letter       6    0  affiliations absent from OJS — must be sourced
+    16  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    17  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    27  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    35  Synthesis   Research Article           3    0  affiliations absent from OJS — must be sourced
+    36  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    39  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+    42  Synthesis   E156 Research Letter       9    0  affiliations absent from OJS — must be sourced
+    43  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    55  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    56  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    59  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    62  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    64  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    67  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+    71  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    73  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+    76  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+    77  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    79  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+    82  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+    87  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+    91  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+    94  Synthesis   E156 Research Letter      10    0  affiliations absent from OJS — must be sourced
+    95  Synthesis   Methods Note               4    0  affiliations absent from OJS — must be sourced
+    96  Synthesis   Methods Note              11    0  affiliations absent from OJS — must be sourced
+    97  Synthesis   Methods Note               4    0  affiliations absent from OJS — must be sourced
+    98  Synthesis   Methods Note               4    0  affiliations absent from OJS — must be sourced
+   100  Synthesis   E156 Research Letter       3    0  affiliations absent from OJS — must be sourced
+   104  Synthesis   E156 Research Letter       4    0  affiliations absent from OJS — must be sourced
+   105  Synthesis   Short Meta-Analysis        8    0  affiliations absent from OJS — must be sourced
+   106  Synthesis   Short Meta-Analysis       10    0  affiliations absent from OJS — must be sourced
+   109  Synthesis   E156 Research Letter       5    0  affiliations absent from OJS — must be sourced
+   153  Synthesis   E156 Research Letter       5    1  (none beyond infra)
+   154  Synthesis   E156 Research Letter       2    1  2 ref(s) — borderline
+   158  Synthesis   E156 Research Letter       3    1  (none beyond infra)
+   159  Synthesis   E156 Research Letter      11    1  (none beyond infra)
+    20  Insight     Research Letter            2    1  2 ref(s) — borderline
+    22  Insight     Research Letter            1    1  1 ref(s) — borderline
+   110  Insight     Research Letter            5    1  (none beyond infra)
+   132  Insight     Research Letter            3    1  (none beyond infra)
+   111  Gnosis      Research Letter            5    1  (none beyond infra)
+   113  Hikmah      Research Letter            5    1  (none beyond infra)
+
+TIER C — Not PMC-quality  (substantive content gaps)
+--------------------------------------------------------------------------------
+    ID  Journal     Sect                    Auth  Refs  Primary gap
+  ————  ——————————  ——————————————————————  ————  ————  ————————————————————————————————————————
+     3  Synthesis   E156 Research Letter       4     0  0 refs in DB (nothing to add to JATS)
+     9  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+    23  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+    29  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+    30  Synthesis   E156 Research Letter       4     0  0 refs in DB (nothing to add to JATS)
+    31  Synthesis   E156 Research Letter       4     0  0 refs in DB (nothing to add to JATS)
+    34  Synthesis   E156 Research Letter       1     2  2 ref(s) — borderline
+    37  Synthesis   E156 Research Letter      18     3  affiliations absent from OJS — must be sourced
+    38  Synthesis   E156 Research Letter      39     2  2 ref(s) — borderline
+    40  Synthesis   E156 Research Letter       8     2  2 ref(s) — borderline
+    41  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+    45  Synthesis   E156 Research Letter       4     0  0 refs in DB (nothing to add to JATS)
+    46  Synthesis   E156 Research Letter      26     3  affiliations absent from OJS — must be sourced
+    49  Synthesis   E156 Research Letter       5     3  affiliations absent from OJS — must be sourced
+    50  Synthesis   E156 Research Letter       3     0  0 refs in DB (nothing to add to JATS)
+    53  Synthesis   E156 Research Letter      12     0  0 refs in DB (nothing to add to JATS)
+    54  Synthesis   E156 Research Letter       7     4  affiliations absent from OJS — must be sourced
+    57  Synthesis   E156 Research Letter       7     2  2 ref(s) — borderline
+    60  Synthesis   E156 Research Letter      27     3  affiliations absent from OJS — must be sourced
+    61  Synthesis   E156 Research Letter       3     2  2 ref(s) — borderline
+    63  Synthesis   E156 Research Letter       1     3  affiliations absent from OJS — must be sourced
+    68  Synthesis   E156 Research Letter       3     0  0 refs in DB (nothing to add to JATS)
+    70  Synthesis   E156 Research Letter       6     3  affiliations absent from OJS — must be sourced
+    75  Synthesis   E156 Research Letter      15     4  affiliations absent from OJS — must be sourced
+    78  Synthesis   E156 Research Letter      13     2  2 ref(s) — borderline
+    86  Synthesis   E156 Research Letter      29     3  affiliations absent from OJS — must be sourced
+    88  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+    89  Synthesis   E156 Research Letter      25     3  affiliations absent from OJS — must be sourced
+    90  Synthesis   E156 Research Letter      28     4  affiliations absent from OJS — must be sourced
+    92  Synthesis   E156 Research Letter       4     0  0 refs in DB (nothing to add to JATS)
+    93  Synthesis   E156 Research Letter      26     0  0 refs in DB (nothing to add to JATS)
+    99  Synthesis   E156 Research Letter       6     3  affiliations absent from OJS — must be sourced
+   102  Synthesis   E156 Research Letter       1     2  2 ref(s) — borderline
+   107  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   108  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   160  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   161  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   162  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   163  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   164  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   165  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   166  Synthesis   E156 Research Letter       1     0  0 refs in DB (nothing to add to JATS)
+   167  Synthesis   Research Article           1     0  0 refs in DB (nothing to add to JATS)
+   168  Synthesis   Research Article           1     0  0 refs in DB (nothing to add to JATS)
+   169  Synthesis   Research Article           1     0  0 refs in DB (nothing to add to JATS)
+   170  Synthesis   Research Article           1     0  0 refs in DB (nothing to add to JATS)
+   171  Synthesis   Methods Note               1     0  0 refs in DB (nothing to add to JATS)
+    24  Insight     Research Letter            1     0  0 refs in DB (nothing to add to JATS)
+    25  Insight     Articles                   1     0  0 refs in DB (nothing to add to JATS)
+    19  Gnosis      Articles                   2     0  0 refs in DB (nothing to add to JATS)
+
+KEY STATISTICS
+--------------------------------------------------------------------------------
+  Total published:                              114
+  Have JATS XML file (skeleton):                114  (100%)
+  Have PDF galley:                              114
+  Authors have affiliations in OJS DB:          42
+  Authors missing affiliations in OJS DB:       72
+  Articles with 0 references in DB:             31
+  Articles with >=3 references in DB:           71
+  Solo-authored (1 author):                     57
+  E156 letters with 15+ authors:                9
+  E156/Research-Letter section:                 88
+  Full-paper sections (Research Art/Methods/…): 26
+
+TIER C DETAIL — Articles with stub/informal titles:
+  #34: "WaterNajia"
+  #41: "Sample Size Adequacy Audit"
+  #49: "HIV Trial Saturation Index"
+  #54: "Health and Disease Burden"
+  #63: "Altruism Efficiency & Health Expenditure"
+  #68: "Decolonising Research"
+  #70: "Global RCT Equity: Africa vs. Europe"
+  #92: "COVID-19 Displacement"
+  #99: "Community led Research"
+  #102: "SGLT2 Inhibitors and Heart Failure"
+  #24: "MetaFlow-HF"
+
+TIER C — 15+ author single-paragraph letters:
+  #37 (18 authors): Community advisory structure in African clinical trials: A registry-ba
+  #38 (39 authors): Implementation trials disparity in Africa
+  #46 (26 authors): Informed Consent Language and Structural Inequity in African Clinical 
+  #60 (27 authors): Network Centrality and Research Sovereignty in African Clinical Trials
+  #75 (15 authors): The Bio-Digital Divide: Digital trial adoption and the Bio-digital gap
+  #86 (29 authors): Vulnerable Population Protection: Structural Inequalities in Clinical 
+  #89 (25 authors): Africa’s Youth Researcher Pipeline and Structural Inequities in Clinic
+  #90 (28 authors): Predatory Journal Risk and Structural Inequities in African Research P
+  #93 (26 authors): Pharma Continental Pipeline
+
+ROADMAP TO PMC (priority order)
+--------------------------------------------------------------------------------
+  1. ISSN: apply for e-ISSNs for all 5 journals (ISSN International, free;
+     wait ~3 weeks). Synthesis first — it has the largest article set.
+  2. DOI: enable DOI plugin in OJS (prefix 10.66040 exists for Synthesis).
+     Register DOIs for all existing articles via Crossref deposit.
+     Other 4 journals need their own DOI prefixes.
+  3. JATS repair (all 114 files): add <aff> per author, <ref-list> from
+     the citations table, fill <issn> and <article-id pub-id-type="doi">.
+     This is automatable from OJS DB data.
+  4. Affiliations (72 articles): 72 articles have no affiliation in OJS DB;
+     these cannot be fixed from DB data alone — authors must supply them.
+  5. References (31 zero-ref articles): these need editorial curation.
+  6. Tier-C stub titles / content: 10 informal-title articles need editorial
+     revision before PMC would index them.
+  7. PMC journal application: once ISSN + DOIs are registered, apply via
+     NLM's journal application portal. Expect 6-18 month review.
