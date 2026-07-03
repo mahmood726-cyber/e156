@@ -32,7 +32,11 @@ numpy/scipy. Every `-verify.py` prints the numbers pasted into its paper.
 | 3 | 78 | Sickle Cell Disease Neglect | `78-...-v2.md` | Within-disease African-site share vs 4.33% baseline; cross-disease table; SCD 9.6% (105/1,091); reconciles v1's 0.4% framing | ~1,700 | 9/9 (4 wrong v1 removed) | ✅ committed |
 | 4 | 27 | PLATO — Too Good To Be True? | `27-...-v2.md` | Exact Fragility Index by two-sided Fisher (FI=73, FQ 0.39%, NNT 60); verified geographic/aspirin figures from Mahaffey 2011; corrected "post-hoc"→prespecified | ~1,600 | 9/9 (3 wrong v1 fixed) | ✅ committed |
 
-> **Integrity alert (found 2026-07-03).** Fable-agent PMID audits show several v1 Africa-equity drafts (49, 82) have **near-fully fabricated reference lists** — 0/11 and 0/8 PMIDs match their claimed citation, and many cited papers cannot be located in PubMed at all. v2 of these papers must rebuild references from verified sources only and drop unlocatable ones; agent-proposed "corrected" PMIDs are re-verified here before use.
+| 5 | 82 | Epilepsy Treatment Gap | `82-...-v2.md` | AACT African epilepsy-trial share 3.42% (72/2,103) — below 4.33% baseline; verified treatment-gap 56% (Mbuba), prevalence (Ngugi); refs rebuilt (v1 8/8 wrong) | ~1,500 | 7/7 verified | ✅ committed |
+| 6 | 57 | Cervical Cancer / HPV Gap | `57-...-v2.md` | AACT African share 5.20% (136/2,613) vs 4.33%; verified GLOBOCAN/Arbyn burden; WHO 90-70-90 framing; refs rebuilt (v1 10/10 wrong) | ~1,500 | 8/8 verified | ✅ committed |
+| 7 | 61 | Breast Cancer Disparities | `61-...-v2.md` | AACT African share 2.60% (375/14,432) — below baseline; verified GLOBOCAN/Jedy-Agba/O'Brien; TNBC-biology framing; refs rebuilt (v1 11/11 wrong) | ~1,500 | 8/8 verified | ✅ committed |
+
+> **Integrity alert (found 2026-07-03).** Fable-agent PMID audits show the v1 Africa-equity drafts (49, 57, 61, 82) have **near-fully fabricated reference lists** — 0/11, 0/10, 0/11, 0/8 PMIDs match their claimed citation, and many cited papers cannot be located in PubMed at all. v2 of these papers rebuilds references from verified sources only and drops unlocatable ones; every agent-proposed "corrected" PMID was independently re-verified here before use (all 14 checked for 57/61 confirmed; all 5 for 82 confirmed).
 
 ---
 
