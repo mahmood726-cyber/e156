@@ -28,6 +28,7 @@ numpy/scipy. Every `-verify.py` prints the numbers pasted into its paper.
 | # | View | Paper | v2 file | New script-verified analysis | Words | PMIDs verified | Status |
 |---|------|-------|---------|------------------------------|-------|----------------|--------|
 | 1 | 165 | CT.gov Structural Missingness | `165-...-v2.md` | Full 4-field × 9-sponsor-class missingness table from raw AACT (579,828); real `source_class` taxonomy correction | ~1,850 | 8/8 + 1 policy | ✅ committed |
+| 2 | 109 | CT.gov Completion-Delay Debt | `109-...-v2.md` | Complete 6-bucket delay × (no-results, ghost) table (216,765 studies) + treatment sub-group; v1 placeholders filled; 6–10yr rate reproduces v1 exactly | ~1,600 | 9/9 + 2 statutes | ✅ committed |
 
 ---
 
