@@ -30,6 +30,9 @@ numpy/scipy. Every `-verify.py` prints the numbers pasted into its paper.
 | 1 | 165 | CT.gov Structural Missingness | `165-...-v2.md` | Full 4-field × 9-sponsor-class missingness table from raw AACT (579,828); real `source_class` taxonomy correction | ~1,850 | 8/8 + 1 policy | ✅ committed |
 | 2 | 109 | CT.gov Completion-Delay Debt | `109-...-v2.md` | Complete 6-bucket delay × (no-results, ghost) table (216,765 studies) + treatment sub-group; v1 placeholders filled; 6–10yr rate reproduces v1 exactly | ~1,600 | 9/9 + 2 statutes | ✅ committed |
 | 3 | 78 | Sickle Cell Disease Neglect | `78-...-v2.md` | Within-disease African-site share vs 4.33% baseline; cross-disease table; SCD 9.6% (105/1,091); reconciles v1's 0.4% framing | ~1,700 | 9/9 (4 wrong v1 removed) | ✅ committed |
+| 4 | 27 | PLATO — Too Good To Be True? | `27-...-v2.md` | Exact Fragility Index by two-sided Fisher (FI=73, FQ 0.39%, NNT 60); verified geographic/aspirin figures from Mahaffey 2011; corrected "post-hoc"→prespecified | ~1,600 | 9/9 (3 wrong v1 fixed) | ✅ committed |
+
+> **Integrity alert (found 2026-07-03).** Fable-agent PMID audits show several v1 Africa-equity drafts (49, 82) have **near-fully fabricated reference lists** — 0/11 and 0/8 PMIDs match their claimed citation, and many cited papers cannot be located in PubMed at all. v2 of these papers must rebuild references from verified sources only and drop unlocatable ones; agent-proposed "corrected" PMIDs are re-verified here before use.
 
 ---
 
