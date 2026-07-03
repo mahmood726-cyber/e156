@@ -40,6 +40,8 @@ numpy/scipy. Every `-verify.py` prints the numbers pasted into its paper.
 | 10 | 88 | SGLT2i Heart Failure Living MA | `88-...-v2.md` | Independent REML+HKSJ meta-analysis of 5 pivotal trials: HR 0.78 (0.70–0.87), I²=0% across EF spectrum, PI excludes 1; matches Vaduganathan 2022 (0.77); DAPA-HF FI=62 | ~1,600 | 8/8 verified; 5 trial HRs verified vs abstracts | ✅ committed |
 | 11 | 94 | SGLT2i across EF spectrum | `94-...-v2.md` | EF-stratum pools (HFrEF 0.745, HFpEF/mrEF 0.807) + formal EF interaction test (p=0.23, not significant); shares `88-...-verify.py` | ~1,300 | 6/6 verified | ✅ committed |
 
+| 12 | 3 | Transcatheter Tricuspid Repair | `3-...-v2.md` | Truth-first correction of TRILUMINATE Pivotal: win ratio 1.80→**1.48** (0.06–2.13), KCCQ +12.3 vs +0.6 (v1's "87%/55%" were the TR-reduction %), wrong PMID 37222028→36876753; KCCQ contrast recomputed; 2-yr durability | ~1,450 | 2/2 verified | ✅ committed |
+
 *Note: paper 102 (SGLT2-HF E156 short form) is substantively covered by the shared verified analysis in `88-sglt2-hf-meta-verify.py`; a dedicated 102 short-form v2 can be generated from it if needed.*
 
 > **Integrity alert (found 2026-07-03).** Fable-agent PMID audits show the v1 Africa-equity drafts (49, 57, 61, 82) have **near-fully fabricated reference lists** — 0/11, 0/10, 0/11, 0/8 PMIDs match their claimed citation, and many cited papers cannot be located in PubMed at all. v2 of these papers rebuilds references from verified sources only and drops unlocatable ones; every agent-proposed "corrected" PMID was independently re-verified here before use (all 14 checked for 57/61 confirmed; all 5 for 82 confirmed).
