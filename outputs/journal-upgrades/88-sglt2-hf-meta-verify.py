@@ -108,3 +108,29 @@ for name, hr, lo, hi, ef in TRIALS:
 run(TRIALS[:4], "PRIMARY POOL — 4 first-event-HR trials (SOLOIST excluded)")
 run(TRIALS, "SENSITIVITY — all 5 trials (SOLOIST rate-ratio included)")
 run(TRIALS[:2], "HFrEF-only (DAPA-HF + EMPEROR-Reduced)")
+
+# --- EF-spectrum subgroup analysis + interaction (for paper 94) ---
+def fe(items):
+    ws = [1.0 / v for _, v in items]
+    ys = [y for y, _ in items]
+    mu = sum(w * y for w, (y, _) in zip(ws, items)) / sum(ws)
+    se = math.sqrt(1.0 / sum(ws))
+    return mu, se
+rEF = [yv(*t[1:4]) for t in TRIALS[:2]]                 # DAPA-HF, EMPEROR-Reduced
+pEF = [yv(TRIALS[2][1], TRIALS[2][2], TRIALS[2][3]),
+       yv(TRIALS[3][1], TRIALS[3][2], TRIALS[3][3])]     # EMPEROR-Preserved, DELIVER
+# yv returns (y, v); fe expects (y, v) with v=variance -> adapt
+def yv2(hr, lo, hi):
+    y = math.log(hr); se = (math.log(hi) - math.log(lo)) / (2 * 1.959963985)
+    return y, se * se
+rEF = [yv2(t[1], t[2], t[3]) for t in TRIALS[:2]]
+pEF = [yv2(t[1], t[2], t[3]) for t in TRIALS[2:4]]
+mr, ser = fe(rEF); mp, sep = fe(pEF)
+diff = mr - mp; sed = math.sqrt(ser**2 + sep**2); z = diff / sed
+p_int = 2 * (1 - norm.cdf(abs(z)))
+print(f"\n{'='*66}\nEF-SPECTRUM SUBGROUP ANALYSIS (paper 94)")
+print(f"  HFrEF (DAPA-HF+EMPEROR-Reduced)  HR={math.exp(mr):.3f} "
+      f"({math.exp(mr-1.96*ser):.3f}-{math.exp(mr+1.96*ser):.3f})")
+print(f"  HFmrEF/HFpEF (EMP-Pres+DELIVER)  HR={math.exp(mp):.3f} "
+      f"({math.exp(mp-1.96*sep):.3f}-{math.exp(mp+1.96*sep):.3f})")
+print(f"  Interaction: HR-ratio={math.exp(diff):.3f}, z={z:.2f}, p_interaction={p_int:.3f}")
