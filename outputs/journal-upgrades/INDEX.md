@@ -35,6 +35,7 @@ numpy/scipy. Every `-verify.py` prints the numbers pasted into its paper.
 | 5 | 82 | Epilepsy Treatment Gap | `82-...-v2.md` | AACT African epilepsy-trial share 3.42% (72/2,103) — below 4.33% baseline; verified treatment-gap 56% (Mbuba), prevalence (Ngugi); refs rebuilt (v1 8/8 wrong) | ~1,500 | 7/7 verified | ✅ committed |
 | 6 | 57 | Cervical Cancer / HPV Gap | `57-...-v2.md` | AACT African share 5.20% (136/2,613) vs 4.33%; verified GLOBOCAN/Arbyn burden; WHO 90-70-90 framing; refs rebuilt (v1 10/10 wrong) | ~1,500 | 8/8 verified | ✅ committed |
 | 7 | 61 | Breast Cancer Disparities | `61-...-v2.md` | AACT African share 2.60% (375/14,432) — below baseline; verified GLOBOCAN/Jedy-Agba/O'Brien; TNBC-biology framing; refs rebuilt (v1 11/11 wrong) | ~1,500 | 8/8 verified | ✅ committed |
+| 8 | 49 | HIV Trial Saturation | `49-...-v2.md` | AACT: HIV African share 18.77% (1,713/9,126) = 4.3× baseline, highest of any disease; cross-disease saturation table; refs rebuilt (v1 11/11 wrong, 7 unlocatable) | ~1,450 | 3/3 verified | ✅ committed |
 
 > **Integrity alert (found 2026-07-03).** Fable-agent PMID audits show the v1 Africa-equity drafts (49, 57, 61, 82) have **near-fully fabricated reference lists** — 0/11, 0/10, 0/11, 0/8 PMIDs match their claimed citation, and many cited papers cannot be located in PubMed at all. v2 of these papers rebuilds references from verified sources only and drops unlocatable ones; every agent-proposed "corrected" PMID was independently re-verified here before use (all 14 checked for 57/61 confirmed; all 5 for 82 confirmed).
 
