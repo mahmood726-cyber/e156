@@ -40,6 +40,27 @@ contained several WRONG PMIDs; use these verified IDs and do not revert.
 | Bhatt DL 2021 NEJM 384(2):117-28 SOLOIST-WHF | **33200892** | 10.1056/NEJMoa2030183 | rate ratio 0.67 (0.52-0.85) |
 | Bhatt DL 2021 NEJM 384(2):129-39 SCORED | **33200891** | 10.1056/NEJMoa2030186 | rate ratio 0.74 (0.63-0.88) |
 
+## Cardiogenic shock + severe-asthma-biologics cluster (verified 2026-07-04, papers 23 / 106)
+
+| Ref | PMID | DOI | Note |
+|-----|------|-----|------|
+| Thiele 2012 NEJM 367:1287-96 IABP-SHOCK II | **22920912** | 10.1056/NEJMoa1208410 | 30-d RR 0.96 (0.79-1.17) |
+| Ouweneel 2017 JACC 69:278-87 IMPRESS | **27810347** | 10.1016/j.jacc.2016.10.022 | Impella vs IABP, HR 0.96 (0.42-2.18) |
+| Ostadal 2023 Circulation 147:454-64 ECMO-CS | **36335478** | 10.1161/CIRCULATIONAHA.122.062949 | composite primary |
+| Thiele 2023 NEJM 389:1286-97 ECLS-SHOCK | **37634145** | 10.1056/NEJMoa2307227 | VA-ECMO RR 0.98 (0.80-1.19) |
+| Møller 2024 NEJM 390:1382-93 DanGer Shock | **38587239** | 10.1056/NEJMoa2312572 | Impella STEMI HR 0.74 (0.55-0.99); v1 mis-cited pp 1284-97 |
+| Zeymer 2023 Lancet 402:1338-46 VA-ECMO IPD-MA | **37643628** | 10.1016/S0140-6736(23)01607-0 | 4 trials, OR 0.93 (0.66-1.29) NS |
+| Ytterberg 2022 NEJM 386:316-26 ORAL Surveillance | **35081280** | 10.1056/NEJMoa2109927 | tofacitinib MACE 1.33 (0.91-1.94), cancer 1.48 (1.04-2.09) |
+| Smolen 2023 Ann Rheum Dis 82:3-18 EULAR RA 2022 | **36357155** | 10.1136/ard-2022-223356 | guideline |
+| Hanania 2011 Ann Intern Med 154:573-82 EXTRA omalizumab | **21536936** | 10.7326/0003-4819-154-9-201105030-00002 | IRR 0.75 (0.61-0.92) |
+| Ortega 2014 NEJM 371:1198-207 MENSA mepolizumab | **25199059** | 10.1056/NEJMoa1403290 | SC RR 0.47, IV 0.53 |
+| Bleecker 2016 Lancet 388:2115-27 SIROCCO benralizumab | **27609408** | 10.1016/S0140-6736(16)31324-1 | eos≥300 Q8W 0.49 |
+| FitzGerald 2016 Lancet 388:2128-41 CALIMA benralizumab | **27609406** | 10.1016/S0140-6736(16)31322-8 | eos≥300 Q4W 0.64 |
+| Castro 2018 NEJM 378:2486-96 QUEST dupilumab | **29782217** | 10.1056/NEJMoa1804092 | overall 0.53; eos≥300 0.34 |
+| Menzies-Gow 2021 NEJM 384:1800-9 NAVIGATOR tezepelumab | **33979488** | 10.1056/NEJMoa2034975 | overall 0.44; eos<300 0.59 |
+
+> **Fabricated v1 PMIDs found & removed (paper 106):** 34236781 (→cardiac-surgery paper), 26302026 (→prediabetes), 28366640 (→chemistry sensor), 28366441 (→gastric endoscopy). Paper 104: Montori 16286622 (→cataract). Paper 23: 24279442 (→Czech CRP review, mis-slotted).
+
 ## IPD meta-analysis methods
 
 | Ref | PMID | DOI | Note |
