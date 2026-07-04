@@ -59,7 +59,25 @@ contained several WRONG PMIDs; use these verified IDs and do not revert.
 | Castro 2018 NEJM 378:2486-96 QUEST dupilumab | **29782217** | 10.1056/NEJMoa1804092 | overall 0.53; eos≥300 0.34 |
 | Menzies-Gow 2021 NEJM 384:1800-9 NAVIGATOR tezepelumab | **33979488** | 10.1056/NEJMoa2034975 | overall 0.44; eos<300 0.59 |
 
-> **Fabricated v1 PMIDs found & removed (paper 106):** 34236781 (→cardiac-surgery paper), 26302026 (→prediabetes), 28366640 (→chemistry sensor), 28366441 (→gastric endoscopy). Paper 104: Montori 16286622 (→cataract). Paper 23: 24279442 (→Czech CRP review, mis-slotted).
+## Lipid-lowering cluster (verified 2026-07-04, paper 11)
+
+| Ref | PMID | DOI | Note |
+|-----|------|-----|------|
+| CTT Collaboration 2010 Lancet 376:1670-81 | **21067804** | 10.1016/S0140-6736(10)61350-5 | RR 0.78 (0.76-0.80)/mmol/L, NO threshold |
+| Sabatine 2017 NEJM 376:1713-22 FOURIER evolocumab | **28304224** | 10.1056/NEJMoa1615664 | HR 0.85 (0.79-0.92); 9.8% vs 11.3%; LDL 92→30 |
+| Schwartz 2018 NEJM 379:2097-2107 ODYSSEY OUTCOMES | **30403574** | 10.1056/NEJMoa1801174 | alirocumab HR 0.85 (0.78-0.93); v1 used wrong 29957120 (nanomedicine cancer paper) |
+| Cannon 2015 NEJM 372:2387-97 IMPROVE-IT ezetimibe | **26039521** | — | HR 0.936 |
+| Ference 2017 Eur Heart J 38:2459-72 (LDL causal) | **28444290** | — | consensus |
+
+## Cardiology reproducibility / HF-classification (verified 2026-07-04, paper 9)
+
+| Ref | PMID | DOI | Note |
+|-----|------|-----|------|
+| McDonagh 2021 Eur Heart J 42:3599-3726 (2021 ESC HF) | **34447992** | 10.1093/eurheartj/ehab368 | guideline |
+| Bozkurt 2021 Eur J Heart Fail 23:352-380 (Universal Def) | **33605000** | 10.1002/ejhf.2115 | HFmrEF 41-49% |
+| Thavendiranathan 2013 JACC 61:77-84 (EF reproducibility) | **23199515** | 10.1016/j.jacc.2012.09.035 | 2D temporal EF var >0.10; 3D ~0.06 |
+
+> **Fabricated/wrong v1 PMIDs found & removed:** paper 106 — 34236781 (→cardiac-surgery), 26302026 (→prediabetes), 28366640 (→chemistry sensor), 28366441 (→gastric endoscopy). Paper 104 — Montori 16286622 (→cataract). Paper 23 — 24279442 (→Czech CRP review). Paper 14 — IntHout 27406442, Pellikka 15967845, Ross-Braunwald 4874588 (all →unrelated). Paper 11 — ODYSSEY 29957120 (→nanomedicine cancer paper). **Systemic pattern: v1 clinical drafts carry heavily fabricated reference lists; verify EVERY PMID before asserting.**
 
 ## IPD meta-analysis methods
 
