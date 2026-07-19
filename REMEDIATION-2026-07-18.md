@@ -475,3 +475,91 @@ adjudication of both apps. That is what was fixed.
 - **HR→OR recovery mixing** (CODE-ADVERSARY Target 4) — still not reached by any lane.
 - **The neutral-band blind corridor** (0.87–1.15) in `count_consistency.py:22`.
 - **Full 1215-app regression run** (~4h) — the 3/20 finding remains a sample, not a rate.
+
+---
+
+# ⚠️ FE RE-OPENED AND RE-KILLED — 2026-07-19 (`c097d1b`)
+
+**PE lane re-found the FE null-crossing bug as a G1 blocker on the HFrEF template.**
+
+## Verdict: NOT regressed, NOT the wrong file — **INCOMPLETE**
+
+`2ac53e5` corrected the generator and was verified green. There is exactly **one**
+`build_transparency_ledger.py` on disk and my fix was still intact in it. What shipped false
+banners was the **artefacts**:
+
+| artefact | mtime | FE-contaminated records |
+|---|---|---|
+| `transparency_ledger.jsonl` | 07-18 **10:43** | **9** |
+| `transparency_ledger_final.jsonl` | 07-18 **11:24** | **9** |
+| `transparency_ledger_corpus.jsonl` | 07-18 13:37 | 0 (integration lane had regenerated) |
+
+**I knew and footnoted this.** My own §9 said *"the ledger outputs were NOT regenerated —
+they still carry the old FE-inclusive text"* and I left it as someone else's call. That is
+the same failure recorded in `fe-is-not-a-tau2-estimator`: **catching it in the ANALYSIS is
+not the same as removing it from the ARTEFACT.** Twice now, identically.
+
+## What was actually still broken — three surfaces, not one
+
+**1. ARTEFACTS** — regenerated; 9→0 and 9→0. The two regenerated ledgers are now **tracked in
+git, not gitignored** — an untracked artefact is precisely what let a stale one survive a
+"fixed" commit.
+
+**2. SIBLINGS — 8 modules still trusted the FE-computed upstream fields.** This is the larger
+half of the finding and nobody had looked:
+
+`null_crossing_report.py` ⭐ **— this is the script that produced the 17.4% headline** ·
+`analyze_pipe.py` · `finalize_ledger.py` · `extend_ledger_all.py` ·
+`nonfinite_and_reversals.py` · `reversal_records.py` · `zero_cell_policy.py` · `hr_phaseC.py`
+
+All now import canonical helpers (`re_null_crossing_differs`, `re_sign_flip`,
+`re_methods_crossing_null`) so the correction lives in **one** place rather than being
+re-derived — and re-broken — per module.
+
+⚠️ **`finalize_ledger.py` was propagating the engine's FE-computed booleans as STRUCTURED
+DATA into the shipped ledger** — a second contamination channel entirely independent of the
+banner text. Currently 0 records because the join yields `None`, but the code path was live
+and would have repropagated on any join fix. It now recomputes.
+
+**Corrected numbers:**
+
+| quantity | with FE | DL/PM/REML only |
+|---|---|---|
+| null-crossing differs | 62/357 = 17.4% | **8/357 = 2.2%** |
+| **sign flip** | 18/357 = 5.0% | **2/357 = 0.6%** ← **88.9% were false** |
+
+The sign-flip correction is **new this session** — it is the same defect, and no lane had
+caught it. `B. all four cross` was also wrong: the `>= 4` threshold silently assumed FE was
+one of the four.
+
+**3. SOURCE** — FE stays out of `RE_ESTIMATORS`.
+
+## The seeded-defect gate — `test_fe_never_returns.py` (11 tests)
+
+One seed per surface, each reverted after:
+
+```
+A  FE back in RE_ESTIMATORS              -> 6 failed
+B  a sibling reads the upstream field    -> 4 failed
+C  FE-era text injected into a ledger    -> 3 failed
+restored                                 -> 23 passed (with test_no_fe_in_null_crossing)
+```
+
+⭐ It also asserts **no ledger may be older than the generator** — the check that would have
+caught this escape without anyone thinking to grep for the banner string. That mtime
+invariant is the actual lesson made executable.
+
+## Still true, unchanged
+
+The banner remains **shadow-only** — 0 of 1,658 live `*REVIEW*.html` ever contained it. This
+was a blocker on what the HFrEF template would ship, not on anything a user saw.
+
+## Two more I broke this session, both caught before commit
+
+1. A `re.sub` backreference wrote a literal `\x01` into `reversal_records.py` and
+   `zero_cell_policy.py` — caught by the syntax check, repaired.
+2. My `_btl` import ran before each script's own `sys.stdout` reassignment, re-wrapping the
+   same buffer and closing the first wrapper. Fixed by making the guard skip when stdout is
+   already utf-8.
+
+**Commit `c097d1b`. Not pushed.**
