@@ -12,5 +12,19 @@
     "submission_id": null,
     "issue_number": 71,
     "github_user": "Mikayeel-K"
+  },
+  "23": {
+    "name": "Hud ANwar",
+    "affiliation": "Hull University Teaching Hospitals",
+    "email": "h.anwar3@nhs.net",
+    "orcid": "",
+    "mentor_coauthor": "",
+    "senior_author": "",
+    "claim_date": "2026-08-02",
+    "status": "claimed",
+    "submit_date": null,
+    "submission_id": null,
+    "issue_number": 73,
+    "github_user": "hudanwar7-oss"
   }
 }
