@@ -136699,4 +136699,71 @@ Can a structured palpitations programme delivered via a clinical website reduce 
 
 YOUR REWRITE (at most 156 words, 7 sentences):
 
+======================================================================
+[2089/2089] HFREF_NMA_AUTO_FULL
+TITLE: RapidMeta Cardiology | HFrEF GDMT network: all-cause mortality (audit-first, full-functionality) — Living Meta-Analysis (RapidMeta)
+TYPE: living-ma  |  ESTIMAND: effect estimate with 95% CI
+DATA: RapidMeta clinical medicine review · all eligible trials · cohort sizes not reported
+PATH: (browser-native — see Code URL; no local path)
 
+CURRENT BODY (156 words):
+Do HFrEF GDMT network: all-cause mortality (audit-first, full-functionality) trials support a clinically meaningful effect on the registered effect estimate with 95% CI? The RapidMeta clinical medicine living review aggregates all eligible phase 3 randomized trials in a browser-native, audit-trailed pipeline. Random-effects pooling on the log scale used the Hartung-Knapp-Sidik-Jonkman adjustment with back-transformation to the reported scale. The pooled estimate was the pooled estimate reported on the live dashboard, held in a continuously updated dashboard with prediction interval and sensitivity re-runs on demand. Between-study heterogeneity was quantified as I² with a prediction interval reported alongside the 95% CI. Results are written to a reproducibility capsule with a machine-readable config, an interactive reader, and a Vancouver reference pack so reviewers receive a self-contained submission. The dashboard does not establish individual-patient causality and cannot replace adjudicated trial-level review of risk of bias, outcome switching, or incomplete subgroup reporting.
+
+YOUR REWRITE (at most 156 words, 7 sentences):
+
+SUBMISSION METADATA:
+
+Middle author: Mahmood Ahmad <mahmood.ahmad2@nhs.net>
+ORCID: 0000-0001-9107-3704
+Affiliation: Tahir Heart Institute, Rabwah, Pakistan
+
+Links:
+  Code:      https://github.com/mahmood726-cyber/rapidmeta-finerenone
+  Protocol:  https://github.com/mahmood726-cyber/rapidmeta-finerenone/blob/main/E156-PROTOCOL.md
+  Dashboard: https://mahmood726-cyber.github.io/rapidmeta-finerenone/HFREF_NMA_AUTO_FULL_REVIEW.html
+
+References (topic pack: living meta-analysis / random-effects):
+  1. Hartung J, Knapp G. 2001. A refined method for the meta-analysis of
+     controlled clinical trials with binary outcome. Stat Med. 20(24):3875-3889.
+     doi:10.1002/sim.1009
+  2. Higgins JPT, Thompson SG, Spiegelhalter DJ. 2009. A re-evaluation of
+     random-effects meta-analysis. J R Stat Soc A. 172(1):137-159.
+     doi:10.1111/j.1467-985X.2008.00552.x
+
+Data availability: No patient-level data used. Analysis derived
+  exclusively from publicly available trial-level aggregate records.
+
+Ethics: Not required. Secondary methodological analysis of publicly
+  available aggregate data; no human participants; no
+  patient-identifiable information; no individual-participant data.
+
+Funding: None.
+
+Competing interests: None declared.
+
+Author contributions (CRediT):
+  [STUDENT REWRITER, first author] — Writing – original draft,
+    Writing – review & editing, Validation.
+  [SUPERVISING FACULTY, last/senior author] — Supervision, Validation,
+    Writing – review & editing.
+  Mahmood Ahmad (middle author, NOT first or last) — Conceptualization,
+    Methodology, Software, Data curation.
+
+AI disclosure: Computational tooling (including AI-assisted coding via
+  Claude Code [Anthropic]) was used to develop the analysis pipeline.
+  Final manuscript is human-written, reviewed, and approved by the
+  author; submitted text is not AI-generated.
+
+Preprint: Not preprinted.
+
+Reporting checklist: PRISMA 2020.
+
+Target journal: ◆ Synthēsis (https://www.synthesis-medicine.org/index.php/journal)
+  Section: Methods Note — submit the 156-word E156 body verbatim as the main text.
+
+Manuscript license: CC-BY-4.0.
+Code license: MIT.
+
+SUBMITTED: [ ]
+
+======================================================================
