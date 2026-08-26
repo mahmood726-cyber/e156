@@ -49,3 +49,9 @@ sentinel-findings.jsonl
 sentinel-findings.sarif
 review-findings.md
 review-findings.jsonl
+
+# === Nested standalone repo: methods tournament (own git history; never track from E156) ===
+/tournament/
+
+# Consolidation-pass backups (2026-07-21)
+.backups-2026-07-21/

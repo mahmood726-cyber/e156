@@ -831,3 +831,458 @@ arithmetic was right, the gate was live, the statistic was computed honestly. **
 hunt next is not miscomputation; it is a correct number answering a question nobody asked.** And the
 mechanism that let it ship is now named: **eligibility criteria displayed to the reader but never
 enforced in the seeding code.** That is a grep, and it should be run corpus-wide before anything else.
+
+---
+---
+
+# HFrEF RECOVERY — ADVERSARY PASS (`HFREF-OURS-VS-PUBLISHED-2026-07-18.md`, Parts IV–VII)
+
+**Mandate:** break the HFrEF recovery result before it goes ESC-ready. **Mode:** VERIFY-ONLY.
+
+---
+
+## 10. 🔴 KILL THE FRAMING — "THE OFFSET VANISHED" IS NOT MEASURABLE AT PART VI's PRECISION
+
+> **This kill is independent of the circularity question and lands on its own. Even if every T5
+> number is pristine, the headline as written must not go to ESC.**
+
+Part VI headlines: *"the disagreement with Tang has collapsed to zero… Four of six nodes now
+reproduce Tang to within 1%."*
+
+### 10.1 Tang was ALREADY inside our confidence interval on 6 of 6 nodes — in Part V
+
+| node | Part V (the "offset" state) | Tang | ratio | **Tang inside Part V CI?** |
+|---|---|---|---|---|
+| ACEI | 0.886 (0.801–0.979) | 0.83 | 1.067 | ✅ **YES** |
+| ACEI+MRA | 0.667 (0.570–0.779) | 0.62 | 1.076 | ✅ **YES** |
+| ACEI+BB | 0.640 (0.526–0.778) | 0.59 | 1.085 | ✅ **YES** |
+| ARNI+BB | 0.548 (0.442–0.680) | 0.51 | 1.075 | ✅ **YES** |
+| ACEI+BB+MRA | 0.639 (0.392–1.042) | 0.52 | 1.229 | ✅ **YES** |
+| ACEI+BB+MRA+SGLT2i | 0.556 (0.337–0.920) | 0.46 | 1.209 | ✅ **YES** |
+
+**6 of 6.** The "systematic ~7–8% offset across four independent chains" that Parts I–V treated as a
+standing disagreement **was never a statistically detectable disagreement at all.** It was a
+point-estimate difference well inside our own uncertainty. Eliminating it is therefore not the
+resolution of a discrepancy — it is movement within noise.
+
+### 10.2 ⭐⭐⭐ Part VI cannot measure the thing it claims to have fixed
+
+Minimum offset vs Tang that would fall **outside Part VI's own 95% CI** — i.e. the smallest
+disagreement Part VI is capable of detecting:
+
+| node | Part VI CI | **min detectable offset** |
+|---|---|---|
+| ACEI | 0.534–1.300 | **+56%** |
+| ACEI+MRA | 0.396–0.994 | **+58%** |
+| ACEI+BB | 0.368–0.945 | **+60%** |
+| ARNI+BB | 0.312–0.816 | **+62%** |
+| ACEI+BB+MRA | 0.307–1.128 | **+92%** |
+| ACEI+BB+MRA+SGLT2i | 0.265–0.992 | **+93%** |
+
+**The offset Part VI claims to have eliminated is 7–8%. Part VI's best node cannot resolve an offset
+below 56%.** Agreeing "to within 1%" at a resolution of ±56% is not evidence of agreement; it is a
+coincidence of point estimates inside an interval that spans a factor of 2.4.
+
+And the direction of travel is the wrong way round: **Part V was the more discriminating network.**
+Its minimum detectable offsets were ACEI **±11%**, ACEI+MRA ±17%, ACEI+BB ±22%, ARNI+BB ±24% — i.e.
+Part V could *almost* have detected a 7–8% offset (ACEI, 7% vs an 11% threshold); Part VI cannot come
+within a factor of seven of it. **Recovery bought accuracy at the cost of the precision required to
+verify the accuracy.**
+
+### 10.3 What is genuinely true, and what must be struck
+
+✅ **Genuinely true and worth keeping:** the k=1 → k=5 diagnosis is real and important. The Placebo→ACEI
+edge carried **I²=32.5%** heterogeneity that was *structurally invisible at k=1*, and the earlier
+tight intervals were **false precision**. The doc says this itself — *"Part VI is simultaneously our
+most accurate and our least precise estimate — and both movements are corrections"* — and that
+sentence is the honest one.
+
+✅ **Also true and generalisable:** *"materiality must be judged per-edge, not per-trial."* Four
+trials with ~38 deaths between them, each triaged LOW-WEIGHT, were collectively decisive because they
+all landed on one thin edge. That is a real methodological lesson and survives intact.
+
+🛑 **Must be struck:** *"the disagreement with Tang has collapsed to zero"* and *"four of six nodes
+now reproduce Tang to within 1%"* as evidence of validation. The 1% agreement is **not a measurement**
+— it is a point estimate inside an interval too wide to test it.
+
+### ⇒ Caveat that must be attached (verbatim)
+
+> Tang's estimate lay inside our 95% CI on **6 of 6 nodes in Part V**, before any of the four
+> backbone trials were recovered — so the "7–8% systematic offset" was never a statistically
+> detectable disagreement. Part VI's intervals widened 1.3×–4.4× on the log scale; its minimum
+> detectable offset is **+56% to +93%**, against a claimed 7–8% offset. **The convergence in point
+> estimates cannot be verified at the precision the network now has.** What Part VI establishes is
+> that a k=1 edge produced false precision and hid I²=32.5% — a real and important correction — not
+> that our network reproduces Tang.
+
+---
+
+## 11. 🟢 SURVIVES — MAHMOOD'S PREDICTION DEFLATION IS CORRECT (I tried to break the deflation)
+
+Mahmood asked me to sanity-check whether the lane's own deflation to p≈0.57 was right — i.e. whether
+it **under**-sold a prediction that was actually informative. **The deflation is correct, and if
+anything it is generous.** Both checks reproduced independently:
+
+```
+C(37,2) / C(49,2)                          = 0.5663265306
+Fisher exact, one-sided (less)             p = 0.5663
+Fisher exact, two-sided                    p = 1.0000
+hypergeom P(0 failures among 12 registered) = 0.5663265306
+```
+
+- **The arithmetic is exactly right.** Strata (12 registered / 37 unregistered, 2 failures) are
+  correctly assigned and the one-sided hypergeometric is the right test for "did both failures land
+  in the unregistered stratum by chance."
+- ⚠️ **It is weaker than the doc states.** The doc reports one-sided p ≈ 0.57; the **two-sided
+  Fisher p is 1.0000** — the observed table is the single most likely outcome under independence.
+  Worth stating, because it makes the non-informativeness sharper, not softer.
+- **The tautology argument is sound.** *"For any pre-2000 trial the protocol arm is true by
+  construction"* is correct: CT.gov opened 2000-02, UMIN-CTR 2005-06; Hy-C (1992) and MUCHA (2004)
+  predate their respective registries. ⭐ **This is structurally the same defect as §3 of this report
+  (the statin 0/20 tautology) — a zero-capable stratum.** Two independent lanes reached the same
+  form of error-check on the same day; that consistency is itself evidence the check is real.
+- **The lane's own carve-out is fair:** the *materiality* arm was frozen at 20:20:50 from n and edge
+  position, before failures were known, so both failures landing immaterial was not guaranteed. That
+  is genuine, modest content and the doc claims no more than that.
+
+⇒ **SURVIVES. No correction needed.** The lane deflated its principal's prediction correctly rather
+than banking it — the harder and rarer direction of error. This is the one item in today's set I
+attacked and found nothing to take away.
+
+---
+
+## 12. 🟢 SURVIVES — THE T5 CIRCULARITY ATTACK FAILS. This was the load-bearing risk and it holds.
+
+> **"We now agree with Tang" is NOT "we copied Tang's inputs."** Tang and our T5 route are two
+> independent extractions of the same primary trials. Convergence is genuine.
+
+### 12.1 Neither donor is a Tang data source
+
+Tang's full text fetched via Europe PMC (`PMC11585106/fullTextXML`, 146,853 bytes, 72 references):
+
+- **Burnett 2017 (PMC5265698): ZERO occurrences.** Absent from the reference list under every form
+  tried (`Thirty Years`, `Cope S`, `Earley`, `Senni`, `28087688` → all 0). **Tang has never seen it.**
+- **PMC9546056: Tang DOES cite it — as reference [70] — but only in Discussion.** All six body
+  citations sit at byte offsets 67737–71260, five inside `<title>Comparisons with similar
+  studies</title>` and one inside `<title>Strengths and limitations</title>`. Methods begins at
+  offset 6032. **Ref [70] never appears in Methods, search strategy, or data extraction.** The citing
+  sentences are related-work framing — *"Our findings align with previous meta-analyses [69, 70]"* —
+  comparing **conclusions**, not sourcing data.
+
+### 12.2 Tang cites the ORIGINAL primary for all four backbone trials
+
+| trial | Tang's Table 1 ref | resolves to |
+|---|---|---|
+| FEST | [39] | Erhardt L, MacLean A, Ilgenfritz J, et al. *Eur Heart J* 1995;16(12):1892–9 |
+| CASSIS | [66] | Widimsky J, Kremer HJ, Jerie P, Uhlir O. *Eur J Clin Pharmacol* 1995;49(1–2):95–102 |
+| Brown 1995 | [33] | Brown EJ Jr, Chew PH, MacLean A, et al. *Am J Cardiol* 1995;75(8):596–600 |
+| Captopril-Digoxin | [23] | Captopril-Digoxin Multicenter Research Group. *JAMA* 1988;259(4):539–44 |
+
+**Not one is attributed to a review.**
+
+### 12.3 ⭐ The distinction that decides it — and the affirmative evidence
+
+Two independent extractions of the **same primary trial** is **not** circularity — it is two routes
+to one ground truth, and agreement is meaningful. Circularity requires Tang to have copied a donor's
+extraction, or both to have copied a common third. **Neither holds.**
+
+⭐ **Affirmative evidence Tang read the primaries rather than harvesting counts:** Tang reports
+**Captopril-Digoxin N=300** — the full three-arm enrollment from the JAMA primary. Our T5 route gives
+the two-arm subset **204** (104+100). *A count-harvest from the donor would have inherited 204.*
+Tang's denominator is the primary's. Denominators otherwise match exactly (FEST 308/308, CASSIS
+248/248, Brown 241/241) — neutral, since published totals appear identically everywhere; the
+**divergent** cell is the informative one, and it points to independence.
+
+### 12.4 An attack that could not be run, stated as a limit
+
+**Tang publishes no arm-level counts anywhere** — verified in both layers. Main Table 1 has columns
+Study | Trial name | Population | No | Age | Male % | Background | Treatment | Control | follow-up —
+**no event column**. The supplement (`12872_2024_4339_MOESM1_ESM.docx`, 25,753 chars) holds Table S1
+(RoB), S2–S4 (league tables), S5 (SUCRA); `Event` → 0, `Death` → 0, `n/N` → 0. **No extraction table.**
+
+⇒ A count-for-count comparison against Tang **is impossible**, so the strongest form of the
+circularity test cannot be run in either direction. **Residual risk, stated honestly: Tang's authors
+demonstrably read PMC9546056 (they cite it), and silent uncited count-harvesting is unfalsifiable
+from the published record.** It is unevidenced, and the Captopril-Digoxin denominator argues against
+it — but it cannot be excluded.
+
+### ⇒ Verdict
+
+**SURVIVES.** The Part VI convergence is not manufactured by shared inputs. ⚠️ It is still subject to
+**§10** — the convergence is real in provenance but unverifiable at Part VI's precision. Those are
+two different attacks and only one of them failed.
+
+---
+
+## 13. 🔴 WRONG-IDENTIFIER DEFECT IN THE LOAD-BEARING FILE — must be fixed before ESC
+
+`HFREF-OURS-VS-PUBLISHED-2026-07-18.md` misattributes its **dominant data donor** — the source of
+47% of all recoveries — in six places (lines 677, 678, 749, 908, 1130, and §VI-1).
+
+**The file says:** *"Aimo 2022, J Intern Med"*, linking `europepmc.org/article/MED/`**`35389544`**.
+
+**Verified independently via Europe PMC REST:**
+
+| identifier | what it actually is |
+|---|---|
+| **PMC9546056** | **De Marzo V, Savarese G, Tricarico L, Hassan S, Iacoviello M, Porto I, Ameri P.** "Network meta-analysis of medical therapy efficacy in more than 90,000 patients with heart failure and reduced ejection fraction." *J Intern Med* 2022;292(2):333–49. **PMID 35332595** |
+| **PMID 35389544** | 🛑 **Zhang et al., "In Operando Identification of In Situ Formed Metalloid Zinc^δ+ Active Sites for Highly Efficient Electrocatalyzed Carbon Dioxide Reduction," *Angewandte Chemie Int Ed*.** No PMCID. **A chemistry paper.** |
+
+The PMCID and supplement filename are correct (`JOIM-292-333-s001.docx` matches *J Intern Med*
+292:333) — **only the author name and PMID are wrong**. This does not touch the convergence verdict,
+but a submission-facing artifact currently cites an **electrocatalysis paper** as the PMID of the
+source behind nearly half its data.
+
+⇒ **Required fixes before ESC:**
+1. **Rename Aimo → De Marzo** and **PMID 35389544 → 35332595** in all six places, including
+   line 749 (*"PMC9546056 (Aimo 2022)"*) and line 1130 (*"Aimo's own exclusion note"*).
+2. ⭐ **Disclose that Tang cites the donor as ref [70]**, and that the citation is **Discussion-only,
+   not Methods.** This fact is currently absent from the file. **Disclosed and characterised, it is a
+   strength — it shows we checked. Undisclosed and found by an ESC reviewer, it looks like
+   concealment.**
+
+⭐ This is the house identifier rule firing exactly as written: *"treat trial IDs, NCT IDs, PMIDs,
+DOIs as typed fields, not approximate text."* The PMCID was right, the supplement filename was right,
+the data was right — and the PMID still pointed at another field's literature.
+
+---
+
+## 14. 🟢 SURVIVES (with a fragility) — NO EVIDENCE THE RECOVERED COUNTS WERE CHOSEN TO CLOSE THE GAP
+
+The tuning hypothesis: recovered counts were selected, consciously or not, in the direction that
+closes the Tang gap (0.886 → 0.833, i.e. favouring ACEI). **Tested directly on the four backbone
+trials, and it fails.**
+
+| trial | counts (ACEI vs placebo) | RR | direction | IV weight |
+|---|---|---|---|---|
+| FEST | 5/155 vs 3/153 | **1.645** | 🔴 **AGAINST ACEI** | 17.7% |
+| CASSIS | 7/200 vs 6/48 | **0.280** | favours ACEI | 32.4% |
+| Brown 1995 | 3/116 vs 4/125 | 0.808 | favours ACEI | 16.2% |
+| Captopril-Digoxin | 8/104 vs 6/100 | **1.282** | 🔴 **AGAINST ACEI** | 33.8% |
+
+**Two of four point against ACEI, and they carry 51.5% of the inverse-variance weight.** A tuned set
+would not look like this. **The recovered counts are not cherry-picked.**
+
+Corroborating anti-tuning evidence in the doc, which I checked rather than accepted:
+- Part III's rule set **overturned 8 of 14** of the lane's own prior ad-hoc exclusions — toward
+  **more** inclusion (BORDERLINE/BELONGS) — and the trials were **still excluded** on the frozen
+  design detectors. A rule set that merely re-derived prior intuition would be worthless; this one
+  contradicted its author.
+- It includes an explicit retraction: Hy-C's *"non-randomised-era design"* claim **retracted as
+  never verified**.
+- SOLVD-prevent (n=4,228), CAPRICORN (1,959), SHIFT (6,558), VICTORIA (5,050) were **fully recovered
+  and still excluded** — large, available, and out, because the frozen verdict said so.
+
+### ⚠️ THE FRAGILITY — the convergence rests on one small unbalanced trial
+
+**CASSIS carries 32.4% of the backbone weight on an RR of 0.280 — the most extreme value in the set —
+from a highly unbalanced design (ACEI 200 vs placebo 48, roughly 4:1).** It is the single trial
+pulling the ACEI node down toward Tang's 0.83.
+
+⇒ **A leave-one-out on CASSIS must be run and reported before ESC.** If removing CASSIS restores an
+offset, then "the offset vanished" is really "one small unbalanced trial with 6 placebo deaths moved
+the point estimate," which is a materially weaker claim than the one Part VI makes. *In CASSIS's
+favour:* it is the **best-sourced** of the four — T4 (kup.at, an independent non-review source) **plus**
+T5 ×2 — so this is a **leverage** concern, not a provenance concern.
+
+### ⚠️ NOT VERIFIED BEFORE DELIVERY — state it rather than imply it
+
+**I could not independently confirm the 20:20:50 freeze artifact.** `grep -rl "20:20:50"` over
+`F:\E156` returns only three files that *reference* the timestamp
+(`HFREF-OURS-VS-PUBLISHED`, `PREDICTION-MAHMOOD`, `SHARED-LANE-NOTES`) — **no frozen list, JSON, or
+script bearing that mtime**, and a `find -newermt` sweep of `F:\E156` and `C:\key` for the 20:15–20:25
+window returned nothing. `PREDICTION-MAHMOOD-2026-07-18.md` **does** check out (mtime 20:41 vs a
+claimed 20:40:53 recording), so *that* pre-registration is real.
+
+⇒ **The freeze is currently self-attested, not independently verifiable.** The behavioural evidence
+above (8 overturned calls, 4 large trials recovered-then-excluded, 2 of 4 counts against ACEI) is
+**consistent** with a genuine freeze and is what I would actually rely on — but the artifact itself
+should be produced, or the claim softened from *"frozen at 20:20:50"* to *"recorded in the Part-VI
+narrative."* **Do not cite a timestamp that has no artifact behind it.**
+
+---
+
+## HFrEF PASS — SUMMARY
+
+| # | Claim | Verdict |
+|---|---|---|
+| **10** | *"The 7–8% offset vanished; 4/6 nodes reproduce Tang to 1%"* | 🔴 **KILL THE FRAMING** — Tang was already inside our CI on **6/6** nodes in Part V; Part VI's min detectable offset is **+56–93%** vs a 7–8% claim |
+| **12** | T5 circularity — *"we copied Tang's inputs"* | 🟢 **SURVIVES** — Burnett uncited by Tang; De Marzo cited **Discussion-only**; Tang cites all four primaries; Captopril-Digoxin N=300 vs our 204 proves independent extraction |
+| **13** | Donor identifier | 🔴 **DEFECT** — *"Aimo 2022 / PMID 35389544"* is **De Marzo 2022 / PMID 35332595**; 35389544 is an **electrocatalysis paper**. Six places. Fix before ESC |
+| **14** | Counts tuned to close the gap | 🟢 **SURVIVES** — 2 of 4 backbone trials point **against** ACEI, carrying 51.5% of weight |
+| **14b** | The 20:20:50 freeze artifact | ⚠️ **UNVERIFIED** — no artifact found; behaviourally consistent, but soften the claim or produce the file |
+| **14c** | CASSIS leverage | 🟠 **run leave-one-out before ESC** — 32.4% weight, RR 0.280, 200 vs 48 design |
+| **11** | Mahmood's prediction deflated to p≈0.57 | 🟢 **SURVIVES** — arithmetic exact; two-sided p is **1.0000**, i.e. even less informative than stated; tautology argument sound |
+| — | k≥2 edges are genuine independent trials, not companion papers | ⚠️ **NOT COMPLETED** — see below |
+
+⚠️ **One requested attack did not finish: the k≥2 / near-duplicate check** (are FEST, CASSIS, Brown,
+Captopril-Digoxin genuinely separate trials rather than companion papers or shared-program protocols,
+the US-Carvedilol D3 risk in reverse). Partial reassurance only: the four are from four different
+sponsors, journals and years (Eur Heart J 1995 · Eur J Clin Pharmacol 1995 · Am J Cardiol 1995 ·
+JAMA 1988) with distinct drugs (fosinopril · cilazapril · fosinopril · captopril), and the doc's D3
+detector demonstrably caught the real instance (MOCHA/PRECISE/Colucci/Cohn). **But FEST and Brown 1995
+are both fosinopril trials published in 1995 and share an author (MacLean A) — that pair specifically
+must be checked for patient overlap before ESC.** I am flagging it rather than clearing it.
+
+**Closing.** The load-bearing risk Mahmood named — circularity via T5 — **does not hold**, and the
+recovery work is sound. What does not survive is the **framing**: a network whose intervals span a
+factor of 2.4 cannot certify agreement to 1%. The strongest true statement available is the one the
+lane already wrote and then over-claimed past — *a k=1 edge produced false precision and concealed
+I²=32.5%.* That is a real finding about our own method. **"We reproduce Tang" is not.**
+
+---
+
+## 15. 🔴🔴🔴 AMENDMENT — THE CONVERGENCE IS ONE TRIAL, AND THAT TRIAL'S COUNTS DO NOT EXIST
+
+> **This section supersedes the "fragility" caveat in §14 and hardens §10 from "unverifiable" to
+> "refuted." The leave-one-out I recommended has now been run. It is decisive.**
+> **`HFREF-OURS-VS-PUBLISHED` Part VI must NOT go to ESC in its current form.**
+
+### 15.1 CASSIS's arm counts match no arm of the published trial
+
+Verified independently via Europe PMC, **PMID 7614505** (Cardiology 1995;86 Suppl 1:34–40),
+abstract verbatim:
+
+> *"443 patients with chronic heart failure … cilazapril (CLZ) 2.5 mg once daily (**n = 221**),
+> captopril (CPT) 25–50 mg three times daily (**n = 108**), or **placebo (PLA) for 12 weeks followed
+> by CLZ 2.5**…"*
+
+**Real arms: cilazapril 221 · captopril 108 · placebo 114 (443 − 221 − 108).**
+**The doc records `ACEI 7/200 vs placebo 6/48`** (line 1096).
+
+| doc value | any real arm? |
+|---|---|
+| ACEI **200** | ❌ not 221, not 108, not 329 (combined ACEI) |
+| placebo **48** | ❌ **42% of the real placebo arm (114)** |
+
+Neither denominator exists in the trial. And the design forecloses the contrast the doc is drawing:
+**the placebo arm received placebo for only 12 weeks, then crossed to cilazapril.** There is no clean
+placebo comparison to extract at all.
+
+### 15.2 ⭐⭐⭐ Leave-one-out: CASSIS *is* the convergence, the heterogeneity, and the widening
+
+Reproduced the shipped Part VI figure exactly, then removed CASSIS:
+
+| set | RR (95% CI) | k | τ² | I² |
+|---|---|---|---|---|
+| **All 5 — reproduces shipped Part VI** | **0.833 (0.534–1.300)** | 5 | **0.0898** | **32.5%** |
+| **WITHOUT CASSIS** | **0.891 (0.807–0.984)** | 4 | **0.0000** | **0.0%** |
+| *(Part V, k=1)* | *0.886 (0.801–0.979)* | 1 | — | — |
+| *Tang* | *0.83* | | | |
+
+*(The all-5 row matches the doc's `0.833 (0.534–1.300), τ²=0.0898, I²=32.5%` to three decimals,
+confirming the pooling model is correctly specified.)*
+
+**Three separate Part VI headline claims collapse to this one trial:**
+
+1. **The convergence.** Without CASSIS the estimate is **0.891** — back to essentially the Part V
+   value of 0.886. The ratio to Tang returns to **1.073**, i.e. **the "7–8% systematic offset"
+   reappears exactly.** ⇒ *"The disagreement with Tang has collapsed to zero"* is, precisely,
+   **"one trial with non-existent denominators moved the point estimate."**
+2. **The heterogeneity lesson.** *"The Placebo→ACEI edge carries real heterogeneity (I²=32.5%) that
+   was structurally invisible at k=1"* — **without CASSIS, τ²=0.0000 and I²=0.0%.** The entire
+   heterogeneity finding is CASSIS. The other four trials are perfectly homogeneous.
+3. **The false-precision correction.** The CI widening (0.807–0.984 → 0.534–1.300) that §10 identified
+   as destroying the network's discriminating power is **also entirely CASSIS.**
+
+⇒ **The single most-quoted sentence of Part VI, the methodological lesson drawn from it, and the
+precision loss that made the lesson unverifiable are all one 1995 supplement-sourced trial whose
+denominators cannot be found in its own publication.**
+
+### 15.3 🔴 CORRECTION AGAINST MYSELF
+
+In §14 I graded the CASSIS issue **"SURVIVES (with a fragility)"** and merely *recommended* a
+leave-one-out before ESC. **That was too soft, and my stated reason was wrong.** I wrote that CASSIS
+was *"best-sourced of the four — T4 (kup.at) plus T5 ×2 — so this is a leverage concern, not a
+provenance concern."* **Both halves were wrong:** it is a leverage concern **and** a provenance
+concern, and the multiplicity of sources (three) did not protect it — three sources agreeing on a
+denominator that does not appear in the trial is **three copies of one error**, which is exactly the
+failure mode §12's circularity attack was designed to find and did not, because I tested the *donor's*
+independence rather than the *number's* correctness against the primary.
+
+⭐ **The generalisable lesson, and it is the sharpest one in this report:** *multiple-sourcing
+establishes that a number was copied consistently — not that it is right.* Provenance depth and
+provenance **correctness** are different tests. Every T5-derived count in this network needs the
+second test, not just the first.
+
+### 15.4 ⚠️ One rule WAS applied in the gap-closing direction — detector D6
+
+PIONEER-HF was excluded (line 1108) as **`D6 — 2-month follow-up, below the mortality floor.`** But
+**FEST is a 12-week trial** and **CASSIS's placebo period is 12 weeks** — barely above that floor,
+with mortality as an incidental safety count rather than an endpoint. Both were **included**, and
+both sit on the one edge (`Placebo→ACEI`, k=1→k=5) whose thickening produced the headline.
+
+**A short trial on an already-thick edge was excluded; short trials on the thin decisive edge were
+included.** I found **no evidence this was deliberate** — but it is the one place in Parts IV–VII
+where a rule was applied asymmetrically in the direction that closes the Tang gap. **D6 needs a
+stated numeric threshold and a symmetric re-run.**
+
+### 15.5 ✅ What still stands — the anti-tuning verdict SURVIVES, and strongly
+
+The defects above are **errors, not tuning**, and the evidence for that is strong enough to state
+plainly:
+
+- **EPHESUS is the decisive test and it exonerates the lane.** V-4 line 960 shows that including
+  EPHESUS moves the two worst ratios **1.228/1.210 → 1.062/1.046** — it would have closed the two
+  remaining gaps — and it was **kept out of the primary anyway**. *You cannot tune toward a target
+  while discarding the single lever that most closes it.*
+- **SOLVD-prevent (4,228), CAPRICORN (1,959), SHIFT (6,558), VICTORIA (5,050)** were all fully
+  recovered — counts on file — and **still excluded**, every one **away** from Tang's inclusion set.
+- **Part III's 8-of-14 overturns are genuine**, 7 of 8 moving toward Tang's set (making the lane's
+  own prior look worse), and one is an explicit **self-retraction of an unsourced claim**.
+- **2 of 4 backbone trials point against ACEI** (§14), carrying 51.5% of the weight.
+
+⇒ **This is a competent lane that made a data error on one trial, not a lane that steered.** The
+distinction matters for how the finding is repaired: **re-source CASSIS, don't re-audit the process.**
+
+### 15.6 The freeze artifact — KILLED, independently confirmed
+
+`grep -rln "20:20:50"` over `F:\E156`, `C:\key`, `C:\Projects` returns **exactly three files, all
+retrospective narrative prose**; `git log --since="2026-07-18 17:00"` is **empty**; the earliest
+on-disk trace is `SHARED-LANE-NOTES.md` at **20:39:54 — 19 minutes AFTER the claimed freeze and after
+the Part-VI recovery calls had run.** No JSON, no list, no script.
+
+⚠️ **Distinguish two freezes, because one is real:** `NMA-INCLUSION-AUDIT-CRITERIA.md` has mtime
+**19:50:15** and genuinely predates Parts V/VI/VII. **The D1–D7 criteria freeze survives. The
+verdict freeze does not.** Stop citing 20:20:50 as a provenance guarantee; cite the criteria file,
+which exists.
+
+### 15.7 Prediction deflation — two corrections, both against the lane
+
+§11's SURVIVE verdict holds and is reinforced: **0.566 is the *minimum attainable* p-value for this
+design** — the test could not have produced a significant result under *any* outcome. Two errors,
+neither changing the verdict:
+
+1. **Line 1275 conflates p with power:** *"a test with p ≈ 0.57 power to detect a violation."* A
+   p-value is not power. Correct: *"a test whose minimum attainable p-value is 0.57, hence zero power
+   at any conventional α."*
+2. **The Fisher test covers only the tautological arm** (reachability × registration). The
+   *materiality* arm — the substantive half, which the lane itself identifies as the real content —
+   gives `C(26,2)/C(49,2) = 0.276`, **~2× more informative than the arm actually reported.** The lane
+   **under-credited its own principal's prediction.**
+
+---
+
+## ⇒ REVISED HFrEF VERDICT
+
+| # | Claim | Verdict |
+|---|---|---|
+| **15.1–15.2** | *"The 7–8% offset vanished; 4/6 nodes reproduce Tang to 1%"* | 🔴🔴 **REFUTED.** Remove CASSIS — whose denominators (200, 48) match no arm of PMID 7614505 (221/108/114) — and the estimate returns to **0.891**, ratio **1.073**: the offset comes back exactly |
+| **15.2** | *"The edge carries real heterogeneity (I²=32.5%) invisible at k=1"* | 🔴 **REFUTED** — without CASSIS **τ²=0.0000, I²=0.0%** |
+| **15.3** | My own §14 "fragility, not provenance" grading | 🔴 **WRONG — corrected here** |
+| **15.4** | Detector D6 symmetry | 🟠 **asymmetric in the gap-closing direction** — needs a numeric threshold + re-run |
+| **15.5** | Tuning / steering | 🟢 **SURVIVES** — EPHESUS kept out though it would have closed the gap; 4 large trials recovered-then-excluded; 8 self-overturns |
+| **15.6** | 20:20:50 verdict freeze | 🔴 **KILLED** — no artifact, no commit; earliest trace 19 min later. *Criteria* freeze (19:50:15) is real |
+| **15.7** | p≈0.57 deflation | 🟢 **SURVIVES** — but "p as power" is an error, and the materiality arm (0.276) was under-credited |
+
+**Required before any ESC use:** ① re-source or pull CASSIS and re-run the backbone; ② fix
+De Marzo/PMID 35332595 (§13); ③ disclose Tang's ref [70]; ④ give D6 a numeric threshold and re-run
+symmetrically; ⑤ stop citing 20:20:50; ⑥ check FEST/Brown for patient overlap (both fosinopril, 1995,
+shared author MacLean A).
+
+**Closing.** I came into this pass hunting circularity, and circularity is not what was wrong — §12
+cleared it on real evidence. The defect was one layer lower and I nearly walked past it: **I verified
+that our sources were independent of Tang, and did not verify that our numbers were right.** Three
+independent donors carried the same wrong denominator, and multiplicity read as confirmation. The
+convergence that looked too good was too good — but the tell was never in the agreement. It was in a
+placebo arm of 48 that no one had checked against a trial of 114.

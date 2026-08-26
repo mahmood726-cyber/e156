@@ -6,23 +6,22 @@ Deterministic verification for the v2 (truth-first) of View/54
 The v1 headline -- "only 45 of 24,771 African trials (0.2%) focus on AMR" -- is a
 real count but a MISLEADING framing: 0.2% of African trials being AMR-focused says
 nothing about under-representation unless compared with the AMR share GLOBALLY,
-which is even smaller. This script reproduces the AMR trial counts from the AACT
-April-12-2026 snapshot (via the repo's reusable `_africa_equity_verify.py`, whose
-AMR condition group prints these exact numbers) and computes the like-for-like and
-burden-adjusted comparisons the v1 omitted.
+which is even smaller. This script LIVE-DERIVES the AMR trial counts by streaming the raw AACT
+April-12-2026 flat files (studies.txt / facilities.txt / conditions.txt) via the
+shared `_aact_africa.py` substrate, then computes the like-for-like and
+burden-adjusted comparisons the v1 omitted. No count is hardcoded — every AACT
+figure below is regenerated from the snapshot on each run, so it cannot silently
+drift from the data (fix 2026-07-12, prompted by a cross-vendor Codex objection
+that the prior version hardcoded 259/47).
 
-AACT-derived counts (condition-coded 'AMR' group; reproduce by running
-`_africa_equity_verify.py` against F:/AACT-storage/AACT/2026-04-12):
-    registry all-studies         : 579,828
-    registry interventional      : 442,464
-    registry any-African-site    : 25,125  (4.33% of all studies)
-    AMR-condition global         : 259
-    AMR-condition African        : 47      (18.15% of AMR trials)
-    AMR-condition global (interv): 162
-    AMR-condition African (interv): 31     (19.14%)
-The v1's own keyword search found 45 African AMR trials -- concordant with 47.
+Condition group (exact keywords, see `_aact_africa.py::GROUPS['amr']`):
+    antimicrobial/antibiotic resistance, drug-/multidrug-/carbapenem-/
+    methicillin-/extensively drug-resistant.
+Definitions: African-site = >=1 facility in a 54-state AU list; interventional =
+studies.study_type == INTERVENTIONAL. Expected (as of the 2026-04-12 snapshot):
+AMR global 259 / African 47 (18.15%); v1's own keyword search found 45 (concordant).
 
-Burden anchors (PubMed-verified):
+Burden anchors (PubMed-verified literature; NOT AACT-derivable, cited constants):
     Murray GRAM 2022 (PMID 35065702): GLOBAL 1.27M attributable / 4.95M associated.
     Sartorius 2024   (PMID 38134946): WHO AFRICAN REGION 2019 --
         250,000 deaths ATTRIBUTABLE, 1.05M ASSOCIATED with bacterial AMR.
@@ -31,19 +30,29 @@ Burden anchors (PubMed-verified):
 
 Read-only; standard library only.
 """
+import sys
+from _aact_africa import derive_group
 
-ALL          = 579_828
-INTERV       = 442_464
-AFR_SITE     = 25_125
-AMR_G        = 259
-AMR_A        = 47
-AMR_GI       = 162
-AMR_AI       = 31
+print("Streaming AACT (facilities, study types, conditions)…", file=sys.stderr)
+_d = derive_group("amr")
+print(f"  [live] snapshot = {_d['snapshot']}", file=sys.stderr)
 
-# Burden (attributable, primary counterfactual)
+ALL          = _d["all"]           # live: registry all-studies
+INTERV       = _d["interv"]        # live: registry interventional
+AFR_SITE     = _d["afr_site"]      # live: registry any-African-site
+AMR_G        = _d["g_global"]      # live: AMR-condition global
+AMR_A        = _d["g_africa"]      # live: AMR-condition African
+AMR_GI       = _d["g_glob_intv"]   # live: AMR-condition global (interventional)
+AMR_AI       = _d["g_afr_intv"]    # live: AMR-condition African (interventional)
+
+# Burden (attributable, primary counterfactual) — cited literature, not AACT.
 GLOB_ATTRIB  = 1_270_000      # Murray 2022
 AFR_ATTRIB   = 250_000        # Sartorius 2024
 AFR_ASSOC    = 1_050_000      # Sartorius 2024 (broader counterfactual)
+
+print(f"=== LIVE-DERIVED AACT counts ({_d['snapshot']}) ===")
+print(f"  all={ALL:,}  interventional={INTERV:,}  African-site={AFR_SITE:,}")
+print(f"  AMR global={AMR_G}  African={AMR_A}  (interv {AMR_AI}/{AMR_GI})")
 
 print("=== Baseline & shares ===")
 base = 100.0 * AFR_SITE / ALL

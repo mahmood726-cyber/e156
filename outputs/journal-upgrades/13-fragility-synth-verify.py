@@ -64,8 +64,8 @@ print(f"  PLATO   FI = {fi_plato}  (expected ~73 from Synthesis paper 27: "
       f"{'MATCH' if abs(fi_plato-73)<=2 else 'CHECK'})")
 
 print("\n" + "="*66)
-print("Reading: mega-trial COMPOSITE endpoints are robust (FI 50-120), but FQ is")
-print("tiny (0.004-0.03) -- robustness is bought with enormous N, not large margins.")
+print("Reading: mega-trial COMPOSITE endpoints are robust (FI 50-118), but FQ is")
+print("tiny (0.004-0.014) -- robustness is bought with enormous N, not large margins.")
 print("Corpus-level medians from published analyses (cited, NOT recomputed here):")
 print("  revascularisation ~8, ACS ~12, general CV ~13, antithrombotic ~24.5;")
 print("  a large minority of guideline-supporting trials have FI<10, and FI often")
