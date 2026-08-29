@@ -1,3 +1,12 @@
 # Shell scripts must stay LF-only so they run on Linux / cloud agents
 # (a CRLF shebang line yields "bad interpreter: /usr/bin/env bash^M").
 *.sh text eol=lf
+
+# HFrEF ground-truth ledgers and fit source: keep BYTE-EXACT.
+# hfref-union-ledger.jsonl carries a representation_hash PER DATUM, so any
+# line-ending transform on checkout invalidates every one of them -- and it
+# presents as a data-integrity failure, not as a checkout artefact.
+# Measured 2026-08-30 without these rules: 724114 -> 724495 B (+381 = one per
+# JSONL row), 204112 -> 204174 (+62), 36116 -> 36831 (+715 lines).
+hfref-*.jsonl -text
+hfref_eightcell_fit.R -text
