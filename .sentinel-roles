@@ -1,0 +1,66 @@
+# Sentinel file-role map for E156.   Format: <glob>  <role>
+#
+# Roles: shipped | record | scratch      (see F:/Sentinel/sentinel/io/roles.py)
+#
+#   shipped  code/docs a consumer receives, runs, or follows.  ALL rules apply.
+#            This is the DEFAULT for anything not matched below -- a role map
+#            that defaults to exempt is how a rule suite goes inert.
+#   record   authored, kept for provenance, never executed: dated lane notes,
+#            audit reports, session records.  An absolute path in one of these
+#            is DATA ("the run happened at C:/Projects/x on pc2"), not a
+#            portability break.
+#   scratch  working files with no consumer: burn dirs, captured stderr.
+#
+# LAST MATCH WINS, so this file reads top-to-bottom as increasingly specific
+# overrides.  Note that fnmatch's `*` crosses `/`, so `*.md` means EVERY
+# markdown file; the shipped trees below are re-asserted after it on purpose.
+#
+# Adopting this moves no files.  A directory layout (notes/, _burn/) is the
+# tidier long-term form but is not a precondition.
+#
+# Measured 2026-08-30 against the 155 BLOCK verdicts of P0-hardcoded-local-path:
+#   record  127 (81.9%)   scratch 26 (16.8%)   shipped 2 (1.3%)
+
+# ---- scratch -------------------------------------------------------------
+_burn/**                                scratch
+_tmp/**                                 scratch
+_scratch/**                             scratch
+.backups-2026-07-21/**                  scratch
+
+# ---- record: authored notes and audit reports ----------------------------
+# Every .md and .txt starts as a record; the shipped trees are restored below.
+*.md                                    record
+*.txt                                   record
+
+# ---- shipped: restored after the broad record sweep ----------------------
+README.md                               shipped
+AGENTS.md                               shipped
+CLAUDE.md                               shipped
+CONTRIBUTING.md                         shipped
+LICENSE                                 shipped
+rewrite-workbook.txt                    shipped
+requirements.lock                       shipped
+
+docs/**                                 shipped
+scripts/**                              shipped
+paper/**                                shipped
+outputs/**                              shipped
+tests/**                                shipped
+releases/**                             shipped
+.github/**                              shipped
+
+# Code is shipped wherever it lives (these come last so they win over *.md /
+# *.txt for any note-shaped file that is actually executable).
+**/*.py                                 shipped
+**/*.js                                 shipped
+**/*.ts                                 shipped
+**/*.sh                                 shipped
+**/*.ps1                                shipped
+**/*.bat                                shipped
+**/*.R                                  shipped
+**/*.html                               shipped
+
+# ...except inside a scratch tree, which stays scratch.
+_burn/**                                scratch
+_tmp/**                                 scratch
+_scratch/**                             scratch

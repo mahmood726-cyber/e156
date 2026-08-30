@@ -316,7 +316,7 @@ Same treatment for `rapidmeta-second-verdict-badge.md`, whose lane-ops crumbs mo
 
 **Also noted, not proposed as a change:** there are **two memory stores** in play — the orchestrator
 store (`…/agent/memory/`, 64 files) and the project store
-(`C:\Users\mahmo\.claude\projects\F--E156\memory\`, e.g. `cross-regulator-divergence-footnote`,
+(`%USERPROFILE%\.claude\projects\F--E156\memory\`, e.g. `cross-regulator-divergence-footnote`,
 `agy-native-corpus-reach-recipe`, `adversary-corpus-echo-failure`). They **overlap without
 cross-linking** (agy invocation recipe exists in both; the corpus-echo lesson exists only in the
 project store). Worth a deliberate decision on which store owns operational-harness knowledge — but
