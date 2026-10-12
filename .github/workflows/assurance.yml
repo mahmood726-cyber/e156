@@ -40,6 +40,10 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install assurance test dependencies
+        # PyYAML is Sentinel's runtime dependency; without it the rule corpus skips.
+        run: python -m pip install --quiet pytest "PyYAML>=6.0"
+
       - name: Check out Sentinel (best-effort, for full rule coverage)
         continue-on-error: true
         run: |
