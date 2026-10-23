@@ -1,0 +1,76 @@
+# Read-only pull-request validation. The publishing assurance workflow has
+# elevated contents/OIDC permissions and must NOT be triggered by untrusted PRs.
+name: e156 assurance PR gate
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  assurance-tests:
+    name: Assurance corpus (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install test dependencies (direct versions pinned)
+        run: python -m pip install pytest==9.1.1 PyYAML==6.0.3
+
+      - name: Fetch exact Sentinel source outside the E156 scan root
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = Join-Path $env:RUNNER_TEMP 'Sentinel'
+          git clone --quiet https://github.com/mahmood726-cyber/Sentinel.git $root
+          if ($LASTEXITCODE -ne 0) { throw "Sentinel download failed; cannot claim corpus coverage" }
+          git -C $root checkout --quiet --detach 97273997db160aee99d89af94fcc18bf621b3cb9
+          if ($LASTEXITCODE -ne 0) { throw "Pinned Sentinel commit is unavailable" }
+          $actual = (git -C $root rev-parse HEAD).Trim()
+          if ($actual -ne '97273997db160aee99d89af94fcc18bf621b3cb9') {
+            throw "Sentinel commit mismatch: $actual"
+          }
+          "SENTINEL_ROOT=$root" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Check import readiness and package consistency
+        shell: pwsh
+        run: |
+          python -m pip check
+          if ($LASTEXITCODE -ne 0) { throw "Broken Python dependency set" }
+          python -c "import os,sys; sys.path.insert(0,os.environ['SENTINEL_ROOT']); import sentinel.core, sentinel.registry.plugin_loader, yaml"
+          if ($LASTEXITCODE -ne 0) { throw "Sentinel or PyYAML import failed" }
+
+      - name: Run real E156 assurance tests
+        shell: pwsh
+        run: |
+          $report = Join-Path $env:RUNNER_TEMP 'e156-assurance-junit.xml'
+          python -m pytest tests/ -q --junitxml="$report"
+          if ($LASTEXITCODE -ne 0) { throw "Assurance test suite failed" }
+
+      - name: Refuse omitted, skipped, or failed test cases
+        if: always()
+        shell: pwsh
+        run: |
+          $report = Join-Path $env:RUNNER_TEMP 'e156-assurance-junit.xml'
+          python scripts/assurance/require_corpus_results.py $report
+          if ($LASTEXITCODE -ne 0) { throw "Assurance coverage gate failed" }
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: assurance-junit-${{ matrix.os }}
+          path: ${{ runner.temp }}/e156-assurance-junit.xml
+          if-no-files-found: warn
