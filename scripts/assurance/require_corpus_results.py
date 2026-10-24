@@ -9,10 +9,40 @@ from __future__ import annotations
 
 import argparse
 import sys
+from collections import Counter
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
 MIN_CORPUS_CASES = 14
+# Stable, source-backed case names in tests/test_assurance_corpus.py. A minimum
+# count by itself is not coverage: repeated or unrelated JUnit entries can
+# otherwise stand in for missing Sentinel tests.
+REQUIRED_CORPUS_CASES = frozenset({
+    "test_malformed_doi_blocks",
+    "test_locatorless_reference_warns",
+    "test_valid_doi_clean",
+    "test_fabricated_doi_blocked_via_resolution_cache",
+    "test_citation_resolution_inert_without_cache",
+    "test_citation_resolution_skips_skip_marker_files",
+    "test_events_exceed_total_blocks",
+    "test_ci_not_bracketing_hr_blocks",
+    "test_consistent_data_clean",
+    "test_consistent_but_wrong_pooled_estimate_is_caught",
+    "test_causal_overclaim_word_fires",
+    "test_certainty_plus_heterogeneity_fires",
+    "test_hedged_claim_clean",
+    "test_overclaim_without_trigger_word_is_caught",
+})
+CORPUS_CLASSNAMES = frozenset({"tests.test_assurance_corpus", "test_assurance_corpus"})
+CORPUS_SOURCE = "tests/test_assurance_corpus.py"
+
+
+def _is_corpus_case(case: ET.Element) -> bool:
+    if (case.get("classname") or "") not in CORPUS_CLASSNAMES:
+        return False
+    source = (case.get("file") or "").replace("\\", "/")
+    return not source or source == CORPUS_SOURCE
+
 
 
 def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES) -> list[str]:
@@ -26,17 +56,21 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES) -> list[str]:
     if not cases:
         return ["Assurance JUnit report contains zero test cases."]
 
-    corpus = [
-        case for case in cases
-        if "test_assurance_corpus" in (
-            (case.get("classname") or "") + "/" + (case.get("file") or "")
-        )
-    ]
-    if len(corpus) < min_corpus:
+    corpus = [case for case in cases if _is_corpus_case(case)]
+    names = Counter(case.get("name") or "" for case in corpus)
+    # Count unique cases, never raw XML elements: otherwise 14 copies of one
+    # passing case would satisfy the historical threshold.
+    if len(names) < min_corpus:
         problems.append(
-            f"Sentinel corpus executed only {len(corpus)} of at least "
+            f"Sentinel corpus executed only {len(names)} unique of at least "
             f"{min_corpus} required cases."
         )
+    missing = REQUIRED_CORPUS_CASES - names.keys()
+    if missing:
+        problems.append("Sentinel corpus missing named cases: " + ", ".join(sorted(missing)))
+    repeated = sorted(name for name, count in names.items() if count > 1)
+    if repeated:
+        problems.append("Sentinel corpus duplicated case identities: " + ", ".join(repeated))
 
     for case in cases:
         label = f"{case.get('classname', '?')}.{case.get('name', '?')}"
@@ -59,7 +93,7 @@ def main(argv: list[str] | None = None) -> int:
         for issue in problems:
             print(f"ASSURANCE REFUSED: {issue}", file=sys.stderr)
         return 1
-    print("Assurance JUnit coverage checked: corpus present; no skipped, failed or errored cases.")
+    print("Assurance JUnit coverage checked: named corpus present; no duplicate, skipped, failed or errored cases.")
     return 0
 
 
