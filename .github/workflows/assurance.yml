@@ -85,6 +85,9 @@ jobs:
               cosign sign-blob --yes --bundle "$f.cosign.bundle" "$f"
             done
 
+      - name: Verify Sigstore badge bundles and workflow identity (hard gate)
+        run: python scripts/assurance/verify_sigstore_badges.py --repo .
+
       - name: Build the public assurance dashboard (served by existing Pages)
         run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html
 
