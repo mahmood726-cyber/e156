@@ -72,15 +72,8 @@ jobs:
       - name: Regenerate this repo's badge
         run: python scripts/build_assurance_jsons.py --here e156
 
-      - name: HMAC-sign + verify badges (if key secret present)
-        run: |
-          if [ -n "$E156_ASSURANCE_HMAC_KEY" ]; then
-            find . -name assurance.json -not -path './.git/*' -print0 |
-              while IFS= read -r -d '' f; do python scripts/assurance/sign_badge.py sign "$f"; done
-            python scripts/assurance/verify_badges.py --repo . --require-signed
-          else
-            echo "E156_ASSURANCE_HMAC_KEY not set; skipping HMAC sign/verify (set the secret to enable)."
-          fi
+      - name: HMAC-sign and verify badges (mandatory, non-vacuous)
+        run: python scripts/assurance/publish_hmac_badges.py --repo .
 
       - name: Install cosign
         uses: sigstore/cosign-installer@v3
