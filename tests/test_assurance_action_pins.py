@@ -17,9 +17,10 @@ ACTION_PINS = {
     "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
     "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065",
     "sigstore/cosign-installer": "398d4b0eeef1380460a10c8013a76f728fb906ac",
+    "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02",
 }
 WORKFLOWS = {
-    "assurance-pr.yml": ("assurance-tests", ("actions/checkout", "actions/setup-python")),
+    "assurance-pr.yml": ("assurance-tests", ("actions/checkout", "actions/setup-python", "actions/upload-artifact")),
     "assurance.yml": (
         "assurance",
         ("actions/checkout", "actions/setup-python", "sigstore/cosign-installer"),
@@ -77,7 +78,7 @@ def test_mutable_and_wrong_action_refs_are_refused(filename):
     for action in WORKFLOWS[filename][1]:
         exact = f"{action}@{ACTION_PINS[action]}"
         assert text.count(exact) == 1
-        for bad in (f"{action}@v3", f"{action}@main", f"{action}@{'0' * 40}",
+        for bad in (f"{action}@v3", f"{action}@v4", f"{action}@main", f"{action}@{'0' * 40}",
                     f"untrusted/{action.split('/')[-1]}@{ACTION_PINS[action]}"):
             planted = text.replace(exact, bad)
             assert action_pin_problems(filename, planted), bad

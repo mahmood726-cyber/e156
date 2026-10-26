@@ -68,7 +68,7 @@ jobs:
           python scripts/assurance/require_corpus_results.py $report
           if ($LASTEXITCODE -ne 0) { throw "Assurance coverage gate failed" }
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: assurance-junit-${{ matrix.os }}
