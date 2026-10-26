@@ -88,6 +88,10 @@ jobs:
       - name: Build the public assurance dashboard (served by existing Pages)
         run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html
 
+      - name: Sentinel rescan generated publication artifacts (hard gate)
+        # All generated badges, signatures and dashboard must pass Sentinel before push.
+        run: PYTHONPATH="$SENTINEL_ROOT" python -m sentinel scan --repo .
+
       - name: Commit refreshed cache, badges, signatures, dashboard
         run: |
           git config user.name "github-actions[bot]"
