@@ -73,4 +73,4 @@ jobs:
         with:
           name: assurance-junit-${{ matrix.os }}
           path: ${{ runner.temp }}/e156-assurance-junit.xml
-          if-no-files-found: warn
+          if-no-files-found: error
