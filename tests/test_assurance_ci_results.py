@@ -18,9 +18,9 @@ SPEC.loader.exec_module(guard)
 def _junit(tmp_path: Path, n: int = 14, *, defect: str | None = None,
            outside_skip: bool = False) -> Path:
     root = ET.Element("testsuite", {"tests": str(n + 1)})
-    for i in range(n):
+    for i, name in enumerate(sorted(guard.REQUIRED_CORPUS_CASES)[:n]):
         case = ET.SubElement(root, "testcase", {
-            "classname": "tests.test_assurance_corpus", "name": f"test_case_{i}",
+            "classname": "tests.test_assurance_corpus", "name": name,
         })
         if defect and i == 0:
             ET.SubElement(case, defect, {"message": "planted defect"})
@@ -32,6 +32,14 @@ def _junit(tmp_path: Path, n: int = 14, *, defect: str | None = None,
     path = tmp_path / "pytest.xml"
     ET.ElementTree(root).write(path, encoding="utf-8", xml_declaration=True)
     return path
+
+
+def _alter(tmp_path: Path, change) -> Path:
+    p = _junit(tmp_path)
+    tree = ET.parse(p)
+    change(list(tree.getroot().iter("testcase"))[:-1])
+    tree.write(p, encoding="utf-8", xml_declaration=True)
+    return p
 
 
 def test_clean_corpus_and_unrelated_test_pass(tmp_path):
@@ -113,3 +121,45 @@ def test_assurance_pr_artifact_upload_fails_closed():
         assert weakened != workflow, "Mutation fixture no longer reaches target"
         with pytest.raises(AssertionError):
             require_junit_artifact_policy(weakened)
+
+
+def test_repeated_one_test_name_cannot_mimic_fourteen_corpus_tests(tmp_path):
+    p = _alter(tmp_path, lambda cases: [case.set("name", "test_malformed_doi_blocks") for case in cases])
+    reasons = guard.check_results(p)
+    assert any("only 1 unique" in reason for reason in reasons)
+    assert any("duplicated case identities" in reason for reason in reasons)
+    assert any("missing named cases" in reason for reason in reasons)
+
+
+def test_spoofed_corpus_classname_substring_is_not_accepted(tmp_path):
+    p = _alter(tmp_path, lambda cases: [case.set("classname", "tests.not_test_assurance_corpus_mock") for case in cases])
+    reasons = guard.check_results(p)
+    assert any("only 0 unique" in reason for reason in reasons)
+
+
+def test_corpus_name_with_unrelated_source_file_is_not_accepted(tmp_path):
+    p = _alter(tmp_path, lambda cases: [case.set("file", "tests/not_the_corpus.py") for case in cases])
+    reasons = guard.check_results(p)
+    assert any("only 0 unique" in reason for reason in reasons)
+
+
+def test_unknown_names_cannot_mimic_required_corpus_coverage(tmp_path):
+    p = _alter(tmp_path, lambda cases: [case.set("name", f"test_placeholder_{i}") for i, case in enumerate(cases)])
+    reasons = guard.check_results(p)
+    assert any("missing named cases" in reason for reason in reasons)
+
+
+def test_one_missing_expected_name_replaced_by_invented_case_refused(tmp_path):
+    p = _alter(tmp_path, lambda cases: cases[0].set("name", "test_invented_case"))
+    reasons = guard.check_results(p)
+    assert any("missing named cases" in reason for reason in reasons)
+
+
+def test_corpus_file_windows_separators_still_accepted(tmp_path):
+    p = _alter(tmp_path, lambda cases: [case.set("file", r"tests\test_assurance_corpus.py") for case in cases])
+    assert guard.check_results(p) == []
+
+
+def test_corpus_file_unix_separators_still_accepted(tmp_path):
+    p = _alter(tmp_path, lambda cases: [case.set("file", "tests/test_assurance_corpus.py") for case in cases])
+    assert guard.check_results(p) == []
