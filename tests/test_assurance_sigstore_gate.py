@@ -53,13 +53,13 @@ def test_empty_badge_set_or_missing_empty_bundle_refuses(tmp_path, monkeypatch):
     assert gate.verify(tmp_path) == 2
 
 
-def test_bundle_symlink_refuses(tmp_path, monkeypatch):
+def test_injected_symlink_path_refuses_on_windows_and_linux(tmp_path, monkeypatch):
     _context(monkeypatch)
-    badge, bundle = _badge(tmp_path)
-    bundle.unlink()
-    original = tmp_path / "other.bundle"
-    original.write_text("fixture", encoding="utf-8")
-    bundle.symlink_to(original)
+    _, bundle = _badge(tmp_path)
+    # Do not require Windows SeCreateSymbolicLinkPrivilege to test the guard.
+    original = Path.is_symlink
+    monkeypatch.setattr(Path, "is_symlink",
+                        lambda self: self == bundle or original(self))
     assert gate.verify(tmp_path) == 2
 
 
