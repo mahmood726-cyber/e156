@@ -5,6 +5,9 @@ import importlib.util
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+import pytest
+import yaml
+
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "assurance" / "require_corpus_results.py"
 SPEC = importlib.util.spec_from_file_location("require_corpus_results", SCRIPT)
 assert SPEC and SPEC.loader
@@ -80,3 +83,33 @@ def test_cli_returns_failure_for_missing_report(tmp_path):
 
 def test_cli_returns_success_for_clean_report(tmp_path):
     assert guard.main([str(_junit(tmp_path))]) == 0
+
+
+def require_junit_artifact_policy(workflow: str) -> None:
+    """Refuse a PR gate that can silently omit the actual JUnit evidence."""
+    steps = yaml.safe_load(workflow)["jobs"]["assurance-tests"]["steps"]
+    uploads = [s for s in steps if s.get("uses", "").startswith("actions/upload-artifact@")]
+    assert len(uploads) == 1, "One JUnit artifact upload is required"
+    upload = uploads[0]
+    assert upload.get("if") == "always()", "Upload must execute even after failures"
+    assert upload.get("with", {}).get("path") == (
+        "${{ runner.temp }}/e156-assurance-junit.xml"
+    ), "Upload must preserve the actual test result"
+    assert upload["with"].get("if-no-files-found") == "error", (
+        "Missing JUnit evidence must fail the job, not warn"
+    )
+
+
+def test_assurance_pr_artifact_upload_fails_closed():
+    workflow = (Path(__file__).resolve().parents[1] /
+                ".github/workflows/assurance-pr.yml").read_text(encoding="utf-8")
+    require_junit_artifact_policy(workflow)
+    # Configuration failure injection, not a live failed GitHub-hosted upload.
+    for weakened in (
+        workflow.replace("if-no-files-found: error", "if-no-files-found: warn"),
+        workflow.replace("if-no-files-found: error", ""),
+        workflow.replace("if: always()", "if: success()"),
+    ):
+        assert weakened != workflow, "Mutation fixture no longer reaches target"
+        with pytest.raises(AssertionError):
+            require_junit_artifact_policy(weakened)
