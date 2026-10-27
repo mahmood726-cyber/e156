@@ -153,6 +153,31 @@ def test_cli_rejects_one_below_audited_floor_with_matching_xml_totals(tmp_path, 
     assert "audited whole-suite minimum" in capsys.readouterr().err
 
 
+def test_cli_refuses_duplicate_unrelated_cases_even_above_floor(tmp_path, capsys):
+    # Synthetic negative fixture: keep the fully consistent suite length and
+    # required Sentinel identities, but repeat one unrelated passing case.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    cases = list(tree.getroot().iter("testcase"))
+    assert cases[-2].get("classname") == cases[-1].get("classname")
+    cases[-1].set("name", cases[-2].get("name"))
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 1
+    assert "duplicated testcase identities" in capsys.readouterr().err
+
+
+def test_cli_refuses_missing_unrelated_case_identity(tmp_path, capsys):
+    # Synthetic negative fixture: a passing but unnamed unrelated test must
+    # not count toward a whole-suite coverage threshold.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    case = list(tree.getroot().iter("testcase"))[-1]
+    case.attrib.pop("name")
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 1
+    assert "without complete classname/name identities" in capsys.readouterr().err
+
+
 def test_cli_returns_failure_for_missing_report(tmp_path):
     assert guard.main([str(tmp_path / "missing.xml")]) == 1
 

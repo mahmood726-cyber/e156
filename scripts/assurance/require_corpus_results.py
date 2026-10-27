@@ -102,6 +102,30 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
     if repeated:
         problems.append("Sentinel corpus duplicated case identities: " + ", ".join(repeated))
 
+    # A whole-suite floor must not be satisfied by repeating an unrelated
+    # passing testcase hundreds of times. Require globally unique, nonempty
+    # classname/name identities, not just uniqueness within the Sentinel corpus.
+    identities = Counter(
+        ((case.get("classname") or "").strip(), (case.get("name") or "").strip())
+        for case in cases
+    )
+    incomplete = sum(count for (classname, name), count in identities.items()
+                     if not classname or not name)
+    if incomplete:
+        problems.append(
+            f"Assurance JUnit has {incomplete} testcase(s) without complete "
+            "classname/name identities."
+        )
+    duplicates = sorted(
+        f"{classname}.{name}" for (classname, name), count in identities.items()
+        if count > 1
+    )
+    if duplicates:
+        displayed = ", ".join(duplicates[:10])
+        if len(duplicates) > 10:
+            displayed += f" (and {len(duplicates) - 10} more)"
+        problems.append("Assurance JUnit duplicated testcase identities: " + displayed)
+
     for case in cases:
         label = f"{case.get('classname', '?')}.{case.get('name', '?')}"
         for kind in ("skipped", "failure", "error"):
