@@ -56,6 +56,24 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES) -> list[str]:
     if not cases:
         return ["Assurance JUnit report contains zero test cases."]
 
+    # A truncated but well-formed report can preserve all 14 named corpus
+    # cases while omitting hundreds of other tests. Reconcile each JUnit
+    # suite's declared total against its actual testcase elements, rather
+    # than treating a partial report as complete evidence.
+    suites = list(root.iter("testsuite"))
+    if not suites:
+        problems.append("Assurance JUnit report has no testsuite element.")
+    for suite in suites:
+        declared = suite.get("tests", "")
+        actual = len(list(suite.iter("testcase")))
+        if not (declared.isascii() and declared.isdecimal() and len(declared) <= 9):
+            problems.append("Assurance JUnit testsuite has a missing or invalid test count.")
+        elif int(declared) != actual:
+            problems.append(
+                f"Assurance JUnit testsuite declares {declared} tests but "
+                f"contains {actual} testcase elements."
+            )
+
     corpus = [case for case in cases if _is_corpus_case(case)]
     names = Counter(case.get("name") or "" for case in corpus)
     # Count unique cases, never raw XML elements: otherwise 14 copies of one

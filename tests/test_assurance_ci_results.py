@@ -56,6 +56,38 @@ def test_corpus_not_collected_is_refused(tmp_path):
     assert any("only 0" in reason for reason in reasons)
 
 
+def test_truncated_junit_report_cannot_mimic_complete_suite(tmp_path):
+    # Negative XML fixture: all 14 real corpus identities are present, but a
+    # declared 527-test run has been truncated to only 15 XML testcases.
+    path = _junit(tmp_path)
+    tree = ET.parse(path)
+    tree.getroot().set("tests", "527")
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    reasons = guard.check_results(path)
+    assert any("declares 527 tests but contains 15 testcase" in reason for reason in reasons)
+
+
+@pytest.mark.parametrize("declared", [None, "", "unknown", "-1", "9" * 100])
+def test_missing_or_invalid_junit_suite_count_is_refused(tmp_path, declared):
+    path = _junit(tmp_path)
+    tree = ET.parse(path)
+    if declared is None:
+        tree.getroot().attrib.pop("tests")
+    else:
+        tree.getroot().set("tests", declared)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    reasons = guard.check_results(path)
+    assert any("missing or invalid test count" in reason for reason in reasons)
+
+
+def test_junit_without_testsuite_container_is_refused(tmp_path):
+    path = _junit(tmp_path)
+    tree = ET.parse(path)
+    tree.getroot().tag = "not_a_testsuite"
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert any("no testsuite" in reason for reason in guard.check_results(path))
+
+
 def test_skipped_corpus_case_is_refused(tmp_path):
     reasons = guard.check_results(_junit(tmp_path, defect="skipped"))
     assert any("skipped" in reason for reason in reasons)
