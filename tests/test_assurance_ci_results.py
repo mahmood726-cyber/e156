@@ -34,6 +34,22 @@ def _junit(tmp_path: Path, n: int = 14, *, defect: str | None = None,
     return path
 
 
+def _full_junit(tmp_path: Path) -> Path:
+    """Synthetic full-size CLI fixture, NOT a real hosted runner report."""
+    path = _junit(tmp_path)
+    tree = ET.parse(path)
+    root = tree.getroot()
+    existing = len(list(root.iter("testcase")))
+    for i in range(guard.MIN_ASSURANCE_TESTS - existing):
+        ET.SubElement(root, "testcase", {
+            "classname": "tests.test_synthetic_fixture",
+            "name": f"test_fixture_{i:03d}",
+        })
+    root.set("tests", str(len(list(root.iter("testcase")))))
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    return path
+
+
 def _alter(tmp_path: Path, change) -> Path:
     p = _junit(tmp_path)
     tree = ET.parse(p)
@@ -117,12 +133,32 @@ def test_zero_testcases_refused(tmp_path):
     assert "zero test cases" in guard.check_results(p)[0]
 
 
+def test_cli_rejects_self_consistent_short_junit_report(tmp_path, capsys):
+    # All 14 corpus names present, 15 XML elements, and declared tests=15.
+    # Previously accepted as a complete suite despite omitted other tests.
+    path = _junit(tmp_path)
+    assert guard.check_results(path) == []  # Corpus-only helper intentionally permissive.
+    assert guard.main([str(path)]) == 1
+    assert "only 15 testcases" in capsys.readouterr().err
+
+
+def test_cli_rejects_one_below_audited_floor_with_matching_xml_totals(tmp_path, capsys):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    root = tree.getroot()
+    root.remove(root[-1])
+    root.set("tests", str(guard.MIN_ASSURANCE_TESTS - 1))
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 1
+    assert "audited whole-suite minimum" in capsys.readouterr().err
+
+
 def test_cli_returns_failure_for_missing_report(tmp_path):
     assert guard.main([str(tmp_path / "missing.xml")]) == 1
 
 
 def test_cli_returns_success_for_clean_report(tmp_path):
-    assert guard.main([str(_junit(tmp_path))]) == 0
+    assert guard.main([str(_full_junit(tmp_path))]) == 0
 
 
 def require_junit_artifact_policy(workflow: str) -> None:

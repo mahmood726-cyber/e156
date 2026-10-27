@@ -14,6 +14,12 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 
 MIN_CORPUS_CASES = 14
+# Audited baseline: hosted PR #80 run 40486440731 (27 Oct 2026) recorded
+# 534 passed and zero skips on BOTH Ubuntu 24.04 and Windows Server 2022.
+# This whole-suite floor catches a self-consistently truncated JUnit report;
+# it does not prove identities of every collected test or signed provenance.
+# Review and deliberately update the floor if the legitimate suite shrinks.
+MIN_ASSURANCE_TESTS = 534
 # Stable, source-backed case names in tests/test_assurance_corpus.py. A minimum
 # count by itself is not coverage: repeated or unrelated JUnit entries can
 # otherwise stand in for missing Sentinel tests.
@@ -45,7 +51,8 @@ def _is_corpus_case(case: ET.Element) -> bool:
 
 
 
-def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES) -> list[str]:
+def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
+                  min_total: int = 0) -> list[str]:
     problems: list[str] = []
     try:
         root = ET.parse(path).getroot()
@@ -55,6 +62,11 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES) -> list[str]:
     cases = list(root.iter("testcase"))
     if not cases:
         return ["Assurance JUnit report contains zero test cases."]
+    if min_total and len(cases) < min_total:
+        problems.append(
+            f"Assurance JUnit report contains only {len(cases)} testcases; "
+            f"audited whole-suite minimum is {min_total}."
+        )
 
     # A truncated but well-formed report can preserve all 14 named corpus
     # cases while omitting hundreds of other tests. Reconcile each JUnit
@@ -106,7 +118,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.min_corpus < 1:
         parser.error("--min-corpus must be positive")
-    problems = check_results(args.junit, args.min_corpus)
+    # The production/PR CLI always enforces the audited whole-suite floor;
+    # --min-corpus alone must never be able to reduce this obligation.
+    problems = check_results(args.junit, args.min_corpus,
+                             min_total=MIN_ASSURANCE_TESTS)
     if problems:
         for issue in problems:
             print(f"ASSURANCE REFUSED: {issue}", file=sys.stderr)
