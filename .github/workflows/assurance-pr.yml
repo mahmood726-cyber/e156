@@ -28,7 +28,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install test dependencies (reviewed wheel digests, no preinstalled bypass)
-        run: python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock
+        run: "python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock"
 
       - name: Fetch exact Sentinel source outside the E156 scan root
         shell: pwsh
