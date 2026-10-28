@@ -40,9 +40,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install assurance test dependencies
-        # PyYAML is Sentinel's runtime dependency; without it the rule corpus skips.
-        run: python -m pip install --quiet pytest==9.1.1 PyYAML==6.0.3
+      - name: Install assurance test dependencies (reviewed wheel digests)
+        # Reinstall prevents a preinstalled runner package bypassing pip hash checks.
+        # PyYAML is needed for Sentinel corpus imports; binary-only refuses unknown builds.
+        run: python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock
 
       - name: Check out Sentinel (mandatory, exact tested commit)
         run: |
