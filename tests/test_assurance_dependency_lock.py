@@ -95,3 +95,17 @@ def test_missing_or_tampered_lock_entries_are_refused():
         assert lock_problems(source.replace(line, "", 1))
         assert lock_problems(source.replace(line, line.replace("sha256:", "sha256:0", 1), 1))
     assert lock_problems(source + "unreviewed==1.0 --hash=sha256:" + "0" * 64 + "\n")
+
+
+@pytest.mark.parametrize("filename", WORKFLOWS)
+def test_complete_workflow_yaml_parses_and_unquoted_install_refuses(filename):
+    """Regression for GitHub's YAML parse failure on :all: followed by whitespace."""
+    source = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
+    quoted = 'run: "' + INSTALL + '"'
+    assert source.count(quoted) == 1, "reviewed install must be YAML-quoted once"
+    parsed = yaml.safe_load(source)
+    assert isinstance(parsed, dict) and isinstance(parsed.get("jobs"), dict)
+    assert install_problems(source) == []
+    unsafe = source.replace(quoted, "run: " + INSTALL, 1)
+    assert unsafe != source
+    assert any("malformed workflow" in problem for problem in install_problems(unsafe))
