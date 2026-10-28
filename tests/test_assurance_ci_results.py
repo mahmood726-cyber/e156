@@ -17,7 +17,8 @@ SPEC.loader.exec_module(guard)
 
 def _junit(tmp_path: Path, n: int = 14, *, defect: str | None = None,
            outside_skip: bool = False) -> Path:
-    root = ET.Element("testsuite", {"tests": str(n + 1)})
+    root = ET.Element("testsuite", {"tests": str(n + 1),
+                                    "skipped": "0", "failures": "0", "errors": "0"})
     for i, name in enumerate(sorted(guard.REQUIRED_CORPUS_CASES)[:n]):
         case = ET.SubElement(root, "testcase", {
             "classname": "tests.test_assurance_corpus", "name": name,
@@ -94,6 +95,31 @@ def test_missing_or_invalid_junit_suite_count_is_refused(tmp_path, declared):
     tree.write(path, encoding="utf-8", xml_declaration=True)
     reasons = guard.check_results(path)
     assert any("missing or invalid test count" in reason for reason in reasons)
+
+
+@pytest.mark.parametrize(
+    ("counter", "reported"),
+    [
+        ("skipped", "1"),
+        ("failures", "1"),
+        ("errors", "1"),
+        ("skipped", "NaN"),
+        ("failures", "-1"),
+        ("errors", None),
+    ],
+)
+def test_declared_junit_outcomes_must_match_case_evidence(tmp_path, counter, reported):
+    # Synthetic negative XML: the cases all pass, but the suite metadata
+    # claims a skip/failure/error or omits an outcome counter.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    if reported is None:
+        tree.getroot().attrib.pop(counter)
+    else:
+        tree.getroot().set(counter, reported)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    problems = guard.check_results(path)
+    assert any(counter in problem for problem in problems)
 
 
 def test_junit_without_testsuite_container_is_refused(tmp_path):

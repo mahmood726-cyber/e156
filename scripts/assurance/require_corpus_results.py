@@ -76,8 +76,9 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
     if not suites:
         problems.append("Assurance JUnit report has no testsuite element.")
     for suite in suites:
+        suite_cases = list(suite.iter("testcase"))
         declared = suite.get("tests", "")
-        actual = len(list(suite.iter("testcase")))
+        actual = len(suite_cases)
         if not (declared.isascii() and declared.isdecimal() and len(declared) <= 9):
             problems.append("Assurance JUnit testsuite has a missing or invalid test count.")
         elif int(declared) != actual:
@@ -85,6 +86,25 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
                 f"Assurance JUnit testsuite declares {declared} tests but "
                 f"contains {actual} testcase elements."
             )
+        # The suite's outcome counters are evidence too. A valid, full-size
+        # XML report claiming a skip/failure/error in its header must not be
+        # accepted just because its testcase elements omit the corresponding
+        # markers (or vice versa).
+        for counter, marker in (("skipped", "skipped"),
+                                ("failures", "failure"),
+                                ("errors", "error")):
+            reported = suite.get(counter, "")
+            observed = sum(case.find(marker) is not None for case in suite_cases)
+            if not (reported.isascii() and reported.isdecimal()
+                    and len(reported) <= 9):
+                problems.append(
+                    f"Assurance JUnit testsuite has a missing or invalid {counter} count."
+                )
+            elif int(reported) != observed:
+                problems.append(
+                    f"Assurance JUnit testsuite declares {reported} {counter} "
+                    f"but has {observed} marked testcase elements."
+                )
 
     corpus = [case for case in cases if _is_corpus_case(case)]
     names = Counter(case.get("name") or "" for case in corpus)
