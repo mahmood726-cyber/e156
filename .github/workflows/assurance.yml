@@ -43,7 +43,7 @@ jobs:
       - name: Install assurance test dependencies (reviewed wheel digests)
         # Reinstall prevents a preinstalled runner package bypassing pip hash checks.
         # PyYAML is needed for Sentinel corpus imports; binary-only refuses unknown builds.
-        run: python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock
+        run: "python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock"
 
       - name: Check out Sentinel (mandatory, exact tested commit)
         run: |
