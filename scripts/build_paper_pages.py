@@ -121,6 +121,34 @@ def parse_entries() -> list[dict]:
     return out
 
 
+# Source-linked public-citation erratum, kept separate from the protected human
+# rewrite-workbook.txt (source of truth for 156-word bodies and submissions).
+# PubMed PMID 20010215 and the publisher both give the suffix ...fb2:
+# https://pubmed.ncbi.nlm.nih.gov/20010215/
+# https://doi.org/10.1097/EDE.0b013e3181c30fb2
+_STEYERBERG_PUBLIC_PAPERS = frozenset({100, 328, 494})
+_STEYERBERG_DOI_TYPO = "10.1097/EDE.0b013e3181c30fb7"
+_STEYERBERG_DOI_VERIFIED = "10.1097/EDE.0b013e3181c30fb2"
+
+
+def _public_reference(paper_num: int, ref: str) -> str:
+    """Apply only verified public-display errata, preserving source records.
+
+    A changed, unrecognised Steyerberg DOI requires reconciliation instead
+    of silently substituting a citation. This overlay is idempotent when a
+    custodian later corrects the protected source.
+    """
+    if paper_num not in _STEYERBERG_PUBLIC_PAPERS or not ref.startswith(
+        "Steyerberg EW, Vickers AJ, Cook NR,"
+    ):
+        return ref
+    if _STEYERBERG_DOI_TYPO in ref:
+        return ref.replace(_STEYERBERG_DOI_TYPO, _STEYERBERG_DOI_VERIFIED)
+    if _STEYERBERG_DOI_VERIFIED in ref:
+        return ref
+    raise ValueError(f"paper #{paper_num}: Steyerberg reference needs DOI source reconciliation")
+
+
 PAGE_TEMPLATE = """<!doctype html>
 <html lang="en">
 <head>
@@ -352,7 +380,7 @@ def render_page(entry: dict) -> str:
     refs_section = ""
     if entry.get("references"):
         refs_html = "".join(
-            f"<li>{esc(ref)}</li>" for ref in entry["references"]
+            f"<li>{esc(_public_reference(num, ref))}</li>" for ref in entry["references"]
         )
         refs_section = f'<section class="refs"><h2>References</h2><ol>{refs_html}</ol></section>'
 
