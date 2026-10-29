@@ -37,10 +37,10 @@ jobs:
           $root = Join-Path $env:RUNNER_TEMP 'Sentinel'
           git clone --quiet https://github.com/mahmood726-cyber/Sentinel.git $root
           if ($LASTEXITCODE -ne 0) { throw "Sentinel download failed; cannot claim corpus coverage" }
-          git -C $root checkout --quiet --detach 97273997db160aee99d89af94fcc18bf621b3cb9
+          git -C $root checkout --quiet --detach d87211a0c0a43e805b3aba36ec920693928e86b5
           if ($LASTEXITCODE -ne 0) { throw "Pinned Sentinel commit is unavailable" }
           $actual = (git -C $root rev-parse HEAD).Trim()
-          if ($actual -ne '97273997db160aee99d89af94fcc18bf621b3cb9') {
+          if ($actual -ne 'd87211a0c0a43e805b3aba36ec920693928e86b5') {
             throw "Sentinel commit mismatch: $actual"
           }
           "SENTINEL_ROOT=$root" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
