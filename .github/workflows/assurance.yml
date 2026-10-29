@@ -12,13 +12,10 @@ on:
     - cron: "0 6 * * 1"   # weekly Monday 06:00 UTC (re-verifies DOIs with --force)
   push:
     branches: [master]
-    paths:
-      - "scripts/assurance/**"
-      - "scripts/build_assurance_jsons.py"
-      - "tests/**"
-      - "**/*_REVIEW.html"
-      - "e156-submission/**"
-      - ".github/workflows/assurance.yml"
+    # Every master commit can change Pages output or its provenance. Do not
+    # use a partial paths filter: new source files must not silently bypass
+    # DOI/Sentinel/HMAC/Sigstore assurance. Pages itself remains independent
+    # until the admin-controlled publishing source is gated (issue #85).
 
 permissions:
   contents: write     # commit refreshed doi-cache.json / badges / signatures / dashboard
