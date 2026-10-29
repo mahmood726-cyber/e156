@@ -34,23 +34,30 @@ jobs:
     env:
       E156_ASSURANCE_HMAC_KEY: ${{ secrets.E156_ASSURANCE_HMAC_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: "3.12"
 
-      - name: Check out Sentinel (best-effort, for full rule coverage)
-        continue-on-error: true
+      - name: Install assurance test dependencies (reviewed wheel digests)
+        # Reinstall prevents a preinstalled runner package bypassing pip hash checks.
+        # PyYAML is needed for Sentinel corpus imports; binary-only refuses unknown builds.
+        run: "python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock"
+
+      - name: Check out Sentinel (mandatory, exact tested commit)
         run: |
-          if git clone --depth 1 https://github.com/${{ github.repository_owner }}/Sentinel.git "$RUNNER_TEMP/Sentinel"; then
-            echo "SENTINEL_ROOT=$RUNNER_TEMP/Sentinel" >> "$GITHUB_ENV"
-          else
-            echo "Sentinel repo not available; rule-dependent tests will skip."
-          fi
+          git clone --quiet https://github.com/${{ github.repository_owner }}/Sentinel.git "$RUNNER_TEMP/Sentinel"
+          git -C "$RUNNER_TEMP/Sentinel" checkout --quiet --detach 97273997db160aee99d89af94fcc18bf621b3cb9
+          test "$(git -C "$RUNNER_TEMP/Sentinel" rev-parse HEAD)" = "97273997db160aee99d89af94fcc18bf621b3cb9"
+          echo "SENTINEL_ROOT=$RUNNER_TEMP/Sentinel" >> "$GITHUB_ENV"
 
       - name: Run the assurance test suite (hard gate)
-        run: python -m pytest tests/ -q
+        run: python -m pytest tests/ -q --junitxml "$RUNNER_TEMP/e156-assurance-junit.xml"
+
+      - name: Refuse omitted or skipped tests (hard gate)
+        if: always()
+        run: python scripts/assurance/require_corpus_results.py "$RUNNER_TEMP/e156-assurance-junit.xml"
 
       - name: Resolve DOIs against doi.org (live)
         run: |
@@ -60,27 +67,17 @@ jobs:
             python scripts/assurance/doi_resolver.py --repo .
           fi
 
-      - name: Sentinel scan to produce findings (best-effort)
-        if: env.SENTINEL_ROOT != ''
-        continue-on-error: true
-        run: |
-          PYTHONPATH="$SENTINEL_ROOT" python -m sentinel scan --repo . || true
+      - name: Sentinel scan for findings (hard gate)
+        run: PYTHONPATH="$SENTINEL_ROOT" python -m sentinel scan --repo .
 
       - name: Regenerate this repo's badge
         run: python scripts/build_assurance_jsons.py --here e156
 
-      - name: HMAC-sign + verify badges (if key secret present)
-        run: |
-          if [ -n "$E156_ASSURANCE_HMAC_KEY" ]; then
-            find . -name assurance.json -not -path './.git/*' -print0 |
-              while IFS= read -r -d '' f; do python scripts/assurance/sign_badge.py sign "$f"; done
-            python scripts/assurance/verify_badges.py --repo . --require-signed
-          else
-            echo "E156_ASSURANCE_HMAC_KEY not set; skipping HMAC sign/verify (set the secret to enable)."
-          fi
+      - name: HMAC-sign and verify badges (mandatory, non-vacuous)
+        run: python scripts/assurance/publish_hmac_badges.py --repo .
 
       - name: Install cosign
-        uses: sigstore/cosign-installer@v3
+        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
 
       - name: Sigstore keyless-sign badges (public, transparency-logged)
         run: |
@@ -89,8 +86,15 @@ jobs:
               cosign sign-blob --yes --bundle "$f.cosign.bundle" "$f"
             done
 
+      - name: Verify Sigstore badge bundles and workflow identity (hard gate)
+        run: python scripts/assurance/verify_sigstore_badges.py --repo .
+
       - name: Build the public assurance dashboard (served by existing Pages)
         run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html
+
+      - name: Sentinel rescan generated publication artifacts (hard gate)
+        # All generated badges, signatures and dashboard must pass Sentinel before push.
+        run: PYTHONPATH="$SENTINEL_ROOT" python -m sentinel scan --repo .
 
       - name: Commit refreshed cache, badges, signatures, dashboard
         run: |
