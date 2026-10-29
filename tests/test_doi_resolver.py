@@ -106,3 +106,30 @@ def test_valid_doi_shape_matches_citation_cascade():
     from sentinel.rules.plugins import citation_cascade as cc
 
     assert dr.VALID_DOI_RE.pattern == cc.VALID_DOI_RE.pattern
+
+def test_extract_parenthesized_publisher_doi_without_truncation():
+    """2026 e156 post-merge DOI check incorrectly captured only '(26'."""
+    full = "10.1016/S2215-0366(26)00015-5"
+    text = (
+        f"**DOI:** [paper](https://doi.org/{full})\n"
+        "See also doi: 10.1136/bmj.n2387.\n"
+    )
+    assert dr.extract_dois(text) == {full, "10.1136/bmj.n2387"}
+
+    # An unresolved DOI must not disappear because its suffix contains ().
+    calls = []
+
+    def fake_fetcher(doi):
+        calls.append(doi)
+        return ("unresolved", 404)
+
+    cache = dr.resolve_dois(dr.extract_dois(f"doi: {full}"), {},
+                            fetcher=fake_fetcher)
+    assert calls == [full]
+    assert cache[full]["status"] == "unresolved"
+
+
+def test_parenthesis_fix_does_not_accept_malformed_registrants():
+    assert dr.extract_dois("doi: 10.999/x(26)00123") == set()
+
+

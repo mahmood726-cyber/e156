@@ -48,7 +48,7 @@ _DOI_PREFIX_RE = re.compile(
     r"(?:^|[\s\(\[\{>;,])"
     r"(?:doi[:=]\s*|DOI[:=]\s*|https?://(?:dx\.)?doi\.org/)"
     r"(\S+?)"
-    r"(?=[\s)\]}<;,\"']|\.\s|\.$|$)",
+    r"(?=[\s\]}<;,\"']|\.\s|\.$|$)",
     re.MULTILINE,
 )
 
@@ -77,7 +77,12 @@ def _now_iso() -> str:
 
 
 def _clean_candidate(raw: str) -> str:
-    return raw.strip(".,)]\"'").rstrip(".")
+    candidate = raw.strip(".,;]\"'").rstrip(".")
+    # Keep balanced parentheses inside a DOI; discard an unmatched Markdown
+    # link closer. Truncating at ')' creates false unresolved DOI-cache keys.
+    while candidate.endswith(")") and candidate.count(")") > candidate.count("("):
+        candidate = candidate[:-1]
+    return candidate
 
 
 def extract_dois(text: str) -> set[str]:
