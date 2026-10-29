@@ -59,13 +59,13 @@ def test_actual_workflow_covers_public_source_and_rendered_pages():
 def test_dropping_each_public_path_refuses_silent_assurance_omission():
     original = WORKFLOW.read_text(encoding="utf-8")
     for source in sorted(PUBLIC_SOURCES):
-        modified = original.replace(f'      - "{source}"\\n', "", 1)
+        modified = original.replace(f'      - "{source}"\n', "", 1)
         assert modified != original, f"fixture did not remove {source}"
         assert f"public source excluded from assurance: {source}" in public_source_trigger_problems(modified)
 
 
 def test_untrusted_pr_event_cannot_acquire_privileged_publishing_job():
     original = WORKFLOW.read_text(encoding="utf-8")
-    modified = original.replace("  push:\\n", "  pull_request:\\n    branches: [master]\\n  push:\\n", 1)
+    modified = original.replace("  push:\n", "  pull_request:\n    branches: [master]\n  push:\n", 1)
     assert modified != original
     assert any("untrusted PR" in p for p in public_source_trigger_problems(modified))
