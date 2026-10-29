@@ -13,6 +13,20 @@ on:
   push:
     branches: [master]
     paths:
+      # Public source and rendered pages must trigger assurance, even when
+      # no assurance implementation file changed. This does not by itself
+      # gate the independently configured GitHub Pages deployment (issue #85).
+      - "paper/**"
+      - "rewrite-workbook.txt"
+      - "students.html"
+      - "e156-library.html"
+      - "index.html"
+      - "assurance.html"
+      - "templates/**"
+      - "scripts/build_paper_pages.py"
+      - "scripts/build_students_page.py"
+      - "scripts/build_library.py"
+      - "scripts/paper_charts.py"
       - "scripts/assurance/**"
       - "scripts/build_assurance_jsons.py"
       - "tests/**"
