@@ -102,6 +102,12 @@ jobs:
             exit 1
           fi
           echo 'synthetic OIDC preflight; not an assurance badge' > "$RUNNER_TEMP/oidc-preflight.txt"
+          # A PR identity must never impersonate the production master signer.
+          production="https://github.com/$GITHUB_REPOSITORY/.github/workflows/assurance.yml@refs/heads/master"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$production" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: PR identity verified as master assurance signer' >&2
+            exit 1
+          fi
           if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer 'https://example.invalid' "$RUNNER_TEMP/oidc-preflight.txt"; then
             echo 'REFUSED: wrong issuer incorrectly verified' >&2
             exit 1
