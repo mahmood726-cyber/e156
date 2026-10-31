@@ -2,9 +2,9 @@ name: e156 assurance
 
 # Flips on the "external actor" half of the Assurance Standard that can't run
 # locally: live DOI resolution (CI has network), Sigstore KEYLESS signing
-# (GitHub OIDC — no key to manage), an optional legacy HMAC gate, and a public
-# Pages dashboard. The commit-time Sentinel rules stay the local gate; this is
-# the publish-time gate.
+# (GitHub OIDC — no key to manage), mandatory authenticated badge bundles,
+# and assurance-dependent Pages artifacts (deployment requires owner opt-in).
+# No HMAC is required or accepted as new E156 publication authentication.
 
 on:
   workflow_dispatch:
@@ -14,8 +14,8 @@ on:
     branches: [master]
     # Every master commit can change Pages output or its provenance. Do not
     # use a partial paths filter: new source files must not silently bypass
-    # DOI/Sentinel/Sigstore assurance (with optional legacy HMAC). Pages itself remains independent
-    # until the admin-controlled publishing source is gated (issue #85).
+    # DOI/Sentinel/Sigstore assurance. Branch-source Pages stays independently
+    # publishable until an administrator switches Pages to GitHub Actions (#85).
 
 permissions:
   contents: write     # commit refreshed doi-cache.json / badges / signatures / dashboard
@@ -68,24 +68,16 @@ jobs:
       - name: Regenerate this repo's badge
         run: python scripts/build_assurance_jsons.py --here e156
 
-      - name: HMAC legacy authentication or strict keyless preflight
-        env:
-          E156_ASSURANCE_HMAC_KEY: ${{ secrets.E156_ASSURANCE_HMAC_KEY }}
-        shell: bash
-        run: |
-          if [[ -n "${E156_ASSURANCE_HMAC_KEY:-}" ]]; then
-            python scripts/assurance/publish_hmac_badges.py --repo .
-            echo "HMAC: PASS; mandatory Sigstore verification still follows." >> "$GITHUB_STEP_SUMMARY"
-          else
-            python scripts/assurance/require_keyless_safe_badges.py --repo .
-            echo "HMAC: NOT AVAILABLE; mandatory Sigstore keyless signing and identity verification must pass." >> "$GITHUB_STEP_SUMMARY"
-          fi
+      - name: Reject unverified legacy HMAC marks before mandatory keyless signing
+        run: python scripts/assurance/require_keyless_safe_badges.py --repo .
 
       - name: Install cosign
         uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
 
       - name: Sigstore keyless-sign badges (public, transparency-logged)
+        shell: bash
         run: |
+          set -euo pipefail
           find . -name assurance.json -not -path './.git/*' -print0 |
             while IFS= read -r -d '' f; do
               cosign sign-blob --yes --bundle "$f.cosign.bundle" "$f"
@@ -95,7 +87,7 @@ jobs:
         run: python scripts/assurance/verify_sigstore_badges.py --repo .
 
       - name: Build the public assurance dashboard (served by existing Pages)
-        run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html
+        run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html --require-keyless-verified
 
       - name: Sentinel rescan generated publication artifacts (hard gate)
         # All generated badges, signatures and dashboard must pass Sentinel before push.
@@ -112,3 +104,43 @@ jobs:
             git commit -m "assurance: refresh DOI cache, badges, signatures, dashboard [skip ci]"
             git push
           fi
+
+      # Refuse a stale checkout, incomplete push, or tree differing from what
+      # passed DOI, Sentinel, Sigstore and authenticated dashboard checks.
+      - name: Refuse stale or uncommitted assured publication source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)" || { echo 'REFUSED: assured tree is dirty'; exit 1; }
+          local_head="$(git rev-parse HEAD)"
+          remote_head="$(git ls-remote origin refs/heads/master | cut -f1)"
+          test -n "$remote_head" && test "$local_head" = "$remote_head" || {
+            echo 'REFUSED: master advanced or assured push not published'; exit 1;
+          }
+          echo "Assured source commit: $local_head" >> "$GITHUB_STEP_SUMMARY"
+
+      # No privileged Pages action until owner changes Settings > Pages source
+      # to GitHub Actions, restricts github-pages environment, and opts in.
+      # Upload exactly this verified workspace, not a second checkout.
+      - name: Package exact assured Pages tree (owner opt-in only)
+        if: vars.E156_PAGES_ACTIONS_READY == 'true'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+        with:
+          path: .
+
+  deploy-pages:
+    name: Deploy only successful same-run assurance artifact
+    needs: assurance
+    if: github.repository == 'mahmood726-cyber/e156' && github.ref == 'refs/heads/master' && vars.E156_PAGES_ACTIONS_READY == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy exactly the assured same-run Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
