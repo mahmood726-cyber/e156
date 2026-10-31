@@ -27,18 +27,27 @@ class KeylessPreflightTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             self.assertNotEqual(MOD.check(Path(d)), 0)
 
-    def test_legacy_hmac_fields_refused_without_key(self):
-        for field, value in (("signature", "tampered"), ("signed_at", "old")):
-            with self.subTest(field=field), tempfile.TemporaryDirectory() as d:
-                p = Path(d) / "assurance.json"
-                p.write_text(json.dumps({"tier": "none", field: value}), encoding="utf-8")
-                self.assertNotEqual(MOD.check(Path(d)), 0)
+    # Each refusal case must have its own JUnit testcase identity. Pytest
+    # includes unittest subTest outcomes in the suite total but does not emit
+    # separate testcase XML nodes; the fail-closed coverage gate must remain
+    # able to reconcile declared and observed counts without exceptions.
+    def _assert_badge_refused(self, payload):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "assurance.json"
+            p.write_text(payload, encoding="utf-8")
+            self.assertNotEqual(MOD.check(Path(d)), 0)
 
-    def test_non_object_and_malformed_badges_refused(self):
-        for raw in ("[]", "{broken"):
-            with self.subTest(raw=raw), tempfile.TemporaryDirectory() as d:
-                (Path(d) / "assurance.json").write_text(raw, encoding="utf-8")
-                self.assertNotEqual(MOD.check(Path(d)), 0)
+    def test_legacy_hmac_signature_refused_without_key(self):
+        self._assert_badge_refused(json.dumps({"tier": "none", "signature": "tampered"}))
+
+    def test_legacy_hmac_signed_at_refused_without_key(self):
+        self._assert_badge_refused(json.dumps({"tier": "none", "signed_at": "old"}))
+
+    def test_non_object_badge_refused(self):
+        self._assert_badge_refused("[]")
+
+    def test_malformed_badge_refused(self):
+        self._assert_badge_refused("{broken")
 
     def test_symlinked_badge_refused_on_all_platforms(self):
         # Some Windows CI hosts cannot create actual symlinks without a
