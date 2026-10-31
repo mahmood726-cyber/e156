@@ -1,62 +1,65 @@
-# E156 keyless assurance candidate — 31 October 2026
+# E156 mandatory keyless assurance and Pages dependency — 31 October 2026
 
-Status: **development-only draft; do not merge or publish until the gates below pass.**
+Status: **PR development only**. No new authenticated production release or Pages deployment is asserted.
 
-## Problem and proposed authenticated alternative
+## Scope and signer
 
-The existing master assurance workflow requires an authentic CI-only HMAC secret,
-`E156_ASSURANCE_HMAC_KEY`. Its absence correctly prevented the HMAC gate from
-claiming success. The GitHub Actions workflow already contains a separate,
-mandatory Sigstore/Cosign keyless signer backed by GitHub OIDC and a verifier
-pinned to the E156 repository, `master` workflow identity and OIDC issuer.
+HMAC is retired as a REQUIRED E156 badge/publication mechanism. Every new
+E156 release rejects badges containing legacy `signature` or `signed_at`
+HMAC marks (even when an old secret happens to exist). Historical artifacts
+are NOT modified, and Meta-Harness held-out identifier privacy controls are
+unaffected. HMAC-only consumers must migrate to explicit verification of
+Sigstore bundles rather than relying on unauthenticated legacy marks.
 
-This candidate offers two explicitly different paths:
+All new E156 badges must be signed using Cosign keyless GitHub OIDC and
+verified on the original signed bytes against the exact certificate identity
+`https://github.com/mahmood726-cyber/e156/.github/workflows/assurance.yml@refs/heads/master`
+and OIDC issuer `https://token.actions.githubusercontent.com`. Missing,
+empty, symlinked or tampered bundles and wrong signer identities refuse.
+The PR OIDC exercise signs synthetic bytes only, NOT production badges.
 
-1. **HMAC available:** run the unchanged fail-closed HMAC signing and
-   verification, followed by mandatory Sigstore keyless signing and verification.
-2. **HMAC unavailable:** refuse badges carrying unverified legacy HMAC signature
-   or signed-at fields, then require the same non-vacuous Sigstore keyless signer
-   and exact workflow-identity verification before continuing.
+## Same-source publication gate — issue #85
 
-There is **no invented HMAC key, no unsigned-success fallback, no skipped
-Sigstore verification**, and no automatic re-issuance of historical signatures.
-A keyless Cosign bundle proves the signed bytes were emitted under the pinned
-GitHub Actions identity; it is not interchangeable with a previously issued
-HMAC signature for clients that explicitly require HMAC verification.
+The privileged `master` assurance job must pass full corpus/zero-skip tests,
+real DOI checks, pinned Sentinel, keyless sign AND verify, a second verified
+dashboard build, final Sentinel rescan, commit/push and exact remote/master
+HEAD/clean-tree check. Only THIS successful job's exact verified workspace can
+be packaged; the deploy job has `needs: assurance` and cannot fetch a
+different commit. No failed, skipped or pending assurance run can deploy its
+artifact through the new dependent job.
 
-## Non-negotiable release and publication gates
+**Admin action still required**: GitHub's existing independent branch-source
+Pages publishing is not stopped merely by adding code. An owner/admin must
+switch **Settings → Pages → Build and deployment → Source → GitHub Actions**,
+then protect the `github-pages` environment to permit only `master`, and
+only after confirming those settings set repository Actions variable
+`E156_PAGES_ACTIONS_READY=true`. Until then the new packaging/deployment
+steps are intentionally disabled; any old public Pages build MUST NOT be
+called assured. The connected GitHub integration does not expose the
+administrative Pages-source API, so these settings have not been changed.
 
-- Full exact-head Ubuntu and Windows tests, including missing-badge, malformed,
-  stale-HMAC, symlink and wrong-identity/ref/issuer failures.
-- A genuine GitHub-hosted OIDC/Cosign positive path using current source and a
-  real negative with a modified badge or mismatched identity.
-- Live DOI, pinned Sentinel and source integrity checks must all succeed first.
-- GitHub branch protections and normal expected-head merge must be satisfied.
-- **Issue #85 remains a separate blocker:** GitHub Pages currently has an
-  independent publishing source. A successful keyless assurance workflow must
-  gate publication of the **same verified files and commit** before the public
-  site is represented as assured. GitHub Pages owner/admin configuration may be
-  required. Do not claim a green Pages build is cryptographic assurance.
-- Existing HMAC-only consumers must either continue using the authentic legacy
-  key or explicitly adopt verification of the published Sigstore bundles.
-- No changes to the rewrite workbook, human YOUR REWRITE/SUBMITTED fields,
-  patient information, historical certificates or signed records.
+The dependent Pages artifact uses the same checked, verified and pushed tree.
+The released badge's cryptographic bundle remains the true authenticity
+evidence; the HTML display is not proof without external bundle verification.
+A successful unit test, synthetic OIDC canary, or old Pages build never
+substitutes for a verified source/production release.
 
-## What is static versus verified dynamically
+## Acceptance and boundaries
 
-| Component | What is pinned/static | Required dynamic evidence |
-|---|---|---|
-| Signer identity | E156 repository, master, assurance.yml, GitHub OIDC issuer | Valid Fulcio certificate and transparency bundle on exact badge bytes |
-| HMAC mode | Legacy signer/verifier unchanged | Authentic secret exists; signing and verification succeed |
-| Keyless mode | Reject legacy-HMAC marks when no key | Sigstore sign-blob and identity-bound verify-blob succeed |
-| Release gate | DOI/Sentinel/assurance workflow source | Passing current-head CI, source checks and deployment dependency |
-| Scientific claims | Existing badge contents and evidence fields | Independent scientific validation remains separate and unproven |
+- Exact-final-head Ubuntu and Windows CI with zero silent skips and adversarial tests.
+- Genuine hosted OIDC synthetic positive, tamper/wrong signer/issuer/missing
+  bundle negatives and production keyless badge verification.
+- GitHub-enforced protections and normal expected-head merge; verify
+  post-merge `master` CI separately.
+- Owner-admin Pages source switch and successful new Pages deployment only
+  after the above evidence, with failures reported individually.
+- Full signed Windows/Linux Sentinel→Overmind/TruthCert/memory→E156→Meta-Harness
+  canary is a SEPARATE gate, NOT established by this PR.
+- Preserve protected E156 AGENTS.md, YOUR REWRITE/SUBMITTED, original DOI
+  sources, frozen clinical protocols, privacy and historical signatures.
 
-Official references:
-- https://docs.sigstore.dev/quickstart/quickstart-cosign/
+Primary references:
+- https://docs.sigstore.dev/cosign/signing/signing_with_blobs/
 - https://docs.sigstore.dev/cosign/verifying/verify/
 - https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
-
-This draft is an authenticated **alternative under evaluation**, not evidence
-that the previous failed HMAC job has been repaired or that production Pages is
-securely gated.
+- https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
