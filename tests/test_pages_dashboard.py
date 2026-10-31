@@ -18,7 +18,7 @@ def _badge(tier="silver", signed=True, name="demo", checks=None):
     b = {"tier": tier, "project_name": name,
          "checks": checks or {"citation_cascade": "pass", "claim_language": "pass"}}
     if signed:
-        b["signature"] = "HMAC-SHA256:abc"
+        b["_signed"] = True  # verified runtime result, NOT an HMAC mark
     return b
 
 
@@ -59,3 +59,23 @@ def test_cli_writes_html(tmp_path):
     out = tmp_path / "assurance.html"
     assert out.is_file()
     assert "Silver" in out.read_text(encoding="utf-8")
+
+def test_unverified_hmac_is_not_an_authenticated_lock():
+    legacy = {"tier": "silver", "project_name": "old", "signature": "HMAC-SHA256:forged"}
+    original = bpd.build_dashboard_html([legacy])
+    unsigned = bpd.build_dashboard_html([{"tier": "silver", "project_name": "old"}])
+    assert original.count("&#128274;") == unsigned.count("&#128274;")
+
+
+def test_dashboard_refuses_claiming_authenticated_without_bundle(tmp_path):
+    (tmp_path / "assurance.json").write_text('{"tier":"bronze"}', encoding="utf-8")
+    assert bpd.main(["--repo", str(tmp_path), "--require-keyless-verified"]) == 2
+    assert not (tmp_path / "assurance.html").exists()
+
+
+def test_authenticated_dashboard_requires_positive_verifier(tmp_path, monkeypatch):
+    from assurance import verify_sigstore_badges
+    (tmp_path / "assurance.json").write_text('{"tier":"bronze"}', encoding="utf-8")
+    monkeypatch.setattr(verify_sigstore_badges, "verify", lambda root: 0)
+    assert bpd.main(["--repo", str(tmp_path), "--require-keyless-verified"]) == 0
+    assert (tmp_path / "assurance.html").read_text(encoding="utf-8").count("&#128274;") == 2
