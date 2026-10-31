@@ -36,29 +36,37 @@ def lock_problems(source: str) -> list[str]:
     return [] if lines == REQUIRED else ["assurance dependency lock changed outside reviewed wheel inventory"]
 
 
-def install_problems(source: str) -> list[str]:
+def install_problems(source: str, filename: str) -> list[str]:
     try:
         data = yaml.safe_load(source)
     except yaml.YAMLError as exc:
         return [f"malformed workflow: {exc}"]
     jobs = data.get("jobs") if isinstance(data, dict) else None
-    if not isinstance(jobs, dict) or len(jobs) != 1:
+    expected = {
+        "assurance-pr.yml": {"assurance-tests", "keyless-oidc-canary"},
+        "assurance.yml": {"assurance"},
+    }.get(filename)
+    if expected is None or not isinstance(jobs, dict) or set(jobs) != expected:
         return ["unexpected assurance job inventory"]
-    job = next(iter(jobs.values()))
-    if not isinstance(job, dict) or not isinstance(job.get("steps"), list):
-        return ["missing assurance job steps"]
-    installs: list[str] = []
-    for step in job["steps"]:
-        if not isinstance(step, dict):
-            return ["malformed assurance step"]
-        run = step.get("run")
-        if not isinstance(run, str):
-            continue
-        # Normalize whitespace, not shell syntax: only the exact reviewed
-        # one-line command is accepted as the unique pip-install step.
-        if re.search(r"\bpip\s+install\b", run):
-            installs.append(" ".join(run.split()))
-    return [] if installs == [INSTALL] else ["unlocked, additional or missing assurance pip install"]
+
+    for job_name, job in jobs.items():
+        if not isinstance(job, dict) or not isinstance(job.get("steps"), list):
+            return [f"{job_name}: missing assurance job steps"]
+        installs: list[str] = []
+        for step in job["steps"]:
+            if not isinstance(step, dict):
+                return [f"{job_name}: malformed assurance step"]
+            run = step.get("run")
+            if not isinstance(run, str):
+                continue
+            # Normalize whitespace only, not shell syntax: precisely one
+            # reviewed, hash-locked install in each corpus/publisher job.
+            if re.search(r"\bpip\s+install\b", run):
+                installs.append(" ".join(run.split()))
+        required = [] if job_name == "keyless-oidc-canary" else [INSTALL]
+        if installs != required:
+            return [f"{job_name}: unlocked, additional or missing assurance pip install"]
+    return []
 
 
 def test_assurance_lock_matches_reviewed_wheel_hashes():
@@ -69,7 +77,7 @@ def test_assurance_lock_matches_reviewed_wheel_hashes():
 @pytest.mark.parametrize("filename", WORKFLOWS)
 def test_both_assurance_jobs_install_reviewed_hash_locked_wheels(filename):
     source = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
-    assert install_problems(source) == []
+    assert install_problems(source, filename) == []
 
 
 @pytest.mark.parametrize("filename", WORKFLOWS)
@@ -85,7 +93,7 @@ def test_lock_bypass_and_additional_install_are_refused(filename):
         source.replace(INSTALL, "python -m pip install pytest==9.1.1 PyYAML==6.0.3"),
     ):
         assert weakened != source
-        assert install_problems(weakened), "weakened workflow install was accepted"
+        assert install_problems(weakened, filename), "weakened workflow install was accepted"
 
 
 def test_missing_or_tampered_lock_entries_are_refused():
@@ -105,7 +113,27 @@ def test_complete_workflow_yaml_parses_and_unquoted_install_refuses(filename):
     assert source.count(quoted) == 1, "reviewed install must be YAML-quoted once"
     parsed = yaml.safe_load(source)
     assert isinstance(parsed, dict) and isinstance(parsed.get("jobs"), dict)
-    assert install_problems(source) == []
+    assert install_problems(source, filename) == []
     unsafe = source.replace(quoted, "run: " + INSTALL, 1)
     assert unsafe != source
-    assert any("malformed workflow" in problem for problem in install_problems(unsafe))
+    assert any("malformed workflow" in problem for problem in install_problems(unsafe, filename))
+
+
+def test_canary_must_not_install_unreviewed_packages():
+    source = (ROOT / ".github" / "workflows" / "assurance-pr.yml").read_text(encoding="utf-8")
+    marker = "echo 'synthetic OIDC preflight"
+    assert marker in source
+    planted = source.replace(marker, "python -m pip install unreviewed && " + marker, 1)
+    assert install_problems(planted, "assurance-pr.yml")
+
+
+@pytest.mark.parametrize("filename,job_name", (
+    ("assurance-pr.yml", "assurance-tests"),
+    ("assurance-pr.yml", "keyless-oidc-canary"),
+    ("assurance.yml", "assurance"),
+))
+def test_missing_approved_assurance_job_is_refused(filename, job_name):
+    source = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
+    parsed = yaml.safe_load(source)
+    del parsed["jobs"][job_name]
+    assert install_problems(yaml.safe_dump(parsed), filename)
