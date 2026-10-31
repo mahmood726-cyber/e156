@@ -1,0 +1,72 @@
+"""Safety regressions for the HMAC-absent, mandatory-Sigstore assurance path."""
+import importlib.util
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "require_keyless_safe_badges",
+    ROOT / "scripts" / "assurance" / "require_keyless_safe_badges.py",
+)
+MOD = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MOD)
+
+
+class KeylessPreflightTests(unittest.TestCase):
+    def test_valid_unsigned_badge(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "capsule" / "assurance.json"
+            p.parent.mkdir()
+            p.write_text(json.dumps({"tier": "none", "checks": {}}), encoding="utf-8")
+            self.assertEqual(MOD.check(Path(d)), 0)
+
+    def test_no_badges_refused(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.assertNotEqual(MOD.check(Path(d)), 0)
+
+    def test_legacy_hmac_fields_refused_without_key(self):
+        for field, value in (("signature", "tampered"), ("signed_at", "old")):
+            with self.subTest(field=field), tempfile.TemporaryDirectory() as d:
+                p = Path(d) / "assurance.json"
+                p.write_text(json.dumps({"tier": "none", field: value}), encoding="utf-8")
+                self.assertNotEqual(MOD.check(Path(d)), 0)
+
+    def test_non_object_and_malformed_badges_refused(self):
+        for raw in ("[]", "{broken"):
+            with self.subTest(raw=raw), tempfile.TemporaryDirectory() as d:
+                (Path(d) / "assurance.json").write_text(raw, encoding="utf-8")
+                self.assertNotEqual(MOD.check(Path(d)), 0)
+
+    def test_symlinked_badge_refused_when_supported(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            real = root / "real.json"
+            real.write_text('{"tier": "none"}', encoding="utf-8")
+            try:
+                (root / "assurance.json").symlink_to(real)
+            except (OSError, NotImplementedError):
+                self.skipTest("symlinks unavailable")
+            self.assertNotEqual(MOD.check(root), 0)
+
+    def test_signing_workflow_requires_keyless_gate_after_optional_hmac(self):
+        workflow = (ROOT / ".github" / "workflows" / "assurance.yml").read_text(encoding="utf-8")
+        hmac = workflow.index("HMAC legacy authentication or strict keyless preflight")
+        sign = workflow.index("Sigstore keyless-sign badges")
+        verify = workflow.index("Verify Sigstore badge bundles and workflow identity (hard gate)")
+        dashboard = workflow.index("Build the public assurance dashboard")
+        self.assertLess(hmac, sign)
+        self.assertLess(sign, verify)
+        self.assertLess(verify, dashboard)
+        self.assertIn("id-token: write", workflow)
+        self.assertIn("require_keyless_safe_badges.py --repo .", workflow)
+        self.assertNotIn("if: ${{", workflow[sign:dashboard])
+        verifier = (ROOT / "scripts" / "assurance" / "verify_sigstore_badges.py").read_text(encoding="utf-8")
+        self.assertIn("--certificate-identity", verifier)
+        self.assertIn("--certificate-oidc-issuer", verifier)
+        self.assertIn("no badges exist; zero Sigstore checks is not success", verifier)
+
+
+if __name__ == "__main__":
+    unittest.main()
