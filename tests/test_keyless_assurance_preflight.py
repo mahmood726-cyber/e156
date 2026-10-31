@@ -1,4 +1,4 @@
-"""Safety regressions for the HMAC-absent, mandatory-Sigstore assurance path."""
+"""Safety regressions for mandatory keyless-only E156 assurance."""
 import importlib.util
 import json
 from pathlib import Path
@@ -63,15 +63,19 @@ class KeylessPreflightTests(unittest.TestCase):
             with patch.object(Path, "is_symlink", flagged):
                 self.assertNotEqual(MOD.check(root), 0)
 
-    def test_signing_workflow_requires_keyless_gate_after_optional_hmac(self):
+    def test_signing_workflow_requires_keyless_gate_and_no_hmac_branch(self):
         workflow = (ROOT / ".github" / "workflows" / "assurance.yml").read_text(encoding="utf-8")
-        hmac = workflow.index("HMAC legacy authentication or strict keyless preflight")
+        hmac = workflow.index("Reject unverified legacy HMAC marks before mandatory keyless signing")
         sign = workflow.index("Sigstore keyless-sign badges")
         verify = workflow.index("Verify Sigstore badge bundles and workflow identity (hard gate)")
         dashboard = workflow.index("Build the public assurance dashboard")
         self.assertLess(hmac, sign)
         self.assertLess(sign, verify)
         self.assertLess(verify, dashboard)
+        self.assertIn("--require-keyless-verified", workflow)
+        self.assertNotIn("E156_ASSURANCE_HMAC_KEY", workflow)
+        self.assertNotIn("publish_hmac_badges.py", workflow)
+        self.assertEqual(workflow.count("require_keyless_safe_badges.py --repo ."), 1)
         self.assertIn("id-token: write", workflow)
         self.assertIn("require_keyless_safe_badges.py --repo .", workflow)
         self.assertNotIn("if: ${{", workflow[sign:dashboard])
