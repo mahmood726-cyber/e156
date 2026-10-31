@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import importlib
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -79,3 +80,24 @@ def test_authenticated_dashboard_requires_positive_verifier(tmp_path, monkeypatc
     monkeypatch.setattr(verify_sigstore_badges, "verify", lambda root: 0)
     assert bpd.main(["--repo", str(tmp_path), "--require-keyless-verified"]) == 0
     assert (tmp_path / "assurance.html").read_text(encoding="utf-8").count("&#128274;") == 2
+
+
+def test_direct_cli_keyless_gate_imports_verifier_before_refusal(tmp_path):
+    """The production workflow executes this file as a script, not a package.
+
+    Import-based tests alone missed a ModuleNotFoundError in the mandatory
+    --require-keyless-verified path. A missing real bundle must refuse safely.
+    """
+    (tmp_path / "assurance.json").write_text('{"tier":"bronze"}', encoding="utf-8")
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "scripts/assurance/build_pages_dashboard.py"),
+         "--repo", str(tmp_path), "--require-keyless-verified"],
+        cwd=tmp_path,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 2
+    assert "REFUSED: dashboard cannot claim authenticated badges" in result.stderr
+    assert "ModuleNotFoundError" not in result.stderr
+    assert not (tmp_path / "assurance.html").exists()
