@@ -1,9 +1,9 @@
 """Prepare HMAC-free E156 badges for mandatory Sigstore keyless signing.
 
-This check never signs, verifies, or removes a legacy HMAC. When the authentic
-CI HMAC secret is unavailable, any pre-existing HMAC mark must be refused
-rather than silently reclassified as valid. Keyless signing AND identity-bound
-bundle verification remain mandatory later in the assurance workflow.
+This check never signs, verifies, or removes a legacy HMAC. Every new E156
+publication is keyless-only: an unverified legacy HMAC mark must be refused,
+regardless of whether a CI HMAC secret exists. Keyless signing and
+identity-bound bundle verification remain mandatory later in the workflow.
 """
 from __future__ import annotations
 
