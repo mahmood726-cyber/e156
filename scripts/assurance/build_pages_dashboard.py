@@ -129,7 +129,13 @@ def main(argv=None) -> int:
         sys.stderr.write(f"not a directory: {root}\n")
         return 2
     if args.require_keyless_verified:
-        from assurance import verify_sigstore_badges
+        # Direct CLI execution puts scripts/assurance (not scripts) on sys.path.
+        # Package imports in pytest use the parent package instead. Both paths
+        # must invoke the same real verifier; neither may bypass it.
+        if __package__:
+            from . import verify_sigstore_badges
+        else:
+            import verify_sigstore_badges
         if verify_sigstore_badges.verify(root) != 0:
             sys.stderr.write("REFUSED: dashboard cannot claim authenticated badges\n")
             return 2
