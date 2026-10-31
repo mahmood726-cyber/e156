@@ -18,6 +18,8 @@ ACTION_PINS = {
     "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065",
     "sigstore/cosign-installer": "398d4b0eeef1380460a10c8013a76f728fb906ac",
     "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "actions/upload-pages-artifact": "7b1f4a764d45c48632c6b24a0339c27f5614fb0b",
+    "actions/deploy-pages": "d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
 }
 # Explicit approved job inventories and exact per-job action multiplicity.
 # In particular, the OIDC canary cannot silently authorize an extra publisher.
@@ -27,7 +29,9 @@ WORKFLOWS = {
         "keyless-oidc-canary": ("actions/checkout", "sigstore/cosign-installer"),
     },
     "assurance.yml": {
-        "assurance": ("actions/checkout", "actions/setup-python", "sigstore/cosign-installer"),
+        "assurance": ("actions/checkout", "actions/setup-python", "sigstore/cosign-installer",
+                      "actions/upload-pages-artifact"),
+        "deploy-pages": ("actions/deploy-pages",),
     },
 }
 
