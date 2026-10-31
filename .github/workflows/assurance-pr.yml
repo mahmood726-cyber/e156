@@ -112,4 +112,14 @@ jobs:
             echo 'REFUSED: wrong issuer incorrectly verified' >&2
             exit 1
           fi
+          # A missing or forged certificate bundle is never a valid signature.
+          if cosign verify-blob --bundle "$RUNNER_TEMP/nonexistent.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: missing bundle incorrectly verified' >&2
+            exit 1
+          fi
+          printf '%s\n' '{"mediaType":"application/forged-sigstore-bundle"}' > "$RUNNER_TEMP/forged.bundle"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/forged.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: forged bundle incorrectly verified' >&2
+            exit 1
+          fi
           echo 'Keyless OIDC signing and negative controls passed; no publication performed.'
