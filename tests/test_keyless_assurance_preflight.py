@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
@@ -39,16 +40,19 @@ class KeylessPreflightTests(unittest.TestCase):
                 (Path(d) / "assurance.json").write_text(raw, encoding="utf-8")
                 self.assertNotEqual(MOD.check(Path(d)), 0)
 
-    def test_symlinked_badge_refused_when_supported(self):
+    def test_symlinked_badge_refused_on_all_platforms(self):
+        # Some Windows CI hosts cannot create actual symlinks without a
+        # privilege; simulate Path.is_symlink so no test is skipped.
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            real = root / "real.json"
-            real.write_text('{"tier": "none"}', encoding="utf-8")
-            try:
-                (root / "assurance.json").symlink_to(real)
-            except (OSError, NotImplementedError):
-                self.skipTest("symlinks unavailable")
-            self.assertNotEqual(MOD.check(root), 0)
+            (root / "assurance.json").write_text('{"tier": "none"}', encoding="utf-8")
+            original = Path.is_symlink
+
+            def flagged(path):
+                return path.name == "assurance.json" or original(path)
+
+            with patch.object(Path, "is_symlink", flagged):
+                self.assertNotEqual(MOD.check(root), 0)
 
     def test_signing_workflow_requires_keyless_gate_after_optional_hmac(self):
         workflow = (ROOT / ".github" / "workflows" / "assurance.yml").read_text(encoding="utf-8")
