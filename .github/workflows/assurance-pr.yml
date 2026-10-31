@@ -74,3 +74,42 @@ jobs:
           name: assurance-junit-${{ matrix.os }}
           path: ${{ runner.temp }}/e156-assurance-junit.xml
           if-no-files-found: error
+
+  keyless-oidc-canary:
+    name: Keyless OIDC canary (synthetic, no publication)
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
+      - name: Sign synthetic blob and refuse altered bytes or wrong issuer
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'synthetic OIDC preflight; not an assurance badge' > "$RUNNER_TEMP/oidc-preflight.txt"
+          cosign sign-blob --yes --bundle "$RUNNER_TEMP/oidc-preflight.bundle" "$RUNNER_TEMP/oidc-preflight.txt"
+          identity="https://github.com/$GITHUB_WORKFLOW_REF"
+          issuer="https://token.actions.githubusercontent.com"
+          cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"
+          echo 'tampered' >> "$RUNNER_TEMP/oidc-preflight.txt"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: modified blob incorrectly verified' >&2
+            exit 1
+          fi
+          echo 'synthetic OIDC preflight; not an assurance badge' > "$RUNNER_TEMP/oidc-preflight.txt"
+          # A PR identity must never impersonate the production master signer.
+          production="https://github.com/$GITHUB_REPOSITORY/.github/workflows/assurance.yml@refs/heads/master"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$production" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: PR identity verified as master assurance signer' >&2
+            exit 1
+          fi
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer 'https://example.invalid' "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: wrong issuer incorrectly verified' >&2
+            exit 1
+          fi
+          echo 'Keyless OIDC signing and negative controls passed; no publication performed.'

@@ -2,7 +2,7 @@ name: e156 assurance
 
 # Flips on the "external actor" half of the Assurance Standard that can't run
 # locally: live DOI resolution (CI has network), Sigstore KEYLESS signing
-# (GitHub OIDC — no key to manage), an HMAC verification gate, and a public
+# (GitHub OIDC — no key to manage), an optional legacy HMAC gate, and a public
 # Pages dashboard. The commit-time Sentinel rules stay the local gate; this is
 # the publish-time gate.
 
@@ -14,7 +14,7 @@ on:
     branches: [master]
     # Every master commit can change Pages output or its provenance. Do not
     # use a partial paths filter: new source files must not silently bypass
-    # DOI/Sentinel/HMAC/Sigstore assurance. Pages itself remains independent
+    # DOI/Sentinel/Sigstore assurance (with optional legacy HMAC). Pages itself remains independent
     # until the admin-controlled publishing source is gated (issue #85).
 
 permissions:
@@ -28,8 +28,6 @@ concurrency:
 jobs:
   assurance:
     runs-on: ubuntu-latest
-    env:
-      E156_ASSURANCE_HMAC_KEY: ${{ secrets.E156_ASSURANCE_HMAC_KEY }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
@@ -70,8 +68,18 @@ jobs:
       - name: Regenerate this repo's badge
         run: python scripts/build_assurance_jsons.py --here e156
 
-      - name: HMAC-sign and verify badges (mandatory, non-vacuous)
-        run: python scripts/assurance/publish_hmac_badges.py --repo .
+      - name: HMAC legacy authentication or strict keyless preflight
+        env:
+          E156_ASSURANCE_HMAC_KEY: ${{ secrets.E156_ASSURANCE_HMAC_KEY }}
+        shell: bash
+        run: |
+          if [[ -n "${E156_ASSURANCE_HMAC_KEY:-}" ]]; then
+            python scripts/assurance/publish_hmac_badges.py --repo .
+            echo "HMAC: PASS; mandatory Sigstore verification still follows." >> "$GITHUB_STEP_SUMMARY"
+          else
+            python scripts/assurance/require_keyless_safe_badges.py --repo .
+            echo "HMAC: NOT AVAILABLE; mandatory Sigstore keyless signing and identity verification must pass." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Install cosign
         uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
