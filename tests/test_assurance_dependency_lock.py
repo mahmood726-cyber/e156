@@ -44,7 +44,7 @@ def install_problems(source: str, filename: str) -> list[str]:
     jobs = data.get("jobs") if isinstance(data, dict) else None
     expected = {
         "assurance-pr.yml": {"assurance-tests", "keyless-oidc-canary"},
-        "assurance.yml": {"assurance"},
+        "assurance.yml": {"assurance", "deploy-pages"},
     }.get(filename)
     if expected is None or not isinstance(jobs, dict) or set(jobs) != expected:
         return ["unexpected assurance job inventory"]
@@ -63,7 +63,7 @@ def install_problems(source: str, filename: str) -> list[str]:
             # reviewed, hash-locked install in each corpus/publisher job.
             if re.search(r"\bpip\s+install\b", run):
                 installs.append(" ".join(run.split()))
-        required = [] if job_name == "keyless-oidc-canary" else [INSTALL]
+        required = [] if job_name in ("keyless-oidc-canary", "deploy-pages") else [INSTALL]
         if installs != required:
             return [f"{job_name}: unlocked, additional or missing assurance pip install"]
     return []
@@ -131,6 +131,7 @@ def test_canary_must_not_install_unreviewed_packages():
     ("assurance-pr.yml", "assurance-tests"),
     ("assurance-pr.yml", "keyless-oidc-canary"),
     ("assurance.yml", "assurance"),
+    ("assurance.yml", "deploy-pages"),
 ))
 def test_missing_approved_assurance_job_is_refused(filename, job_name):
     source = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
