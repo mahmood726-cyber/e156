@@ -28,6 +28,7 @@ def problems(wf: dict) -> list[str]:
         "Sentinel rescan generated publication artifacts (hard gate)",
         "Commit refreshed cache, badges, signatures, dashboard",
         "Refuse stale or uncommitted assured publication source",
+        "Stage only committed assured Pages source (owner opt-in only)",
         "Package exact assured Pages tree (owner opt-in only)",
     ]
     if any(names.count(n) != 1 for n in required):
@@ -45,10 +46,23 @@ def problems(wf: dict) -> list[str]:
         issues.append("bundle/identity verifier bypassed")
     if "--require-keyless-verified" not in named(required[3]).get("run", ""):
         issues.append("dashboard can assert unverified authenticity")
-    if named(required[7]).get("if") != "vars.E156_PAGES_ACTIONS_READY == 'true'":
+    stage = named(required[7])
+    if (stage.get("if") != "vars.E156_PAGES_ACTIONS_READY == 'true'"
+            or stage.get("shell") != "bash" or stage.get("continue-on-error")
+            or stage.get("env") != {"ASSURED_SHA": "${{ steps.assured_head.outputs.sha }}"}):
+        issues.append("assured Pages staging is optional or has wrong SHA")
+    staging_run = stage.get("run", "")
+    for guard in ('set -euo pipefail', 'git archive --format=tar "$ASSURED_SHA"',
+                  'git ls-tree -r "$ASSURED_SHA"', 'git status --porcelain',
+                  'ls -A "$dest"', 'git hash-object "$dest/assurance.html"',
+                  'git rev-parse "$ASSURED_SHA:assurance.html"'):
+        if guard not in staging_run:
+            issues.append("Pages stage could contain unverified/ignored bytes")
+            break
+    if named(required[8]).get("if") != "vars.E156_PAGES_ACTIONS_READY == 'true'":
         issues.append("owner opt-in bypass on upload")
-    if named(required[7]).get("with", {}).get("path") != ".":
-        issues.append("artifact source diverges from assured checkout")
+    if named(required[8]).get("with", {}).get("path") != "${{ runner.temp }}/e156-assured-pages":
+        issues.append("Pages upload not from immutable assured commit")
     stale = named(required[6])
     if stale.get("if") or stale.get("continue-on-error"):
         issues.append("stale HEAD check optional")
@@ -115,7 +129,8 @@ def test_failure_mutations_cannot_skip_assurance_or_change_source():
              "wrong-artifact", "stale-skipped", "no-clean-source",
              "unreviewed-deployer", "missing-output", "wrong-output",
              "no-deploy-drift", "wrong-deploy-assured-ref", "no-guard",
-             "optional-guard", "no-emit")
+             "optional-guard", "no-emit", "no-stage", "optional-stage",
+             "wrong-stage-sha", "stage-live-checkout", "upload-live-checkout")
     for kind in kinds:
         bad = deepcopy(baseline)
         deploy = bad["jobs"]["deploy-pages"]
@@ -157,6 +172,17 @@ def test_failure_mutations_cannot_skip_assurance_or_change_source():
         elif kind == "no-emit":
             stale = next(s for s in steps if s.get("name", "").startswith("Refuse stale"))
             stale["run"] = stale["run"].replace('echo "sha=$local_head" >> "$GITHUB_OUTPUT"', "echo bypass")
+        elif kind == "no-stage":
+            steps[:] = [s for s in steps if not s.get("name", "").startswith("Stage only committed")]
+        elif kind == "optional-stage":
+            next(s for s in steps if s.get("name", "").startswith("Stage only committed"))["if"] = "false"
+        elif kind == "wrong-stage-sha":
+            next(s for s in steps if s.get("name", "").startswith("Stage only committed"))["env"]["ASSURED_SHA"] = "${{ github.sha }}"
+        elif kind == "stage-live-checkout":
+            stage = next(s for s in steps if s.get("name", "").startswith("Stage only committed"))
+            stage["run"] = stage["run"].replace('git archive --format=tar "$ASSURED_SHA"', 'tar -cf - .')
+        elif kind == "upload-live-checkout":
+            next(s for s in steps if s.get("name", "").startswith("Package exact"))["with"]["path"] = "."
         else:
             deploy["steps"][-1]["uses"] = "actions/deploy-pages@v4"
         assert problems(bad), kind
