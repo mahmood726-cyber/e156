@@ -45,8 +45,8 @@ jobs:
       - name: Check out Sentinel (mandatory, exact tested commit)
         run: |
           git clone --quiet https://github.com/${{ github.repository_owner }}/Sentinel.git "$RUNNER_TEMP/Sentinel"
-          git -C "$RUNNER_TEMP/Sentinel" checkout --quiet --detach d87211a0c0a43e805b3aba36ec920693928e86b5
-          test "$(git -C "$RUNNER_TEMP/Sentinel" rev-parse HEAD)" = "d87211a0c0a43e805b3aba36ec920693928e86b5"
+          git -C "$RUNNER_TEMP/Sentinel" checkout --quiet --detach a11c573c0b90dd4814a4a381ded2bfc928eb8c64
+          test "$(git -C "$RUNNER_TEMP/Sentinel" rev-parse HEAD)" = "a11c573c0b90dd4814a4a381ded2bfc928eb8c64"
           echo "SENTINEL_ROOT=$RUNNER_TEMP/Sentinel" >> "$GITHUB_ENV"
 
       - name: Run the assurance test suite (hard gate)
