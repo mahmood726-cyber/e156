@@ -35,14 +35,18 @@ def test_pages_archive_excludes_ignored_data_and_binds_committed_bytes():
             "ignored data must reproduce why clean status alone is insufficient"
         )
         archive = git(repo, "archive", "--format=tar", sha).stdout
+        # Compare to committed blob bytes, not a literal LF assumption:
+        # Windows Git may commit a CRLF test fixture, but it must not alter
+        # the committed data when constructing the publication archive.
+        original_bytes = git(repo, "show", f"{sha}:assurance.html").stdout
         with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as tf:
             names = tf.getnames()
             assert "assurance.html" in names
             assert "private-session.log" not in names
             assured = tf.extractfile("assurance.html")
-            assert assured is not None and assured.read() == b"assured v1\n"
+            assert assured is not None and assured.read() == original_bytes
         committed_blob = git(repo, "rev-parse", f"{sha}:assurance.html").stdout.strip()
-        archived_blob = git(repo, "hash-object", "--stdin", input_data=b"assured v1\n").stdout.strip()
+        archived_blob = git(repo, "hash-object", "--stdin", input_data=original_bytes).stdout.strip()
         assert committed_blob == archived_blob
         # New unsigned working-tree bytes must not be included in archived SHA.
         (repo / "assurance.html").write_text("tampered v2\n", encoding="utf-8")
