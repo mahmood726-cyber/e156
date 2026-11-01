@@ -52,7 +52,7 @@ def problems(wf: dict) -> list[str]:
             or stage.get("env") != {"ASSURED_SHA": "${{ steps.assured_head.outputs.sha }}"}):
         issues.append("assured Pages staging is optional or has wrong SHA")
     staging_run = stage.get("run", "")
-    for guard in ('set -euo pipefail', 'git archive --format=tar "$ASSURED_SHA"',
+    for guard in ('set -euo pipefail', 'git -c core.autocrlf=false archive --format=tar "$ASSURED_SHA"',
                   'git ls-tree -r "$ASSURED_SHA"', 'git status --porcelain',
                   'ls -A "$dest"', 'git hash-object "$dest/assurance.html"',
                   'git rev-parse "$ASSURED_SHA:assurance.html"'):
@@ -180,7 +180,7 @@ def test_failure_mutations_cannot_skip_assurance_or_change_source():
             next(s for s in steps if s.get("name", "").startswith("Stage only committed"))["env"]["ASSURED_SHA"] = "${{ github.sha }}"
         elif kind == "stage-live-checkout":
             stage = next(s for s in steps if s.get("name", "").startswith("Stage only committed"))
-            stage["run"] = stage["run"].replace('git archive --format=tar "$ASSURED_SHA"', 'tar -cf - .')
+            stage["run"] = stage["run"].replace('git -c core.autocrlf=false archive --format=tar "$ASSURED_SHA"', 'tar -cf - .')
         elif kind == "upload-live-checkout":
             next(s for s in steps if s.get("name", "").startswith("Package exact"))["with"]["path"] = "."
         else:
