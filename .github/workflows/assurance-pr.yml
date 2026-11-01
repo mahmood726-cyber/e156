@@ -97,7 +97,7 @@ jobs:
           cosign sign-blob --yes --bundle "$RUNNER_TEMP/oidc-preflight.bundle" "$RUNNER_TEMP/oidc-preflight.txt"
           identity="https://github.com/$GITHUB_WORKFLOW_REF"
           issuer="https://token.actions.githubusercontent.com"
-          cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"
+          cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" --certificate-github-workflow-repository "$GITHUB_REPOSITORY" --certificate-github-workflow-ref "$GITHUB_REF" --certificate-github-workflow-sha "$GITHUB_SHA" "$RUNNER_TEMP/oidc-preflight.txt"
           echo 'tampered' >> "$RUNNER_TEMP/oidc-preflight.txt"
           if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
             echo 'REFUSED: modified blob incorrectly verified' >&2
@@ -112,6 +112,11 @@ jobs:
           fi
           if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer 'https://example.invalid' "$RUNNER_TEMP/oidc-preflight.txt"; then
             echo 'REFUSED: wrong issuer incorrectly verified' >&2
+            exit 1
+          fi
+          # Refuse replay from an older master-workflow commit.
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" --certificate-github-workflow-sha "0000000000000000000000000000000000000000" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: stale/wrong workflow commit SHA accepted' >&2
             exit 1
           fi
           # A missing or forged certificate bundle is never a valid signature.
