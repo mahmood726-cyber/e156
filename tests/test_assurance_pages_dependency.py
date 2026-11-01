@@ -52,6 +52,12 @@ def problems(wf: dict) -> list[str]:
     stale = named(required[6])
     if stale.get("if") or stale.get("continue-on-error"):
         issues.append("stale HEAD check optional")
+    if stale.get("id") != "assured_head" or assure.get("outputs") != {
+        "assured_sha": "${{ steps.assured_head.outputs.sha }}"
+    }:
+        issues.append("assurance does not export verified commit SHA")
+    if 'echo "sha=$local_head" >> "$GITHUB_OUTPUT"' not in stale.get("run", ""):
+        issues.append("verified commit SHA not exported")
     for text in ("git status --porcelain", "git rev-parse HEAD",
                  "git ls-remote origin refs/heads/master"):
         if text not in stale.get("run", ""):
@@ -68,10 +74,27 @@ def problems(wf: dict) -> list[str]:
         issues.append("Pages deployment permission missing")
     if deploy.get("environment", {}).get("name") != "github-pages":
         issues.append("unprotected deployment environment")
-    if len(dsteps) != 1 or dsteps[0].get("uses") != (
+    if len(dsteps) != 2 or dsteps[1].get("uses") != (
         "actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e"
     ):
         issues.append("unreviewed Pages deploy action")
+    if not dsteps or dsteps[0].get("name") != (
+        "Refuse master drift after assurance before Pages deployment"
+    ) or dsteps[0].get("shell") != "bash" or dsteps[0].get("if") or dsteps[0].get("continue-on-error"):
+        issues.append("deployment drift refusal is absent or optional")
+    else:
+        guard = dsteps[0]
+        if guard.get("env") != {
+            "ASSURED_SHA": "${{ needs.assurance.outputs.assured_sha }}"
+        }:
+            issues.append("deploy job does not consume current assured SHA")
+        guard_run = guard.get("run", "")
+        for text in ("set -euo pipefail", "test \"$ASSURED_SHA\" != ''",
+                     "git ls-remote https://github.com/mahmood726-cyber/e156.git refs/heads/master",
+                     'test "$ASSURED_SHA" = "$remote_head"', "exit 1"):
+            if text not in guard_run:
+                issues.append("deployment lacks exact source-ref drift refusal")
+                break
     if "E156_ASSURANCE_HMAC_KEY" in str(wf):
         issues.append("HMAC remains required for new E156 badges")
     return issues
@@ -90,7 +113,9 @@ def test_failure_mutations_cannot_skip_assurance_or_change_source():
     kinds = ("no-needs", "wrong-needs", "unconditional", "foreign-repo",
              "no-opt-in", "no-preflight", "no-verify", "no-dashboard-gate",
              "wrong-artifact", "stale-skipped", "no-clean-source",
-             "unreviewed-deployer")
+             "unreviewed-deployer", "missing-output", "wrong-output",
+             "no-deploy-drift", "wrong-deploy-assured-ref", "no-guard",
+             "optional-guard", "no-emit")
     for kind in kinds:
         bad = deepcopy(baseline)
         deploy = bad["jobs"]["deploy-pages"]
@@ -117,6 +142,21 @@ def test_failure_mutations_cannot_skip_assurance_or_change_source():
             next(s for s in steps if s.get("name", "").startswith("Refuse stale"))["if"] = "false"
         elif kind == "no-clean-source":
             next(s for s in steps if s.get("name", "").startswith("Refuse stale"))["run"] = "echo pass"
+        elif kind == "missing-output":
+            bad["jobs"]["assurance"].pop("outputs")
+        elif kind == "wrong-output":
+            bad["jobs"]["assurance"]["outputs"]["assured_sha"] = "${{ github.sha }}"
+        elif kind == "no-deploy-drift":
+            deploy["steps"][0]["run"] = "echo bypass"
+        elif kind == "wrong-deploy-assured-ref":
+            deploy["steps"][0]["env"]["ASSURED_SHA"] = "${{ github.sha }}"
+        elif kind == "no-guard":
+            deploy["steps"].pop(0)
+        elif kind == "optional-guard":
+            deploy["steps"][0]["if"] = "false"
+        elif kind == "no-emit":
+            stale = next(s for s in steps if s.get("name", "").startswith("Refuse stale"))
+            stale["run"] = stale["run"].replace('echo "sha=$local_head" >> "$GITHUB_OUTPUT"', "echo bypass")
         else:
-            deploy["steps"][0]["uses"] = "actions/deploy-pages@v4"
+            deploy["steps"][-1]["uses"] = "actions/deploy-pages@v4"
         assert problems(bad), kind
