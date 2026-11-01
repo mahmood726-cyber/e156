@@ -28,6 +28,8 @@ concurrency:
 jobs:
   assurance:
     runs-on: ubuntu-latest
+    outputs:
+      assured_sha: ${{ steps.assured_head.outputs.sha }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
@@ -110,6 +112,7 @@ jobs:
       # Refuse a stale checkout, incomplete push, or tree differing from what
       # passed DOI, Sentinel, Sigstore and authenticated dashboard checks.
       - name: Refuse stale or uncommitted assured publication source
+        id: assured_head
         shell: bash
         run: |
           set -euo pipefail
@@ -120,6 +123,7 @@ jobs:
             echo 'REFUSED: master advanced or assured push not published'; exit 1;
           }
           echo "Assured source commit: $local_head" >> "$GITHUB_STEP_SUMMARY"
+          echo "sha=$local_head" >> "$GITHUB_OUTPUT"
 
       # No privileged Pages action until owner changes Settings > Pages source
       # to GitHub Actions, restricts github-pages environment, and opts in.
@@ -143,6 +147,20 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # The assurance job may have pushed generated badges on top of the
+      # triggering commit. Refuse any later master drift before deploying its
+      # already-verified Pages artifact; a new commit needs fresh assurance.
+      - name: Refuse master drift after assurance before Pages deployment
+        shell: bash
+        env:
+          ASSURED_SHA: ${{ needs.assurance.outputs.assured_sha }}
+        run: |
+          set -euo pipefail
+          test "$ASSURED_SHA" != '' || { echo 'REFUSED: missing assured source SHA'; exit 1; }
+          remote_head="$(git ls-remote https://github.com/mahmood726-cyber/e156.git refs/heads/master | cut -f1)"
+          test -n "$remote_head" && test "$ASSURED_SHA" = "$remote_head" || {
+            echo 'REFUSED: master advanced after assurance; new assurance required'; exit 1;
+          }
       - name: Deploy exactly the assured same-run Pages artifact
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
