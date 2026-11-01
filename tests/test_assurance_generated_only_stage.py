@@ -78,3 +78,24 @@ def test_production_workflow_runs_stage_guard_before_commit():
     snippet = "python scripts/assurance/refuse_unexpected_staged_changes.py --repo ."
     assert text.count(snippet) == 1
     assert text.index("git add -A") < text.index(snippet) < text.index("git commit -m")
+
+
+def test_rogue_bundle_suffix_is_not_an_authorized_generated_path(tmp_path):
+    """Old suffix-only allowlisting permitted arbitrary nested faux bundles."""
+    repo = _fixture(tmp_path)
+    _put(repo, "paper/assurance.json.cosign.bundle", "forged\n")
+    _run(repo, "add", "-A")
+    assert guard.check(repo) == 2
+
+
+def test_generated_path_cannot_be_staged_as_symlink_or_executable(tmp_path):
+    """Use Git's index directly so this negative test also runs on Windows."""
+    for mode in ("120000", "100755"):
+        repo = _fixture(tmp_path / mode)
+        blob = subprocess.run(
+            ["git", "-C", str(repo), "hash-object", "-w", "--stdin"],
+            input=b"AGENTS.md", check=True, capture_output=True,
+        ).stdout.decode("ascii").strip()
+        _run(repo, "update-index", "--add", "--cacheinfo",
+             f"{mode},{blob},e156-submission/assurance.json.cosign.bundle")
+        assert guard.check(repo) == 2, mode

@@ -16,6 +16,7 @@ GENERATED = frozenset({
     "doi-cache.json",
     "assurance.html",
     "e156-submission/assurance.json",
+    "e156-submission/assurance.json.cosign.bundle",
 })
 
 
@@ -25,6 +26,35 @@ def _git(repo: Path, *args: str) -> list[str]:
         stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
     ).stdout
     return [entry.decode("utf-8", "strict") for entry in data.split(b"\0") if entry]
+
+
+def _refuse_nonregular_index_entries(repo: Path, paths: list[str]) -> None:
+    """Reject staged symlinks, submodules and executable/generated path mode changes.
+
+    Git's --name-only diff is not a content-type guarantee: a path allowed by
+    name could have become a symlink or gitlink in the index. All new assurance
+    outputs are generated regular non-executable files.
+    """
+    if not paths:
+        return
+    data = subprocess.run(
+        ["git", "-C", str(repo), "ls-files", "--stage", "-z", "--", *paths],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
+    ).stdout
+    seen: set[str] = set()
+    for record in data.split(b"\0"):
+        if not record:
+            continue
+        metadata, filename = record.split(b"\t", 1)
+        mode, _oid, stage = metadata.split()
+        path = filename.decode("utf-8", "strict")
+        if mode != b"100644" or stage != b"0":
+            raise ValueError(f"non-regular or unmerged generated path: {path}")
+        if path in seen:
+            raise ValueError(f"duplicate generated path in index: {path}")
+        seen.add(path)
+    if seen != set(paths):
+        raise ValueError("generated-path index differs from the staged diff")
 
 
 def check(repo: Path) -> int:
@@ -37,10 +67,11 @@ def check(repo: Path) -> int:
             raise ValueError("staged deletion forbidden: " + ", ".join(removed[:5]))
         unexpected = sorted(
             path for path in paths
-            if path not in GENERATED and not path.endswith("/assurance.json.cosign.bundle")
+            if path not in GENERATED
         )
         if unexpected:
             raise ValueError("non-generated staged path: " + ", ".join(unexpected[:5]))
+        _refuse_nonregular_index_entries(repo, paths)
     except (ValueError, OSError, UnicodeError, subprocess.CalledProcessError) as exc:
         print(f"REFUSED: privileged assurance commit includes unsafe changes: {exc}", file=sys.stderr)
         return 2
