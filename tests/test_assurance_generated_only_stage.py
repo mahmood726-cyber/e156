@@ -29,7 +29,7 @@ def _put(repo: Path, path: str, content: str) -> None:
 
 def _fixture(tmp_path: Path) -> Path:
     repo = tmp_path / "isolated"
-    repo.mkdir()
+    repo.mkdir(parents=True)
     _run(repo, "init", "-q")
     _run(repo, "config", "user.name", "CI Fixture")
     _run(repo, "config", "user.email", "fixture@example.invalid")
