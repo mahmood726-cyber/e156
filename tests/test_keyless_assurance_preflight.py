@@ -1,6 +1,8 @@
 """Safety regressions for mandatory keyless-only E156 assurance."""
 import importlib.util
 import json
+import os
+from types import SimpleNamespace
 from pathlib import Path
 import tempfile
 import unittest
@@ -63,6 +65,59 @@ class KeylessPreflightTests(unittest.TestCase):
             with patch.object(Path, "is_symlink", flagged):
                 self.assertNotEqual(MOD.check(root), 0)
 
+    def _sigstore_verifier(self):
+        spec = importlib.util.spec_from_file_location(
+            "verify_sigstore_badges_exact_sha",
+            ROOT / "scripts" / "assurance" / "verify_sigstore_badges.py",
+        )
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_current_oidc_sha_and_repository_claims_are_mandatory(self):
+        verifier = self._sigstore_verifier()
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "assurance.json").write_text('{"tier":"none"}', encoding="utf-8")
+            (root / "assurance.json.cosign.bundle").write_text("synthetic", encoding="utf-8")
+            env = {
+                "GITHUB_REPOSITORY": "mahmood726-cyber/e156",
+                "GITHUB_REF": "refs/heads/master",
+                "GITHUB_SHA": "a" * 40,
+            }
+            with patch.dict(os.environ, env, clear=True), patch.object(
+                verifier.subprocess, "run",
+                return_value=SimpleNamespace(returncode=0, stderr=""),
+            ) as execute:
+                self.assertEqual(verifier.verify(root), 0)
+                execute.assert_called_once()
+                argv = execute.call_args.args[0]
+                self.assertEqual(argv[argv.index("--certificate-github-workflow-sha") + 1], "a" * 40)
+                self.assertEqual(argv[argv.index("--certificate-github-workflow-repository") + 1],
+                                 "mahmood726-cyber/e156")
+                self.assertEqual(argv[argv.index("--certificate-github-workflow-ref") + 1],
+                                 "refs/heads/master")
+                self.assertIn("--certificate-identity", argv)
+                self.assertIn("--certificate-oidc-issuer", argv)
+
+    def test_missing_or_invalid_source_sha_refused_before_cosign(self):
+        verifier = self._sigstore_verifier()
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "assurance.json").write_text('{"tier":"none"}', encoding="utf-8")
+            (root / "assurance.json.cosign.bundle").write_text("synthetic", encoding="utf-8")
+            for bad_sha in ("", "b" * 39, "G" * 40, "b" * 64):
+                env = {
+                    "GITHUB_REPOSITORY": "mahmood726-cyber/e156",
+                    "GITHUB_REF": "refs/heads/master",
+                    "GITHUB_SHA": bad_sha,
+                }
+                with patch.dict(os.environ, env, clear=True), patch.object(
+                    verifier.subprocess, "run",
+                ) as execute:
+                    self.assertNotEqual(verifier.verify(root), 0)
+                    execute.assert_not_called()
+
     def test_signing_workflow_requires_keyless_gate_and_no_hmac_branch(self):
         workflow = (ROOT / ".github" / "workflows" / "assurance.yml").read_text(encoding="utf-8")
         hmac = workflow.index("Reject unverified legacy HMAC marks before mandatory keyless signing")
@@ -82,6 +137,7 @@ class KeylessPreflightTests(unittest.TestCase):
         verifier = (ROOT / "scripts" / "assurance" / "verify_sigstore_badges.py").read_text(encoding="utf-8")
         self.assertIn("--certificate-identity", verifier)
         self.assertIn("--certificate-oidc-issuer", verifier)
+        self.assertIn("--certificate-github-workflow-sha", verifier)
         self.assertIn("no badges exist; zero Sigstore checks is not success", verifier)
 
 
