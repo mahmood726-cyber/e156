@@ -148,7 +148,7 @@ jobs:
           dest="$RUNNER_TEMP/e156-assured-pages"
           mkdir -p "$dest"
           test -z "$(ls -A "$dest")" || { echo 'REFUSED: nonempty Pages stage' >&2; exit 1; }
-          git archive --format=tar "$ASSURED_SHA" | tar -xf - -C "$dest"
+          git -c core.autocrlf=false archive --format=tar "$ASSURED_SHA" | tar -xf - -C "$dest"
           test -s "$dest/assurance.html" || { echo 'REFUSED: missing assured dashboard' >&2; exit 1; }
           test "$(git hash-object "$dest/assurance.html")" = "$(git rev-parse "$ASSURED_SHA:assurance.html")" || {
             echo 'REFUSED: staged dashboard differs from assured commit' >&2
