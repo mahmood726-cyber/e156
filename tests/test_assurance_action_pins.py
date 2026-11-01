@@ -23,6 +23,8 @@ ACTION_PINS = {
 }
 # Explicit approved job inventories and exact per-job action multiplicity.
 # In particular, the OIDC canary cannot silently authorize an extra publisher.
+COSIGN_RELEASE = "v2.5.2"  # version observed in hosted 2026-10-31 OIDC canary
+
 WORKFLOWS = {
     "assurance-pr.yml": {
         "assurance-tests": ("actions/checkout", "actions/setup-python", "actions/upload-artifact"),
@@ -71,6 +73,9 @@ def action_pin_problems(filename: str, content: str) -> list[str]:
                 problems.append(f"{job_name}: unreviewed action step: {ref}")
             elif commit != ACTION_PINS[action]:
                 problems.append(f"{job_name}: mutable, substituted or unreviewed action commit: {ref}")
+            if action == "sigstore/cosign-installer":
+                if step.get("with") != {"cosign-release": COSIGN_RELEASE}:
+                    problems.append(f"{job_name}: Cosign release binary version is not explicitly pinned")
         for action in required:
             if actions.count(action) != 1:
                 problems.append(
@@ -147,3 +152,32 @@ def test_missing_or_extra_job_inventory_is_refused(filename):
     planted = deepcopy(original)
     planted["jobs"]["unreviewed-job"] = {"runs-on": "ubuntu-latest", "steps": []}
     assert action_pin_problems(filename, yaml.safe_dump(planted))
+
+
+@pytest.mark.parametrize("filename,job_name", (
+    ("assurance-pr.yml", "keyless-oidc-canary"),
+    ("assurance.yml", "assurance"),
+))
+def test_cosign_release_version_is_explicit_and_fail_closed(filename, job_name):
+    """Prevent moving the binary version while preserving the pinned action commit.
+
+    This is a source guard; hosted OIDC signing tests prove runtime behavior.
+    Neither the action SHA nor a version tag independently authenticates a
+    downloaded binary or the full Synthesis release chain.
+    """
+    original = _workflow(filename)
+    steps = original["jobs"][job_name]["steps"]
+    index = _action_index(steps, "sigstore/cosign-installer")
+    assert steps[index]["with"] == {"cosign-release": COSIGN_RELEASE}
+    for kind in ("missing", "moving", "wrong", "extra"):
+        planted = deepcopy(original)
+        step = planted["jobs"][job_name]["steps"][index]
+        if kind == "missing":
+            step.pop("with")
+        elif kind == "moving":
+            step["with"] = {"cosign-release": "main"}
+        elif kind == "wrong":
+            step["with"] = {"cosign-release": "v0.0.0"}
+        else:
+            step["with"]["unreviewed-input"] = "true"
+        assert action_pin_problems(filename, yaml.safe_dump(planted)), kind

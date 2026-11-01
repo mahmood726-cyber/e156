@@ -73,6 +73,8 @@ jobs:
 
       - name: Install cosign
         uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
+        with:
+          cosign-release: v2.5.2
 
       - name: Sigstore keyless-sign badges (public, transparency-logged)
         shell: bash
