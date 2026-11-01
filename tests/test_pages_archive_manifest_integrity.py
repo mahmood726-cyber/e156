@@ -99,7 +99,7 @@ def test_workflow_requires_full_manifest_verification_and_mutation_refusal():
     assert stage.get("if") == "vars.E156_PAGES_ACTIONS_READY == 'true'"
     upload = next(s for s in steps if s.get("name", "").startswith("Package exact"))
     assert steps.index(stage) < steps.index(upload)
-    assert upload.get("with", {}).get("path") == "\${{ runner.temp }}/e156-assured-pages"
+    assert upload.get("with", {}).get("path") == "${{ runner.temp }}/e156-assured-pages"
     for mutation in (run.replace(guard, "echo bypass"), run.replace(guard, "true"),
                      run.replace(guard, "")):
         assert mutation.count(guard) != 1
