@@ -149,6 +149,7 @@ jobs:
           mkdir -p "$dest"
           test -z "$(ls -A "$dest")" || { echo 'REFUSED: nonempty Pages stage' >&2; exit 1; }
           git -c core.autocrlf=false archive --format=tar "$ASSURED_SHA" | tar -xf - -C "$dest"
+          python scripts/assurance/verify_pages_archive.py --repo . --sha "$ASSURED_SHA" --stage "$dest"
           test -s "$dest/assurance.html" || { echo 'REFUSED: missing assured dashboard' >&2; exit 1; }
           test "$(git hash-object "$dest/assurance.html")" = "$(git rev-parse "$ASSURED_SHA:assurance.html")" || {
             echo 'REFUSED: staged dashboard differs from assured commit' >&2
