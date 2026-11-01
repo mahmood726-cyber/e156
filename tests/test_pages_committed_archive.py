@@ -34,7 +34,7 @@ def test_pages_archive_excludes_ignored_data_and_binds_committed_bytes():
         assert git(repo, "status", "--porcelain").stdout == b"", (
             "ignored data must reproduce why clean status alone is insufficient"
         )
-        archive = git(repo, "archive", "--format=tar", sha).stdout
+        archive = git(repo, "-c", "core.autocrlf=false", "archive", "--format=tar", sha).stdout
         # Compare to committed blob bytes, not a literal LF assumption:
         # Windows Git may commit a CRLF test fixture, but it must not alter
         # the committed data when constructing the publication archive.
