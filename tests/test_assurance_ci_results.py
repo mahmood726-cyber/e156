@@ -193,6 +193,39 @@ def test_testsuites_wrapper_with_honest_aggregate_counters_passes(tmp_path):
     assert guard.main([str(path)]) == 0
 
 
+@pytest.mark.parametrize("container", ["testsuite", "testsuites"])
+@pytest.mark.parametrize("disabled", ["1", "2", "-1", "unknown", "9" * 100])
+def test_declared_disabled_junit_tests_refused(tmp_path, container, disabled):
+    # JUnit producers may report disabled tests separately from the testcase
+    # elements. All 534 emitted synthetic cases still pass and reconcile;
+    # accepting an explicit disabled count would invent complete coverage.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    if container == "testsuites":
+        wrapper = ET.Element("testsuites")
+        wrapper.append(tree.getroot())
+        tree._setroot(wrapper)
+    target = tree.getroot()
+    target.set("disabled", disabled)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    reasons = guard.check_results(path)
+    assert any(container in reason and "disabled" in reason for reason in reasons)
+
+
+@pytest.mark.parametrize("container", ["testsuite", "testsuites"])
+def test_zero_or_absent_junit_disabled_count_is_accepted(tmp_path, container):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    if container == "testsuites":
+        wrapper = ET.Element("testsuites")
+        wrapper.append(tree.getroot())
+        tree._setroot(wrapper)
+    assert guard.check_results(path) == []
+    tree.getroot().set("disabled", "0")
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.check_results(path) == []
+
+
 def test_non_junit_root_cannot_launder_embedded_valid_suite(tmp_path):
     path = _full_junit(tmp_path)
     tree = ET.parse(path)
