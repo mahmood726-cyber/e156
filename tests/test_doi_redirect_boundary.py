@@ -91,7 +91,7 @@ def test_negative_status_controls_do_not_follow_or_promote(monkeypatch, code, ve
 
 @pytest.mark.parametrize("location", [
     None, "", "/publisher", "javascript:alert(1)", "https://",
-    "https://[unclosed", "https://publisher.invalid/\\r\\nbad",
+    "https://[unclosed", "https://publisher.invalid/" + chr(13) + chr(10) + "bad",
 ])
 def test_redirect_missing_or_malformed_location_is_inconclusive(monkeypatch, location):
     """A bare 3xx status is not proof of DOI resolution; never follow it."""
