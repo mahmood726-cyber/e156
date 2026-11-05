@@ -170,9 +170,17 @@ def test_unreadable_stage_subdirectory_cannot_be_silently_skipped(monkeypatch):
     # of relying on a monkeypatch of the OS-specific scandir implementation.
     # Without onerror, a complete-looking root manifest is accepted.
     with TemporaryDirectory() as temp:
-        repo, stage, sha = repo_and_stage(Path(temp))
-        unreadable = stage / "extra-unreadable-directory"
+        repo, stage, _ = repo_and_stage(Path(temp))
+        # Use an expected tracked directory: the newer exact-directory gate
+        # rightly rejects untracked empty dirs before the traversal callback.
+        (repo / "tracked").mkdir()
+        (repo / "tracked" / "manifest.bin").write_bytes(b"synthetic tracked asset")
+        git(repo, "add", "tracked/manifest.bin")
+        git(repo, "commit", "-qm", "synthetic tracked directory")
+        sha = git(repo, "rev-parse", "HEAD").decode().strip()
+        unreadable = stage / "tracked"
         unreadable.mkdir()
+        (unreadable / "manifest.bin").write_bytes(git(repo, "show", f"{sha}:tracked/manifest.bin"))
         assert verify(repo, sha, stage) == 0
         original_walk = os.walk
         failed_calls = []
