@@ -72,6 +72,18 @@ UNKNOWN = "unknown"
 Fetcher = Callable[[str], "tuple[str, int | None]"]
 
 
+class _NoPublisherRedirect(urllib.request.HTTPRedirectHandler):
+    """Only consult doi.org metadata; never follow HEAD into publisher sites.
+
+    The default urllib opener follows 3xx responses to arbitrary publishers,
+    crossing an unreviewed source-rights boundary. An original doi.org 3xx
+    is sufficient for this DOI-existence check and must not fetch its target.
+    """
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 def _now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -133,12 +145,14 @@ def http_head_fetcher(doi: str, timeout: float = 10.0, retries: int = 1) -> "tup
     map to RESOLVED / UNKNOWN respectively, never UNRESOLVED.
     """
     url = "https://doi.org/" + doi
-    last_exc: Exception | None = None
+    # Construct a non-following opener: urllib's default follows publisher
+    # redirects even for HEAD, potentially contacting restricted article hosts.
+    opener = urllib.request.build_opener(_NoPublisherRedirect())
     for attempt in range(retries + 1):
         try:
             req = urllib.request.Request(url, method="HEAD",
                                          headers={"User-Agent": "e156-assurance-doi-resolver"})
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with opener.open(req, timeout=timeout) as resp:
                 code = getattr(resp, "status", None) or resp.getcode()
                 return (RESOLVED, code)
         except urllib.error.HTTPError as e:
@@ -149,7 +163,6 @@ def http_head_fetcher(doi: str, timeout: float = 10.0, retries: int = 1) -> "tup
             # 403 paywall, 405 method-not-allowed, 5xx, etc. — inconclusive.
             return (UNKNOWN, e.code)
         except (urllib.error.URLError, OSError, ValueError) as e:
-            last_exc = e
             continue
     return (UNKNOWN, None)
 
