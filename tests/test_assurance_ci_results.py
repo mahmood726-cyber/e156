@@ -147,6 +147,62 @@ def test_stray_testcase_cannot_inflate_complete_junit_report(tmp_path, capsys):
     assert "outside testsuite membership" in capsys.readouterr().err
 
 
+
+@pytest.mark.parametrize(
+    ("counter", "declared"),
+    [
+        ("tests", "535"),
+        ("failures", "1"),
+        ("errors", "1"),
+        ("skipped", "1"),
+        ("tests", "unknown"),
+        ("errors", "-1"),
+    ],
+)
+def test_testsuites_wrapper_cannot_contradict_child_evidence(
+    tmp_path, counter, declared,
+):
+    # Synthetic 534-case report: the prior gate trusted child testsuites
+    # but ignored contradictory root aggregate counts entirely.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    wrapper = ET.Element("testsuites")
+    wrapper.append(tree.getroot())
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.check_results(path) == []  # pytest-style headerless wrapper
+
+    wrapper.set(counter, declared)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    reasons = guard.check_results(path)
+    assert any("testsuites" in reason and counter in reason for reason in reasons)
+
+
+def test_testsuites_wrapper_with_honest_aggregate_counters_passes(tmp_path):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    wrapper = ET.Element("testsuites", {
+        "tests": str(guard.MIN_ASSURANCE_TESTS),
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+    })
+    wrapper.append(tree.getroot())
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 0
+
+
+def test_non_junit_root_cannot_launder_embedded_valid_suite(tmp_path):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    wrapper = ET.Element("untrusted-report")
+    wrapper.append(tree.getroot())
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert any("unexpected root" in reason for reason in guard.check_results(path))
+
+
 def test_junit_without_testsuite_container_is_refused(tmp_path):
     path = _junit(tmp_path)
     tree = ET.parse(path)
