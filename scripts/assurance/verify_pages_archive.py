@@ -104,6 +104,12 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
                     st = source.lstat()
                     if not stat.S_ISREG(st.st_mode):
                         return _refuse("non-regular stage file")
+                    # A stage hardlink may alias a mutable file outside this
+                    # archive. Matching bytes now cannot attest the payload
+                    # that a later upload will read through the same inode.
+                    # git archive extracts regular blobs as single-link files.
+                    if st.st_nlink != 1:
+                        return _refuse("stage file has multiple hard links")
                     rel = source.relative_to(stage).as_posix()
                     if rel not in expected:
                         return _refuse("extra or unexpected stage file")

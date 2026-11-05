@@ -189,3 +189,30 @@ def test_unreadable_stage_subdirectory_cannot_be_silently_skipped(monkeypatch):
             assert verify(repo, sha, stage) != 0
         assert failed_calls
         assert verify(repo, sha, stage) == 0
+
+def test_stage_hardlink_alias_refused_despite_identical_git_blob(monkeypatch):
+    # Simulate a hard-linked report inode without depending on Windows/Unix
+    # filesystem hardlink permissions. Unchanged content digest still matches.
+    with TemporaryDirectory() as temp:
+        repo, stage, sha = repo_and_stage(Path(temp))
+        assert verify(repo, sha, stage) == 0
+        assert git(repo, "hash-object", str(stage / "report.txt")).strip() == git(
+            repo, "rev-parse", f"{sha}:report.txt").strip()
+        original_lstat = Path.lstat
+        observed = []
+
+        def multi_link_lstat(path):
+            result = original_lstat(path)
+            if Path(path).name == "report.txt" and Path(path).parent.name == "stage":
+                fields = list(result)
+                fields[3] = 2  # os.stat_result.st_nlink on Windows and POSIX
+                observed.append(Path(path).name)
+                return os.stat_result(fields)
+            return result
+
+        with monkeypatch.context() as patch:
+            patch.setattr(Path, "lstat", multi_link_lstat)
+            assert verify(repo, sha, stage) != 0
+        assert observed == ["report.txt"]
+        # Positive control: a single-link, unchanged stage is still accepted.
+        assert verify(repo, sha, stage) == 0
