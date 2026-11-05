@@ -165,25 +165,27 @@ def test_tracked_executable_passes_and_lost_exec_bit_refuses():
             assert not _mode_matches_git_index("100755", stat.S_IFREG | 0o644)
 
 def test_unreadable_stage_subdirectory_cannot_be_silently_skipped(monkeypatch):
-    # os.walk's default onerror=None silently omits an unreadable subtree.
-    # A complete-looking file manifest must not pass if the stage cannot
-    # be fully enumerated. Simulate EACCES identically on Windows and Linux.
+    # On platforms where native os.walk/scandir is implemented separately
+    # (notably Windows), patch the documented onerror walk interface instead
+    # of relying on a monkeypatch of the OS-specific scandir implementation.
+    # Without onerror, a complete-looking root manifest is accepted.
     with TemporaryDirectory() as temp:
         repo, stage, sha = repo_and_stage(Path(temp))
         unreadable = stage / "extra-unreadable-directory"
         unreadable.mkdir()
-        assert verify(repo, sha, stage) == 0  # control: ordinary enumeration
-        original_scandir = os.scandir
+        assert verify(repo, sha, stage) == 0
+        original_walk = os.walk
         failed_calls = []
 
-        def refuse_scandir(path):
-            if Path(path) == unreadable:
-                failed_calls.append(str(path))
-                raise PermissionError("synthetic unreadable stage directory")
-            return original_scandir(path)
+        def failing_walk(path, *, followlinks=False, onerror=None):
+            assert Path(path) == stage
+            yield from original_walk(path, followlinks=followlinks)
+            failed_calls.append(str(unreadable))
+            if onerror is not None:
+                onerror(PermissionError("synthetic unreadable stage directory"))
 
         with monkeypatch.context() as patch:
-            patch.setattr(os, "scandir", refuse_scandir)
+            patch.setattr(os, "walk", failing_walk)
             assert verify(repo, sha, stage) != 0
         assert failed_calls
-        assert verify(repo, sha, stage) == 0  # restored positive control
+        assert verify(repo, sha, stage) == 0
