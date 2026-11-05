@@ -26,30 +26,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Temporary fail-closed governance hold. This workflow reads cached capsule
-  # material and resolves external DOIs, but has no reviewed, operation-specific
-  # Synthesis source-rights gate or private decision log. Do not replace this
-  # hold with a boolean variable: a complete reviewed gate and permission
-  # manifest must run BEFORE checkout, cache reads, replay or network access.
-  # PR-only synthetic assurance remains in assurance-pr.yml.
-  source-rights-preflight:
-    name: SOURCE_RIGHTS_HOLD — reviewed permission gate unavailable
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-    steps:
-      - name: Refuse source acquisition and publication processing
-        shell: bash
-        run: |
-          printf '%s\n' 'SOURCE_RIGHTS_HOLD: reviewed Synthesis source-rights gate, operation permissions and private decision log are unavailable; no production publication processing is authorized.' >&2
-          exit 1
-
   assurance:
-    needs: source-rights-preflight
     runs-on: ubuntu-latest
     outputs:
       assured_sha: ${{ steps.assured_head.outputs.sha }}
     steps:
+      # Run before checkout, dependencies, corpus replay, DOI/cache access,
+      # Sentinel scanning or any generated artifact. No reviewed private
+      # operation permission and Synthesis source-rights decision log exists.
+      # Synthetic PR validation uses the separate assurance-pr.yml workflow.
+      - name: SOURCE_RIGHTS_HOLD — fail closed before publication processing
+        shell: bash
+        run: |
+          printf '%s\\n' 'SOURCE_RIGHTS_HOLD: no reviewed Synthesis source-rights gate, operation-specific permission manifest, or private access decision. Production publication processing is paused.' >&2
+          exit 1
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065

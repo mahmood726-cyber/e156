@@ -1,9 +1,9 @@
-"""Synthetic contract tests for the production publication-processing hold.
+"""Fail-closed source-rights hold for E156's privileged production workflow.
 
-The PR-only assurance corpus may run on synthetic fixtures. Production E156
-must not access DOI networks, read publication caches or replay article data
-before a reviewed operation-specific Synthesis source-rights gate exists.
-This test DOES NOT approve any publication access or replace that gate.
+No Synthesis permission manifest or private decision log is available. The
+production job must stop before checkout, cache reads, DOI network traffic,
+Sentinel article scanning, or publication artifacts. These mutation tests use
+only the workflow YAML and do not authorize any article processing.
 """
 from __future__ import annotations
 
@@ -19,53 +19,58 @@ WORKFLOW = (
 )
 
 
-def require_hold_before_production_processing(workflow: str) -> None:
+def require_precheckout_hold(workflow: str) -> None:
     jobs = yaml.safe_load(workflow)["jobs"]
-    preflight = jobs["source-rights-preflight"]
-    assert "if" not in preflight, "source-rights hold cannot be conditional"
-    assert preflight["permissions"] == {"contents": "read"}
-    assert "continue-on-error" not in preflight
-    steps = preflight["steps"]
-    assert len(steps) == 1, "no checkout, cache read or acquisition before hold"
-    refusal = steps[0]
-    assert refusal.get("shell") == "bash"
-    assert "uses" not in refusal and "if" not in refusal
-    assert "continue-on-error" not in refusal
-    run = refusal["run"]
-    assert "SOURCE_RIGHTS_HOLD" in run
-    assert "exit 1" in run, "hold must stop before processing"
+    assert set(jobs) == {"assurance", "deploy-pages"}
     assurance = jobs["assurance"]
-    assert assurance.get("needs") == "source-rights-preflight"
-    assert "if" not in assurance, "no alternate assurance bypass"
+    assert "if" not in assurance and "continue-on-error" not in assurance
+    steps = assurance["steps"]
+    assert len(steps) >= 2
+    hold = steps[0]
+    assert "uses" not in hold and "if" not in hold
+    assert "continue-on-error" not in hold
+    assert hold.get("shell") == "bash"
+    assert "SOURCE_RIGHTS_HOLD" in hold["run"]
+    assert "exit 1" in hold["run"]
+    assert steps[1]["uses"].startswith("actions/checkout@")
     assert jobs["deploy-pages"].get("needs") == "assurance"
 
 
-def test_production_assurance_requires_failing_rights_preflight():
-    workflow = WORKFLOW.read_text(encoding="utf-8")
-    require_hold_before_production_processing(workflow)
+def test_production_refuses_source_processing_before_checkout():
+    require_precheckout_hold(WORKFLOW.read_text(encoding="utf-8"))
 
 
 @pytest.mark.parametrize(
     "mutation",
     [
-        lambda text: text.replace("needs: source-rights-preflight", ""),
-        lambda text: text.replace("exit 1", "echo 'continue without review'"),
-        lambda text: text.replace("      contents: read\n    steps:", "      contents: write\n    steps:", 1),
-        lambda text: text.replace(
-            "  source-rights-preflight:\n",
-            "  source-rights-preflight:\n    if: false\n",
+        lambda src: src.replace("          exit 1", "          echo proceed", 1),
+        lambda src: src.replace(
+            "      - name: SOURCE_RIGHTS_HOLD", "      - name: renamed", 1
+        ).replace("SOURCE_RIGHTS_HOLD: no reviewed", "unreviewed", 1),
+        lambda src: src.replace(
+            "      - name: SOURCE_RIGHTS_HOLD",
+            "      - name: SOURCE_RIGHTS_HOLD\n        if: false",
             1,
         ),
-        lambda text: text.replace(
-            "  assurance:\n    needs: source-rights-preflight",
-            "  assurance:\n    needs: source-rights-preflight\n    if: always()",
+        lambda src: src.replace(
+            "      - name: SOURCE_RIGHTS_HOLD",
+            "      - name: SOURCE_RIGHTS_HOLD\n        continue-on-error: true",
+            1,
+        ),
+        lambda src: src.replace(
+            "      - uses: actions/checkout@",
+            "      - uses: actions/checkout@",
+            1,
+        ).replace(
+            "    steps:\n      # Run before checkout",
+            "    steps:\n      - uses: actions/checkout@v4\n      # Run before checkout",
             1,
         ),
     ],
 )
-def test_mutated_unsafe_gate_cannot_pass_contract(mutation):
-    workflow = WORKFLOW.read_text(encoding="utf-8")
-    weakened = mutation(workflow)
-    assert weakened != workflow
-    with pytest.raises((AssertionError, KeyError)):
-        require_hold_before_production_processing(weakened)
+def test_source_rights_hold_bypass_mutations_are_refused(mutation):
+    source = WORKFLOW.read_text(encoding="utf-8")
+    planted = mutation(source)
+    assert planted != source
+    with pytest.raises(AssertionError):
+        require_precheckout_hold(planted)
