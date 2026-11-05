@@ -23,9 +23,13 @@ def _refuse(message: str) -> int:
 
 
 def _git(repo: Path, *args: str) -> bytes:
+    # Git replace refs can rebind an apparently immutable commit SHA to a
+    # different tree. Verify actual object identities, never local replacements.
+    # The archive step may still see a replacement, but will then fail this gate.
     return subprocess.run(
         ["git", "-C", str(repo), *args], check=True,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        env={**os.environ, "GIT_NO_REPLACE_OBJECTS": "1"},
     ).stdout
 
 

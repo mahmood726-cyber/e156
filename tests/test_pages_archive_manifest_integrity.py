@@ -254,3 +254,29 @@ def test_tracked_nested_directory_allowed_but_extra_nested_directory_refused():
         assert verify(repo, sha, stage) != 0
         extra.rmdir()
         assert verify(repo, sha, stage) == 0
+
+def test_git_replace_ref_cannot_substitute_assured_commit_tree():
+    # Local replace refs can change the object returned for an immutable SHA
+    # without changing the SHA string. Before the guard the substituted stage
+    # matched git ls-tree of that same (replaced) SHA and falsely passed.
+    with TemporaryDirectory() as temp:
+        repo, stage, sha = repo_and_stage(Path(temp))
+        original = (stage / "assurance.html").read_bytes()
+        assert verify(repo, sha, stage) == 0
+        substituted = b"synthetic substituted dashboard\n"
+        (repo / "assurance.html").write_bytes(substituted)
+        git(repo, "add", "assurance.html")
+        git(repo, "commit", "-qm", "synthetic alternate tree")
+        alternate = git(repo, "rev-parse", "HEAD").decode().strip()
+        git(repo, "replace", sha, alternate)
+        # Confirm that ordinary Git reading is redirected by the replace ref.
+        assert git(repo, "show", f"{sha}:assurance.html") == substituted
+        (stage / "assurance.html").write_bytes(substituted)
+        assert verify(repo, sha, stage) != 0
+        # Positive controls: true committed bytes pass despite the local
+        # replacement; removing the replacement also preserves acceptance.
+        (stage / "assurance.html").write_bytes(original)
+        assert verify(repo, sha, stage) == 0
+        git(repo, "replace", "-d", sha)
+        assert verify(repo, sha, stage) == 0
+
