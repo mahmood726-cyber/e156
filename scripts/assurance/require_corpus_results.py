@@ -115,6 +115,37 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
                     f"but has {observed} marked testcase elements."
                 )
 
+
+    # Pytest commonly emits a <testsuites> wrapper without aggregate headers.
+    # If a producer DOES supply root totals, they are evidence claims too:
+    # a report declaring failures or missing cases at its root must not pass
+    # merely because its child testsuites are internally consistent.
+    if root.tag not in ("testsuite", "testsuites"):
+        problems.append("Assurance JUnit has an unexpected root element.")
+    if root.tag == "testsuites":
+        aggregate = {
+            "tests": len(cases),
+            "skipped": sum(case.find("skipped") is not None for case in cases),
+            "failures": sum(case.find("failure") is not None for case in cases),
+            "errors": sum(case.find("error") is not None for case in cases),
+        }
+        for counter, observed in aggregate.items():
+            # Absence is valid for pytest's testsuites wrapper; a present
+            # counter must be decimal, bounded and exactly reconciled.
+            if counter not in root.attrib:
+                continue
+            declared = root.attrib[counter]
+            if not (declared.isascii() and declared.isdecimal()
+                    and len(declared) <= 9):
+                problems.append(
+                    f"Assurance JUnit testsuites has an invalid {counter} count."
+                )
+            elif int(declared) != observed:
+                problems.append(
+                    f"Assurance JUnit testsuites declares {declared} {counter} "
+                    f"but contains {observed} observed {counter}."
+                )
+
     corpus = [case for case in cases if _is_corpus_case(case)]
     names = Counter(case.get("name") or "" for case in corpus)
     # Count unique cases, never raw XML elements: otherwise 14 copies of one
