@@ -42,10 +42,10 @@ def test_synthetic_symlinked_parent_directory_is_excluded(tmp_path, monkeypatch)
     nested = repo / "linked-dir"
     nested.mkdir(parents=True)
     (nested / "synthetic.json").write_text(
-        '{"metadata":"doi: 10.9999/nested-synthetic"}', encoding="utf-8"
+        '{"metadata":"see doi: 10.9999/nested-synthetic"}', encoding="utf-8"
     )
     (repo / "normal.json").write_text(
-        '{"metadata":"doi: 10.9999/normal-synthetic"}', encoding="utf-8"
+        '{"metadata":"see doi: 10.9999/normal-synthetic"}', encoding="utf-8"
     )
     # Simulate traversal on a platform/version that yields a symlinked directory
     # without requiring SeCreateSymbolicLinkPrivilege on Windows.
