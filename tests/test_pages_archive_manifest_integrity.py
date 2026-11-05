@@ -163,3 +163,27 @@ def test_tracked_executable_passes_and_lost_exec_bit_refuses():
         else:
             assert _mode_matches_git_index("100755", stat.S_IFREG | 0o755)
             assert not _mode_matches_git_index("100755", stat.S_IFREG | 0o644)
+
+def test_unreadable_stage_subdirectory_cannot_be_silently_skipped(monkeypatch):
+    # os.walk's default onerror=None silently omits an unreadable subtree.
+    # A complete-looking file manifest must not pass if the stage cannot
+    # be fully enumerated. Simulate EACCES identically on Windows and Linux.
+    with TemporaryDirectory() as temp:
+        repo, stage, sha = repo_and_stage(Path(temp))
+        unreadable = stage / "extra-unreadable-directory"
+        unreadable.mkdir()
+        assert verify(repo, sha, stage) == 0  # control: ordinary enumeration
+        original_scandir = os.scandir
+        failed_calls = []
+
+        def refuse_scandir(path):
+            if Path(path) == unreadable:
+                failed_calls.append(str(path))
+                raise PermissionError("synthetic unreadable stage directory")
+            return original_scandir(path)
+
+        with monkeypatch.context() as patch:
+            patch.setattr(os, "scandir", refuse_scandir)
+            assert verify(repo, sha, stage) != 0
+        assert failed_calls
+        assert verify(repo, sha, stage) == 0  # restored positive control

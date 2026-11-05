@@ -34,6 +34,11 @@ def _mode_matches_git_index(git_mode: str, staged_mode: int) -> bool:
     return bool(staged_mode & 0o111) == (git_mode == "100755")
 
 
+def _refuse_walk_error(error: OSError) -> None:
+    """Fail closed when os.walk cannot inspect a staged directory."""
+    raise error
+
+
 def verify(repo: Path, sha: str, stage: Path) -> int:
     if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", sha):
         return _refuse("missing or malformed immutable commit SHA")
@@ -87,39 +92,42 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
         return _refuse("missing committed dashboard or empty tree")
 
     actual: set[str] = set()
-    for parent, dirs, files in os.walk(stage, followlinks=False):
-        base = Path(parent)
-        for name in dirs:
-            if (base / name).is_symlink():
-                return _refuse("symlinked stage directory")
-        for name in files:
-            source = base / name
-            try:
-                st = source.lstat()
-                if not stat.S_ISREG(st.st_mode):
-                    return _refuse("non-regular stage file")
-                rel = source.relative_to(stage).as_posix()
-                if rel not in expected:
-                    return _refuse("extra or unexpected stage file")
-                expected_oid, expected_mode = expected[rel]
-                # SHA identity alone proves file bytes, not the tracked execute
-                # bit. Pages packaging runs on Linux; Windows cannot reliably
-                # project Git's POSIX executable mode through stat().
-                if os.name == "posix" and not _mode_matches_git_index(expected_mode, st.st_mode):
-                    return _refuse("stage execute mode differs from committed Git mode")
-                digest = hashlib.new(fmt)
-                digest.update(f"blob {st.st_size}\0".encode("ascii"))
-                with source.open("rb") as fileobj:
-                    while True:
-                        block = fileobj.read(1024 * 1024)
-                        if not block:
-                            break
-                        digest.update(block)
-                if digest.hexdigest() != expected_oid:
-                    return _refuse("modified stage blob")
-                actual.add(rel)
-            except (OSError, ValueError) as exc:
-                return _refuse(f"stage file unreadable: {type(exc).__name__}")
+    try:
+        for parent, dirs, files in os.walk(stage, followlinks=False, onerror=_refuse_walk_error):
+            base = Path(parent)
+            for name in dirs:
+                if (base / name).is_symlink():
+                    return _refuse("symlinked stage directory")
+            for name in files:
+                source = base / name
+                try:
+                    st = source.lstat()
+                    if not stat.S_ISREG(st.st_mode):
+                        return _refuse("non-regular stage file")
+                    rel = source.relative_to(stage).as_posix()
+                    if rel not in expected:
+                        return _refuse("extra or unexpected stage file")
+                    expected_oid, expected_mode = expected[rel]
+                    # SHA identity alone proves file bytes, not the tracked execute
+                    # bit. Pages packaging runs on Linux; Windows cannot reliably
+                    # project Git's POSIX executable mode through stat().
+                    if os.name == "posix" and not _mode_matches_git_index(expected_mode, st.st_mode):
+                        return _refuse("stage execute mode differs from committed Git mode")
+                    digest = hashlib.new(fmt)
+                    digest.update(f"blob {st.st_size}\0".encode("ascii"))
+                    with source.open("rb") as fileobj:
+                        while True:
+                            block = fileobj.read(1024 * 1024)
+                            if not block:
+                                break
+                            digest.update(block)
+                    if digest.hexdigest() != expected_oid:
+                        return _refuse("modified stage blob")
+                    actual.add(rel)
+                except (OSError, ValueError) as exc:
+                    return _refuse(f"stage file unreadable: {type(exc).__name__}")
+    except OSError as exc:
+        return _refuse(f"stage traversal failed: {type(exc).__name__}")
     if actual != set(expected):
         return _refuse("missing tracked file (possibly export-ignore)")
     print(f"Exact committed Pages tree PASS: {len(actual)} authenticated Git blobs at {sha}")
