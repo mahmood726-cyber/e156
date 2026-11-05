@@ -75,6 +75,15 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
     suites = list(root.iter("testsuite"))
     if not suites:
         problems.append("Assurance JUnit report has no testsuite element.")
+    # Count only testcase elements directly owned by a testsuite. Otherwise
+    # a fabricated report can smuggle hundreds of passing tests beside its
+    # sole declared suite and meet the whole-run floor without suite evidence.
+    in_suites = sum(len(suite.findall("testcase")) for suite in suites)
+    if in_suites != len(cases):
+        problems.append(
+            f"Assurance JUnit contains {len(cases) - in_suites} testcase(s) "
+            "outside testsuite membership."
+        )
     for suite in suites:
         suite_cases = list(suite.iter("testcase"))
         declared = suite.get("tests", "")

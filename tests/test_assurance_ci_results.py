@@ -122,6 +122,31 @@ def test_declared_junit_outcomes_must_match_case_evidence(tmp_path, counter, rep
     assert any(counter in problem for problem in problems)
 
 
+def test_stray_testcase_cannot_inflate_complete_junit_report(tmp_path, capsys):
+    # All 534 synthetic identities are retained, with honest per-suite totals,
+    # but one testcase is moved outside every suite. The former gate accepted
+    # this false-green report because it checked only global and suite counts.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    suite = tree.getroot()
+    wrapper = ET.Element("testsuites")
+    wrapper.append(suite)
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 0  # valid pytest testsuites wrapper
+    capsys.readouterr()
+
+    stranded = suite[-1]
+    suite.remove(stranded)
+    wrapper.append(stranded)
+    suite.set("tests", str(guard.MIN_ASSURANCE_TESTS - 1))
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert len(list(wrapper.iter("testcase"))) == guard.MIN_ASSURANCE_TESTS
+    assert len(list(suite.iter("testcase"))) == guard.MIN_ASSURANCE_TESTS - 1
+    assert guard.main([str(path)]) == 1
+    assert "outside testsuite membership" in capsys.readouterr().err
+
+
 def test_junit_without_testsuite_container_is_refused(tmp_path):
     path = _junit(tmp_path)
     tree = ET.parse(path)
