@@ -178,7 +178,7 @@ def test_unreadable_stage_subdirectory_cannot_be_silently_skipped(monkeypatch):
         failed_calls = []
 
         def failing_walk(path, *, followlinks=False, onerror=None):
-            assert Path(path) == stage
+            assert Path(path).resolve() == stage.resolve()  # Windows 8.3 paths
             yield from original_walk(path, followlinks=followlinks)
             failed_calls.append(str(unreadable))
             if onerror is not None:
