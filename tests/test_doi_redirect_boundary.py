@@ -87,3 +87,44 @@ def test_negative_status_controls_do_not_follow_or_promote(monkeypatch, code, ve
         dr.urllib.request, "build_opener", lambda handler: SyntheticOpener()
     )
     assert dr.http_head_fetcher("10.9999/synthetic") == (verdict, code)
+
+
+@pytest.mark.parametrize("location", [
+    None, "", "/publisher", "javascript:alert(1)", "https://",
+    "https://[unclosed", "https://publisher.invalid/\\r\\nbad",
+])
+def test_redirect_missing_or_malformed_location_is_inconclusive(monkeypatch, location):
+    """A bare 3xx status is not proof of DOI resolution; never follow it."""
+    requests = []
+
+    class SyntheticOpener:
+        def open(self, req, timeout):
+            requests.append((req.full_url, req.get_method()))
+            headers = {"Location": location} if location is not None else {}
+            raise HTTPError(req.full_url, 302, "synthetic", headers, None)
+
+    monkeypatch.setattr(
+        dr.urllib.request, "build_opener", lambda handler: SyntheticOpener()
+    )
+    assert dr.http_head_fetcher("10.9999/synthetic") == ("unknown", 302)
+    assert requests == [("https://doi.org/10.9999/synthetic", "HEAD")]
+
+
+@pytest.mark.parametrize("code", [301, 302, 303, 307, 308])
+def test_redirect_with_absolute_web_location_remains_resolved(monkeypatch, code):
+    """Valid DOI-service redirects remain sufficient without fetching publishers."""
+    requests = []
+
+    class SyntheticOpener:
+        def open(self, req, timeout):
+            requests.append(req.full_url)
+            raise HTTPError(
+                req.full_url, code, "synthetic",
+                {"Location": "https://publisher.invalid/synthetic"}, None
+            )
+
+    monkeypatch.setattr(
+        dr.urllib.request, "build_opener", lambda handler: SyntheticOpener()
+    )
+    assert dr.http_head_fetcher("10.9999/synthetic") == ("resolved", code)
+    assert requests == ["https://doi.org/10.9999/synthetic"]

@@ -33,6 +33,7 @@ import json
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -159,7 +160,20 @@ def http_head_fetcher(doi: str, timeout: float = 10.0, retries: int = 1) -> "tup
             if e.code in (404, 410):
                 return (UNRESOLVED, e.code)
             if e.code in (301, 302, 303, 307, 308):
-                return (RESOLVED, e.code)
+                # A redirect status without a valid absolute web Location does
+                # not demonstrate resolution. Never fetch the target: it may be
+                # an unapproved publication source, even when the DOI exists.
+                location = e.headers.get("Location") if e.headers else None
+                if isinstance(location, str) and not any(
+                    ch.isspace() or ord(ch) < 32 for ch in location
+                ):
+                    try:
+                        target = urllib.parse.urlsplit(location)
+                        if target.scheme.lower() in ("http", "https") and target.hostname:
+                            return (RESOLVED, e.code)
+                    except ValueError:
+                        pass
+                return (UNKNOWN, e.code)
             # 403 paywall, 405 method-not-allowed, 5xx, etc. — inconclusive.
             return (UNKNOWN, e.code)
         except (urllib.error.URLError, OSError, ValueError) as e:
