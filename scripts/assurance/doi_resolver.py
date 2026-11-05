@@ -111,6 +111,14 @@ def extract_dois(text: str) -> set[str]:
 
 def _iter_doc_files(root: Path) -> Iterable[Path]:
     for path in root.rglob("*"):
+        # Check EVERY component before is_file() or read_text(): those calls
+        # dereference symlinks and could inspect out-of-repository material.
+        # This limits filesystem traversal; publication processing still
+        # requires the separate reviewed source-rights gate.
+        relative = path.relative_to(root)
+        if any(root.joinpath(*relative.parts[:depth]).is_symlink()
+               for depth in range(1, len(relative.parts) + 1)):
+            continue
         if not path.is_file():
             continue
         if any(d in _EXCLUDE_DIRS for d in path.parts):
