@@ -21,7 +21,7 @@ def test_synthetic_outside_file_symlink_is_never_scanned(tmp_path, monkeypatch):
     repo = tmp_path / "repo"
     repo.mkdir()
     outside = tmp_path / "external-synthetic.md"
-    outside.write_text("doi: 10.9999/external-synthetic\\n", encoding="utf-8")
+    outside.write_text("doi: 10.9999/external-synthetic\n", encoding="utf-8")
     alias = repo / "linked.md"
     try:
         alias.symlink_to(outside)
@@ -33,7 +33,7 @@ def test_synthetic_outside_file_symlink_is_never_scanned(tmp_path, monkeypatch):
         monkeypatch.setattr(Path, "is_symlink",
                             lambda self: self == alias or real(self))
     normal = repo / "normal.md"
-    normal.write_text("doi: 10.9999/normal-synthetic\\n", encoding="utf-8")
+    normal.write_text("doi: 10.9999/normal-synthetic\n", encoding="utf-8")
     assert dr.scan_repo_dois(repo) == {"10.9999/normal-synthetic"}
 
 
@@ -57,9 +57,9 @@ def test_synthetic_symlinked_parent_directory_is_excluded(tmp_path, monkeypatch)
 
 def test_normal_files_and_skip_marker_keep_existing_contract(tmp_path):
     (tmp_path / "ordinary.txt").write_text(
-        "doi: 10.9999/normal-synthetic\\n", encoding="utf-8"
+        "doi: 10.9999/normal-synthetic\n", encoding="utf-8"
     )
     (tmp_path / "negative-fixture.md").write_text(
-        "sentinel:skip-file\\ndoi: 10.9999/skip-synthetic\\n", encoding="utf-8"
+        "sentinel:skip-file\ndoi: 10.9999/skip-synthetic\n", encoding="utf-8"
     )
     assert dr.scan_repo_dois(tmp_path) == {"10.9999/normal-synthetic"}
