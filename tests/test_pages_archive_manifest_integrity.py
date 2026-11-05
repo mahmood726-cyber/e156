@@ -52,6 +52,22 @@ def test_exact_tree_accepts_original_commit_bytes():
         assert verify(repo, sha, stage) == 0
 
 
+def test_tree_and_annotated_tag_cannot_masquerade_as_assured_commit():
+    # git ls-tree accepts a tree object and peels a tag, so a manifest-only
+    # verifier incorrectly accepted either SHA before the provenance guard.
+    # Everything is constructed in a disposable synthetic Git repository.
+    with TemporaryDirectory() as temp:
+        repo, stage, sha = repo_and_stage(Path(temp))
+        tree_sha = git(repo, "rev-parse", f"{sha}^{{tree}}").decode().strip()
+        git(repo, "tag", "-a", "synthetic-release", "-m", "synthetic only", sha)
+        tag_sha = git(repo, "rev-parse", "refs/tags/synthetic-release").decode().strip()
+        assert git(repo, "cat-file", "-t", tree_sha).strip() == b"tree"
+        assert git(repo, "cat-file", "-t", tag_sha).strip() == b"tag"
+        assert verify(repo, tree_sha, stage) != 0
+        assert verify(repo, tag_sha, stage) != 0
+        assert verify(repo, sha, stage) == 0
+
+
 def test_git_archive_export_subst_changes_unsigned_bytes_and_is_refused():
     with TemporaryDirectory() as temp:
         repo, stage, sha = repo_and_stage(Path(temp), attrs="report.txt export-subst\n")

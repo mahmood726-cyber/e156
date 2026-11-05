@@ -43,6 +43,12 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
             return _refuse("unknown Git object format")
         if (fmt == "sha1" and len(sha) != 40) or (fmt == "sha256" and len(sha) != 64):
             return _refuse("commit SHA format mismatches repository")
+        # A tree or annotated-tag object can be fed to git ls-tree and pass all
+        # byte checks, but it does not prove a named immutable commit. Refuse
+        # non-commit objects before validating the published tree.
+        object_type = _git(repo, "cat-file", "-t", sha).decode("ascii").strip()
+        if object_type != "commit":
+            return _refuse("assured SHA does not name a Git commit")
         tree = _git(repo, "ls-tree", "-rz", "--full-tree", sha)
     except (OSError, subprocess.CalledProcessError, UnicodeError) as exc:
         return _refuse(f"cannot read immutable source tree: {type(exc).__name__}")
