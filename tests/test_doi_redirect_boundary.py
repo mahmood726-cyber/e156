@@ -128,3 +128,47 @@ def test_redirect_with_absolute_web_location_remains_resolved(monkeypatch, code)
     )
     assert dr.http_head_fetcher("10.9999/synthetic") == ("resolved", code)
     assert requests == ["https://doi.org/10.9999/synthetic"]
+
+
+@pytest.mark.parametrize("doi,expected_selector", [
+    ("10.9999/base#synthetic-revision", "/10.9999/base%23synthetic-revision"),
+    ("10.9999/base?revision=1", "/10.9999/base%3Frevision%3D1"),
+    ("10.9999/with%literal", "/10.9999/with%25literal"),
+    ("10.9999/with&literal", "/10.9999/with%26literal"),
+])
+def test_doi_reserved_bytes_stay_in_identifier_path(monkeypatch, doi, expected_selector):
+    """HTTP must check the exact opaque identifier, not a URL query/fragment."""
+    selectors = []
+
+    class SyntheticOpener:
+        def open(self, req, timeout):
+            selectors.append(req.selector)
+            raise HTTPError(req.full_url, 404, "synthetic not found", {}, None)
+
+    monkeypatch.setattr(
+        dr.urllib.request, "build_opener", lambda handler: SyntheticOpener()
+    )
+    assert dr.http_head_fetcher(doi) == ("unresolved", 404)
+    assert selectors == [expected_selector]
+
+
+def test_base_redirect_must_not_certify_distinct_fragment_doi(monkeypatch):
+    """A valid base DOI redirect cannot prove a distinct suffix DOI exists."""
+    selectors = []
+
+    class SyntheticOpener:
+        def open(self, req, timeout):
+            selectors.append(req.selector)
+            if req.selector == "/10.9999/base":
+                raise HTTPError(
+                    req.full_url, 302, "synthetic base exists",
+                    {"Location": "https://publisher.invalid/base"}, None,
+                )
+            raise HTTPError(req.full_url, 404, "synthetic distinct DOI absent", {}, None)
+
+    monkeypatch.setattr(
+        dr.urllib.request, "build_opener", lambda handler: SyntheticOpener()
+    )
+    assert dr.http_head_fetcher("10.9999/base#nonexistent") == ("unresolved", 404)
+    assert dr.http_head_fetcher("10.9999/base") == ("resolved", 302)
+    assert selectors == ["/10.9999/base%23nonexistent", "/10.9999/base"]

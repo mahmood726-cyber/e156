@@ -153,7 +153,11 @@ def http_head_fetcher(doi: str, timeout: float = 10.0, retries: int = 1) -> "tup
     paywalled DOI redirects to a publisher that may answer 200 or 403; those
     map to RESOLVED / UNKNOWN respectively, never UNRESOLVED.
     """
-    url = "https://doi.org/" + doi
+    # DOI suffixes may contain '?' or '#'. Treat the DOI as an opaque path:
+    # urllib would otherwise resolve a different base identifier by interpreting
+    # those characters as query/fragment delimiters (a false provenance claim).
+    # Keep the DOI's structural slash but percent-encode reserved path bytes.
+    url = "https://doi.org/" + urllib.parse.quote(doi, safe="/")
     # Construct a non-following opener: urllib's default follows publisher
     # redirects even for HEAD, potentially contacting restricted article hosts.
     opener = urllib.request.build_opener(_NoPublisherRedirect())
