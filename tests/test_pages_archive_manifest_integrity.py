@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import io
+import os
 import shutil
+import stat
 import subprocess
 import sys
 import tarfile
@@ -13,7 +15,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts" / "assurance"))
-from verify_pages_archive import verify  # noqa: E402
+from verify_pages_archive import _mode_matches_git_index, verify  # noqa: E402
 
 
 def git(repo: Path, *args: str, data: bytes | None = None) -> bytes:
@@ -119,3 +121,45 @@ def test_workflow_requires_full_manifest_verification_and_mutation_refusal():
     for mutation in (run.replace(guard, "echo bypass"), run.replace(guard, "true"),
                      run.replace(guard, "")):
         assert mutation.count(guard) != 1
+
+
+def test_git_executable_mode_policy_with_deterministic_modes():
+    # Portable negative controls do not rely on Windows chmod semantics.
+    assert _mode_matches_git_index("100644", stat.S_IFREG | 0o644)
+    assert not _mode_matches_git_index("100644", stat.S_IFREG | 0o755)
+    assert _mode_matches_git_index("100755", stat.S_IFREG | 0o755)
+    assert not _mode_matches_git_index("100755", stat.S_IFREG | 0o644)
+
+
+def test_stage_execute_bit_mutation_is_not_exact_committed_source():
+    with TemporaryDirectory() as temp:
+        repo, stage, sha = repo_and_stage(Path(temp))
+        assert verify(repo, sha, stage) == 0
+        filename = stage / "report.txt"
+        # The original verifier compared only this unchanged blob digest.
+        blob_before = git(repo, "hash-object", str(filename))
+        filename.chmod(filename.stat().st_mode | stat.S_IXUSR)
+        assert git(repo, "hash-object", str(filename)) == blob_before
+        if os.name == "posix":
+            assert verify(repo, sha, stage) != 0
+        else:
+            # Production Pages staging is Linux; Windows still exercises the
+            # portable matching policy without pretending chmod is POSIX.
+            assert not _mode_matches_git_index("100644", stat.S_IFREG | 0o744)
+
+
+def test_tracked_executable_passes_and_lost_exec_bit_refuses():
+    with TemporaryDirectory() as temp:
+        repo, stage, _ = repo_and_stage(Path(temp))
+        git(repo, "update-index", "--chmod=+x", "report.txt")
+        git(repo, "commit", "-qm", "synthetic tracked executable")
+        sha = git(repo, "rev-parse", "HEAD").decode().strip()
+        filename = stage / "report.txt"
+        if os.name == "posix":
+            filename.chmod(filename.stat().st_mode | stat.S_IXUSR)
+            assert verify(repo, sha, stage) == 0
+            filename.chmod(filename.stat().st_mode & ~0o111)
+            assert verify(repo, sha, stage) != 0
+        else:
+            assert _mode_matches_git_index("100755", stat.S_IFREG | 0o755)
+            assert not _mode_matches_git_index("100755", stat.S_IFREG | 0o644)

@@ -29,6 +29,11 @@ def _git(repo: Path, *args: str) -> bytes:
     ).stdout
 
 
+def _mode_matches_git_index(git_mode: str, staged_mode: int) -> bool:
+    """Git tracks only the executable bit; other POSIX permissions vary by umask."""
+    return bool(staged_mode & 0o111) == (git_mode == "100755")
+
+
 def verify(repo: Path, sha: str, stage: Path) -> int:
     if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", sha):
         return _refuse("missing or malformed immutable commit SHA")
@@ -53,7 +58,7 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
     except (OSError, subprocess.CalledProcessError, UnicodeError) as exc:
         return _refuse(f"cannot read immutable source tree: {type(exc).__name__}")
 
-    expected: dict[str, str] = {}
+    expected: dict[str, tuple[str, str]] = {}
     folded: set[str] = set()
     try:
         for record in tree.split(b"\0"):
@@ -75,7 +80,7 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
             if key in folded:
                 return _refuse("case-colliding Git paths")
             folded.add(key)
-            expected[path] = oid
+            expected[path] = (oid, mode)
     except (UnicodeError, ValueError, TypeError):
         return _refuse("malformed Git tree entry")
     if "assurance.html" not in expected or not expected:
@@ -96,6 +101,12 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
                 rel = source.relative_to(stage).as_posix()
                 if rel not in expected:
                     return _refuse("extra or unexpected stage file")
+                expected_oid, expected_mode = expected[rel]
+                # SHA identity alone proves file bytes, not the tracked execute
+                # bit. Pages packaging runs on Linux; Windows cannot reliably
+                # project Git's POSIX executable mode through stat().
+                if os.name == "posix" and not _mode_matches_git_index(expected_mode, st.st_mode):
+                    return _refuse("stage execute mode differs from committed Git mode")
                 digest = hashlib.new(fmt)
                 digest.update(f"blob {st.st_size}\0".encode("ascii"))
                 with source.open("rb") as fileobj:
@@ -104,7 +115,7 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
                         if not block:
                             break
                         digest.update(block)
-                if digest.hexdigest() != expected[rel]:
+                if digest.hexdigest() != expected_oid:
                     return _refuse("modified stage blob")
                 actual.add(rel)
             except (OSError, ValueError) as exc:
