@@ -64,6 +64,7 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
         return _refuse(f"cannot read immutable source tree: {type(exc).__name__}")
 
     expected: dict[str, tuple[str, str]] = {}
+    expected_dirs: set[str] = set()
     folded: set[str] = set()
     try:
         for record in tree.split(b"\0"):
@@ -86,6 +87,12 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
                 return _refuse("case-colliding Git paths")
             folded.add(key)
             expected[path] = (oid, mode)
+            # Git tracks files, not empty directories. Reconstruct the only
+            # directories allowed in an exact extracted commit archive.
+            for ancestor in PurePosixPath(path).parents:
+                if ancestor == PurePosixPath("."):
+                    break
+                expected_dirs.add(ancestor.as_posix())
     except (UnicodeError, ValueError, TypeError):
         return _refuse("malformed Git tree entry")
     if "assurance.html" not in expected or not expected:
@@ -96,8 +103,11 @@ def verify(repo: Path, sha: str, stage: Path) -> int:
         for parent, dirs, files in os.walk(stage, followlinks=False, onerror=_refuse_walk_error):
             base = Path(parent)
             for name in dirs:
-                if (base / name).is_symlink():
+                directory = base / name
+                if directory.is_symlink():
                     return _refuse("symlinked stage directory")
+                if directory.relative_to(stage).as_posix() not in expected_dirs:
+                    return _refuse("extra or untracked stage directory")
             for name in files:
                 source = base / name
                 try:

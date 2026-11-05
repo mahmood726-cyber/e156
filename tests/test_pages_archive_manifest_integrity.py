@@ -216,3 +216,33 @@ def test_stage_hardlink_alias_refused_despite_identical_git_blob(monkeypatch):
         assert observed == ["report.txt"]
         # Positive control: a single-link, unchanged stage is still accepted.
         assert verify(repo, sha, stage) == 0
+
+
+def test_empty_untracked_stage_directory_is_not_exact_committed_source():
+    # A file-only manifest check wrongly accepts an extra empty directory.
+    with TemporaryDirectory() as temp:
+        repo, stage, sha = repo_and_stage(Path(temp))
+        assert verify(repo, sha, stage) == 0
+        extra = stage / "untracked-empty"
+        extra.mkdir()
+        assert verify(repo, sha, stage) != 0
+        extra.rmdir()
+        assert verify(repo, sha, stage) == 0
+
+
+def test_tracked_nested_directory_allowed_but_extra_nested_directory_refused():
+    with TemporaryDirectory() as temp:
+        repo, stage, _ = repo_and_stage(Path(temp))
+        (repo / "assets").mkdir()
+        (repo / "assets" / "report.bin").write_bytes(b"synthetic nested artifact")
+        git(repo, "add", "assets/report.bin")
+        git(repo, "commit", "-qm", "synthetic nested asset")
+        sha = git(repo, "rev-parse", "HEAD").decode().strip()
+        (stage / "assets").mkdir()
+        (stage / "assets" / "report.bin").write_bytes(git(repo, "show", f"{sha}:assets/report.bin"))
+        assert verify(repo, sha, stage) == 0
+        extra = stage / "assets" / "untracked-empty"
+        extra.mkdir()
+        assert verify(repo, sha, stage) != 0
+        extra.rmdir()
+        assert verify(repo, sha, stage) == 0
