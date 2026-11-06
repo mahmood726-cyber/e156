@@ -1,7 +1,7 @@
 """Fail-closed JUnit coverage gate for the checkout-free E156 synthetic CI.
 
-Only synthetic source-rights contract modules are permitted. This validates
-pytest's actual report, not its exit code or untrusted article-derived data.
+Only pinned synthetic source-rights test identities are permitted. Counts
+alone cannot prove that the reviewed tests executed.
 """
 from __future__ import annotations
 
@@ -10,11 +10,20 @@ from collections import Counter
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-# Exact reviewed test inventory. Deliberate changes must update this contract.
-EXPECTED_MODULE_COUNTS = {
-    "test_assurance_source_rights_preflight": 35,
-    "test_code_contract_junit": 12,
+# Frozen identities from pinned test sources; changes require explicit review.
+EXPECTED_TEST_NAMES = {
+    "test_assurance_source_rights_preflight": frozenset({
+        "test_production_refuses_source_processing_before_checkout",
+        "test_pr_ci_refuses_publication_processing_before_checkout",
+        *(f"test_source_rights_hold_bypass_mutations_are_refused[<lambda>{i}]" for i in range(17)),
+        *(f"test_pr_precheckout_hold_mutations_refused[<lambda>{i}]" for i in range(16)),
+    }),
+    "test_code_contract_junit": frozenset({
+        "test_valid_synthetic_report",
+        *(f"test_mutated_synthetic_report_refused[<lambda>{i}]" for i in range(13)),
+    }),
 }
+EXPECTED_MODULE_COUNTS = {module: len(names) for module, names in EXPECTED_TEST_NAMES.items()}
 
 
 class ContractReportError(ValueError):
@@ -70,16 +79,15 @@ def verify_report(path: Path) -> dict[str, int]:
     identities: set[tuple[str, str]] = set()
     for case in cases:
         klass, name = case.get("classname", ""), case.get("name", "")
-        module = klass.rsplit(".", 1)[-1]
-        if not klass or not name or module not in EXPECTED_MODULE_COUNTS:
-            raise ContractReportError("unknown or unnamed synthetic test")
+        if name not in EXPECTED_TEST_NAMES.get(klass, ()):
+            raise ContractReportError("unknown or renamed synthetic test identity")
         identity = (klass, name)
         if identity in identities:
             raise ContractReportError("duplicate test identity")
         identities.add(identity)
         if list(case):
             raise ContractReportError("skipped, failed, errored, or modified testcase")
-        modules[module] += 1
+        modules[klass] += 1
     if dict(modules) != EXPECTED_MODULE_COUNTS:
         raise ContractReportError(f"missing required synthetic test module coverage: {dict(modules)}")
     return dict(modules)
