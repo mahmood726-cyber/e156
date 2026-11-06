@@ -44,7 +44,7 @@ jobs:
               ('.github/workflows/assurance-pr.yml', sha),
               ('tests/test_assurance_source_rights_preflight.py', reviewed),
               ('requirements-assurance-ci.lock', reviewed),
-              ('scripts/assurance/check_code_contract_junit.py', 'f4b79d9f9f50133f408da5c0932deacc6cdf37cc'),
+              ('scripts/assurance/check_code_contract_junit.py', 'b9386110430287566d69faed99fc36c36247e569'),
               ('tests/test_code_contract_junit.py', 'ea566db66c10290fd799b6973bcae90b53b01b30'),
           )
           for path, revision in sources:
@@ -62,7 +62,8 @@ jobs:
         run: |
           set -euo pipefail
           root="$RUNNER_TEMP/e156-code-only-contract"
-          python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r "$root/requirements-assurance-ci.lock"
-          python -m pytest -q "$root/tests/test_assurance_source_rights_preflight.py" "$root/tests/test_code_contract_junit.py" --junitxml="$RUNNER_TEMP/source-rights-contract.xml"
-          python "$root/scripts/assurance/check_code_contract_junit.py" "$RUNNER_TEMP/source-rights-contract.xml"
+          cd "$root"
+          python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r requirements-assurance-ci.lock
+          python -m pytest -q tests/test_assurance_source_rights_preflight.py tests/test_code_contract_junit.py --junitxml="$RUNNER_TEMP/source-rights-contract.xml"
+          python scripts/assurance/check_code_contract_junit.py "$RUNNER_TEMP/source-rights-contract.xml"
           echo 'PASS: pinned synthetic-only JUnit evidence; no repository checkout'
