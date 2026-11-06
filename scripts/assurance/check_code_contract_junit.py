@@ -80,7 +80,7 @@ def verify_report(path: Path) -> dict[str, int]:
     for case in cases:
         klass, name = case.get("classname", ""), case.get("name", "")
         if name not in EXPECTED_TEST_NAMES.get(klass, ()):
-            raise ContractReportError("unknown or renamed synthetic test identity")
+            raise ContractReportError(f"unknown or renamed synthetic test identity: {klass!r}::{name!r}")
         identity = (klass, name)
         if identity in identities:
             raise ContractReportError("duplicate test identity")
