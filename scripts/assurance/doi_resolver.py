@@ -33,6 +33,7 @@ import json
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -72,6 +73,18 @@ UNKNOWN = "unknown"
 Fetcher = Callable[[str], "tuple[str, int | None]"]
 
 
+class _NoPublisherRedirect(urllib.request.HTTPRedirectHandler):
+    """Only consult doi.org metadata; never follow HEAD into publisher sites.
+
+    The default urllib opener follows 3xx responses to arbitrary publishers,
+    crossing an unreviewed source-rights boundary. An original doi.org 3xx
+    is sufficient for this DOI-existence check and must not fetch its target.
+    """
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 def _now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -98,6 +111,14 @@ def extract_dois(text: str) -> set[str]:
 
 def _iter_doc_files(root: Path) -> Iterable[Path]:
     for path in root.rglob("*"):
+        # Check EVERY component before is_file() or read_text(): those calls
+        # dereference symlinks and could inspect out-of-repository material.
+        # This limits filesystem traversal; publication processing still
+        # requires the separate reviewed source-rights gate.
+        relative = path.relative_to(root)
+        if any(root.joinpath(*relative.parts[:depth]).is_symlink()
+               for depth in range(1, len(relative.parts) + 1)):
+            continue
         if not path.is_file():
             continue
         if any(d in _EXCLUDE_DIRS for d in path.parts):
@@ -132,24 +153,42 @@ def http_head_fetcher(doi: str, timeout: float = 10.0, retries: int = 1) -> "tup
     paywalled DOI redirects to a publisher that may answer 200 or 403; those
     map to RESOLVED / UNKNOWN respectively, never UNRESOLVED.
     """
-    url = "https://doi.org/" + doi
-    last_exc: Exception | None = None
+    # DOI suffixes may contain '?' or '#'. Treat the DOI as an opaque path:
+    # urllib would otherwise resolve a different base identifier by interpreting
+    # those characters as query/fragment delimiters (a false provenance claim).
+    # Keep the DOI's structural slash but percent-encode reserved path bytes.
+    url = "https://doi.org/" + urllib.parse.quote(doi, safe="/")
+    # Construct a non-following opener: urllib's default follows publisher
+    # redirects even for HEAD, potentially contacting restricted article hosts.
+    opener = urllib.request.build_opener(_NoPublisherRedirect())
     for attempt in range(retries + 1):
         try:
             req = urllib.request.Request(url, method="HEAD",
                                          headers={"User-Agent": "e156-assurance-doi-resolver"})
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with opener.open(req, timeout=timeout) as resp:
                 code = getattr(resp, "status", None) or resp.getcode()
                 return (RESOLVED, code)
         except urllib.error.HTTPError as e:
             if e.code in (404, 410):
                 return (UNRESOLVED, e.code)
             if e.code in (301, 302, 303, 307, 308):
-                return (RESOLVED, e.code)
+                # A redirect status without a valid absolute web Location does
+                # not demonstrate resolution. Never fetch the target: it may be
+                # an unapproved publication source, even when the DOI exists.
+                location = e.headers.get("Location") if e.headers else None
+                if isinstance(location, str) and not any(
+                    ch.isspace() or ord(ch) < 32 for ch in location
+                ):
+                    try:
+                        target = urllib.parse.urlsplit(location)
+                        if target.scheme.lower() in ("http", "https") and target.hostname:
+                            return (RESOLVED, e.code)
+                    except ValueError:
+                        pass
+                return (UNKNOWN, e.code)
             # 403 paywall, 405 method-not-allowed, 5xx, etc. — inconclusive.
             return (UNKNOWN, e.code)
         except (urllib.error.URLError, OSError, ValueError) as e:
-            last_exc = e
             continue
     return (UNKNOWN, None)
 

@@ -1,12 +1,12 @@
-"""Lock all third-party Actions in E156's read-only and privileged assurance jobs.
+"""Lock third-party Actions independently within each approved assurance job.
 
-The expected commits were resolved from the upstream GitHub major-version refs
-and their commits' GitHub verification records on 26 October 2026. A fixed
-commit prevents mutable-tag drift; it is NOT an independent release attestation,
-a binary/archive signature, or a full-system canary.
+Reviewed action pins are exact Git commits, not external attestations.
+The PR-only OIDC canary is a separate, explicitly allowlisted job; adding it
+must not relax the action count or unexpected-job refusals.
 """
 from __future__ import annotations
 
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -18,18 +18,28 @@ ACTION_PINS = {
     "actions/setup-python": "a26af69be951a213d495a4c3e4e4022e16d87065",
     "sigstore/cosign-installer": "398d4b0eeef1380460a10c8013a76f728fb906ac",
     "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+    "actions/upload-pages-artifact": "7b1f4a764d45c48632c6b24a0339c27f5614fb0b",
+    "actions/deploy-pages": "d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e",
 }
+# Explicit approved job inventories and exact per-job action multiplicity.
+# In particular, the OIDC canary cannot silently authorize an extra publisher.
+COSIGN_RELEASE = "v2.5.2"  # version observed in hosted 2026-10-31 OIDC canary
+
 WORKFLOWS = {
-    "assurance-pr.yml": ("assurance-tests", ("actions/checkout", "actions/setup-python", "actions/upload-artifact")),
-    "assurance.yml": (
-        "assurance",
-        ("actions/checkout", "actions/setup-python", "sigstore/cosign-installer"),
-    ),
+    "assurance-pr.yml": {
+        "assurance-tests": ("actions/checkout", "actions/setup-python", "actions/upload-artifact"),
+        "keyless-oidc-canary": ("actions/checkout", "sigstore/cosign-installer"),
+    },
+    "assurance.yml": {
+        "assurance": ("actions/checkout", "actions/setup-python", "sigstore/cosign-installer",
+                      "actions/upload-pages-artifact"),
+        "deploy-pages": ("actions/deploy-pages",),
+    },
 }
 
 
 def action_pin_problems(filename: str, content: str) -> list[str]:
-    job_name, required = WORKFLOWS[filename]
+    required_jobs = WORKFLOWS[filename]
     try:
         data = yaml.safe_load(content)
     except yaml.YAMLError as exc:
@@ -37,67 +47,137 @@ def action_pin_problems(filename: str, content: str) -> list[str]:
     if not isinstance(data, dict) or not isinstance(data.get("jobs"), dict):
         return ["missing assurance CI job inventory"]
     jobs = data["jobs"]
-    if set(jobs) != {job_name}:
+    if set(jobs) != set(required_jobs):
         return [f"unexpected assurance job inventory: {sorted(jobs)}"]
-    job = jobs[job_name]
-    if not isinstance(job, dict) or not isinstance(job.get("steps"), list):
-        return ["missing assurance CI step inventory"]
-    actions = []
+
     problems = []
-    for step in job["steps"]:
-        if not isinstance(step, dict):
-            problems.append("malformed step")
+    for job_name, required in required_jobs.items():
+        job = jobs[job_name]
+        if not isinstance(job, dict) or not isinstance(job.get("steps"), list):
+            problems.append(f"{job_name}: missing assurance CI step inventory")
             continue
-        if "uses" not in step:
-            continue
-        ref = step["uses"]
-        if not isinstance(ref, str) or "@" not in ref:
-            problems.append(f"unparseable action reference: {ref!r}")
-            continue
-        action, commit = ref.rsplit("@", 1)
-        actions.append(action)
-        if action not in required:
-            problems.append(f"unreviewed action step: {ref}")
-        elif commit != ACTION_PINS[action]:
-            problems.append(f"mutable, substituted or unreviewed action commit: {ref}")
-    for action in required:
-        if actions.count(action) != 1:
-            problems.append(f"{action}: expected exactly one action, found {actions.count(action)}")
+        actions = []
+        for step in job["steps"]:
+            if not isinstance(step, dict):
+                problems.append(f"{job_name}: malformed step")
+                continue
+            if "uses" not in step:
+                continue
+            ref = step["uses"]
+            if not isinstance(ref, str) or "@" not in ref:
+                problems.append(f"{job_name}: unparseable action reference: {ref!r}")
+                continue
+            action, commit = ref.rsplit("@", 1)
+            actions.append(action)
+            if action not in required:
+                problems.append(f"{job_name}: unreviewed action step: {ref}")
+            elif commit != ACTION_PINS[action]:
+                problems.append(f"{job_name}: mutable, substituted or unreviewed action commit: {ref}")
+            if action == "sigstore/cosign-installer":
+                if step.get("with") != {"cosign-release": COSIGN_RELEASE}:
+                    problems.append(f"{job_name}: Cosign release binary version is not explicitly pinned")
+        for action in required:
+            if actions.count(action) != 1:
+                problems.append(
+                    f"{job_name}: {action}: expected exactly one action, found {actions.count(action)}"
+                )
     return problems
+
+
+def _workflow(filename: str) -> dict:
+    source = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
+    return yaml.safe_load(source)
+
+
+def _action_index(steps: list, action: str) -> int:
+    hits = [
+        i for i, step in enumerate(steps)
+        if isinstance(step, dict) and isinstance(step.get("uses"), str)
+        and step["uses"].startswith(action + "@")
+    ]
+    assert len(hits) == 1, f"expected one reviewed {action} per job, got {hits}"
+    return hits[0]
 
 
 @pytest.mark.parametrize("filename", list(WORKFLOWS))
 def test_real_assurance_workflows_use_reviewed_commit_pins(filename):
-    text = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
-    assert action_pin_problems(filename, text) == []
+    source = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
+    assert action_pin_problems(filename, source) == []
 
 
 @pytest.mark.parametrize("filename", list(WORKFLOWS))
 def test_mutable_and_wrong_action_refs_are_refused(filename):
-    text = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
-    for action in WORKFLOWS[filename][1]:
-        exact = f"{action}@{ACTION_PINS[action]}"
-        assert text.count(exact) == 1
-        for bad in (f"{action}@v3", f"{action}@v4", f"{action}@main", f"{action}@{'0' * 40}",
-                    f"untrusted/{action.split('/')[-1]}@{ACTION_PINS[action]}"):
-            planted = text.replace(exact, bad)
-            assert action_pin_problems(filename, planted), bad
+    original = _workflow(filename)
+    for job_name, required in WORKFLOWS[filename].items():
+        for action in required:
+            steps = original["jobs"][job_name]["steps"]
+            index = _action_index(steps, action)
+            exact = f"{action}@{ACTION_PINS[action]}"
+            assert steps[index]["uses"] == exact
+            for bad in (
+                f"{action}@v3", f"{action}@v4", f"{action}@main",
+                f"{action}@{'0' * 40}",
+                f"untrusted/{action.split('/')[-1]}@{ACTION_PINS[action]}",
+            ):
+                planted = deepcopy(original)
+                planted["jobs"][job_name]["steps"][index]["uses"] = bad
+                assert action_pin_problems(filename, yaml.safe_dump(planted)), (job_name, bad)
 
 
 @pytest.mark.parametrize("filename", list(WORKFLOWS))
 def test_missing_duplicate_and_unreviewed_action_steps_are_refused(filename):
-    text = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
-    action = WORKFLOWS[filename][1][0]
-    line = f"- uses: {action}@{ACTION_PINS[action]}"
-    assert text.count(line) == 1
-    assert action_pin_problems(filename, text.replace(line, "", 1))
-    assert action_pin_problems(filename, text.replace(line, line + "\n      " + line, 1))
-    assert action_pin_problems(filename, text.replace(line, line + "\n      - uses: random/other@v1", 1))
+    original = _workflow(filename)
+    for job_name, required in WORKFLOWS[filename].items():
+        action = required[0]
+        idx = _action_index(original["jobs"][job_name]["steps"], action)
+        for kind in ("missing", "duplicate", "unreviewed"):
+            planted = deepcopy(original)
+            steps = planted["jobs"][job_name]["steps"]
+            if kind == "missing":
+                steps.pop(idx)
+            elif kind == "duplicate":
+                steps.insert(idx, deepcopy(steps[idx]))
+            else:
+                steps.insert(idx, {"uses": "random/other@v1"})
+            assert action_pin_problems(filename, yaml.safe_dump(planted)), (job_name, kind)
 
 
 @pytest.mark.parametrize("filename", list(WORKFLOWS))
-def test_missing_job_inventory_is_refused(filename):
-    text = (ROOT / ".github" / "workflows" / filename).read_text(encoding="utf-8")
-    required_job = WORKFLOWS[filename][0]
-    assert action_pin_problems(filename, text.replace(f"  {required_job}:", f"  unreviewed-job:", 1))
-    assert action_pin_problems(filename, "name: empty\njobs: {}\n")
+def test_missing_or_extra_job_inventory_is_refused(filename):
+    original = _workflow(filename)
+    for job_name in WORKFLOWS[filename]:
+        planted = deepcopy(original)
+        del planted["jobs"][job_name]
+        assert action_pin_problems(filename, yaml.safe_dump(planted)), job_name
+    planted = deepcopy(original)
+    planted["jobs"]["unreviewed-job"] = {"runs-on": "ubuntu-latest", "steps": []}
+    assert action_pin_problems(filename, yaml.safe_dump(planted))
+
+
+@pytest.mark.parametrize("filename,job_name", (
+    ("assurance-pr.yml", "keyless-oidc-canary"),
+    ("assurance.yml", "assurance"),
+))
+def test_cosign_release_version_is_explicit_and_fail_closed(filename, job_name):
+    """Prevent moving the binary version while preserving the pinned action commit.
+
+    This is a source guard; hosted OIDC signing tests prove runtime behavior.
+    Neither the action SHA nor a version tag independently authenticates a
+    downloaded binary or the full Synthesis release chain.
+    """
+    original = _workflow(filename)
+    steps = original["jobs"][job_name]["steps"]
+    index = _action_index(steps, "sigstore/cosign-installer")
+    assert steps[index]["with"] == {"cosign-release": COSIGN_RELEASE}
+    for kind in ("missing", "moving", "wrong", "extra"):
+        planted = deepcopy(original)
+        step = planted["jobs"][job_name]["steps"][index]
+        if kind == "missing":
+            step.pop("with")
+        elif kind == "moving":
+            step["with"] = {"cosign-release": "main"}
+        elif kind == "wrong":
+            step["with"] = {"cosign-release": "v0.0.0"}
+        else:
+            step["with"]["unreviewed-input"] = "true"
+        assert action_pin_problems(filename, yaml.safe_dump(planted)), kind
