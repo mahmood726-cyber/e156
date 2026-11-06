@@ -44,8 +44,8 @@ jobs:
               ('.github/workflows/assurance-pr.yml', sha),
               ('tests/test_assurance_source_rights_preflight.py', reviewed),
               ('requirements-assurance-ci.lock', reviewed),
-              ('scripts/assurance/check_code_contract_junit.py', '61ac575e598280e6ea126398474cb4ff56e8885c'),
-              ('tests/test_code_contract_junit.py', '61ac575e598280e6ea126398474cb4ff56e8885c'),
+              ('scripts/assurance/check_code_contract_junit.py', 'ea566db66c10290fd799b6973bcae90b53b01b30'),
+              ('tests/test_code_contract_junit.py', 'ea566db66c10290fd799b6973bcae90b53b01b30'),
           )
           for path, revision in sources:
               url = f'https://raw.githubusercontent.com/mahmood726-cyber/e156/{revision}/{path}'
