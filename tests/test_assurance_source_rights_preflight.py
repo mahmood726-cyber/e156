@@ -23,6 +23,15 @@ WORKFLOW = (
 
 def require_precheckout_hold(workflow: str) -> None:
     root = yaml.safe_load(workflow)
+    # PyYAML's YAML 1.1 resolver may parse the event key 'on' as True.
+    # A trigger change can make a privileged workflow run in the wrong trust
+    # context while all of the existing pre-checkout step checks still pass.
+    assert root.get("on", root.get(True)) == {
+        "workflow_dispatch": None,
+        "schedule": [{"cron": "0 6 * * 1"}],
+        "push": {"branches": ["master"]},
+    }
+    assert root.get("permissions") == {"contents": "write", "id-token": "write"}
     # A top-level env/defaults block can change the first Bash process before
     # its hold script runs (for example via BASH_ENV).
     assert "env" not in root and "defaults" not in root
@@ -88,7 +97,19 @@ def require_precheckout_hold(workflow: str) -> None:
 
 
 def test_production_refuses_source_processing_before_checkout():
-    require_precheckout_hold(WORKFLOW.read_text(encoding="utf-8"))
+    source = WORKFLOW.read_text(encoding="utf-8")
+    require_precheckout_hold(source)
+    # Negative controls: earlier versions checked only job/step layout, so a
+    # privileged pull_request_target event or removed push gate went unnoticed.
+    for before, after in (
+        ("  push:\n    branches: [master]", "  pull_request_target:\n    branches: [master]"),
+        ("  push:\n    branches: [master]", "  push:\n    branches: [unreviewed]"),
+        ('    - cron: "0 6 * * 1"', '    - cron: "* * * * *"'),
+        ("permissions:\n  contents: write", "permissions:\n  contents: read"),
+    ):
+        assert source.count(before) == 1
+        with pytest.raises(AssertionError):
+            require_precheckout_hold(source.replace(before, after, 1))
 
 
 @pytest.mark.parametrize(
@@ -191,6 +212,10 @@ PR_WORKFLOW = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "a
 def require_pr_precheckout_hold(workflow: str) -> None:
     root = yaml.safe_load(workflow)
     assert isinstance(root, dict)
+    assert root.get("on", root.get(True)) == {
+        "pull_request": {"branches": ["master"]},
+        "workflow_dispatch": None,
+    }
     assert "env" not in root and "defaults" not in root
     assert root.get("permissions") == {"contents": "read"}
     jobs = root["jobs"]
@@ -273,7 +298,18 @@ def require_pr_precheckout_hold(workflow: str) -> None:
 
 
 def test_pr_ci_refuses_publication_processing_before_checkout():
-    require_pr_precheckout_hold(PR_WORKFLOW.read_text(encoding="utf-8"))
+    source = PR_WORKFLOW.read_text(encoding="utf-8")
+    require_pr_precheckout_hold(source)
+    # A pull_request_target event changes the trust boundary even though
+    # the first refusal step and the OIDC canary scripts are unchanged.
+    for before, after in (
+        ("  pull_request:\n    branches: [master]", "  pull_request_target:\n    branches: [master]"),
+        ("  pull_request:\n    branches: [master]", "  pull_request:\n    branches: [unreviewed]"),
+        ("  workflow_dispatch:", "  push:"),
+    ):
+        assert source.count(before) == 1
+        with pytest.raises(AssertionError):
+            require_pr_precheckout_hold(source.replace(before, after, 1))
 
 
 @pytest.mark.parametrize(
