@@ -8,6 +8,7 @@ only the workflow YAML and do not authorize any article processing.
 from __future__ import annotations
 
 from pathlib import Path
+import hashlib
 import re
 
 import pytest
@@ -245,11 +246,30 @@ def require_pr_precheckout_hold(workflow: str) -> None:
 
     # This job is allowed only because it is synthetic and checkout-free.
     canary = jobs["keyless-oidc-canary"]
-    assert canary.get("runs-on") == "ubuntu-24.04"
-    assert canary.get("permissions") == {"contents": "read", "id-token": "write"}
-    for forbidden in ("env", "defaults", "container", "services"):
-        assert forbidden not in canary
-    assert all("checkout@" not in str(s) for s in canary["steps"])
+    # This OIDC-enabled canary must remain strictly synthetic; checking only
+    # for absence of checkout does not prevent network access or arbitrary runs.
+    assert set(canary) == {"name", "if", "runs-on", "permissions", "steps"}
+    assert canary["name"] == "Keyless OIDC canary (synthetic, no publication)"
+    assert canary["if"] == (
+        "github.event_name == 'pull_request' && "
+        "github.event.pull_request.head.repo.full_name == github.repository"
+    )
+    assert canary["runs-on"] == "ubuntu-24.04"
+    assert canary["permissions"] == {"contents": "read", "id-token": "write"}
+    assert len(canary["steps"]) == 2
+    installer, synthetic_canary = canary["steps"]
+    assert installer == {
+        "uses": "sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac",
+        "with": {"cosign-release": "v2.5.2"},
+    }
+    assert set(synthetic_canary) == {"name", "shell", "run"}
+    assert synthetic_canary["name"] == "Sign synthetic blob and refuse altered bytes or wrong issuer"
+    assert synthetic_canary["shell"] == "bash"
+    # Pin the reviewed shell commands; any unreviewed fetch, modified signature
+    # checks or additional execution must fail before privileged OIDC approval.
+    assert hashlib.sha256(synthetic_canary["run"].encode("utf-8")).hexdigest() == (
+        "03d8d1634ff3b0e68b1c3cf55613192ea616bee365cdb0b33d0ae5946335940e"
+    )
 
 
 def test_pr_ci_refuses_publication_processing_before_checkout():
@@ -297,6 +317,34 @@ def test_pr_ci_refuses_publication_processing_before_checkout():
         lambda src: src.replace(
             "      - uses: sigstore/cosign-installer@",
             "      - uses: actions/checkout@v4\n      - uses: sigstore/cosign-installer@", 1,
+        ),
+        # An unreviewed shell command, extra step, broader trigger or altered
+        # signing dependency previously passed the no-checkout-only assertion.
+        lambda src: src.replace(
+            "          echo 'Keyless OIDC signing and negative controls passed; no publication performed.'",
+            "          echo 'unreviewed side effect'\n"
+            "          echo 'Keyless OIDC signing and negative controls passed; no publication performed.'", 1,
+        ),
+        lambda src: src.replace(
+            "      - uses: sigstore/cosign-installer@",
+            "      - name: unreviewed preflight\n"
+            "        shell: bash\n"
+            "        run: echo unreviewed\n"
+            "      - uses: sigstore/cosign-installer@", 1,
+        ),
+        lambda src: src.replace(
+            "    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository",
+            "    if: always()", 1,
+        ),
+        lambda src: src.replace(
+            "          cosign-release: v2.5.2",
+            "          cosign-release: v0.0.0", 1,
+        ),
+        lambda src: src.replace(
+            "      - name: Sign synthetic blob and refuse altered bytes or wrong issuer",
+            "      - name: Sign synthetic blob and refuse altered bytes or wrong issuer\n"
+            "        env:\n"
+            "          BASH_ENV: ./unreviewed-startup", 1,
         ),
     ],
 )
