@@ -19,6 +19,16 @@ jobs:
       matrix:
         os: [ubuntu-24.04, windows-2022]
     steps:
+      # SOURCE_RIGHTS_HOLD is an intentionally red gate: this job's full
+      # repository checkout and pytest tests/ can access publication-derived
+      # caches/workbooks without an operation-specific reviewed permission.
+      # Do not remove it until a source-rights gate records private decisions
+      # BEFORE any checkout or test execution. Keep all existing hard gates.
+      - name: SOURCE_RIGHTS_HOLD — pause publication-derived PR tests before checkout
+        shell: pwsh
+        run: |
+          Write-Error 'SOURCE_RIGHTS_HOLD: full PR corpus is held until a reviewed, operation-specific source-rights gate and private decision log are available.'
+          exit 1
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
@@ -83,9 +93,8 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          persist-credentials: false
+      # Synthetic OIDC blob testing does not need any repository checkout.
+      # Avoid reading held publication-derived Git tree objects.
       - uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
         with:
           cosign-release: v2.5.2
