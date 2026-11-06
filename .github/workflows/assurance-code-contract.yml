@@ -1,0 +1,79 @@
+# Source-rights quarantine remains active in the full Ubuntu/Windows corpus.
+# This job fetches only two workflow YAMLs from the PR head; its test code
+# and dependency lock come from an immutable reviewed commit. No checkout or
+# publication-derived content is permitted.
+name: E156 synthetic source-rights contract
+
+on:
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  source-rights-contract:
+    if: github.repository == 'mahmood726-cyber/e156' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Retrieve only exact-head code and workflow contracts (no checkout)
+        shell: bash
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+
+          sha = os.environ['PR_HEAD_SHA']
+          if not re.fullmatch(r'[0-9a-f]{40}', sha):
+              raise SystemExit('REFUSED: invalid exact PR head')
+          root = Path(os.environ['RUNNER_TEMP']) / 'e156-code-only-contract'
+          root.mkdir(exist_ok=False)
+          reviewed = '73c68ea4bf81172fd262be9fbff217618cfee82a'
+          sources = (
+              ('.github/workflows/assurance.yml', sha),
+              ('.github/workflows/assurance-pr.yml', sha),
+              ('tests/test_assurance_source_rights_preflight.py', reviewed),
+              ('requirements-assurance-ci.lock', reviewed),
+          )
+          for path, revision in sources:
+              url = f'https://raw.githubusercontent.com/mahmood726-cyber/e156/{revision}/{path}'
+              with urlopen(Request(url, headers={'User-Agent': 'e156-code-contract'}), timeout=30) as response:
+                  content = response.read(1_000_001)
+              if not content or len(content) > 1_000_000:
+                  raise SystemExit(f'REFUSED: missing or oversized code-only file {path}')
+              target = root / path
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(content)
+          PY
+      - name: Run pinned synthetic-only contract tests with complete JUnit evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/e156-code-only-contract"
+          python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r "$root/requirements-assurance-ci.lock"
+          python -m pytest -q "$root/tests/test_assurance_source_rights_preflight.py" --junitxml="$RUNNER_TEMP/source-rights-contract.xml"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from xml.etree import ElementTree as ET
+
+          report = Path(os.environ['RUNNER_TEMP']) / 'source-rights-contract.xml'
+          suite = ET.parse(report).getroot()
+          cases = list(suite.iter('testcase'))
+          if len(cases) < 30:
+              raise SystemExit(f'REFUSED: incomplete synthetic contract coverage ({len(cases)})')
+          for case in cases:
+              if any(case.find(kind) is not None for kind in ('skipped', 'failure', 'error')):
+                  raise SystemExit('REFUSED: skipped or failed synthetic contract test')
+          print(f'PASS: {len(cases)} exact-head synthetic-only contracts; no repository checkout')
+          PY
