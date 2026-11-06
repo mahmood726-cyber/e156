@@ -46,7 +46,7 @@ def require_precheckout_hold(workflow: str) -> None:
     assert hold["shell"] == "bash"
     commands = [line.strip() for line in hold["run"].splitlines() if line.strip()]
     assert len(commands) == 2
-    assert re.fullmatch(r"printf '%s\\n' 'SOURCE_RIGHTS_HOLD: [^']*' >&2", commands[0])
+    assert re.fullmatch(r"printf '%s\\\\n' 'SOURCE_RIGHTS_HOLD: [^']*' >&2", commands[0])
     assert commands[1] == "exit 1"
     assert steps[1]["uses"].startswith("actions/checkout@")
 
