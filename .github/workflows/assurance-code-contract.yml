@@ -44,7 +44,7 @@ jobs:
               ('.github/workflows/assurance-pr.yml', sha),
               ('tests/test_assurance_source_rights_preflight.py', reviewed),
               ('requirements-assurance-ci.lock', reviewed),
-              ('scripts/assurance/check_code_contract_junit.py', 'ea566db66c10290fd799b6973bcae90b53b01b30'),
+              ('scripts/assurance/check_code_contract_junit.py', 'f4b79d9f9f50133f408da5c0932deacc6cdf37cc'),
               ('tests/test_code_contract_junit.py', 'ea566db66c10290fd799b6973bcae90b53b01b30'),
           )
           for path, revision in sources:
