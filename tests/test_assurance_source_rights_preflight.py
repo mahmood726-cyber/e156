@@ -180,3 +180,129 @@ def test_source_rights_hold_bypass_mutations_are_refused(mutation):
     assert planted != source
     with pytest.raises(AssertionError):
         require_precheckout_hold(planted)
+
+
+# PR CI is also an executable entry point: a PR must not reactivate
+# publication-derived tests while assurance.yml still holds production.
+PR_WORKFLOW = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "assurance-pr.yml"
+
+
+def require_pr_precheckout_hold(workflow: str) -> None:
+    root = yaml.safe_load(workflow)
+    assert isinstance(root, dict)
+    assert "env" not in root and "defaults" not in root
+    assert root.get("permissions") == {"contents": "read"}
+    jobs = root["jobs"]
+    assert set(jobs) == {"assurance-tests", "keyless-oidc-canary"}
+    job = jobs["assurance-tests"]
+    for forbidden in ("if", "continue-on-error", "env", "defaults", "container", "services"):
+        assert forbidden not in job
+    assert job.get("runs-on") == "\${{ matrix.os }}"
+    assert job.get("strategy") == {
+        "fail-fast": False,
+        "matrix": {"os": ["ubuntu-24.04", "windows-2022"]},
+    }
+    steps = job["steps"]
+    assert len(steps) >= 2
+    hold = steps[0]
+    assert set(hold) == {"name", "shell", "run"}
+    assert hold["name"] == "SOURCE_RIGHTS_HOLD — pause publication-derived PR tests before checkout"
+    assert hold["shell"] == "pwsh"
+    assert [line.strip() for line in hold["run"].splitlines() if line.strip()] == [
+        "Write-Error 'SOURCE_RIGHTS_HOLD: full PR corpus is held until a reviewed, operation-specific source-rights gate and private decision log are available.'",
+        "exit 1",
+    ]
+    checkout = steps[1]
+    assert set(checkout) == {"uses", "with"}
+    assert checkout["uses"] == "actions/checkout@11d5960a326750d5838078e36cf38b85af677262"
+    assert checkout["with"] == {"persist-credentials": False}
+
+    for step in steps[1:]:
+        assert "continue-on-error" not in step
+        condition = step.get("if")
+        if condition is None:
+            continue
+        # Only the exact diagnostic/reporting steps can run on a failed hold.
+        assert condition == "always()"
+        if step.get("name") == "Refuse omitted, skipped, or failed test cases":
+            assert set(step) == {"name", "if", "shell", "run"}
+            assert step["shell"] == "pwsh"
+            assert [line.strip() for line in step["run"].splitlines() if line.strip()] == [
+                "$report = Join-Path $env:RUNNER_TEMP 'e156-assurance-junit.xml'",
+                "python scripts/assurance/require_corpus_results.py $report",
+                'if ($LASTEXITCODE -ne 0) { throw "Assurance coverage gate failed" }',
+            ]
+        else:
+            assert step.get("uses") == (
+                "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02"
+            )
+            assert set(step) == {"uses", "if", "with"}
+            assert step["with"] == {
+                "name": "assurance-junit-\${{ matrix.os }}",
+                "path": "\${{ runner.temp }}/e156-assurance-junit.xml",
+                "if-no-files-found": "error",
+            }
+
+    # This job is allowed only because it is synthetic and checkout-free.
+    canary = jobs["keyless-oidc-canary"]
+    assert canary.get("runs-on") == "ubuntu-24.04"
+    assert canary.get("permissions") == {"contents": "read", "id-token": "write"}
+    for forbidden in ("env", "defaults", "container", "services"):
+        assert forbidden not in canary
+    assert all("checkout@" not in str(s) for s in canary["steps"])
+
+
+def test_pr_ci_refuses_publication_processing_before_checkout():
+    require_pr_precheckout_hold(PR_WORKFLOW.read_text(encoding="utf-8"))
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        lambda src: src.replace("          exit 1", "          Write-Output 'continue'", 1),
+        lambda src: src.replace(
+            "      - name: SOURCE_RIGHTS_HOLD",
+            "      - name: SOURCE_RIGHTS_HOLD\n        if: false", 1,
+        ),
+        lambda src: src.replace(
+            "      - name: SOURCE_RIGHTS_HOLD",
+            "      - name: SOURCE_RIGHTS_HOLD\n        continue-on-error: true", 1,
+        ),
+        lambda src: src.replace(
+            "    steps:\n      # SOURCE_RIGHTS_HOLD",
+            "    steps:\n      - uses: actions/checkout@v4\n      # SOURCE_RIGHTS_HOLD", 1,
+        ),
+        lambda src: src.replace(
+            "      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "      - if: always()\n        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262", 1,
+        ),
+        lambda src: src.replace(
+            "        os: [ubuntu-24.04, windows-2022]",
+            "        os: [self-hosted, windows-2022]", 1,
+        ),
+        lambda src: src.replace(
+            "    strategy:\n", "    container: python:3.12\n    strategy:\n", 1,
+        ),
+        lambda src: src.replace(
+            "permissions:\n  contents: read",
+            "permissions:\n  contents: write", 1,
+        ),
+        lambda src: src.replace(
+            "jobs:\n", "env:\n  BASH_ENV: /tmp/startup-hook\njobs:\n", 1,
+        ),
+        lambda src: src.replace(
+            "          path: \${{ runner.temp }}/e156-assurance-junit.xml",
+            "          path: rewrite-workbook.txt", 1,
+        ),
+        lambda src: src.replace(
+            "      - uses: sigstore/cosign-installer@",
+            "      - uses: actions/checkout@v4\n      - uses: sigstore/cosign-installer@", 1,
+        ),
+    ],
+)
+def test_pr_precheckout_hold_mutations_refused(mutation):
+    original = PR_WORKFLOW.read_text(encoding="utf-8")
+    planted = mutation(original)
+    assert planted != original, "mutation did not reach intended source"
+    with pytest.raises(AssertionError):
+        require_pr_precheckout_hold(planted)
