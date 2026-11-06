@@ -197,7 +197,7 @@ def require_pr_precheckout_hold(workflow: str) -> None:
     job = jobs["assurance-tests"]
     for forbidden in ("if", "continue-on-error", "env", "defaults", "container", "services"):
         assert forbidden not in job
-    assert job.get("runs-on") == "\${{ matrix.os }}"
+    assert job.get("runs-on") == "${{ matrix.os }}"
     assert job.get("strategy") == {
         "fail-fast": False,
         "matrix": {"os": ["ubuntu-24.04", "windows-2022"]},
@@ -238,8 +238,8 @@ def require_pr_precheckout_hold(workflow: str) -> None:
             )
             assert set(step) == {"uses", "if", "with"}
             assert step["with"] == {
-                "name": "assurance-junit-\${{ matrix.os }}",
-                "path": "\${{ runner.temp }}/e156-assurance-junit.xml",
+                "name": "assurance-junit-${{ matrix.os }}",
+                "path": "${{ runner.temp }}/e156-assurance-junit.xml",
                 "if-no-files-found": "error",
             }
 
@@ -291,7 +291,7 @@ def test_pr_ci_refuses_publication_processing_before_checkout():
             "jobs:\n", "env:\n  BASH_ENV: /tmp/startup-hook\njobs:\n", 1,
         ),
         lambda src: src.replace(
-            "          path: \${{ runner.temp }}/e156-assurance-junit.xml",
+            "          path: ${{ runner.temp }}/e156-assurance-junit.xml",
             "          path: rewrite-workbook.txt", 1,
         ),
         lambda src: src.replace(
