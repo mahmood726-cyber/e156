@@ -1,6 +1,6 @@
 # Source-rights quarantine remains active in the full Ubuntu/Windows corpus.
 # This job fetches only two workflow YAMLs from the PR head; its test code
-# and dependency lock come from an immutable reviewed commit. No checkout or
+# and dependency lock come from immutable pinned commits. No checkout or
 # publication-derived content is permitted.
 name: E156 synthetic source-rights contract
 
@@ -44,6 +44,8 @@ jobs:
               ('.github/workflows/assurance-pr.yml', sha),
               ('tests/test_assurance_source_rights_preflight.py', reviewed),
               ('requirements-assurance-ci.lock', reviewed),
+              ('scripts/assurance/check_code_contract_junit.py', '61ac575e598280e6ea126398474cb4ff56e8885c'),
+              ('tests/test_code_contract_junit.py', '61ac575e598280e6ea126398474cb4ff56e8885c'),
           )
           for path, revision in sources:
               url = f'https://raw.githubusercontent.com/mahmood726-cyber/e156/{revision}/{path}'
@@ -61,19 +63,6 @@ jobs:
           set -euo pipefail
           root="$RUNNER_TEMP/e156-code-only-contract"
           python -m pip install --force-reinstall --require-hashes --only-binary=:all: -r "$root/requirements-assurance-ci.lock"
-          python -m pytest -q "$root/tests/test_assurance_source_rights_preflight.py" --junitxml="$RUNNER_TEMP/source-rights-contract.xml"
-          python - <<'PY'
-          import os
-          from pathlib import Path
-          from xml.etree import ElementTree as ET
-
-          report = Path(os.environ['RUNNER_TEMP']) / 'source-rights-contract.xml'
-          suite = ET.parse(report).getroot()
-          cases = list(suite.iter('testcase'))
-          if len(cases) < 30:
-              raise SystemExit(f'REFUSED: incomplete synthetic contract coverage ({len(cases)})')
-          for case in cases:
-              if any(case.find(kind) is not None for kind in ('skipped', 'failure', 'error')):
-                  raise SystemExit('REFUSED: skipped or failed synthetic contract test')
-          print(f'PASS: {len(cases)} exact-head synthetic-only contracts; no repository checkout')
-          PY
+          python -m pytest -q "$root/tests/test_assurance_source_rights_preflight.py" "$root/tests/test_code_contract_junit.py" --junitxml="$RUNNER_TEMP/source-rights-contract.xml"
+          python "$root/scripts/assurance/check_code_contract_junit.py" "$RUNNER_TEMP/source-rights-contract.xml"
+          echo 'PASS: pinned synthetic-only JUnit evidence; no repository checkout'
