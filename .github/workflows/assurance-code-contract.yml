@@ -38,7 +38,7 @@ jobs:
               raise SystemExit('REFUSED: invalid exact PR head')
           root = Path(os.environ['RUNNER_TEMP']) / 'e156-code-only-contract'
           root.mkdir(exist_ok=False)
-          reviewed = '6e3702dc3322667994ee4311d5abac35d0fa8ecb'
+          reviewed = '8f33685160f08e9c31549beda60325736a7cafcd'
           sources = (
               ('.github/workflows/assurance.yml', sha),
               ('.github/workflows/assurance-pr.yml', sha),
