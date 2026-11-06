@@ -12,13 +12,13 @@ from xml.etree import ElementTree as ET
 
 # Frozen identities from pinned test sources; changes require explicit review.
 EXPECTED_TEST_NAMES = {
-    "test_assurance_source_rights_preflight": frozenset({
+    "tests.test_assurance_source_rights_preflight": frozenset({
         "test_production_refuses_source_processing_before_checkout",
         "test_pr_ci_refuses_publication_processing_before_checkout",
         *(f"test_source_rights_hold_bypass_mutations_are_refused[<lambda>{i}]" for i in range(17)),
         *(f"test_pr_precheckout_hold_mutations_refused[<lambda>{i}]" for i in range(16)),
     }),
-    "test_code_contract_junit": frozenset({
+    "tests.test_code_contract_junit": frozenset({
         "test_valid_synthetic_report",
         *(f"test_mutated_synthetic_report_refused[<lambda>{i}]" for i in range(13)),
     }),
