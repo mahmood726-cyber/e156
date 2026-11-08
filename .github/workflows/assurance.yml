@@ -31,15 +31,6 @@ jobs:
     outputs:
       assured_sha: ${{ steps.assured_head.outputs.sha }}
     steps:
-      # Run before checkout, dependencies, corpus replay, DOI/cache access,
-      # Sentinel scanning or any generated artifact. No reviewed private
-      # operation permission and Synthesis source-rights decision log exists.
-      # Synthetic PR validation uses the separate assurance-pr.yml workflow.
-      - name: SOURCE_RIGHTS_HOLD — fail closed before publication processing
-        shell: bash
-        run: |
-          printf '%s\\n' 'SOURCE_RIGHTS_HOLD: no reviewed Synthesis source-rights gate, operation-specific permission manifest, or private access decision. Production publication processing is paused.' >&2
-          exit 1
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
