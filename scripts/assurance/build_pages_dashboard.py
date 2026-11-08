@@ -2,10 +2,10 @@
 
 Collects every assurance.json in the repo and renders a single offline,
 self-contained `assurance.html` (no CDN, no hardcoded local paths) showing each
-capsule's tier, per-check verdicts, and whether the badge is cryptographically
-signed. Served by the repo's EXISTING GitHub Pages setup (the assurance
-workflow commits this file; it does NOT run a deploy-pages job that would
-overwrite the rest of the site).
+capsule's tier, per-check verdicts, and whether its Sigstore badge bundle was actually verified during this process.
+Legacy HMAC marks alone NEVER indicate a verified signature. Production
+uses --require-keyless-verified after the hard Sigstore gate. Pages must
+separately be configured for the same-run verified artifact.
 
 Anyone visiting <user>.github.io/<repo>/assurance.html can see how much
 reassurance each capsule carries.
@@ -50,7 +50,7 @@ def _esc(value) -> str:
     return html.escape(str(value))
 
 
-def collect_badges(root: Path) -> list[dict]:
+def collect_badges(root: Path, *, keyless_verified: bool = False) -> list[dict]:
     out: list[dict] = []
     for p in sorted(root.rglob("assurance.json")):
         if ".git" in p.parts:
@@ -63,7 +63,8 @@ def collect_badges(root: Path) -> list[dict]:
             continue
         data = dict(data)
         data["_rel"] = p.relative_to(root).as_posix()
-        data["_signed"] = bool(data.get("signature"))
+        # Raw HMAC marks or mere bundle presence are not authenticated.
+        data["_signed"] = bool(keyless_verified)
         out.append(data)
     return out
 
@@ -83,7 +84,7 @@ def build_dashboard_html(badges, *, title="e156 Assurance Status", generated_at=
             + VERDICT_MARK.get(str(checks.get(k)), "&middot;") + "</td>"
             for k in CHECK_KEYS
         )
-        signed = LOCK if (b.get("signature") or b.get("_signed")) else DASH
+        signed = LOCK if b.get("_signed") else DASH
         rows.append(
             "<tr><td>" + name + '</td><td><span class="pill" style="background:'
             + color + '">' + _esc(label) + "</span></td>" + cells
@@ -108,7 +109,9 @@ def build_dashboard_html(badges, *, title="e156 Assurance Status", generated_at=
         "".join(rows),
         "</tbody></table>",
         '<p class="foot">Tiers are derived from automated checks, never hand-set. '
-        + LOCK + " = cryptographically signed. Marks: &#10003; pass &middot; ! warn &middot; &#10007; fail &middot; &middot; not-run.</p>",
+        + LOCK + " = Sigstore bundle authenticated during this build; this HTML alone is "
+        + "not proof. Verify the bundle against its original bytes and signer identity. "
+        + "Marks: &#10003; pass &middot; ! warn &middot; &#10007; fail &middot; &middot; not-run.</p>",
         "</body></html>",
     ]
     return "\n".join(parts)
@@ -118,12 +121,25 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Build the public e156 assurance dashboard.")
     ap.add_argument("--repo", default=".", help="Repo root to scan (default: cwd)")
     ap.add_argument("--out", help="Output HTML path (default: <repo>/assurance.html)")
+    ap.add_argument("--require-keyless-verified", action="store_true",
+                    help="Refuse publication unless Sigstore verifies every badge")
     args = ap.parse_args(argv)
     root = Path(args.repo).resolve()
     if not root.is_dir():
         sys.stderr.write(f"not a directory: {root}\n")
         return 2
-    badges = collect_badges(root)
+    if args.require_keyless_verified:
+        # Direct CLI execution puts scripts/assurance (not scripts) on sys.path.
+        # Package imports in pytest use the parent package instead. Both paths
+        # must invoke the same real verifier; neither may bypass it.
+        if __package__:
+            from . import verify_sigstore_badges
+        else:
+            import verify_sigstore_badges
+        if verify_sigstore_badges.verify(root) != 0:
+            sys.stderr.write("REFUSED: dashboard cannot claim authenticated badges\n")
+            return 2
+    badges = collect_badges(root, keyless_verified=args.require_keyless_verified)
     out = Path(args.out) if args.out else root / "assurance.html"
     out.write_text(build_dashboard_html(badges), encoding="utf-8")
     print(f"wrote {out} ({len(badges)} badges)")

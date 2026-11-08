@@ -75,6 +75,15 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
     suites = list(root.iter("testsuite"))
     if not suites:
         problems.append("Assurance JUnit report has no testsuite element.")
+    # Count only testcase elements directly owned by a testsuite. Otherwise
+    # a fabricated report can smuggle hundreds of passing tests beside its
+    # sole declared suite and meet the whole-run floor without suite evidence.
+    in_suites = sum(len(suite.findall("testcase")) for suite in suites)
+    if in_suites != len(cases):
+        problems.append(
+            f"Assurance JUnit contains {len(cases) - in_suites} testcase(s) "
+            "outside testsuite membership."
+        )
     for suite in suites:
         suite_cases = list(suite.iter("testcase"))
         declared = suite.get("tests", "")
@@ -105,6 +114,54 @@ def check_results(path: Path, min_corpus: int = MIN_CORPUS_CASES,
                     f"Assurance JUnit testsuite declares {reported} {counter} "
                     f"but has {observed} marked testcase elements."
                 )
+
+
+    # Pytest commonly emits a <testsuites> wrapper without aggregate headers.
+    # If a producer DOES supply root totals, they are evidence claims too:
+    # a report declaring failures or missing cases at its root must not pass
+    # merely because its child testsuites are internally consistent.
+    if root.tag not in ("testsuite", "testsuites"):
+        problems.append("Assurance JUnit has an unexpected root element.")
+    if root.tag == "testsuites":
+        aggregate = {
+            "tests": len(cases),
+            "skipped": sum(case.find("skipped") is not None for case in cases),
+            "failures": sum(case.find("failure") is not None for case in cases),
+            "errors": sum(case.find("error") is not None for case in cases),
+        }
+        for counter, observed in aggregate.items():
+            # Absence is valid for pytest's testsuites wrapper; a present
+            # counter must be decimal, bounded and exactly reconciled.
+            if counter not in root.attrib:
+                continue
+            declared = root.attrib[counter]
+            if not (declared.isascii() and declared.isdecimal()
+                    and len(declared) <= 9):
+                problems.append(
+                    f"Assurance JUnit testsuites has an invalid {counter} count."
+                )
+            elif int(declared) != observed:
+                problems.append(
+                    f"Assurance JUnit testsuites declares {declared} {counter} "
+                    f"but contains {observed} observed {counter}."
+                )
+
+    # Some JUnit producers declare disabled tests without emitting testcase
+    # elements. A full-sized all-pass XML body cannot override that explicit
+    # evidence of omitted coverage. Pytest normally omits this optional field.
+    disabled_claims = [(suite, "testsuite") for suite in suites]
+    if root.tag == "testsuites":
+        disabled_claims.append((root, "testsuites"))
+    for element, container in disabled_claims:
+        if "disabled" not in element.attrib:
+            continue
+        disabled = element.attrib["disabled"]
+        if not (disabled.isascii() and disabled.isdecimal() and len(disabled) <= 9):
+            problems.append(f"Assurance JUnit {container} has an invalid disabled count.")
+        elif int(disabled) != 0:
+            problems.append(
+                f"Assurance JUnit {container} declares {disabled} disabled test(s)."
+            )
 
     corpus = [case for case in cases if _is_corpus_case(case)]
     names = Counter(case.get("name") or "" for case in corpus)

@@ -122,6 +122,120 @@ def test_declared_junit_outcomes_must_match_case_evidence(tmp_path, counter, rep
     assert any(counter in problem for problem in problems)
 
 
+def test_stray_testcase_cannot_inflate_complete_junit_report(tmp_path, capsys):
+    # All 534 synthetic identities are retained, with honest per-suite totals,
+    # but one testcase is moved outside every suite. The former gate accepted
+    # this false-green report because it checked only global and suite counts.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    suite = tree.getroot()
+    wrapper = ET.Element("testsuites")
+    wrapper.append(suite)
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 0  # valid pytest testsuites wrapper
+    capsys.readouterr()
+
+    stranded = suite[-1]
+    suite.remove(stranded)
+    wrapper.append(stranded)
+    suite.set("tests", str(guard.MIN_ASSURANCE_TESTS - 1))
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert len(list(wrapper.iter("testcase"))) == guard.MIN_ASSURANCE_TESTS
+    assert len(list(suite.iter("testcase"))) == guard.MIN_ASSURANCE_TESTS - 1
+    assert guard.main([str(path)]) == 1
+    assert "outside testsuite membership" in capsys.readouterr().err
+
+
+
+@pytest.mark.parametrize(
+    ("counter", "declared"),
+    [
+        ("tests", "535"),
+        ("failures", "1"),
+        ("errors", "1"),
+        ("skipped", "1"),
+        ("tests", "unknown"),
+        ("errors", "-1"),
+    ],
+)
+def test_testsuites_wrapper_cannot_contradict_child_evidence(
+    tmp_path, counter, declared,
+):
+    # Synthetic 534-case report: the prior gate trusted child testsuites
+    # but ignored contradictory root aggregate counts entirely.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    wrapper = ET.Element("testsuites")
+    wrapper.append(tree.getroot())
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.check_results(path) == []  # pytest-style headerless wrapper
+
+    wrapper.set(counter, declared)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    reasons = guard.check_results(path)
+    assert any("testsuites" in reason and counter in reason for reason in reasons)
+
+
+def test_testsuites_wrapper_with_honest_aggregate_counters_passes(tmp_path):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    wrapper = ET.Element("testsuites", {
+        "tests": str(guard.MIN_ASSURANCE_TESTS),
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+    })
+    wrapper.append(tree.getroot())
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.main([str(path)]) == 0
+
+
+@pytest.mark.parametrize("container", ["testsuite", "testsuites"])
+@pytest.mark.parametrize("disabled", ["1", "2", "-1", "unknown", "9" * 100])
+def test_declared_disabled_junit_tests_refused(tmp_path, container, disabled):
+    # JUnit producers may report disabled tests separately from the testcase
+    # elements. All 534 emitted synthetic cases still pass and reconcile;
+    # accepting an explicit disabled count would invent complete coverage.
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    if container == "testsuites":
+        wrapper = ET.Element("testsuites")
+        wrapper.append(tree.getroot())
+        tree._setroot(wrapper)
+    target = tree.getroot()
+    target.set("disabled", disabled)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    reasons = guard.check_results(path)
+    assert any(container in reason and "disabled" in reason for reason in reasons)
+
+
+@pytest.mark.parametrize("container", ["testsuite", "testsuites"])
+def test_zero_or_absent_junit_disabled_count_is_accepted(tmp_path, container):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    if container == "testsuites":
+        wrapper = ET.Element("testsuites")
+        wrapper.append(tree.getroot())
+        tree._setroot(wrapper)
+    assert guard.check_results(path) == []
+    tree.getroot().set("disabled", "0")
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert guard.check_results(path) == []
+
+
+def test_non_junit_root_cannot_launder_embedded_valid_suite(tmp_path):
+    path = _full_junit(tmp_path)
+    tree = ET.parse(path)
+    wrapper = ET.Element("untrusted-report")
+    wrapper.append(tree.getroot())
+    tree._setroot(wrapper)
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+    assert any("unexpected root" in reason for reason in guard.check_results(path))
+
+
 def test_junit_without_testsuite_container_is_refused(tmp_path):
     path = _junit(tmp_path)
     tree = ET.parse(path)

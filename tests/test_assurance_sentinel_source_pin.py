@@ -13,8 +13,8 @@ import pytest
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_SENTINEL_SHA = "d87211a0c0a43e805b3aba36ec920693928e86b5"
-SUPERSEDED_SENTINEL_SHA = "97273997db160aee99d89af94fcc18bf621b3cb9"
+EXPECTED_SENTINEL_SHA = "a11c573c0b90dd4814a4a381ded2bfc928eb8c64"
+SUPERSEDED_SENTINEL_SHA = "d87211a0c0a43e805b3aba36ec920693928e86b5"
 WORKFLOWS = (
     (".github/workflows/assurance-pr.yml", "Fetch exact Sentinel source outside the E156 scan root"),
     (".github/workflows/assurance.yml", "Check out Sentinel (mandatory, exact tested commit)"),

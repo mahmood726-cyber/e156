@@ -2,9 +2,9 @@ name: e156 assurance
 
 # Flips on the "external actor" half of the Assurance Standard that can't run
 # locally: live DOI resolution (CI has network), Sigstore KEYLESS signing
-# (GitHub OIDC — no key to manage), an HMAC verification gate, and a public
-# Pages dashboard. The commit-time Sentinel rules stay the local gate; this is
-# the publish-time gate.
+# (GitHub OIDC — no key to manage), mandatory authenticated badge bundles,
+# and assurance-dependent Pages artifacts (deployment requires owner opt-in).
+# No HMAC is required or accepted as new E156 publication authentication.
 
 on:
   workflow_dispatch:
@@ -14,8 +14,8 @@ on:
     branches: [master]
     # Every master commit can change Pages output or its provenance. Do not
     # use a partial paths filter: new source files must not silently bypass
-    # DOI/Sentinel/HMAC/Sigstore assurance. Pages itself remains independent
-    # until the admin-controlled publishing source is gated (issue #85).
+    # DOI/Sentinel/Sigstore assurance. Branch-source Pages stays independently
+    # publishable until an administrator switches Pages to GitHub Actions (#85).
 
 permissions:
   contents: write     # commit refreshed doi-cache.json / badges / signatures / dashboard
@@ -28,8 +28,8 @@ concurrency:
 jobs:
   assurance:
     runs-on: ubuntu-latest
-    env:
-      E156_ASSURANCE_HMAC_KEY: ${{ secrets.E156_ASSURANCE_HMAC_KEY }}
+    outputs:
+      assured_sha: ${{ steps.assured_head.outputs.sha }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
@@ -45,8 +45,8 @@ jobs:
       - name: Check out Sentinel (mandatory, exact tested commit)
         run: |
           git clone --quiet https://github.com/${{ github.repository_owner }}/Sentinel.git "$RUNNER_TEMP/Sentinel"
-          git -C "$RUNNER_TEMP/Sentinel" checkout --quiet --detach d87211a0c0a43e805b3aba36ec920693928e86b5
-          test "$(git -C "$RUNNER_TEMP/Sentinel" rev-parse HEAD)" = "d87211a0c0a43e805b3aba36ec920693928e86b5"
+          git -C "$RUNNER_TEMP/Sentinel" checkout --quiet --detach a11c573c0b90dd4814a4a381ded2bfc928eb8c64
+          test "$(git -C "$RUNNER_TEMP/Sentinel" rev-parse HEAD)" = "a11c573c0b90dd4814a4a381ded2bfc928eb8c64"
           echo "SENTINEL_ROOT=$RUNNER_TEMP/Sentinel" >> "$GITHUB_ENV"
 
       - name: Run the assurance test suite (hard gate)
@@ -70,14 +70,18 @@ jobs:
       - name: Regenerate this repo's badge
         run: python scripts/build_assurance_jsons.py --here e156
 
-      - name: HMAC-sign and verify badges (mandatory, non-vacuous)
-        run: python scripts/assurance/publish_hmac_badges.py --repo .
+      - name: Reject unverified legacy HMAC marks before mandatory keyless signing
+        run: python scripts/assurance/require_keyless_safe_badges.py --repo .
 
       - name: Install cosign
         uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
+        with:
+          cosign-release: v2.5.2
 
       - name: Sigstore keyless-sign badges (public, transparency-logged)
+        shell: bash
         run: |
+          set -euo pipefail
           find . -name assurance.json -not -path './.git/*' -print0 |
             while IFS= read -r -d '' f; do
               cosign sign-blob --yes --bundle "$f.cosign.bundle" "$f"
@@ -87,7 +91,7 @@ jobs:
         run: python scripts/assurance/verify_sigstore_badges.py --repo .
 
       - name: Build the public assurance dashboard (served by existing Pages)
-        run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html
+        run: python scripts/assurance/build_pages_dashboard.py --repo . --out assurance.html --require-keyless-verified
 
       - name: Sentinel rescan generated publication artifacts (hard gate)
         # All generated badges, signatures and dashboard must pass Sentinel before push.
@@ -98,9 +102,95 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
+          # Fail closed rather than committing edits to human-protected records,
+          # scientific protocols, or any non-generated source files.
+          python scripts/assurance/refuse_unexpected_staged_changes.py --repo .
           if git diff --cached --quiet; then
             echo "nothing to commit"
           else
             git commit -m "assurance: refresh DOI cache, badges, signatures, dashboard [skip ci]"
             git push
           fi
+
+      # Refuse a stale checkout, incomplete push, or tree differing from what
+      # passed DOI, Sentinel, Sigstore and authenticated dashboard checks.
+      - name: Refuse stale or uncommitted assured publication source
+        id: assured_head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)" || { echo 'REFUSED: assured tree is dirty'; exit 1; }
+          local_head="$(git rev-parse HEAD)"
+          remote_head="$(git ls-remote origin refs/heads/master | cut -f1)"
+          test -n "$remote_head" && test "$local_head" = "$remote_head" || {
+            echo 'REFUSED: master advanced or assured push not published'; exit 1;
+          }
+          echo "Assured source commit: $local_head" >> "$GITHUB_STEP_SUMMARY"
+          echo "sha=$local_head" >> "$GITHUB_OUTPUT"
+
+      # No privileged Pages action until owner changes Settings > Pages source
+      # to GitHub Actions, restricts github-pages environment, and opts in.
+      # Upload only tracked bytes of the exact verified, pushed commit.
+      # A clean git status ignores ignored files; packaging "." could publish
+      # untracked/ignored files that never passed the committed-source gate.
+      - name: Stage only committed assured Pages source (owner opt-in only)
+        if: vars.E156_PAGES_ACTIONS_READY == 'true'
+        shell: bash
+        env:
+          ASSURED_SHA: ${{ steps.assured_head.outputs.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$ASSURED_SHA" || { echo 'REFUSED: missing archive SHA' >&2; exit 1; }
+          test "$(git rev-parse HEAD)" = "$ASSURED_SHA" || { echo 'REFUSED: local HEAD changed' >&2; exit 1; }
+          test -z "$(git status --porcelain)" || { echo 'REFUSED: dirty assured checkout' >&2; exit 1; }
+          tracked_tree="$(git ls-tree -r "$ASSURED_SHA")"
+          if grep -Eq '^120000 blob ' <<< "$tracked_tree"; then
+            echo 'REFUSED: symlink in Pages source' >&2
+            exit 1
+          fi
+          dest="$RUNNER_TEMP/e156-assured-pages"
+          mkdir -p "$dest"
+          test -z "$(ls -A "$dest")" || { echo 'REFUSED: nonempty Pages stage' >&2; exit 1; }
+          git -c core.autocrlf=false archive --format=tar "$ASSURED_SHA" | tar -xf - -C "$dest"
+          python scripts/assurance/verify_pages_archive.py --repo . --sha "$ASSURED_SHA" --stage "$dest"
+          test -s "$dest/assurance.html" || { echo 'REFUSED: missing assured dashboard' >&2; exit 1; }
+          test "$(git hash-object "$dest/assurance.html")" = "$(git rev-parse "$ASSURED_SHA:assurance.html")" || {
+            echo 'REFUSED: staged dashboard differs from assured commit' >&2
+            exit 1
+          }
+      - name: Package exact assured Pages tree (owner opt-in only)
+        if: vars.E156_PAGES_ACTIONS_READY == 'true'
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b
+        with:
+          path: ${{ runner.temp }}/e156-assured-pages
+
+  deploy-pages:
+    name: Deploy only successful same-run assurance artifact
+    needs: assurance
+    if: github.repository == 'mahmood726-cyber/e156' && github.ref == 'refs/heads/master' && vars.E156_PAGES_ACTIONS_READY == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # The assurance job may have pushed generated badges on top of the
+      # triggering commit. Refuse any later master drift before deploying its
+      # already-verified Pages artifact; a new commit needs fresh assurance.
+      - name: Refuse master drift after assurance before Pages deployment
+        shell: bash
+        env:
+          ASSURED_SHA: ${{ needs.assurance.outputs.assured_sha }}
+        run: |
+          set -euo pipefail
+          test "$ASSURED_SHA" != '' || { echo 'REFUSED: missing assured source SHA'; exit 1; }
+          remote_head="$(git ls-remote https://github.com/mahmood726-cyber/e156.git refs/heads/master | cut -f1)"
+          test -n "$remote_head" && test "$ASSURED_SHA" = "$remote_head" || {
+            echo 'REFUSED: master advanced after assurance; new assurance required'; exit 1;
+          }
+      - name: Deploy exactly the assured same-run Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e

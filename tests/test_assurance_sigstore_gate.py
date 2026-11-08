@@ -28,6 +28,7 @@ def _badge(tmp_path):
 def _context(monkeypatch):
     monkeypatch.setenv("GITHUB_REPOSITORY", gate.REPOSITORY)
     monkeypatch.setenv("GITHUB_REF", gate.REF)
+    monkeypatch.setenv("GITHUB_SHA", "a" * 40)
 
 
 def test_missing_wrong_repo_or_ref_refuses(tmp_path, monkeypatch):
@@ -87,7 +88,11 @@ def test_success_requires_exact_workflow_identity_issuer_and_payload(tmp_path, m
     assert commands == [[
         "cosign", "verify-blob", "--bundle", str(bundle),
         "--certificate-identity", gate.IDENTITY,
-        "--certificate-oidc-issuer", gate.ISSUER, str(badge),
+        "--certificate-oidc-issuer", gate.ISSUER,
+        "--certificate-github-workflow-repository", gate.REPOSITORY,
+        "--certificate-github-workflow-ref", gate.REF,
+        "--certificate-github-workflow-sha", "a" * 40,
+        str(badge),
     ]]
 
 

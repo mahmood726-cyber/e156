@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -28,6 +29,12 @@ def verify(root: Path) -> int:
         return _refuse("unexpected signing repository; refusing Sigstore publication")
     if os.environ.get("GITHUB_REF") != REF:
         return _refuse("unexpected signing ref; refusing Sigstore publication")
+    # Prevent replay of an otherwise valid older master-workflow bundle. The
+    # OIDC certificate must name the exact commit that triggered THIS run,
+    # not merely a reusable repository/branch/workflow identity.
+    workflow_sha = os.environ.get("GITHUB_SHA", "")
+    if not re.fullmatch(r"[0-9a-f]{40}", workflow_sha):
+        return _refuse("missing or malformed GitHub workflow source SHA")
     root = root.resolve()
     if not root.is_dir():
         return _refuse("assurance root missing")
@@ -58,6 +65,9 @@ def verify(root: Path) -> int:
             "cosign", "verify-blob", "--bundle", str(bundle),
             "--certificate-identity", IDENTITY,
             "--certificate-oidc-issuer", ISSUER,
+            "--certificate-github-workflow-repository", REPOSITORY,
+            "--certificate-github-workflow-ref", REF,
+            "--certificate-github-workflow-sha", workflow_sha,
             str(badge),
         ]
         try:

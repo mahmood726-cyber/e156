@@ -37,10 +37,10 @@ jobs:
           $root = Join-Path $env:RUNNER_TEMP 'Sentinel'
           git clone --quiet https://github.com/mahmood726-cyber/Sentinel.git $root
           if ($LASTEXITCODE -ne 0) { throw "Sentinel download failed; cannot claim corpus coverage" }
-          git -C $root checkout --quiet --detach d87211a0c0a43e805b3aba36ec920693928e86b5
+          git -C $root checkout --quiet --detach a11c573c0b90dd4814a4a381ded2bfc928eb8c64
           if ($LASTEXITCODE -ne 0) { throw "Pinned Sentinel commit is unavailable" }
           $actual = (git -C $root rev-parse HEAD).Trim()
-          if ($actual -ne 'd87211a0c0a43e805b3aba36ec920693928e86b5') {
+          if ($actual -ne 'a11c573c0b90dd4814a4a381ded2bfc928eb8c64') {
             throw "Sentinel commit mismatch: $actual"
           }
           "SENTINEL_ROOT=$root" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
@@ -74,3 +74,58 @@ jobs:
           name: assurance-junit-${{ matrix.os }}
           path: ${{ runner.temp }}/e156-assurance-junit.xml
           if-no-files-found: error
+
+  keyless-oidc-canary:
+    name: Keyless OIDC canary (synthetic, no publication)
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      # Synthetic OIDC blob testing does not need any repository checkout.
+      # Avoid reading held publication-derived Git tree objects.
+      - uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac
+        with:
+          cosign-release: v2.5.2
+      - name: Sign synthetic blob and refuse altered bytes or wrong issuer
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'synthetic OIDC preflight; not an assurance badge' > "$RUNNER_TEMP/oidc-preflight.txt"
+          cosign sign-blob --yes --bundle "$RUNNER_TEMP/oidc-preflight.bundle" "$RUNNER_TEMP/oidc-preflight.txt"
+          identity="https://github.com/$GITHUB_WORKFLOW_REF"
+          issuer="https://token.actions.githubusercontent.com"
+          cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" --certificate-github-workflow-repository "$GITHUB_REPOSITORY" --certificate-github-workflow-ref "$GITHUB_REF" --certificate-github-workflow-sha "$GITHUB_SHA" "$RUNNER_TEMP/oidc-preflight.txt"
+          echo 'tampered' >> "$RUNNER_TEMP/oidc-preflight.txt"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: modified blob incorrectly verified' >&2
+            exit 1
+          fi
+          echo 'synthetic OIDC preflight; not an assurance badge' > "$RUNNER_TEMP/oidc-preflight.txt"
+          # A PR identity must never impersonate the production master signer.
+          production="https://github.com/$GITHUB_REPOSITORY/.github/workflows/assurance.yml@refs/heads/master"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$production" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: PR identity verified as master assurance signer' >&2
+            exit 1
+          fi
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer 'https://example.invalid' "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: wrong issuer incorrectly verified' >&2
+            exit 1
+          fi
+          # Refuse replay from an older master-workflow commit.
+          if cosign verify-blob --bundle "$RUNNER_TEMP/oidc-preflight.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" --certificate-github-workflow-sha "0000000000000000000000000000000000000000" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: stale/wrong workflow commit SHA accepted' >&2
+            exit 1
+          fi
+          # A missing or forged certificate bundle is never a valid signature.
+          if cosign verify-blob --bundle "$RUNNER_TEMP/nonexistent.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: missing bundle incorrectly verified' >&2
+            exit 1
+          fi
+          printf '%s\n' '{"mediaType":"application/forged-sigstore-bundle"}' > "$RUNNER_TEMP/forged.bundle"
+          if cosign verify-blob --bundle "$RUNNER_TEMP/forged.bundle" --certificate-identity "$identity" --certificate-oidc-issuer "$issuer" "$RUNNER_TEMP/oidc-preflight.txt"; then
+            echo 'REFUSED: forged bundle incorrectly verified' >&2
+            exit 1
+          fi
+          echo 'Keyless OIDC signing and negative controls passed; no publication performed.'
