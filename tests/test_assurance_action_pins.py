@@ -28,7 +28,7 @@ COSIGN_RELEASE = "v2.5.2"  # version observed in hosted 2026-10-31 OIDC canary
 WORKFLOWS = {
     "assurance-pr.yml": {
         "assurance-tests": ("actions/checkout", "actions/setup-python", "actions/upload-artifact"),
-        "keyless-oidc-canary": ("actions/checkout", "sigstore/cosign-installer"),
+        "keyless-oidc-canary": ("sigstore/cosign-installer",),
     },
     "assurance.yml": {
         "assurance": ("actions/checkout", "actions/setup-python", "sigstore/cosign-installer",
