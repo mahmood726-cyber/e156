@@ -14,7 +14,7 @@
   },
   "issued_at": "2026-06-02T14:58:42Z",
   "issued_by": "build_assurance_jsons.py",
-  "local_path": "C:\\Projects\\e156\\releases\\clinical-ma",
+  "local_path": ".",
   "project_name": "clinical-ma",
   "tier": "bronze",
   "tier_rule": "bronze = citation_cascade != fail AND data_file_present == pass AND code_runs in (pass, not-run); silver = + dashboard_match == pass AND claim_language == pass; gold = + analysis_rerun == pass AND external_review == pass",
