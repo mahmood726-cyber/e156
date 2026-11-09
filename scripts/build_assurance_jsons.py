@@ -551,12 +551,21 @@ def build_assurance_for(entry: dict) -> dict | None:
     }
     tier = compute_tier(all_checks)
 
-    evidence = {"overmind_bundle": overmind_checks["bundle_path"]}
+    evidence = {}
+    if local is not None and overmind_checks["bundle_path"]:
+        # Publish only evidence inside the repository; external nightly
+        # bundle locations have no meaning for readers of the badge.
+        try:
+            evidence["overmind_bundle"] = Path(
+                overmind_checks["bundle_path"]
+            ).resolve().relative_to(local.resolve()).as_posix()
+        except ValueError:
+            pass
     if local is not None:
         if (local / "sentinel-findings.jsonl").is_file():
-            evidence["sentinel_findings"] = str(local / "sentinel-findings.jsonl")
+            evidence["sentinel_findings"] = "sentinel-findings.jsonl"
         if (local / "STUCK_FAILURES.jsonl").is_file():
-            evidence["stuck_failures"] = str(local / "STUCK_FAILURES.jsonl")
+            evidence["stuck_failures"] = "STUCK_FAILURES.jsonl"
     if local is None:
         evidence["dashboard_url"] = entry.get("pages_url") or ""
 
@@ -573,7 +582,7 @@ def build_assurance_for(entry: dict) -> dict | None:
         "version": SCHEMA_VERSION,
         "project_name": entry["name"],
         "workbook_num": entry["num"],
-        "local_path": str(local) if local is not None else "",
+        "local_path": "." if local is not None else "",
     }
 
 
@@ -620,9 +629,9 @@ def build_assurance_here(repo: Path, name: str) -> dict:
 
     evidence = {}
     if (repo / "sentinel-findings.jsonl").is_file():
-        evidence["sentinel_findings"] = str(repo / "sentinel-findings.jsonl")
+        evidence["sentinel_findings"] = "sentinel-findings.jsonl"
     if (repo / "STUCK_FAILURES.jsonl").is_file():
-        evidence["stuck_failures"] = str(repo / "STUCK_FAILURES.jsonl")
+        evidence["stuck_failures"] = "STUCK_FAILURES.jsonl"
 
     return {
         "tier": tier,
@@ -636,7 +645,7 @@ def build_assurance_here(repo: Path, name: str) -> dict:
         "issued_by": ISSUED_BY,
         "version": SCHEMA_VERSION,
         "project_name": name,
-        "local_path": str(repo),
+        "local_path": ".",
     }
 
 
@@ -695,7 +704,7 @@ def main(argv=None) -> int:
         if blob is None:
             skipped_no_path += 1
             continue
-        local_for_target = Path(blob["local_path"]) if blob["local_path"] else None
+        local_for_target = resolve_local_path(entry["path"])
         target = target_path_for(local_for_target, blob["workbook_num"])
         by_tier[blob["tier"]] = by_tier.get(blob["tier"], 0) + 1
         if args.dry_run:

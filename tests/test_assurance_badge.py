@@ -174,7 +174,10 @@ def test_build_assurance_here(tmp_path):
     (tmp_path / "data.csv").write_text("a,b\n" + "x,y\n" * 500, encoding="utf-8")
     blob = baj.build_assurance_here(tmp_path, "demo")
     assert blob["project_name"] == "demo"
-    assert blob["local_path"] == str(tmp_path)
+    # Published JSON must not leak the build machine's path (the 2026-11-09
+    # master run's Sentinel rescan blocked /home/runner/... in this field).
+    assert blob["local_path"] == "."
+    assert str(tmp_path) not in str(blob)
     assert blob["checks"]["data_file_present"] == "pass"
     assert "fail" not in blob["checks"].values()
     assert blob["tier"] == "bronze"
