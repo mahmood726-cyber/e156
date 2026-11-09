@@ -1,25 +1,24 @@
 {
   "checks": {
     "analysis_rerun": "not-run",
-    "citation_cascade": "fail",
+    "citation_cascade": "pass",
     "claim_language": "warn",
     "code_runs": "not-run",
     "dashboard_match": "not-run",
-    "data_file_present": "not-run",
+    "data_file_present": "pass",
     "denominator_logic": "pass",
-    "external_review": "not-run"
+    "external_review": "not-run",
+    "pdf_match": "not-run",
+    "publication_bias": "not-run"
   },
   "evidence": {
-    "overmind_bundle": "",
-    "sentinel_findings": "sentinel-findings.jsonl",
-    "stuck_failures": "STUCK_FAILURES.jsonl"
+    "sentinel_findings": "sentinel-findings.jsonl"
   },
-  "issued_at": "2026-05-25T08:33:50Z",
+  "issued_at": "2026-11-09T01:42:22Z",
   "issued_by": "build_assurance_jsons.py",
   "local_path": ".",
-  "project_name": "E156",
-  "tier": "none",
-  "tier_rule": "bronze = citation_cascade != fail AND data_file_present == pass AND code_runs in (pass, not-run); silver = + dashboard_match == pass AND claim_language == pass; gold = + analysis_rerun == pass AND external_review == pass",
-  "version": 1,
-  "workbook_num": 351
+  "project_name": "e156",
+  "tier": "bronze",
+  "tier_rule": "bronze = citation_cascade != fail AND data_file_present == pass AND code_runs in (pass, not-run); silver = + dashboard_match == pass AND claim_language == pass AND publication_bias in (pass, not-run); gold = + analysis_rerun == pass AND external_review == pass",
+  "version": 1
 }
