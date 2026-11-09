@@ -14,7 +14,7 @@
   "evidence": {
     "sentinel_findings": "sentinel-findings.jsonl"
   },
-  "issued_at": "2026-11-09T01:42:22Z",
+  "issued_at": "2026-11-09T15:15:20Z",
   "issued_by": "build_assurance_jsons.py",
   "local_path": ".",
   "project_name": "e156",
