@@ -41,3 +41,8 @@ sentinel-findings.jsonl
 sentinel-findings.sarif
 review-findings.md
 review-findings.jsonl
+
+# Per-run Sigstore bundles for release snapshots: created and verified by the
+# master assurance run and deployed from that run, but never committed (the
+# commit gate allows only the root badge files).
+releases/*/e156-submission/assurance.json.cosign.bundle
